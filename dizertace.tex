@@ -1,0 +1,388 @@
+ \documentclass[a4paper,12pt]{report}
+  \pagestyle{plain}
+  \usepackage{latexsym}      %symboly
+  \usepackage{graphicx}
+  \usepackage{amsmath}
+  \usepackage{amsfonts}
+  \usepackage{amsthm}
+  \usepackage{epstopdf} %pokud pouzivam .eps obrazky, ale chci prekladat pdflatexem 
+  \usepackage[czech]{babel}
+  \usepackage[utf8]{inputenc}
+
+\usepackage{url}  %kvuli vkladani URL adres do bibtexu ale asi jen ve stylu CZECHISO
+\DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>} \urlstyle{tt}}
+  
+%\renewcommand{\figurename}{Fig.}
+  \usepackage{phdthesis}
+  \usepackage{psfrag}
+%  \newtheorem{definice}{Definition}
+  \usepackage{hyperref} % klikatelne odkazy v textu
+  \hypersetup{
+      colorlinks   = true, %Colours links instead of ugly boxes
+      urlcolor     = blue, %Colour for external hyperlinks
+      linkcolor    = red, %Colour of internal links
+      citecolor   = red %Colour of citations
+    }
+  \date{\today}
+  \usepackage{minibox}
+  \usepackage{pdfpages}
+%
+%
+\vfuzz10pt % Don't report over-full v-boxes if over-edge is small
+\hfuzz10pt
+%
+%
+%\newtheorem{theorem}{Theorem}[chapter]
+%\newtheorem{definition}{Definition}[chapter]
+%\newtheorem{example}{Example}[chapter]
+\DeclareMathOperator{\limean}{l.i.m.}   %limit in the mean se stane operatorem
+\DeclareMathOperator{\argmax}{argmax}   %stejne tak argmin a argmax
+\DeclareMathOperator{\argmin}{argmin}
+%
+%
+
+\newtheorem{veta}{Věta} 
+\newtheorem{lemma}[veta]{Lemma}
+\newtheorem{dusledek}[veta]{Důsledek}
+\theoremstyle{definition} \newtheorem{definice}[veta]{Definice}
+\newtheorem{priklad}{Příklad}
+\theoremstyle{remark}
+\newtheorem*{poznamka}{Poznámka}
+\newtheorem*{reseni}{Řešení}  
+
+
+
+\newcommand{\specialcell}[2][c]{%
+\begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
+
+
+
+\begin{document}
+\titlepage
+\vspace*{-2.4cm}
+\begin{center}
+\textsc{\Large{Masarykova Univerzita}} \\
+\large{Přírodovědecká fakulta} \\
+\large{Ústav matematiky a statistiky}
+\end{center}
+\vspace{7.11cm}
+%
+\begin{center}
+\textsc{\Large{DISERTAČNÍ PRÁCE}}
+\end{center}
+%
+\vspace{11.39cm}
+%
+\begin{center}
+\begin{tabular}{l  r}
+ \Large{Brno 2015} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
+\end{tabular}
+\end{center}
+
+\titlepage
+\begin{center}
+\textsc{\Large{Masarykova Univerzita}} \\
+\textsc{\Large{Přírodovědecká fakulta}} \\
+\textsc{\large{Ústav matematiky a statistiky}}
+\end{center}\quad \\
+%
+\begin{center}
+\includegraphics[width=5cm]{IMG/sci-logo.pdf}
+\end{center}\quad \\
+%
+\begin{center}
+\textbf{\Large{Stochastické metody analýzy ekonomických dat}} \\ \quad \\
+\textsc{\large{Disertační práce}}
+\end{center} \quad \\\\\\\\\\\\\\\\\\\\\\\\\\ \\
+\begin{center}
+\large{
+\begin{tabular}{l  r}
+\Large{Brno 2015} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
+\end{tabular}
+}
+\end{center} \quad
+%
+%\begin{center}
+%\large{Brno 2009}
+%\end{center}
+%\begin{center}
+%\verb=   (\(\=\\
+%\verb=  (._. )=\\
+%\verb=(')(')_)o=
+%\end{center}
+
+\normalsize
+
+
+
+\chapter*{Bibliografický záznam}\addcontentsline{toc}{chapter}{Bibliografický záznam}
+\setcounter{page}{1}
+\pagenumbering{roman}
+%\thispagestyle{empty}
+
+\begin{tabular}{p{3.9cm}  p{9.1cm}}
+\textbf{Autor:} & Mgr. Lenka Křivánková \\
+\textbf{Název:} & Stochastické metody analýzy ekonomických dat \\
+\textbf{Školitel:} & doc. RNDr. Martin Kolář, Ph.D.  \\
+\textbf{Studijní program:} & Matematika \\
+\textbf{Obor:} & Pravděpodobnost, statistika a matematické modelování \\
+\textbf{Rok obhajoby:} & 2015 \\
+\textbf{Klíčová slova:} & Stochastické procesy, \\
+\end{tabular}
+\\\\\\\\\\
+
+\begin{flushright} {{\Huge Bibliographic entry}} \vspace{38pt} \end{flushright}
+%\addcontentsline{toc}{chapter}{Bibliographic entry}
+
+\hspace{-0.7cm}
+\begin{tabular}{p{3.9cm}  p{9.1cm}}
+\textbf{Author:} & Mgr. Lenka Křivánková \\
+\textbf{Title:} & Stochastic methods in analysis of economic data \\
+\textbf{Supervisor:} & doc. RNDr. Martin Kolář, Ph.D.  \\
+\textbf{Study programme:} & Mathematics \\
+\textbf{Study field:} & Probability, statistics and mathematical modeling \\
+\textbf{Year of defence:} & 2015 \\
+\textbf{Keywords:} & Stochastic processes, \\
+\end{tabular}
+\newpage
+\pagestyle{empty}
+\null
+\vfill
+\begin{center}
+\copyright \quad Lenka Křivánková, Masarykova Univerzita, 2015
+\end{center}
+
+\chapter*{Poděkování}\addcontentsline{toc}{chapter}{Poděkování}
+%\thispagestyle{empty}
+Na tomto místě
+\\
+
+Brno, Květen 2015
+\\
+
+%Jakub \u Cupera
+
+\chapter*{Abstrakt}\addcontentsline{toc}{chapter}{Abstrakt}
+%\thispagestyle{empty}
+V první části práce jsou uvedeny základníi matematické pojmy použité v dalších částech textu. 
+\\\\\\\\\\
+
+\begin{flushright} {{\Huge Abstract}} \vspace{38pt} \end{flushright}
+%\addcontentsline{toc}{chapter}{Abstract}
+In the first part of the work, some basic mathematical methods employed in this thesis are recalled. 
+
+\tableofcontents \addcontentsline{toc}{chapter}{Obsah}
+
+\chapter*{Seznam použitého značení}\addcontentsline{toc}{chapter}{Seznam použitého značení}
+%\hspace{-0.7cm}
+%\begin{tabular}{r  l}
+%$\mathsf{E}X$ & Expected value of random variable $X$ \\
+%$\mathsf{var}X$ & Dispersion, resp. variance of random variable X \\
+%\end{tabular}
+
+\normalsize
+\textbf{Pravděpodobnost}\\\\
+%  \begin{table}[h]
+   \begin{tabular}{p{4cm} p{9.3cm}}
+   $\Omega$                                          &   základní prostor, množina všech elementárních jevů \\
+   $\mathsf{Pr}(A)$                               &  pravděpodobnost jevu $A$ \\
+   $(\Omega,\mathcal{A}, \mathsf{Pr})$                         &   pravděpodobnostní prostor \\
+   \end{tabular}\\\\\\
+%
+%  \end{table}
+%
+%
+\textbf{Náhodné veličiny}\\\\
+%  \begin{table}[h]
+   \begin{tabular}{p{4cm} p{9.3cm}}
+   $X$                                              &   náhodná veličina \\
+   $\mathsf{E}(X)$                          &   střední hodnota náhodné veličiny $X$ \\
+   $\mathsf{D}(X)$                          &   rozptyl náhodné veličiny $X$ \\
+   $\mathsf{C}(X_i,X_j)$                 &   kovariance náhodných veličin $X_i$ a $X_j$\\
+%   $X(t)$; $X_t$                                     &    continuous-time random process \\
+   $W(t); W_t$                                 &    standardní Wienerův proces \\
+%   $f(x)$                                            &    probability density of the random variable $X$ \\
+%   $f(x; \theta)$                                            &   probability density function of random variable $X$ with distribution dependent on scalar parameter $\theta$ \\
+%   $f(x,t)$                                          &    probability density of random process $X(t)$ at fixed time $t$ \\
+%   $f(x,t | x_0, t_0)$                               &    probability density of random process $X(t)$ at fixed time $t$ conditioned by its state $x_0$ at time $t_0$ \\
+%   $X\sim \mathcal{L}$                               &    random variable $X$ having general probability distribution $\mathcal{L}$\\
+   $\mathsf{N}(\mu, \sigma^{2})$                     &   Normální (Gaussovo) rozdělení pravděpodobnosti se střední hodnotou $\mu$ a rozptylem $\sigma^2$  \\
+   \end{tabular}\\\\\\
+%
+%
+   \textbf{Náhodné vektory}\\\\
+%  \begin{table}[h]
+   \begin{tabular}{p{4cm} p{9.3cm}}
+  $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$                 &     $n$-rozměrný náhodný vektor \\
+%   $\boldsymbol{\theta}=(\theta_1,\ldots,\theta_m)$  &    m-dimensional vector parameter \\
+%   $f(\mathbf{x};\boldsymbol{\theta})$               &    probability density of the random vector $\boldsymbol{X}$ with vector parameter $\boldsymbol{\theta}$ \\
+   $\mathsf{E}\boldsymbol{X}$                             &     střední hodnota náhodného vektoru $\boldsymbol{X}$\\
+   $\mathsf{D}\boldsymbol{X}$                             &   rozptyl  náhodného vektoru $\boldsymbol{X}$\\
+   \end{tabular}\\\\\\
+%
+%
+%
+   \textbf{Prostory a matice}\\\\
+%  \begin{table}[h]
+   \begin{tabular}{p{4cm} p{9.3cm}}
+   $\mathbb{R}$                              &   jednorozměrný Eukleidovský prostor \\
+   $\mathbb{R}^n$                              &     $n$-rozměrný Eukleidovský prostor \\
+   $\boldsymbol{x}=(x_1,\ldots,x_n)^\mathrm{T}$             &    $n$-rozměrný reálný vektor \\
+    $\boldsymbol{1}$                           &   vektor jedniček\\
+   $\mathbf{I}_n$                              &    jednotková matice řádu $n$ \\
+   $\mathbf{A}^T$                              &   transponovaná matice vzhledem k matici $\mathbf{A}$\\
+   \end{tabular}
+% \end{table}
+  %
+%
+%
+
+
+\chapter{Úvod}
+\setcounter{page}{1}
+\pagenumbering{arabic}
+
+Klasická kniha o Stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}\\
+Numerické řešení stochastických diferenciálních rovnic a jejich soustav \cite{kloeden1997}\\
+Vzorec pro váhy tržního portfolia čerpáme z \cite{fabozzi}\\
+Základy teorie portfolia pokládá Markowitz v \cite{markowitz}\\
+Tobin v \cite{tobin} rozšiřuje Markowitzův přístup o bezrizikové aktivum.
+Capital Asset Pricing Model (CAPM), který nezávisle na sobě zkonstruovali Sharpe (1964) v \cite{sharpe1964}, Lintner (1965) v \cite{lintner1965} a Mossin (1966) v \cite{mossin1966} zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
+První řešení spojitého modelu v teorii portfolia dává Merton v \cite{merton1971}\\
+Na rozpor předpokladů v Mertonově článku \cite{merton1971} upozorňují Ohlson a Rosenberg v \cite{ohlson}\\
+Na jejich článek reaguje Merton v \cite{merton1975} a jeho reakce vychází ješte před článkem Ohlsona a Rosenberga.\\
+
+Konzistentní dynamický přístup k teorii portfolia dává Fernholz ve své knize Stochastická teorie portfolia \cite{fern} a v článku s Karatzasem \cite{kara}\\
+
+
+\chapter{Základní matematické pojmy}
+%\chapter{Teoretická východiska}
+
+\section{Wienerův proces}
+
+\begin{definice}
+Reálný stochastický proces $\{W(t):t\ge0\}$ na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
+\begin{enumerate}
+\item[1.]$W(0)=0$, 
+\item[2.](spojitost trajektorií Wienerova procesu) s pravděpodobností jedna je funkce $t\to W(t)$ spojitá v $t$,
+\item[3.](nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, t.j.  pro každé $t\ge s\ge0$ má $X(t+s)-X(s)$ stejné rozdělení jako $X(t)-X(0)$,
+\item[4.](normalita přírůstků) pro každé $t\ge s\ge0$ má přírůstek $W(t)-W(s)$ normální rozdělení $\mathsf{N}(0, t-s)$.
+\end{enumerate}
+\end{definice}
+
+\subsection{Wienerův proces s driftem}
+\begin{definice}
+Stochastický proces $X(t)$ definovaný 
+$$X(t)  = \mu t + \sigma W (t)$$
+se nazývá \textit{Wienerův proces  s driftem} $\mu$ a volatilitou $\sigma$.
+\end{definice}
+
+\section{It\^oův proces}
+
+\begin{definice}
+Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+\textit{It\^oův proces} je stochastický proces tvaru
+$$X(t,\omega)=\int_0^tU(s,\omega)\mathrm{d}s+\int_0^tV(s,\omega)\mathrm{d}W(s,\omega),$$
+kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do $M$.
+
+Často se používá diferenciální tvar, nazývaný \textit{stochastický diferenciál},
+$$\mathrm{d}X(t,\omega)=U(t,\omega)\mathrm{d}t+V(t,\omega)\mathrm{d}W(t,\omega).$$
+\end{definice}
+
+
+\subsection{Geometrický Wienerův proces}
+\begin{definice}
+Stochastický proces $S(t)$ definovaný 
+$$\frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t)$$
+se nazývá \textit{geometrický Wienerův proces}.
+\end{definice}
+
+\section{It\^oovo lemma}
+It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
+It\^oovo lemma říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
+
+\begin{veta}[It\^oovo lemma]
+Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
+$$\mathrm{d}X=U\mathrm{d}t+V\mathrm{d}W.$$
+Nechť $g(t,x):(0,\infty)\times\mathbb R\to\mathbb R$ je dvakrát spojitě diferencovatelná funkce.
+Potom $Y(t)=g(t,X(t))$ je také It\^oův proces.
+Jeho stochastický diferenciál má tvar
+\begin{alignat*}{2}
+\mathrm{d}Y=\frac{\partial g}{\partial t}\mathrm{d}t+\frac{\partial g}{\partial x}\,\mathrm{d}X+\frac12\frac{\partial^2 g}{\partial x^2}(\mathrm{d}X)^2=\left[\frac{\partial g}{\partial t}+\frac{\partial g}{\partial x}U+\frac12\frac{\partial^2 g}{\partial x^2}V^2\right]\mathrm{d}t+\frac{\partial g}{\partial x}V\mathrm{d}W.
+\end{alignat*}
+\end{veta}
+
+\section{It\^oův integrál}
+Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál.
+Budeme ho definovat obdobným způsobem jako Riemannův integrál.
+Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
+\newline
+\begin{definice}
+Stochastický proces $S$ se nazývá \textit{jednoduchá funkce}, jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. \newline\newline
+Trajektorie jednoduché funkce jsou po částech konstantní. 
+\end{definice}
+
+
+Zaveďme označení $\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
+\\
+\begin{definice}
+Nechť $S$ je jednoduchá funkce. Pak
+$$\int_0^TS\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
+se nazývá \textit{It\^oův integrál} funkce $S$ na intervalu $[0,T]$.
+\\
+\end{definice}
+
+Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché funkce na integrál pro obecný stochastický proces.
+\begin{definice}
+Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+Řekneme, že stochastický proces $\{f(t,\omega):t\ge0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
+\\
+\end{definice}
+
+\begin{definice}
+Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+Symbolem $M$ označme třídu stochastických procesů $f(t,\omega):[0,\infty)\times\Omega\to\mathbb R$ takových, že
+\begin{enumerate}
+\item[1.] $f(t,\omega)$ je neanticipativní, 
+\item[2.] $\text{E}\left[\int_0^Tf^2(t,\omega)\mathrm{d}t\right]<\infty.$ 
+\\
+\end{enumerate}
+\end{definice}
+
+\begin{lemma} \label{itoint}
+Nechť $f$ je náhodný proces patřící do $M$.
+Pak existuje posloupnost jednoduchých funkcí $\{f_n:n\in\mathbb N\}$ tak, že pro $n\to\infty$ platí
+$$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarrow0.$$
+\end{lemma}
+
+\indent
+
+\begin{definice}
+Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých funkcí z lemmatu \ref{itoint}.
+Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
+$$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d}W.$$
+\\
+\end{definice}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\nocite{}  %umisri do literatury i necitovanou polozku a \nocite{*} umisti do literatury vsechny polozky z bibtex databaze 
+
+\addcontentsline{toc}{chapter}{Literatura}
+%\bibliographystyle{plain}
+\bibliographystyle{abbrv}
+\bibliography{bibliography}
+
+\end{document}

@@ -8,6 +8,7 @@
   \usepackage{epstopdf} %pokud pouzivam .eps obrazky, ale chci prekladat pdflatexem 
   \usepackage[czech]{babel}
   \usepackage[utf8]{inputenc}
+  \usepackage{comment}
 
 \usepackage{url}  %kvuli vkladani URL adres do bibtexu ale asi jen ve stylu CZECHISO
 \DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>} \urlstyle{tt}}
@@ -157,14 +158,14 @@
 Na tomto místě
 \\
 
-Brno, Květen 2015
+Brno, Listopad 2015
 \\
 
 %Jakub \u Cupera
 
 \chapter*{Abstrakt}\addcontentsline{toc}{chapter}{Abstrakt}
 %\thispagestyle{empty}
-V první části práce jsou uvedeny základníi matematické pojmy použité v dalších částech textu. 
+V první části práce jsou uvedeny základní matematické pojmy použité v dalších částech textu. 
 \\\\\\\\\\
 
 \begin{flushright} {{\Huge Abstract}} \vspace{38pt} \end{flushright}
@@ -242,6 +243,7 @@ In the first part of the work, some basic mathematical methods employed in this 
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
+\begin{comment}
 Klasická kniha o Stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}\\
 Numerické řešení stochastických diferenciálních rovnic a jejich soustav \cite{kloeden1997}\\
 Vzorec pro váhy tržního portfolia čerpáme z \cite{fabozzi}\\
@@ -253,7 +255,7 @@ Na rozpor předpokladů v Mertonově článku \cite{merton1971} upozorňují Ohl
 Na jejich článek reaguje Merton v \cite{merton1975} a jeho reakce vychází ješte před článkem Ohlsona a Rosenberga.\\
 
 Konzistentní dynamický přístup k teorii portfolia dává Fernholz ve své knize Stochastická teorie portfolia \cite{fern} a v článku s Karatzasem \cite{kara}\\
-
+\end{comment}
 
 \chapter{Základní matematické pojmy}
 %\chapter{Teoretická východiska}
@@ -364,21 +366,165 @@ $$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d
 \\
 \end{definice}
 
+%%%%%%%%%%%%%%%%%%{Teorie portfolia}
+
+\chapter{Teorie portfolia}
+
+%%%%%%%%%%%%%%%%%%{Základní charakteristiky portfolia}
+
+\section{Základní charakteristiky portfolia}
+V teorii portfolia se investoři snaží minimalizovat investiční riziko a~zároveň maximalizovat investiční výnos. 
+Avšak se zvyšováním očekáváného výnosu je spojen i~růst rizika, proto základním problémem při optimalizaci portfolia je hledání kompromisu mezi maximalizací výnosu a~minimalizací rizika spojeného s~investováním.  
+V následující části popíšeme a~definujeme tyto základní charakteristiky portfolia.
+
+\subsection{Výnosnost}
+\textit{Míra výnosnosti} (nebo \textit{relativní výnosnost}) aktiva je charakteristika, která udává zisk nebo ztrátu z~investice za pevně stanovené období vyjádřená v~poměru k~množství investovaných prostředků. 
+Relativní výnosnost bývá často označována pouze jako \textit{výnosnost}.
+Vzhledem k~tomu, že výnosnost aktiva je pro investora nejistá (s výjimkou bezrizikového aktiva), budeme ji v~teorii portfolia chápat jako náhodnou veličinu a~budeme ji značit $r_j$.
+Rozdělení pravděpodobnosti této náhodné veličiny nelze určit, nicméně v~teorii portfolia se obejdeme bez znalosti rozdělení a~využijeme pouze dále uvedené základní charakteristiky náhodné veličiny.
+
+První z~těchto charakteristik bude střední hodnota výnosnosti aktiva, kterou označíme $\mathsf{E}(r_j)=\mu_j$.
+V~teorii portfolia se ve spojitosti s~touto charakteristikou setkáváme s~pojmem \textit{očekávaná výnosnost}.
+Rozptyl výnosnoti aktiva označíme $\mathsf{D}(r_j)=\sigma_j^2$.
+
+Následující značení využijeme při definicích charakteristik porfolia.
+Nechť $\boldsymbol{r}=(r_1,\dots,r_n)^\mathrm{T}$ značí náhodný vektor, jehož složky jsou výnosnosti aktiv drzěných v~portfoliu $p$.
+Relativní podíly aktiv, ze kterých se skládá portfolio, se nazývají \textit{váhy} portfolia.
+Vektor vah portfolia budeme značit $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ a~přirozeně platí, že $\sum_{j=1}^nX_j=1$. 
+Mezi základní charakteristiky portfolia patří jeho \textit{výnosnost}, která je dána jako $r_p=\boldsymbol{X}^\mathrm{T}\boldsymbol{r}=\sum_{j=1}^nX_jr_j$ a~je rovněž náhodnou veličinou.   
+Jedním z faktorů pro výběr portfolia v Markowitzově teorii je \textit{očekávaná výnosnost portfolia}, kterou označíme $\mathsf{E}(r_p)=\mu_p$ a je zřejmé, že platí $\mu_p=\sum_{j=1}^nX_j\mu_j$.
+
+\subsection{Riziko}
+\textit{Riziko} popisuje míru nejistoty, že se skutečná výnosnost investice bude lišit od očekávané výnosnosti.  
+\textit{Riziko aktiva} definujeme jako směrodatnou odchylku výnosnosti aktiva a~označíme ho $\sqrt{\mathsf{D}(r_j)}=\sigma_j$.
+Analogicky je \textit{riziko portfolia} definováno jako směrodatná odchylka výnosnosti portfolia a~značeno $\sqrt{\mathsf{D}(r_p)}=\sigma_p$.  
+
+Riziko celého portfolia v~sobě zahrnuje nejen rizika jednotlivých aktiv v~portfoliu, ale také riziko z~vzájemné závislosti výnosností jednotlivých aktiv.
+Míra vzájemné závislosti dvou výnosností je mimo jiné popsána jejich kovariancí. 
+Kovarianci výnosnosti aktiva~$j$ a~výnosnosti aktiva~$k$ označíme $\mathsf{C}(r_j,r_k)=\sigma_{jk}$.
+Snadno se dá dokázat, že $\sigma_p=\sqrt{\sum_{j=1}^n\sum_{k=1}^nX_jX_k\sigma_{jk}}$.
+Riziko portfolia je dalším faktorem pro výběr portfolia v~Markowitzově teorii.  
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%{Klasická teorie portfolia}
+
+
+\section{Klasická teorie portfolia}
+
+Základy klasické teorie portfolia položil Harry Markowitz svým článkem v roce 1952 \cite{markowitz}, ve kterém upozorňil na nutnost zohledňovat při výběru portfolia nejenom očekávanou výnosnost, ale i riziko změny výnosnosti.
+Jeho největším přínosem bylo kvantifikování očekávaného výnosu a rizika portfolia, dále matematicky dokázal výhody diverzifikace, které byly do té doby chápány pouze intuitivně.
+Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos-riziko, zavedl pojem \textit{efektivní množina portfolií}, ze které investor vybírá optimální portfolio pomocí indiferenčních křivek popisujících investorův vztah k riziku.
+
+V roce 1958 rozšířil James Tobin \cite{tobin} Markowitzův model o možnost investování do bezrizikového aktiva.
+\textit{Bezrizikové aktivum} má jistý výnos a tedy nulové riziko.
+To má velký vliv především na efektivní množinu portfolií, která je tvořena tečnou k původní Markowitzově efektivní množině procházející bezrizikovým aktivem.
+V bodě dotyku pak leží tzv. tangenciální portfolio.
+Postup investora při hledání optimálního portfolia shrnuje Tobinův separační teorém, který se později vžil v souvislosti s CAPM, který zmíníme později.
+Investor prvně určí tangenciální portfolio a následně ho zkombinuje s bezrizikový aktivem podle svých rizikových preferencí.
+
+\textit{Capital Asset Pricing Model} (CAPM) vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe}, Lintner \cite{lintner} a Mossin \cite{mossin} v letech 1964-1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
+Zároveň vychází z Tobinova modelu, protože zahrnuje bezrizikové aktivum.
+CAPM stojí na několika výchozích předpokladech, které se dají shrnout do následujících třech:
+\begin{itemize}
+\item[-] kapitálový trh je efektivní,
+\item[-] investoři při sestavování portfolia využívají Markowitzův přístup,
+\item[-] investoři mají homogenní očekávání.
+\end{itemize}
+Předpoklad homogenity očekávání investorů má za následek, že všichni investoři drží stejné rizikové portfolio.
+Optimální portfolia investorů se liší pouze v poměru, v jakém kombinují rizikové portfolio a bezrizikové aktivum v závislosti na svých rizikových preferencích.
+Toto shrnuje následující věta.
+
+\begin{veta}(Separační teorém)
+Optimální kombinace rizikových cenných papírů může být stanovena bez jakékoliv znalosti investovaných postojů k riziku a výnosnosti.
+\end{veta}
+
+Předpokládáme-li rovnováhu trhu, bývá tangenciální portfolio nazýváno jako \textit{tržní portfolio}.
+Váha každého cenného papíru v tržním portfoliu je rovna jeho tržní ceně.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%{Stochastická teorie portfolia}
+
+\subsection{Stochastická teorie portfolia}
+V této podkapitole jsou shrnuty některé základní poznatky Stochastické teorie portfolia, která byla inspirací pro studium spojitých procesů v teorii portfolia uvedených v této práci.
+Budeme diskutovat o výhodách a nevýhodách tohoto přístupu.
+
+Pojem \textit{Stochastická teorie portfolia} (SPT) zavedl Robert Fernholz ve své monografii \cite{fern}.
+Jedná se o matematickou teorii, která zkoumá chování portfolia jakožto i strukturu kapitálového trhu.
+Hlavní výhodou oproti klasické teorii portfolia jsou méně  striktní předpoklady, které dovolují konzistentní přístup bez výskytu Ohlson-Rosenbergova paradoxu \cite{ohlson}.
+
+Na rozdíl od Mertonova modelu se v SPT nepředpokládá tržní rovnováha.
+Parametry stochastického procesu, kterým se řídí cena aktiva, jsou v SPT také stochastické procesy nikoli konstanty jako v Mertonově přístupu.
+Dokonce, na rozdíl od klasického přístupu, se v SPT neklade důraz na předpoklad neexistence tržní arbitráže, přičemž jsou studovány vlastnosti trhu vedoucí k existenci arbitráže. 
+
+Pro vývoj ceny aktiva Fernholz používá následující spojitý logaritmický model
+$$\mathrm{d}\log P_j(t)=\gamma_j(t)\mathrm{d}t+\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t),$$
+kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\gamma_j(t)$ a $\xi_{jk}(t)$ jsou stochastické procesy a $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-dimenzionální Wienerův proces. 
+Proces $\gamma_j(t)$ se nazývá \textit{míra růstu} a $\xi_{jk}(t)$ se nazývá proces \textit{volatility}.
+Míru růstu v logaritmickém modelu je možno odvodit z míry výnosnosti ve standardním modelu a naopak podle následujícího vztahu
+$$\mu_j(t)=\gamma_j(t)+\frac12\sum_{k=1}^{n}{\xi_{jk}}^2(t).$$
+Robert Fernholz uvádí, že v dlouhém časovém horizontu je chování hodnoty portfolia lépe popsáno mírou růstu než mírou výnosnosti.
+Uvažujeme-li kovarianční matici $\boldsymbol{\Sigma}$ výnosností aktiv, pak matice volatilit $\boldsymbol{\xi}$ je definována jako
+$$\boldsymbol{\Sigma}=\boldsymbol{\xi}\boldsymbol{\xi}^\mathrm{T}.$$
+Tedy $\boldsymbol{\xi}$ je maticová odmocnina z $\boldsymbol{\Sigma}$.
+
+Jedním ze základních pojmů v SPT jsou \textit{portfolio generující funkce}, pomocí nichž jsou tvořeny portfolia, které mají dobře definované výnosnosti. Podrobnější informace je možno najít v knize \cite{fern}.
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Paradox v teorii portfolia}
+Nekonzistencí obvyklých předpokládů teorie portfolia se v roce 2009 zabýval také John Stalker profesor na univerzitě v Princetonu. 
+V preprintu \cite{john} uvádí důkaz, kde využívá separačního theorému pro dva fondy. Základní myšlenky tohoto důkazu shrnujeme v následujícím textu.
+
+Uvažujme následující předpoklady obvyklé pro teorii portfolia.
+\begin{enumerate}
+\item Ceny podkladových aktiv se řídí It\^oovými procesy s konstantními očekávanými mírami výnosnosti a konstantními kovariancemi výnosností. 
+\item Neexistují žádná omezení na množství aktiv držených investorem. Aktiva jsou navíc nekonečně dělitelná.
+\item Neexistují žádné transakční náklady a cena prodeje a nákupu podkladového aktiva se neliší.
+\item 
+\item
+\end{enumerate}
+
+\begin{displaymath}
+\Delta p_i = \frac{a_i}{n_i}\Delta A + \frac{b_i}{n_i}\Delta B
+\end{displaymath}
+ and the return on
+the $i$'th asset  is
+\begin{displaymath}
+\frac{a_i}{n_ip_i(t)}\Delta A + \frac{b_i}{n_ip_i(t)}\Delta B
+\end{displaymath}
+where $\Delta A = A(t+\Delta t) - A(t)$ and $\Delta B = B(t+\Delta t)
+- B(t)$.  It follows that the covariance rate matrix for the returns
+can be factored as
+$$
+%\begin{displaymath}
+\begin{pmatrix}
+\frac{a_1}{n_1p_1} & \frac{b_1}{n_1p_1}\cr \vdots & \vdots\cr \frac{a_m}{n_mp_m} & \frac{b_m}{n_mp_m}
+\end{pmatrix}
+%\end{displaymath}
+\times
+%\begin{displaymath*}
+\begin{pmatrix}
+\frac{\mathsf{C}(\Delta A, \Delta A)}{\Delta t} &
+\frac{\mathsf{C}(\Delta A, \Delta B)}{\Delta t} \cr
+\frac{\mathsf{C}(\Delta B, \Delta A)}{\Delta t} & \frac{\mathsf{C}(\Delta B,
+\Delta B)}{\Delta t} 
+\end{pmatrix}
+%\end{displaymath*}
+\times
+%\begin{displaymath*}
+\begin{pmatrix}
+\frac{a_1}{n_1p_1} & \ldots & \frac{a_m}{n_mp_m}\cr \cr \frac{b_1}{n_1p_1} & \ldots &
+\frac{b_m}{n_mp_m}.
+\end{pmatrix}
+%\end{displaymath*}
+$$
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
-
-
-
-
-
-
-\nocite{}  %umisri do literatury i necitovanou polozku a \nocite{*} umisti do literatury vsechny polozky z bibtex databaze 
+\nocite{*}  %umisti do literatury i necitovanou polozku a \nocite{*} umisti do literatury vsechny polozky z bibtex databaze 
 
 \addcontentsline{toc}{chapter}{Literatura}
 %\bibliographystyle{plain}

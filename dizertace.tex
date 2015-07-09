@@ -155,13 +155,14 @@
 
 \chapter*{Poděkování}\addcontentsline{toc}{chapter}{Poděkování}
 %\thispagestyle{empty}
+\pagestyle{plain}
 Na tomto místě
 \\
 
 Brno, Listopad 2015
 \\
 
-%Jakub \u Cupera
+Lenka Křivánková
 
 \chapter*{Abstrakt}\addcontentsline{toc}{chapter}{Abstrakt}
 %\thispagestyle{empty}
@@ -185,6 +186,7 @@ In the first part of the work, some basic mathematical methods employed in this 
 \textbf{Pravděpodobnost}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
+   $\omega$				        & elementární jev\\
    $\Omega$                                          &   základní prostor, množina všech elementárních jevů \\
    $\mathsf{Pr}(A)$                               &  pravděpodobnost jevu $A$ \\
    $(\Omega,\mathcal{A}, \mathsf{Pr})$                         &   pravděpodobnostní prostor \\
@@ -196,34 +198,40 @@ In the first part of the work, some basic mathematical methods employed in this 
 \textbf{Náhodné veličiny}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
-   $X$                                              &   náhodná veličina \\
-   $\mathsf{E}(X)$                          &   střední hodnota náhodné veličiny $X$ \\
-   $\mathsf{D}(X)$                          &   rozptyl náhodné veličiny $X$ \\
-   $\mathsf{C}(X_i,X_j)$                 &   kovariance náhodných veličin $X_i$ a $X_j$\\
-%   $X(t)$; $X_t$                                     &    continuous-time random process \\
-   $W(t); W_t$                                 &    standardní Wienerův proces \\
-%   $f(x)$                                            &    probability density of the random variable $X$ \\
-%   $f(x; \theta)$                                            &   probability density function of random variable $X$ with distribution dependent on scalar parameter $\theta$ \\
+   $X$                                                &   náhodná veličina \\
+   $f(x)$                                             &   hustota pravděpodobnosti náhodné veličiny $X$ \\ %probability density of the random variable $X$ \\
+%   $f(x; \theta)$                                    &   probability density function of random variable $X$ with distribution dependent on scalar parameter $\theta$ \\
 %   $f(x,t)$                                          &    probability density of random process $X(t)$ at fixed time $t$ \\
 %   $f(x,t | x_0, t_0)$                               &    probability density of random process $X(t)$ at fixed time $t$ conditioned by its state $x_0$ at time $t_0$ \\
-%   $X\sim \mathcal{L}$                               &    random variable $X$ having general probability distribution $\mathcal{L}$\\
-   $\mathsf{N}(\mu, \sigma^{2})$                     &   Normální (Gaussovo) rozdělení pravděpodobnosti se střední hodnotou $\mu$ a rozptylem $\sigma^2$  \\
+   $X\sim \mathcal{L}$                                &   náhodná veličina $X$ mající rozdělením pravděpodobnosti $\mathcal{L}$ \\ %random variable $X$ having general probability distribution $\mathcal{L}$\\
+   $\mathsf{E}(X)$                         	      &   střední hodnota náhodné veličiny $X$ \\
+   $\mathsf{D}(X)$                      	      &   rozptyl náhodné veličiny $X$ \\
+   $\mathsf{C}(X_i,X_j)$             		      &   kovariance náhodných veličin $X_i$ a $X_j$\\
+   $\mathrm{d}X(t,\omega)$; $\mathrm{d}X(t)$; $\mathrm{d}X_t$    &  stochastický diferenciál \\ %continuous-time random process \\
+   $X(t,\omega)$; $X(t)$; $X_t$                       &   stochastický proces \\
+   $W(t,\omega)$; $W(t)$; $W_t$                       &   standardní Wienerův proces \\
+   $\boldsymbol{\Delta} W_t$			                      &   přírůstek Wienerova procesu \\
+   $\mathsf{N}(\mu, \sigma^{2})$                      &   Normální (Gaussovo) rozdělení pravděpodobnosti se střední hodnotou $\mu$ a rozptylem $\sigma^2$  \\
    \end{tabular}\\\\\\
 %
 %
-   \textbf{Náhodné vektory}\\\\
+\textbf{Náhodné vektory}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
   $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$                 &     $n$-rozměrný náhodný vektor \\
 %   $\boldsymbol{\theta}=(\theta_1,\ldots,\theta_m)$  &    m-dimensional vector parameter \\
 %   $f(\mathbf{x};\boldsymbol{\theta})$               &    probability density of the random vector $\boldsymbol{X}$ with vector parameter $\boldsymbol{\theta}$ \\
-   $\mathsf{E}\boldsymbol{X}$                             &     střední hodnota náhodného vektoru $\boldsymbol{X}$\\
-   $\mathsf{D}\boldsymbol{X}$                             &   rozptyl  náhodného vektoru $\boldsymbol{X}$\\
+   $\mathsf{E}\boldsymbol{X}$                             &   vektor středních hodnot náhodného vektoru $\boldsymbol{X}$\\
+   $\mathsf{D}\boldsymbol{X}$                             &   kovarianční matice náhodného vektoru $\boldsymbol{X}$\\
+    $\boldsymbol{\Sigma}(\boldsymbol{X_i},\boldsymbol{X_j})$     &   kovarianční matice náhodných vektorů $\boldsymbol{X_i}$ a $\boldsymbol{X_j}$\\
+$\boldsymbol{X}(\boldsymbol{t},\boldsymbol{\omega})$; $\boldsymbol{X}(\boldsymbol{t})$; $\boldsymbol{X}_{\boldsymbol{t}}$  				& vektorový stochastický proces\\
+$\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces\\
    \end{tabular}\\\\\\
 %
 %
 %
-   \textbf{Prostory a matice}\\\\
+\\\\\\\\\\\\\\\\
+\textbf{Prostory a matice}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
    $\mathbb{R}$                              &   jednorozměrný Eukleidovský prostor \\
@@ -231,15 +239,41 @@ In the first part of the work, some basic mathematical methods employed in this 
    $\boldsymbol{x}=(x_1,\ldots,x_n)^\mathrm{T}$             &    $n$-rozměrný reálný vektor \\
     $\boldsymbol{1}$                           &   vektor jedniček\\
    $\mathbf{I}_n$                              &    jednotková matice řádu $n$ \\
-   $\mathbf{A}^T$                              &   transponovaná matice vzhledem k matici $\mathbf{A}$\\
-   \end{tabular}
+   $\mathbf{A}^\mathrm{T}$                              &   transponovaná matice vzhledem k matici $\mathbf{A}$\\
+   \end{tabular}\\\\\\
 % \end{table}
-  %
+%
+%
+\textbf{Teorie portfolia}\\\\
+%  \begin{table}[h]
+   \begin{tabular}{p{4cm} p{9.3cm}}
+   $I_t$ 								& množina všech investorů na trhu v čase $t$\\
+   $P_j(t)$                             &   cena aktiva $j$ v čase $t$ \\
+   $\boldsymbol{P}(t)$                             &   vektor cen aktiv v čase $t$\\
+   $P_j(t)$                             &   objem aktiv $j$ v čase $t$ \\
+   $\boldsymbol{N}(t)$     &   vektor podílů aktiv v čase $t$\\
+   $V_j(t)=P_j(t)N_j(t)$       &  tržní hodnota aktiva $j$\\
+   $r_j$  								& míra výnosnosti podkladového aktiva $j$\\
+   $\boldsymbol{r}=(r_1,\dots,r_n)^\mathrm{T}$  		& vektor výnosností aktiv držených v~portfoliu\\
+   $\mu_j$ 								& očekávaná míra výnosnosti podkladového aktiva\\
+   $\sigma_j$								& riziko podkladového aktiva\\
+   $B(t)$ 								& cena bezrizikového aktiva v čase $t$\\
+   $r_f(t)$ 								& bezriziková úroková míra v čase $t$\\
+   $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$		& vektor vah podkladových aktiv držených v~portfoliu\\
+   $\mathsf{C}(r_j,r_k)=\sigma_{jk}$				& kovariance výnosnosti aktiva~$j$ a~výnosnosti aktiva~$k$\\
+   $\boldsymbol{\Sigma}$						& kovarianční matice výnosností podkladových aktiv držených v~portfoliu\\
+   $\xi_{jk}(t)$ 							& proces volatility podkladových aktiv držených v~portfoliu\\
+   $\boldsymbol{\xi}$						& matice volatilit podkladových aktiv držených v~portfoliu\\
+   $\gamma_j(t)$ 							& míra růstu  podkladového aktiva $j$\\
+   $w_{j}(i,t)$ 							& optimální objem prostředků investovaných do aktiva $j$ investorem $i$ v čase $t$\\
+   \end{tabular}\\\\\\
+%
 %
 %
 
 
 \chapter{Úvod}
+\pagestyle{plain}
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
@@ -253,17 +287,45 @@ Capital Asset Pricing Model (CAPM), který nezávisle na sobě zkonstruovali Sha
 První řešení spojitého modelu v teorii portfolia dává Merton v \cite{merton1971}\\
 Na rozpor předpokladů v Mertonově článku \cite{merton1971} upozorňují Ohlson a Rosenberg v \cite{ohlson}\\
 Na jejich článek reaguje Merton v \cite{merton1975} a jeho reakce vychází ješte před článkem Ohlsona a Rosenberga.\\
+\\
+Konzistentní dynamický přístup k teorii portfolia dává Fernholz ve své knize Stochastická teorie portfolia \cite{fern} a v článku s Karatzasem\cite{kara}\\
+\\
+Stochastický kalkul, oceňování finančních derivátů, arbitrážní teorie - Pascucci\cite{pascucci}\\
+\\ \\
+Continuous asset model \cite{higham2004introduction}\\
+Riziková averze, vše o portfoliu, separační teorém, objemný \cite{ingersoll1987theory}\\
+Dynamic portfolio optimization \cite{prigent2007portfolio}\\
+General Equilibrium Asset Pricing \cite{wickens2012macroeconomic}\\
+Arbitráž, asset pricing model, numerické metody \cite{wilmott1995mathematics}\\
+Teorie portfolia \cite{de2010portfolio}, \cite{brada}, \cite{sharpe}, úvod \cite{bohdalova}
+Diferenciální rovnice \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
+Stochastické procesy \cite{allen2010introduction} \\
+Srochasticke procesy a rovnováha na trhu\cite{karatzas1998methods} \\
+Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
 
-Konzistentní dynamický přístup k teorii portfolia dává Fernholz ve své knize Stochastická teorie portfolia \cite{fern} a v článku s Karatzasem \cite{kara}\\
+
+Finanční trhy, modely volatility, optimální portfolio, opce \cite{bouchaud2003theory} \\
+Black-Scholes, Arbitraz, opce, numericke metody \cite{duffie2010dynamic} \\
+arbitraz, Ito, spojite modely, stochasticka volatilita \cite{duffie2003intertemporal} \\
+mnohorozmerny model ceny aktiva. \cite{etheridge2002course} \\
+vse o portfoliu \cite{fabozziportfolio} \\
+Na optimalizaci portfolia pomocí bayesovských metod se specializuje v článku \cite{fabozzi2007robust}\\
+modely volatility \cite{gali2009monetary} \\
+ocekavana vynosnost, arbitrazni teorie, konstrukce portfolia \cite{gridold1999active} \\
+Wienerův proces, volatilita, základní numerické metody, VaR \cite{hull} \\
+Základy finanční matematiky a teorie portfolia \cite{melichercik} \\
+Dynamická teorie portfolia, \cite{oberuc2003dynamic}\\
+Úvod do SDE \cite{karatzas2012brownian}\\
+
 \end{comment}
 
 \chapter{Základní matematické pojmy}
 %\chapter{Teoretická východiska}
-
+\begin{comment}
 \section{Wienerův proces}
 
 \begin{definice}
-Reálný stochastický proces $\{W(t):t\ge0\}$ na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
+Reálný stochastický proces $\{W(t):t\ge0\}$ na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
 \begin{enumerate}
 \item[1.]$W(0)=0$, 
 \item[2.](spojitost trajektorií Wienerova procesu) s pravděpodobností jedna je funkce $t\to W(t)$ spojitá v $t$,
@@ -301,7 +363,7 @@ se nazývá \textit{geometrický Wienerův proces}.
 
 \section{It\^oovo lemma}
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
-It\^oovo lemma říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
+It\^oovo lemma říká, že It\^oovy procesy tvoří uzav\-ře\-nou třídu vzhledem ke skládání s hladkými funkcemi.
 
 \begin{veta}[It\^oovo lemma]
 Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
@@ -336,7 +398,7 @@ se nazývá \textit{It\^oův integrál} funkce $S$ na intervalu $[0,T]$.
 
 Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché funkce na integrál pro obecný stochastický proces.
 \begin{definice}
-Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
 Řekneme, že stochastický proces $\{f(t,\omega):t\ge0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
 \\
 \end{definice}
@@ -365,7 +427,7 @@ Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} př
 $$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d}W.$$
 \\
 \end{definice}
-
+\end{comment}
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
 \chapter{Teorie portfolia}
@@ -374,21 +436,26 @@ $$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d
 
 \section{Základní charakteristiky portfolia}
 V teorii portfolia se investoři snaží minimalizovat investiční riziko a~zároveň maximalizovat investiční výnos. 
-Avšak se zvyšováním očekáváného výnosu je spojen i~růst rizika, proto základním problémem při optimalizaci portfolia je hledání kompromisu mezi maximalizací výnosu a~minimalizací rizika spojeného s~investováním.  
+Avšak se zvyšováním očekávaného výnosu je spojen i~růst rizika, proto základním problémem při optimalizaci portfolia je hledání kompromisu mezi maximalizací výnosu a~minimalizací rizika spojeného s~investováním.  
 V následující části popíšeme a~definujeme tyto základní charakteristiky portfolia.
 
 \subsection{Výnosnost}
-\textit{Míra výnosnosti} (nebo \textit{relativní výnosnost}) aktiva je charakteristika, která udává zisk nebo ztrátu z~investice za pevně stanovené období vyjádřená v~poměru k~množství investovaných prostředků. 
+\textit{Míra výnosnosti} (nebo \textit{relativní výnosnost}) aktiva je charakteristika, která udává zisk nebo ztrátu z~investice za pevně stanovené období vyjádřená v~poměru k~množství investovaných prostředků.
+
+\begin{definice}
+Investujeme-li $Y$ korun do aktiva $j$ v čase $t$, pak korunová hodnota investice v čase $t+\Delta t$ bude $[1+r_j(t,t+\Delta t)]Y$, kde  $r_j(t,t+\Delta t)$ definujeme jako \textit{míru výnosnosti}.  
+\end{definice}
+ 
 Relativní výnosnost bývá často označována pouze jako \textit{výnosnost}.
-Vzhledem k~tomu, že výnosnost aktiva je pro investora nejistá (s výjimkou bezrizikového aktiva), budeme ji v~teorii portfolia chápat jako náhodnou veličinu a~budeme ji značit $r_j$.
+Vzhledem k~tomu, že výnosnost aktiva je pro investora nejistá (s výjimkou bezrizikového aktiva), budeme ji v~teorii portfolia chápat jako náhodnou veličinu. % a~budeme ji značit $r_j$.
 Rozdělení pravděpodobnosti této náhodné veličiny nelze určit, nicméně v~teorii portfolia se obejdeme bez znalosti rozdělení a~využijeme pouze dále uvedené základní charakteristiky náhodné veličiny.
 
 První z~těchto charakteristik bude střední hodnota výnosnosti aktiva, kterou označíme $\mathsf{E}(r_j)=\mu_j$.
 V~teorii portfolia se ve spojitosti s~touto charakteristikou setkáváme s~pojmem \textit{očekávaná výnosnost}.
-Rozptyl výnosnoti aktiva označíme $\mathsf{D}(r_j)=\sigma_j^2$.
+Rozptyl výnosnosti aktiva označíme $\mathsf{D}(r_j)=\sigma_j^2$.
 
 Následující značení využijeme při definicích charakteristik porfolia.
-Nechť $\boldsymbol{r}=(r_1,\dots,r_n)^\mathrm{T}$ značí náhodný vektor, jehož složky jsou výnosnosti aktiv drzěných v~portfoliu $p$.
+Nechť $\boldsymbol{r}=(r_1,\dots,r_n)^\mathrm{T}$ značí náhodný vektor, jehož složky jsou výnosnosti aktiv držených v~portfoliu $p$.
 Relativní podíly aktiv, ze kterých se skládá portfolio, se nazývají \textit{váhy} portfolia.
 Vektor vah portfolia budeme značit $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ a~přirozeně platí, že $\sum_{j=1}^nX_j=1$. 
 Mezi základní charakteristiky portfolia patří jeho \textit{výnosnost}, která je dána jako $r_p=\boldsymbol{X}^\mathrm{T}\boldsymbol{r}=\sum_{j=1}^nX_jr_j$ a~je rovněž náhodnou veličinou.   
@@ -409,20 +476,22 @@ Riziko portfolia je dalším faktorem pro výběr portfolia v~Markowitzově teor
 %%%%%%%%%%%%%%%%%%%%%%%%{Klasická teorie portfolia}
 
 
-\section{Klasická teorie portfolia}
+\section{Klasická teorie portfolia}\label{KTP}
 
-Základy klasické teorie portfolia položil Harry Markowitz svým článkem v roce 1952 \cite{markowitz}, ve kterém upozorňil na nutnost zohledňovat při výběru portfolia nejenom očekávanou výnosnost, ale i riziko změny výnosnosti.
-Jeho největším přínosem bylo kvantifikování očekávaného výnosu a rizika portfolia, dále matematicky dokázal výhody diverzifikace, které byly do té doby chápány pouze intuitivně.
+Základy klasické teorie portfolia položil Harry Markowitz svým článkem v roce 1952 \cite{markowitz}, ve kterém upozornil na nutnost zohledňovat při výběru portfolia nejenom očekávanou výnosnost, ale i riziko změny výnosnosti.
+Jeho největším přínosem bylo kvantifikování očekávaného výnosu a rizika portfolia. 
+Dalším přínosem byl matematický důkaz výhod diverzifikace, které byly do té doby chápány pouze intuitivně.
 Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos-riziko, zavedl pojem \textit{efektivní množina portfolií}, ze které investor vybírá optimální portfolio pomocí indiferenčních křivek popisujících investorův vztah k riziku.
 
 V roce 1958 rozšířil James Tobin \cite{tobin} Markowitzův model o možnost investování do bezrizikového aktiva.
 \textit{Bezrizikové aktivum} má jistý výnos a tedy nulové riziko.
 To má velký vliv především na efektivní množinu portfolií, která je tvořena tečnou k původní Markowitzově efektivní množině procházející bezrizikovým aktivem.
 V bodě dotyku pak leží tzv. tangenciální portfolio.
-Postup investora při hledání optimálního portfolia shrnuje Tobinův separační teorém, který se později vžil v souvislosti s CAPM, který zmíníme později.
+Postup investora při hledání optimálního portfolia shrnuje Tobinův separační teorém, který se později vžil v souvislosti s CAPM, který bude popsán v další části.% \ref{kapitola_CAPM}.
 Investor prvně určí tangenciální portfolio a následně ho zkombinuje s bezrizikový aktivem podle svých rizikových preferencí.
 
-\textit{Capital Asset Pricing Model} (CAPM) vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe}, Lintner \cite{lintner} a Mossin \cite{mossin} v letech 1964-1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
+%\subsection{Kapitálový model aktiv - CAPM}\label{kapitola_CAPM}
+\textit{Capital Asset Pricing Model} (CAPM) vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe1964}, Lintner \cite{lintner1965} a Mossin \cite{mossin1966} v letech 1964-1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
 Zároveň vychází z Tobinova modelu, protože zahrnuje bezrizikové aktivum.
 CAPM stojí na několika výchozích předpokladech, které se dají shrnout do následujících třech:
 \begin{itemize}
@@ -439,7 +508,165 @@ Optimální kombinace rizikových cenných papírů může být stanovena bez ja
 \end{veta}
 
 Předpokládáme-li rovnováhu trhu, bývá tangenciální portfolio nazýváno jako \textit{tržní portfolio}.
-Váha každého cenného papíru v tržním portfoliu je rovna jeho tržní ceně.
+Důležitým důsledkem pak je, že váha každého cenného papíru v tržním portfoliu je rovna jeho tržní ceně. \label{vahy_trznihodnota}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%{Dynamická teorie portfolia}
+
+\section{Dynamická teorie portfolia}
+Hlavní výhodou dynamického modelu pro výběr aktiv v portfoliu je při\-způsobování se měnícím se podmínkám trhu a proto je více realistický než model statický.
+Naproti tomu je dynamický model komplikovanější, hůře interpretovatelný a při jeho využití se nevyhneme složitější matematické teorii, kterou je stochastický kalkul.
+
+\subsection{Matematický úvod}
+Na tomto místě připomeneme některé základní pojmy ze stochastické analýzy a značení obvykle užívané v dynamické teorii portfolia. 
+
+\begin{definice}
+Stochastický proces $\{W(t):t\ge0\}$ definovaný na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{standardní (jednorozměrný) Wienerův proces} právě tehdy, když jsou splněny následující podmínky
+\begin{enumerate}
+\item[1.]$W(0)=0$, 
+\item[2.]funkce $t\to W(t)$ (trajektorie Wienerova procesu) je spojitá s pravdě\-podob\-ností jedna,
+\item[3.]proces $\{W(t):t\ge0\}$ má nezávislé přírůstky, 
+\item[4.]pro všechna $t\ge s\ge0$ jsou přírůstky $W(t)-W(s)$ normálně rozdělené se střední hodnotou nula a rozptylem $t-s$.
+\end{enumerate}
+Standardní \textit{$n$-rozměrný Wienerův proces} je vektorový stochastický proces
+$$\boldsymbol{W}(t) = (W_1(t), \dots, W_n(t))^\mathrm{T}$$
+jehož složky $W_k(t)$ jsou nezávislé, standardní jednorozměrné Wienerovy procesy.
+\end{definice}
+Wienerův proces je stavebním kamenem matematického modelování ve finanční matematice. 
+Tento stochastický proces se používá pro popis chování ceny aktiva v čase. 
+
+Budeme předpokládat, že proces popisující vývoj ceny aktiva v čase se řídí následujícím modelem
+$$\mathrm{d}P(t)=P(t)\mu(t)\mathrm{d}t+P(t)\sigma(t)\mathrm{d}W(t),$$
+kde $P(t)$ je cena aktiva v čase $t$, $\mu(t)$ a $\sigma(t)$ jsou stochastické procesy a $W(t)$  je jednorozměrný Wienerův proces.
+Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum.
+
+Model pro vývoj ceny aktiv na trhu, který předpokládá existenci $n$ rizikových aktiv je dán jako
+$$\mathrm{d}P_j(t)=P_j(t)\mu_j(t)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t),$$
+kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\mu_j(t)$ a $\xi_{jk}(t)$ jsou stochastické procesy a $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces. 
+Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
+
+Chování ceny bezrizikového aktiva je popsáno modelem
+$$\mathrm{d}B(t)=B(t)r_f(t)\mathrm{d}t,$$
+kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková úroková míra.
+
+
+\subsection{Mertonův model}
+První článek zabývající se dynamickou teorií portfolia napsal Robert Carhart Merton v roce 1971 \cite{merton1971}.
+Merton předpokládal platnost rovnovážného modelu CAPM a dál tuto teorii rozšířil o spojitý model pro cenu aktiva využívající stochastické procesy.
+Přitom ukázal, že zůstává zachována platnost všech závěrů z teorie CAPM, zejména pak separačního teorému.
+Což znamená, že bez újmy na obecnosti můžeme uvažovat jen dvě aktiva -- bezrizikové aktivum s mírou výnosnosti $r_f$ a tržní portfolio (které můžeme považovat za jedno rizikové aktivum). 
+
+Merton předpokládá, že hodnota tržního portfolia $P(t)$ se řídí stochastickým procesem
+$$\mathrm{d}P(t)=P(t)\mu_p\mathrm{d}t+P(t)\sigma_p\mathrm{d}W(t)$$
+kde $W(t)$ je jednorozměrný Wienerův proces a $\mu_p$, $\sigma_p$ jsou konstanty. 
+
+V každém čase $t$ vybírá investor své optimální portfolio volbou vah portfolia.
+Majetek, který investor investuje do optimálního portfolia v čase $t$, označíme $w(t)$.
+Váhu tržního portfolia v optimálním portfoliu označíme $X_p(t)$ a váhu bezrizikového aktiva označíme $X_f(t)=(1-X_p(t))$. 
+Proces popisující vývoj investorova majetku je dán jako
+$$\frac{\mathrm{d}w(t)}{w(t)}=X_p(t)\frac{\mathrm{d}P(t)}{P(t)}+\big(1-X_p(t)\big)r_f\mathrm{d}t.$$
+Merton odvodil explicitní řešení této stochastické diferenciální rovnice za předpokladu, že charakteristiky výnosnosti aktiva jsou konstantní.
+
+Avšak Mertonův spojitý rovnovážný model vykazuje inkonzistenci, což dokázali Ohlson a Rosenberg \cite{ohlson} hned v roce 1976.
+Ještě před zveřejněním jejich článku byla uveřejněna ve stejném periodiku Mertonova reakce \cite{merton1975}, ve které hájí své poznatky a poukazuje na jejich nepochopení ze strany oponentů.  
+Ohlson a Rosenberg \cite {ohlson} poukazují na rozpor mezi předpokladem, že střední hodnota a rozptyl výnosnosti aktiva jsou konstantní, a předpokladem tržní rovnováhy.
+Podrobněji bude tento paradox rozebrán v části \ref{paradox}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%{Ohlson-Rosenbergův paradox}
+\section{Ohlson-Rosenbergův paradox}\label{paradox}
+V této kapitole představíme základní poznatky z článku Ohlsona a Rosenberga \cite{ohlson}, který byl publikován v roce 1976 v \textit{Journal of Financial and Quantitative Analysis}.
+Ohlson a Rosenberg jako první poukázali na nekonzistenci Mertonova spojitého modelu \cite{merton1971} vznikající kvůli rozporu předpokladů.
+
+\subsubsection{Značení a předpoklady}
+Na začátek zavedeme značení a  uvedeme základní definice a předpoklady. 
+Uvažujme množinu $n$ různých aktiv na daném trhu a označme $T$ množinu všech uvažovaných časů (diskrétní nebo spojitou).
+Nechť $I_t$ značí množinu všech investorů na trhu v čase $t\in T$.
+Cenu aktiva $j$ v čase $t$ označíme $P_j(t)$ a $\boldsymbol{P}(t)=(P_1(t),\dots,P_n(t))^\mathrm{T}$ je vektor cen aktiv v čase $t$.
+Analogicky označíme $\boldsymbol{N}(t)=(N_1(t),\dots,N_n(t))^\mathrm{T}$ vektor podílů aktiv v čase $t$, potom tržní hodnota aktiva $j$ je rovna $V_j(t)=P_j(t)N_j(t)$.
+
+Míra výnosnosti aktiva $j$, které drží investor v portfoliu v časovém intervalu $(t,t+\Delta t)$ označíme $r_j(t,t+\Delta t)$.
+Jak bylo zmíněno výše výnosnost chápeme jako náhodnou veličinu a o její distribuční funkci v čase $t$ vyslovíme tři následující předpoklady:
+\begin{enumerate}
+\item \label{Stacionarita} \textit{Stacionarita:} distribuční funkce výnosnosti  je stejná ve všech časech $t$,                                                                            
+\item \label{Martingalvl} \textit{Martingalová vlastnost:} pro každé $t$ je distribuční funkce výnosnosti nezávislá na všech cenách aktiva pozorovaných do času~$t$,
+\item \label{Homogenita} \textit{Homogenita:} distribuční funkce výnosnosti je stejná pro všechny investory z množiny $I_t$. 
+\end{enumerate} 
+Tyto předpoklady jsou konzistentní s předpoklady CAPM.
+
+Označme $w_{j}(i,t)$ optimální objem prostředků investovaných do aktiva $j$ investorem $i$ v čase $t$.
+Nechť $\boldsymbol{w}(i,t)=(w_{1}(i,t),\dots,w_{n}(i,t))$ představuje optimální alokaci prostředků investora $i$ držených v portfoliu všech aktiv.
+Funkce $w_{j}(i,t)$ tedy zohledňuje (rizikové) preference investora $i$ v čase $t$.
+  
+Nyní můžeme definovat dynamickou tržní rovnováhu jako stav, kdy  na\-bíd\-ka a poptávka jsou v dokonalé rovnováze v každém čase $t$.
+Tento stav se také nazývá \textit{vyčištění trhu}.
+         
+\begin{definice}[Dynamická tržní rovnováha]
+Řekneme, že kapitálový trh je v \textit{dynamické rovnováze} právě tehdy, když pro každý čas $t\in T$, každé podkladové aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
+$$\sum_{i\in I} w_{j}(i,t)=N_j(t)P_j(t)=V_j(t).$$
+Tyto ceny budeme nazývat \textit{rovnovážné ceny}.
+\end{definice}
+
+Důsledek Tobinova separačního teorému shrňme jako vlastnost pro pro\-střed\-ky investované do portfolia, kterou budeme dále využívat v~důkazu inkonzistence předpokladů spojitého modelu pro ceny aktiv.
+\begin{definice}\label{vlastnost_separace}[Vlastnost separace]
+Vektorová funkce pro optimální alokaci investorových prostředků do všech aktiv na trhu $\boldsymbol{w}(i,t)$ respektuje \textit{vlastnost separace} právě tehdy, když existuje vektor $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ takový, že $\sum_{j=1}^nX_j=1$, a existují skalární parametry $\lambda(i,t)$ takové, že
+$$\boldsymbol{w}(i,t)=\lambda(i,t)\boldsymbol{X},$$
+pro všechny $i\in I$ a všechny $t\in T$.
+\end{definice}
+Tedy vektor $\boldsymbol{X}$ představuje váhy tržního portfolia (které se v čase nemění) a parametr $\lambda(i,t)$ zohledňuje rizikové preference investora.
+
+\subsubsection{Rozpor mezi předpoklady}
+Budeme-li předpokládat rovnováhu na trhu a stacionaritu distribuční funkce výnosností, dospějeme ke sporu, jak ukazuje následující věta a důsledek.
+
+\begin{veta} \label{T1}
+Nechť $\boldsymbol{P}(t)$ pro všechny $t\in T$  jsou rovnovážné ceny.
+Dále před\-pokládejme, že na trhu platí vlastnost separace (definice \ref{vlastnost_separace}).
+Pak
+\begin{equation}\label{T1_eq}
+\mathsf{Pr}\left(\frac{N_j(s)P_j(s)}{N_j(t)P_j(t)}=\frac{N_k(s)P_k(s)}{N_k(t)P_k(t)}\right)=1
+\end{equation}
+pro všechny časy $s,t\in T$  a pro každé aktivum $j$ a $k$.
+\end{veta}
+
+\begin{proof}
+Podle definice \ref{vlastnost_separace} platí
+\begin{equation}\label{CSW}
+w_j(i,t)=\lambda(i,t)X_j
+\end{equation}
+pro všechny časy $t\in T$, všechny investoryl $i\in I$ a pro každé aktivum $j$.
+
+Předpoklad dynamické rovnováhy na trhu dává
+\begin{equation}\label{E}
+\sum_{i\in I} w_{j}(i,t)=N_j(t)P_j(t)
+\end{equation}
+pro všechny časy $t\in T$ a pro každé aktivum $j$.
+
+Dosazením vztahu (\ref{CSW}) do rovnice (\ref{E}) a vzhledem k tomu, že váhy $X_j$ jsou stejné pro všechny investory $i\in I$, dostáváme
+$$N_j(t)P_j(t)=\sum_{i\in I}\lambda(i,t)X_j=X_j\sum_{i\in I}\lambda(i,t).$$
+Proto platí
+$$\frac{N_j(t)P_j(t)}{N_k(t)P_k(t)}=\frac{X_j\sum_{i\in I}\lambda(i,t)}{X_k\sum_{i\in I}\lambda(i,t)}=\frac{X_j}{X_k},$$
+což je nezávislé na čase $t$.         
+Z tohoto tvrzení zřejmě plyne vztah (\ref{T1_eq}).
+\end{proof}
+
+\begin{dusledek}\label{OR_dusledek}
+Nechť 
+$$r_j(t,t+\Delta t)=\frac{P_j(t+\Delta t)-P_j(t)}{P_j(t)}=\frac{P_j(t+\Delta t)}{P_j(t)}-1.$$
+Budeme-li předpokládat $N_j(t)=N_j$ pro každé aktivum $i$ a všechna $t\in T$. 
+Z~věty \ref{T1} plyne
+\begin{align*}
+\mathsf{Pr}\left(\frac{P_j(s)}{P_j(t)}=\frac{P_k(s)}{P_k(t)}\right)=1&\Longrightarrow\mathsf{Pr}\left(\frac{P_j(t+\Delta t)}{P_j(t)}=\frac{P_k(t+\Delta t)}{P_k(t)}\right)=1 \\
+&\Longrightarrow\mathsf{Pr}\left(r_j(t,t+\Delta t)=r_k(t,t+\Delta t)\right)=1,
+\end{align*}
+pro všechna $t\in T$ a pro všechna aktiva $j$ a $k$.
+Proto jsou aktiva $j$ a $k$ vzájemně dokonale zastupitelné.
+\end{dusledek}
+Důsledek \ref{OR_dusledek} vede k degeneraci trhu, což poukazuje na významný rozpor mezi předpoklady.
+
+Ve své době se Ohlson a Rosenberg nesetkali s pochopením.
+Důkazem toho je okamžité odmítnutí jejich závěrů ze strany Mertona publikované v článků \cite{merton1975}, kde tvrdí, že rozporu bylo docíleno jen díky nereálným předpokladům. 
+Ve skutečnosti reaguje jen na důsledky nikoli na důkaz stěžejní věty článku \cite{ohlson}.  
+Za povšimnutí stojí, že Mertonova reakce vychází ještě před samotným článkem Ohlsona a Rosenberga.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%{Stochastická teorie portfolia}
 
@@ -472,34 +699,65 @@ Jedním ze základních pojmů v SPT jsou \textit{portfolio generující funkce}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Paradox v teorii portfolia}
-Nekonzistencí obvyklých předpokládů teorie portfolia se v roce 2009 zabýval také John Stalker profesor na univerzitě v Princetonu. 
-V preprintu \cite{john} uvádí důkaz, kde využívá separačního theorému pro dva fondy. Základní myšlenky tohoto důkazu shrnujeme v následujícím textu.
+\section{Paradox v teorii portfolia a Věta o~separaci do~dvou fondů} \label{john}
+Nekonzistencí obvyklých předpokladů teorie portfolia se v roce 2009 zabýval také John Stalker profesor na univerzitě v Princetonu. 
+V preprintu \cite{john} uvádí algebraický důkaz inkonzistence předpokladů, kde využívá Tobinovu \textit{Větu o~separaci do~dvou fondů}. 
+V následujícím textu budou tyto myšlenky rozpracovány.
 
-Uvažujme následující předpoklady obvyklé pro teorii portfolia.
+Uvažujme následující předpoklady obvyklé pro teorii portfolia:
 \begin{enumerate}
-\item Ceny podkladových aktiv se řídí It\^oovými procesy s konstantními očekávanými mírami výnosnosti a konstantními kovariancemi výnosností. 
+\item \label{predpoklad_konstantnosti_vynosu_a_rizika} Ceny podkladových aktiv se řídí It\^oovými procesy, které mají konstantní očekávané míry výnosnosti a konstantní kovariance výnosností. 
 \item Neexistují žádná omezení na množství aktiv držených investorem. Aktiva jsou navíc nekonečně dělitelná.
 \item Neexistují žádné transakční náklady a cena prodeje a nákupu podkladového aktiva se neliší.
-\item 
-\item
+\item Investoři se chovají podle Markowitzovy teorie, což znamená, že minimalizují riziko svého portfolia pro dané očekávané míry výnosnosti.
+\item \label{predpoklad_hodnost} Na trhu existuje pouze jedno bezrizikové aktivum. Kovarianční matice rizikových aktiv má maximální hodnost.
+\item \label{predpoklad_konstantnosti_N} Na trhu existuje rovnováha a každý investor nabízející aktivum najde kupce a naopak.
 \end{enumerate}
 
+Dále dokážeme, že tyto předpoklady jsou nekonzistentní pro trh s více než dvěma rizikovými aktivy.
+K tomu využijeme Větu o~separaci do~dvou fondů, kterou poprvé dokázal  James Tobin ve svém článku \cite{tobin}. 
+Tobin předpokládal platnost předpokladů CAPM a zároveň zahrnul existenci bezrizikového aktiva.
+Naproti tomu v knize Williama Sharpeho \cite{sharpe} a v článku Roberta Mertona \cite{merton} najdeme podobné závěry bez předpokladu existence bezrizikového aktiva.
+Merton navíc tyto myšlenky zobecňuje pro více než dva fondy \cite{merton1973}.
+Podrobnějším rozbor teorie o dvou fondech je uveden v knize \cite{cass1970structure}.
+\begin{veta}[Věta o~separaci do~dvou fondů]
+Efektivní portfolio každého investora lze získat jako kombinaci dvou fondů.
+\end{veta}
+
+Na trhu s $m$ podkladovými aktivy uvažujme dvě portfolia (neboli dva fondy) a jejich váhy označme $\boldsymbol{a}=(a_1,\dots,a_m)^\mathrm{T}$ a $\boldsymbol{b}=(b_1,\dots,b_m)^\mathrm{T}$. Z těchto dvou fondů pak můžeme sestavit optimální portfolia všech investorů na trhu.
+Množinu všech investorů označme $I$ a pro každého investora uvažujme jeho rizikové preference, které určují jeho optimální portfolio, a popišme je pomocí parametrů $\alpha_i(t)$ a $\beta_i(t)$.
+Optimální portfolio $i$-tého investora bude zahrnovat $\alpha_ia_j+\beta_ib_j$ množství $j$-té akcie.
+
+Váhy $\boldsymbol{a}$ a  $\boldsymbol{b}$ dvou uvažovaných fondů závisí pouze na očekávaných vý\-nos\-nostech a riziku podkladových aktiv na trhu, které jsou v čase konstantní dle předpokladu \ref{predpoklad_konstantnosti_vynosu_a_rizika}.
+Parametry $\alpha_i(t)$ a $\beta_i(t)$ závisí na individuálních preferencích jednotlivých investorů (např. rizikové preference nebo objem investic) a můžou se lišit. Tyto preference se mohou v čase měnit a tak parametry mohou záviset i na čase.
+
+Označme $A(t)$ součet všech parametrů $\alpha_i(t)$ pro všechny investory a analogicky $B(t)$ součet parametrů $\beta_i(t)$ .
+Tedy $A(t)=\sum_{i\in I}\alpha_i(t)$ a $B(t)=\sum_{i\in I}\beta_i(t)$.
+Pak celková hodnota držená všemi investory v $j$-tém aktivu je $Aa_j+Bb_j$ a musí být rovna tržní hodnotě aktiva.
+$$A(t)a_j+B(t)b_j=P_j(t)N_j,$$
+kde $P_j(t)$ je cena podkladového aktiva na trhu v čase $t$ a $N_j$ je jeho dostupné množství.
+Přičemž $A(t),B(t)$ a $ P_j(t)$ jsou funkce času a $N_j$ je konstantní v čase podle předpokladu \ref{predpoklad_konstantnosti_N}.
+Pro změnu ceny aktiva $j$ mezi časem $t$ a časem $t+\Delta t$ platí
 \begin{displaymath}
-\Delta p_i = \frac{a_i}{n_i}\Delta A + \frac{b_i}{n_i}\Delta B
+\Delta P_j = \frac{a_j}{N_j}\Delta A + \frac{b_j}{N_j}\Delta B,
 \end{displaymath}
- and the return on
-the $i$'th asset  is
+kde $\Delta A = A(t+\Delta t) - A(t)$ and $\Delta B = B(t+\Delta t)- B(t)$.
+
+Uvažujme míru výnosnosti podkladového aktiva $j$ za čas $\Delta t$
 \begin{displaymath}
-\frac{a_i}{n_ip_i(t)}\Delta A + \frac{b_i}{n_ip_i(t)}\Delta B
+r_j(t,t+\Delta t)=\frac{\Delta P_j}{P_j(t)}=\frac{a_j}{N_jP_j(t)}\Delta A + \frac{b_j}{N_jP_j(t)}\Delta B
 \end{displaymath}
-where $\Delta A = A(t+\Delta t) - A(t)$ and $\Delta B = B(t+\Delta t)
-- B(t)$.  It follows that the covariance rate matrix for the returns
-can be factored as
+a kovarianční matici výnosností podkladových aktiv držených v portfoliu
+$$\boldsymbol{\Sigma}(\boldsymbol{r})=
+\begin{pmatrix}
+\mathsf{D}(r_1)  & \ldots & \mathsf{C}(r_1,r_m)  \cr \vdots & \ddots & \vdots\cr \mathsf{C}(r_m,r_1)   & \ldots & \mathsf{D}(r_m) 
+\end{pmatrix}.$$
+Vzhledem k vlastnostem kovariance (viz \cite{andel}) můžeme kovarianční matici výnosností rozložit na součin 
 $$
 %\begin{displaymath}
+\boldsymbol{\Sigma}(\boldsymbol{r})= 
 \begin{pmatrix}
-\frac{a_1}{n_1p_1} & \frac{b_1}{n_1p_1}\cr \vdots & \vdots\cr \frac{a_m}{n_mp_m} & \frac{b_m}{n_mp_m}
+\frac{a_1}{N_1P_1} & \frac{b_1}{N_1P_1}\cr \vdots & \vdots\cr \frac{a_m}{N_mP_m} & \frac{b_m}{N_mP_m}
 \end{pmatrix}
 %\end{displaymath}
 \times
@@ -514,17 +772,103 @@ $$
 \times
 %\begin{displaymath*}
 \begin{pmatrix}
-\frac{a_1}{n_1p_1} & \ldots & \frac{a_m}{n_mp_m}\cr \cr \frac{b_1}{n_1p_1} & \ldots &
-\frac{b_m}{n_mp_m}.
-\end{pmatrix}
+\frac{a_1}{N_1P_1} & \ldots & \frac{a_m}{N_mP_m}\cr \cr \frac{b_1}{N_1P_1} & \ldots &
+\frac{b_m}{N_mP_m}
+\end{pmatrix}.
 %\end{displaymath*}
 $$
+
+Dále platí, že hodnost součinu matic je menší nebo rovna maximální z hodností matic jeho činitelů.
+Vzhledem k tomu nemůže mít kovarianční matice výnosností podkladových aktiv držených v portfoliu hodnost větší než dvě.
+Avšak to je v rozporu z předpokladem \ref{predpoklad_hodnost}, pokud uvažujeme portfolio s více než dvěma podkladovými aktivy.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Spojitý rovnovážný model s očekávanou výnos\-ností závislou na ceně aktiva }
+V kapitolách \ref{paradox} a \ref{john} jsme ukázali, že v teorii portfolia běžně používaný dynamický model není konzistentní.
+Proto se chceme pokusit navrhnout takový model, který by nebyl touto inkonzistencí předpokladů zatížen.
+Uvažujme tedy spojitý model, který bude mít méně omezující předpoklady než Mertonův modelu.
+Model, který předkládáme v této kapitole, předpokládá rovnováhu na trhu, nicméně očekávaná míra výnosnosti není konstantní v čase.
+
+Na základě poznatků z teorie portfolia budeme hledat vztah mezi oče\-ká\-vanou výnosností a cenou aktiva, který bychom mohli použít v modelu.
+Nechť $\boldsymbol{P}$ je vektor cen $n$ podkladových aktiv.
+Předpokládejme, že tyto ceny se řídí následující stochastickou diferenciální rovnicí (SDR):
+\begin{equation} \label{SDE}
+\mathrm{d}P_j(t)=P_j(t)\mu_j(t)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t),
+\end{equation}
+kde $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces, $\mu_j(t)$ je očekávaná míra výnosnosti podkladového aktiva $j$ a $\xi_{jk}(t)$ jsou volatility podkladových aktiv. 
+Pro zjednodušení předpokládejme, že výnosnost bezrizikového aktiva $r_f=0$.
+Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním portfoliu, který je dán jako
+\begin{equation} \label{vahy}
+\boldsymbol{X}=\frac{\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}}{\boldsymbol{1}^\mathrm{T}\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}},
+\end{equation}
+kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv (viz \cite{fabozzi}).
+
+Jak jsme ukázali v kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám podkladových aktiv v tržním portfoliu, tedy
+\begin{equation} \label{market_value}
+\boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\boldsymbol{V}},
+\end{equation}
+kde $\boldsymbol{V}$ je vektor tržních hodnot podkladových aktiv na trhu.
+
+Ze vztahů (\ref{vahy}) a (\ref{market_value}) dostáváme $\boldsymbol{V}=\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ a proto očekávané výnos\-nosti vyjádříme jako
+\begin{equation} \label{mu}
+\boldsymbol{\mu}=\boldsymbol{\Sigma}\boldsymbol{V}.
+\end{equation}
+
+Předpokládejme nyní, že uvažovaná podkladová aktiva jsou nekorelovaná, tedy matice $\boldsymbol{\Sigma}$ je diagonální.
+Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odvětví.
+Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j$ v průběhu času a také hodnoty aktiv $N_j$ nechť jsou v čase konstantní.
+Připomeňme, že tržní hodnota  $V_j(t)=P_j(t)N_j(t)$ a $\sigma_{j}=\xi_{jj}$.
+
+Dosadíme-li vztah (\ref{mu}) do stochastické diferenciální rovnice (\ref{SDE}), pak s ohledem na předpoklady učiněné výše dostáváme
+$$ 
+\mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t+P_j(t)\sigma_{j}\mathrm{d}W_j(t).
+$$
+Dále budeme hledat vztah pro očekávané hodnoty cen podkladových aktiv.
+Ze SDR (\ref{SDE}) plyne
+\begin{equation}
+\mathsf{E}\big(\mathrm{d}P_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t+P_j(t)\sigma_{j}\mathrm{d}W_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t\big),
+\end{equation}
+protože z vlastností Wienerova procesu máme $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
+Čímž se stochastická diferenciální rovnice zjednodušuje na obyčejnou diferenciální rovnici (ODR), která je řešitelná pomocí separace proměnných.
+\begin{align} 
+{\mathrm{d}\mathsf{E}\big(P_j(t)\big)}&={\sigma_{j}}^2N_j\mathsf{E}\big(P_j^2(t)\big)\mathrm{d}t \notag\\
+&={\sigma_{j}}^2N_j\big[\mathsf{D}\big(P_j(t)\big)+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \notag\\
+&={\sigma_{j}}^2N_j\big[{\sigma_{j}}^2+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \label{ODE}
+\end{align}  
+Řešení ODR ($\ref{ODE}$) je
+\begin{equation} 
+\mathsf{E}\big(P_j(t)\big)=\sigma_j\mathrm{tan}\big({\sigma_j}^3N_jt\big).
+\end{equation}
+Docházíme tedy k závěru, že řešení má singularitu v konečném čase.
+Jelikož pro ${\big(\sigma_j}^3N_jt\big)\to\frac\pi2$ platí $\mathsf{E}\big(P_j(t)\big)\to\infty$. 
+To by mohlo být interpretováno jako chování cenových bublin na trhu.
+K těm dochází v případě, že investoři ve velkém měřítku investují do aktiv s nadsazenými cenami, což vede k dalšímu umělému zvyšování cen. 
+Takový stav nevyhnutelně vede k nečekanému krachu ceny (tzv. prasknutí bubliny).
+Problematické je takovou bublinu na trhu poznat, jelikož jsme schopni ji identifikovat až zpětně při extrémním poklesu cen, který je důsledkem mohutného odprodeje aktiv.
+
+V další části představíme model s méně přísnými předpoklady.
+Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
+Za těchto předpokladů dosaďme vztah (\ref{mu}) do SDR \eqref{SDE}, čímž obdržíme
+\begin{equation*} 
+ \mathrm{d}P_j(t)=P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t).
+\end{equation*}
+Budeme-li opět uvažovat očekávanou hodnotu  cen podkladových aktiv do\-stá\-váme vztah
+\begin{equation*} 
+\mathsf{E}\big( \mathrm{d}P_j(t)\big)=\mathsf{E}\left(P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\mathrm{d}t\right),
+\end{equation*}
+z něhož dostaneme následující soustavu obyčejných diferenciálních rovnic
+\begin{align*}
+\mathrm{d}\mathsf{E}\big(P_j(t)\big)&=N_j\left[\sum_{k=1}^{n}{\sigma_{jk}}^2+\mathsf{E}\big(P_j(t)\big)\sum_{k=1}^{n}\sigma_{jk}\mathsf{E}\big(P_k(t)\big)\right]\mathrm{d}t.
+\end{align*}  
+Avšak tato soustava je nelineární a bohužel neexistuje její analytické řešení.
+Neobejdeme se tedy bez použití numerických metod.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\nocite{*}  %umisti do literatury i necitovanou polozku a \nocite{*} umisti do literatury vsechny polozky z bibtex databaze 
+\nocite{}  %umisti do literatury i necitovanou polozku a \nocite{*} umisti do literatury vsechny polozky z bibtex databaze 
 
 \addcontentsline{toc}{chapter}{Literatura}
 %\bibliographystyle{plain}

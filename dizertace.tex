@@ -175,7 +175,7 @@ In the first part of the work, some basic mathematical methods employed in this 
 
 \tableofcontents \addcontentsline{toc}{chapter}{Obsah}
 
-\chapter*{Seznam použitého značení}\addcontentsline{toc}{chapter}{Seznam použitého značení}
+\chapter*{Seznam použitého značení}\addcontentsline{toc}{chapter}{Seznam použitého značení} 
 %\hspace{-0.7cm}
 %\begin{tabular}{r  l}
 %$\mathsf{E}X$ & Expected value of random variable $X$ \\
@@ -199,13 +199,14 @@ In the first part of the work, some basic mathematical methods employed in this 
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
    $X$                                                &   náhodná veličina \\
-   $f(x)$                                             &   hustota pravděpodobnosti náhodné veličiny $X$ \\ %probability density of the random variable $X$ \\
+   $f(x)$; $f_X(x)$                                               &   hustota pravděpodobnosti náhodné veličiny $X$ \\ %probability density of the random variable $X$ \\
+   $F(x)$; $F_X(x)$				 &  distribuční funkce náhodné veličiny $X$ \\
 %   $f(x; \theta)$                                    &   probability density function of random variable $X$ with distribution dependent on scalar parameter $\theta$ \\
 %   $f(x,t)$                                          &    probability density of random process $X(t)$ at fixed time $t$ \\
 %   $f(x,t | x_0, t_0)$                               &    probability density of random process $X(t)$ at fixed time $t$ conditioned by its state $x_0$ at time $t_0$ \\
    $X\sim \mathcal{L}$                                &   náhodná veličina $X$ mající rozdělením pravděpodobnosti $\mathcal{L}$ \\ %random variable $X$ having general probability distribution $\mathcal{L}$\\
-   $\mathsf{E}(X)$                         	      &   střední hodnota náhodné veličiny $X$ \\
-   $\mathsf{D}(X)$                      	      &   rozptyl náhodné veličiny $X$ \\
+   $\mathsf{E}(X)$;  $\mathsf{E}X$                         	      &   střední hodnota náhodné veličiny $X$ \\
+   $\mathsf{D}(X)$;  $\mathsf{D}X$                       	      &   rozptyl náhodné veličiny $X$ \\
    $\mathsf{C}(X_i,X_j)$             		      &   kovariance náhodných veličin $X_i$ a $X_j$\\
    $\mathrm{d}X(t,\omega)$; $\mathrm{d}X(t)$; $\mathrm{d}X_t$    &  stochastický diferenciál \\ %continuous-time random process \\
    $X(t,\omega)$; $X(t)$; $X_t$                       &   stochastický proces \\
@@ -219,10 +220,12 @@ In the first part of the work, some basic mathematical methods employed in this 
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
   $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$                 &     $n$-rozměrný náhodný vektor \\
+  $f(\mathbf{x})$; $f_{\boldsymbol{X}}(\mathbf{x})$                                             &   sdružená hustota pravděpodobnosti náhodného vektoru  $\boldsymbol{X}$\\
+   $F(\mathbf{x})$; $F_{\boldsymbol{X}}(\mathbf{x})$                                             &   sdružená distribuční funkce náhodného vektoru  $\boldsymbol{X}$\\
 %   $\boldsymbol{\theta}=(\theta_1,\ldots,\theta_m)$  &    m-dimensional vector parameter \\
 %   $f(\mathbf{x};\boldsymbol{\theta})$               &    probability density of the random vector $\boldsymbol{X}$ with vector parameter $\boldsymbol{\theta}$ \\
-   $\mathsf{E}\boldsymbol{X}$                             &   vektor středních hodnot náhodného vektoru $\boldsymbol{X}$\\
-   $\mathsf{D}\boldsymbol{X}$                             &   kovarianční matice náhodného vektoru $\boldsymbol{X}$\\
+    $\mathsf{E}(\boldsymbol{X})$; $\mathsf{E}\boldsymbol{X}$                             &   vektor středních hodnot náhodného vektoru $\boldsymbol{X}$\\
+   $\mathsf{D}(\boldsymbol{X})$; $\mathsf{D}\boldsymbol{X}$                             &   kovarianční matice náhodného vektoru $\boldsymbol{X}$\\
     $\boldsymbol{\Sigma}(\boldsymbol{X_i},\boldsymbol{X_j})$     &   kovarianční matice náhodných vektorů $\boldsymbol{X_i}$ a $\boldsymbol{X_j}$\\
 $\boldsymbol{X}(\boldsymbol{t},\boldsymbol{\omega})$; $\boldsymbol{X}(\boldsymbol{t})$; $\boldsymbol{X}_{\boldsymbol{t}}$  				& vektorový stochastický proces\\
 $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces\\
@@ -230,7 +233,7 @@ $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces
 %
 %
 %
-\\\\\\\\\\\\\\\\
+\\\\\\\
 \textbf{Prostory a matice}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
@@ -278,19 +281,19 @@ $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces
 \pagenumbering{arabic}
 
 \begin{comment}
-Klasická kniha o Stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}\\
+Klasická kniha o Stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}\\%
 Numerické řešení stochastických diferenciálních rovnic a jejich soustav \cite{kloeden1997}\\
 Vzorec pro váhy tržního portfolia čerpáme z \cite{fabozzi}\\
-Základy teorie portfolia pokládá Markowitz v \cite{markowitz}\\
-Tobin v \cite{tobin} rozšiřuje Markowitzův přístup o bezrizikové aktivum.
-Capital Asset Pricing Model (CAPM), který nezávisle na sobě zkonstruovali Sharpe (1964) v \cite{sharpe1964}, Lintner (1965) v \cite{lintner1965} a Mossin (1966) v \cite{mossin1966} zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
-První řešení spojitého modelu v teorii portfolia dává Merton v \cite{merton1971}\\
-Na rozpor předpokladů v Mertonově článku \cite{merton1971} upozorňují Ohlson a Rosenberg v \cite{ohlson}\\
-Na jejich článek reaguje Merton v \cite{merton1975} a jeho reakce vychází ješte před článkem Ohlsona a Rosenberga.\\
+Základy teorie portfolia pokládá Markowitz v \cite{markowitz}\\%
+Tobin v \cite{tobin} rozšiřuje Markowitzův přístup o bezrizikové aktivum.%
+Capital Asset Pricing Model (CAPM), který nezávisle na sobě zkonstruovali Sharpe (1964) v \cite{sharpe1964}, Lintner (1965) v \cite{lintner1965} a Mossin (1966) v \cite{mossin1966} zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.%
+První řešení spojitého modelu v teorii portfolia dává Merton v \cite{merton1971}\\%
+Na rozpor předpokladů v Mertonově článku \cite{merton1971} upozorňují Ohlson a Rosenberg v \cite{ohlson}\\%
+Na jejich článek reaguje Merton v \cite{merton1975} a jeho reakce vychází ješte před článkem Ohlsona a Rosenberga.\\%
 \\
 Konzistentní dynamický přístup k teorii portfolia dává Fernholz ve své knize Stochastická teorie portfolia \cite{fern} a v článku s Karatzasem\cite{kara}\\
 \\
-Stochastický kalkul, oceňování finančních derivátů, arbitrážní teorie - Pascucci\cite{pascucci}\\
+Stochastický kalkul, oceňování finančních derivátů, arbitrážní teorie - Pascucci\cite{pascucci}\\%
 \\ \\
 Continuous asset model \cite{higham2004introduction}\\
 Riziková averze, vše o portfoliu, separační teorém, objemný \cite{ingersoll1987theory}\\
@@ -298,8 +301,8 @@ Dynamic portfolio optimization \cite{prigent2007portfolio}\\
 General Equilibrium Asset Pricing \cite{wickens2012macroeconomic}\\
 Arbitráž, asset pricing model, numerické metody \cite{wilmott1995mathematics}\\
 Teorie portfolia \cite{de2010portfolio}, \cite{brada}, \cite{sharpe}, úvod \cite{bohdalova}
-Diferenciální rovnice \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
-Stochastické procesy \cite{allen2010introduction} \\
+Diferenciální rovnice, numerické metody \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
+Stochastické procesy \cite{allen2010introduction} \\%
 Srochasticke procesy a rovnováha na trhu\cite{karatzas1998methods} \\
 Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
 
@@ -307,7 +310,7 @@ Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
 Finanční trhy, modely volatility, optimální portfolio, opce \cite{bouchaud2003theory} \\
 Black-Scholes, Arbitraz, opce, numericke metody \cite{duffie2010dynamic} \\
 arbitraz, Ito, spojite modely, stochasticka volatilita \cite{duffie2003intertemporal} \\
-mnohorozmerny model ceny aktiva. \cite{etheridge2002course} \\
+mnohorozmerny model ceny aktiva. \cite{etheridge2002course} \\%
 vse o portfoliu \cite{fabozziportfolio} \\
 Na optimalizaci portfolia pomocí bayesovských metod se specializuje v článku \cite{fabozzi2007robust}\\
 modely volatility \cite{gali2009monetary} \\
@@ -315,14 +318,66 @@ ocekavana vynosnost, arbitrazni teorie, konstrukce portfolia \cite{gridold1999ac
 Wienerův proces, volatilita, základní numerické metody, VaR \cite{hull} \\
 Základy finanční matematiky a teorie portfolia \cite{melichercik} \\
 Dynamická teorie portfolia, \cite{oberuc2003dynamic}\\
-Úvod do SDE \cite{karatzas2012brownian}\\
+Úvod do SDE \cite{karatzas2012brownian}, \cite{gard}\\%
+Stochastická analýza \cite{shreve2012stochastic} a \cite{shreve2004stochastic}\\%
 
 \end{comment}
 
-\chapter{Základní matematické pojmy}
+\chapter{Stochastická analýza}
 %\chapter{Teoretická východiska}
-\begin{comment}
-\section{Wienerův proces}
+%\begin{comment}
+Nejprve uvedeme základní matematický aparát, který budeme využívat v této práci.
+Budeme používat obvyklé značení, jehož přehled je uveden na začátku práce. 
+Zavedeme základní definice a vztahy využívané ve stochastickém modelování.
+Tato kapitola čerpá především z klasické monografie Bernta {\O}ksendala o stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}, 
+podobně jako knihy Thomase Garda  \cite{gard} 
+a rozsáhlé publikace Andrei Pascucci zabívající se matematickými metodami oceňování opcí \cite{pascucci}.
+Jako další reference byly využity \cite{karatzas2012brownian}, \cite{allen2010introduction},  \cite{shreve2012stochastic} a \cite{shreve2004stochastic}.
+Ve zmiňované literatuře je možno nalézt další podrobnosti.
+
+\section{Stochastické procesy a jejich vlastnosti}
+V první části definujeme stochastický proces a některé jeho zajímavé vlastnosti.
+
+%\subsection{Stochastický proces}
+\begin{definice}[Stochastický proces]
+Uvažujme  indexovou množinu $T$ a prav\-dě\-po\-dob\-nostní prostor $(\Omega,\mathcal{A}, \mathsf{Pr})$.
+\textit{Stochastický proces} $X(t,\omega)$ je funkce dvou proměnných $X:T\times\Omega\to\mathbb{R}$, kde
+\begin{itemize}
+\item $X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in T$ náhodná veličina,
+\item $X(\cdot,\omega):T\to\mathbb{R}$ je pro každé $\omega\in\Omega$ realizace náhodného procesu.
+\end{itemize}
+Reálná funkce $X(\cdot,\omega)$ se také nazývá \textit{trajektorie} nebo \textit{cesta} stochastického procesu. 
+\end{definice}
+Množina parametrů $T$ může být diskrétní nebo spojitá a v závislosti na tom pak mluvíme o \textit{diskrétním} nebo \textit{spojitém} stochastickém procesu. 
+
+\begin{definice}[Ekvivalence stochastických procesů]
+Dva stochastické procesy $X(t,\omega)$ a $Y(t,\omega)$ nazveme \textit{ekvivalentní} pokud platí
+$$X(t,\cdot)=Y(t,\cdot)\text{ s pravděpodobností jedna pro každé }t\in T.$$ 
+V takovém případě hovoříme o tom, že jeden proces je \textit{verzí} druhého procesu.
+\end{definice}
+
+\begin{definice}[Systém distribučních funkcí stochastického procesu]
+Nechť $T_n$ je množina všech vektorů $T_n=\{\boldsymbol{t}=(t_1,\dots,t_n):t_1\leq t_2\leq\cdots\leq t_n; t_i\in T; i=1,\dots,n\}$,
+pak \textit{distribuční funkcí} stochastického procesu rozumíme funkci
+$$F_{\boldsymbol{t}}(\boldsymbol{x})=F_{t_1,\dots,t_n}(x_1,\dots,x_n)= \mathsf{Pr}(X_{t_1}\leq x_1,\dots,X_{t_n}\leq x_n),$$
+pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T$ a všechna $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
+Pro různá $n$ a různé $t_1,\dots,t_n$ dostáváme celý \textit{systém distribučních funkcí}, který označíme $\mathcal{F}$.
+\end{definice}
+
+\begin{definice}[Stacionarita stochastického procesu]
+Stochastický proces $X(t)$ nazveme \textit{striktně stacionární} pokud jsou jeho sdružené distribuční funkce invariantní vůči časovému posunu, tedy pro všechna $h\in\mathbb{R}$ takové, že $t_j\in T$ a $t_j+h\in T$ pro všechna $j$ platí
+$$F_{t_1+h,\dots,t_n+h}(x_1,\dots,x_n)=F_{t_1,\dots,t_n}(x_1,\dots,x_n).$$   
+
+Stochastický proces $X(t)$ nazveme \textit{slabě stacionární} pokud existuje konstanta $\mu\in\mathbb{R}$ a funkce $c:\mathbb{R}^+\to\mathbb{R}$ taková, že
+$$\mathsf{E}{X(t)}=\mu\quad\text{ a }\quad\mathsf{C}(X(t),X(s))=c(t-s)$$
+pro všechna $t,s\in T$.
+\end{definice}
+
+%\begin{definice}[]
+%\end{definice}
+
+
+\subsection{Wienerův proces}
 
 \begin{definice}
 Reálný stochastický proces $\{W(t):t\ge0\}$ na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
@@ -341,7 +396,7 @@ $$X(t)  = \mu t + \sigma W (t)$$
 se nazývá \textit{Wienerův proces  s driftem} $\mu$ a volatilitou $\sigma$.
 \end{definice}
 
-\section{It\^oův proces}
+\subsection{It\^oův proces}
 
 \begin{definice}
 Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
@@ -361,7 +416,7 @@ $$\frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t)$$
 se nazývá \textit{geometrický Wienerův proces}.
 \end{definice}
 
-\section{It\^oovo lemma}
+\subsection{It\^oovo lemma}
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
 It\^oovo lemma říká, že It\^oovy procesy tvoří uzav\-ře\-nou třídu vzhledem ke skládání s hladkými funkcemi.
 
@@ -376,7 +431,7 @@ Jeho stochastický diferenciál má tvar
 \end{alignat*}
 \end{veta}
 
-\section{It\^oův integrál}
+\subsection{It\^oův integrál}
 Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál.
 Budeme ho definovat obdobným způsobem jako Riemannův integrál.
 Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
@@ -427,7 +482,7 @@ Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} př
 $$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d}W.$$
 \\
 \end{definice}
-\end{comment}
+%\end{comment}
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
 \chapter{Teorie portfolia}
@@ -863,6 +918,17 @@ z něhož dostaneme následující soustavu obyčejných diferenciálních rovni
 \end{align*}  
 Avšak tato soustava je nelineární a bohužel neexistuje její analytické řešení.
 Neobejdeme se tedy bez použití numerických metod.
+
+
+%%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
+
+\chapter{Credit Valuation Adjustment}
+
+Credit Valuation Adjustment (CVA)
+
+Kreditní prirážka k tržnímu ocenení
+
+%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

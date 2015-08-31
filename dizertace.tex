@@ -210,6 +210,8 @@ In the first part of the work, some basic mathematical methods employed in this 
    $\mathsf{C}(X_i,X_j)$             		      &   kovariance náhodných veličin $X_i$ a $X_j$\\
    $\mathrm{d}X(t,\omega)$; $\mathrm{d}X(t)$; $\mathrm{d}X_t$    &  stochastický diferenciál \\ %continuous-time random process \\
    $X(t,\omega)$; $X(t)$; $X_t$                       &   stochastický proces \\
+%   $F_{\boldsymbol{t}}(\boldsymbol{x})$; 
+   $F_{t_1,\dots,t_n}(x_1,\dots,x_n)$                       &  distribuční funkce stochastického procesu \\
    $W(t,\omega)$; $W(t)$; $W_t$                       &   standardní Wienerův proces \\
    $\boldsymbol{\Delta} W_t$			                      &   přírůstek Wienerova procesu \\
    $\mathsf{N}(\mu, \sigma^{2})$                      &   Normální (Gaussovo) rozdělení pravděpodobnosti se střední hodnotou $\mu$ a rozptylem $\sigma^2$  \\
@@ -233,7 +235,7 @@ $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces
 %
 %
 %
-\\\\\\\
+\\\\
 \textbf{Prostory a matice}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
@@ -326,7 +328,7 @@ Stochastická analýza \cite{shreve2012stochastic} a \cite{shreve2004stochastic}
 \chapter{Stochastická analýza}
 %\chapter{Teoretická východiska}
 %\begin{comment}
-Nejprve uvedeme základní matematický aparát, který budeme využívat v této práci.
+Nejprve uvedeme základní matematický aparát, který využíváme v této práci.
 Budeme používat obvyklé značení, jehož přehled je uveden na začátku práce. 
 Zavedeme základní definice a vztahy využívané ve stochastickém modelování.
 Tato kapitola čerpá především z klasické monografie Bernta {\O}ksendala o stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}, 
@@ -336,9 +338,24 @@ Jako další reference byly využity \cite{karatzas2012brownian}, \cite{allen201
 Ve zmiňované literatuře je možno nalézt další podrobnosti.
 
 \section{Stochastické procesy a jejich vlastnosti}
-V první části definujeme stochastický proces a některé jeho zajímavé vlastnosti.
+Stochastické procesy slouží k popisu dynamiky náhodných jevů a jejich příklady nacházíme v mnoha vědeckých oborech.
+Mezi nejznámější patří Brownův pohyb pevných částic, difúze a bílý šum.
+
+Základy teorie stochastických procesů byly položeny na konci de\-va\-te\-náctého století.
+První zmínky popisu Brownova pohybu najdeme v článku dánského matematika Thorvalda Nicolaie Thielea z roku 1880 o metodě nejmenších čtverců.
+V roce 1900 Louis Bachelier ve své disertační práci \cite{bachelier} používá Brownův pohyb k popisu pohybu cen akcií na trhu.
+Díky ní je Bachelier uznávaný jako zakladatel kvantitativních metod ve finanční matematice.
+
+Nezávisle na této práci popisují matematicky Brownův pohyb také fyzici Albert Einstein a Marian Smoluchowski. 
+V roce 1905 Einstein aplikuje Brownův pohyb ve svém článku zabývajícím se molekulárně-kinetickou teorií tepla \cite{einstein}.
+O rok později Smoluchowski prezentuje článek \cite{Smoluchowski}, který se stane důležitým základem teorie náhodných procesů zvláště rovnice difúze.
+Tyto teorie následně experimentálně ověřil Jean Baptiste Perrin a za tento úspěch byl v roce 1926 oceněn Nobelovou cenou za fyziku. 
+
+V neposlední řadě chceme zmínit význam amerického matematika Norberta Wienera, který dokázal existenci stochastického procesu používaného k popisu Brownova pohybu. 
+Tento proces nese jeho jméno a je využíván v~mnoha různých odvětvích.
 
 %\subsection{Stochastický proces}
+V této části práce definujeme stochastický proces a některé jeho zajímavé vlastnosti.
 \begin{definice}[Stochastický proces]
 Uvažujme  indexovou množinu $T$ a prav\-dě\-po\-dob\-nostní prostor $(\Omega,\mathcal{A}, \mathsf{Pr})$.
 \textit{Stochastický proces} $X(t,\omega)$ je funkce dvou proměnných $X:T\times\Omega\to\mathbb{R}$, kde
@@ -364,6 +381,9 @@ pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T$ a všechna $\boldsymbol{x}=(x
 Pro různá $n$ a různé $t_1,\dots,t_n$ dostáváme celý \textit{systém distribučních funkcí}, který označíme $\mathcal{F}$.
 \end{definice}
 
+\begin{definice}[Charakteristické funkce stochastického procesu]
+\end{definice}
+
 \begin{definice}[Stacionarita stochastického procesu]
 Stochastický proces $X(t)$ nazveme \textit{striktně stacionární} pokud jsou jeho sdružené distribuční funkce invariantní vůči časovému posunu, tedy pro všechna $h\in\mathbb{R}$ takové, že $t_j\in T$ a $t_j+h\in T$ pro všechna $j$ platí
 $$F_{t_1+h,\dots,t_n+h}(x_1,\dots,x_n)=F_{t_1,\dots,t_n}(x_1,\dots,x_n).$$   
@@ -371,6 +391,9 @@ $$F_{t_1+h,\dots,t_n+h}(x_1,\dots,x_n)=F_{t_1,\dots,t_n}(x_1,\dots,x_n).$$
 Stochastický proces $X(t)$ nazveme \textit{slabě stacionární} pokud existuje konstanta $\mu\in\mathbb{R}$ a funkce $c:\mathbb{R}^+\to\mathbb{R}$ taková, že
 $$\mathsf{E}{X(t)}=\mu\quad\text{ a }\quad\mathsf{C}(X(t),X(s))=c(t-s)$$
 pro všechna $t,s\in T$.
+\end{definice}
+
+\begin{definice}[Nezávislost přírůstků]
 \end{definice}
 
 %\begin{definice}[]
@@ -859,16 +882,28 @@ Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním port
 \end{equation}
 kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv (viz \cite{fabozzi}).
 
+Uvažujme o řešitelnosti a počtu řešení soustavy rovnic (\ref{vahy}), kterou upravíme
+\begin{equation} \label{hodnost}
+\left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}=0.
+\end{equation}
+Kovarianční matice je plné hodnosti, tedy i matice $\boldsymbol{\Sigma}^{-1}$ má hodnost $n$.
+Naproti tomu, díky předpokladu $\sum_{j=1}^nX_j=1$, má matice $\left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)$ lineárně závislé řádky, jelikož
+součet libovolných $n-1$ řádků matice  je roven záporné hodnotě zbývajícího řádku.
+Dá se tedy dokázat, že tato matice má hodnost $n-1$.
+To znamená, že soustava rovnic (\ref{hodnost}) má nekonečně mnoho řešení vzhledem k $\mu$.
+Dále hledejme nějaké partikulární řešení této soustavy rovnic.
+
 Jak jsme ukázali v kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám podkladových aktiv v tržním portfoliu, tedy
 \begin{equation} \label{market_value}
 \boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\boldsymbol{V}},
 \end{equation}
 kde $\boldsymbol{V}$ je vektor tržních hodnot podkladových aktiv na trhu.
 
-Ze vztahů (\ref{vahy}) a (\ref{market_value}) dostáváme $\boldsymbol{V}=\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ a proto očekávané výnos\-nosti vyjádříme jako
+Ze vztahů (\ref{vahy}) a (\ref{market_value}) dostáváme $\boldsymbol{V}=\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ a proto očekávané výnos\-nosti můžeme vyjádřit jako
 \begin{equation} \label{mu}
 \boldsymbol{\mu}=\boldsymbol{\Sigma}\boldsymbol{V}.
 \end{equation}
+Obecné řešení soustavy rovnic (\ref{hodnost}) tedy je $\boldsymbol{\mu}=k\boldsymbol{\Sigma}\boldsymbol{V}$, kde $k\in\mathbb{R}$ je parametr. Což znamená, že nemůžeme najít jednoznačné vyjádření pro vektor $\boldsymbol{\mu}$, ale našli jsme vztah mezi složkami tohoto vektoru a k jeho vyjádření nám postačí jeden parametr.
 
 Předpokládejme nyní, že uvažovaná podkladová aktiva jsou nekorelovaná, tedy matice $\boldsymbol{\Sigma}$ je diagonální.
 Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odvětví.

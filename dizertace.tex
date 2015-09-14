@@ -378,10 +378,32 @@ Nechť $T_n$ je množina všech vektorů $T_n=\{\boldsymbol{t}=(t_1,\dots,t_n):t
 pak \textit{distribuční funkcí} stochastického procesu rozumíme funkci
 $$F_{\boldsymbol{t}}(\boldsymbol{x})=F_{t_1,\dots,t_n}(x_1,\dots,x_n)= \mathsf{Pr}(X_{t_1}\leq x_1,\dots,X_{t_n}\leq x_n),$$
 pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T$ a všechna $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
-Pro různá $n$ a různé $t_1,\dots,t_n$ dostáváme celý \textit{systém distribučních funkcí}, který označíme $\mathcal{F}$.
+Pro různá $n$ a různé $t_1,\dots,t_n$ dostáváme celý \textit{systém distribučních funkcí}, který označíme $\mathcal{F}$, a který plně popisuje pravděpodobnostní chovaní stochastického procesu.
+
 \end{definice}
 
+\begin{priklad}[Gaussovský proces]
+\textit{Gaussovský proces} je stochastický proces, jehož rozdělení pravděpodobnosti je normální, tedy každá sdružená distribuční funkce $F_{\boldsymbol{t}}(\boldsymbol{x})$ je normální pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T$ a $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
+\end{priklad}
+
+Systém distribučních funkcí nese úplnou informaci o pravděpodobnostním chování stochastického procesu, nicméně podstatnou část této informace můžeme získat už jen z charakteristik popsaných v následující definici.
+
 \begin{definice}[Charakteristické funkce stochastického procesu]
+Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in T$ existuje střední hodnota $\mathsf{E}{X(t)}$.
+Pak funkce $\mu_t$ definovaná na množině $T$ předpisem
+$$\mu_t=\mathsf{E}{X(t)}$$
+se nazývá \textit{střední hodnota stochastického procesu} $X(t)$.
+
+Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in T$ platí $\mathsf{E}{|X(t)|^2<\infty}$ (říkáme, že má \textit{konečné druhé momenty}).
+Pak funkce dvou proměnných $\gamma(s,t)$ definovaná na množině $T\times T$ předpisem
+$$\gamma(s,t)=\mathsf{C}(X(s),X(t))=\mathsf{E}{\left[(X(s)-\mu_s)(X(t)-\mu_t)\right]}$$
+se nazývá \textit{autokovarianční funkce stochastického procesu} $X(t)$.  
+Speciálně hodnota $\gamma(t,t)=\mathsf{D}(X(t))$ této funkce se nazývá \textit{rozptyl stochastického procesu} v čase $t$ a budeme ji značit ${\sigma_t}^2$.
+
+Nechť $X(t)$ je stochastický proces s konečnými druhými momenty,
+pak funkce $\rho(s,t)$ definovaná na množině $T\times T$ předpisem
+$$\rho(s,t)=\frac{\mathsf{C}(X(s),X(t))}{\sqrt{\mathsf{D}(X(s))\mathsf{D}(X(t))}}=\frac{\gamma(s,t)}{\sqrt{\gamma(s,s)\gamma(t,t)}}$$
+se nazývá \textit{autokorelační funkce stochastického procesu} $X(t)$.
 \end{definice}
 
 \begin{definice}[Stacionarita stochastického procesu]
@@ -392,8 +414,13 @@ Stochastický proces $X(t)$ nazveme \textit{slabě stacionární} pokud existuje
 $$\mathsf{E}{X(t)}=\mu\quad\text{ a }\quad\mathsf{C}(X(t),X(s))=c(t-s)$$
 pro všechna $t,s\in T$.
 \end{definice}
+Pro slabě stacionární proces zřejmě platí ${\sigma_t}^2=c(0)$.
+Procesy, které nejsou striktně stacionární, se nazývají evoluční. 
 
 \begin{definice}[Nezávislost přírůstků]
+\end{definice}
+
+\begin{definice}[Spojitost stochastického procesu]
 \end{definice}
 
 %\begin{definice}[]
@@ -401,6 +428,10 @@ pro všechna $t,s\in T$.
 
 
 \subsection{Wienerův proces}
+Wienerův proces byl zaveden Norbertem Wienerem jako matematický popis Brownova pohybu.
+Může být také interpretován jako limita náhodné procházky pro infinitezimální časoprostorový krok.
+Zajímavostí Wienerova procesu je kombinace dvou vlastností.
+S pravděpodobností jedna je spojitý a zároveň je nediferencovatelný v každém bodě. 
 
 \begin{definice}
 Reálný stochastický proces $\{W(t):t\ge0\}$ na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
@@ -411,6 +442,17 @@ Reálný stochastický proces $\{W(t):t\ge0\}$ na pravdě\-podob\-nostním prost
 \item[4.](normalita přírůstků) pro každé $t\ge s\ge0$ má přírůstek $W(t)-W(s)$ normální rozdělení $\mathsf{N}(0, t-s)$.
 \end{enumerate}
 \end{definice}
+
+Snadno odvodíme vztah pro autokovarianční funkci Wienerova procesu $\mathsf{C}(W(s),W(t))=\min(s,t)$.
+Jestliže $0\leq s<t$, pak
+\begin{align*}
+\mathsf{C}(W(s),W(t))&=\mathsf{E}{\left[(W(s)-\mu_s)(W(t)-\mu_t)\right]} \\
+&=\mathsf{E}{\left[W(s)W(t)\right]}  \\
+&=\mathsf{E}{\left[W(s)(W(t)-W(s)+W(s))\right]} \\
+&=\mathsf{E}{\left[W(s)\right]}\mathsf{E}{\left[W(t)-W(s)\right]}+\mathsf{E}{\left[W(s)\right]}^2 \\
+&=0\cdot0+s.
+\end{align*}
+To znamená, že Wienerův proces není slabě stacionární.
 
 \subsection{Wienerův proces s driftem}
 \begin{definice}
@@ -454,8 +496,9 @@ Jeho stochastický diferenciál má tvar
 \end{alignat*}
 \end{veta}
 
-\subsection{It\^oův integrál}
+\section{It\^oův integrál}
 Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál.
+Jeho zavedení je vyžadováno nediferencovatelností Wienerova procesu.
 Budeme ho definovat obdobným způsobem jako Riemannův integrál.
 Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
 \newline

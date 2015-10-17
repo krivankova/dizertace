@@ -323,6 +323,8 @@ Dynamická teorie portfolia, \cite{oberuc2003dynamic}\\
 Úvod do SDE \cite{karatzas2012brownian}, \cite{gard}\\%
 Stochastická analýza \cite{shreve2012stochastic} a \cite{shreve2004stochastic}\\%
 
+CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahrnutí Wrong-Way do Monte Carlo simulace \cite{hull2012cva} přehlwdový článek \cite{arora2012}
+
 \end{comment}
 
 \chapter{Stochastická analýza}
@@ -1002,14 +1004,56 @@ Neobejdeme se tedy bez použití numerických metod.
 
 \chapter{Credit Valuation Adjustment}
 
-Credit Valuation Adjustment (CVA)
+Nedílnou součástí řízení banky je řízení bankovních rizik.
+Obzvláště v poslední době se práce risk managementu dostává do popředí zájmu
+a jsou patrné tendence ke sjednocování bankovní regulace na mezi\-národní úrovni.
+Důkazem spolupráce mezi institucemi bankovního dohledu je i vznik Basilejského výboru pro bankovní dohled.
+Výbor vydává regulační standardy, doporučuje konkrétní postupy v oblasti bankovního dohledu a snaží se o sbližování regulačních norem. 
+Řada států jeho doporučení zohledňuje a při\-jímá do vlastní legislativy a Česká republika v tomto není výjimkou.
+Standardy vydávané výborem se označují Basel a byly dosud vydávány ve třech generacích označovaných jako Basel I, Basel II a Basel III. 
+Vyjadřují kapitálové požadavky, zabývají se pravidly obezřetného podnikání bank a aktivitami bankovního dohledu.
 
-Kreditní prirážka k tržnímu ocenení
+Během celosvětové finanční krize, která odstartovala v roce 2008, se uká\-za\-la důležitost správného měření a řízení kreditního rizika protistrany (CCR) pro stabilitu finančního systému.
+Kapitál pro kreditní riziko protistrany byl vy\-žadován již v Basel I.  
+V reakci na finanční krizi Basel III představil nejen další požadavky pro výpočet kapitálu pro CCR, ale nově
+předepisuje kapitálový požadavek pro riziko Credit Valuation Adjustment (CVA). 
+
+Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
+články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
+Pěkný přehledový článek na toto téma vyšel v roce 2012 v Journal of Financial Economics \cite{arora2012}.
+Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo simulace při výpočtu CVA publikovali John Hull a Alan White \cite{hull2012cva}.
+
+%Analýza vzájemné vazby mezi rizikem a výnosy.
+
+\section{Finanční rizika}
+V následujícím textu seznámíme čtenáře s problematikou řízení finančních rizik, především úvěrového rizika.
+Komplexní přehled o finančních rizicích poskytuje publikace  jednoho z nej\-zná\-měj\-ších českých ekonomů profesora Josefa Jílka \cite{jilek2000}.
+Kniha zevrubně popisuje úvěrová, tržní a další finanční rizika a objasňuje podstatu, měření, řízení a regulace finančních rizik včetně použití derivátů.
+
+Bankovní podnikání ohrožuje celá řada rizik, která obecně chápeme jako nebezpečí vzniku škody. 
+Řídit tato rizika mimo jiné znamená odhadovat pravděpodobnost jejich vzniku a navrhovat metody k jejich snížení.
+Banka je ohrožena nejen podnikatelskými riziky, ale také riziky finančními, které souvisí s její potenciální finanční ztrátou. 
+Na tato rizika je soustředěna mimo\-řádná pozornost odborné veřejnosti, bankovního dohledu, ale i samotného představenstva banky.
+
+Základním finančním rizikem je kreditní (též úvěrové) riziko.
+Jedná se o riziko vyplývající z neschopnosti nebo neochoty protistrany splatit své závazky podle podmínek
+kontraktu, což způsobí držiteli pohledávky ztrátu.
+Jeho řízení má rozhodující význam pro úspěch nebo neúspěch nejen finančních institucí. 
+
+\subsection{Kreditní riziko protistrany}
+Riziko selhání (defaultu), jinak označováno jako riziko protistrany před\-sta\-vuje základní rizikovou složkou kreditního rizika a jeho parametrem je prav\-dě\-po\-dob\-nost neplnění. Definice tohoto jevu není zcela jednoznačná, vět\-ši\-nou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
+\\\\\\
+Poznámky:\\
+\\
+Counterparty Credit Risk (CCR) představuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způ\-so\-be\-na defaultem protistrany transakce. 
+
+V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
+
+Counterparty Credit Risk (CCR) 
+Tato kapitola rozebírá aktuální téma \textit{Kreditní přirážky k  tržnímu riziku} neboli Credit Valuation Adjustment (CVA).
 
 %%%%%%%%%%%%%%%%%%
 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \nocite{}  %umisti do literatury i necitovanou polozku a \nocite{*} umisti do literatury vsechny polozky z bibtex databaze 

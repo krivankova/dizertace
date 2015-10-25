@@ -327,6 +327,8 @@ CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahr
 
 \end{comment}
 
+V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
+
 \chapter{Stochastická analýza}
 %\chapter{Teoretická východiska}
 %\begin{comment}
@@ -1040,22 +1042,17 @@ Jedná se o riziko vyplývající z neschopnosti nebo neochoty protistrany splat
 kontraktu, což způsobí držiteli pohledávky ztrátu.
 Jeho řízení má rozhodující význam pro úspěch nebo neúspěch nejen finančních institucí. 
 
-\subsection{Kreditní riziko protistrany}
-Riziko selhání (defaultu), jinak označováno jako riziko protistrany před\-sta\-vuje základní rizikovou složkou kreditního rizika a jeho parametrem je prav\-dě\-po\-dob\-nost neplnění. Definice tohoto jevu není zcela jednoznačná, vět\-ši\-nou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
-\\\\\\
-Poznámky:\\
-\\
-Counterparty Credit Risk (CCR) představuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způ\-so\-be\-na defaultem protistrany transakce. 
+Mezi významná bankovní rizika patří tržní riziko. 
+Jedná se o riziko ztráty v souvislosti s pohybem tržních cen v důsledku nepříznivých změn tržních podmínek. 
+Je zaměřeno na faktory, které mají vliv na finanční trh jako celek (nikoliv pouze na cenu jednotlivého aktiva).
+Jeho význam vzrůstá s rostoucí angažovaností bank na finančních trzích. 
 
-V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
-
-Counterparty Credit Risk (CCR) 
-Tato kapitola rozebírá aktuální téma \textit{Kreditní přirážky k  tržnímu riziku} neboli Credit Valuation Adjustment (CVA).
-
-%%%%%%%%%%%%%%%%%%
+Úvěrové riziko a tržní riziko není možno od sebe zcela oddělovat.
+Obě tato rizika v sobě spojuje kreditní riziko protistrany, jehož modelování je nedílnou součástí výpočtu Credit Valuation Adjustment. 
 
 \subsection{Kreditní riziko protistrany}
-Riziko selhání (defaultu), jinak označováno jako riziko protistrany před\-sta\-vuje základní rizikovou složkou kreditního rizika a jeho parametrem je prav\-dě\-po\-dob\-nost neplnění. 
+Counterparty Credit Risk (CCR), v překladu \textit{kreditní riziko protistrany},  před\-sta\-vuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způ\-so\-be\-na selháním protistrany transakce. 
+Riziko selhání (defaultu) před\-sta\-vuje základní rizikovou složkou kreditního rizika a jeho parametrem je prav\-dě\-po\-dob\-nost neplnění. 
 Definice tohoto jevu není zcela jednoznačná, vět\-ši\-nou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
 
 Riziko protistrany závisí na spolehlivosti obchodního partnera, ať už se jedná o emitenta, který vydává, nabízí a prodává investiční produkt a zavazuje se k jeho splacení (resp. vyrovnání s ním spojených závazků), nebo finančního zprostředkovatele, kterému jsou svěřeny prostředky buď do správy, nebo k provedení investiční transakce.
@@ -1066,17 +1063,18 @@ Pro investory je rating spolehlivou informací o kreditním riziku emitenta př�
 Nejznámějšími ratingovými agenturami jsou Moody's, Standard \& Poor's a Fitch. Každá z těchto agentur má vlastní hodnotící stupnici a zvyklosti.
 
 Obecně se ratingové stupnice dělí na dvě části - investiční pásmo a spekulativní pásmo.
-Ratingy z investičního pásma přiznávají ratingové agentury finanční instrumentům, do kterých doporučují investovat. Pod touto úrovní leží pásmo spekulativních investic, u kterých je očekáváno zanačné riziko ztráty.
+Ratingy z investičního pásma přiznávají ratingové agentury finanční instrumentům, do kterých doporučují investovat. Pod touto úrovní leží pásmo spekulativních investic, u kterých je očekáváno značné riziko ztráty.
 
 Typickým představitelem emitenta s velmi nízkým rizikem je vláda vy\-spě\-lého státu, která vydává dluhopisy, jež jsou chápány jako bezrizikové  investiční instrumenty. Nízké kreditní riziko mohou mít i velké tuzemské či mezinárodními společnosti s dobrými hospodářskými výsledky, zejména pokud mají (dle všeobecného názoru) schopný management, což vede k předpokladu dobrých výsledků a udržení pozice na trhu i v budoucnosti.
 Rating je využíván také k posouzení  důvěryhodnosti finančního partnera, který danou finanční investici zprostředkovává.
 
-\section{Kreditní přirážka k tržnímu riziku}
-\textit{Kreditní přirážky k  tržnímu riziku} neboli Credit Valuation Adjustment (CVA)..
+Velmi dobrý úvod do problematiky řízení rizika protistrany poskytuje článek \cite{canabarro2003measuring} autorů Eduarda Canabarra, vedoucího oddělení řízení rizika v bankovní společnosti Goldman Sachs, a profesora Stanfordské univerzity Darrella Duffieho.
 
-Counterparty Credit Risk (CCR) představuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způ\-so\-be\-na defaultem protistrany transakce. 
-
-V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
+\section{Úvěrová úprava v ocenění finančních derivátů}
+V rámci překladu termínu \textit{Credit Valuation Adjustment (CVA)}  se můžeme setkat s více možnostmi.
+Například Česká národní banka používá výraz \textit{úprava úvěrového ocenění}.
+V jiných textech nalezneme pojem  \textit{kreditní přirážka k tržnímu ocenění}.
+Z důvodu přehlednosti budeme v textu této práce používat především zkratku CVA případně anglický termín.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

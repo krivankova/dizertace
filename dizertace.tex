@@ -76,7 +76,7 @@
 %
 \begin{center}
 \begin{tabular}{l  r}
- \Large{Brno 2015} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
+ \Large{Brno 2016} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
 \end{tabular}
 \end{center}
 
@@ -98,7 +98,7 @@
 \begin{center}
 \large{
 \begin{tabular}{l  r}
-\Large{Brno 2015} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
+\Large{Brno 2016} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
 \end{tabular}
 }
 \end{center} \quad
@@ -127,7 +127,7 @@
 \textbf{Školitel:} & doc. RNDr. Martin Kolář, Ph.D.  \\
 \textbf{Studijní program:} & Matematika \\
 \textbf{Obor:} & Pravděpodobnost, statistika a matematické modelování \\
-\textbf{Rok obhajoby:} & 2015 \\
+\textbf{Rok obhajoby:} & 2016 \\
 \textbf{Klíčová slova:} & Stochastické procesy, \\
 \end{tabular}
 \\\\\\\\\\
@@ -142,7 +142,7 @@
 \textbf{Supervisor:} & doc. RNDr. Martin Kolář, Ph.D.  \\
 \textbf{Study programme:} & Mathematics \\
 \textbf{Study field:} & Probability, statistics and mathematical modeling \\
-\textbf{Year of defence:} & 2015 \\
+\textbf{Year of defence:} & 2016 \\
 \textbf{Keywords:} & Stochastic processes, \\
 \end{tabular}
 \newpage
@@ -150,7 +150,7 @@
 \null
 \vfill
 \begin{center}
-\copyright \quad Lenka Křivánková, Masarykova Univerzita, 2015
+\copyright \quad Lenka Křivánková, Masarykova Univerzita, 2016
 \end{center}
 
 \chapter*{Poděkování}\addcontentsline{toc}{chapter}{Poděkování}
@@ -159,7 +159,7 @@
 Na tomto místě
 \\
 
-Brno, Listopad 2015
+Brno, Červenec 2016
 \\
 
 Lenka Křivánková
@@ -327,7 +327,7 @@ CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahr
 
 \end{comment}
 
-V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
+%V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
 
 \chapter{Stochastická analýza}
 %\chapter{Teoretická východiska}
@@ -1020,10 +1020,14 @@ Kapitál pro kreditní riziko protistrany byl vy\-žadován již v Basel I.
 V reakci na finanční krizi Basel III představil nejen další požadavky pro výpočet kapitálu pro CCR, ale nově
 předepisuje kapitálový požadavek pro riziko Credit Valuation Adjustment (CVA). 
 
+CVA lze interpretovat jako úpravu tržní hodnoty derivátu o kreditní riziko protistrany.
+Riziko CVA vyplývá jak z rizika změny pravděpodobnosti selhání protistrany tak změny tržních faktorů, které ovlivňují hodnotu derivátů.
+
 Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
 články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
 Pěkný přehledový článek na toto téma vyšel v roce 2012 v Journal of Financial Economics \cite{arora2012}.
 Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo simulace při výpočtu CVA publikovali John Hull a Alan White \cite{hull2012cva}.
+
 
 %Analýza vzájemné vazby mezi rizikem a výnosy.
 
@@ -1068,13 +1072,59 @@ Ratingy z investičního pásma přiznávají ratingové agentury finanční ins
 Typickým představitelem emitenta s velmi nízkým rizikem je vláda vy\-spě\-lého státu, která vydává dluhopisy, jež jsou chápány jako bezrizikové  investiční instrumenty. Nízké kreditní riziko mohou mít i velké tuzemské či mezinárodními společnosti s dobrými hospodářskými výsledky, zejména pokud mají (dle všeobecného názoru) schopný management, což vede k předpokladu dobrých výsledků a udržení pozice na trhu i v budoucnosti.
 Rating je využíván také k posouzení  důvěryhodnosti finančního partnera, který danou finanční investici zprostředkovává.
 
+Důležitým faktem při výpočtu kapitálového požadavku pro CCR je  bilaterální charakter tohoto rizika. Což znamená, že kreditním rizikem protistrany jsou zatíženy obě strany obchodu.
+
 Velmi dobrý úvod do problematiky řízení rizika protistrany poskytuje článek \cite{canabarro2003measuring} autorů Eduarda Canabarra, vedoucího oddělení řízení rizika v bankovní společnosti Goldman Sachs, a profesora Stanfordské univerzity Darrella Duffieho.
 
-\section{Úvěrová úprava v ocenění finančních derivátů}
+%\section{Úvěrová úprava v ocenění finančních derivátů}
+\section{Koncept CVA}
 V rámci překladu termínu \textit{Credit Valuation Adjustment (CVA)}  se můžeme setkat s více možnostmi.
 Například Česká národní banka používá výraz \textit{úprava úvěrového ocenění}.
-V jiných textech nalezneme pojem  \textit{kreditní přirážka k tržnímu ocenění}.
-Z důvodu přehlednosti budeme v textu této práce používat především zkratku CVA případně anglický termín.
+V jiných textech nalezneme pojem  \textit{kreditní přirážka k tržnímu ocenění} nebo \textit{úvěrová úprava v ocenění finančních derivátů}.
+Z důvodu přehlednosti budeme v textu této práce používat především zkratku CVA nebo anglický termín.
+
+\subsection{Expozice protistrany}
+\textit{Expozici protistrany} v čase $t$ značíme $E(t)$ a definujeme jako celkovou výši nesplacených pohledávek danou protistranou.
+%Expozice kvantifikuje potenciální ekonomickou ztrátu v případě selhání protistrany.
+Hodnota expozice protistrany kvantifikuje do jaké míry je věřitel vystaven riziku ztráty v případě neplnění dlužníka.
+
+Uvažujme portfolio $N$ derivátových obchodů banky s danou protistranou.
+Splatnost kontraktu s nejdelší splatností v tomto portfoliu označíme $T$. 
+Nechť $\tau$ je náhodná veličina, která označuje čas selhání dané protistrany a má známou distribuční funkci $P(t)=\Pr(\tau\leq t)$.
+
+Budeme zkoumat hodnotu portfolia z pohledu banky.
+Expozice protistrany $E(t)$ v čase $t$ je dána hodnotami derivátových odchodů s danou protistranou v čase $t$.
+Hodnotu $i$-tého derivátu z portfolia v čase $t$  označíme $V_i(t)$.
+Pak hodnota portfolia v čase $t$ je definována jako
+\begin{equation}
+V(t)=\sum_{i=1}^N V_i(t).
+\end{equation}
+V případě, že banka nemá s protistranou uzavřenou dohodu o vzájemném započítávání pohledávek a závazků (tzn. netting), expozice protistrany $E(t)$ je 
+\begin{equation}
+E(t)=\sum_{i=1}^N\max\{V_i(t),0\}.
+\end{equation}
+Pokud banka s protistranou uzavře smlouvu o nettingu, pak je expozice dána jako
+\begin{equation}
+E(t)=\max\{V(t),0\}.
+\end{equation}
+Využívání nettingu slouží ke snížení úvěrového a tržního rizika. 
+Při použití nettingu je expozice protistrany menší nebo rovna expozici v případě, kdy netting neuvažujeme. 
+
+Další možnost jak snížit expozici je zajištění.
+Banka uzavírá s protistranou dohodu o výzvě k doplnění zajištění (margin call).
+Protistrana pak musí poskytnout bance zajištění vždy, když hodnota portfolia překročí určenou mez.
+Naopak pokud hodnota portfolia klesne pod tuto mez, banka zajištění opět vrátí.
+Expozice protistrany, která zohledňuje zajištění se určí jako
+\begin{equation}
+E(t)=\max\{V(t)-C(t),0\},
+\end{equation}
+kde $C(t)$ je hodnota zajištění (které banka přijala) v čase $t$.  
+
+%\subsection{Modely zajištění}
+
+
+%\section{Poznámky CVA}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

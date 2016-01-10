@@ -390,7 +390,7 @@ Pro různá $n$ a různé $t_1,\dots,t_n$ dostáváme celý \textit{systém dist
 \textit{Gaussovský proces} je stochastický proces, jehož rozdělení pravděpodobnosti je normální, tedy každá sdružená distribuční funkce $F_{\boldsymbol{t}}(\boldsymbol{x})$ je normální pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T$ a $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
 \end{priklad}
 
-Systém distribučních funkcí nese úplnou informaci o pravděpodobnostním chování stochastického procesu, nicméně podstatnou část této informace můžeme získat už jen z charakteristik popsaných v následující definici.
+Systém distribučních funkcí nese úplnou informaci o pravděpodobnostním chování stochastického procesu, nicméně podstatnou část této informace můžeme získat už jen z charakteristik popsaných v následující definicí.
 
 \begin{definice}[Charakteristické funkce stochastického procesu]
 Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in T$ existuje střední hodnota $\mathsf{E}{X(t)}$.
@@ -421,36 +421,44 @@ pro všechna $t,s\in T$.
 Pro slabě stacionární proces zřejmě platí ${\sigma_t}^2=c(0)$.
 Procesy, které nejsou striktně stacionární, se nazývají evoluční. 
 
-\begin{definice}[Nezávislost přírůstků]
+\begin{definice}[Nezávislost přírůstků stochastického procesu]
+Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě tehdy, když pro všechny časové posloupnosti $\{t_i\}\subseteq T$, kde $t_i<t_{i+1}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
 \end{definice}
+K popisu pravděpodobnostního chování stochastického procesu s ne\-zá\-vislými přírůstky je tedy dostačující znát distribuční funkci náhodné veličiny $X(t)$ a přírůstku stochastického procesu $X(t)-X(s)$, %pro pevně zvolené $t$ a $s$
+kde $t>s$.
 
 \begin{definice}[Spojitost stochastického procesu]
+Řekneme, že stochastický proces $X(t)$ je \textit{stochasticky spojitý v bodě} $t_0\in T$, jestliže pro každé $\epsilon>0$ platí
+$$\Pr(|X_t-X_{t_0}|>\epsilon)=0.$$
+Stochastický proces je  \textit{stochasticky spojitý} (spojitý podle pravděpodobnosti), je-li spojitý v každém bodě množiny $T$.
 \end{definice}
+Proces, který je spojitý podle předcházející definice, nemusí mít spojité trajektorie.
 
 %\begin{definice}[]
 %\end{definice}
 
-
 \subsection{Wienerův proces}
 Wienerův proces byl zaveden Norbertem Wienerem jako matematický popis Brownova pohybu.
 Může být také interpretován jako limita náhodné procházky pro infinitezimální časoprostorový krok.
-Zajímavostí Wienerova procesu je kombinace dvou vlastností.
-S pravděpodobností jedna je spojitý a zároveň je nediferencovatelný v každém bodě. 
+Zajímavostí Wienerova procesu je kombinace dvou vlastností,
+s pravděpodobností jedna má spojitou trajektorii a zároveň je nediferencovatelný v každém bodě. 
+Wienerův proces je základním stavebním kamenem pro konstrukci stochastického integrálu.
 
 \begin{definice}
 Reálný stochastický proces $\{W(t):t\ge0\}$ na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
 \begin{enumerate}
 \item[1.]$W(0)=0$, 
 \item[2.](spojitost trajektorií Wienerova procesu) s pravděpodobností jedna je funkce $t\to W(t)$ spojitá v $t$,
-\item[3.](nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, t.j.  pro každé $t\ge s\ge0$ má $X(t+s)-X(s)$ stejné rozdělení jako $X(t)-X(0)$,
+\item[3.](nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, t.j.  pro každé $t\ge s\ge0$ má $W(t+s)-W(s)$ stejné rozdělení jako $W(t)-W(0)$,
 \item[4.](normalita přírůstků) pro každé $t\ge s\ge0$ má přírůstek $W(t)-W(s)$ normální rozdělení $\mathsf{N}(0, t-s)$.
 \end{enumerate}
 \end{definice}
 
-Snadno odvodíme vztah pro autokovarianční funkci Wienerova procesu $\mathsf{C}(W(s),W(t))=\min(s,t)$.
+Z definice Wienerova procesu je zřejmé, že jeho střední hodnota $\mu_t=0$ pro všechna $t\ge0$.
+Snadno odvodíme vztah pro autokovarianční funkci Wienerova procesu $\rho(s,t)=\min(s,t)$.
 Jestliže $0\leq s<t$, pak
 \begin{align*}
-\mathsf{C}(W(s),W(t))&=\mathsf{E}{\left[(W(s)-\mu_s)(W(t)-\mu_t)\right]} \\
+\rho(s,t)=\mathsf{C}(W(s),W(t))&=\mathsf{E}{\left[(W(s)-\mu_s)(W(t)-\mu_t)\right]} \\
 &=\mathsf{E}{\left[W(s)W(t)\right]}  \\
 &=\mathsf{E}{\left[W(s)(W(t)-W(s)+W(s))\right]} \\
 &=\mathsf{E}{\left[W(s)\right]}\mathsf{E}{\left[W(t)-W(s)\right]}+\mathsf{E}{\left[W(s)\right]}^2 \\
@@ -458,31 +466,76 @@ Jestliže $0\leq s<t$, pak
 \end{align*}
 To znamená, že Wienerův proces není slabě stacionární.
 
-\subsection{Wienerův proces s driftem}
-\begin{definice}
+\begin{definice}[Wienerův proces s driftem]
 Stochastický proces $X(t)$ definovaný 
 $$X(t)  = \mu t + \sigma W (t)$$
 se nazývá \textit{Wienerův proces  s driftem} $\mu$ a volatilitou $\sigma$.
 \end{definice}
 
+\begin{definice}[Geometrický Wienerův proces]
+Stochastický proces $S(t)$ definovaný 
+$$\frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t)$$
+se nazývá \textit{geometrický Wienerův proces}.
+\end{definice}
+
 \subsection{It\^oův proces}
+\begin{definice}
+Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+Řekneme, že stochastický proces $\{f(t,\omega):t\ge~0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
+\end{definice}
+
+\begin{definice}\label{M}
+Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):[0,\infty)\times\Omega\to\mathbb R$ takových, že
+\begin{enumerate}
+\item[1.] $f(t,\omega)$ je neanticipativní, 
+\item[2.] $\text{E}\left[\int_0^Tf^2(t,\omega)\mathrm{d}t\right]<\infty.$ 
+\end{enumerate}
+\end{definice}
 
 \begin{definice}
 Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
-\textit{It\^oův proces} je stochastický proces tvaru
+\textit{It\^oův proces} je stochastický proces
 $$X(t,\omega)=\int_0^tU(s,\omega)\mathrm{d}s+\int_0^tV(s,\omega)\mathrm{d}W(s,\omega),$$
-kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do $M$.
+kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do třídy $M$.
 
 Často se používá diferenciální tvar, nazývaný \textit{stochastický diferenciál},
 $$\mathrm{d}X(t,\omega)=U(t,\omega)\mathrm{d}t+V(t,\omega)\mathrm{d}W(t,\omega).$$
 \end{definice}
 
+\section{It\^oův integrál a It\^oovo lemma}
 
-\subsection{Geometrický Wienerův proces}
+\subsection{It\^oův integrál}
+Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál.
+Jeho zavedení je vyžadováno nediferencovatelností Wienerova procesu.
+Budeme ho definovat obdobným způsobem jako Riemannův integrál.
+Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
+
 \begin{definice}
-Stochastický proces $S(t)$ definovaný 
-$$\frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t)$$
-se nazývá \textit{geometrický Wienerův proces}.
+Stochastický proces $S$ se nazývá \textit{jednoduchá funkce}, jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
+\end{definice}
+Trajektorie jednoduché funkce je po částech konstantní. 
+
+\begin{definice}
+Nechť $S$ je jednoduchá funkce 
+a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
+Pak
+$$\int_0^TS\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
+se nazývá \textit{It\^oův integrál} funkce $S$ na intervalu $[0,T]$.
+\end{definice}
+
+Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché funkce na integrál pro obecný stochastický proces.
+
+\begin{lemma} \label{itoint}
+Nechť $f$ je stochastický proces patřící do třídy $M$ dle definice \ref{M}.
+Pak existuje posloupnost jednoduchých funkcí $\{f_n:n\in\mathbb N\}$ tak, že pro $n\to\infty$ platí
+$$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarrow0.$$
+\end{lemma}
+
+\begin{definice}
+Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých funkcí z lemmatu \ref{itoint}.
+Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
+$$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d}W.$$
 \end{definice}
 
 \subsection{It\^oovo lemma}
@@ -500,58 +553,36 @@ Jeho stochastický diferenciál má tvar
 \end{alignat*}
 \end{veta}
 
-\section{It\^oův integrál}
-Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál.
-Jeho zavedení je vyžadováno nediferencovatelností Wienerova procesu.
-Budeme ho definovat obdobným způsobem jako Riemannův integrál.
-Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
-\newline
-\begin{definice}
-Stochastický proces $S$ se nazývá \textit{jednoduchá funkce}, jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. \newline\newline
-Trajektorie jednoduché funkce jsou po částech konstantní. 
+\section{Stochastické diferenciální rovnice}
+\subsection{Úvod do teorie stochastických diferenciálních rovnic}
+\begin{definice}[Stochastická diferenciální rovnice]
+Nechť $\alpha(t,X(t))$ a $\beta(t,X(t))$ jsou funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
+\textit{Stochastickou diferenciální rovnicí (SDR)} rozumíme rovnici
+\begin{equation}
+X(t)=X_0+\int_{t_0}^t\alpha(s,X(s))\mathrm{d}s+\int_{t_0}^t\beta(s,X(s))\mathrm{d}W(s),
+\end{equation}
+kde první integrál je Lebesgueův a druhý integrál je It\^oův.
+Častěji se se SDR setkáváme v jejím diferenciálním tvaru
+\begin{align}\label{SDR_def}
+\mathrm{d}X(t)&=\alpha(t,X(t))\mathrm{d}t+\beta(t,X(t))\mathrm{d}W(t),\\%\qquad 
+X(t_0)&=X_0.\notag
+\end{align}
 \end{definice}
 
+Stochastický proces $X(t)$ nazýváme řešením SDR.
+Uvažujme o existenci a jednoznačnosti řešení SDR.
 
-Zaveďme označení $\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
-\\
-\begin{definice}
-Nechť $S$ je jednoduchá funkce. Pak
-$$\int_0^TS\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
-se nazývá \textit{It\^oův integrál} funkce $S$ na intervalu $[0,T]$.
-\\
-\end{definice}
+\subsection{Numerické metody řešení stochastických di\-fe\-ren\-ciálních rovnic}
+%Numerická metoda nám určí aproximaci řešení v diskrétních časových hodnotách.
+%Potřebujeme-li spojitou aproximaci řešení, použijeme interpolační metody.
+\subsubsection{Eulerova metoda}
+Uvažujme SDR \ref{SDR_def} a časovou posloupnost $\{t_i\}_{i=0}^N\subseteq T$, kde pro všechna $i$ platí $t_i<t_{i+1}$.
+Pak Eulerova metoda řešení SDR je definována rekurzívním vztahem
+\begin{equation}
+X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n,
+\end{equation}
+kde $\Delta_n=t_{n+1}-t_n$ a $\Delta W_n=W(t_{n+1})-W(t_n)$.
 
-Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché funkce na integrál pro obecný stochastický proces.
-\begin{definice}
-Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
-Řekneme, že stochastický proces $\{f(t,\omega):t\ge0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
-\\
-\end{definice}
-
-\begin{definice}
-Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
-Symbolem $M$ označme třídu stochastických procesů $f(t,\omega):[0,\infty)\times\Omega\to\mathbb R$ takových, že
-\begin{enumerate}
-\item[1.] $f(t,\omega)$ je neanticipativní, 
-\item[2.] $\text{E}\left[\int_0^Tf^2(t,\omega)\mathrm{d}t\right]<\infty.$ 
-\\
-\end{enumerate}
-\end{definice}
-
-\begin{lemma} \label{itoint}
-Nechť $f$ je náhodný proces patřící do $M$.
-Pak existuje posloupnost jednoduchých funkcí $\{f_n:n\in\mathbb N\}$ tak, že pro $n\to\infty$ platí
-$$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarrow0.$$
-\end{lemma}
-
-\indent
-
-\begin{definice}
-Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých funkcí z lemmatu \ref{itoint}.
-Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
-$$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d}W.$$
-\\
-\end{definice}
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 

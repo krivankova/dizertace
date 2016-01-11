@@ -567,21 +567,47 @@ kde první integrál je Lebesgueův a druhý integrál je It\^oův.
 \mathrm{d}X(t)&=\alpha(t,X(t))\mathrm{d}t+\beta(t,X(t))\mathrm{d}W(t),\\%\qquad 
 X(t_0)&=X_0.\notag
 \end{align}
+Konstantu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stochastický proces $X(t)$ nazýváme \textit{řešením SDR} na $T$.
+\end{definice}
+%Uvažujme o existenci a jednoznačnosti řešení SDR.
+
+\begin{definice}[Soustava $m$ stochastických diferenciálních rovnic]
+\begin{align}\label{SSDR_def}
+\mathrm{d}X^i(t)&=\alpha^i(t,\boldsymbol{X}(t))\mathrm{d}t+\sum_{j=1}^m\beta^{i,j}(t,\boldsymbol{X}(t))\mathrm{d}W^j(t),\\%\qquad 
+X^i(t_0)&=X^i_0.\notag
+\end{align}
 \end{definice}
 
-Stochastický proces $X(t)$ nazýváme řešením SDR.
-Uvažujme o existenci a jednoznačnosti řešení SDR.
-
 \subsection{Numerické metody řešení stochastických di\-fe\-ren\-ciálních rovnic}
-%Numerická metoda nám určí aproximaci řešení v diskrétních časových hodnotách.
-%Potřebujeme-li spojitou aproximaci řešení, použijeme interpolační metody.
+%citace: Peter E. Kloeden Eckhard Platen Henri Schurz Numerical Solution of SDE Through Computer Experiments
+%An Introduction to Stochastic Processes with Applications to Biology Linda J. S. Allen
+Numerické metody využíváme v případě kdy není možno určit řešení SDR analyticky.
+Základním principem numerických metod je diskretizace pro\-měnných.
+Numerická metoda určí aproximaci řešení v diskrétních časových hodnotách a spojitou aproximaci řešení získáme použitím interpolačních metod.
+
 \subsubsection{Eulerova metoda}
-Uvažujme SDR \ref{SDR_def} a časovou posloupnost $\{t_i\}_{i=0}^N\subseteq T$, kde pro všechna $i$ platí $t_i<t_{i+1}$.
-Pak Eulerova metoda řešení SDR je definována rekurzívním vztahem
+Uvažujme SDR definovanou vztahem \ref{SDR_def}.
+Nechť $\{t_n\}_{n=0}^N\subseteq T$ je časová posloupnost, kde pro všechna $i$ platí $t_n<t_{n+1}$.
+V Eulerově metodě diferenciál $\mathrm{d}X(t)$ aproximujeme přírůstkem stochastického procesu $\Delta X_n=X(t_{n+1})-X(t_n)$.
+Hodnota $X(t_{n+1})$ je aproximována hodnotou v předcházejícím časovém kroku $X(t_{n})$.
+\begin{definice}
+Nechť $X_n$ značí aproximaci řešení $X(t_{n})$ SDR \ref{SDR_def} v čase $t_n$.
+Pak \textit{Eulerova metoda} řešení SDR je definována rekurzívním vztahem
 \begin{equation}
 X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n,
 \end{equation}
-kde $\Delta_n=t_{n+1}-t_n$ a $\Delta W_n=W(t_{n+1})-W(t_n)$.
+kde $\Delta_n=\int_{t_n}^{t_{n+1}}\mathrm{d}t=t_{n+1}-t_n$ je délka časového intervalu $(t_n,t_{n+1})$
+a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ v čase $(t_n,t_{n+1})$.
+
+Zobecníme-li Eulerovu metodu pro soustavu $m$ stochastických diferenciálních rovnic, pak vztah pro $i$-tou složku rovnice je definován předpisem
+\begin{equation}
+X_{n+1}^i=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\Delta W_n^j,
+\end{equation}
+kde $\boldsymbol{X}$ je $m$-rozměrný Wienerův proces.
+\end{definice}
+
+Důležitou problematikou při používání numerických metod je způsob výpočtu $\Delta W_n$.
+Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, t-s)$.
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}

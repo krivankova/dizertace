@@ -586,14 +586,15 @@ Základním principem numerických metod je diskretizace pro\-měnných.
 Numerická metoda určí aproximaci řešení v diskrétních časových hodnotách a spojitou aproximaci řešení získáme použitím interpolačních metod.
 
 \subsubsection{Eulerova metoda}
-Uvažujme SDR definovanou vztahem \ref{SDR_def}.
+Uvažujme It\^oův proces $X(t)$, který je řešením SDR definované vztahem \ref{SDR_def}.
 Nechť $\{t_n\}_{n=0}^N\subseteq T$ je časová posloupnost, kde pro všechna $i$ platí $t_n<t_{n+1}$.
+Tato  posloupnost se nazývá \textit{diskretizace} časové proměnné.
 V Eulerově metodě diferenciál $\mathrm{d}X(t)$ aproximujeme přírůstkem stochastického procesu $\Delta X_n=X(t_{n+1})-X(t_n)$.
 Hodnota $X(t_{n+1})$ je aproximována hodnotou v předcházejícím časovém kroku $X(t_{n})$.
-\begin{definice}
-Nechť $X_n$ značí aproximaci řešení $X(t_{n})$ SDR \ref{SDR_def} v čase $t_n$.
+\begin{definice}\label{Euler_def}
+Nechť $X_n$ značí aproximaci řešení $X(t_{n})$ stochastické diferenciální rovnice \ref{SDR_def} v čase $t_n$.
 Pak \textit{Eulerova metoda} řešení SDR je definována rekurzívním vztahem
-\begin{equation}
+\begin{equation}\label{Euler}
 X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n,
 \end{equation}
 kde $\Delta_n=\int_{t_n}^{t_{n+1}}\mathrm{d}t=t_{n+1}-t_n$ je délka časového intervalu $(t_n,t_{n+1})$
@@ -606,6 +607,9 @@ X_{n+1}^i=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t
 kde $\boldsymbol{X}$ je $m$-rozměrný Wienerův proces.
 \end{definice}
 
+\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq T$ splňuje vztah \ref{Euler}.
+
+Většinou se předpokládá, že časová posloupnost $\{t_n\}_{n=0}^N\subseteq T$ je ekvidistantní. 
 Důležitou problematikou při používání numerických metod je způsob výpočtu $\Delta W_n$.
 Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, t-s)$.
 
@@ -1060,7 +1064,7 @@ Neobejdeme se tedy bez použití numerických metod.
 
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
-
+%\begin{comment}
 \chapter{Credit Valuation Adjustment}
 
 Nedílnou součástí řízení banky je řízení bankovních rizik.
@@ -1182,7 +1186,7 @@ kde $C(t)$ je hodnota zajištění (které banka přijala) v čase $t$.
 
 %\section{Poznámky CVA}
 
-
+%\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

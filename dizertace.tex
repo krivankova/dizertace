@@ -329,6 +329,8 @@ CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahr
 
 %V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
 
+%%%%%%%%%%%%%%%%%%{Stochastická analýza}
+
 \chapter{Stochastická analýza}
 %\chapter{Teoretická východiska}
 %\begin{comment}
@@ -466,6 +468,7 @@ Jestliže $0\leq s<t$, pak
 \end{align*}
 To znamená, že Wienerův proces není slabě stacionární.
 
+Při modelování ve finanční matematice často využíváme procesy odvozené z Wienerova procesu uvedené v následujících definicích.
 \begin{definice}[Wienerův proces s driftem]
 Stochastický proces $X(t)$ definovaný 
 $$X(t)  = \mu t + \sigma W (t)$$
@@ -552,6 +555,12 @@ Jeho stochastický diferenciál má tvar
 \mathrm{d}Y=\frac{\partial g}{\partial t}\mathrm{d}t+\frac{\partial g}{\partial x}\,\mathrm{d}X+\frac12\frac{\partial^2 g}{\partial x^2}(\mathrm{d}X)^2=\left[\frac{\partial g}{\partial t}+\frac{\partial g}{\partial x}U+\frac12\frac{\partial^2 g}{\partial x^2}V^2\right]\mathrm{d}t+\frac{\partial g}{\partial x}V\mathrm{d}W.
 \end{alignat*}
 \end{veta}
+
+\subsection{Ornstein–Uhlenbeckův proces}
+
+ $$x_t = x_0 e^{-\theta t} + \mu(1-e^{-\theta t}) + \int_0^t \sigma e^{\theta (s)}\, \mathrm{d}W_s. \, $$
+
+%%%%%%%%%%%%%%%%%%{Stochastické diferenciální rovnice}
 
 \section{Stochastické diferenciální rovnice}
 \subsection{Úvod do teorie stochastických diferenciálních rovnic}

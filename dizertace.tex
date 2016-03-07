@@ -9,6 +9,7 @@
   \usepackage[czech]{babel}
   \usepackage[utf8]{inputenc}
   \usepackage{comment}
+  \usepackage{xcolor}
 
 \usepackage{url}  %kvuli vkladani URL adres do bibtexu ale asi jen ve stylu CZECHISO
 \DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>} \urlstyle{tt}}
@@ -277,10 +278,13 @@ $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces
 %
 
 
-\chapter{Úvod}
+\chapter*{Úvod}\addcontentsline{toc}{chapter}{Úvod} 
+%\chapter{Úvod}
 \pagestyle{plain}
 \setcounter{page}{1}
 \pagenumbering{arabic}
+
+
 
 \begin{comment}
 Klasická kniha o Stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}\\%
@@ -357,7 +361,7 @@ V roce 1905 Einstein aplikuje Brownův pohyb ve svém článku zabývajícím se
 O rok později Smoluchowski prezentuje článek \cite{Smoluchowski}, který se stane důležitým základem teorie náhodných procesů zvláště rovnice difúze.
 Tyto teorie následně experimentálně ověřil Jean Baptiste Perrin a za tento úspěch byl v roce 1926 oceněn Nobelovou cenou za fyziku. 
 
-V neposlední řadě chceme zmínit význam amerického matematika Norberta Wienera, který dokázal existenci stochastického procesu používaného k popisu Brownova pohybu. 
+V neposlední řadě chceme zmínit význam amerického matematika Norberta Wienera, který dokázal existenci stochastického procesu používaného k popisu Brownova pohybu \cite{wiener1923differential}. 
 Tento proces nese jeho jméno a je využíván v~mnoha různých odvětvích.
 
 %\subsection{Stochastický proces}
@@ -468,20 +472,33 @@ Jestliže $0\leq s<t$, pak
 \end{align*}
 To znamená, že Wienerův proces není slabě stacionární.
 
-Při modelování ve finanční matematice často využíváme procesy odvozené z Wienerova procesu uvedené v následujících definicích.
+Ceny aktiv na finačních trzích se podle teorie dokonalých trhů chovají zcela náhodně a nezávisle na předchozím vývoji.
+Wienerův proces se tedy nabízí jako vhodný nástroj k popisu chování cen aktiv.
+Při modelování ve finanční matematice využíváme procesy, které jsou zobecněním či modifikací Wienerova procesu. 
+Uvažujme proces s nenulovým parametrem růstu, označovaným jako drift, a parametrem variability, jenž odpovídá směrodatné odchylce
+procesu.
 \begin{definice}[Wienerův proces s driftem]
 Stochastický proces $X(t)$ definovaný 
-$$X(t)  = \mu t + \sigma W (t)$$
+$$X(t)  = \mu t + \sigma W (t),$$
+kde $\mu$ a $\sigma$ jsou konstanty,
 se nazývá \textit{Wienerův proces  s driftem} $\mu$ a volatilitou $\sigma$.
 \end{definice}
+Pokud bychom chtěli využít tento proces k modelování cen podkladových aktiv, setkáme se s dvěma problémy.
+Nejenže Wienerův proces s driftem může nabývat záporných hodnot, což je v rozporu s realitou chování cen podkladových aktiv, ale navíc by se model nechoval stejně při různých absolutních cenách aktiv. 
+Aktivum s nižší současnou cenou by mělo větší riziko a také vyšší očekávaný výnos než aktivum s vyšší cenou.
+Proto chceme proces upravit tak, aby absolutní očekávaný výnos a výše směrodatné odchylky byly proporcionální k ceně podkladového aktiva. 
 
+Nejrozšířenější modifikací Wienerova procesu splňující tyto požadavky je Geometrický Wienerův proces, který zavedl Paul Samuelson \cite{samuelson1964rational}.
+K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
 \begin{definice}[Geometrický Wienerův proces]
 Stochastický proces $S(t)$ definovaný 
 $$\frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t)$$
 se nazývá \textit{geometrický Wienerův proces}.
 \end{definice}
+Člen $\mathrm{d}W(t)$ je infinitezimální přírůstek Wienerova procesu a $\mathrm{d}t$ je infinitezimální změna času.
 
 \subsection{It\^oův proces}
+??
 \begin{definice}
 Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
 Řekneme, že stochastický proces $\{f(t,\omega):t\ge~0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
@@ -496,22 +513,32 @@ Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):[0
 \end{enumerate}
 \end{definice}
 
-\begin{definice}
+\begin{definice}[It\^oův proces]
 Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
 \textit{It\^oův proces} je stochastický proces
 $$X(t,\omega)=\int_0^tU(s,\omega)\mathrm{d}s+\int_0^tV(s,\omega)\mathrm{d}W(s,\omega),$$
-kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do třídy $M$.
+kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do třídy $M$,
+první integrál je Lebesgueův a druhý It\^oův (který je definován v kapitole \ref{Ito_integral}).
 
 Často se používá diferenciální tvar, nazývaný \textit{stochastický diferenciál},
 $$\mathrm{d}X(t,\omega)=U(t,\omega)\mathrm{d}t+V(t,\omega)\mathrm{d}W(t,\omega).$$
 \end{definice}
 
-\section{It\^oův integrál a It\^oovo lemma}
+\subsection{Ornstein–Uhlenbeckův proces}
+Mean reversion jsou procesy, ve kterých se náhodná veličina vrací k dlouhodobé rovnovážné
+hodnotě. Používají se zvláště pro modely úrokových sazeb. V následujícím textu jsou
+uvedeny nejčastěji užívané procesy.
+\begin{definice}[Ornstein–Uhlenbeckův proces]
+ $$X_t = X_0 \mathrm{e}^{-\theta t} + \mu(1-\mathrm{e}^{-\theta t}) + \int_0^t \sigma \mathrm{e}^{\theta (s)}\, \mathrm{d}W_s. \, $$
+\end{definice}
+
+
+\section{It\^oův integrál a It\^oovo lemma}\label{Ito_integral}
 
 \subsection{It\^oův integrál}
-Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál.
+Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též stochastický integrál).
 Jeho zavedení je vyžadováno nediferencovatelností Wienerova procesu.
-Budeme ho definovat obdobným způsobem jako Riemannův integrál.
+Stochastický integrál budeme konstruovat obdobným způsobem jako Riemannův integrál.
 Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
 
 \begin{definice}
@@ -544,6 +571,7 @@ $$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d
 \subsection{It\^oovo lemma}
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
 It\^oovo lemma říká, že It\^oovy procesy tvoří uzav\-ře\-nou třídu vzhledem ke skládání s hladkými funkcemi.
+Tento důležitý vztah stochastické analýzy můžeme považovat za obdobu Taylorova rozvoje v integrálním počtu.
 
 \begin{veta}[It\^oovo lemma]
 Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
@@ -556,9 +584,7 @@ Jeho stochastický diferenciál má tvar
 \end{alignat*}
 \end{veta}
 
-\subsection{Ornstein–Uhlenbeckův proces}
 
- $$x_t = x_0 e^{-\theta t} + \mu(1-e^{-\theta t}) + \int_0^t \sigma e^{\theta (s)}\, \mathrm{d}W_s. \, $$
 
 %%%%%%%%%%%%%%%%%%{Stochastické diferenciální rovnice}
 
@@ -623,6 +649,21 @@ Důležitou problematikou při používání numerických metod je způsob výpo
 Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, t-s)$.
 
 %\end{comment}
+%%%%%%%%%%%%%%%%%%{Teorie portfolia}
+
+%\chapter{Stochastické modelování úrokových sazeb}
+
+%%%%%%%%%%%%%%%%%%{Stochastické modelování úrokových sazeb}
+
+\section{Stochastické modelování úrokových sazeb}
+Na rozdíl od akcií má chování úrokových sazeb určité zvláštnosti
+Úrokové sazby se pohybují v určitém rozmezí; obvykle nerostou do nekonečna ani neklesají pod nulu.
+Úrokové sazby mají tendenci se vracet k určité rovnovážné hodnotě.
+Tento fenomén se nazývá „mean reversion“.
+Stochastické modely, které popisují chování úrokových sazeb musí tedy brát v úvahu výše uvedené vlastnosti.
+
+
+
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
 \chapter{Teorie portfolia}
@@ -1198,12 +1239,19 @@ Diskontní míra je procentní sazba, kterou se diskontuje budoucí hodnota na s
 Diskontovaná hodnota je současná hodnota. Je to jedna z metod hodnocení investic, kdy se budoucí výnosy převádějí na hodnotu, kterou by měly dnes.
 Diskontování je postup, kdy jsou přepočteny (diskontovány) budoucí výnosy v jednotlivých obdobích na současnou hodnotu a sečteny s použitím diskontní míry (obvyklá výnosová míra).
 
+\subsection{Pravděpodobnost selhání}
+
+Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s jakou pravděpodobností dojde k selhání klienta během jednoho roku.
+
 %\subsection{Modely zajištění}
 
 %\section{Poznámky CVA}
 
 %odhad parametrů – proces hledání hodnot parametrů, které vedou k co nejlepší shodě výsledků modelu s měřenými daty pomocí některé ze statistických metod 
 %kalibrace – totéž jako odhad parametrů, ale ne nezbytně pomocí statistických metod
+
+
+%Čím horší je bonita klienta .... viz GoogleDisk
 
 
 %\end{comment}

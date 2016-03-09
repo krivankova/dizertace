@@ -7,7 +7,12 @@
   \usepackage{amsthm}
   \usepackage{epstopdf} %pokud pouzivam .eps obrazky, ale chci prekladat pdflatexem 
   \usepackage[czech]{babel}
-  \usepackage[utf8]{inputenc}
+  \usepackage[utf8]{inputenc} %pro vstupní kódování  
+  %\usepackage[utf8x]{inputenc} %pro vstupní kódování  umožní více jazyků, ale má jiné problémy
+  \usepackage[T1]{fontenc} %pro výstupní kódování fontů (pro UTF8), aby fungovalo dělení slov s diakritikou a vyhledávání slov s diakritikou
+  %\usepackage[IL2]{fontenc} %pro výstupní kódování fontů (pro latin2, ale obsahuje víc fontů než [T1]), aby fungovalo dělení slov s diakritikou a vyhledávání slov s diakritikou
+  \usepackage{lmodern} %balíček zavádějící fonty Latin Modern. Bez něj se použijí starší, tzv. EC fonty, jejichž typografická úroveň je v případě češtiny nízká
+  %\usepackage{palatino} % Font Palatino alternativa k \usepackage{lmodern} 
   \usepackage{comment}
   \usepackage{xcolor}
 
@@ -23,7 +28,8 @@
       colorlinks   = true, %Colours links instead of ugly boxes
       urlcolor     = blue, %Colour for external hyperlinks
       linkcolor    = red, %Colour of internal links
-      citecolor   = red %Colour of citations
+      citecolor   = red, %Colour of citations
+      unicode=true % zajistí správné fungování háčků a čárek (češtiny) v PDF obsahu
     }
   \date{\today}
   \usepackage{minibox}
@@ -52,12 +58,13 @@
 \newtheorem*{poznamka}{Poznámka}
 \newtheorem*{reseni}{Řešení}  
 
+%\newcommand{\uv}[1]{\quotedblbase #1\textquotedblleft} %makro pro české uvozovky
 
 
 \newcommand{\specialcell}[2][c]{%
 \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
 
-
+%\usepackage{encxvlna} %při překladu automaticky uvažuje nezlomitelné mezery dle pravidel češtiny (nahrazuje program vlna.exe)
 
 \begin{document}
 \titlepage
@@ -284,6 +291,9 @@ $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
+
+příliš žluťoučký kůň úpěl ďábelské ódy
+
 %Wienerův proces využívaný za účelem modelování chování cen aktiv a finančních instrumentů.
 
 \begin{comment}
@@ -352,13 +362,13 @@ Ve zmiňované literatuře je možno nalézt další podrobnosti.
 Stochastické procesy slouží k popisu dynamiky náhodných jevů a jejich příklady nacházíme v mnoha vědeckých oborech.
 Mezi nejznámější patří Brownův pohyb pevných částic, difúze a bílý šum.
 
-Základy teorie stochastických procesů byly položeny na konci de\-va\-te\-náctého století.
+Základy teorie stochastických procesů byly položeny na konci devatenáctého století.
 První zmínky popisu Brownova pohybu najdeme v článku dánského matematika Thorvalda Nicolaie Thielea z roku 1880 o metodě nejmenších čtverců.
 V roce 1900 Louis Bachelier ve své disertační práci \cite{bachelier} používá Brownův pohyb k popisu pohybu cen akcií na trhu.
 Díky ní je Bachelier uznávaný jako zakladatel kvantitativních metod ve finanční matematice.
 
 Nezávisle na této práci popisují matematicky Brownův pohyb také fyzici Albert Einstein a Marian Smoluchowski. 
-V roce 1905 Einstein aplikuje Brownův pohyb ve svém článku zabývajícím se molekulárně-kinetickou teorií tepla \cite{einstein}.
+V roce 1905 Einstein aplikuje Brownův pohyb ve svém článku zabývajícím se molekulárně kinetickou teorií tepla \cite{einstein}.
 O rok později Smoluchowski prezentuje článek \cite{Smoluchowski}, který se stane důležitým základem teorie náhodných procesů zvláště rovnice difúze.
 Tyto teorie následně experimentálně ověřil Jean Baptiste Perrin a za tento úspěch byl v roce 1926 oceněn Nobelovou cenou za fyziku. 
 
@@ -368,7 +378,7 @@ Tento proces nese jeho jméno a je využíván v~mnoha různých odvětvích.
 \subsection{Stochastický proces}
 V této části práce definujeme stochastický proces a některé jeho zajímavé vlastnosti.
 \begin{definice}[Stochastický proces]
-Uvažujme  indexovou množinu $T$ a prav\-dě\-po\-dob\-nostní prostor $(\Omega,\mathcal{A}, \mathsf{Pr})$.
+Uvažujme  indexovou množinu $T$ a pravděpodobnostní prostor $(\Omega,\mathcal{A}, \mathsf{Pr})$.
 \textit{Stochastický proces} $X(t,\omega)$ je funkce dvou proměnných $X:T\times\Omega\to\mathbb{R}$, kde
 \begin{itemize}
 \item $X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in T$ náhodná veličina,
@@ -431,7 +441,7 @@ Procesy, které nejsou striktně stacionární, se nazývají evoluční.
 \begin{definice}[Nezávislost přírůstků stochastického procesu]
 Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě tehdy, když pro všechny časové posloupnosti $\{t_i\}\subseteq T$, kde $t_i<t_{i+1}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
 \end{definice}
-K popisu pravděpodobnostního chování stochastického procesu s ne\-zá\-vislými přírůstky je tedy dostačující znát distribuční funkci náhodné veličiny $X(t)$ a přírůstku stochastického procesu $X(t)-X(s)$, %pro pevně zvolené $t$ a $s$
+K popisu pravděpodobnostního chování stochastického procesu s nezávislými přírůstky je tedy dostačující znát distribuční funkci náhodné veličiny $X(t)$ a přírůstku stochastického procesu $X(t)-X(s)$, %pro pevně zvolené $t$ a $s$
 kde $t>s$.
 
 \begin{definice}[Spojitost stochastického procesu]
@@ -452,7 +462,7 @@ s pravděpodobností jedna má spojitou trajektorii a zároveň je nediferencova
 Wienerův proces je základním stavebním kamenem pro konstrukci stochastického integrálu.
 
 \begin{definice}
-Reálný stochastický proces $\{W(t):t\ge0\}$ na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
+Reálný stochastický proces $\{W(t):t\ge0\}$ na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
 \begin{enumerate}
 \item[1.]$W(0)=0$, 
 \item[2.](spojitost trajektorií Wienerova procesu) s pravděpodobností jedna je funkce $t\to W(t)$ spojitá v $t$,
@@ -490,32 +500,30 @@ Proto chceme proces upravit tak, aby absolutní očekávaný výnos a výše sm�
 
 Nejběžnější modifikací Wienerova procesu splňující tyto požadavky je Geometrický Wienerův proces, který zavedl Paul Samuelson \cite{samuelson1964rational}.
 K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
-\begin{definice}[Geometrický Wienerův proces]%\label{Geometrický_Wienerův_proces}
+\begin{definice}[Geometrický Wienerův proces]\label{Geometricky_Wieneruv_proces}
 Stochastický proces $S(t)$, který je řešením stochastické diferenciální rovnice
-\begin{equation}%\label{SDE_GWP}
+\begin{equation}\label{SDE_GWP}
 \frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t), 
 \end{equation}
 kde  $\mu$ a $\sigma$ jsou konstanty a $W (t)$ je Wienerův proces,
 se nazývá \textit{Geometrický Wienerův proces}.
 
 Toto řešení můžeme vyjádřit následovně
-\begin{equation}%\label{GWP}
+\begin{equation}\label{GWP}
 S(t) = S(0)\mathrm{e}^{X(t)},
 \end{equation}
 kde $X(t) = (\mu - \frac{\sigma^2}{2}) t + \sigma W (t)$ je Wienerův proces s driftem.
 \end{definice}
-Člen $\mathrm{d}W(t)$ ve stochastické diferenciální rovnici %\ref{SDE_GWP} 
-označuje infinitezimální přírůstek Wienerova procesu a $\mathrm{d}t$ je infinitezimální změna času.
+Člen $\mathrm{d}W(t)$ ve stochastické diferenciální rovnici \eqref{SDE_GWP} označuje infinitezimální přírůstek Wienerova procesu a $\mathrm{d}t$ je infinitezimální změna času.
 
-Z definice %\ref{Geometrický_Wienerův_proces} 
-je zřejmé, že Geometrický Wienerův proces nabývá pouze kladných hodnot a jeho relativní přírůstky jsou nezávislé a mají stejné rozdělení. 
+Z definice \ref{Geometricky_Wieneruv_proces} je zřejmé, že Geometrický Wienerův proces nabývá pouze kladných hodnot a jeho relativní přírůstky jsou nezávislé a mají stejné rozdělení. 
 Kromě toho se s tímto procesem docela snadno pracuje ve výpočtech. 
 Díky těmto vlastnostem se stal nejrozšířenějším model chování cen aktiv ve finanční matematice.
 
 \subsection{It\^oův proces}
 ??
 \begin{definice}
-Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
 Řekneme, že stochastický proces $\{f(t,\omega):t\ge~0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
 \end{definice}
 
@@ -589,7 +597,7 @@ $$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d
 
 \subsection{It\^oovo lemma}
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
-Říká, že It\^oovy procesy tvoří uzav\-ře\-nou třídu vzhledem ke skládání s hladkými funkcemi.
+Říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
 \begin{veta}[It\^oovo lemma]
 Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
 $$\mathrm{d}X=U\mathrm{d}t+V\mathrm{d}W.$$
@@ -634,21 +642,21 @@ X^i(t_0)&=X^i_0.\notag
 \end{align}
 \end{definice}
 
-\subsection{Numerické metody řešení stochastických di\-fe\-ren\-ciálních rovnic}
+\subsection{Numerické metody řešení stochastických diferenciálních rovnic}
 %citace: Peter E. Kloeden Eckhard Platen Henri Schurz Numerical Solution of SDE Through Computer Experiments
 %An Introduction to Stochastic Processes with Applications to Biology Linda J. S. Allen
 Numerické metody využíváme v případě kdy není možno určit řešení SDR analyticky.
-Základním principem numerických metod je diskretizace pro\-měnných.
+Základním principem numerických metod je diskretizace proměnných.
 Numerická metoda určí aproximaci řešení v diskrétních časových hodnotách a spojitou aproximaci řešení získáme použitím interpolačních metod.
 
 \subsubsection{Eulerova metoda}
-Uvažujme It\^oův proces $X(t)$, který je řešením SDR definované vztahem \ref{SDR_def}.
+Uvažujme It\^oův proces $X(t)$, který je řešením SDR definované vztahem \eqref{SDR_def}.
 Nechť $\{t_n\}_{n=0}^N\subseteq T$ je časová posloupnost, kde pro všechna $i$ platí $t_n<t_{n+1}$.
 Tato  posloupnost se nazývá \textit{diskretizace} časové proměnné.
 V Eulerově metodě diferenciál $\mathrm{d}X(t)$ aproximujeme přírůstkem stochastického procesu $\Delta X_n=X(t_{n+1})-X(t_n)$.
 Hodnota $X(t_{n+1})$ je aproximována hodnotou v předcházejícím časovém kroku $X(t_{n})$.
 \begin{definice}\label{Euler_def}
-Nechť $X_n$ značí aproximaci řešení $X(t_{n})$ stochastické diferenciální rovnice \ref{SDR_def} v čase $t_n$.
+Nechť $X_n$ značí aproximaci řešení $X(t_{n})$ stochastické diferenciální rovnice \eqref{SDR_def} v čase $t_n$.
 Pak \textit{Eulerova metoda} řešení SDR je definována rekurzívním vztahem
 \begin{equation}\label{Euler}
 X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n,
@@ -663,7 +671,7 @@ X_{n+1}^i=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t
 kde $\boldsymbol{X}$ je $m$-rozměrný Wienerův proces.
 \end{definice}
 
-\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq T$ splňuje vztah \ref{Euler}.
+\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq T$ splňuje vztah \eqref{Euler}.
 
 Většinou se předpokládá, že časová posloupnost $\{t_n\}_{n=0}^N\subseteq T$ je ekvidistantní. 
 Důležitou problematikou při používání numerických metod je způsob výpočtu $\Delta W_n$.
@@ -747,7 +755,7 @@ Riziko portfolia je dalším faktorem pro výběr portfolia v~Markowitzově teor
 Základy klasické teorie portfolia položil Harry Markowitz svým článkem v roce 1952 \cite{markowitz}, ve kterém upozornil na nutnost zohledňovat při výběru portfolia nejenom očekávanou výnosnost, ale i riziko změny výnosnosti.
 Jeho největším přínosem bylo kvantifikování očekávaného výnosu a rizika portfolia. 
 Dalším přínosem byl matematický důkaz výhod diverzifikace, které byly do té doby chápány pouze intuitivně.
-Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos-riziko, zavedl pojem \textit{efektivní množina portfolií}, ze které investor vybírá optimální portfolio pomocí indiferenčních křivek popisujících investorův vztah k riziku.
+Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos -- riziko, zavedl pojem \textit{efektivní množina portfolií}, ze které investor vybírá optimální portfolio pomocí indiferenčních křivek popisujících investorův vztah k riziku.
 
 V roce 1958 rozšířil James Tobin \cite{tobin} Markowitzův model o možnost investování do bezrizikového aktiva.
 \textit{Bezrizikové aktivum} má jistý výnos a tedy nulové riziko.
@@ -756,8 +764,8 @@ V bodě dotyku pak leží tzv. tangenciální portfolio.
 Postup investora při hledání optimálního portfolia shrnuje Tobinův separační teorém, který se později vžil v souvislosti s CAPM, který bude popsán v další části.% \ref{kapitola_CAPM}.
 Investor prvně určí tangenciální portfolio a následně ho zkombinuje s bezrizikový aktivem podle svých rizikových preferencí.
 
-%\subsection{Kapitálový model aktiv - CAPM}\label{kapitola_CAPM}
-\textit{Capital Asset Pricing Model} (CAPM) vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe1964}, Lintner \cite{lintner1965} a Mossin \cite{mossin1966} v letech 1964-1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
+%\subsection{Kapitálový model aktiv -- CAPM}\label{kapitola_CAPM}
+\textit{Capital Asset Pricing Model} (CAPM) vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe1964}, Lintner \cite{lintner1965} a Mossin \cite{mossin1966} v letech 1964--1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
 Zároveň vychází z Tobinova modelu, protože zahrnuje bezrizikové aktivum.
 CAPM stojí na několika výchozích předpokladech, které se dají shrnout do následujících třech:
 \begin{itemize}
@@ -780,17 +788,17 @@ Důležitým důsledkem pak je, že váha každého cenného papíru v tržním 
 %%%%%%%%%%%%%%%%%%%%%%%%{Dynamická teorie portfolia}
 
 \section{Dynamická teorie portfolia}
-Hlavní výhodou dynamického modelu pro výběr aktiv v portfoliu je při\-způsobování se měnícím se podmínkám trhu a proto je více realistický než model statický.
+Hlavní výhodou dynamického modelu pro výběr aktiv v portfoliu je přizpůsobování se měnícím se podmínkám trhu a proto je více realistický než model statický.
 Naproti tomu je dynamický model komplikovanější, hůře interpretovatelný a při jeho využití se nevyhneme složitější matematické teorii, kterou je stochastický kalkul.
 
 \subsection{Matematický úvod}
 Na tomto místě připomeneme některé základní pojmy ze stochastické analýzy a značení obvykle užívané v dynamické teorii portfolia. 
 
 \begin{definice}
-Stochastický proces $\{W(t):t\ge0\}$ definovaný na pravdě\-podob\-nostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{standardní (jednorozměrný) Wienerův proces} právě tehdy, když jsou splněny následující podmínky
+Stochastický proces $\{W(t):t\ge0\}$ definovaný na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{standardní (jednorozměrný) Wienerův proces} právě tehdy, když jsou splněny následující podmínky
 \begin{enumerate}
 \item[1.]$W(0)=0$, 
-\item[2.]funkce $t\to W(t)$ (trajektorie Wienerova procesu) je spojitá s pravdě\-podob\-ností jedna,
+\item[2.]funkce $t\to W(t)$ (trajektorie Wienerova procesu) je spojitá s pravděpodobností jedna,
 \item[3.]proces $\{W(t):t\ge0\}$ má nezávislé přírůstky, 
 \item[4.]pro všechna $t\ge s\ge0$ jsou přírůstky $W(t)-W(s)$ normálně rozdělené se střední hodnotou nula a rozptylem $t-s$.
 \end{enumerate}
@@ -864,7 +872,7 @@ Označme $w_{j}(i,t)$ optimální objem prostředků investovaných do aktiva $j
 Nechť $\boldsymbol{w}(i,t)=(w_{1}(i,t),\dots,w_{n}(i,t))$ představuje optimální alokaci prostředků investora $i$ držených v portfoliu všech aktiv.
 Funkce $w_{j}(i,t)$ tedy zohledňuje (rizikové) preference investora $i$ v čase $t$.
   
-Nyní můžeme definovat dynamickou tržní rovnováhu jako stav, kdy  na\-bíd\-ka a poptávka jsou v dokonalé rovnováze v každém čase $t$.
+Nyní můžeme definovat dynamickou tržní rovnováhu jako stav, kdy  nabídka a poptávka jsou v dokonalé rovnováze v každém čase $t$.
 Tento stav se také nazývá \textit{vyčištění trhu}.
          
 \begin{definice}[Dynamická tržní rovnováha]
@@ -873,7 +881,7 @@ $$\sum_{i\in I} w_{j}(i,t)=N_j(t)P_j(t)=V_j(t).$$
 Tyto ceny budeme nazývat \textit{rovnovážné ceny}.
 \end{definice}
 
-Důsledek Tobinova separačního teorému shrňme jako vlastnost pro pro\-střed\-ky investované do portfolia, kterou budeme dále využívat v~důkazu inkonzistence předpokladů spojitého modelu pro ceny aktiv.
+Důsledek Tobinova separačního teorému shrňme jako vlastnost pro prostředky investované do portfolia, kterou budeme dále využívat v~důkazu inkonzistence předpokladů spojitého modelu pro ceny aktiv.
 \begin{definice}\label{vlastnost_separace}[Vlastnost separace]
 Vektorová funkce pro optimální alokaci investorových prostředků do všech aktiv na trhu $\boldsymbol{w}(i,t)$ respektuje \textit{vlastnost separace} právě tehdy, když existuje vektor $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ takový, že $\sum_{j=1}^nX_j=1$, a existují skalární parametry $\lambda(i,t)$ takové, že
 $$\boldsymbol{w}(i,t)=\lambda(i,t)\boldsymbol{X},$$
@@ -886,7 +894,7 @@ Budeme-li předpokládat rovnováhu na trhu a stacionaritu distribuční funkce 
 
 \begin{veta} \label{T1}
 Nechť $\boldsymbol{P}(t)$ pro všechny $t\in T$  jsou rovnovážné ceny.
-Dále před\-pokládejme, že na trhu platí vlastnost separace (definice \ref{vlastnost_separace}).
+Dále předpokládejme, že na trhu platí vlastnost separace (definice \ref{vlastnost_separace}).
 Pak
 \begin{equation}\label{T1_eq}
 \mathsf{Pr}\left(\frac{N_j(s)P_j(s)}{N_j(t)P_j(t)}=\frac{N_k(s)P_k(s)}{N_k(t)P_k(t)}\right)=1
@@ -907,12 +915,12 @@ Předpoklad dynamické rovnováhy na trhu dává
 \end{equation}
 pro všechny časy $t\in T$ a pro každé aktivum $j$.
 
-Dosazením vztahu (\ref{CSW}) do rovnice (\ref{E}) a vzhledem k tomu, že váhy $X_j$ jsou stejné pro všechny investory $i\in I$, dostáváme
+Dosazením vztahu \eqref{CSW} do rovnice \eqref{E} a vzhledem k tomu, že váhy $X_j$ jsou stejné pro všechny investory $i\in I$, dostáváme
 $$N_j(t)P_j(t)=\sum_{i\in I}\lambda(i,t)X_j=X_j\sum_{i\in I}\lambda(i,t).$$
 Proto platí
 $$\frac{N_j(t)P_j(t)}{N_k(t)P_k(t)}=\frac{X_j\sum_{i\in I}\lambda(i,t)}{X_k\sum_{i\in I}\lambda(i,t)}=\frac{X_j}{X_k},$$
 což je nezávislé na čase $t$.         
-Z tohoto tvrzení zřejmě plyne vztah (\ref{T1_eq}).
+Z tohoto tvrzení zřejmě plyne vztah \eqref{T1_eq}.
 \end{proof}
 
 \begin{dusledek}\label{OR_dusledek}
@@ -994,7 +1002,7 @@ Na trhu s $m$ podkladovými aktivy uvažujme dvě portfolia (neboli dva fondy) a
 Množinu všech investorů označme $I$ a pro každého investora uvažujme jeho rizikové preference, které určují jeho optimální portfolio, a popišme je pomocí parametrů $\alpha_i(t)$ a $\beta_i(t)$.
 Optimální portfolio $i$-tého investora bude zahrnovat $\alpha_ia_j+\beta_ib_j$ množství $j$-té akcie.
 
-Váhy $\boldsymbol{a}$ a  $\boldsymbol{b}$ dvou uvažovaných fondů závisí pouze na očekávaných vý\-nos\-nostech a riziku podkladových aktiv na trhu, které jsou v čase konstantní dle předpokladu \ref{predpoklad_konstantnosti_vynosu_a_rizika}.
+Váhy $\boldsymbol{a}$ a  $\boldsymbol{b}$ dvou uvažovaných fondů závisí pouze na očekávaných výnosnostech a riziku podkladových aktiv na trhu, které jsou v čase konstantní dle předpokladu \ref{predpoklad_konstantnosti_vynosu_a_rizika}.
 Parametry $\alpha_i(t)$ a $\beta_i(t)$ závisí na individuálních preferencích jednotlivých investorů (např. rizikové preference nebo objem investic) a můžou se lišit. Tyto preference se mohou v čase měnit a tak parametry mohou záviset i na čase.
 
 Označme $A(t)$ součet všech parametrů $\alpha_i(t)$ pro všechny investory a analogicky $B(t)$ součet parametrů $\beta_i(t)$ .
@@ -1050,13 +1058,13 @@ Avšak to je v rozporu z předpokladem \ref{predpoklad_hodnost}, pokud uvažujem
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Spojitý rovnovážný model s očekávanou výnos\-ností závislou na ceně aktiva }
+\section{Spojitý rovnovážný model s očekávanou výnosností závislou na ceně aktiva }
 V kapitolách \ref{paradox} a \ref{john} jsme ukázali, že v teorii portfolia běžně používaný dynamický model není konzistentní.
 Proto se chceme pokusit navrhnout takový model, který by nebyl touto inkonzistencí předpokladů zatížen.
 Uvažujme tedy spojitý model, který bude mít méně omezující předpoklady než Mertonův modelu.
 Model, který předkládáme v této kapitole, předpokládá rovnováhu na trhu, nicméně očekávaná míra výnosnosti není konstantní v čase.
 
-Na základě poznatků z teorie portfolia budeme hledat vztah mezi oče\-ká\-vanou výnosností a cenou aktiva, který bychom mohli použít v modelu.
+Na základě poznatků z teorie portfolia budeme hledat vztah mezi očekávanou výnosností a cenou aktiva, který bychom mohli použít v modelu.
 Nechť $\boldsymbol{P}$ je vektor cen $n$ podkladových aktiv.
 Předpokládejme, že tyto ceny se řídí následující stochastickou diferenciální rovnicí (SDR):
 \begin{equation} \label{SDE}
@@ -1070,7 +1078,7 @@ Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním port
 \end{equation}
 kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv (viz \cite{fabozzi}).
 
-Uvažujme o řešitelnosti a počtu řešení soustavy rovnic (\ref{vahy}), kterou upravíme
+Uvažujme o řešitelnosti a počtu řešení soustavy rovnic \eqref{vahy}, kterou upravíme
 \begin{equation} \label{hodnost}
 \left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}=0.
 \end{equation}
@@ -1078,7 +1086,7 @@ Kovarianční matice je plné hodnosti, tedy i matice $\boldsymbol{\Sigma}^{-1}$
 Naproti tomu, díky předpokladu $\sum_{j=1}^nX_j=1$, má matice $\left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)$ lineárně závislé řádky, jelikož
 součet libovolných $n-1$ řádků matice  je roven záporné hodnotě zbývajícího řádku.
 Dá se tedy dokázat, že tato matice má hodnost $n-1$.
-To znamená, že soustava rovnic (\ref{hodnost}) má nekonečně mnoho řešení vzhledem k $\mu$.
+To znamená, že soustava rovnic \eqref{hodnost} má nekonečně mnoho řešení vzhledem k $\mu$.
 Dále hledejme nějaké partikulární řešení této soustavy rovnic.
 
 Jak jsme ukázali v kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám podkladových aktiv v tržním portfoliu, tedy
@@ -1087,23 +1095,23 @@ Jak jsme ukázali v kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia 
 \end{equation}
 kde $\boldsymbol{V}$ je vektor tržních hodnot podkladových aktiv na trhu.
 
-Ze vztahů (\ref{vahy}) a (\ref{market_value}) dostáváme $\boldsymbol{V}=\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ a proto očekávané výnos\-nosti můžeme vyjádřit jako
+Ze vztahů \eqref{vahy} a \eqref{market_value} dostáváme $\boldsymbol{V}=\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ a proto očekávané výnosnosti můžeme vyjádřit jako
 \begin{equation} \label{mu}
 \boldsymbol{\mu}=\boldsymbol{\Sigma}\boldsymbol{V}.
 \end{equation}
-Obecné řešení soustavy rovnic (\ref{hodnost}) tedy je $\boldsymbol{\mu}=k\boldsymbol{\Sigma}\boldsymbol{V}$, kde $k\in\mathbb{R}$ je parametr. Což znamená, že nemůžeme najít jednoznačné vyjádření pro vektor $\boldsymbol{\mu}$, ale našli jsme vztah mezi složkami tohoto vektoru a k jeho vyjádření nám postačí jeden parametr.
+Obecné řešení soustavy rovnic \eqref{hodnost} tedy je $\boldsymbol{\mu}=k\boldsymbol{\Sigma}\boldsymbol{V}$, kde $k\in\mathbb{R}$ je parametr. Což znamená, že nemůžeme najít jednoznačné vyjádření pro vektor $\boldsymbol{\mu}$, ale našli jsme vztah mezi složkami tohoto vektoru a k jeho vyjádření nám postačí jeden parametr.
 
 Předpokládejme nyní, že uvažovaná podkladová aktiva jsou nekorelovaná, tedy matice $\boldsymbol{\Sigma}$ je diagonální.
 Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odvětví.
 Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j$ v průběhu času a také hodnoty aktiv $N_j$ nechť jsou v čase konstantní.
 Připomeňme, že tržní hodnota  $V_j(t)=P_j(t)N_j(t)$ a $\sigma_{j}=\xi_{jj}$.
 
-Dosadíme-li vztah (\ref{mu}) do stochastické diferenciální rovnice (\ref{SDE}), pak s ohledem na předpoklady učiněné výše dostáváme
+Dosadíme-li vztah \eqref{mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
 $$ 
 \mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t+P_j(t)\sigma_{j}\mathrm{d}W_j(t).
 $$
 Dále budeme hledat vztah pro očekávané hodnoty cen podkladových aktiv.
-Ze SDR (\ref{SDE}) plyne
+Ze SDR \eqref{SDE} plyne
 \begin{equation}
 \mathsf{E}\big(\mathrm{d}P_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t+P_j(t)\sigma_{j}\mathrm{d}W_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t\big),
 \end{equation}
@@ -1114,7 +1122,7 @@ protože z vlastností Wienerova procesu máme $\mathsf{E}\big(\mathrm{d}W_j(t)\
 &={\sigma_{j}}^2N_j\big[\mathsf{D}\big(P_j(t)\big)+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \notag\\
 &={\sigma_{j}}^2N_j\big[{\sigma_{j}}^2+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \label{ODE}
 \end{align}  
-Řešení ODR ($\ref{ODE}$) je
+Řešení ODR $\eqref{ODE}$ je
 \begin{equation} 
 \mathsf{E}\big(P_j(t)\big)=\sigma_j\mathrm{tan}\big({\sigma_j}^3N_jt\big).
 \end{equation}
@@ -1127,11 +1135,11 @@ Problematické je takovou bublinu na trhu poznat, jelikož jsme schopni ji ident
 
 V další části představíme model s méně přísnými předpoklady.
 Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
-Za těchto předpokladů dosaďme vztah (\ref{mu}) do SDR \eqref{SDE}, čímž obdržíme
+Za těchto předpokladů dosaďme vztah \eqref{mu} do SDR \eqref{SDE}, čímž obdržíme
 \begin{equation*} 
  \mathrm{d}P_j(t)=P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t).
 \end{equation*}
-Budeme-li opět uvažovat očekávanou hodnotu  cen podkladových aktiv do\-stá\-váme vztah
+Budeme-li opět uvažovat očekávanou hodnotu  cen podkladových aktiv dostáváme vztah
 \begin{equation*} 
 \mathsf{E}\big( \mathrm{d}P_j(t)\big)=\mathsf{E}\left(P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\mathrm{d}t\right),
 \end{equation*}
@@ -1149,15 +1157,15 @@ Neobejdeme se tedy bez použití numerických metod.
 
 Nedílnou součástí řízení banky je řízení bankovních rizik.
 Obzvláště v poslední době se práce risk managementu dostává do popředí zájmu
-a jsou patrné tendence ke sjednocování bankovní regulace na mezi\-národní úrovni.
+a jsou patrné tendence ke sjednocování bankovní regulace na mezinárodní úrovni.
 Důkazem spolupráce mezi institucemi bankovního dohledu je i vznik Basilejského výboru pro bankovní dohled.
 Výbor vydává regulační standardy, doporučuje konkrétní postupy v oblasti bankovního dohledu a snaží se o sbližování regulačních norem. 
-Řada států jeho doporučení zohledňuje a při\-jímá do vlastní legislativy a Česká republika v tomto není výjimkou.
+Řada států jeho doporučení zohledňuje a přijímá do vlastní legislativy a Česká republika v tomto není výjimkou.
 Standardy vydávané výborem se označují Basel a byly dosud vydávány ve třech generacích označovaných jako Basel I, Basel II a Basel III. 
 Vyjadřují kapitálové požadavky, zabývají se pravidly obezřetného podnikání bank a aktivitami bankovního dohledu.
 
-Během celosvětové finanční krize, která odstartovala v roce 2008, se uká\-za\-la důležitost správného měření a řízení kreditního rizika protistrany (CCR) pro stabilitu finančního systému.
-Kapitál pro kreditní riziko protistrany byl vy\-žadován již v Basel I.  
+Během celosvětové finanční krize, která odstartovala v roce 2008, se ukázala důležitost správného měření a řízení kreditního rizika protistrany (CCR) pro stabilitu finančního systému.
+Kapitál pro kreditní riziko protistrany byl vyžadován již v Basel I.  
 V reakci na finanční krizi Basel III představil nejen další požadavky pro výpočet kapitálu pro CCR, ale nově
 předepisuje kapitálový požadavek pro riziko Credit Valuation Adjustment (CVA). 
 
@@ -1174,13 +1182,13 @@ Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo 
 
 \section{Finanční rizika}
 V následujícím textu seznámíme čtenáře s problematikou řízení finančních rizik, především úvěrového rizika.
-Komplexní přehled o finančních rizicích poskytuje publikace  jednoho z nej\-zná\-měj\-ších českých ekonomů profesora Josefa Jílka \cite{jilek2000}.
+Komplexní přehled o finančních rizicích poskytuje publikace  jednoho z nejznámějších českých ekonomů profesora Josefa Jílka \cite{jilek2000}.
 Kniha zevrubně popisuje úvěrová, tržní a další finanční rizika a objasňuje podstatu, měření, řízení a regulace finančních rizik včetně použití derivátů.
 
 Bankovní podnikání ohrožuje celá řada rizik, která obecně chápeme jako nebezpečí vzniku škody. 
 Řídit tato rizika mimo jiné znamená odhadovat pravděpodobnost jejich vzniku a navrhovat metody k jejich snížení.
 Banka je ohrožena nejen podnikatelskými riziky, ale také riziky finančními, které souvisí s její potenciální finanční ztrátou. 
-Na tato rizika je soustředěna mimo\-řádná pozornost odborné veřejnosti, bankovního dohledu, ale i samotného představenstva banky.
+Na tato rizika je soustředěna mimořádná pozornost odborné veřejnosti, bankovního dohledu, ale i samotného představenstva banky.
 
 Základním finančním rizikem je kreditní (též úvěrové) riziko.
 Jedná se o riziko vyplývající z neschopnosti nebo neochoty protistrany splatit své závazky podle podmínek
@@ -1196,9 +1204,9 @@ Jeho význam vzrůstá s rostoucí angažovaností bank na finančních trzích.
 Obě tato rizika v sobě spojuje kreditní riziko protistrany, jehož modelování je nedílnou součástí výpočtu Credit Valuation Adjustment. 
 
 \subsection{Kreditní riziko protistrany}
-Counterparty Credit Risk (CCR), v překladu \textit{kreditní riziko protistrany},  před\-sta\-vuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způ\-so\-be\-na selháním protistrany transakce. 
-Riziko selhání (defaultu) před\-sta\-vuje základní rizikovou složkou kreditního rizika a jeho parametrem je prav\-dě\-po\-dob\-nost neplnění. 
-Definice tohoto jevu není zcela jednoznačná, vět\-ši\-nou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
+Counterparty Credit Risk (CCR), v překladu \textit{kreditní riziko protistrany},  představuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způsobena selháním protistrany transakce. 
+Riziko selhání (defaultu) představuje základní rizikovou složkou kreditního rizika a jeho parametrem je pravděpodobnost neplnění. 
+Definice tohoto jevu není zcela jednoznačná, většinou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
 
 Riziko protistrany závisí na spolehlivosti obchodního partnera, ať už se jedná o emitenta, který vydává, nabízí a prodává investiční produkt a zavazuje se k jeho splacení (resp. vyrovnání s ním spojených závazků), nebo finančního zprostředkovatele, kterému jsou svěřeny prostředky buď do správy, nebo k provedení investiční transakce.
 
@@ -1207,10 +1215,10 @@ a na jeho základě jim udělují kód vyjadřující bonitu či důvěryhodnost
 Pro investory je rating spolehlivou informací o kreditním riziku emitenta příslušného finančního instrumentu, případně finančního zprostředkovatele. 
 Nejznámějšími ratingovými agenturami jsou Moody's, Standard \& Poor's a Fitch. Každá z těchto agentur má vlastní hodnotící stupnici a zvyklosti.
 
-Obecně se ratingové stupnice dělí na dvě části - investiční pásmo a spekulativní pásmo.
+Obecně se ratingové stupnice dělí na dvě části -- investiční pásmo a spekulativní pásmo.
 Ratingy z investičního pásma přiznávají ratingové agentury finanční instrumentům, do kterých doporučují investovat. Pod touto úrovní leží pásmo spekulativních investic, u kterých je očekáváno značné riziko ztráty.
 
-Typickým představitelem emitenta s velmi nízkým rizikem je vláda vy\-spě\-lého státu, která vydává dluhopisy, jež jsou chápány jako bezrizikové  investiční instrumenty. Nízké kreditní riziko mohou mít i velké tuzemské či mezinárodními společnosti s dobrými hospodářskými výsledky, zejména pokud mají (dle všeobecného názoru) schopný management, což vede k předpokladu dobrých výsledků a udržení pozice na trhu i v budoucnosti.
+Typickým představitelem emitenta s velmi nízkým rizikem je vláda vyspělého státu, která vydává dluhopisy, jež jsou chápány jako bezrizikové  investiční instrumenty. Nízké kreditní riziko mohou mít i velké tuzemské či mezinárodními společnosti s dobrými hospodářskými výsledky, zejména pokud mají (dle všeobecného názoru) schopný management, což vede k předpokladu dobrých výsledků a udržení pozice na trhu i v budoucnosti.
 Rating je využíván také k posouzení  důvěryhodnosti finančního partnera, který danou finanční investici zprostředkovává.
 
 Důležitým faktem při výpočtu kapitálového požadavku pro CCR je  bilaterální charakter tohoto rizika. Což znamená, že kreditním rizikem protistrany jsou zatíženy obě strany obchodu.

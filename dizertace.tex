@@ -284,11 +284,12 @@ $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces
 \setcounter{page}{1}
 \pagenumbering{arabic}
 
-
+%Wienerův proces využívaný za účelem modelování chování cen aktiv a finančních instrumentů.
 
 \begin{comment}
+Otazník před komentářem označuje, že tato literatura ještě není citována.\\
 Klasická kniha o Stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}\\%
-Numerické řešení stochastických diferenciálních rovnic a jejich soustav \cite{kloeden1997}\\
+?Numerické řešení stochastických diferenciálních rovnic a jejich soustav \cite{kloeden1997}\\
 Vzorec pro váhy tržního portfolia čerpáme z \cite{fabozzi}\\
 Základy teorie portfolia pokládá Markowitz v \cite{markowitz}\\%
 Tobin v \cite{tobin} rozšiřuje Markowitzův přístup o bezrizikové aktivum.%
@@ -301,33 +302,33 @@ Konzistentní dynamický přístup k teorii portfolia dává Fernholz ve své kn
 \\
 Stochastický kalkul, oceňování finančních derivátů, arbitrážní teorie - Pascucci\cite{pascucci}\\%
 \\ \\
-Continuous asset model \cite{higham2004introduction}\\
-Riziková averze, vše o portfoliu, separační teorém, objemný \cite{ingersoll1987theory}\\
-Dynamic portfolio optimization \cite{prigent2007portfolio}\\
-General Equilibrium Asset Pricing \cite{wickens2012macroeconomic}\\
-Arbitráž, asset pricing model, numerické metody \cite{wilmott1995mathematics}\\
-Teorie portfolia \cite{de2010portfolio}, \cite{brada}, \cite{sharpe}, úvod \cite{bohdalova}
-Diferenciální rovnice, numerické metody \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
+?Continuous asset model \cite{higham2004introduction}\\
+?Riziková averze, vše o portfoliu, separační teorém, objemný \cite{ingersoll1987theory}\\
+?Dynamic portfolio optimization \cite{prigent2007portfolio}\\
+?General Equilibrium Asset Pricing \cite{wickens2012macroeconomic}\\
+?Arbitráž, asset pricing model, numerické metody \cite{wilmott1995mathematics}\\
+?Teorie portfolia \cite{de2010portfolio}, \cite{brada}, \cite{sharpe}, úvod \cite{bohdalova}
+?Diferenciální rovnice, numerické metody \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
 Stochastické procesy \cite{allen2010introduction} \\%
-Srochasticke procesy a rovnováha na trhu\cite{karatzas1998methods} \\
-Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
+?Srochasticke procesy a rovnováha na trhu\cite{karatzas1998methods} \\
+?Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
 
 
-Finanční trhy, modely volatility, optimální portfolio, opce \cite{bouchaud2003theory} \\
-Black-Scholes, Arbitraz, opce, numericke metody \cite{duffie2010dynamic} \\
-arbitraz, Ito, spojite modely, stochasticka volatilita \cite{duffie2003intertemporal} \\
+?Finanční trhy, modely volatility, optimální portfolio, opce \cite{bouchaud2003theory} \\
+?Black-Scholes, Arbitraz, opce, numericke metody \cite{duffie2010dynamic} \\
+?arbitraz, Ito, spojite modely, stochasticka volatilita \cite{duffie2003intertemporal} \\
 mnohorozmerny model ceny aktiva. \cite{etheridge2002course} \\%
-vse o portfoliu \cite{fabozziportfolio} \\
-Na optimalizaci portfolia pomocí bayesovských metod se specializuje v článku \cite{fabozzi2007robust}\\
-modely volatility \cite{gali2009monetary} \\
-ocekavana vynosnost, arbitrazni teorie, konstrukce portfolia \cite{gridold1999active} \\
-Wienerův proces, volatilita, základní numerické metody, VaR \cite{hull} \\
-Základy finanční matematiky a teorie portfolia \cite{melichercik} \\
-Dynamická teorie portfolia, \cite{oberuc2003dynamic}\\
+?vse o portfoliu \cite{fabozziportfolio} \\
+?Na optimalizaci portfolia pomocí bayesovských metod se specializuje v článku \cite{fabozzi2007robust}\\
+?modely volatility \cite{gali2009monetary} \\
+?ocekavana vynosnost, arbitrazni teorie, konstrukce portfolia \cite{gridold1999active} \\
+?Wienerův proces, volatilita, základní numerické metody, VaR \cite{hull} \\
+?Základy finanční matematiky a teorie portfolia \cite{melichercik} \\
+?Dynamická teorie portfolia, \cite{oberuc2003dynamic}\\
 Úvod do SDE \cite{karatzas2012brownian}, \cite{gard}\\%
 Stochastická analýza \cite{shreve2012stochastic} a \cite{shreve2004stochastic}\\%
 
-CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahrnutí Wrong-Way do Monte Carlo simulace \cite{hull2012cva} přehlwdový článek \cite{arora2012}
+CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahrnutí Wrong-Way do Monte Carlo simulace \cite{hull2012cva} přehledový článek \cite{arora2012}
 
 \end{comment}
 
@@ -364,7 +365,7 @@ Tyto teorie následně experimentálně ověřil Jean Baptiste Perrin a za tento
 V neposlední řadě chceme zmínit význam amerického matematika Norberta Wienera, který dokázal existenci stochastického procesu používaného k popisu Brownova pohybu \cite{wiener1923differential}. 
 Tento proces nese jeho jméno a je využíván v~mnoha různých odvětvích.
 
-%\subsection{Stochastický proces}
+\subsection{Stochastický proces}
 V této části práce definujeme stochastický proces a některé jeho zajímavé vlastnosti.
 \begin{definice}[Stochastický proces]
 Uvažujme  indexovou množinu $T$ a prav\-dě\-po\-dob\-nostní prostor $(\Omega,\mathcal{A}, \mathsf{Pr})$.
@@ -475,12 +476,11 @@ To znamená, že Wienerův proces není slabě stacionární.
 Ceny aktiv na finačních trzích se podle teorie dokonalých trhů chovají zcela náhodně a nezávisle na předchozím vývoji.
 Wienerův proces se tedy nabízí jako vhodný nástroj k popisu chování cen aktiv.
 Při modelování ve finanční matematice využíváme procesy, které jsou zobecněním či modifikací Wienerova procesu. 
-Uvažujme proces s nenulovým parametrem růstu, označovaným jako drift, a parametrem variability, jenž odpovídá směrodatné odchylce
-procesu.
+Uvažujme proces s nenulovým parametrem růstu, označovaným jako drift, a parametrem variability, jenž odpovídá směrodatné odchylce procesu.
 \begin{definice}[Wienerův proces s driftem]
 Stochastický proces $X(t)$ definovaný 
 $$X(t)  = \mu t + \sigma W (t),$$
-kde $\mu$ a $\sigma$ jsou konstanty,
+kde $\mu$ a $\sigma$ jsou konstanty a $W (t)$ je Wienerův proces,
 se nazývá \textit{Wienerův proces  s driftem} $\mu$ a volatilitou $\sigma$.
 \end{definice}
 Pokud bychom chtěli využít tento proces k modelování cen podkladových aktiv, setkáme se s dvěma problémy.
@@ -488,14 +488,29 @@ Nejenže Wienerův proces s driftem může nabývat záporných hodnot, což je 
 Aktivum s nižší současnou cenou by mělo větší riziko a také vyšší očekávaný výnos než aktivum s vyšší cenou.
 Proto chceme proces upravit tak, aby absolutní očekávaný výnos a výše směrodatné odchylky byly proporcionální k ceně podkladového aktiva. 
 
-Nejrozšířenější modifikací Wienerova procesu splňující tyto požadavky je Geometrický Wienerův proces, který zavedl Paul Samuelson \cite{samuelson1964rational}.
+Nejběžnější modifikací Wienerova procesu splňující tyto požadavky je Geometrický Wienerův proces, který zavedl Paul Samuelson \cite{samuelson1964rational}.
 K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
-\begin{definice}[Geometrický Wienerův proces]
-Stochastický proces $S(t)$ definovaný 
-$$\frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t)$$
-se nazývá \textit{geometrický Wienerův proces}.
+\begin{definice}[Geometrický Wienerův proces]%\label{Geometrický_Wienerův_proces}
+Stochastický proces $S(t)$, který je řešením stochastické diferenciální rovnice
+\begin{equation}%\label{SDE_GWP}
+\frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t), 
+\end{equation}
+kde  $\mu$ a $\sigma$ jsou konstanty a $W (t)$ je Wienerův proces,
+se nazývá \textit{Geometrický Wienerův proces}.
+
+Toto řešení můžeme vyjádřit následovně
+\begin{equation}%\label{GWP}
+S(t) = S(0)\mathrm{e}^{X(t)},
+\end{equation}
+kde $X(t) = (\mu - \frac{\sigma^2}{2}) t + \sigma W (t)$ je Wienerův proces s driftem.
 \end{definice}
-Člen $\mathrm{d}W(t)$ je infinitezimální přírůstek Wienerova procesu a $\mathrm{d}t$ je infinitezimální změna času.
+Člen $\mathrm{d}W(t)$ ve stochastické diferenciální rovnici %\ref{SDE_GWP} 
+označuje infinitezimální přírůstek Wienerova procesu a $\mathrm{d}t$ je infinitezimální změna času.
+
+Z definice %\ref{Geometrický_Wienerův_proces} 
+je zřejmé, že Geometrický Wienerův proces nabývá pouze kladných hodnot a jeho relativní přírůstky jsou nezávislé a mají stejné rozdělení. 
+Kromě toho se s tímto procesem docela snadno pracuje ve výpočtech. 
+Díky těmto vlastnostem se stal nejrozšířenějším model chování cen aktiv ve finanční matematice.
 
 \subsection{It\^oův proces}
 ??
@@ -516,13 +531,15 @@ Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):[0
 \begin{definice}[It\^oův proces]
 Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
 \textit{It\^oův proces} je stochastický proces
-$$X(t,\omega)=\int_0^tU(s,\omega)\mathrm{d}s+\int_0^tV(s,\omega)\mathrm{d}W(s,\omega),$$
+$$X(t,\omega)=X(0,\omega)+\int_0^tU(s,\omega)\mathrm{d}s+\int_0^tV(s,\omega)\mathrm{d}W(s,\omega),$$
 kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do třídy $M$,
 první integrál je Lebesgueův a druhý It\^oův (který je definován v kapitole \ref{Ito_integral}).
 
 Často se používá diferenciální tvar, nazývaný \textit{stochastický diferenciál},
 $$\mathrm{d}X(t,\omega)=U(t,\omega)\mathrm{d}t+V(t,\omega)\mathrm{d}W(t,\omega).$$
 \end{definice}
+
+Geometrický Wienerův proces je speciálním případem It\^oova procesu.
 
 \subsection{Ornstein–Uhlenbeckův proces}
 Mean reversion jsou procesy, ve kterých se náhodná veličina vrací k dlouhodobé rovnovážné
@@ -533,22 +550,24 @@ uvedeny nejčastěji užívané procesy.
 \end{definice}
 
 
-\section{It\^oův integrál a It\^oovo lemma}\label{Ito_integral}
+\section{It\^oův integrál a It\^oovo lemma}
+Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
+Dále se proto budeme věnovat konstrukci stochastického integrálu, zavedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
+Čerpat budeme z knih \cite{}...
 
-\subsection{It\^oův integrál}
+\subsection{It\^oův integrál}\label{Ito_integral}
 Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též stochastický integrál).
 Jeho zavedení je vyžadováno nediferencovatelností Wienerova procesu.
 Stochastický integrál budeme konstruovat obdobným způsobem jako Riemannův integrál.
 Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
 
 \begin{definice}
-Stochastický proces $S$ se nazývá \textit{jednoduchá funkce}, jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
+Stochastický proces $S$ se nazývá \textit{jednoduchý}, jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
 \end{definice}
-Trajektorie jednoduché funkce je po částech konstantní. 
+Trajektorie jednoduchého procesu je po částech konstantní. 
 
 \begin{definice}
-Nechť $S$ je jednoduchá funkce 
-a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
+Nechť $S$ je jednoduchý proces a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
 Pak
 $$\int_0^TS\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
 se nazývá \textit{It\^oův integrál} funkce $S$ na intervalu $[0,T]$.
@@ -570,9 +589,7 @@ $$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d
 
 \subsection{It\^oovo lemma}
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
-It\^oovo lemma říká, že It\^oovy procesy tvoří uzav\-ře\-nou třídu vzhledem ke skládání s hladkými funkcemi.
-Tento důležitý vztah stochastické analýzy můžeme považovat za obdobu Taylorova rozvoje v integrálním počtu.
-
+Říká, že It\^oovy procesy tvoří uzav\-ře\-nou třídu vzhledem ke skládání s hladkými funkcemi.
 \begin{veta}[It\^oovo lemma]
 Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
 $$\mathrm{d}X=U\mathrm{d}t+V\mathrm{d}W.$$
@@ -584,11 +601,15 @@ Jeho stochastický diferenciál má tvar
 \end{alignat*}
 \end{veta}
 
+It\^oovo lemma můžeme považovat za analogii Taylorova rozvoje v integrálním počtu.
+Tento důležitý vztah stochastické analýzy budeme využívat pro oceňování finančních derivátů, jejichž hodnota je závislá na hodnotě podkladového aktiva.
 
 
 %%%%%%%%%%%%%%%%%%{Stochastické diferenciální rovnice}
 
 \section{Stochastické diferenciální rovnice}
+Stochastická diferenciální rovnice je rovnice popisující přírůstky procesu v čase. 
+Ve finanční matematice se velice často používá pro popis přírůstku hodnoty nějakého aktiva.
 \subsection{Úvod do teorie stochastických diferenciálních rovnic}
 \begin{definice}[Stochastická diferenciální rovnice]
 Nechť $\alpha(t,X(t))$ a $\beta(t,X(t))$ jsou funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
@@ -651,9 +672,18 @@ Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, t-s)$.
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
-%\chapter{Stochastické modelování úrokových sazeb}
+\chapter{Stochastické modelování}
 
 %%%%%%%%%%%%%%%%%%{Stochastické modelování úrokových sazeb}
+\section{Stochastické modelování cen podkladových aktiv}
+Tato kapitola popisuje konstrukce matematických modelu používaných hojne ve
+financích pro popis vývoje cen aktiv na financních trzích.
+
+Kvalitativní charakteristiky pro model aktiv:\\
+- ceny aktiv dlouhodobě sledují spíše exponenciální růst\\
+- ceny aktiv vykonávají náhodný pohyb\\
+- ceny aktiv jsou vždy kladné\\
+- model je univerzální pro různé úrovně cen aktiv\\
 
 \section{Stochastické modelování úrokových sazeb}
 Na rozdíl od akcií má chování úrokových sazeb určité zvláštnosti
@@ -929,7 +959,7 @@ Uvažujeme-li kovarianční matici $\boldsymbol{\Sigma}$ výnosností aktiv, pak
 $$\boldsymbol{\Sigma}=\boldsymbol{\xi}\boldsymbol{\xi}^\mathrm{T}.$$
 Tedy $\boldsymbol{\xi}$ je maticová odmocnina z $\boldsymbol{\Sigma}$.
 
-Jedním ze základních pojmů v SPT jsou \textit{portfolio generující funkce}, pomocí nichž jsou tvořeny portfolia, které mají dobře definované výnosnosti. Podrobnější informace je možno najít v knize \cite{fern}.
+Jedním ze základních pojmů v SPT jsou \textit{portfolio generující funkce}, pomocí nichž jsou tvořeny portfolia, které mají dobře definované výnosnosti. Podrobnější informace je možno najít v knize \cite{fern} a článku \cite{kara}.
 
 
 

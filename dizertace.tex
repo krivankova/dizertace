@@ -489,7 +489,7 @@ Při modelování ve finanční matematice využíváme procesy, které jsou zob
 Uvažujme proces s nenulovým parametrem růstu, označovaným jako drift, a parametrem variability, jenž odpovídá směrodatné odchylce procesu.
 \begin{definice}[Wienerův proces s driftem]
 Stochastický proces $X(t)$ definovaný 
-$$X(t)  = \mu t + \sigma W (t),$$
+$$X(t)  = \mu\, t + \sigma\, W (t),$$
 kde $\mu$ a $\sigma$ jsou konstanty a $W (t)$ je Wienerův proces,
 se nazývá \textit{Wienerův proces  s driftem} $\mu$ a volatilitou $\sigma$.
 \end{definice}
@@ -503,16 +503,16 @@ K rozšíření modelu používajícího tento proces přispěli především Fi
 \begin{definice}[Geometrický Wienerův proces]\label{Geometricky_Wieneruv_proces}
 Stochastický proces $S(t)$, který je řešením stochastické diferenciální rovnice
 \begin{equation}\label{SDE_GWP}
-\frac{\mathrm{d} S(t)}{S(t)} = \mu\mathrm{d}t + \sigma\mathrm{d}W (t), 
+\frac{\mathrm{d} S(t)}{S(t)} = \mu\,\mathrm{d}t + \sigma\,\mathrm{d}W (t), 
 \end{equation}
 kde  $\mu$ a $\sigma$ jsou konstanty a $W (t)$ je Wienerův proces,
 se nazývá \textit{Geometrický Wienerův proces}.
 
 Toto řešení můžeme vyjádřit následovně
 \begin{equation}\label{GWP}
-S(t) = S(0)\mathrm{e}^{X(t)},
+S(t) = S(0)\,\mathrm{e}^{X(t)},
 \end{equation}
-kde $X(t) = (\mu - \frac{\sigma^2}{2}) t + \sigma W (t)$ je Wienerův proces s driftem.
+kde $X(t) = (\mu - \frac{\sigma^2}{2})\,t + \sigma W (t)$ je Wienerův proces s driftem.
 \end{definice}
 Člen $\mathrm{d}W(t)$ ve stochastické diferenciální rovnici \eqref{SDE_GWP} označuje infinitezimální přírůstek Wienerova procesu a $\mathrm{d}t$ je infinitezimální změna času.
 
@@ -532,19 +532,19 @@ Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Ome
 Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):[0,\infty)\times\Omega\to\mathbb R$ takových, že
 \begin{enumerate}
 \item[1.] $f(t,\omega)$ je neanticipativní, 
-\item[2.] $\text{E}\left[\int_0^Tf^2(t,\omega)\mathrm{d}t\right]<\infty.$ 
+\item[2.] $\text{E}\left[\int_0^Tf^2(t,\omega)\,\mathrm{d}t\right]<\infty.$ 
 \end{enumerate}
 \end{definice}
 
 \begin{definice}[It\^oův proces]
 Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
 \textit{It\^oův proces} je stochastický proces
-$$X(t,\omega)=X(0,\omega)+\int_0^tU(s,\omega)\mathrm{d}s+\int_0^tV(s,\omega)\mathrm{d}W(s,\omega),$$
+$$X(t,\omega)=X(0,\omega)+\int_0^tU(s,\omega)\,\mathrm{d}s+\int_0^tV(s,\omega)\,\mathrm{d}W(s,\omega),$$
 kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do třídy $M$,
 první integrál je Lebesgueův a druhý It\^oův (který je definován v kapitole \ref{Ito_integral}).
 
 Často se používá diferenciální tvar, nazývaný \textit{stochastický diferenciál},
-$$\mathrm{d}X(t,\omega)=U(t,\omega)\mathrm{d}t+V(t,\omega)\mathrm{d}W(t,\omega).$$
+$$\mathrm{d}X(t,\omega)=U(t,\omega)\,\mathrm{d}t+V(t,\omega)\,\mathrm{d}W(t,\omega).$$
 \end{definice}
 
 Geometrický Wienerův proces je speciálním případem It\^oova procesu.
@@ -554,7 +554,15 @@ Mean reversion jsou procesy, ve kterých se náhodná veličina vrací k dlouhod
 hodnotě. Používají se zvláště pro modely úrokových sazeb. V následujícím textu jsou
 uvedeny nejčastěji užívané procesy.
 \begin{definice}[Ornstein–Uhlenbeckův proces]
- $$X_t = X_0 \mathrm{e}^{-\theta t} + \mu(1-\mathrm{e}^{-\theta t}) + \int_0^t \sigma \mathrm{e}^{\theta (s)}\, \mathrm{d}W_s. \, $$
+
+\begin{equation}\label{OUP}
+X_t = X_0\,\mathrm{e}^{-\theta t} + \mu\,(1-\mathrm{e}^{-\theta t}) + \int_0^t \sigma\,\mathrm{e}^{\theta (s)}\,\mathrm{d}W_s,
+\end{equation}
+
+\begin{equation}\label{SDE_OUP}
+\mathrm{d}X_t = \theta(\mu-X_t)\,\mathrm{d}t + \sigma\,\mathrm{d}W_t
+\end{equation}
+
 \end{definice}
 
 
@@ -577,7 +585,7 @@ Trajektorie jednoduchého procesu je po částech konstantní.
 \begin{definice}
 Nechť $S$ je jednoduchý proces a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
 Pak
-$$\int_0^TS\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
+$$\int_0^TS\,\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
 se nazývá \textit{It\^oův integrál} funkce $S$ na intervalu $[0,T]$.
 \end{definice}
 
@@ -592,7 +600,7 @@ $$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarr
 \begin{definice}
 Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých funkcí z lemmatu \ref{itoint}.
 Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
-$$\int_0^Tf(t,\omega)\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\mathrm{d}W.$$
+$$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\mathrm{d}W.$$
 \end{definice}
 
 \subsection{It\^oovo lemma}
@@ -600,7 +608,7 @@ It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastický
 Říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
 \begin{veta}[It\^oovo lemma]
 Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
-$$\mathrm{d}X=U\mathrm{d}t+V\mathrm{d}W.$$
+$$\mathrm{d}X=U\,\mathrm{d}t+V\,\mathrm{d}W.$$
 Nechť $g(t,x):(0,\infty)\times\mathbb R\to\mathbb R$ je dvakrát spojitě diferencovatelná funkce.
 Potom $Y(t)=g(t,X(t))$ je také It\^oův proces.
 Jeho stochastický diferenciál má tvar
@@ -623,12 +631,12 @@ Ve finanční matematice se velice často používá pro popis přírůstku hodn
 Nechť $\alpha(t,X(t))$ a $\beta(t,X(t))$ jsou funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
 \textit{Stochastickou diferenciální rovnicí (SDR)} rozumíme rovnici
 \begin{equation}
-X(t)=X_0+\int_{t_0}^t\alpha(s,X(s))\mathrm{d}s+\int_{t_0}^t\beta(s,X(s))\mathrm{d}W(s),
+X(t)=X_0+\int_{t_0}^t\alpha(s,X(s))\,\mathrm{d}s+\int_{t_0}^t\beta(s,X(s))\,\mathrm{d}W(s),
 \end{equation}
 kde první integrál je Lebesgueův a druhý integrál je It\^oův.
 Častěji se se SDR setkáváme v jejím diferenciálním tvaru
 \begin{align}\label{SDR_def}
-\mathrm{d}X(t)&=\alpha(t,X(t))\mathrm{d}t+\beta(t,X(t))\mathrm{d}W(t),\\%\qquad 
+\mathrm{d}X(t)&=\alpha(t,X(t))\,\mathrm{d}t+\beta(t,X(t))\,\mathrm{d}W(t),\\%\qquad 
 X(t_0)&=X_0.\notag
 \end{align}
 Konstantu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stochastický proces $X(t)$ nazýváme \textit{řešením SDR} na $T$.
@@ -637,7 +645,7 @@ Konstantu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stocha
 
 \begin{definice}[Soustava $m$ stochastických diferenciálních rovnic]
 \begin{align}\label{SSDR_def}
-\mathrm{d}X^i(t)&=\alpha^i(t,\boldsymbol{X}(t))\mathrm{d}t+\sum_{j=1}^m\beta^{i,j}(t,\boldsymbol{X}(t))\mathrm{d}W^j(t),\\%\qquad 
+\mathrm{d}X^i(t)&=\alpha^i(t,\boldsymbol{X}(t))\,\mathrm{d}t+\sum_{j=1}^m\beta^{i,j}(t,\boldsymbol{X}(t))\,\mathrm{d}W^j(t),\\%\qquad 
 X^i(t_0)&=X^i_0.\notag
 \end{align}
 \end{definice}
@@ -810,17 +818,17 @@ Wienerův proces je stavebním kamenem matematického modelování ve finanční
 Tento stochastický proces se používá pro popis chování ceny aktiva v čase. 
 
 Budeme předpokládat, že proces popisující vývoj ceny aktiva v čase se řídí následujícím modelem
-$$\mathrm{d}P(t)=P(t)\mu(t)\mathrm{d}t+P(t)\sigma(t)\mathrm{d}W(t),$$
+$$\mathrm{d}P(t)=P(t)\,\mu(t)\,\mathrm{d}t+P(t)\,\sigma(t)\,\mathrm{d}W(t),$$
 kde $P(t)$ je cena aktiva v čase $t$, $\mu(t)$ a $\sigma(t)$ jsou stochastické procesy a $W(t)$  je jednorozměrný Wienerův proces.
 Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum.
 
 Model pro vývoj ceny aktiv na trhu, který předpokládá existenci $n$ rizikových aktiv je dán jako
-$$\mathrm{d}P_j(t)=P_j(t)\mu_j(t)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t),$$
+$$\mathrm{d}P_j(t)=P_j(t)\,\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),$$
 kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\mu_j(t)$ a $\xi_{jk}(t)$ jsou stochastické procesy a $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces. 
 Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
 
 Chování ceny bezrizikového aktiva je popsáno modelem
-$$\mathrm{d}B(t)=B(t)r_f(t)\mathrm{d}t,$$
+$$\mathrm{d}B(t)=B(t)\,r_f(t)\,\mathrm{d}t,$$
 kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková úroková míra.
 
 
@@ -831,14 +839,14 @@ Přitom ukázal, že zůstává zachována platnost všech závěrů z teorie CA
 Což znamená, že bez újmy na obecnosti můžeme uvažovat jen dvě aktiva -- bezrizikové aktivum s mírou výnosnosti $r_f$ a tržní portfolio (které můžeme považovat za jedno rizikové aktivum). 
 
 Merton předpokládá, že hodnota tržního portfolia $P(t)$ se řídí stochastickým procesem
-$$\mathrm{d}P(t)=P(t)\mu_p\mathrm{d}t+P(t)\sigma_p\mathrm{d}W(t)$$
+$$\mathrm{d}P(t)=P(t)\,\mu_p\,\mathrm{d}t+P(t)\,\sigma_p\,\mathrm{d}W(t)$$
 kde $W(t)$ je jednorozměrný Wienerův proces a $\mu_p$, $\sigma_p$ jsou konstanty. 
 
 V každém čase $t$ vybírá investor své optimální portfolio volbou vah portfolia.
 Majetek, který investor investuje do optimálního portfolia v čase $t$, označíme $w(t)$.
 Váhu tržního portfolia v optimálním portfoliu označíme $X_p(t)$ a váhu bezrizikového aktiva označíme $X_f(t)=(1-X_p(t))$. 
 Proces popisující vývoj investorova majetku je dán jako
-$$\frac{\mathrm{d}w(t)}{w(t)}=X_p(t)\frac{\mathrm{d}P(t)}{P(t)}+\big(1-X_p(t)\big)r_f\mathrm{d}t.$$
+$$\frac{\mathrm{d}w(t)}{w(t)}=X_p(t)\,\frac{\mathrm{d}P(t)}{P(t)}+\big(1-X_p(t)\big)\,r_f\,\mathrm{d}t.$$
 Merton odvodil explicitní řešení této stochastické diferenciální rovnice za předpokladu, že charakteristiky výnosnosti aktiva jsou konstantní.
 
 Avšak Mertonův spojitý rovnovážný model vykazuje inkonzistenci, což dokázali Ohlson a Rosenberg \cite{ohlson} hned v roce 1976.
@@ -957,7 +965,7 @@ Parametry stochastického procesu, kterým se řídí cena aktiva, jsou v SPT ta
 Dokonce, na rozdíl od klasického přístupu, se v SPT neklade důraz na předpoklad neexistence tržní arbitráže, přičemž jsou studovány vlastnosti trhu vedoucí k existenci arbitráže. 
 
 Pro vývoj ceny aktiva Fernholz používá následující spojitý logaritmický model
-$$\mathrm{d}\log P_j(t)=\gamma_j(t)\mathrm{d}t+\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t),$$
+$$\mathrm{d}\log P_j(t)=\gamma_j(t)\,\mathrm{d}t+\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),$$
 kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\gamma_j(t)$ a $\xi_{jk}(t)$ jsou stochastické procesy a $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-dimenzionální Wienerův proces. 
 Proces $\gamma_j(t)$ se nazývá \textit{míra růstu} a $\xi_{jk}(t)$ se nazývá proces \textit{volatility}.
 Míru růstu v logaritmickém modelu je možno odvodit z míry výnosnosti ve standardním modelu a naopak podle následujícího vztahu
@@ -1008,7 +1016,7 @@ Parametry $\alpha_i(t)$ a $\beta_i(t)$ závisí na individuálních preferencíc
 Označme $A(t)$ součet všech parametrů $\alpha_i(t)$ pro všechny investory a analogicky $B(t)$ součet parametrů $\beta_i(t)$ .
 Tedy $A(t)=\sum_{i\in I}\alpha_i(t)$ a $B(t)=\sum_{i\in I}\beta_i(t)$.
 Pak celková hodnota držená všemi investory v $j$-tém aktivu je $Aa_j+Bb_j$ a musí být rovna tržní hodnotě aktiva.
-$$A(t)a_j+B(t)b_j=P_j(t)N_j,$$
+$$A(t)\,a_j+B(t)\,b_j=P_j(t)\,N_j,$$
 kde $P_j(t)$ je cena podkladového aktiva na trhu v čase $t$ a $N_j$ je jeho dostupné množství.
 Přičemž $A(t),B(t)$ a $ P_j(t)$ jsou funkce času a $N_j$ je konstantní v čase podle předpokladu \ref{predpoklad_konstantnosti_N}.
 Pro změnu ceny aktiva $j$ mezi časem $t$ a časem $t+\Delta t$ platí
@@ -1068,13 +1076,13 @@ Na základě poznatků z teorie portfolia budeme hledat vztah mezi očekávanou 
 Nechť $\boldsymbol{P}$ je vektor cen $n$ podkladových aktiv.
 Předpokládejme, že tyto ceny se řídí následující stochastickou diferenciální rovnicí (SDR):
 \begin{equation} \label{SDE}
-\mathrm{d}P_j(t)=P_j(t)\mu_j(t)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t),
+\mathrm{d}P_j(t)=P_j(t)\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),
 \end{equation}
 kde $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces, $\mu_j(t)$ je očekávaná míra výnosnosti podkladového aktiva $j$ a $\xi_{jk}(t)$ jsou volatility podkladových aktiv. 
 Pro zjednodušení předpokládejme, že výnosnost bezrizikového aktiva $r_f=0$.
 Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním portfoliu, který je dán jako
 \begin{equation} \label{vahy}
-\boldsymbol{X}=\frac{\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}}{\boldsymbol{1}^\mathrm{T}\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}},
+\boldsymbol{X}=\frac{\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}},
 \end{equation}
 kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv (viz \cite{fabozzi}).
 
@@ -1091,7 +1099,7 @@ Dále hledejme nějaké partikulární řešení této soustavy rovnic.
 
 Jak jsme ukázali v kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám podkladových aktiv v tržním portfoliu, tedy
 \begin{equation} \label{market_value}
-\boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\boldsymbol{V}},
+\boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{V}},
 \end{equation}
 kde $\boldsymbol{V}$ je vektor tržních hodnot podkladových aktiv na trhu.
 
@@ -1108,17 +1116,17 @@ Připomeňme, že tržní hodnota  $V_j(t)=P_j(t)N_j(t)$ a $\sigma_{j}=\xi_{jj}$
 
 Dosadíme-li vztah \eqref{mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
 $$ 
-\mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t+P_j(t)\sigma_{j}\mathrm{d}W_j(t).
+\mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
 $$
 Dále budeme hledat vztah pro očekávané hodnoty cen podkladových aktiv.
 Ze SDR \eqref{SDE} plyne
 \begin{equation}
-\mathsf{E}\big(\mathrm{d}P_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t+P_j(t)\sigma_{j}\mathrm{d}W_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\mathrm{d}t\big),
+\mathsf{E}\big(\mathrm{d}P_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t\big),
 \end{equation}
 protože z vlastností Wienerova procesu máme $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
 Čímž se stochastická diferenciální rovnice zjednodušuje na obyčejnou diferenciální rovnici (ODR), která je řešitelná pomocí separace proměnných.
 \begin{align} 
-{\mathrm{d}\mathsf{E}\big(P_j(t)\big)}&={\sigma_{j}}^2N_j\mathsf{E}\big(P_j^2(t)\big)\mathrm{d}t \notag\\
+{\mathrm{d}\mathsf{E}\big(P_j(t)\big)}&={\sigma_{j}}^2N_j\,\mathsf{E}\big(P_j^2(t)\big)\mathrm{d}t \notag\\
 &={\sigma_{j}}^2N_j\big[\mathsf{D}\big(P_j(t)\big)+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \notag\\
 &={\sigma_{j}}^2N_j\big[{\sigma_{j}}^2+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \label{ODE}
 \end{align}  
@@ -1137,11 +1145,11 @@ V další části představíme model s méně přísnými předpoklady.
 Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
 Za těchto předpokladů dosaďme vztah \eqref{mu} do SDR \eqref{SDE}, čímž obdržíme
 \begin{equation*} 
- \mathrm{d}P_j(t)=P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\mathrm{d}W_k(t).
+ \mathrm{d}P_j(t)=P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t).
 \end{equation*}
 Budeme-li opět uvažovat očekávanou hodnotu  cen podkladových aktiv dostáváme vztah
 \begin{equation*} 
-\mathsf{E}\big( \mathrm{d}P_j(t)\big)=\mathsf{E}\left(P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\mathrm{d}t\right),
+\mathsf{E}\big( \mathrm{d}P_j(t)\big)=\mathsf{E}\left(P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\,\mathrm{d}t\right),
 \end{equation*}
 z něhož dostaneme následující soustavu obyčejných diferenciálních rovnic
 \begin{align*}

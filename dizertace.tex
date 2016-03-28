@@ -521,7 +521,22 @@ Kromě toho se s tímto procesem docela snadno pracuje ve výpočtech.
 Díky těmto vlastnostem se stal nejrozšířenějším model chování cen aktiv ve finanční matematice.
 
 \subsection{It\^oův proces}
-??
+Abychom mohli v následujícím textu zavést stochastický integrál definujme napřed širokou třídu procesů, již jsou It\^ovy procesy.
+
+%Zavedeme obecný stochasticky proces, který využijeme při konstrukci Itoova lemmatu v další části. 
+%Stochastický proces dostatečně obecný abychom mohli zavést stochastický integrál, pojmenovaný po známém matematikovi
+Kiyosi It\^o byl japonský matematik, jenž modernizoval stochastické modely a jeho metody jsou dodnes používány v mnoha odvětvích vědy především ve financích a biologii.
+Svou práci začal stavět na základě dřívějších objevů Alberta Einsteina a Norberta Wienera v roce 1940.
+V teorii stochastických procesů aplikoval metody diferenciálního a integrálního počtu.
+%Matematický rámec pro popis chování stochastických procesů, který zkonstruoval se je po něm pojmenován It\^oův kalkul.
+Matematický rámec zahrnující stochastické integrály a stochastické diferenciální rovnice vešel ve známost jako It\^oův kalkul.
+Z významných It\^ových publikací zmiňme 
+\cite{ito1944},
+ \cite{ito1946} a
+\cite{ito1951stochastic}.
+
+Robert C. Merton, nositel Nobelovy za ekonomii, využívá teoretické poznatky Kiyosi It\^oa jako nástroj pro výzkum vývoje cen akcií v portfoliu a k oceňování finančních derivátů.
+
 \begin{definice}
 Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
 Řekneme, že stochastický proces $\{f(t,\omega):t\ge~0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
@@ -606,6 +621,7 @@ $$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\math
 \subsection{It\^oovo lemma}
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
 Říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
+Kiyosi It\^o jej publikoval v roce 1944 v článku \cite{ito1944}.
 \begin{veta}[It\^oovo lemma]
 Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
 $$\mathrm{d}X=U\,\mathrm{d}t+V\,\mathrm{d}W.$$

@@ -523,19 +523,20 @@ Díky těmto vlastnostem se stal nejrozšířenějším model chování cen akti
 \subsection{It\^oův proces}
 Abychom mohli v následujícím textu zavést stochastický integrál definujme napřed širokou třídu procesů, již jsou It\^ovy procesy.
 
-%Zavedeme obecný stochasticky proces, který využijeme při konstrukci Itoova lemmatu v další části. 
+%Zavedeme obecný stochasticky proces, který využijeme při konstrukci It\^oova lemmatu v další části. 
 %Stochastický proces dostatečně obecný abychom mohli zavést stochastický integrál, pojmenovaný po známém matematikovi
 Kiyosi It\^o byl japonský matematik, jenž modernizoval stochastické modely a jeho metody jsou dodnes používány v mnoha odvětvích vědy především ve financích a biologii.
-Svou práci začal stavět na základě dřívějších objevů Alberta Einsteina a Norberta Wienera v roce 1940.
+Svou práci začal stavět v roce 1940 na základě dřívějších objevů Alberta Einsteina a Norberta Wienera.
 V teorii stochastických procesů aplikoval metody diferenciálního a integrálního počtu.
 %Matematický rámec pro popis chování stochastických procesů, který zkonstruoval se je po něm pojmenován It\^oův kalkul.
 Matematický rámec zahrnující stochastické integrály a stochastické diferenciální rovnice vešel ve známost jako It\^oův kalkul.
-Z významných It\^ových publikací zmiňme 
-\cite{ito1944},
- \cite{ito1946} a
-\cite{ito1951stochastic}.
+Z významných It\^ových textů zmiňme 
+článek \cite{ito1944} z roku 1944 obsahující konstrukci stochastického integrálu
+a publikace \cite{ito1946} a
+\cite{ito1951stochastic}, kde zavádí koncept stochastických diferenciálních rovnic.
 
 Robert C. Merton, nositel Nobelovy za ekonomii, využívá teoretické poznatky Kiyosi It\^oa jako nástroj pro výzkum vývoje cen akcií v portfoliu a k oceňování finančních derivátů.
+Což bude dále přiblíženo v kapitole \ref{stoch_model} o stochastickém modelování.
 
 \begin{definice}
 Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
@@ -640,6 +641,11 @@ Tento důležitý vztah stochastické analýzy budeme využívat pro oceňován�
 %%%%%%%%%%%%%%%%%%{Stochastické diferenciální rovnice}
 
 \section{Stochastické diferenciální rovnice}
+%http://artax.karlin.mff.cuni.cz/~masas7am/bakalarka/bakalarka.pdf
+%Stochastické diferenciální rovnice (SDR) se používají při modelování dynamických jevů, v nichž hraje roli náhoda. 
+%Za první počiny v této oblasti lze považovat pokusy o matematický model Brownova pohybu z přelomu 19. a 20. století. 
+%Ale až stochastický integrál, který definoval v roce 1944 japonský matematik Kiyoshi It\^o, a s ním spojený It\^oův kalkul umožnil formulovat a řešit skutečné stochastické diferenciální rovnice. 
+%Ty od té doby našly uplatnění v mnoha oborech -- od fyziky přes biologii až po modelování cen akcií ve finanční matematice.
 Stochastická diferenciální rovnice je rovnice popisující přírůstky procesu v čase. 
 Ve finanční matematice se velice často používá pro popis přírůstku hodnoty nějakého aktiva.
 \subsection{Úvod do teorie stochastických diferenciálních rovnic}
@@ -704,7 +710,7 @@ Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, t-s)$.
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
-\chapter{Stochastické modelování}
+\chapter{Stochastické modelování}\label{stoch_model}
 
 %%%%%%%%%%%%%%%%%%{Stochastické modelování úrokových sazeb}
 \section{Stochastické modelování cen podkladových aktiv}

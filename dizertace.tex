@@ -329,7 +329,7 @@ Stochastický kalkul, oceňování finančních derivátů, arbitrážní teorie
 ?Teorie portfolia \cite{de2010portfolio}, \cite{brada}, \cite{sharpe}, úvod \cite{bohdalova}
 ?Diferenciální rovnice, numerické metody \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
 Stochastické procesy \cite{allen2010introduction} \\%
-?Srochasticke procesy a rovnováha na trhu\cite{karatzas1998methods} \\
+?Stochastické procesy a rovnováha na trhu\cite{karatzas1998methods} \\
 ?Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
 
 
@@ -604,21 +604,29 @@ Na rozdíl od Wienerova procesu nemá Ornstein–Uhlenbeckův proces konstantní
 Pokud je aktuální hodnota procesu $X_t$ menší než rovnovážná hodnota $\mu$, pak je koeficient driftu kladný.
 Naopak když $X_t>\mu$, tak je koeficient driftu záporný.
 
-\section{It\^oův integrál a It\^oovo lemma}
+%\cite{Benth2016}
+Vlastnostem Ornstein–Uhlenbeckova procesu (především stacionaritě) se zevrubně věnují Fred Espen Benth a Asma Khedher v knize \cite{podolskij2015fascination} z roku 2015, která je aktuální sbírkou práce renomovaných vědců v oboru pravděpodobnosti, statistiky a jejich aplikací ve financích, ekonomii, fyzice, řízení rizika a systémů hromadné obsluhy.
+
+%\section{It\^oův integrál a It\^oovo lemma}
+\section{It\^oův kalkul}
 Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
 Dále se proto budeme věnovat konstrukci stochastického integrálu, zavedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
-Čerpat budeme z knih \cite{}...
+Věty a lemmata budeme uvádět pouze bez důkazu, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
+
+%Čerpat budeme z knih \cite{}...
+Konstrukci stochastického integrálu podle Wienerova procesu představil v letech 1942--1944 Kiyosi It\^o v \cite{ito1942differential} a \cite{ito1944}. 
+Obecnější stochastický integrál, který je založený na širší třídě stochastických procesů, zkonstruovali v roce 1967 Hiroshi Kunita a Shinzo Watanabe v \cite{kunita1967square}.
 
 \subsection{It\^oův integrál}\label{Ito_integral}
-Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též stochastický integrál).
+Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též jen stochastický integrál).
 Jeho zavedení je vyžadováno nediferencovatelností Wienerova procesu.
 Stochastický integrál budeme konstruovat obdobným způsobem jako Riemannův integrál.
 Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
 
-\begin{definice}
-Stochastický proces $S$ se nazývá \textit{jednoduchý}, jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
+\begin{definice}\label{jednoduchafunkce}
+Stochastický proces $S$ se nazývá \textit{jednoduchý} (nebo \textit{jednoduchá funkce}), jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
 \end{definice}
-Trajektorie jednoduchého procesu je po částech konstantní. 
+Z definice \ref{jednoduchafunkce} vyplývá, že trajektorie jednoduchého procesu je po částech konstantní. 
 
 \begin{definice}
 Nechť $S$ je jednoduchý proces a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
@@ -668,6 +676,9 @@ Tento důležitý vztah stochastické analýzy budeme využívat pro oceňován�
 %Za první počiny v této oblasti lze považovat pokusy o matematický model Brownova pohybu z přelomu 19. a 20. století. 
 %Ale až stochastický integrál, který definoval v roce 1944 japonský matematik Kiyoshi It\^o, a s ním spojený It\^oův kalkul umožnil formulovat a řešit skutečné stochastické diferenciální rovnice. 
 %Ty od té doby našly uplatnění v mnoha oborech -- od fyziky přes biologii až po modelování cen akcií ve finanční matematice.
+%vývoj a chování v čase
+%Pomocí diferenciálních rovnic lze popsat celou řadu zákonitostí, které se objevují v přírodních a společenských vědách.
+%Řešeními diferenciálních rovnic jsou funkce, které popisují vlastnosti zkoumaných jevů. 
 Stochastická diferenciální rovnice je rovnice popisující přírůstky procesu v čase. 
 Ve finanční matematice se velice často používá pro popis přírůstku hodnoty nějakého aktiva.
 \subsection{Úvod do teorie stochastických diferenciálních rovnic}

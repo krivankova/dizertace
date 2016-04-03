@@ -191,6 +191,19 @@ In the first part of the work, some basic mathematical methods employed in this 
 %\end{tabular}
 
 \normalsize
+\textbf{Prostory a matice}\\\\
+%  \begin{table}[h]
+   \begin{tabular}{p{4cm} p{9.3cm}}
+   $\mathbb{R}$                              &   jednorozměrný Eukleidovský prostor \\
+   $\mathbb{R}^n$                              &     $n$-rozměrný Eukleidovský prostor \\
+   $\boldsymbol{x}=(x_1,\ldots,x_n)^\mathrm{T}$             &    $n$-rozměrný reálný vektor \\
+    $\boldsymbol{1}$                           &   vektor jedniček\\
+   $\mathbf{I}_n$                              &    jednotková matice řádu $n$ \\
+   $\mathbf{A}^\mathrm{T}$                              &   transponovaná matice vzhledem k matici $\mathbf{A}$\\
+   \end{tabular}\\\\\\
+% \end{table}
+%
+%
 \textbf{Pravděpodobnost}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
@@ -206,22 +219,16 @@ In the first part of the work, some basic mathematical methods employed in this 
 \textbf{Náhodné veličiny}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
-   $X$                                                &   náhodná veličina \\
+   $X$; $X(\omega)$                                                 &   náhodná veličina \\
    $f(x)$; $f_X(x)$                                               &   hustota pravděpodobnosti náhodné veličiny $X$ \\ %probability density of the random variable $X$ \\
    $F(x)$; $F_X(x)$				 &  distribuční funkce náhodné veličiny $X$ \\
 %   $f(x; \theta)$                                    &   probability density function of random variable $X$ with distribution dependent on scalar parameter $\theta$ \\
 %   $f(x,t)$                                          &    probability density of random process $X(t)$ at fixed time $t$ \\
 %   $f(x,t | x_0, t_0)$                               &    probability density of random process $X(t)$ at fixed time $t$ conditioned by its state $x_0$ at time $t_0$ \\
-   $X\sim \mathcal{L}$                                &   náhodná veličina $X$ mající rozdělením pravděpodobnosti $\mathcal{L}$ \\ %random variable $X$ having general probability distribution $\mathcal{L}$\\
+   $X\sim \mathcal{L}(\boldsymbol{\theta})$                                &   náhodná veličina $X$ mající rozdělením pravděpodobnosti $\mathcal{L}$ s parametry  $\boldsymbol{\theta}=(\theta_1,\ldots,\theta_n)$ \\ %random variable $X$ having general probability distribution $\mathcal{L}$\\
    $\mathsf{E}(X)$;  $\mathsf{E}X$                         	      &   střední hodnota náhodné veličiny $X$ \\
    $\mathsf{D}(X)$;  $\mathsf{D}X$                       	      &   rozptyl náhodné veličiny $X$ \\
    $\mathsf{C}(X_i,X_j)$             		      &   kovariance náhodných veličin $X_i$ a $X_j$\\
-   $\mathrm{d}X(t,\omega)$; $\mathrm{d}X(t)$; $\mathrm{d}X_t$    &  stochastický diferenciál \\ %continuous-time random process \\
-   $X(t,\omega)$; $X(t)$; $X_t$                       &   stochastický proces \\
-%   $F_{\boldsymbol{t}}(\boldsymbol{x})$; 
-   $F_{t_1,\dots,t_n}(x_1,\dots,x_n)$                       &  distribuční funkce stochastického procesu \\
-   $W(t,\omega)$; $W(t)$; $W_t$                       &   standardní Wienerův proces \\
-   $\boldsymbol{\Delta} W_t$			                      &   přírůstek Wienerova procesu \\
    $\mathsf{N}(\mu, \sigma^{2})$                      &   Normální (Gaussovo) rozdělení pravděpodobnosti se střední hodnotou $\mu$ a rozptylem $\sigma^2$  \\
    \end{tabular}\\\\\\
 %
@@ -237,22 +244,24 @@ In the first part of the work, some basic mathematical methods employed in this 
     $\mathsf{E}(\boldsymbol{X})$; $\mathsf{E}\boldsymbol{X}$                             &   vektor středních hodnot náhodného vektoru $\boldsymbol{X}$\\
    $\mathsf{D}(\boldsymbol{X})$; $\mathsf{D}\boldsymbol{X}$                             &   kovarianční matice náhodného vektoru $\boldsymbol{X}$\\
     $\boldsymbol{\Sigma}(\boldsymbol{X_i},\boldsymbol{X_j})$     &   kovarianční matice náhodných vektorů $\boldsymbol{X_i}$ a $\boldsymbol{X_j}$\\
-$\boldsymbol{X}(\boldsymbol{t},\boldsymbol{\omega})$; $\boldsymbol{X}(\boldsymbol{t})$; $\boldsymbol{X}_{\boldsymbol{t}}$  				& vektorový stochastický proces\\
-$\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces\\
    \end{tabular}\\\\\\
 %
 %
 %
-\\\\
-\textbf{Prostory a matice}\\\\
+%\\\\
+\textbf{Stochastická analýza}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
-   $\mathbb{R}$                              &   jednorozměrný Eukleidovský prostor \\
-   $\mathbb{R}^n$                              &     $n$-rozměrný Eukleidovský prostor \\
-   $\boldsymbol{x}=(x_1,\ldots,x_n)^\mathrm{T}$             &    $n$-rozměrný reálný vektor \\
-    $\boldsymbol{1}$                           &   vektor jedniček\\
-   $\mathbf{I}_n$                              &    jednotková matice řádu $n$ \\
-   $\mathbf{A}^\mathrm{T}$                              &   transponovaná matice vzhledem k matici $\mathbf{A}$\\
+     $X(t,\omega)$; $X(t)$; $X_t$                       &   stochastický proces \\
+    %   $F_{\boldsymbol{t}}(\boldsymbol{x})$; 
+   $F_{t_1,\dots,t_n}(x_1,\dots,x_n)$                       &  distribuční funkce stochastického procesu \\
+   $W(t,\omega)$; $W(t)$; $W_t$                       &   standardní Wienerův proces \\
+%   $\boldsymbol{\Delta} W_t$			                      &   přírůstek Wienerova procesu \\
+   $\Delta W_k=W_{t_{k+1}}-W_{t_k}$				 &   přírůstek Wienerova procesu \\
+   $\mathrm{d}X(t,\omega)$; $\mathrm{d}X(t)$; $\mathrm{d}X_t$    &  stochastický diferenciál \\ %continuous-time random process \\
+   $\int_0^Tf(t,\omega)\,\mathrm{d}W$                              &   It\^oův integrál pro stochastický proces $f(t,\omega)$ \\
+   $\boldsymbol{X}(\boldsymbol{t},\boldsymbol{\omega})$; $\boldsymbol{X}(\boldsymbol{t})$; $\boldsymbol{X}_{\boldsymbol{t}}$  		& vektorový stochastický proces\\
+   $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces\\
    \end{tabular}\\\\\\
 % \end{table}
 %
@@ -563,24 +572,37 @@ první integrál je Lebesgueův a druhý It\^oův (který je definován v kapito
 $$\mathrm{d}X(t,\omega)=U(t,\omega)\,\mathrm{d}t+V(t,\omega)\,\mathrm{d}W(t,\omega).$$
 \end{definice}
 
-Geometrický Wienerův proces je speciálním případem It\^oova procesu.
+Geometrický Wienerův proces je speciálním případem It\^oova procesu, kde $U(t,\omega)=\mu\,X(t,\omega)$ a $V(t,\omega))=\sigma X(t,\omega)$.
 
 \subsection{Ornstein–Uhlenbeckův proces}
-Mean reversion jsou procesy, ve kterých se náhodná veličina vrací k dlouhodobé rovnovážné
-hodnotě. Používají se zvláště pro modely úrokových sazeb. V následujícím textu jsou
-uvedeny nejčastěji užívané procesy.
+Další často využívanou modifikací Wienerova procesu jsou stochastické procesy s tendencí vracet se k dlouhodobé rovnovážné hodnotě.
+Nazývají se \textit{mean-reversion procesy} a nachází četné využití ve fyzice, matematice i ekonomii.
+Ve finanční matematice se používají pro modelování úrokových sazeb, kurzů měn, cen komodit a volatility.
+%Ornstein–Uhlenbeckův proces je další často využívanou modifikací Wienerova procesu.
+%Mean-reversion jsou procesy, ve kterých se náhodná veličina vrací k dlouhodobé rovnovážné hodnotě. 
+%Používají se zvláště pro modely úrokových sazeb. 
+%V následujícím textu jsou uvedeny nejčastěji užívané procesy.
+
+Holandští fyzikové Leonard Salomon Ornstein a George Eugene Uhlenbeck zformulovali jako první mean-reversion proces v roce 1930 a publikovali v textu \cite{OrnsteinUhlenbeck1930}. 
+
 \begin{definice}[Ornstein–Uhlenbeckův proces]
-
+\textit{Ornstein–Uhlenbeckův proces} je definován jako
 \begin{equation}\label{OUP}
-X_t = X_0\,\mathrm{e}^{-\theta t} + \mu\,(1-\mathrm{e}^{-\theta t}) + \int_0^t \sigma\,\mathrm{e}^{\theta (s)}\,\mathrm{d}W_s,
+X_t = X_0\,\mathrm{e}^{-\theta t} + \mu\,(1-\mathrm{e}^{-\theta t}) + \mathrm{e}^{-\theta t}\int_0^t \sigma\,\mathrm{e}^{\theta s}\,\mathrm{d}W_s,
 \end{equation}
-
+kde parametr $\theta>0$ je koeficient rychlosti reverze, parametr $\mu\in\mathbb{R}$ je rovnovážná hodnota, parametr $\sigma>0$ je volatilita a $W_t$ je Wienerův proces.
+Ornstein–Uhlenbeckův proces může být také definován jako řešení stochastické diferenciální rovnice
 \begin{equation}\label{SDE_OUP}
-\mathrm{d}X_t = \theta(\mu-X_t)\,\mathrm{d}t + \sigma\,\mathrm{d}W_t
+\mathrm{d}X_t = \theta(\mu-X_t)\,\mathrm{d}t + \sigma\,\mathrm{d}W_t.
 \end{equation}
-
 \end{definice}
 
+Ornstein–Uhlenbeckův proces je stacionární Gaussovský proces s ohraničeným rozptylem. 
+Koeficient $\theta$ určuje rychlost přibližování k rovnovážné hodnotě $\mu$ (nebo také střední hodnotě).
+Čím je $\theta$ větší tím pohotověji proces reaguje na odchýlení od rovnováhy. 
+Na rozdíl od Wienerova procesu nemá Ornstein–Uhlenbeckův proces konstantní koeficient driftu, jelikož závisí na jeho aktuální hodnotě.
+Pokud je aktuální hodnota procesu $X_t$ menší než rovnovážná hodnota $\mu$, pak je koeficient driftu kladný.
+Naopak když $X_t>\mu$, tak je koeficient driftu záporný.
 
 \section{It\^oův integrál a It\^oovo lemma}
 Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
@@ -714,6 +736,8 @@ Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, t-s)$.
 
 %%%%%%%%%%%%%%%%%%{Stochastické modelování úrokových sazeb}
 \section{Stochastické modelování cen podkladových aktiv}
+Aplikace SDR ve financích najdeme v \cite{karatzas2012brownian}.
+
 Tato kapitola popisuje konstrukce matematických modelu používaných hojne ve
 financích pro popis vývoje cen aktiv na financních trzích.
 
@@ -730,7 +754,7 @@ Na rozdíl od akcií má chování úrokových sazeb určité zvláštnosti
 Tento fenomén se nazývá „mean reversion“.
 Stochastické modely, které popisují chování úrokových sazeb musí tedy brát v úvahu výše uvedené vlastnosti.
 
-
+Vašíček 1977 model úrokové sazby
 
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
@@ -1334,3 +1358,13 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 \bibliography{bibliography}
 
 \end{document}
+
+
+% Synonyma:
+%
+% článek, text, publikace, monografie, kniha
+% definovat, zformulovat
+
+%Užitečné příkazy:
+%
+%\linebreak

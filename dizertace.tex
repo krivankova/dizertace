@@ -305,6 +305,8 @@ příliš žluťoučký kůň úpěl ďábelské ódy
 
 %Wienerův proces využívaný za účelem modelování chování cen aktiv a finančních instrumentů.
 
+%ekonomické modely nabídky a poptávky – většinou jde o teoretické modely, chybí zde omezení platící v reálném trhu
+
 \begin{comment}
 Otazník před komentářem označuje, že tato literatura ještě není citována.\\
 Klasická kniha o Stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}\\%
@@ -325,11 +327,11 @@ Stochastický kalkul, oceňování finančních derivátů, arbitrážní teorie
 ?Riziková averze, vše o portfoliu, separační teorém, objemný \cite{ingersoll1987theory}\\
 ?Dynamic portfolio optimization \cite{prigent2007portfolio}\\
 ?General Equilibrium Asset Pricing \cite{wickens2012macroeconomic}\\
-?Arbitráž, asset pricing model, numerické metody \cite{wilmott1995mathematics}\\
+Arbitráž, asset pricing model, numerické metody \cite{wilmott1995mathematics}\\
 ?Teorie portfolia \cite{de2010portfolio}, \cite{brada}, \cite{sharpe}, úvod \cite{bohdalova}
 ?Diferenciální rovnice, numerické metody \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
 Stochastické procesy \cite{allen2010introduction} \\%
-?Stochastické procesy a rovnováha na trhu\cite{karatzas1998methods} \\
+Stochastické procesy a rovnováha na trhu\cite{karatzas1998methods} \\
 ?Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
 
 
@@ -341,7 +343,7 @@ mnohorozmerny model ceny aktiva. \cite{etheridge2002course} \\%
 ?Na optimalizaci portfolia pomocí bayesovských metod se specializuje v článku \cite{fabozzi2007robust}\\
 ?modely volatility \cite{gali2009monetary} \\
 ?ocekavana vynosnost, arbitrazni teorie, konstrukce portfolia \cite{gridold1999active} \\
-?Wienerův proces, volatilita, základní numerické metody, VaR \cite{hull} \\
+Wienerův proces, volatilita, základní numerické metody, VaR \cite{hull} \\
 ?Základy finanční matematiky a teorie portfolia \cite{melichercik} \\
 ?Dynamická teorie portfolia, \cite{oberuc2003dynamic}\\
 Úvod do SDE \cite{karatzas2012brownian}, \cite{gard}\\%
@@ -741,16 +743,48 @@ Důležitou problematikou při používání numerických metod je způsob výpo
 Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, t-s)$.
 
 %\end{comment}
-%%%%%%%%%%%%%%%%%%{Teorie portfolia}
+%%%%%%%%%%%%%%%%%%{Stochastické modelování}
 
 \chapter{Stochastické modelování}\label{stoch_model}
 
-%%%%%%%%%%%%%%%%%%{Stochastické modelování úrokových sazeb}
-\section{Stochastické modelování cen podkladových aktiv}
+Stochastický model slouží k popisu dějů, ve kterých je přítomná náhodná složka.
+%náhodných jevů, které vyjadřujeme pomocí stochastických procesů.
+Dále lze pomocí stochastického modelu simulovat průběh děje a pozorovat jeho chování při nastavení různých parametrů modelu.
+Aplikace stochastického modelování a simulace chování dějů umožňují jejich popis a analýzu.
+Na základě analýzy chování modelu a simulací můžeme získat informace pro řízení procesů a k rozhodování.
+%Metody stochastického modelování mají význam pro podporu rozhodovacího procesu v situacích za neurčitosti a pro řízení procesů a dějů náhodnou složkou.
+
+V této práci se zaměříme na ekonomické modely popisující, jak se na finančním trhu díky nabídce a poptávce formují ceny finančních aktiv.
+%ekonomické modely nabídky a poptávky
+Podkladové aktivum je nástroj, jehož v čase se měnící cena slouží jako základ pro pohyb ceny finančních derivátů.
+Podkladovými aktivy mohou být akcie, úrokové míry, komodity, měny, akciové indexy a mnoho dalších finančních instrumentů.
+%Obecně jakékoliv aktivum, jehož cena se vyvíjí v čase.
+Chování cen aktiv vykazuje stochastický charakter a cenové změny jsou náhodné a nepředvídatelné.
+%, k jehož modelování využíváme stochastické diferenciální rovnice.
+%K modelování stochastického charakteru chování cen podkladových aktiv využíváme stochastické diferenciální rovnice.
+Kolísání cen aktiv v čase je způsobené vzájemným působením nabídky a poptávky na trhu.
+Teorie efektivního trhu tvrdí, že ceny aktiv velmi rychle plně odrážejí veškeré tržní informace.
+
+%Pro přehled uvadíme základní teorie finančních trhů:
+%\begin{itemize}
+%\item[-]Ceny aktiv jsou výsledkem mnoha náhodných událostí a nelze je předpovídat.
+%cenové zmeny jsou náhodné a nepredvídatelné
+%\\\item[-]Teorie efektivního trhu tvrdí, že ceny aktiv velmi rychle plně odrážejí veškeré tržní informace.
+%V každém případě dlouhodobě je vývoj akciových kurzů odrazem trendů ve
+%\\\item[-]Kolísání cen aktiv v čase je způsobené vzájemným působením nabídky a poptávky na trhu.
+%Úroková míra je určována trhem -- bankami, které přijímají vklady a poskytují úvěry, a subjekty působícími na kapitálovém trhu.
+%Cenová změna aktiv je výsledkem mnoha náhodných událostí a nelze ji předpovídat.
+%cenotvorba
+%\end{itemize}
+
+Teorie finančních trhů je podrobně zpracována v české literatuře.
+Z velkého množství textů odkažme na \cite{rejnus2011}, \cite{fuchsfinancni} a \cite{veselainvestovani} se kterými jsme při psaní práce pracovali.
+Stochastickým modelováním v ekonomii se pak zabývá převážně zahraniční literatura, ze které jsme využili \cite{hull}, \cite{wilmott1995mathematics} a \cite{karatzas1998methods}.
+
+\section{Stochastické modelování cen finančních aktiv}
 Aplikace SDR ve financích najdeme v \cite{karatzas2012brownian}.
 
-Tato kapitola popisuje konstrukce matematických modelu používaných hojne ve
-financích pro popis vývoje cen aktiv na financních trzích.
+Tato kapitola popisuje konstrukce matematických modelů používaných ve finanční matematice pro popis vývoje cen aktiv na finančních trzích.
 
 Kvalitativní charakteristiky pro model aktiv:\\
 - ceny aktiv dlouhodobě sledují spíše exponenciální růst\\

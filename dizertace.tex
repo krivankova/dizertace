@@ -494,6 +494,12 @@ Jestliže $0\leq s<t$, pak
 \end{align*}
 To znamená, že Wienerův proces není slabě stacionární.
 
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=12cm, clip, trim= 0 20 25 40]{IMG/WP_v2.pdf}
+  \caption{Ukázka pěti trajektorií Wienerova procesu}  \label{WP_graf}
+\end{figure}
+
 Ceny aktiv na finačních trzích se podle teorie dokonalých trhů chovají zcela náhodně a nezávisle na předchozím vývoji.
 Wienerův proces se tedy nabízí jako vhodný nástroj k popisu chování cen aktiv.
 Při modelování ve finanční matematice využíváme procesy, které jsou zobecněním či modifikací Wienerova procesu. 
@@ -530,6 +536,13 @@ kde $X(t) = (\mu - \frac{\sigma^2}{2})\,t + \sigma W (t)$ je Wienerův proces s 
 Z definice \ref{Geometricky_Wieneruv_proces} je zřejmé, že Geometrický Wienerův proces nabývá pouze kladných hodnot a jeho relativní přírůstky jsou nezávislé a mají stejné rozdělení. 
 Kromě toho se s tímto procesem docela snadno pracuje ve výpočtech. 
 Díky těmto vlastnostem se stal nejrozšířenějším model chování cen aktiv ve finanční matematice.
+
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=12cm, clip, trim= 0 20 25 50]{IMG/GP_v2.pdf}
+  \caption{Ukázka pěti trajektorií Geometrického Wienerova procesu s různými parametry driftu $\mu$ a volatility $\sigma$}  \label{GP_graf}
+\end{figure}
+
 
 \subsection{It\^oův proces}
 Abychom mohli v následujícím textu zavést stochastický integrál definujme napřed širokou třídu procesů, již jsou It\^ovy procesy.
@@ -608,6 +621,24 @@ Naopak když $X_t>\mu$, tak je koeficient driftu záporný.
 
 %\cite{Benth2016}
 Vlastnostem Ornstein–Uhlenbeckova procesu (především stacionaritě) se zevrubně věnují Fred Espen Benth a Asma Khedher v knize \cite{podolskij2015fascination} z roku 2015, která je aktuální sbírkou práce renomovaných vědců v oboru pravděpodobnosti, statistiky a jejich aplikací ve financích, ekonomii, fyzice, řízení rizika a systémů hromadné obsluhy.
+
+\subsection{Mnohorozměrný Wienerův proces}
+Zabývat se vztahy mezi akciemi.
+především v teorii portfolia.
+\begin{definice}
+Standardní \textit{$n$-rozměrný Wienerův proces} je vektorový stochastický proces
+$$\boldsymbol{W}(t) = (W_1(t), \dots, W_n(t))^\mathrm{T}$$
+jehož složky $W_k(t)$ jsou nezávislé, standardní jednorozměrné Wienerovy procesy.
+\end{definice}
+Wienerův proces je stavebním kamenem matematického modelování ve finanční matematice. 
+Tento stochastický proces se používá pro popis chování ceny aktiva v čase. 
+
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=12cm, clip, trim= 0 20 25 50]{IMG/WP_2D_v6.pdf}
+  \caption{Ukázka trajektorie dvourozměrného Wienerova procesu}  \label{WP_2D_graf}
+\end{figure}
+
 
 %\section{It\^oův integrál a It\^oovo lemma}
 \section{It\^oův kalkul}
@@ -756,6 +787,8 @@ Na základě analýzy chování modelu a simulací můžeme získat informace pr
 
 V této práci se zaměříme na ekonomické modely popisující, jak se na finančním trhu díky nabídce a poptávce formují ceny finančních aktiv.
 %ekonomické modely nabídky a poptávky
+%Finanční aktiva poskytují investorovi nárok na budoucí příjem.
+Modelovat budeme vývoj ceny jak podkladových aktiv, tak finančních derivátů.
 Podkladové aktivum je nástroj, jehož v čase se měnící cena slouží jako základ pro pohyb ceny finančních derivátů.
 Podkladovými aktivy mohou být akcie, úrokové míry, komodity, měny, akciové indexy a mnoho dalších finančních instrumentů.
 %Obecně jakékoliv aktivum, jehož cena se vyvíjí v čase.
@@ -782,7 +815,13 @@ Z velkého množství textů odkažme na \cite{rejnus2011}, \cite{fuchsfinancni}
 Stochastickým modelováním v ekonomii se pak zabývá převážně zahraniční literatura, ze které jsme využili \cite{hull}, \cite{wilmott1995mathematics} a \cite{karatzas1998methods}.
 
 \section{Stochastické modelování cen finančních aktiv}
-Aplikace SDR ve financích najdeme v \cite{karatzas2012brownian}.
+%na základě střetu nabídky a poptávky možné určit rovnovážnou cenu 
+
+%Tržní hodnota akcie, kterou určuje burza je tedy především oceněním hospodaření podniku.
+%Hodnota akcie je tedy dána jejím hospodařením. Zájem o akcii pak tvoří její cenu, protože převis poptávky ji zvyšuje a převis nabídky snižuje. Kdo chce znát cenu akcie, zjistí si ji na burze. Cena akcie je prostě dána její podnikatelskou hodnotou, jak ji vidí akcionáři a obchodníci na burzách.
+%Finanční teorie zpravidla definuje investiční instrumenty (investiční nástroje) jako aktiva, která investorovi (majiteli) přináší nějaký nárok na budoucí příjem (např. dividendy, kuponové platby, úroky či kapitálové výnosy).
+
+%Aplikace SDR ve financích najdeme v \cite{karatzas2012brownian}.
 
 Tato kapitola popisuje konstrukce matematických modelů používaných ve finanční matematice pro popis vývoje cen aktiv na finančních trzích.
 
@@ -791,6 +830,25 @@ Kvalitativní charakteristiky pro model aktiv:\\
 - ceny aktiv vykonávají náhodný pohyb\\
 - ceny aktiv jsou vždy kladné\\
 - model je univerzální pro různé úrovně cen aktiv\\
+
+%Modeling with Itô Stochastic Differential Equations Od autorů: Edward Allen (googlebooks) - multidimenzní Ito formule 
+%Dynamic Asset Pricing Theory Od autorů: Darrell Duffie (googlebooks) - Black-Scholes
+
+
+Budeme předpokládat, že proces popisující vývoj ceny aktiva v čase se řídí následujícím modelem
+$$\mathrm{d}P(t)=P(t)\,\mu(t)\,\mathrm{d}t+P(t)\,\sigma(t)\,\mathrm{d}W(t),$$
+kde $P(t)$ je cena aktiva v čase $t$, $\mu(t)$ a $\sigma(t)$ jsou stochastické procesy a $W(t)$  je jednorozměrný Wienerův proces.
+Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum.
+
+Model pro vývoj ceny aktiv na trhu, který předpokládá existenci $n$ rizikových aktiv je dán jako
+$$\mathrm{d}P_j(t)=P_j(t)\,\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),$$
+kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\mu_j(t)$ a $\xi_{jk}(t)$ jsou stochastické procesy a $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces. 
+Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
+
+Chování ceny bezrizikového aktiva je popsáno modelem
+$$\mathrm{d}B(t)=B(t)\,r_f(t)\,\mathrm{d}t,$$
+kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková úroková míra.
+
 
 \section{Stochastické modelování úrokových sazeb}
 Na rozdíl od akcií má chování úrokových sazeb určité zvláštnosti
@@ -890,6 +948,7 @@ Důležitým důsledkem pak je, že váha každého cenného papíru v tržním 
 Hlavní výhodou dynamického modelu pro výběr aktiv v portfoliu je přizpůsobování se měnícím se podmínkám trhu a proto je více realistický než model statický.
 Naproti tomu je dynamický model komplikovanější, hůře interpretovatelný a při jeho využití se nevyhneme složitější matematické teorii, kterou je stochastický kalkul.
 
+\begin{comment}
 \subsection{Matematický úvod}
 Na tomto místě připomeneme některé základní pojmy ze stochastické analýzy a značení obvykle užívané v dynamické teorii portfolia. 
 
@@ -921,7 +980,7 @@ Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}
 Chování ceny bezrizikového aktiva je popsáno modelem
 $$\mathrm{d}B(t)=B(t)\,r_f(t)\,\mathrm{d}t,$$
 kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková úroková míra.
-
+\end{comment}
 
 \subsection{Mertonův model}
 První článek zabývající se dynamickou teorií portfolia napsal Robert Carhart Merton v roce 1971 \cite{merton1971}.

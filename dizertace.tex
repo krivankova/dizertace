@@ -851,13 +851,47 @@ kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková 
 
 
 \section{Stochastické modelování úrokových sazeb}
-Na rozdíl od akcií má chování úrokových sazeb určité zvláštnosti
-Úrokové sazby se pohybují v určitém rozmezí; obvykle nerostou do nekonečna ani neklesají pod nulu.
+Na rozdíl od akcií má chování úrokových sazeb určité zvláštnosti.
+Úrokové sazby se pohybují v určitém rozmezí a obvykle nerostou do nekonečna ani neklesají pod nulu.
 Úrokové sazby mají tendenci se vracet k určité rovnovážné hodnotě.
-Tento fenomén se nazývá „mean reversion“.
+Tento fenomén se nazývá \textit{mean reversion}.
 Stochastické modely, které popisují chování úrokových sazeb musí tedy brát v úvahu výše uvedené vlastnosti.
 
-Vašíček 1977 model úrokové sazby
+%Vašíček 1977 model úrokové sazby
+
+Jednofaktorové modely krátkodobých úrokových měr předpokládájí, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
+%dvoufaktorove r odvozuji od dvou informaci x, y
+\begin{equation}\label{model_urok_miry}
+\mathrm{d}r=\mu(t,r)\mathrm{d}t+\sigma(t,r)\mathrm{d}W
+\end{equation}
+Deterministická část procesu je $\mu(t, r) \mathrm{d}t$ a určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů, volatilita $\sigma(t, r)\mathrm{d}w$ určuje vlastnosti náhodných výchylek.
+
+\subsection{Vašíčkův model}
+Vašíčkův model je jednofaktorový model, který předpokládá, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
+\begin{equation}\label{Vasickuv_model}
+ \mathrm{d}r = \kappa ( \theta - r_{t})\mathrm{d}t + \sigma \mathrm{d}W
+\end{equation}
+kde $\sigma$, $\theta$ a $\kappa$ jsou konstanty. 
+Jejichž význam je následující:
+\begin{itemize}
+\item $\theta$ je limitní úroková míra, 
+\item $\kappa$ je rychlost reverze k limitní úrokové míře, 
+\item $\sigma$ je volatilita.
+\end{itemize}
+
+Drift této rovnice je $\mu(t, r) = \kappa ( \theta - r_{t})$, volatilita této rovnice je $\sigma(t, r) = \sigma$. 
+Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou $\theta$. 
+Daný proces se nazává Ornstein-Uhlenbeckův proces.
+
+Mezi výhody Vašíčkova modelu patří, že existuje explicitní vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
+Mezi nevýhody Vašíčkova modelu patří, že připouští i záporné úrokové míry, k tomu dojde v případě, kdy se úroková míra přiblízí nule a volatilita je stále táž konstanta.
+Tuto chybu odstraňuje Cox - Ingersoll - Rossův model (CIR model), který je ve tvaru 
+\begin{equation}\label{CIR_model}
+\mathrm{d}r = \mu(t, r) \mathrm{d}t + \sigma \sqrt{r} (t, r)\mathrm{d}W
+\end{equation}
+Je vidět, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry je dána pouze driftem, který bude v tomto případě kladný.
+Úroková míra v čase $t + \Delta t$ je rovna $r_{t} + \kappa ( \theta - r_{t})\Delta t + \sigma (W_{t + \Delta t} - W_{t})$.
+
 
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
@@ -1308,6 +1342,13 @@ z něhož dostaneme následující soustavu obyčejných diferenciálních rovni
 Avšak tato soustava je nelineární a bohužel neexistuje její analytické řešení.
 Neobejdeme se tedy bez použití numerických metod.
 
+\begin{comment}
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=12cm, clip, trim= 0 20 25 50]{IMG/weight_of_asset.pdf}
+  \caption{Model vah aktiv v portfoliu}  \label{weight_of_asset}
+\end{figure}
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
 %\begin{comment}

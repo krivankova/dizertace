@@ -258,15 +258,17 @@ In the first part of the work, some basic mathematical methods employed in this 
    $W(t,\omega)$; $W(t)$; $W_t$                       &   standardní Wienerův proces \\
 %   $\boldsymbol{\Delta} W_t$			                      &   přírůstek Wienerova procesu \\
    $\Delta W_k=W_{t_{k+1}}-W_{t_k}$				 &   přírůstek Wienerova procesu \\
+   $\Delta t$						& přírůstek času \\
+   $\Delta W=W_{t+\Delta t}-W_{t}$				 &   přírůstek Wienerova procesu za čas $\Delta t$\\
    $\mathrm{d}X(t,\omega)$; $\mathrm{d}X(t)$; $\mathrm{d}X_t$    &  stochastický diferenciál \\ %continuous-time random process \\
    $\int_0^Tf(t,\omega)\,\mathrm{d}W$                              &   It\^oův integrál pro stochastický proces $f(t,\omega)$ \\
    $\boldsymbol{X}(\boldsymbol{t},\boldsymbol{\omega})$; $\boldsymbol{X}(\boldsymbol{t})$; $\boldsymbol{X}_{\boldsymbol{t}}$  		& vektorový stochastický proces\\
    $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces\\
-   $\Delta t$						& přírůstek času \\
    \end{tabular}\\\\\\
 % \end{table}
 %
 %
+\newpage \noindent
 \textbf{Teorie portfolia}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
@@ -871,16 +873,16 @@ Stochastické modely, které popisují chování úrokových sazeb musí tedy br
 Jednofaktorové modely krátkodobých úrokových měr předpokládájí, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 %dvoufaktorove r odvozuji od dvou informaci x, y
 \begin{equation}\label{model_urok_miry}
-\mathrm{d}r=\mu(t,r)\mathrm{d}t+\sigma(t,r)\mathrm{d}W
+\mathrm{d}r(t)=\mu(t,r)\,\mathrm{d}t+\sigma(t,r)\,\mathrm{d}W(t)
 \end{equation}
-Deterministická část procesu je $\mu(t, r) \mathrm{d}t$ a určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů, volatilita $\sigma(t, r)\mathrm{d}w$ určuje vlastnosti náhodných výchylek.
+Deterministická část procesu je $\mu(t, r)\,\mathrm{d}t$ a určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů, volatilita $\sigma(t, r)\,\mathrm{d}w$ určuje vlastnosti náhodných výchylek.
 
 \subsection{Vašíčkův model}
 Vašíčkův model je jednofaktorový model, který předpokládá, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 \begin{equation}\label{Vasickuv_model}
- \mathrm{d}r = \kappa ( \theta - r_{t})\mathrm{d}t + \sigma \mathrm{d}W
+\mathrm{d}r(t) = \kappa(\theta - r(t))\,\mathrm{d}t + \sigma\,\mathrm{d}W(t)
 \end{equation}
-kde $\sigma$, $\theta$ a $\kappa$ jsou konstanty. 
+kde $\kappa$, $\theta$ a $\sigma$ jsou konstanty. 
 Jejichž význam je následující:
 \begin{itemize}
 \item[-] $\theta$ je limitní úroková míra, 
@@ -888,7 +890,7 @@ Jejichž význam je následující:
 \item[-] $\sigma$ je volatilita.
 \end{itemize}
 
-Drift této rovnice je $\mu(t, r) = \kappa ( \theta - r_{t})$, volatilita této rovnice je $\sigma(t, r) = \sigma$. 
+Drift této rovnice je $\mu(t, r) = \kappa ( \theta - r(t))$, volatilita této rovnice je $\sigma(t, r) = \sigma$. 
 Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou $\theta$. 
 Daný proces se nazává Ornstein-Uhlenbeckův proces.
 
@@ -896,14 +898,14 @@ Mezi výhody Vašíčkova modelu patří, že existuje explicitní vyjádření 
 Mezi nevýhody Vašíčkova modelu patří, že připouští i záporné úrokové míry, k tomu dojde v případě, kdy se úroková míra přiblízí nule a volatilita je stále táž konstanta.
 Tuto chybu odstraňuje Cox - Ingersoll - Rossův model (CIR model), který je ve tvaru 
 \begin{equation}\label{CIR_model}
-\mathrm{d}r = \mu(t, r) \mathrm{d}t + \sigma \sqrt{r} (t, r)\mathrm{d}W
+\mathrm{d}r(t) = \mu(t, r)\,\mathrm{d}t + \sigma\sqrt{r(t, r)}\,\mathrm{d}W(t)
 \end{equation}
 Je vidět, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry je dána pouze driftem, který bude v tomto případě kladný.
-Úroková míra v čase $t + \Delta t$ je rovna $r_{t} + \kappa ( \theta - r_{t})\Delta t + \sigma (W_{t + \Delta t} - W_{t})$.
+Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.
 
 \subsection{Hull-White model}
 \begin{equation}\label{H-W_model}
- \mathrm{d}r(t)=[\theta(t)-\alpha r] \mathrm{d}t+\sigma \mathrm{d}W,
+ \mathrm{d}r(t)=[\theta(t)-\alpha r] \mathrm{d}t+\sigma \mathrm{d}W(t),
 \end{equation}
 kde
 %\begin{description}
@@ -1305,60 +1307,72 @@ Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním port
 \end{equation}
 kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv (viz \cite{fabozzi}).
 
-Uvažujme o řešitelnosti a počtu řešení soustavy rovnic \eqref{vahy} vzhledem k~$\boldsymbol{\mu}$, kterou upravíme
+Uvažujme o řešitelnosti a počtu řešení soustavy rovnic \eqref{vahy} vzhledem k~$\boldsymbol{\mu}$.
+Soustavu upravíme
 \begin{equation} \label{hodnost}
 \left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}=0.
 \end{equation}
 Podle předpokladů v teorii portfolia zmíněných v kapitole \ref{john} je kovarianční matice plné hodnosti, tedy i matice $\boldsymbol{\Sigma}^{-1}$ má hodnost $n$.
 Naproti tomu, díky předpokladu $\sum_{j=1}^nX_j=1$, má matice $\left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)$ lineárně závislé řádky, jelikož
-součet libovolných $n-1$ řádků matice  je roven záporné hodnotě zbývajícího řádku.
+součet libovolných $n-1$ řádků matice  je roven zbývajícímu řádku vynásobenému minus jednou.
 Dá se tedy dokázat, že tato matice má hodnost $n-1$.
-To znamená, že soustava rovnic \eqref{hodnost} má nekonečně mnoho řešení vzhledem k $\mu$.
-Dále hledejme nějaké partikulární řešení této soustavy rovnic.
+To znamená, že soustava rovnic \eqref{hodnost} má nekonečně mnoho řešení vzhledem k $\boldsymbol{\mu}(t)$.
+%Dále hledejme nějaké partikulární řešení této soustavy rovnic.
 
 Jak jsme ukázali v kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám podkladových aktiv v tržním portfoliu, tedy
 \begin{equation} \label{market_value}
 \boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{V}},
 \end{equation}
 kde $\boldsymbol{V}$ je vektor tržních hodnot podkladových aktiv na trhu.
+Připomeňme, že tržní hodnota aktiva $j$ je dána jako $V_j(t)=P_j(t)N_j(t)$.
+Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem ke vztahům \eqref{vahy} a \eqref{market_value} můžeme předpokládat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ jsou funkcemi cen aktiv $\boldsymbol{P}(t)$. 
 
 %Ze vztahů \eqref{vahy} a \eqref{market_value} dostáváme $\boldsymbol{V}=\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ a proto očekávané výnosnosti můžeme vyjádřit jako
 %\begin{equation} \label{mu}
 %\boldsymbol{\mu}=\boldsymbol{\Sigma}\boldsymbol{V}.
 %\end{equation}
-Při zohlednění vztahu \eqref{market_value} dostaneme obecné řešení soustavy rovnic \eqref{hodnost} jako $\boldsymbol{\mu}=k(t)\boldsymbol{\Sigma}\boldsymbol{V}$, kde $k(t)$ je parametrická funkce. %$k\in\mathbb{R}$ je parametr. 
-Což znamená, že nemůžeme najít jednoznačné vyjádření pro vektor $\boldsymbol{\mu}$, ale našli jsme vztah mezi složkami tohoto vektoru. %a k jeho vyjádření nám postačí jeden parametr.
 
+%Při zohlednění vztahu \eqref{market_value} dostaneme obecné řešení soustavy rovnic \eqref{hodnost} jako $\boldsymbol{\mu}=k(t)\boldsymbol{\Sigma}\boldsymbol{V}$, kde $k(t)$ je parametrická funkce. %$k\in\mathbb{R}$ je parametr. 
+%Což znamená, že nemůžeme najít jednoznačné vyjádření pro vektor $\boldsymbol{\mu}$, ale našli jsme vztah mezi složkami tohoto vektoru. %a k jeho vyjádření nám postačí jeden parametr.
 
-Zaměřme se nyní na vektor stochastických procesů $\boldsymbol{\mu}(t)$ 
-Dvě složky
-Multiplikativní vztah
+Hledejme vhodné stochastické procesy, které by popisovaly chování vektoru $\boldsymbol{\mu}(t)$.
+Pro tento účel rozdělme proces očekávané výnosnosti aktiv na dvě složky.
+První složka určuje relativní vztahy mezi jednotlivými očekávanými výnosnostmi aktiv v portfoliu, druhá složka popisuje výnosnost celého trhu dynamicky se měnící v čase.  
+Mezi těmito složkami budeme předpokládat multiplikativní vztah.
+Označme
 \begin{equation} \label{vynos}
 \boldsymbol{\mu}(t) =\tilde{\boldsymbol{\mu}}(t)\cdot r(t)
 \end{equation}
-$\tilde{\boldsymbol{\mu}}$ zachycuje relativní vztah aktiv v portfoliu.
-$\sum_{i=1}^n\tilde{\mu}_i=1$
-$r(t)$ celý trh dynamicky se mění v čase, zachycuje dynamiku trhu
-Dle CAPM platí $\tilde{\boldsymbol{\mu}}=\boldsymbol{X}$
-
-Předpokládáme, že výnosnost je omezená funkce
-\begin{equation} 
-\mathrm{d}r(t)=\theta(\mu-r(t))\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
+kde
+vektorový stochastický proces $\tilde{\boldsymbol{\mu}}(t)=(\tilde{\mu}_1(t),\dots,\tilde{\mu}_n(t))^\mathrm{T}$ zachycuje relativní vztahy aktiv v~portfoliu, které se mohou v čase měnit, a
+$r(t)$ je skalární stochastický proces, který charakterizuje dynamiku trhu a nezávisí na volbě konkrétního aktiva.
+Dále nechť pro všechny uvažované časy $t$ platí $\sum_{i=1}^n\tilde{\mu}_i(t)=1$.
+Pak podle teorie CAPM platí 
+\begin{equation} \label{vahy_mu}
+\tilde{\boldsymbol{\mu}}(t)=\boldsymbol{X}(t),
 \end{equation}
-kde $\theta$, $\mu$ a $\sigma$ jsou konstanty
+kde $\boldsymbol{X}(t)$ je vektor vah v tržním portfoliu v čase $t$.
+
+Výnosnost celého trhu nevykazuje exponenciální růst, ale pohybuje se přibližně v nějakém intervalu. 
+V delším časovém horizontu se projevuje tendence navracet se k průměrné hodnotě.
+Proto budeme předpokládat, že míra výnosnosti trhu $r(t)$ se řídí Vašíčkovým modelem z kapitoly \ref{Vasickuv_model}
+\begin{equation} 
+\mathrm{d}r(t)=\kappa(\theta-r(t))\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
+\end{equation}
+kde $\kappa$, $\theta$ a $\sigma$ jsou konstanty.
 
 Předpokládejme nyní, že uvažovaná podkladová aktiva jsou nekorelovaná, tedy matice $\boldsymbol{\Sigma}$ je diagonální.
 Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odvětví.
-Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j$ v průběhu času a také hodnoty aktiv $N_j$ nechť jsou v čase konstantní.
+Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j=\xi_{jj}$ v průběhu času a také hodnoty aktiv $N_j$ nechť jsou v čase konstantní.
 
-Dosadíme-li vztah \eqref{vynos} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
-Připomeňme, že tržní hodnota  $V_j(t)=P_j(t)N_j(t)$ a $\sigma_{j}=\xi_{jj}$.
+Dosadíme-li vztahy \eqref{vynos} a \eqref{vahy_mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
 \begin{equation} 
 \mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, r(t)\right)\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
 \end{equation}
 
 \begin{comment}
-Dosadíme-li vztah \eqref{mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
+Připomeňme, že tržní hodnota  $V_j(t)=P_j(t)N_j(t)$ a $\sigma_{j}=\xi_{jj}$.
+Dosadíme-li vztahy \eqref{mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
 $$ 
 \mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
 $$
@@ -1405,9 +1419,10 @@ Neobejdeme se tedy bez použití numerických metod.
 
 V další části představíme model s méně přísnými předpoklady.
 Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
-Za těchto předpokladů dosaďme vztah \eqref{vynos} do SDR \eqref{SDE}, čímž obdržíme
+Zachováme předpoklad konstantnosti volatilit aktiv $\xi_{jk}$ v čase.
+Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \eqref{SDE}, čímž obdržíme
 \begin{equation} 
- \mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, r(t)\right)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t).
+ \mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, r(t)\right)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t).
 \end{equation}
 
 \begin{comment}
@@ -1578,6 +1593,7 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 % článek, text, publikace, monografie, kniha
 % definovat, zformulovat
 % jev, fenomén
+% popisovat, charakterizovat, zachytit, vystihovat, postihovat, vyznačovat, určovat
 
 %Užitečné příkazy:
 %

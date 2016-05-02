@@ -319,7 +319,7 @@ příliš žluťoučký kůň úpěl ďábelské ódy
 \begin{comment}
 Otazník před komentářem označuje, že tato literatura ještě není citována.\\
 Klasická kniha o Stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}\\%
-?Numerické řešení stochastických diferenciálních rovnic a jejich soustav \cite{kloeden1997}\\
+Numerické řešení stochastických diferenciálních rovnic a jejich soustav \cite{kloeden1997}\\
 Vzorec pro váhy tržního portfolia čerpáme z \cite{fabozzi}\\
 Základy teorie portfolia pokládá Markowitz v \cite{markowitz}\\%
 Tobin v \cite{tobin} rozšiřuje Markowitzův přístup o bezrizikové aktivum.%
@@ -338,10 +338,10 @@ Stochastický kalkul, oceňování finančních derivátů, arbitrážní teorie
 ?General Equilibrium Asset Pricing \cite{wickens2012macroeconomic}\\
 Arbitráž, asset pricing model, numerické metody \cite{wilmott1995mathematics}\\
 ?Teorie portfolia \cite{de2010portfolio}, \cite{brada}, \cite{sharpe}, úvod \cite{bohdalova}
-?Diferenciální rovnice, numerické metody \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
+Diferenciální rovnice, numerické metody \cite{cyganowski1998maple}, \cite{cyganowski2002elementary}\\
 Stochastické procesy \cite{allen2010introduction} \\%
 Stochastické procesy a rovnováha na trhu\cite{karatzas1998methods} \\
-?Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
+Numerické řešená SDE ve financich \cite{sauer2012numerical} \\
 
 
 ?Finanční trhy, modely volatility, optimální portfolio, opce \cite{bouchaud2003theory} \\
@@ -505,7 +505,7 @@ To znamená, že Wienerův proces není slabě stacionární.
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 40]{IMG/WP_v2.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 40]{IMG/WP_v2.pdf}
   \caption{Ukázka pěti trajektorií Wienerova procesu}  \label{WP_graf}
 \end{figure}
 
@@ -548,7 +548,7 @@ Díky těmto vlastnostem se stal nejrozšířenějším model chování cen akti
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/GP_v2.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/GP_v2.pdf}
   \caption{Ukázka pěti trajektorií Geometrického Wienerova procesu s různými parametry driftu $\mu$ a volatility $\sigma$}  \label{GP_graf}
 \end{figure}
 
@@ -630,7 +630,7 @@ Naopak když $X_t>\mu$, tak je koeficient driftu záporný.
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/OU_v3.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/OU_v4.pdf}
   \caption{Ukázka pěti trajektorií Ornstein–Uhlenbeckova procesu s parametry $\theta=1$, $\mu=2$ a  $\sigma=0,1$ a počáteční hodnotou $X_0=2$.}  \label{OU_graf}
 \end{figure}
 
@@ -657,7 +657,7 @@ jehož složky $W_k(t)$ jsou nezávislé, standardní jednorozměrné Wienerovy 
 
 
 %\section{It\^oův integrál a It\^oovo lemma}
-\section{It\^oův kalkul}
+\section{It\^oův kalkul}\label{Ito_kalkul}
 Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
 Dále se proto budeme věnovat konstrukci stochastického integrálu, zavedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
 Věty a lemmata budeme uvádět pouze bez důkazu, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
@@ -728,8 +728,18 @@ Tento důležitý vztah stochastické analýzy budeme využívat pro oceňován�
 %vývoj a chování v čase
 %Pomocí diferenciálních rovnic lze popsat celou řadu zákonitostí, které se objevují v přírodních a společenských vědách.
 %Řešeními diferenciálních rovnic jsou funkce, které popisují vlastnosti zkoumaných jevů. 
-Stochastická diferenciální rovnice je rovnice popisující přírůstky stochastického procesu v čase. 
-Ve finanční matematice se používá například pro popis přírůstku hodnoty nějakého aktiva.
+
+Pomocí diferenciálních rovnic jsme schopni popsat množství zákonitostí platných ve vědeckých oborech přírodních, společenských i ekonomických.
+Řešení diferenciálních rovnic jsou funkce popisující vlastnosti zkoumaných jevů.
+Stochastické diferenciální rovnice (SDR) nám umožňují modelovat dynamiku \textit{náhodných jevů}.
+K formulování a řešení SDR je využíván It\^oův kalkul popsaný v kapitole \ref{Ito_kalkul}.
+Aplikací stochastických diferenciálních rovnic ve stochastickém modelování se zabýváme v kapitole \ref{stoch_model}, kde uvádíme modely popisující vývoj a chování cen finančních aktiv v čase.
+
+Základní studijní literaturou nám byla monografie Bernta {\O}ksendala \cite{oksendal2003stochastic}.
+Pracovali jsme také s texty \cite{cyganowski1998maple} a \cite{cyganowski2002elementary}, které napsal Sasha Cyganowski s kolektivem autorů.
+
+%Stochastická diferenciální rovnice je rovnice popisující přírůstky stochastického procesu v čase. 
+%Ve finanční matematice se používá například pro popis přírůstku hodnoty nějakého aktiva.
 \subsection{Úvod do teorie stochastických diferenciálních rovnic}
 \begin{definice}[Stochastická diferenciální rovnice]
 Nechť $\alpha(t,X(t))$ a $\beta(t,X(t))$ jsou funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
@@ -760,6 +770,10 @@ X^i(t_0)&=X^i_0.\notag
 Numerické metody využíváme v případě kdy není možno určit řešení SDR analyticky.
 Základním principem numerických metod je diskretizace proměnných.
 Numerická metoda určí aproximaci řešení v diskrétních časových hodnotách a spojitou aproximaci řešení získáme použitím interpolačních metod.
+
+Pro obeznámení s numerickými metodami řešení SDR a jejich soustav jsme zvolili monografii Petera Erise Kloedena, Eckharda Platena a Henriho Schurze \cite{kloeden1997}.
+Dalším zdrojem nám byla již zmiňovaná kniha \cite{cyganowski2002elementary} autorů Cyganowski, Kloeden a Ombach.
+Využití numerických řešení SDR při oceňování finančních derivátů popisuje Timothy Sauer \cite{sauer2012numerical}.
 
 \subsubsection{Eulerova metoda}
 Uvažujme It\^oův proces $X(t)$, který je řešením SDR definované vztahem \eqref{SDR_def}.
@@ -876,7 +890,7 @@ kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková 
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/GWP_RFA_v3.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/GWP_RFA_v4.pdf}
   \caption{Model ceny bezrizikového aktiva s úrokovou mírou $r_f=1$ a~model ceny rizikového aktiva s parametry $\mu=1$ a  $\sigma=0,1$ a počáteční hodnotou $S(0)=1$.}  \label{asset_model_graf}
 \end{figure}
 
@@ -1452,39 +1466,39 @@ Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/data_price_of_asset_ostatni.pdf}\\[5mm]
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/data_price_of_asset_KBPM_v2.pdf}	
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/data_price_of_asset_ostatni.pdf}\\[5mm]
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/data_price_of_asset_KBPM_v2.pdf}	
   \caption{Ceny aktiv v portfoliu}  \label{model_price_of_asset}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/return_of_market_v4b.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/return_of_market_v4b.pdf}
   \caption{Model výnosnosti trhu $r(t)$}  \label{return_of_market}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/ds_price_of_asset_ostatni.pdf}\\[5mm]
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/ds_price_of_asset_KBPM_v2.pdf}	
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/ds_price_of_asset_ostatni.pdf}\\[5mm]
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/ds_price_of_asset_KBPM_v2.pdf}	
   \caption{Model cen aktiv v portfoliu}  \label{price_of_asset}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=6.6cm, clip, trim= 0 20 25 0]{IMG/ds_cez_v4.pdf}\quad
-	\includegraphics[width=6.6cm, clip, trim= 0 20 25 0]{IMG/ds_o2_v4.pdf}\\	
-	\includegraphics[width=6.6cm, clip, trim= 0 20 25 0]{IMG/ds_KB_v4.pdf}\quad
-	\includegraphics[width=6.6cm, clip, trim= 0 20 25 0]{IMG/ds_PM_v4.pdf}\\	
-	\includegraphics[width=6.6cm, clip, trim= 0 20 25 0]{IMG/ds_Pegas_v4.pdf}\quad
-	\includegraphics[width=6.6cm, clip, trim= 0 20 25 0]{IMG/ds_ct_v4.pdf}\\
-	\includegraphics[width=6.6cm, clip, trim= 0 20 25 0]{IMG/ds_nwr_v4.pdf}	
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_cez_v4.pdf}\quad
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_o2_v4.pdf}\\	
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_KB_v4.pdf}\quad
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_PM_v4.pdf}\\	
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_Pegas_v4.pdf}\quad
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_ct_v4.pdf}\\
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_nwr_v4.pdf}	
   \caption{Model cen aktiv v portfoliu}  \label{price_of_asset}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/ds_weight_of_asset_v5.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/ds_weight_of_asset_v5.pdf}
   \caption{Model vah aktiv v portfoliu}  \label{weight_of_asset}
 \end{figure}
 

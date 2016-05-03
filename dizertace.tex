@@ -844,7 +844,7 @@ Teorie efektivního trhu tvrdí, že ceny aktiv velmi rychle plně odrážejí v
 
 Teorie finančních trhů je podrobně zpracována v české literatuře.
 Z velkého množství textů odkažme na \cite{rejnus2011}, \cite{fuchsfinancni} a \cite{veselainvestovani} se kterými jsme při psaní práce pracovali.
-Stochastickým modelováním v ekonomii se pak zabývá převážně zahraniční literatura, ze které jsme využili \cite{hull}, \cite{wilmott1995mathematics} a \cite{karatzas1998methods}.
+Stochastickým modelováním v ekonomii se pak zabývá převážně zahraniční literatura, ze které jsme nejvíce využívali \cite{hull}, \cite{wilmott1995mathematics} a \cite{karatzas1998methods}.
 
 \section{Stochastické modelování cen finančních aktiv}
 %na základě střetu nabídky a poptávky možné určit rovnovážnou cenu 
@@ -853,7 +853,9 @@ Stochastickým modelováním v ekonomii se pak zabývá převážně zahraničn�
 %Hodnota akcie je tedy dána jejím hospodařením. Zájem o akcii pak tvoří její cenu, protože převis poptávky ji zvyšuje a převis nabídky snižuje. Kdo chce znát cenu akcie, zjistí si ji na burze. Cena akcie je prostě dána její podnikatelskou hodnotou, jak ji vidí akcionáři a obchodníci na burzách.
 %Finanční teorie zpravidla definuje investiční instrumenty (investiční nástroje) jako aktiva, která investorovi (majiteli) přináší nějaký nárok na budoucí příjem (např. dividendy, kuponové platby, úroky či kapitálové výnosy).
 
-%Aplikace SDR ve financích najdeme v \cite{karatzas2012brownian}.
+%Aplikace SDR ve financích najdeme v \cite{karatzas2012brownian}. Už citováno.
+
+%Citace:  \cite{baxter1996financial} a  \cite{franke2004statistics}
 
 V následující části popíšeme konstrukci matematických modelů používaných ve finanční matematice pro popis vývoje cen aktiv na finančních trzích.
 V kapitole \ref{WP_kap} jsme uvažovali nad požadavky kladené na chování stochastického procesu, který můžeme využít k modelování cen aktiv, aby byl model smysluplný.
@@ -880,7 +882,7 @@ Model pro vývoj ceny aktiv na trhu, který předpokládá existenci $n$ rizikov
 \mathrm{d}P_j(t)=P_j(t)\,\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),
 \end{equation}
 kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\mu_j(t)$ a $\xi_{jk}(t)$ jsou stochastické procesy a $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces. 
-Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
+%Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
 
 Chování ceny bezrizikového aktiva je popsáno modelem
 \begin{equation}\label{risk-free_asset_model}
@@ -895,9 +897,23 @@ kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková 
 \end{figure}
 
 \subsection{Black–Scholesův model}
+Odvození Black–Scholesova modelu je srozumitelně zpracováno v učebnici Alison Etheridge \cite{etheridge2002course}.
+ \cite{baxter1996financial}.
+
 Samofinancující strategie spočívá ve vytvoření takového portfolia, které má stejné základní charakteristiky jako finanční derivát. 
 Toto portfolio nazýváme \textit{replikační portfolio}.
 Stává se z jednoho rizikového a jednoho bezrizikového aktiva.
+
+\begin{definice}
+\textit{Portfolio} $\big(\phi(t),\psi(t)\big)$ je dvojice stochastických procesů $\phi(t)$ a $\psi(t)$, která udává podíl rizikových a bezrizikových aktiv držených v čase $t$.
+Stochastický proces $\phi(t)$ je neanticipativní (podíl rizikových aktiv v portfoliu v čase $t$ může být ovlivněn pouze informacemi známými do času $t$).
+\end{definice}
+Procesy $\phi(t)$ a $\psi(t)$ nabývají kladných hodnot, nicméně pokud je na trhu povolen tzv. \textit{prodej na krátko (short sell)} mohou nabývat i hodnot záporných.
+Prodej na krátko je spekulativní metoda obchodování na finančním trhu, kdy investor očekává pokles ceny finančního aktiva.
+Investor si finanční aktivum vypůjčí od věřitele na předem stanovenou dobu a ihned ho prodá třetí straně.
+Nejpozději za stanovenou dobu investor nakoupí finanční aktivum na trhu a vrátí jej věřiteli.
+Rozdíl mezi prodejní a nákupní cennou je výsledný zisk nebo ztráta.
+Kvůli vysoké rizikovosti je prodej na krátko často regulován a v některých zemích dokonce zcela zakázán, neboť investor může dosáhnout pouze omezeného zisku, ale teoreticky neomezené ztráty.
 
 \section{Stochastické modelování úrokových sazeb}
 Na rozdíl od akcií nebo komodit vykazuje chování úrokových sazeb určité příznačné vlastnosti. %zvláštnosti.

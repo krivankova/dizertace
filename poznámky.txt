@@ -1,0 +1,17 @@
+3.2 Klasická teorie portfolia
+Do Teorie portfolia dopsat vzorec, který udává váhy tržního portfolia. Možná i odvození? 
+Doplnit ilustraèní obrázky?
+- množina všech pøípustných portfolií z daných aktiv zobrazená v prostoru výnosnost--riziko a efektivní množina portfolií
+- efektivní množina portfolií v Tobinovì pøístupu v pøípadì, že není dovolen prodej na krátko
+Pøidat kapitolu 3.2.1 Váhy tržního portfolia
+
+3.Teorie portfolia
+- definice investování na finanèních frzích
+- definice investora
+- popis tvorby portfolia
+
+Teorie portfolia se zabývá volbou optimálního portfolia.
+
+
+Data
+cenné papíry obchodované na Burze cenných papírù Praha a.s.

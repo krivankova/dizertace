@@ -264,6 +264,11 @@ In the first part of the work, some basic mathematical methods employed in this 
    $\int_0^Tf(t,\omega)\,\mathrm{d}W$                              &   It\^oův integrál pro stochastický proces $f(t,\omega)$ \\
    $\boldsymbol{X}(\boldsymbol{t},\boldsymbol{\omega})$; $\boldsymbol{X}(\boldsymbol{t})$; $\boldsymbol{X}_{\boldsymbol{t}}$  		& vektorový stochastický proces\\
    $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces\\
+   $f(t)$				& reálná funkce jedné proměnné\\
+   $f'(t)$				& první derivace reálné funkce $f$\\
+   $\mathrm{d}f$				& diferenciál funkce $f$\\
+   $f(t,x)$				& reálná funkce dvou proměnných\\
+   $\frac{\partial f(t,x)}{\partial t}$				& parciální derivace funkce $f$ podle proměnné $t$
    \end{tabular}\\\\\\
 % \end{table}
 %
@@ -776,6 +781,10 @@ Dalším zdrojem nám byla již zmiňovaná kniha \cite{cyganowski2002elementary
 Využití numerických řešení SDR při oceňování finančních derivátů popisuje Timothy Sauer \cite{sauer2012numerical}.
 
 \subsubsection{Eulerova metoda}
+Základní numerická metoda pro řešení obyčejných diferenciálních rovnic je pojmenovaná po významném švýcarském matematikovi a fyzikovi Leonhardu Paulu Eulerovi, který ji zpracoval ve své knize \textit{Institutionum calculi integralis} publikované roku 1768, \cite{euler1768institutionum}.
+Tato metoda byla v roce 1955 modifikována japonským matematikem Gisiro Maruyamou \cite{maruyama1955continuous}, aby umožňovala řešit SDR.
+Jedná se o nejjednodušší metodu, která slouží ke konstrukci složitějších numerických metod pro řešení SDR.
+
 Uvažujme It\^oův proces $X(t)$, který je řešením SDR definované vztahem \eqref{SDR_def}.
 Nechť $\{t_n\}_{n=0}^N\subseteq T$ je časová posloupnost, kde pro všechna $i$ platí $t_n<t_{n+1}$.
 Tato  posloupnost se nazývá \textit{diskretizace} časové proměnné.
@@ -801,7 +810,14 @@ kde $\boldsymbol{X}$ je $m$-rozměrný Wienerův proces.
 
 Většinou se předpokládá, že časová posloupnost $\{t_n\}_{n=0}^N\subseteq T$ je ekvidistantní. 
 Důležitou problematikou při používání numerických metod je způsob výpočtu $\Delta W_n$.
-Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, t-s)$.
+Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, \Delta_n)$.
+
+\subsubsection{Milsteinova metoda}
+Tuto metodu poprvé představil Grigori N. Milstein ve svém článku \cite{milstein1974approximate} v roce 1974.
+
+\begin{equation}\label{Milstein}
+X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n+\frac12\beta(t_n,X_n)\beta'(t_n,X_n)(\Delta W_n-\Delta_n),
+\end{equation}
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Stochastické modelování}
@@ -1043,21 +1059,23 @@ Na Obrázku \ref{obr_Markowitz} je znázorněna množina přípustných portfoli
 
 V roce 1958 rozšířil James Tobin \cite{tobin} Markowitzův model o možnost investování do bezrizikového aktiva.
 \textit{Bezrizikové aktivum} má jistý výnos a tedy nulové riziko.
-To má velký vliv především na efektivní množinu portfolií, která je tvořena tečnou k původní Markowitzově efektivní množině procházející bezrizikovým aktivem.
-V bodě dotyku pak leží tzv. tangenciální portfolio.
-Postup investora při hledání optimálního portfolia shrnuje Tobinův separační teorém, který se později vžil v souvislosti s CAPM, který bude popsán v další části.% \ref{kapitola_CAPM}.
+To má velký vliv především na efektivní množinu portfolií, která je tvořena tečnou k původní Markowitzově efektivní množině procházející bezrizikovým aktivem, což je zobrazeno na Obrázku \ref{obr_Tobin_1}.
+V bodě dotyku pak leží tzv. tangenciální portfolio (viz Obrázek \ref{obr_Tobin_2}).
+Postup investora při hledání optimálního portfolia shrnuje Tobinův separační teorém, který se později vžil v souvislosti s CAPM, který bude popsán v další části. % \ref{kapitola_CAPM}.
 Investor prvně určí tangenciální portfolio a následně ho zkombinuje s bezrizikový aktivem podle svých rizikových preferencí.
 
 \begin{figure}[!htbp]
   \centering 
   \includegraphics[width=11cm]{IMG/graf_5b.pdf}
-  \caption{Tobinův model - množina efektivních portfolií.}
+  \caption{Tobinův model - množina efektivních portfolií v případě, že není povolen prodej na krátko.}
+  \label{obr_Tobin_1}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering 
   \includegraphics[width=11cm]{IMG/graf_1.pdf}
-  \caption{Tobinův model - tangenciální portfolio.}
+  \caption{Tobinův model - zobrazení tangenciálního portfolia (rizikového portfolia, do kterého dle Separačního theorému investují všichni investoři při tvorbě optimálního portfolia).}
+  \label{obr_Tobin_2}
 \end{figure}
 
 %\subsection{Kapitálový model aktiv -- CAPM}\label{kapitola_CAPM}
@@ -1082,6 +1100,8 @@ Důležitým důsledkem pak je, že váha každého cenného papíru v tržním 
 Tento poznatek budeme později využívat při konstrukci spojitého rovnovážného modelu.
 
 \subsection{Markowitzova teorie portfolia}\label{Markowitz_kap}
+
+Abychom blíže pochopili pojmy používané v kapitole \ref{KTP} přiblížíme na tomto místě jejich odvození.
 
 \begin{figure}[!htbp]
   \centering 

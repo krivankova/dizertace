@@ -815,6 +815,10 @@ Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, \Delta_n)
 \subsubsection{Milsteinova metoda}
 Tuto metodu poprvé představil Grigori N. Milstein ve svém článku \cite{milstein1974approximate} v roce 1974.
 
+spočívá v tom, že se snaží vylepšit aproximaci difuzního členu. 
+Používá se k tomu stochastický Taylorův rozvoj. 
+Milsteinovo schéma přidává třetí člen k Eulerovu schématu.
+
 \begin{equation}\label{Milstein}
 X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n+\frac12\beta(t_n,X_n)\beta'(t_n,X_n)(\Delta W_n-\Delta_n),
 \end{equation}
@@ -1567,6 +1571,17 @@ Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \
   \caption{Model vah aktiv v portfoliu}  \label{weight_of_asset}
 \end{figure}
 
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v1.pdf}
+  \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2)}  \label{euler_milstein}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/avg_CEZ_v1.pdf}
+  \caption{Dvacet simulací trajektorie stochastického procesu ceny akcií (společnost ČEZ) a jejich střední hodnota}  \label{avg_trajektorie}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
 %\begin{comment}

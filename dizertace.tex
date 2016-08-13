@@ -814,14 +814,14 @@ Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, \Delta_n)
 
 \subsubsection{Milsteinova metoda}
 Tuto metodu poprvé představil Grigori N. Milstein ve svém článku \cite{milstein1974approximate} v roce 1974.
+Metoda se snaží vylepšit aproximaci difuzního členu tím, že přidává třetí člen k Eulerovu schématu.
+Přitom se využívá stochastický Taylorův rozvoj. 
 
-spočívá v tom, že se snaží vylepšit aproximaci difuzního členu. 
-Používá se k tomu stochastický Taylorův rozvoj. 
-Milsteinovo schéma přidává třetí člen k Eulerovu schématu.
-
-\begin{equation}\label{Milstein}
-X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n+\frac12\beta(t_n,X_n)\beta'(t_n,X_n)(\Delta W_n-\Delta_n),
-\end{equation}
+\begin{align}\label{Milstein}
+X_{n+1}=X_n&+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n\\ \notag
+&+\frac12\beta(t_n,X_n)\beta'(t_n,X_n)\big((\Delta W_n)^2-\Delta_n\big),
+\end{align}
+kde $\beta'(t_n,X_n)$ je derivace $\beta(t_n,X_n)$ podle $X_n$.
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Stochastické modelování}
@@ -1573,7 +1573,7 @@ Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v1.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v2.pdf}
   \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2)}  \label{euler_milstein}
 \end{figure}
 

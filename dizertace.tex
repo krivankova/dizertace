@@ -196,6 +196,7 @@ In the first part of the work, some basic mathematical methods employed in this 
    \begin{tabular}{p{4cm} p{9.3cm}}
    $\mathbb{R}$                              &   jednorozměrný Eukleidovský prostor \\
    $\mathbb{R}^n$                              &     $n$-rozměrný Eukleidovský prostor \\
+   $\mathbb{R}^+$                              &     množina všech kladných čísel \\
    $\boldsymbol{x}=(x_1,\ldots,x_n)^\mathrm{T}$             &    $n$-rozměrný reálný vektor \\
     $\boldsymbol{1}$                           &   vektor jedniček\\
    $\mathbf{I}_n$                              &    jednotková matice řádu $n$ \\
@@ -280,8 +281,8 @@ In the first part of the work, some basic mathematical methods employed in this 
    $I_t$ 								& množina všech investorů na trhu v čase $t$\\
    $P_j(t)$                             &   cena aktiva $j$ v čase $t$ \\
    $\boldsymbol{P}(t)$                             &   vektor cen aktiv v čase $t$\\
-   $N_j(t)$                             &   objem aktiv $j$ v čase $t$ \\
-   $\boldsymbol{N}(t)$     &   vektor podílů aktiv v čase $t$\\
+   $N_j(t)$                             &   objem aktiva $j$ v čase $t$ \\
+   $\boldsymbol{N}(t)$     &   vektor objemů aktiv v čase $t$\\
    $V_j(t)=P_j(t)N_j(t)$       &  tržní hodnota aktiva $j$\\
    $r_j$  								& míra výnosnosti podkladového aktiva $j$\\
    $\boldsymbol{r}=(r_1,\dots,r_n)^\mathrm{T}$  		& vektor výnosností aktiv držených v~portfoliu\\
@@ -296,8 +297,8 @@ In the first part of the work, some basic mathematical methods employed in this 
    $\boldsymbol{\xi}$						& matice volatilit podkladových aktiv držených v~portfoliu\\
    $\gamma_j(t)$ 							& míra růstu  podkladového aktiva $j$\\
    $w_{j}(i,t)$ 							& optimální objem prostředků investovaných do aktiva $j$ investorem $i$ v čase $t$\\
-   $\boldsymbol{w}(i,t)$					 	& optimální alokace prostředků investora $i$ držených v portfoliu všech aktiv\\
-   $\lambda(i,j)$							& rizikové preference investora $i$ v čase $t$ \\  
+   $\boldsymbol{w}(i,t)$					 	& optimální alokace prostředků investora $i$ držených v portfoliu všech aktiv v čase $t$\\
+   $\lambda(i,t)$							& rizikové preference investora $i$ v čase $t$ \\  
 \end{tabular}\\\\\\
 %
 %
@@ -379,37 +380,39 @@ Budeme používat obvyklé značení, jehož přehled je uveden na začátku pr�
 Zavedeme základní definice a vztahy využívané ve stochastickém modelování.
 Tato kapitola čerpá především z klasické monografie Bernta {\O}ksendala o stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}, 
 podobně jako knihy Thomase Garda  \cite{gard} 
-a rozsáhlé publikace Andrei Pascucci zabívající se matematickými metodami oceňování opcí \cite{pascucci}.
+a rozsáhlé publikace Andrei Pascucci zabývající se matematickými metodami oceňování opcí \cite{pascucci}.
 Jako další reference byly využity \cite{karatzas2012brownian}, \cite{allen2010introduction},  \cite{shreve2012stochastic} a \cite{shreve2004stochastic}.
 Ve zmiňované literatuře je možno nalézt další podrobnosti.
 
 \section{Stochastické procesy a jejich vlastnosti}
-Stochastické procesy slouží k popisu dynamiky náhodných jevů a jejich příklady nacházíme v mnoha vědeckých oborech.
+Stochastické procesy slouží k popisu dynamiky náhodných jevů a příklady takových jevů nacházíme v mnoha vědeckých oborech.
 Mezi nejznámější patří Brownův pohyb pevných částic, difúze a bílý šum.
 
 Základy teorie stochastických procesů byly položeny na konci devatenáctého století.
-První zmínky popisu Brownova pohybu najdeme v článku dánského matematika Thorvalda Nicolaie Thielea z roku 1880 o metodě nejmenších čtverců.
+První zmínky popisu Brownova pohybu najdeme v článku dánského matematika Thorvalda Nicolae Thielea z roku 1880 zabývajícím se metodou nejmenších čtverců (podrobněji viz \cite{lauritzen2002thiele}). %(viz \cite{gulisashvili2012analytically}).
 V roce 1900 Louis Bachelier ve své disertační práci \cite{bachelier} používá Brownův pohyb k popisu pohybu cen akcií na trhu.
 Díky ní je Bachelier uznávaný jako zakladatel kvantitativních metod ve finanční matematice.
 
 Nezávisle na této práci popisují matematicky Brownův pohyb také fyzici Albert Einstein a Marian Smoluchowski. 
 V roce 1905 Einstein aplikuje Brownův pohyb ve svém článku zabývajícím se molekulárně kinetickou teorií tepla \cite{einstein}.
 O rok později Smoluchowski prezentuje článek \cite{Smoluchowski}, který se stane důležitým základem teorie náhodných procesů zvláště rovnice difúze.
-Tyto teorie následně experimentálně ověřil Jean Baptiste Perrin a za tento úspěch byl v roce 1926 oceněn Nobelovou cenou za fyziku. 
+Einsteinovu teorii v roce 1908 experimentálně ověřil Jean Baptiste Perrin \cite{perrin2013brownian} a za tento úspěch byl v roce 1926 oceněn Nobelovou cenou za fyziku. 
 
 V neposlední řadě chceme zmínit význam amerického matematika Norberta Wienera, který dokázal existenci stochastického procesu používaného k popisu Brownova pohybu \cite{wiener1923differential}. 
 Tento proces nese jeho jméno a je využíván v~mnoha různých odvětvích.
 
 \subsection{Stochastický proces}
-V této části práce definujeme stochastický proces a některé jeho zajímavé vlastnosti.
+V této části práce definujeme stochastický proces a uvedeme některé jeho podstatné vlastnosti.
 \begin{definice}[Stochastický proces]
 Uvažujme  indexovou množinu $T$ a pravděpodobnostní prostor $(\Omega,\mathcal{A}, \mathsf{Pr})$.
-\textit{Stochastický proces} $X(t,\omega)$ je funkce dvou proměnných $X:T\times\Omega\to\mathbb{R}$, kde
-\begin{itemize}
-\item $X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in T$ náhodná veličina,
-\item $X(\cdot,\omega):T\to\mathbb{R}$ je pro každé $\omega\in\Omega$ realizace náhodného procesu.
-\end{itemize}
-Reálná funkce $X(\cdot,\omega)$ se také nazývá \textit{trajektorie} nebo \textit{cesta} stochastického procesu. 
+\textit{Stochastický proces} $X(t,\omega)$ je funkce dvou proměnných $X:T\times\Omega\to\mathbb{R}$, kde 
+$X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in T$ náhodná veličina.
+%\begin{itemize}
+%\item $X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in T$ náhodná veličina,
+%\item $X(\cdot,\omega):T\to\mathbb{R}$ je pro každé $\omega\in\Omega$ realizace náhodného procesu.
+%\end{itemize}
+
+Reálná funkce $X(\cdot,\omega)$ se nazývá \textit{trajektorie} nebo \textit{cesta} nebo \textit{realizace} stochastického procesu. 
 \end{definice}
 Množina parametrů $T$ může být diskrétní nebo spojitá a v závislosti na tom pak mluvíme o \textit{diskrétním} nebo \textit{spojitém} stochastickém procesu. 
 
@@ -423,7 +426,7 @@ V takovém případě hovoříme o tom, že jeden proces je \textit{verzí} druh
 Nechť $T_n$ je množina všech vektorů $T_n=\{\boldsymbol{t}=(t_1,\dots,t_n):t_1\leq t_2\leq\cdots\leq t_n; t_i\in T; i=1,\dots,n\}$,
 pak \textit{distribuční funkcí} stochastického procesu rozumíme funkci
 $$F_{\boldsymbol{t}}(\boldsymbol{x})=F_{t_1,\dots,t_n}(x_1,\dots,x_n)= \mathsf{Pr}(X_{t_1}\leq x_1,\dots,X_{t_n}\leq x_n),$$
-pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T$ a všechna $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
+pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T_n$ a všechna $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
 Pro různá $n$ a různé $t_1,\dots,t_n$ dostáváme celý \textit{systém distribučních funkcí}, který označíme $\mathcal{F}$, a který plně popisuje pravděpodobnostní chovaní stochastického procesu.
 
 \end{definice}
@@ -434,7 +437,7 @@ Pro různá $n$ a různé $t_1,\dots,t_n$ dostáváme celý \textit{systém dist
 
 Systém distribučních funkcí nese úplnou informaci o pravděpodobnostním chování stochastického procesu, nicméně podstatnou část této informace můžeme získat už jen z charakteristik popsaných v následující definicí.
 
-\begin{definice}[Charakteristické funkce stochastického procesu]
+\begin{definice}[Charakteristiky stochastického procesu]
 Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in T$ existuje střední hodnota $\mathsf{E}{X(t)}$.
 Pak funkce $\mu_t$ definovaná na množině $T$ předpisem
 $$\mu_t=\mathsf{E}{X(t)}$$
@@ -457,21 +460,21 @@ Stochastický proces $X(t)$ nazveme \textit{striktně stacionární} pokud jsou 
 $$F_{t_1+h,\dots,t_n+h}(x_1,\dots,x_n)=F_{t_1,\dots,t_n}(x_1,\dots,x_n).$$   
 
 Stochastický proces $X(t)$ nazveme \textit{slabě stacionární} pokud existuje konstanta $\mu\in\mathbb{R}$ a funkce $c:\mathbb{R}^+\to\mathbb{R}$ taková, že
-$$\mathsf{E}{X(t)}=\mu\quad\text{ a }\quad\mathsf{C}(X(t),X(s))=c(t-s)$$
+$$\mathsf{E}{X(t)}=\mu\quad\text{ a }\quad\mathsf{C}(X(t),X(s))=c(|t-s|)$$
 pro všechna $t,s\in T$.
 \end{definice}
 Pro slabě stacionární proces zřejmě platí ${\sigma_t}^2=c(0)$.
 Procesy, které nejsou striktně stacionární, se nazývají evoluční. 
 
 \begin{definice}[Nezávislost přírůstků stochastického procesu]
-Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě tehdy, když pro všechny časové posloupnosti $\{t_i\}\subseteq T$, kde $t_i<t_{i+1}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
+Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě tehdy, když pro všechny časové posloupnosti $\{t_i\}_{i=1}^N\subseteq T$, kde $t_i<t_{i+1}$ a $N\in\mathbb{N}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
 \end{definice}
 K popisu pravděpodobnostního chování stochastického procesu s nezávislými přírůstky je tedy dostačující znát distribuční funkci náhodné veličiny $X(t)$ a přírůstku stochastického procesu $X(t)-X(s)$, %pro pevně zvolené $t$ a $s$
 kde $t>s$.
 
 \begin{definice}[Spojitost stochastického procesu]
 Řekneme, že stochastický proces $X(t)$ je \textit{stochasticky spojitý v bodě} $t_0\in T$, jestliže pro každé $\epsilon>0$ platí
-$$\Pr(|X_t-X_{t_0}|>\epsilon)=0.$$
+$$\lim_{t\to t_0}\Pr(|X_t-X_{t_0}|>\epsilon)=0.$$
 Stochastický proces je  \textit{stochasticky spojitý} (spojitý podle pravděpodobnosti), je-li spojitý v každém bodě množiny $T$.
 \end{definice}
 Proces, který je spojitý podle předcházející definice, nemusí mít spojité trajektorie.
@@ -482,19 +485,24 @@ Proces, který je spojitý podle předcházející definice, nemusí mít spojit
 \subsection{Wienerův proces}\label{WP_kap}
 Wienerův proces byl zaveden Norbertem Wienerem jako matematický popis Brownova pohybu.
 Může být také interpretován jako limita náhodné procházky pro infinitezimální časoprostorový krok.
-Zajímavostí Wienerova procesu je kombinace dvou vlastností,
-s pravděpodobností jedna má spojitou trajektorii a zároveň je nediferencovatelný v každém bodě. 
+%Zajímavostí Wienerova procesu je kombinace dvou vlastností,
+%s pravděpodobností jedna má spojitou trajektorii a zároveň je nediferencovatelný v každém bodě. 
+%Výjimečnou vlastností 
+Pro trajektorie Wienerova procesu je typická kombinace dvou vlastností spojitost a zároveň nediferencovatelnost v každém bodě.
 Wienerův proces je základním stavebním kamenem pro konstrukci stochastického integrálu.
 
-\begin{definice}
+\begin{definice}[Wienerův proces]
 Reálný stochastický proces $\{W(t):t\ge0\}$ na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
 \begin{enumerate}
 \item[1.]$W(0)=0$, 
 \item[2.](spojitost trajektorií Wienerova procesu) s pravděpodobností jedna je funkce $t\to W(t)$ spojitá v $t$,
-\item[3.](nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, t.j.  pro každé $t\ge s\ge0$ má $W(t+s)-W(s)$ stejné rozdělení jako $W(t)-W(0)$,
+%\item[3.](nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, t.j.  pro každé $t\ge s\ge0$ má $W(t+s)-W(s)$ stejné rozdělení jako $W(t)-W(0)$,
+\item[3.](nezávislost přírůstků) přírůstky procesu jsou nezávislé,
 \item[4.](normalita přírůstků) pro každé $t\ge s\ge0$ má přírůstek $W(t)-W(s)$ normální rozdělení $\mathsf{N}(0, t-s)$.
 \end{enumerate}
 \end{definice}
+
+Ukázku trajektorií Wienerova procesu můžeme vidět na Obrázku \ref{WP_graf}.
 
 Z definice Wienerova procesu je zřejmé, že jeho střední hodnota $\mu_t=0$ pro všechna $t\ge0$.
 Snadno odvodíme vztah pro autokovarianční funkci Wienerova procesu $\rho(s,t)=\min(s,t)$.
@@ -518,8 +526,8 @@ Ceny aktiv na finačních trzích se podle teorie dokonalých trhů chovají zce
 Wienerův proces se tedy nabízí jako vhodný nástroj k popisu chování cen aktiv.
 Při modelování ve finanční matematice využíváme procesy, které jsou zobecněním či modifikací Wienerova procesu. 
 Uvažujme proces s nenulovým parametrem růstu, označovaným jako drift, a parametrem variability, jenž odpovídá směrodatné odchylce procesu.
-\begin{definice}[Wienerův proces s driftem]
-Stochastický proces $X(t)$ definovaný 
+\begin{definice}[Wienerův proces s driftem]\label{Wieneruv_proces_s_driftem}
+Stochastický proces $X(t)$ definovaný jako
 $$X(t)  = \mu\, t + \sigma\, W (t),$$
 kde $\mu$ a $\sigma$ jsou konstanty a $W (t)$ je Wienerův proces,
 se nazývá \textit{Wienerův proces  s driftem} $\mu$ a volatilitou $\sigma$.
@@ -529,10 +537,14 @@ Nejenže Wienerův proces s driftem může nabývat záporných hodnot, což je 
 Aktivum s nižší současnou cenou by mělo větší riziko a také vyšší očekávaný výnos než aktivum s vyšší cenou.
 Proto chceme proces upravit tak, aby absolutní očekávaný výnos a výše směrodatné odchylky byly proporcionální k ceně podkladového aktiva. 
 
-Nejběžnější modifikací Wienerova procesu splňující tyto požadavky je Geometrický Wienerův proces, který zavedl Paul Samuelson \cite{samuelson1964rational}.
+Nejběžnější modifikací Wienerova procesu splňující tyto požadavky je Geometrický Wienerův proces, který v kontextu finanční matematiky použil poprvé Paul Samuelson \cite{samuelson1964rational}.
 K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
+
+%V definici Geometrického Wienerova procesu využijeme stochastické diferenciální rovnice, které budou definovány v Kapitole \ref{SDR_kap}.
+Geometrický Wienerův proces bývá často definován pomocí  stochastické diferenciální rovnice.
+Proto uvádíme tento způsob definice, přestože budou definovány v Kapitole \ref{SDR_kap}.
 \begin{definice}[Geometrický Wienerův proces]\label{Geometricky_Wieneruv_proces}
-Stochastický proces $S(t)$, který je řešením stochastické diferenciální rovnice
+Stochastický proces $S(t)$, který je řešením stochastické diferenciální rovnice 
 \begin{equation}\label{SDE_GWP}
 \frac{\mathrm{d} S(t)}{S(t)} = \mu\,\mathrm{d}t + \sigma\,\mathrm{d}W (t), 
 \end{equation}
@@ -543,13 +555,15 @@ Toto řešení můžeme vyjádřit následovně
 \begin{equation}\label{GWP}
 S(t) = S(0)\,\mathrm{e}^{X(t)},
 \end{equation}
-kde $X(t) = (\mu - \frac{\sigma^2}{2})\,t + \sigma W (t)$ je Wienerův proces s driftem.
+kde $X(t) = (\mu - \frac{\sigma^2}{2})\,t + \sigma W (t)$ je Wienerův proces s driftem (viz Definice \ref{Wieneruv_proces_s_driftem}).
 \end{definice}
 Člen $\mathrm{d}W(t)$ ve stochastické diferenciální rovnici \eqref{SDE_GWP} označuje infinitezimální přírůstek Wienerova procesu a $\mathrm{d}t$ je infinitezimální změna času.
 
-Z definice \ref{Geometricky_Wieneruv_proces} je zřejmé, že Geometrický Wienerův proces nabývá pouze kladných hodnot a jeho relativní přírůstky jsou nezávislé a mají stejné rozdělení. 
+Z Definice \ref{Geometricky_Wieneruv_proces} je zřejmé, že Geometrický Wienerův proces nabývá pouze kladných hodnot a jeho relativní přírůstky jsou nezávislé a mají stejné rozdělení. 
 Kromě toho se s tímto procesem docela snadno pracuje ve výpočtech. 
-Díky těmto vlastnostem se stal nejrozšířenějším model chování cen aktiv ve finanční matematice.
+Díky těmto vlastnostem se stal nejrozšířenějším modelem chování cen aktiv ve finanční matematice.
+
+Ukázku trajektorií Geometrického Wienerova procesu s různými parametry driftu a volatility znázorňuje Obrázek \ref{GP_graf}.
 
 \begin{figure}[!htbp]
   \centering 
@@ -559,7 +573,7 @@ Díky těmto vlastnostem se stal nejrozšířenějším model chování cen akti
 
 
 \subsection{It\^oův proces}
-Abychom mohli v následujícím textu zavést stochastický integrál definujme napřed širokou třídu procesů, již jsou It\^ovy procesy.
+Abychom mohli v následujícím textu zavést stochastický integrál definujme nejdříve širokou třídu procesů, tzv. It\^oových procesů.
 
 %Zavedeme obecný stochasticky proces, který využijeme při konstrukci It\^oova lemmatu v další části. 
 %Stochastický proces dostatečně obecný abychom mohli zavést stochastický integrál, pojmenovaný po známém matematikovi
@@ -574,7 +588,7 @@ a publikace \cite{ito1946} a
 \cite{ito1951stochastic}, kde zavádí koncept stochastických diferenciálních rovnic.
 
 Robert C. Merton, nositel Nobelovy za ekonomii, využívá teoretické poznatky Kiyosi It\^oa jako nástroj pro výzkum vývoje cen akcií v portfoliu a k oceňování finančních derivátů.
-Což bude dále přiblíženo v kapitole \ref{stoch_model} o stochastickém modelování.
+Tyto postupy více přiblížíme v Kapitole \ref{stoch_model} o stochastickém modelování.
 
 \begin{definice}
 Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
@@ -595,15 +609,15 @@ Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Ome
 \textit{It\^oův proces} je stochastický proces
 $$X(t,\omega)=X(0,\omega)+\int_0^tU(s,\omega)\,\mathrm{d}s+\int_0^tV(s,\omega)\,\mathrm{d}W(s,\omega),$$
 kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do třídy $M$,
-první integrál je Lebesgueův a druhý It\^oův (který je definován v kapitole \ref{Ito_integral}).
+první integrál je Lebesgueův a druhý It\^oův (který je definován v Kapitole \ref{Ito_integral}).
 
 Často se používá diferenciální tvar, nazývaný \textit{stochastický diferenciál},
 $$\mathrm{d}X(t,\omega)=U(t,\omega)\,\mathrm{d}t+V(t,\omega)\,\mathrm{d}W(t,\omega).$$
 \end{definice}
 
-Geometrický Wienerův proces je speciálním případem It\^oova procesu, kde $U(t,\omega)=\mu\,X(t,\omega)$ a $V(t,\omega))=\sigma X(t,\omega)$.
+%Geometrický Wienerův proces je speciálním případem It\^oova procesu, kde $U(t,\omega)=\mu\,X(t,\omega)$ a $V(t,\omega))=\sigma X(t,\omega)$.
 
-\subsection{Ornstein–Uhlenbeckův proces}
+\subsection{Ornstein–Uhlenbeckův proces}\label{OU_kap}
 Další často využívanou modifikací Wienerova procesu jsou stochastické procesy s tendencí vracet se k dlouhodobé rovnovážné hodnotě.
 Nazývají se \textit{mean-reversion procesy} a nachází četné využití ve fyzice, matematice i ekonomii.
 Ve finanční matematice se používají pro modelování úrokových sazeb, kurzů měn, cen komodit a volatility.
@@ -627,11 +641,13 @@ Ornstein–Uhlenbeckův proces může být také definován jako řešení stoch
 \end{definice}
 
 Ornstein–Uhlenbeckův proces je stacionární Gaussovský proces s ohraničeným rozptylem. 
-Koeficient $\theta$ určuje rychlost přibližování k rovnovážné hodnotě $\mu$ (nebo také střední hodnotě).
+Koeficient $\theta$ určuje rychlost přibližování k rovnovážné hodnotě $\mu$. %(nebo také střední hodnotě).
 Čím je $\theta$ větší tím pohotověji proces reaguje na odchýlení od rovnováhy. 
 Na rozdíl od Wienerova procesu nemá Ornstein–Uhlenbeckův proces konstantní koeficient driftu, jelikož závisí na jeho aktuální hodnotě.
 Pokud je aktuální hodnota procesu $X_t$ menší než rovnovážná hodnota $\mu$, pak je koeficient driftu kladný.
 Naopak když $X_t>\mu$, tak je koeficient driftu záporný.
+
+Ukázku trajektorií Ornstein–Uhlenbeckova procesu s různými parametry najdeme na Obrázku \ref{OU_graf}.
 
 \begin{figure}[!htbp]
   \centering 
@@ -640,7 +656,7 @@ Naopak když $X_t>\mu$, tak je koeficient driftu záporný.
 \end{figure}
 
 %\cite{Benth2016}
-Vlastnostem Ornstein–Uhlenbeckova procesu (především stacionaritě) se zevrubně věnují Fred Espen Benth a Asma Khedher v knize \cite{podolskij2015fascination} z roku 2015, která je aktuální sbírkou práce renomovaných vědců v oboru pravděpodobnosti, statistiky a jejich aplikací ve financích, ekonomii, fyzice, řízení rizika a systémů hromadné obsluhy.
+Vlastnostem Ornstein–Uhlenbeckova procesu (především stacionaritě) se zevrubně věnují Fred Espen Benth a Asma Khedher v knize \cite{podolskij2015fascination} z roku 2015, která je aktuální sbírkou prací vědců v oboru pravděpodobnosti, statistiky a jejich aplikací ve financích, ekonomii, fyzice, řízení rizika a systémů hromadné obsluhy.
 
 \subsection{Mnohorozměrný Wienerův proces}
 Chceme-li uvažovat finanční trh s více rizikovými aktivy a zabývat se jejich vzájemnými vztahy, musíme zavést vícerozměrný Wienerův proces.
@@ -654,6 +670,7 @@ jehož složky $W_k(t)$ jsou nezávislé, standardní jednorozměrné Wienerovy 
 %Wienerův proces je stavebním kamenem matematického modelování ve finanční matematice. 
 %Tento stochastický proces se používá pro popis chování ceny aktiva v čase. 
 
+Na Obrázku \ref{WP_2D_graf} vidíme ukázku trajektorie dvourozměrného Wienerova procesu.
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/WP_2D_v6.pdf}
@@ -662,46 +679,48 @@ jehož složky $W_k(t)$ jsou nezávislé, standardní jednorozměrné Wienerovy 
 
 
 %\section{It\^oův integrál a It\^oovo lemma}
-\section{It\^oův kalkul}\label{Ito_kalkul}
+\section{It\^oův integrální počet}\label{Ito_kalkul}
 Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
-Dále se proto budeme věnovat konstrukci stochastického integrálu, zavedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
-Věty a lemmata budeme uvádět pouze bez důkazu, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
+Dále se proto budeme věnovat konstrukci stochastického integrálu, uvedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
+Věty a lemmata budeme uvádět pouze bez důkazů, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
 
 %Čerpat budeme z knih \cite{}...
 Konstrukci stochastického integrálu podle Wienerova procesu představil v letech 1942--1944 Kiyosi It\^o v \cite{ito1942differential} a \cite{ito1944}. 
 Obecnější stochastický integrál, který je založený na širší třídě stochastických procesů, zkonstruovali v roce 1967 Hiroshi Kunita a Shinzo Watanabe v \cite{kunita1967square}.
 
 \subsection{It\^oův integrál}\label{Ito_integral}
-Důležitým nástrojem pro počítání stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též jen stochastický integrál).
-Jeho zavedení je vyžadováno nediferencovatelností Wienerova procesu.
+Důležitým nástrojem pro řešení stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též jen stochastický integrál).
+Jeho zavedení je vyžadováno nediferencovatelností trajektorií Wienerova procesu.
 Stochastický integrál budeme konstruovat obdobným způsobem jako Riemannův integrál.
-Nejprve It\^oův integrál definujeme pro jednoduché funkce, následně definici rozšíříme na větší třídu funkcí pomocí aproximace.
+Nejprve It\^oův integrál definujeme pro jednoduché procesy, následně definici rozšíříme na větší třídu procesů pomocí aproximace.
 
 \begin{definice}\label{jednoduchafunkce}
-Stochastický proces $S$ se nazývá \textit{jednoduchý} (nebo \textit{jednoduchá funkce}), jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
+Stochastický proces $S$ se nazývá \textit{jednoduchý}, %(nebo \textit{jednoduchá funkce}), 
+jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
 \end{definice}
-Z definice \ref{jednoduchafunkce} vyplývá, že trajektorie jednoduchého procesu je po částech konstantní. 
+Z Definice \ref{jednoduchafunkce} vyplývá, že trajektorie jednoduchého procesu je po částech konstantní. 
 
 \begin{definice}
 Nechť $S$ je jednoduchý proces a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
 Pak
 $$\int_0^TS\,\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
-se nazývá \textit{It\^oův integrál} funkce $S$ na intervalu $[0,T]$.
+se nazývá \textit{It\^oův integrál} procesu $S$ na intervalu $[0,T]$.
 \end{definice}
 
-Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché funkce na integrál pro obecný stochastický proces.
+Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché procesy na integrál pro obecný stochastický proces.
 
 \begin{lemma} \label{itoint}
-Nechť $f$ je stochastický proces patřící do třídy $M$ dle definice \ref{M}.
-Pak existuje posloupnost jednoduchých funkcí $\{f_n:n\in\mathbb N\}$ tak, že pro $n\to\infty$ platí
+Nechť $f$ je stochastický proces patřící do třídy $M$ dle Definice \ref{M}.
+Pak existuje posloupnost jednoduchých procesů $\{f_n:n\in\mathbb N\}$ tak, že pro $n\to\infty$ platí
 $$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarrow0.$$
 \end{lemma}
 
-\begin{definice}
-Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých funkcí z lemmatu \ref{itoint}.
+\begin{definice}\label{Ito_int}
+Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých procesů z lemmatu \ref{itoint}.
 Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
 $$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\mathrm{d}W.$$
 \end{definice}
+Definice \ref{Ito_int} není závislá na volbě aproximující posloupnosti $f_n$ viz \cite{oksendal2003stochastic}.
 
 \subsection{It\^oovo lemma}
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
@@ -737,29 +756,29 @@ Tento důležitý vztah stochastické analýzy budeme využívat pro oceňován�
 Pomocí diferenciálních rovnic jsme schopni popsat množství zákonitostí platných ve vědeckých oborech přírodních, společenských i ekonomických.
 Řešení diferenciálních rovnic jsou funkce popisující vlastnosti zkoumaných jevů.
 Stochastické diferenciální rovnice (SDR) nám umožňují modelovat dynamiku \textit{náhodných jevů}.
-K formulování a řešení SDR je využíván It\^oův kalkul popsaný v kapitole \ref{Ito_kalkul}.
-Aplikací stochastických diferenciálních rovnic ve stochastickém modelování se zabýváme v kapitole \ref{stoch_model}, kde uvádíme modely popisující vývoj a chování cen finančních aktiv v čase.
+K formulování a řešení SDR je využíván It\^oův kalkul popsaný v Kapitole \ref{Ito_kalkul}.
+Aplikací stochastických diferenciálních rovnic ve stochastickém modelování se zabýváme v Kapitole \ref{stoch_model}, kde uvádíme modely popisující vývoj a chování cen finančních aktiv v čase.
 
 Základní studijní literaturou nám byla monografie Bernta {\O}ksendala \cite{oksendal2003stochastic}.
 Pracovali jsme také s texty \cite{cyganowski1998maple} a \cite{cyganowski2002elementary}, které napsal Sasha Cyganowski s kolektivem autorů.
 
 %Stochastická diferenciální rovnice je rovnice popisující přírůstky stochastického procesu v čase. 
 %Ve finanční matematice se používá například pro popis přírůstku hodnoty nějakého aktiva.
-\subsection{Úvod do teorie stochastických diferenciálních rovnic}
+\subsection{Úvod do teorie stochastických diferenciálních rovnic}\label{SDR_kap}
 \begin{definice}[Stochastická diferenciální rovnice]
-Nechť $\alpha(t,X(t))$ a $\beta(t,X(t))$ jsou funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
+Nechť $\alpha(t,x)$ a $\beta(t,x)$ jsou spojité funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
 
 \textit{Stochastickou diferenciální rovnicí (SDR)} rozumíme rovnici
 \begin{equation}\label{SDR_reseni}
 X(t)=X_0+\int_{t_0}^t\alpha(s,X(s))\,\mathrm{d}s+\int_{t_0}^t\beta(s,X(s))\,\mathrm{d}W(s),
 \end{equation}
-kde první integrál je Lebesgueův a druhý integrál je It\^oův definovaný v kapitole \ref{Ito_integral}.
-Častěji se se SDR setkáváme v jejím diferenciálním tvaru
+kde první integrál je Lebesgueův a druhý integrál je It\^oův definovaný v Kapitole \ref{Ito_integral}.
+Častěji se s SDR setkáváme v jejím diferenciálním tvaru
 \begin{align}\label{SDR_def}
 \mathrm{d}X(t)&=\alpha(t,X(t))\,\mathrm{d}t+\beta(t,X(t))\,\mathrm{d}W(t),\\%\qquad 
 X(t_0)&=X_0.\notag
 \end{align}
-Konstantu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stochastický proces $X(t)$, daný vztahem \eqref{SDR_reseni}, nazýváme \textit{řešením SDR} na $T$.
+Náhodnou veličinu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stochastický proces $X(t)$, daný vztahem \eqref{SDR_reseni}, nazýváme \textit{řešením SDR} na $T$.
 \end{definice}
 %Uvažujme o existenci a jednoznačnosti řešení SDR.
 
@@ -767,11 +786,13 @@ Uvažujme $n$ stochastických procesů $X_1(t),\dots,X_n(t)$, které popisují n
 K popisu chování takových procesů v čase slouží soustavy stochastických diferenciálních rovnic (někdy označované jako systémy SDR) .
 \begin{definice}[Soustava $n$ stochastických diferenciálních rovnic]
 Nechť
-$$\boldsymbol\alpha(\boldsymbol t,\boldsymbol X(t))=\big(\alpha^1(t,\boldsymbol{X}(t)),\dots,\alpha^n(t,\boldsymbol{X}(t))\big)^\mathrm{T}$$
-je vektorová funkce $\boldsymbol\alpha:T\times\mathbb{R}^n\to\mathbb{R}^n$.
+%$$\boldsymbol\alpha(\boldsymbol t,\boldsymbol X(t))=\big(\alpha^1(t,\boldsymbol{X}(t)),\dots,\alpha^n(t,\boldsymbol{X}(t))\big)^\mathrm{T}$$
+$$\boldsymbol\alpha( t,\boldsymbol x)=\big(\alpha^1( t,\boldsymbol{x}),\dots,\alpha^n(t,\boldsymbol{x})\big)^\mathrm{T}$$
+je spojitá vektorová funkce $\boldsymbol\alpha:T\times\mathbb{R}^n\to\mathbb{R}^n$.
 Pro $j=1,\dots,m$ označíme 
-$$\boldsymbol\beta^{j}(\boldsymbol t,\boldsymbol X(t))=\big(\beta^{1,j}(t,\boldsymbol{X}(t)),\dots,\beta^{n,j}(t,\boldsymbol{X}(t))\big)^\mathrm{T}$$
-a nechť $\boldsymbol{B}=(\boldsymbol\beta^{1},\dots,\boldsymbol\beta^{m})$ je maticová funkce $\boldsymbol{B}:T\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$.
+%$$\boldsymbol\beta^{j}(\boldsymbol t,\boldsymbol X(t))=\big(\beta^{1,j}(t,\boldsymbol{X}(t)),\dots,\beta^{n,j}(t,\boldsymbol{X}(t))\big)^\mathrm{T}$$
+$$\boldsymbol\beta^{j}(t,\boldsymbol x)=\big(\beta^{1,j}(t,\boldsymbol{x}),\dots,\beta^{n,j}(t,\boldsymbol{x})\big)^\mathrm{T}$$
+a nechť $\boldsymbol{B}=(\boldsymbol\beta^{1},\dots,\boldsymbol\beta^{m})$ je spojitá maticová funkce $\boldsymbol{B}:T\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$.
 
 Pro $j=1,\dots,m$ rozumíme \textit{soustavou stochastických diferenciálních rovnic (SSDR)} systém
 \begin{equation}\label{SSDR_reseni}
@@ -803,10 +824,10 @@ Tato metoda byla v roce 1955 modifikována japonským matematikem Gisiro Maruyam
 Jedná se o nejjednodušší metodu, která slouží ke konstrukci složitějších numerických metod pro řešení SDR.
 
 Uvažujme It\^oův proces $X(t)$, který je řešením SDR definované vztahem \eqref{SDR_def}.
-Nechť $\{t_n\}_{n=0}^N\subseteq T$ je časová posloupnost, kde pro všechna $i$ platí $t_n<t_{n+1}$.
+Nechť $\{t_n\}_{n=0}^N\subseteq T$ je časová posloupnost, kde pro všechna $n$ platí $t_n<t_{n+1}$.
 Tato  posloupnost se nazývá \textit{diskretizace} časové proměnné.
 V Eulerově metodě diferenciál $\mathrm{d}X(t)$ aproximujeme přírůstkem stochastického procesu $\Delta X_n=X(t_{n+1})-X(t_n)$.
-Hodnota $X(t_{n+1})$ je aproximována hodnotou v předcházejícím časovém kroku $X(t_{n})$.
+Hodnota $X(t_{n+1})$ je aproximována pomocí hodnoty $X(t_{n})$ v předcházejícím časovém kroku.
 \begin{definice}\label{Euler_def}
 Nechť $X_n$ značí aproximaci řešení $X(t_{n})$ stochastické diferenciální rovnice \eqref{SDR_def} v čase $t_n$.
 Pak \textit{Eulerova metoda} řešení SDR je definována rekurzívním vztahem
@@ -823,7 +844,7 @@ X_{n+1}^i=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t
 %kde $\boldsymbol{X}$ je $m$-rozměrný Wienerův proces.
 \end{definice}
 
-\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq T$ splňuje vztah \eqref{Euler}.
+\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq T$ splňuje vztah \eqref{Euler} a mezi těmito časovými body je lineárně interpolovaná hodnota.
 
 Většinou se předpokládá, že časová posloupnost $\{t_n\}_{n=0}^N\subseteq T$ je ekvidistantní. 
 Důležitou problematikou při používání numerických metod je způsob výpočtu $\Delta W_n$.
@@ -919,7 +940,7 @@ Stochastickým modelováním v ekonomii se pak zabývá převážně zahraničn�
 %Citace:  \cite{baxter1996financial} a  \cite{franke2004statistics}
 
 V následující části popíšeme konstrukci matematických modelů používaných ve finanční matematice pro popis vývoje cen aktiv na finančních trzích.
-V kapitole \ref{WP_kap} jsme uvažovali nad požadavky kladené na chování stochastického procesu, který můžeme využít k modelování cen aktiv, aby byl model smysluplný.
+V Kapitole \ref{WP_kap} jsme uvažovali nad požadavky kladenými na chování stochastického procesu, který můžeme využít k modelování cen aktiv, aby byl model smysluplný.
 Zrekapitulujme kvalitativní znaky modelu aktiv:
 \begin{itemize}
 \item[-] v dlouhodobém časovém horizontu mají ceny aktiv přibližně exponenciální růst,
@@ -929,7 +950,7 @@ Zrekapitulujme kvalitativní znaky modelu aktiv:
 \end{itemize}
 %Modeling with Itô Stochastic Differential Equations Od autorů: Edward Allen (googlebooks) - multidimenzní Ito formule 
 %Dynamic Asset Pricing Theory Od autorů: Darrell Duffie (googlebooks) - Black-Scholes
-Jak už bylo naznačeno v kapitole \ref{WP_kap}, základní model splňující uvedené požadavky je založen na Geometrickém Wienerově procesu. 
+Jak už bylo naznačeno v Kapitole \ref{WP_kap}, základní model splňující uvedené požadavky je založen na Geometrickém Wienerově procesu. 
 Model byl zaveden a prosazen Paulem Samuelsonem \cite{samuelson1965proof}.
 Budeme tedy předpokládat, že proces popisující vývoj ceny aktiva v čase se řídí následující stochastickou diferenciální rovnicí %následujícím modelem
 \begin{equation}\label{risk_asset_model}
@@ -977,7 +998,7 @@ Rozdíl mezi prodejní a nákupní cennou je výsledný zisk nebo ztráta.
 Kvůli vysoké rizikovosti je prodej na krátko často regulován a v některých zemích dokonce zcela zakázán, neboť investor může dosáhnout pouze omezeného zisku, ale teoreticky neomezené ztráty.
 
 \section{Stochastické modelování úrokových sazeb}
-Na rozdíl od akcií nebo komodit vykazuje chování úrokových sazeb určité příznačné vlastnosti. %zvláštnosti.
+Na rozdíl od akcií nebo komodit vykazuje chování úrokových sazeb následující příznačné vlastnosti. %zvláštnosti.
 Úrokové sazby se pohybují v určitém rozmezí a %obvykle nerostou do nekonečna ani neklesají pod nulu.
 mají tendenci se vracet k určité rovnovážné hodnotě.
 Tento jev se nazývá \textit{mean reversion} -- reverze k průměrné hodnotě.
@@ -1007,7 +1028,7 @@ Jejichž význam je následující:
 
 Drift této rovnice je $\mu(t, r) = \kappa ( \theta - r(t))$, volatilita této rovnice je $\sigma(t, r) = \sigma$. 
 Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou $\theta$. 
-Daný proces se nazává Ornstein-Uhlenbeckův proces.
+Daný proces je Ornstein-Uhlenbeckův proces definovaný v Kapitole \ref{OU_kap}.
 
 Mezi výhody Vašíčkova modelu patří, že existuje explicitní vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
 Mezi nevýhody Vašíčkova modelu patří, že připouští i záporné úrokové míry, k tomu dojde v případě, kdy se úroková míra přiblízí nule a volatilita je stále táž konstanta.
@@ -1018,7 +1039,7 @@ Tuto chybu odstraňuje Cox - Ingersoll - Rossův model (CIR model), který je ve
 Je vidět, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry je dána pouze driftem, který bude v tomto případě kladný.
 Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.
 
-\subsection{Hull-White model}
+\subsection{Hull-Whitův model}
 \begin{equation}\label{H-W_model}
  \mathrm{d}r(t)=[\theta(t)-\alpha r] \mathrm{d}t+\sigma \mathrm{d}W(t),
 \end{equation}
@@ -1053,7 +1074,7 @@ V následující části popíšeme a~definujeme tyto základní charakteristiky
 \textit{Míra výnosnosti} (nebo \textit{relativní výnosnost}) aktiva je charakteristika, která udává zisk nebo ztrátu z~investice za pevně stanovené období vyjádřená v~poměru k~množství investovaných prostředků.
 
 \begin{definice}
-Investujeme-li $Y$ korun do aktiva $j$ v čase $t$, pak korunová hodnota investice v čase $t+\Delta t$ bude $[1+r_j(t,t+\Delta t)]Y$, kde  $r_j(t,t+\Delta t)$ definujeme jako \textit{míru výnosnosti}.  
+Investujeme-li $Y$ korun do nějakého aktiva $j$ v čase $t$, pak korunová hodnota investice v čase $t+\Delta t$ bude $[1+r_j(t,t+\Delta t)]Y$, kde  $r_j(t,t+\Delta t)$ definujeme jako \textit{míru výnosnosti}.  
 \end{definice}
  
 Relativní výnosnost bývá často označována pouze jako \textit{výnosnost}.
@@ -1092,7 +1113,7 @@ Základy klasické teorie portfolia položil Harry Markowitz svým článkem v r
 Jeho největším přínosem bylo kvantifikování očekávaného výnosu a rizika portfolia. 
 Dalším přínosem byl matematický důkaz výhod diverzifikace, které byly do té doby chápány pouze intuitivně.
 Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos -- riziko, zavedl pojem \textit{efektivní množina portfolií}, ze které investor vybírá optimální portfolio pomocí indiferenčních křivek popisujících investorův vztah k riziku.
-Konstrukcí množiny dostupných (nebo přípustných) portfolií se bude věnovat kapitola \ref{Markowitz_kap}. 
+Konstrukcí množiny dostupných (nebo přípustných) portfolií se bude věnovat Kapitola \ref{Markowitz_kap}. 
 Na Obrázku \ref{obr_Markowitz} je znázorněna množina přípustných portfolií  a množina efektivních portfolií v prostoru výnosnost -- riziko. 
 
 \begin{figure}[!htbp] 
@@ -1126,7 +1147,7 @@ Investor prvně určí tangenciální portfolio a následně ho zkombinuje s bez
 %\subsection{Kapitálový model aktiv -- CAPM}\label{kapitola_CAPM}
 \textit{Capital Asset Pricing Model} (CAPM) vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe1964}, Lintner \cite{lintner1965} a Mossin \cite{mossin1966} v letech 1964--1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
 Zároveň vychází z Tobinova modelu, protože zahrnuje bezrizikové aktivum.
-CAPM stojí na několika výchozích předpokladech, které se dají shrnout do následujících třech:
+CAPM stojí na několika výchozích předpokladech, které se dají shrnout do následujících tří:
 \begin{itemize}
 \item[-] kapitálový trh je efektivní,
 \item[-] investoři při sestavování portfolia využívají Markowitzův přístup,
@@ -1146,7 +1167,7 @@ Tento poznatek budeme později využívat při konstrukci spojitého rovnovážn
 
 \subsection{Markowitzova teorie portfolia}\label{Markowitz_kap}
 
-Abychom blíže pochopili pojmy používané v kapitole \ref{KTP} přiblížíme na tomto místě jejich odvození.
+Abychom blíže pochopili pojmy používané v Kapitole \ref{KTP} přiblížíme na tomto místě jejich odvození.
 
 \begin{figure}[!htbp]
   \centering 
@@ -1220,20 +1241,21 @@ Podrobněji bude tento paradox rozebrán v části \ref{paradox}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%{Ohlson-Rosenbergův paradox}
 \section{Ohlson-Rosenbergův paradox}\label{paradox}
 V této kapitole představíme základní poznatky z článku Ohlsona a Rosenberga \cite{ohlson}, který byl publikován v roce 1976 v \textit{Journal of Financial and Quantitative Analysis}.
-Ohlson a Rosenberg jako první poukázali na nekonzistenci Mertonova spojitého modelu \cite{merton1971} vznikající kvůli rozporu předpokladů.
+Ohlson a Rosenberg jako první poukázali na nekonzistenci Mertonova spojitého modelu \cite{merton1971} spočívající v rozporu předpokladů.
 
 \subsection{Značení a předpoklady}
 Na začátek zavedeme značení a  uvedeme základní definice a předpoklady. 
 Uvažujme množinu $n$ různých aktiv na daném trhu a označme $T$ množinu všech uvažovaných časů (diskrétní nebo spojitou).
 Nechť $I_t$ značí množinu všech investorů na trhu v čase $t\in T$.
 Cenu aktiva $j$ v čase $t$ označíme $P_j(t)$ a $\boldsymbol{P}(t)=(P_1(t),\dots,P_n(t))^\mathrm{T}$ je vektor cen aktiv v čase $t$.
-Analogicky označíme $\boldsymbol{N}(t)=(N_1(t),\dots,N_n(t))^\mathrm{T}$ vektor podílů aktiv v čase $t$, potom tržní hodnota aktiva $j$ je rovna $V_j(t)=P_j(t)N_j(t)$.
+Analogicky označíme $\boldsymbol{N}(t)=(N_1(t),\dots,N_n(t))^\mathrm{T}$ vektor podílů aktiv v čase $t$.
+Potom tržní hodnota aktiva $j$ je rovna $V_j(t)=P_j(t)N_j(t)$.
 
-Míra výnosnosti aktiva $j$, které drží investor v portfoliu v časovém intervalu $(t,t+\Delta t)$ označíme $r_j(t,t+\Delta t)$.
+Míru výnosnosti aktiva $j$, které drží investor v portfoliu v časovém intervalu $(t,t+\Delta t)$ označíme $r_j(t,t+\Delta t)$.
 Jak bylo zmíněno výše výnosnost chápeme jako náhodnou veličinu a o její distribuční funkci v čase $t$ vyslovíme tři následující předpoklady:
 \begin{enumerate}
 \item \label{Stacionarita} \textit{Stacionarita:} distribuční funkce výnosnosti  je stejná ve všech časech $t$,                                                                            
-\item \label{Martingalvl} \textit{Martingalová vlastnost:} pro každé $t$ je distribuční funkce výnosnosti nezávislá na všech cenách aktiva pozorovaných do času~$t$,
+\item \label{Martingalvl} \textit{Markovovská vlastnost:} pro každé $t$ je distribuční funkce výnosnosti nezávislá na všech cenách aktiva pozorovaných před časem~$t$,
 \item \label{Homogenita} \textit{Homogenita:} distribuční funkce výnosnosti je stejná pro všechny investory z množiny $I_t$. 
 \end{enumerate} 
 Tyto předpoklady jsou konzistentní s předpoklady CAPM.
@@ -1264,7 +1286,7 @@ Budeme-li předpokládat rovnováhu na trhu a stacionaritu distribuční funkce 
 
 \begin{veta} \label{T1}
 Nechť $\boldsymbol{P}(t)$ pro všechny $t\in T$  jsou rovnovážné ceny.
-Dále předpokládejme, že na trhu platí vlastnost separace (definice \ref{vlastnost_separace}).
+Dále předpokládejme, že na trhu platí vlastnost separace (Definice \ref{vlastnost_separace}).
 Pak
 \begin{equation}\label{T1_eq}
 \mathsf{Pr}\left(\frac{N_j(s)P_j(s)}{N_j(t)P_j(t)}=\frac{N_k(s)P_k(s)}{N_k(t)P_k(t)}\right)=1
@@ -1273,7 +1295,7 @@ pro všechny časy $s,t\in T$  a pro každé aktivum $j$ a $k$.
 \end{veta}
 
 \begin{proof}
-Podle definice \ref{vlastnost_separace} platí
+Podle Definice \ref{vlastnost_separace} platí
 \begin{equation}\label{CSW}
 w_j(i,t)=\lambda(i,t)X_j
 \end{equation}
@@ -1296,7 +1318,7 @@ Z tohoto tvrzení zřejmě plyne vztah \eqref{T1_eq}.
 \begin{dusledek}\label{OR_dusledek}
 Nechť 
 $$r_j(t,t+\Delta t)=\frac{P_j(t+\Delta t)-P_j(t)}{P_j(t)}=\frac{P_j(t+\Delta t)}{P_j(t)}-1.$$
-Budeme-li předpokládat $N_j(t)=N_j$ pro každé aktivum $i$ a všechna $t\in T$. 
+Budeme předpokládat $N_j(t)=N_j$ pro každé aktivum $i$ a všechna $t\in T$. 
 Z~věty \ref{T1} plyne
 \begin{align*}
 \mathsf{Pr}\left(\frac{P_j(s)}{P_j(t)}=\frac{P_k(s)}{P_k(t)}\right)=1&\Longrightarrow\mathsf{Pr}\left(\frac{P_j(t+\Delta t)}{P_j(t)}=\frac{P_k(t+\Delta t)}{P_k(t)}\right)=1 \\
@@ -1341,7 +1363,7 @@ Jedním ze základních pojmů v SPT jsou \textit{portfolio generující funkce}
 Podrobnější informace je možno najít v knize \cite{fern} a článku \cite{kara}.
 
 Studium SPT nás motivovalo k hledání vhodného spojitého modelu pro popis cen aktiv v portfoliu, který rovněž odstraní Ohlson-Rosenbergův paradox a zároveň bude zachovávat platnost poznatků teorie CAPM.
-Tento model budeme konstruovat v kapitole \ref{muj_model}.
+Tento model budeme konstruovat v Kapitole \ref{muj_model}.
 
 
 
@@ -1367,7 +1389,7 @@ K tomu využijeme Větu o~separaci do~dvou fondů, kterou poprvé dokázal  Jame
 Tobin předpokládal platnost předpokladů CAPM a zároveň zahrnul existenci bezrizikového aktiva.
 Naproti tomu v knize Williama Sharpeho \cite{sharpe} a v článku Roberta Mertona \cite{merton} najdeme podobné závěry bez předpokladu existence bezrizikového aktiva.
 Merton navíc tyto myšlenky zobecňuje pro více než dva fondy \cite{merton1973}.
-Podrobnějším rozbor teorie o dvou fondech je uveden v knize \cite{cass1970structure}.
+Podrobnějším rozbor věty o dvou fondech je uveden v knize \cite{cass1970structure}.
 \begin{veta}[Věta o~separaci do~dvou fondů]
 %Efektivní portfolio každého investora lze získat jako kombinaci dvou fondů.
 Optimální portfolio každého investora lze získat jako kombinaci dvou fondů.
@@ -1437,7 +1459,7 @@ Avšak to je v rozporu z předpokladem \ref{predpoklad_hodnost}, pokud uvažujem
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Spojitý rovnovážný model s očekávanou výnosností závislou na ceně aktiva }\label{muj_model}
-V kapitolách \ref{paradox} a \ref{john} jsme ukázali, že v teorii portfolia běžně používaný dynamický model není konzistentní.
+V Kapitolách \ref{paradox} a \ref{john} jsme ukázali, že v teorii portfolia běžně používaný dynamický model není konzistentní.
 Proto se chceme pokusit navrhnout takový model, který by nebyl touto inkonzistencí předpokladů zatížen.
 Uvažujme tedy spojitý model, který bude mít méně omezující předpoklady než model Mertonův.
 Model, který předkládáme v této kapitole, předpokládá rovnováhu na trhu, nicméně očekávaná míra výnosnosti není konstantní v čase.
@@ -1461,14 +1483,14 @@ Soustavu upravíme
 \begin{equation} \label{hodnost}
 \left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}=0.
 \end{equation}
-Podle předpokladů v teorii portfolia zmíněných v kapitole \ref{john} je kovarianční matice plné hodnosti, tedy i matice $\boldsymbol{\Sigma}^{-1}$ má hodnost $n$.
+Podle předpokladů v teorii portfolia zmíněných v Kapitole \ref{john} je kovarianční matice plné hodnosti, tedy i matice $\boldsymbol{\Sigma}^{-1}$ má hodnost $n$.
 Naproti tomu, díky předpokladu $\sum_{j=1}^nX_j=1$, má matice $\left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)$ lineárně závislé řádky, jelikož
 součet libovolných $n-1$ řádků matice  je roven zbývajícímu řádku vynásobenému minus jednou.
 Dá se tedy dokázat, že tato matice má hodnost $n-1$.
 To znamená, že soustava rovnic \eqref{hodnost} má nekonečně mnoho řešení vzhledem k $\boldsymbol{\mu}(t)$.
 %Dále hledejme nějaké partikulární řešení této soustavy rovnic.
 
-Jak jsme ukázali v kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám podkladových aktiv v tržním portfoliu, tedy
+Jak jsme ukázali v Kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám podkladových aktiv v tržním portfoliu, tedy
 \begin{equation} \label{market_value}
 \boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{V}},
 \end{equation}
@@ -1487,8 +1509,7 @@ Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem ke vzt
 Hledejme vhodné stochastické procesy, které by popisovaly chování vektoru $\boldsymbol{\mu}(t)$.
 Pro tento účel rozdělme proces očekávané výnosnosti aktiv na dvě složky.
 První složka určuje relativní vztahy mezi jednotlivými očekávanými výnosnostmi aktiv v portfoliu, druhá složka popisuje výnosnost celého trhu dynamicky se měnící v čase.  
-Mezi těmito složkami budeme předpokládat multiplikativní vztah.
-Označme
+Mezi těmito složkami bude platit multiplikativní vztah
 \begin{equation} \label{vynos}
 \boldsymbol{\mu}(t) =\tilde{\boldsymbol{\mu}}(t)\cdot r(t)
 \end{equation}
@@ -1504,7 +1525,7 @@ kde $\boldsymbol{X}(t)$ je vektor vah v tržním portfoliu v čase $t$.
 
 Výnosnost celého trhu nevykazuje exponenciální růst, ale pohybuje se přibližně v nějakém intervalu. 
 V delším časovém horizontu se projevuje tendence navracet se k průměrné hodnotě.
-Proto budeme předpokládat, že míra výnosnosti trhu $r(t)$ se řídí Vašíčkovým modelem z kapitoly \ref{Vasickuv_model}
+Proto budeme předpokládat, že míra výnosnosti trhu $r(t)$ se řídí Vašíčkovým modelem z Kapitoly \ref{Vasickuv_model}
 \begin{equation} 
 \mathrm{d}r(t)=\kappa(\theta-r(t))\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
 \end{equation}
@@ -1614,18 +1635,18 @@ Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \
 
 \begin{figure}[!htbp]
   \centering 
-%	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v2.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v2.pdf}
   \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2)}  \label{euler_milstein}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering 
-%	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/avg_CEZ_v1.pdf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/avg_CEZ_v1.pdf}
   \caption{Dvacet simulací trajektorie stochastického procesu ceny akcií (společnost ČEZ) a jejich střední hodnota}  \label{avg_trajektorie}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
-%\begin{comment}
+\begin{comment}
 \chapter{Credit Valuation Adjustment}
 
 Nedílnou součástí řízení banky je řízení bankovních rizik.
@@ -1775,7 +1796,7 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 %Čím horší je bonita klienta .... viz GoogleDisk
 
 
-%\end{comment}
+\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

@@ -491,7 +491,7 @@ Může být také interpretován jako limita náhodné procházky pro infinitezi
 Pro trajektorie Wienerova procesu je typická kombinace dvou vlastností spojitost a zároveň nediferencovatelnost v každém bodě.
 Wienerův proces je základním stavebním kamenem pro konstrukci stochastického integrálu.
 
-\begin{definice}[Wienerův proces]
+\begin{definice}[Wienerův proces]\label{WP_def}
 Reálný stochastický proces $\{W(t):t\ge0\}$ na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
 \begin{enumerate}
 \item[1.]$W(0)=0$, 
@@ -844,7 +844,7 @@ X_{n+1}^i=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t
 %kde $\boldsymbol{X}$ je $m$-rozměrný Wienerův proces.
 \end{definice}
 
-\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq T$ splňuje vztah \eqref{Euler} a mezi těmito časovými body je lineárně interpolovaná hodnota.
+\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq T$ splňuje vztah \eqref{Euler} a hodnoty mezi těmito časovými body získáme pomocí lineární interpolace.
 
 Většinou se předpokládá, že časová posloupnost $\{t_n\}_{n=0}^N\subseteq T$ je ekvidistantní. 
 Důležitou problematikou při používání numerických metod je způsob výpočtu $\Delta W_n$.
@@ -868,6 +868,8 @@ kde $\beta'(t_n,X_n)$ je derivace $\beta(t_n,X_n)$ podle $X_n$,
 $\Delta_n=\int_{t_n}^{t_{n+1}}\mathrm{d}t=t_{n+1}-t_n$ je délka časového intervalu $(t_n,t_{n+1})$
 a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ v čase $(t_n,t_{n+1})$.
 
+Poznamenejme, že v případě, kdy koeficient $\beta(t_n,X_n)=\beta(t_n)$ nezávisí na procesu $X_n$, pak $\beta'(t_n,X_n)=0$ a Milsteinova metoda je identická s metodou Eulerovou.
+
 Zobecníme-li Milsteinovu metodu pro soustavu $m$ stochastických diferenciálních rovnic \eqref{SSDR_def}, pak vztah pro $i$-tou složku rovnice je definován předpisem
 \begin{align}\label{Milstein_soustava}
 X_{n+1}^i&=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\Delta W_n^j \\ \notag 
@@ -884,6 +886,20 @@ V uvedené literatuře lze nalézt různé přístupy k tomuto problému.
 Například simulace využívající distribuční funkce, nebo substituování jednodušší náhodnou veličinou, případně zavedení zjednodušujících předpokladů o funkci volatility $\beta(t_n,\boldsymbol{X}_n)$.
 %Nicméně tyto úvahy jsou již nad rámec této práce.
 
+\subsubsection{Řád konvergence}
+K porovnání jednotlivých numerických metod řešení SDR slouží mimo jiné řád konvergence.
+\begin{definice}\label{konvergence_def}
+Řekneme, že numerická metoda má silný řád konvergence $\rho$, jestliže platí
+\begin{equation}\label{konvergence_vztah}
+\mathsf{E}\big(|X(t)-X(t_n)|\big)\leq K_t\Delta^\rho,
+\end{equation}
+kde $X(t)$ je přesné řešení SDR v čase $t$, $X(t_n)$ značí příslušnou aproximaci řešení v čase $t$ a $\Delta=\max_{0\leq n\leq t_n}\Delta_n$.
+\end{definice}
+Ačkoli je známo, že Eulerova numerická metoda řešení obyčejných diferenciálních rovnic má silný řád konvergence 1, 
+tak stochastická Eulerova numerická metoda má řád konvergence $\frac12$.
+Tuto skutečnost dokázali roku 1972 Gikhman a Skorokhod v \cite{gikhman1972stochastic}.
+Naproti tomu Milsteinova numerická metoda má silný řád konvergence jedna.
+Platí tedy, že v obecném případě, kdy se v difuzním koeficientu $\beta$ vyskytuje řešení stochastické diferenciální rovnice, Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda. %spolu se zmenšováním časového kroku $\Delta_n$.
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Stochastické modelování}
@@ -1461,12 +1477,12 @@ Avšak to je v rozporu z předpokladem \ref{predpoklad_hodnost}, pokud uvažujem
 \section{Spojitý rovnovážný model s očekávanou výnosností závislou na ceně aktiva }\label{muj_model}
 V Kapitolách \ref{paradox} a \ref{john} jsme ukázali, že v teorii portfolia běžně používaný dynamický model není konzistentní.
 Proto se chceme pokusit navrhnout takový model, který by nebyl touto inkonzistencí předpokladů zatížen.
-Uvažujme tedy spojitý model, který bude mít méně omezující předpoklady než model Mertonův.
+Uvažujme spojitý model, který bude mít méně omezující předpoklady než model Mertonův.
 Model, který předkládáme v této kapitole, předpokládá rovnováhu na trhu, nicméně očekávaná míra výnosnosti není konstantní v čase.
 
 Na základě poznatků z teorie portfolia budeme hledat vztah mezi očekávanou výnosností a cenou aktiva, který bychom mohli použít v modelu.
 Nechť $\boldsymbol{P}$ je vektor cen $n$ podkladových aktiv.
-Předpokládejme, že tyto ceny se řídí následující stochastickou diferenciální rovnicí (SDR):
+Předpokládejme, že tyto ceny se řídí následující soustavou stochastických diferenciálních rovnic, pro $j=1,\dots,n$ platí
 \begin{equation} \label{SDE}
 \mathrm{d}P_j(t)=P_j(t)\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),
 \end{equation}
@@ -1479,7 +1495,7 @@ Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním port
 kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv (viz \cite{fabozzi}).
 
 Uvažujme o řešitelnosti a počtu řešení soustavy rovnic \eqref{vahy} vzhledem k~$\boldsymbol{\mu}$.
-Soustavu upravíme
+Soustavu upravíme do tvaru
 \begin{equation} \label{hodnost}
 \left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}=0.
 \end{equation}
@@ -1511,11 +1527,11 @@ Pro tento účel rozdělme proces očekávané výnosnosti aktiv na dvě složky
 První složka určuje relativní vztahy mezi jednotlivými očekávanými výnosnostmi aktiv v portfoliu, druhá složka popisuje výnosnost celého trhu dynamicky se měnící v čase.  
 Mezi těmito složkami bude platit multiplikativní vztah
 \begin{equation} \label{vynos}
-\boldsymbol{\mu}(t) =\tilde{\boldsymbol{\mu}}(t)\cdot r(t)
+\boldsymbol{\mu}(t) =\tilde{\boldsymbol{\mu}}(t)\cdot \mu_M(t)
 \end{equation}
 kde
 vektorový stochastický proces $\tilde{\boldsymbol{\mu}}(t)=(\tilde{\mu}_1(t),\dots,\tilde{\mu}_n(t))^\mathrm{T}$ zachycuje relativní vztahy aktiv v~portfoliu, které se mohou v čase měnit, a
-$r(t)$ je skalární stochastický proces, který charakterizuje dynamiku trhu a nezávisí na volbě konkrétního aktiva.
+$\mu_M(t)$ je skalární stochastický proces, který charakterizuje dynamiku trhu a nezávisí na volbě konkrétního aktiva.
 Dále nechť pro všechny uvažované časy $t$ platí $\sum_{i=1}^n\tilde{\mu}_i(t)=1$.
 Pak podle teorie CAPM platí 
 \begin{equation} \label{vahy_mu}
@@ -1525,9 +1541,9 @@ kde $\boldsymbol{X}(t)$ je vektor vah v tržním portfoliu v čase $t$.
 
 Výnosnost celého trhu nevykazuje exponenciální růst, ale pohybuje se přibližně v nějakém intervalu. 
 V delším časovém horizontu se projevuje tendence navracet se k průměrné hodnotě.
-Proto budeme předpokládat, že míra výnosnosti trhu $r(t)$ se řídí Vašíčkovým modelem z Kapitoly \ref{Vasickuv_model}
+Proto budeme předpokládat, že míra výnosnosti trhu $\mu_M(t)$ se řídí Vašíčkovým modelem z Kapitoly \ref{Vasickuv_model}
 \begin{equation} 
-\mathrm{d}r(t)=\kappa(\theta-r(t))\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
+\mathrm{d}\mu_M(t)=\kappa(\theta-\mu_M(t))\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
 \end{equation}
 kde $\kappa$, $\theta$ a $\sigma$ jsou konstanty.
 
@@ -1536,8 +1552,8 @@ Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odv
 Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j=\xi_{jj}$ v průběhu času a také hodnoty aktiv $N_j$ nechť jsou v čase konstantní.
 
 Dosadíme-li vztahy \eqref{vynos} a \eqref{vahy_mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
-\begin{equation} 
-\mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, r(t)\right)\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
+\begin{equation}  \label{SDE_cen_diag}
+\mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\right)\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
 \end{equation}
 
 \begin{comment}
@@ -1546,6 +1562,7 @@ Dosadíme-li vztahy \eqref{mu} do stochastické diferenciální rovnice \eqref{S
 $$ 
 \mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
 $$
+\hrulefill 
 Dále budeme hledat vztah pro očekávané hodnoty cen podkladových aktiv.
 Ze SDR \eqref{SDE} plyne
 \begin{equation}
@@ -1585,15 +1602,37 @@ z něhož dostaneme následující soustavu obyčejných diferenciálních rovni
 \end{align*}  
 Avšak tato soustava je nelineární a bohužel neexistuje její analytické řešení.
 Neobejdeme se tedy bez použití numerických metod.
+\hrulefill 
 \end{comment}
 
 V další části představíme model s méně přísnými předpoklady.
 Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
 Zachováme předpoklad konstantnosti volatilit aktiv $\xi_{jk}$ v čase.
 Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \eqref{SDE}, čímž obdržíme
-\begin{equation} 
- \mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, r(t)\right)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t).
+\begin{equation} \label{SDE_cen}
+ \mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\right)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t).
 \end{equation}
+
+Často nás více než trajektorie cen podkladových aktiv zajímají očekávané hodnoty cen těchto aktiv.
+%\eqref{SDE_cen_diag}
+Vztahy pro očekávané hodnoty cen aktiv odvoďme ze soustavy SDR \eqref{SDE_cen}.
+Připomeňme, že z vlastností Wienerova procesu, uvedených v definici \ref{WP_def}, plyne, že $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
+\\
+\textcolor{red}{???Nekorelovanost $P_j(t)$ a $\mathrm{d}W_j(t)$???}
+\\
+Pak
+\begin{align*}%\label{ODE_cen_ocek}
+\mathsf{E}\big( \mathrm{d}P_j(t)\big)&	=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t)\right)\\
+&=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\,\mathrm{d}t\right)
+\end{align*}
+Čímž se soustava stochastických diferenciálních rovnic zjednodušuje na soustavu obyčejných diferenciálních rovnic
+\\
+\textcolor{red}{???jde následující rovnice upravit na ODR???}
+\\
+\begin{align*}
+\mathrm{d}\mathsf{E}\big(P_j(t)\big)&=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\right)\,\mathrm{d}t.
+\end{align*}
+Avšak tato soustava je nelineární a neexistuje její analytické řešení, proto se neobejdeme bez použití numerických metod.
 
 \begin{figure}[!htbp]
   \centering 
@@ -1635,14 +1674,24 @@ Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \
 
 \begin{figure}[!htbp]
   \centering 
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/avg_CEZ_v1.pdf}
+  \caption{Dvacet simulací trajektorie stochastického procesu ceny akcií (společnost ČEZ) a jejich střední hodnota}  \label{avg_trajektorie}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v2.pdf}
   \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2)}  \label{euler_milstein}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/avg_CEZ_v1.pdf}
-  \caption{Dvacet simulací trajektorie stochastického procesu ceny akcií (společnost ČEZ) a jejich střední hodnota}  \label{avg_trajektorie}
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q0_5.pdf}\quad
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q1.pdf}\\
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q5.pdf}\quad
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q10.pdf}\\
+	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q50.pdf}
+  \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2) s různými časovými kroky $\Delta_n\in\{2; 1; 0,2; 0,1; 0,02\}$}  \label{euler_milstein_q}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}

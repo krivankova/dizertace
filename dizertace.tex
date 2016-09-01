@@ -868,38 +868,76 @@ kde $\beta'(t_n,X_n)$ je derivace $\beta(t_n,X_n)$ podle $X_n$,
 $\Delta_n=\int_{t_n}^{t_{n+1}}\mathrm{d}t=t_{n+1}-t_n$ je délka časového intervalu $(t_n,t_{n+1})$
 a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ v čase $(t_n,t_{n+1})$.
 
-Poznamenejme, že v případě, kdy koeficient $\beta(t_n,X_n)=\beta(t_n)$ nezávisí na procesu $X_n$, pak $\beta'(t_n,X_n)=0$ a Milsteinova metoda je identická s metodou Eulerovou.
+Poznamenejme, že v případě, kdy koeficient $\beta(t,X(t))=\beta(t)$ nezávisí na procesu $X(t)$, pak $\beta'(t,X(t))=0$ a Milsteinova metoda je identická s metodou Eulerovou.
 
 Zobecníme-li Milsteinovu metodu pro soustavu $m$ stochastických diferenciálních rovnic \eqref{SSDR_def}, pak vztah pro $i$-tou složku rovnice je definován předpisem
 \begin{align}\label{Milstein_soustava}
 X_{n+1}^i&=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\Delta W_n^j \\ \notag 
 %&+\sum_{j=1}^m\sum_{k=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\sum_{l=1}^m\frac{\partial\beta^{i,k}(t_n,\boldsymbol{X}_n)}{\partial X_l}\int_{t_n}^{t_{n+1}}\!\int_{t_n}^{t}\mathrm{d}W^k(s)\mathrm{d}W^j(t).
-&+\sum_{j=1}^m\sum_{k=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\sum_{l=1}^m\frac{\partial\beta^{i,k}(t_n,\boldsymbol{X}_n)}{\partial X_l}\int_{t_n}^{t_{n+1}}\big(W^k(t)-W^k(t_n)\big)\mathrm{d}W^j(t).
+&+\sum_{j=1}^m\sum_{k=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\sum_{l=1}^m\frac{\partial\beta^{i,k}(t_n,\boldsymbol{X}_n)}{\partial X_l}\int_{t_n}^{t_{n+1}}\big(W^k(t)-W^k(t_n)\big)\,\mathrm{d}W^j(t).
 \end{align}
 %kde $\boldsymbol{X}$ je $m$-rozměrný Wienerův proces.
 \end{definice}
 
-Pro $j=k$ je možno It\^oův integrál $\int_{t_n}^{t_{n+1}}\big(W^k(t)-W^k(t_n)\big)\mathrm{d}W^j(t)$ vyjádřit pomocí časového přírůstku $\Delta_n$ a přírůstku Wienerova procesu $\Delta W^k_n$ jako 
-$$\int_{t_n}^{t_{n+1}}\big(W^k(t)-W^k(t_n)\big)\mathrm{d}W^k(t)=\frac12\big((\Delta W^k_n)^2-\Delta_n\big).$$
+Pro $j=k$ je možno It\^oův integrál $\int_{t_n}^{t_{n+1}}\big(W^k(t)-W^k(t_n)\big)\,\mathrm{d}W^j(t)$ vyjádřit pomocí časového přírůstku $\Delta_n$ a přírůstku Wienerova procesu $\Delta W^k_n$ jako 
+$$\int_{t_n}^{t_{n+1}}\big(W^k(t)-W^k(t_n)\big)\,\mathrm{d}W^k(t)=\frac12\big((\Delta W^k_n)^2-\Delta_n\big).$$
 Avšak pro $j\neq k$ obdobné vyjádření neexistuje a integrál je nutné simulovat.
 V uvedené literatuře lze nalézt různé přístupy k tomuto problému.
-Například simulace využívající distribuční funkce, nebo substituování jednodušší náhodnou veličinou, případně zavedení zjednodušujících předpokladů o funkci volatility $\beta(t_n,\boldsymbol{X}_n)$.
+Například simulace využívající distribuční funkce, nebo substituování jednodušší náhodnou veličinou, případně zavedení zjednodušujících předpokladů o funkci volatility $\beta(t,\boldsymbol{x})$.
 %Nicméně tyto úvahy jsou již nad rámec této práce.
 
-\subsubsection{Řád konvergence}
-K porovnání jednotlivých numerických metod řešení SDR slouží mimo jiné řád konvergence.
-\begin{definice}\label{konvergence_def}
-Řekneme, že numerická metoda má silný řád konvergence $\rho$, jestliže platí
-\begin{equation}\label{konvergence_vztah}
-\mathsf{E}\big(|X(t)-X(t_n)|\big)\leq K_t\Delta^\rho,
+\subsubsection{Konvergence}
+Chceme-li posuzovat kvalitu jednotlivých numerických metod řešení SDR a~vzájemně je porovnávat, zkoumáme odchylku aproximace řešení od přesného řešení (tzv. chybu aproximace).
+V literatuře se běžně setkáváme se dvěma kategoriemi kriterií sloužící k posouzení konvergence aproximace k přesnému řešení.
+Jsou to silná konvergenční kritéria a slabá konvergenční kritéria. 
+Uvědomme si, že jak přesné řešení SDR $X(t_{n})$, tak jeho aproximace $X_n$ jsou v každém čase $t_n$ náhodné veličiny.
+Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a jeho aproximace, naproti tomu silná konvergence uvažuje střední hodnotu odchylek $X(t_{n})$ a $X_n$.
+%Uvažujme za jakých podmínek aproximace řešení SDR konverguje k přesnému řešení pro zmenšující se časový krok.  
+%Uvědomme si, že jak přesné řešení SDR $X(t_{n})$, tak jeho aproximace $X_n$ jsou v každém čase $t_n$ náhodné veličiny.
+%Budeme definovat dva typy konvergence.
+%Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a jeho aproximace, naproti tomu silná konvergence uvažuje střední hodnotu odchylek $X(t_{n})$ a $X_n$.
+%K porovnání jednotlivých numerických metod řešení SDR slouží mimo jiné řád konvergence.
+
+\begin{definice}\label{konvergence_weak_def}
+Nechť $f(x)$ je nějaká daná polynomiální funkce a uvažujme diskretizaci času $\{t_n\}_{n=0}^N$.
+Řekneme, že aproximace \textit{slabě konverguje} k řešení v čase $t_n$, jestliže platí
+\begin{equation}
+\lim_{\Delta_n\to0}\left|\mathsf{E}\big(f(X(t_n))\big)-\mathsf{E}\big(f(X_n)\big)\right|=0
 \end{equation}
-kde $X(t)$ je přesné řešení SDR v čase $t$, $X(t_n)$ značí příslušnou aproximaci řešení v čase $t$ a $\Delta=\max_{0\leq n\leq t_n}\Delta_n$.
+kde $X(t_n)$ je přesné řešení SDR v čase $t_n$ a $X_n$ značí příslušnou aproximaci řešení v čase $t_n$.
+
+Řekneme, že numerická metoda má \textit{slabý řád konvergence $q$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $n$ platí
+\begin{equation}\label{konvergence_weak_vztah}
+\left|\mathsf{E}\big(f(X(t_n))\big)-\mathsf{E}\big(f(X_n)\big)\right|\leq K\Delta^q,
+\end{equation}
+kde  $\Delta=\max_{0\leq n\leq N}\Delta_n$.
+Levá strana vztahu \eqref{konvergence_weak_vztah} se nazývá slabá chyba aproximace.
 \end{definice}
+
+\begin{definice}\label{konvergence_def}
+Uvažujme diskretizaci času $\{t_n\}_{n=0}^N$.
+Řekneme, že aproximace \textit{silně konverguje} k řešení v čase $t_n$, jestliže platí
+\begin{equation}
+\lim_{\Delta_n\to0}\mathsf{E}\big(|X(t_n)-X_n|\big)=0
+\end{equation}
+kde $X(t_n)$ je přesné řešení SDR v čase $t_n$ a $X_n$ značí příslušnou aproximaci řešení v čase $t_n$.
+
+Řekneme, že numerická metoda má \textit{silný řád konvergence $p$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $n$ platí
+\begin{equation}\label{konvergence_vztah}
+\mathsf{E}\big(|X(t_n)-X_n|\big)\leq K\Delta^p,
+\end{equation}
+kde  $\Delta=\max_{0\leq n\leq N}\Delta_n$.
+Levá strana vztahu \eqref{konvergence_vztah} se nazývá silná chyba aproximace.
+\end{definice}
+Poznamenejme, že silná konvergence implikuje slabou konvergenci pro funkci $f(x)=x$.
+Pro různou volbou polynomu $f(x)$ dostáváme konvergenci různých momentů řešení SDR.
+
+Abychom získali co nejpřesnější aproximaci trajektorií řešení stochastické diferenciální rovnice, používáme metody s co největším silným řádem konvergence.
 Ačkoli je známo, že Eulerova numerická metoda řešení obyčejných diferenciálních rovnic má silný řád konvergence 1, 
 tak stochastická Eulerova numerická metoda má řád konvergence $\frac12$.
 Tuto skutečnost dokázali roku 1972 Gikhman a Skorokhod v \cite{gikhman1972stochastic}.
 Naproti tomu Milsteinova numerická metoda má silný řád konvergence jedna.
-Platí tedy, že v obecném případě, kdy se v difuzním koeficientu $\beta$ vyskytuje řešení stochastické diferenciální rovnice, Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda. %spolu se zmenšováním časového kroku $\Delta_n$.
+Platí tedy, že v obecném případě, kdy se v koeficientu volatility $\beta$ vyskytuje řešení SDR, Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda (spolu se zmenšováním časového kroku $\Delta$).
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Stochastické modelování}

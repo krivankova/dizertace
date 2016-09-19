@@ -885,6 +885,7 @@ Metoda se snaží zdokonalit aproximaci difuzního členu tím, že aditivně p�
 %Přitom se využívá stochastický Taylorův rozvoj. 
 Pro odvození podoby tohoto členu je využíváno  It\^oovo lemma, které je aplikováno na koeficienty stochastického procesu.
 Následnými úpravami a zanedbáním členů vyšších řádů získáme vztah uvedený v definici \ref{Milstein_def}.
+Poznamenejme, že pro správné fungování Milsteinovy metody je narozdíl od Eulerovy metody potřebný předpoklad diferencovatelnosti funkce $\beta(t,\boldsymbol{x})$ podle složek $\boldsymbol{x}$.
 \begin{definice}\label{Milstein_def}
 Nechť $X_n$ značí aproximaci řešení $X(t_{n})$ stochastické diferenciální rovnice \eqref{SDR_def} v čase $t_n$.
 Pak \textit{Milsteinova metoda} řešení SDR je definována rekurzívním vztahem
@@ -927,20 +928,22 @@ Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a 
 %K porovnání jednotlivých numerických metod řešení SDR slouží mimo jiné řád konvergence.
 
 \begin{definice}\label{konvergence_weak_def}
-Nechť $f(x)$ je nějaká daná polynomiální funkce a uvažujme diskretizaci času $\{t_n\}_{n=0}^N$.
+Uvažujme diskretizaci času $\{t_n\}_{n=0}^N$.%\subseteq\langle 0,T\rangle$.
+Označme $X(t_n)$ přesné řešení SDR v čase $t_n$ a $X_n$ příslušnou aproximaci řešení v čase $t_n$.
 Řekneme, že aproximace \textit{slabě konverguje} k řešení v čase $t_n$, jestliže platí
 \begin{equation}
 \lim_{\Delta_n\to0}\left|\mathsf{E}\big(f(X(t_n))\big)-\mathsf{E}\big(f(X_n)\big)\right|=0
 \end{equation}
-kde $X(t_n)$ je přesné řešení SDR v čase $t_n$ a $X_n$ značí příslušnou aproximaci řešení v čase $t_n$.
+pro každou polynomiální funkci $f(x)$.
 
 Řekneme, že numerická metoda má \textit{slabý řád konvergence $q$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $n$ platí
 \begin{equation}\label{konvergence_weak_vztah}
 \left|\mathsf{E}\big(f(X(t_n))\big)-\mathsf{E}\big(f(X_n)\big)\right|\leq K\Delta^q,
 \end{equation}
-kde  $\Delta=\max_{0\leq n\leq N}\Delta_n$.
+kde  $\Delta=\max_{0\leq n\leq N-1}\Delta_n$.
 Levá strana vztahu \eqref{konvergence_weak_vztah} se nazývá slabá chyba aproximace.
 \end{definice}
+Pro různou volbou polynomu $f(x)$ dostáváme konvergenci různých momentů řešení SDR.
 
 \begin{definice}\label{konvergence_def}
 Uvažujme diskretizaci času $\{t_n\}_{n=0}^N$.
@@ -954,12 +957,10 @@ kde $X(t_n)$ je přesné řešení SDR v čase $t_n$ a $X_n$ značí příslušn
 \begin{equation}\label{konvergence_vztah}
 \mathsf{E}\big(|X(t_n)-X_n|\big)\leq K\Delta^p,
 \end{equation}
-kde  $\Delta=\max_{0\leq n\leq N}\Delta_n$.
+kde  $\Delta=\max_{0\leq n\leq N-1}\Delta_n$.
 Levá strana vztahu \eqref{konvergence_vztah} se nazývá silná chyba aproximace.
 \end{definice}
 Poznamenejme, že silná konvergence implikuje slabou konvergenci.
-Pro různou volbou polynomu $f(x)$ dostáváme konvergenci různých momentů řešení SDR.
-
 Abychom získali co nejpřesnější aproximaci trajektorií řešení stochastické diferenciální rovnice, používáme metody s co největším silným řádem konvergence.
 Ačkoli je známo, že Eulerova numerická metoda řešení obyčejných diferenciálních rovnic má silný řád konvergence 1, 
 tak stochastická Eulerova numerická metoda má řád konvergence $\frac12$.

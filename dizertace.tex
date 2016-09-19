@@ -766,8 +766,9 @@ Pracovali jsme také s texty \cite{cyganowski1998maple} a \cite{cyganowski2002el
 %Stochastická diferenciální rovnice je rovnice popisující přírůstky stochastického procesu v čase. 
 %Ve finanční matematice se používá například pro popis přírůstku hodnoty nějakého aktiva.
 \subsection{Úvod do teorie stochastických diferenciálních rovnic}\label{SDR_kap}
+Na úvod do teorie SDR uveďme základní definice, používané značení a podmínky řešitelnosti.
 \begin{definice}[Stochastická diferenciální rovnice]
-Nechť $\alpha(t,x)$ a $\beta(t,x)$ jsou spojité funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
+Nechť $\alpha(t,x)$ a $\beta(t,x)$ jsou funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
 
 \textit{Stochastickou diferenciální rovnicí (SDR)} rozumíme rovnici
 \begin{equation}\label{SDR_reseni}
@@ -779,7 +780,7 @@ kde první integrál je Lebesgueův a druhý integrál je It\^oův definovaný v
 \mathrm{d}X(t)&=\alpha(t,X(t))\,\mathrm{d}t+\beta(t,X(t))\,\mathrm{d}W(t),\\%\qquad 
 X(t_0)&=X_0.\notag
 \end{align}
-Náhodnou veličinu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stochastický proces $X(t)$, daný vztahem \eqref{SDR_reseni}, nazýváme \textit{řešením SDR} na $T$.
+Náhodnou veličinu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stochastický proces $X(t)$ splňující vztah \eqref{SDR_reseni}, nazýváme \textit{řešením SDR} na $T$.
 \end{definice}
 %Uvažujme o existenci a jednoznačnosti řešení SDR.
 
@@ -795,24 +796,24 @@ Pro $j=1,\dots,m$ označíme
 $$\boldsymbol\beta^{j}(t,\boldsymbol x)=\big(\beta^{1,j}(t,\boldsymbol{x}),\dots,\beta^{n,j}(t,\boldsymbol{x})\big)^\mathrm{T}$$
 a nechť $\boldsymbol{B}=(\boldsymbol\beta^{1},\dots,\boldsymbol\beta^{m})$ je spojitá maticová funkce $\boldsymbol{B}:T\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$.
 
-Pro $j=1,\dots,m$ rozumíme \textit{soustavou stochastických diferenciálních rovnic (SSDR)} systém
+Pro $j=1,\dots,m$ rozumíme \textit{soustavou stochastických diferenciálních rovnic} systém
 \begin{equation}\label{SSDR_reseni}
 X^i(t)=X^i_0+\int_{t_0}^t\alpha^i(s,\boldsymbol{X}(s))\,\mathrm{d}s+\sum_{j=1}^m\int_{t_0}^t\beta^{i,j}(s,\boldsymbol{X}(s))\,\mathrm{d}W^j(s),\\%\qquad 
 \end{equation}
 kde první integrál je opět Lebesgueův a integrály v sumě jsou It\^oovy stochastické integrály.
-Diferenciální tvar SSDR zapíšeme ve formě
+Diferenciální tvar soustav SDR zapíšeme ve formě
 \begin{align}\label{SSDR_def}
 \mathrm{d}X^i(t)&=\alpha^i(t,\boldsymbol{X}(t))\,\mathrm{d}t+\sum_{j=1}^m\beta^{i,j}(t,\boldsymbol{X}(t))\,\mathrm{d}W^j(t),\\%\qquad 
 X^i(t_0)&=X^i_0.\notag
 \end{align}
-kde $\boldsymbol{W}({t})=(W_1(t),\dots,W_m(t))^\mathrm{T}$ je $m$-rozměrný Wienerův proces.
+kde $\boldsymbol{W}({t})=(W^1(t),\dots,W^m(t))^\mathrm{T}$ je $m$-rozměrný Wienerův proces.
 \end{definice}
 
 \subsubsection{Existence a jednoznačnost řešení}
-Teorie o existenci a jednoznačnosti řešení stochastických diferenciálních rovnic a jejich soustav vychází ze stejné teorie pro obyčejné diferenciální rovnice.
+Teorie o existenci a jednoznačnosti řešení stochastických diferenciálních rovnic a jejich soustav vychází z podobných přístupů jako v případě obyčejných diferenciálních rovnice.
 Zejména se předpokládají určité vlastnosti koeficientů rovnic jako je lokální Lipschitzova spojitost.
-Následující věta shrnuje podmínky existence a jednoznačnosti řešení soustavy stochastický diferenciálních rovnic.
-\begin{veta}[O existenci a jednoznačnosti řešení SDR]
+Následující věta shrnuje podmínky existence a jednoznačnosti řešení soustavy stochastických diferenciálních rovnic.
+\begin{veta}[O existenci a jednoznačnosti řešení soustav SDR]
 Nechť jsou $\boldsymbol\alpha:T\times\mathbb{R}^n\to\mathbb{R}^n$ a $\boldsymbol{B}:T\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$ měřitelné funkce splňující podmínku
 \begin{equation}\label{glob_Lipschitzova_podminka}
 ||\boldsymbol\alpha( t,\boldsymbol x)||+||\boldsymbol{B}( t,\boldsymbol x)||\leq C(1+{||\boldsymbol x||}),
@@ -823,12 +824,12 @@ Dále nechť funkce $\boldsymbol\alpha$ a $\boldsymbol B$ splňují podmínku
 ||\boldsymbol\alpha( t,\boldsymbol x)-\boldsymbol\alpha( t,\boldsymbol y)||+||\boldsymbol{B}( t,\boldsymbol x)-\boldsymbol{B}( t,\boldsymbol y)||\leq D||\boldsymbol x-\boldsymbol y||,
 \end{equation}
 pro každé $\boldsymbol x , \boldsymbol y\in\mathbb{R}^n$ a $t\in T$ a pro nějakou kladnou konstantu $D$.
-A nechť $\boldsymbol X_0$ je náhodný vektor, který může být závislý na hodnotách Wienerova procesu $\boldsymbol W(t)$ pouze v čase $t_0$,%nezávislý na trajektorii Wienerova procesu $\boldsymbol W(t)$ 
+Dále nechť $\boldsymbol X_0$ je náhodný vektor, který může být závislý na hodnotách Wienerova procesu $\boldsymbol W(t)$ pouze v čase $t_0$,%nezávislý na trajektorii Wienerova procesu $\boldsymbol W(t)$ 
 a platí
 \begin{equation}\label{podminka_tri}
 \mathrm{E}\left[||\boldsymbol X_0||^2\right]<\infty.
 \end{equation} 
-Pak má stochastická diferenciální rovnice \ref{SSDR_def} jednoznačné řešení na $T$.
+Pak má soustava stochastických diferenciálních rovnic \ref{SSDR_def} jednoznačné řešení na $T$.
 \end{veta}
 \begin{proof}
 Viz \cite{oksendal2003stochastic}.
@@ -864,7 +865,7 @@ X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n,
 kde $\Delta_n=\int_{t_n}^{t_{n+1}}\mathrm{d}t=t_{n+1}-t_n$ je délka časového intervalu $(t_n,t_{n+1})$
 a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ v čase $(t_n,t_{n+1})$.
 
-Zobecníme-li Eulerovu metodu pro soustavu $m$ stochastických diferenciálních rovnic \eqref{SSDR_def}, pak vztah pro $i$-tou složku rovnice je definován předpisem
+Zobecníme-li Eulerovu metodu pro soustavu $m$ stochastických diferenciálních rovnic \eqref{SSDR_def}, pak vztah pro $i$-tou složku aproximace řešení je definován předpisem
 \begin{equation}\label{Euler_soustava}
 X_{n+1}^i=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\Delta W_n^j.
 \end{equation}
@@ -878,7 +879,7 @@ Důležitou problematikou při používání numerických metod je způsob výpo
 Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, \Delta_n)$.
 
 \subsubsection{Milsteinova metoda}
-Milsteinova numerická metoda řešení SDE je popsána v knihách Eckharda Platena \cite{platen2010numerical} a Paula Glassermana \cite{glasserman2003monte}.
+Milsteinova numerická metoda řešení SDR je popsána v knihách Eckharda Platena \cite{platen2010numerical} a Paula Glassermana \cite{glasserman2003monte}.
 Tuto metodu poprvé představil Grigori N. Milstein ve svém článku \cite{milstein1974approximate} v roce 1974.
 Metoda se snaží zdokonalit aproximaci difuzního členu tím, že aditivně připojuje třetí člen k Eulerovově diskretizaci.
 %Přitom se využívá stochastický Taylorův rozvoj. 
@@ -897,7 +898,7 @@ a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůs
 
 Poznamenejme, že v případě, kdy koeficient $\beta(t,X(t))=\beta(t)$ nezávisí na procesu $X(t)$, pak $\beta'(t,X(t))=0$ a Milsteinova metoda je identická s metodou Eulerovou.
 
-Zobecníme-li Milsteinovu metodu pro soustavu $m$ stochastických diferenciálních rovnic \eqref{SSDR_def}, pak vztah pro $i$-tou složku rovnice je definován předpisem
+Zobecníme-li Milsteinovu metodu pro soustavu $m$ stochastických diferenciálních rovnic \eqref{SSDR_def}, pak vztah pro $i$-tou složku aproximace řešení je definován předpisem
 \begin{align}\label{Milstein_soustava}
 X_{n+1}^i&=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\Delta W_n^j \\ \notag 
 %&+\sum_{j=1}^m\sum_{k=1}^m\beta^{i,j}(t_n,\boldsymbol{X}_n)\sum_{l=1}^m\frac{\partial\beta^{i,k}(t_n,\boldsymbol{X}_n)}{\partial X_l}\int_{t_n}^{t_{n+1}}\!\int_{t_n}^{t}\mathrm{d}W^k(s)\mathrm{d}W^j(t).
@@ -956,7 +957,7 @@ kde $X(t_n)$ je přesné řešení SDR v čase $t_n$ a $X_n$ značí příslušn
 kde  $\Delta=\max_{0\leq n\leq N}\Delta_n$.
 Levá strana vztahu \eqref{konvergence_vztah} se nazývá silná chyba aproximace.
 \end{definice}
-Poznamenejme, že silná konvergence implikuje slabou konvergenci pro funkci $f(x)=x$.
+Poznamenejme, že silná konvergence implikuje slabou konvergenci.
 Pro různou volbou polynomu $f(x)$ dostáváme konvergenci různých momentů řešení SDR.
 
 Abychom získali co nejpřesnější aproximaci trajektorií řešení stochastické diferenciální rovnice, používáme metody s co největším silným řádem konvergence.
@@ -964,7 +965,7 @@ Ačkoli je známo, že Eulerova numerická metoda řešení obyčejných diferen
 tak stochastická Eulerova numerická metoda má řád konvergence $\frac12$.
 Tuto skutečnost dokázali roku 1972 Gikhman a Skorokhod v \cite{gikhman1972stochastic}.
 Naproti tomu Milsteinova numerická metoda má silný řád konvergence jedna.
-Platí tedy, že v obecném případě, kdy se v koeficientu volatility $\beta$ vyskytuje řešení SDR, Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda (spolu se zmenšováním časového kroku $\Delta$).
+Platí tedy, že v obecném případě, kdy se v koeficientu volatility $\beta(t,x)$ vyskytuje proměnná $x$, Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda (spolu se zmenšováním časového kroku $\Delta$).
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Stochastické modelování}
@@ -991,7 +992,10 @@ Chování cen aktiv vykazuje stochastický charakter a cenové změny jsou náho
 %, k jehož modelování využíváme stochastické diferenciální rovnice.
 %K modelování stochastického charakteru chování cen podkladových aktiv využíváme stochastické diferenciální rovnice.
 Kolísání cen aktiv v čase je způsobené vzájemným působením nabídky a poptávky na trhu.
-Teorie efektivního trhu tvrdí, že ceny aktiv velmi rychle plně odrážejí veškeré tržní informace.
+%Teorie efektivního trhu tvrdí, že ceny aktiv velmi rychle plně odrážejí veškeré tržní informace.
+Mezi základní teoretická východiska v teorii finančních trhů patří hypotéza efektivního trhu,
+která tvrdí, že ceny aktiv velmi rychle plně odrážejí veškeré tržní informace
+a zcela reflektují všechna očekávání investorů ohledně budoucího vývoje cen aktiv.
 
 %Pro přehled uvadíme základní teorie finančních trhů:
 %\begin{itemize}

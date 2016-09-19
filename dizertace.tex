@@ -269,7 +269,8 @@ In the first part of the work, some basic mathematical methods employed in this 
    $f'(t)$				& první derivace reálné funkce $f$\\
    $\mathrm{d}f$				& diferenciál funkce $f$\\
    $f(t,x)$				& reálná funkce dvou proměnných\\
-   $\frac{\partial f(t,x)}{\partial t}$				& parciální derivace funkce $f$ podle proměnné $t$
+   $\frac{\partial f(t,x)}{\partial t}$				& parciální derivace funkce $f$ podle proměnné $t$\\
+   $||\boldsymbol x||$				& Eukleidovská norma
    \end{tabular}\\\\\\
 % \end{table}
 %
@@ -782,7 +783,7 @@ Náhodnou veličinu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR
 \end{definice}
 %Uvažujme o existenci a jednoznačnosti řešení SDR.
 
-Uvažujme $n$ stochastických procesů $X_1(t),\dots,X_n(t)$, které popisují nějakým způsobem související náhodné jevy, například vývoj cen $m$ různých akcií na kapitálovém trhu. 
+Uvažujme $n$ stochastických procesů $X_1(t),\dots,X_n(t)$, které popisují nějakým způsobem související náhodné jevy, například vývoj cen $n$ různých akcií na kapitálovém trhu. 
 K popisu chování takových procesů v čase slouží soustavy stochastických diferenciálních rovnic (někdy označované jako systémy SDR) .
 \begin{definice}[Soustava $n$ stochastických diferenciálních rovnic]
 Nechť
@@ -804,18 +805,34 @@ Diferenciální tvar SSDR zapíšeme ve formě
 \mathrm{d}X^i(t)&=\alpha^i(t,\boldsymbol{X}(t))\,\mathrm{d}t+\sum_{j=1}^m\beta^{i,j}(t,\boldsymbol{X}(t))\,\mathrm{d}W^j(t),\\%\qquad 
 X^i(t_0)&=X^i_0.\notag
 \end{align}
-kde $\boldsymbol{W}(\boldsymbol{t})=(W_1(t),\dots,W_m(t))^\mathrm{T}$ je $m$-rozměrný Wienerův proces.
+kde $\boldsymbol{W}({t})=(W_1(t),\dots,W_m(t))^\mathrm{T}$ je $m$-rozměrný Wienerův proces.
 \end{definice}
 
 \subsubsection{Existence a jednoznačnost řešení}
-
+Teorie o existenci a jednoznačnosti řešení stochastických diferenciálních rovnic a jejich soustav vychází ze stejné teorie pro obyčejné diferenciální rovnice.
+Zejména se předpokládají určité vlastnosti koeficientů rovnic jako je lokální Lipschitzova spojitost.
+Následující věta shrnuje podmínky existence a jednoznačnosti řešení soustavy stochastický diferenciálních rovnic.
 \begin{veta}[O existenci a jednoznačnosti řešení SDR]
 Nechť jsou $\boldsymbol\alpha:T\times\mathbb{R}^n\to\mathbb{R}^n$ a $\boldsymbol{B}:T\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$ měřitelné funkce splňující podmínku
-\begin{equation}\label{Lipschitzova_podminka}
-|\boldsymbol\alpha( t,\boldsymbol x)|+|\boldsymbol{B}( t,\boldsymbol x)|\leq C(1+|\boldsymbol x|),
+\begin{equation}\label{glob_Lipschitzova_podminka}
+||\boldsymbol\alpha( t,\boldsymbol x)||+||\boldsymbol{B}( t,\boldsymbol x)||\leq C(1+{||\boldsymbol x||}),
 \end{equation}
-kde $\boldsymbol x\in\mathbb{R}^n$ a $t\in T$, pro nějakou konstantu $C$.
+pro každé $\boldsymbol x\in\mathbb{R}^n$ a $t\in T$ a pro nějakou kladnou konstantu $C$.
+Dále nechť funkce $\boldsymbol\alpha$ a $\boldsymbol B$ splňují podmínku
+\begin{equation}\label{loc_Lipschitzova_podminka}
+||\boldsymbol\alpha( t,\boldsymbol x)-\boldsymbol\alpha( t,\boldsymbol y)||+||\boldsymbol{B}( t,\boldsymbol x)-\boldsymbol{B}( t,\boldsymbol y)||\leq D||\boldsymbol x-\boldsymbol y||,
+\end{equation}
+pro každé $\boldsymbol x , \boldsymbol y\in\mathbb{R}^n$ a $t\in T$ a pro nějakou kladnou konstantu $D$.
+A nechť $\boldsymbol X_0$ je náhodný vektor, který může být závislý na hodnotách Wienerova procesu $\boldsymbol W(t)$ pouze v čase $t_0$,%nezávislý na trajektorii Wienerova procesu $\boldsymbol W(t)$ 
+a platí
+\begin{equation}\label{podminka_tri}
+\mathrm{E}\left[||\boldsymbol X_0||^2\right]<\infty.
+\end{equation} 
+Pak má stochastická diferenciální rovnice \ref{SSDR_def} jednoznačné řešení na $T$.
 \end{veta}
+\begin{proof}
+Viz \cite{oksendal2003stochastic}.
+\end{proof}
 
 \subsection{Numerické metody řešení stochastických diferenciálních rovnic}
 %citace: Peter E. Kloeden Eckhard Platen Henri Schurz Numerical Solution of SDE Through Computer Experiments
@@ -1898,6 +1915,10 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 
 
 \nocite{}  %umisti do literatury i necitovanou polozku a \nocite{*} umisti do literatury vsechny polozky z bibtex databaze 
+
+
+\cleardoublepage
+\phantomsection 
 
 \addcontentsline{toc}{chapter}{Literatura}
 %\bibliographystyle{plain}

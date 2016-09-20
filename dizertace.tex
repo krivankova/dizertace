@@ -256,6 +256,7 @@ In the first part of the work, some basic mathematical methods employed in this 
      $X(t,\omega)$; $X(t)$; $X_t$                       &   stochastický proces \\
     %   $F_{\boldsymbol{t}}(\boldsymbol{x})$; 
    $F_{t_1,\dots,t_n}(x_1,\dots,x_n)$                       &  distribuční funkce stochastického procesu \\
+   $\mathcal{T}$					& indexová množina (často interpretovaná jako čas)\\
    $W(t,\omega)$; $W(t)$; $W_t$                       &   standardní Wienerův proces \\
 %   $\boldsymbol{\Delta} W_t$			                      &   přírůstek Wienerova procesu \\
    $\Delta W_k=W_{t_{k+1}}-W_{t_k}$				 &   přírůstek Wienerova procesu \\
@@ -405,9 +406,9 @@ Tento proces nese jeho jméno a je využíván v~mnoha různých odvětvích.
 \subsection{Stochastický proces}
 V této části práce definujeme stochastický proces a uvedeme některé jeho podstatné vlastnosti.
 \begin{definice}[Stochastický proces]
-Uvažujme  indexovou množinu $T$ a pravděpodobnostní prostor $(\Omega,\mathcal{A}, \mathsf{Pr})$.
-\textit{Stochastický proces} $X(t,\omega)$ je funkce dvou proměnných $X:T\times\Omega\to\mathbb{R}$, kde 
-$X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in T$ náhodná veličina.
+Uvažujme  indexovou množinu $\mathcal{T}$ a pravděpodobnostní prostor $(\Omega,\mathcal{A}, \mathsf{Pr})$.
+\textit{Stochastický proces} $X(t,\omega)$ je funkce dvou proměnných $X:\mathcal{T}\times\Omega\to\mathbb{R}$, kde 
+$X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in\mathcal{T}$ náhodná veličina.
 %\begin{itemize}
 %\item $X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in T$ náhodná veličina,
 %\item $X(\cdot,\omega):T\to\mathbb{R}$ je pro každé $\omega\in\Omega$ realizace náhodného procesu.
@@ -415,68 +416,68 @@ $X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in T$ náhodná veličina.
 
 Reálná funkce $X(\cdot,\omega)$ se nazývá \textit{trajektorie} nebo \textit{cesta} nebo \textit{realizace} stochastického procesu. 
 \end{definice}
-Množina parametrů $T$ může být diskrétní nebo spojitá a v závislosti na tom pak mluvíme o \textit{diskrétním} nebo \textit{spojitém} stochastickém procesu. 
+Množina parametrů $\mathcal{T}$ může být diskrétní nebo spojitá a v závislosti na tom pak mluvíme o \textit{diskrétním} nebo \textit{spojitém} stochastickém procesu. 
 
 \begin{definice}[Ekvivalence stochastických procesů]
 Dva stochastické procesy $X(t,\omega)$ a $Y(t,\omega)$ nazveme \textit{ekvivalentní} pokud platí
-$$X(t,\cdot)=Y(t,\cdot)\text{ s pravděpodobností jedna pro každé }t\in T.$$ 
+$$X(t,\cdot)=Y(t,\cdot)\text{ s pravděpodobností jedna pro každé }t\in\mathcal{T}.$$ 
 V takovém případě hovoříme o tom, že jeden proces je \textit{verzí} druhého procesu.
 \end{definice}
 
 \begin{definice}[Systém distribučních funkcí stochastického procesu]
-Nechť $T_n$ je množina všech vektorů $T_n=\{\boldsymbol{t}=(t_1,\dots,t_n):t_1\leq t_2\leq\cdots\leq t_n; t_i\in T; i=1,\dots,n\}$,
+Nechť $\mathcal{T}_n$ je množina všech vektorů $\mathcal{T}_n=\{\boldsymbol{t}=(t_1,\dots,t_n):t_1\leq t_2\leq\cdots\leq t_n; t_i\in\mathcal{T}; i=1,\dots,n\}$,
 pak \textit{distribuční funkcí} stochastického procesu rozumíme funkci
 $$F_{\boldsymbol{t}}(\boldsymbol{x})=F_{t_1,\dots,t_n}(x_1,\dots,x_n)= \mathsf{Pr}(X_{t_1}\leq x_1,\dots,X_{t_n}\leq x_n),$$
-pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T_n$ a všechna $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
+pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in \mathcal{T}_n$ a všechna $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
 Pro různá $n$ a různé $t_1,\dots,t_n$ dostáváme celý \textit{systém distribučních funkcí}, který označíme $\mathcal{F}$, a který plně popisuje pravděpodobnostní chovaní stochastického procesu.
 
 \end{definice}
 
 \begin{priklad}[Gaussovský proces]
-\textit{Gaussovský proces} je stochastický proces, jehož rozdělení pravděpodobnosti je normální, tedy každá sdružená distribuční funkce $F_{\boldsymbol{t}}(\boldsymbol{x})$ je normální pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in T$ a $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
+\textit{Gaussovský proces} je stochastický proces, jehož rozdělení pravděpodobnosti je normální, tedy každá sdružená distribuční funkce $F_{\boldsymbol{t}}(\boldsymbol{x})$ je normální pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in \mathcal{T}$ a $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
 \end{priklad}
 
 Systém distribučních funkcí nese úplnou informaci o pravděpodobnostním chování stochastického procesu, nicméně podstatnou část této informace můžeme získat už jen z charakteristik popsaných v následující definicí.
 
 \begin{definice}[Charakteristiky stochastického procesu]
-Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in T$ existuje střední hodnota $\mathsf{E}{X(t)}$.
-Pak funkce $\mu_t$ definovaná na množině $T$ předpisem
+Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in \mathcal{T}$ existuje střední hodnota $\mathsf{E}{X(t)}$.
+Pak funkce $\mu_t$ definovaná na množině $\mathcal{T}$ předpisem
 $$\mu_t=\mathsf{E}{X(t)}$$
 se nazývá \textit{střední hodnota stochastického procesu} $X(t)$.
 
-Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in T$ platí $\mathsf{E}{|X(t)|^2<\infty}$ (říkáme, že má \textit{konečné druhé momenty}).
-Pak funkce dvou proměnných $\gamma(s,t)$ definovaná na množině $T\times T$ předpisem
+Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in\mathcal{T}$ platí $\mathsf{E}{|X(t)|^2<\infty}$ (říkáme, že má \textit{konečné druhé momenty}).
+Pak funkce dvou proměnných $\gamma(s,t)$ definovaná na množině $\mathcal{T}\times \mathcal{T}$ předpisem
 $$\gamma(s,t)=\mathsf{C}(X(s),X(t))=\mathsf{E}{\left[(X(s)-\mu_s)(X(t)-\mu_t)\right]}$$
 se nazývá \textit{autokovarianční funkce stochastického procesu} $X(t)$.  
 Speciálně hodnota $\gamma(t,t)=\mathsf{D}(X(t))$ této funkce se nazývá \textit{rozptyl stochastického procesu} v čase $t$ a budeme ji značit ${\sigma_t}^2$.
 
 Nechť $X(t)$ je stochastický proces s konečnými druhými momenty,
-pak funkce $\rho(s,t)$ definovaná na množině $T\times T$ předpisem
+pak funkce $\rho(s,t)$ definovaná na množině $\mathcal{T}\times\mathcal{T}$ předpisem
 $$\rho(s,t)=\frac{\mathsf{C}(X(s),X(t))}{\sqrt{\mathsf{D}(X(s))\mathsf{D}(X(t))}}=\frac{\gamma(s,t)}{\sqrt{\gamma(s,s)\gamma(t,t)}}$$
 se nazývá \textit{autokorelační funkce stochastického procesu} $X(t)$.
 \end{definice}
 
 \begin{definice}[Stacionarita stochastického procesu]
-Stochastický proces $X(t)$ nazveme \textit{striktně stacionární} pokud jsou jeho sdružené distribuční funkce invariantní vůči časovému posunu, tedy pro všechna $h\in\mathbb{R}$ takové, že $t_j\in T$ a $t_j+h\in T$ pro všechna $j$ platí
+Stochastický proces $X(t)$ nazveme \textit{striktně stacionární} pokud jsou jeho sdružené distribuční funkce invariantní vůči časovému posunu, tedy pro všechna $h\in\mathbb{R}$ takové, že $t_j\in\mathcal{T}$ a $t_j+h\in\mathcal{T}$ pro všechna $j$ platí
 $$F_{t_1+h,\dots,t_n+h}(x_1,\dots,x_n)=F_{t_1,\dots,t_n}(x_1,\dots,x_n).$$   
 
 Stochastický proces $X(t)$ nazveme \textit{slabě stacionární} pokud existuje konstanta $\mu\in\mathbb{R}$ a funkce $c:\mathbb{R}^+\to\mathbb{R}$ taková, že
 $$\mathsf{E}{X(t)}=\mu\quad\text{ a }\quad\mathsf{C}(X(t),X(s))=c(|t-s|)$$
-pro všechna $t,s\in T$.
+pro všechna $t,s\in\mathcal{T}$.
 \end{definice}
 Pro slabě stacionární proces zřejmě platí ${\sigma_t}^2=c(0)$.
 Procesy, které nejsou striktně stacionární, se nazývají evoluční. 
 
 \begin{definice}[Nezávislost přírůstků stochastického procesu]
-Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě tehdy, když pro všechny časové posloupnosti $\{t_i\}_{i=1}^N\subseteq T$, kde $t_i<t_{i+1}$ a $N\in\mathbb{N}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
+Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě tehdy, když pro všechny časové posloupnosti $\{t_i\}_{i=1}^N\subseteq\mathcal{T}$, kde $t_i<t_{i+1}$ a $N\in\mathbb{N}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
 \end{definice}
 K popisu pravděpodobnostního chování stochastického procesu s nezávislými přírůstky je tedy dostačující znát distribuční funkci náhodné veličiny $X(t)$ a přírůstku stochastického procesu $X(t)-X(s)$, %pro pevně zvolené $t$ a $s$
 kde $t>s$.
 
 \begin{definice}[Spojitost stochastického procesu]
-Řekneme, že stochastický proces $X(t)$ je \textit{stochasticky spojitý v bodě} $t_0\in T$, jestliže pro každé $\epsilon>0$ platí
+Řekneme, že stochastický proces $X(t)$ je \textit{stochasticky spojitý v bodě} $t_0\in\mathcal{T}$, jestliže pro každé $\epsilon>0$ platí
 $$\lim_{t\to t_0}\Pr(|X_t-X_{t_0}|>\epsilon)=0.$$
-Stochastický proces je  \textit{stochasticky spojitý} (spojitý podle pravděpodobnosti), je-li spojitý v každém bodě množiny $T$.
+Stochastický proces je  \textit{stochasticky spojitý} (spojitý podle pravděpodobnosti), je-li spojitý v každém bodě množiny $\mathcal{T}$.
 \end{definice}
 Proces, který je spojitý podle předcházející definice, nemusí mít spojité trajektorie.
 
@@ -768,7 +769,7 @@ Pracovali jsme také s texty \cite{cyganowski1998maple} a \cite{cyganowski2002el
 \subsection{Úvod do teorie stochastických diferenciálních rovnic}\label{SDR_kap}
 Na úvod do teorie SDR uveďme základní definice, používané značení a podmínky řešitelnosti.
 \begin{definice}[Stochastická diferenciální rovnice]
-Nechť $\alpha(t,x)$ a $\beta(t,x)$ jsou funkce dvou proměnných $\alpha,\beta:T\times\mathbb{R}\to\mathbb{R}$.
+Nechť $\alpha(t,x)$ a $\beta(t,x)$ jsou funkce dvou proměnných $\alpha,\beta:\mathcal{T}\times\mathbb{R}\to\mathbb{R}$.
 
 \textit{Stochastickou diferenciální rovnicí (SDR)} rozumíme rovnici
 \begin{equation}\label{SDR_reseni}
@@ -780,7 +781,7 @@ kde první integrál je Lebesgueův a druhý integrál je It\^oův definovaný v
 \mathrm{d}X(t)&=\alpha(t,X(t))\,\mathrm{d}t+\beta(t,X(t))\,\mathrm{d}W(t),\\%\qquad 
 X(t_0)&=X_0.\notag
 \end{align}
-Náhodnou veličinu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stochastický proces $X(t)$ splňující vztah \eqref{SDR_reseni}, nazýváme \textit{řešením SDR} na $T$.
+Náhodnou veličinu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR} a stochastický proces $X(t)$ splňující vztah \eqref{SDR_reseni}, nazýváme \textit{řešením SDR} na $\mathcal{T}$.
 \end{definice}
 %Uvažujme o existenci a jednoznačnosti řešení SDR.
 
@@ -790,11 +791,11 @@ K popisu chování takových procesů v čase slouží soustavy stochastických 
 Nechť
 %$$\boldsymbol\alpha(\boldsymbol t,\boldsymbol X(t))=\big(\alpha^1(t,\boldsymbol{X}(t)),\dots,\alpha^n(t,\boldsymbol{X}(t))\big)^\mathrm{T}$$
 $$\boldsymbol\alpha( t,\boldsymbol x)=\big(\alpha^1( t,\boldsymbol{x}),\dots,\alpha^n(t,\boldsymbol{x})\big)^\mathrm{T}$$
-je spojitá vektorová funkce $\boldsymbol\alpha:T\times\mathbb{R}^n\to\mathbb{R}^n$.
+je spojitá vektorová funkce $\boldsymbol\alpha:\mathcal{T}\times\mathbb{R}^n\to\mathbb{R}^n$.
 Pro $j=1,\dots,m$ označíme 
 %$$\boldsymbol\beta^{j}(\boldsymbol t,\boldsymbol X(t))=\big(\beta^{1,j}(t,\boldsymbol{X}(t)),\dots,\beta^{n,j}(t,\boldsymbol{X}(t))\big)^\mathrm{T}$$
 $$\boldsymbol\beta^{j}(t,\boldsymbol x)=\big(\beta^{1,j}(t,\boldsymbol{x}),\dots,\beta^{n,j}(t,\boldsymbol{x})\big)^\mathrm{T}$$
-a nechť $\boldsymbol{B}=(\boldsymbol\beta^{1},\dots,\boldsymbol\beta^{m})$ je spojitá maticová funkce $\boldsymbol{B}:T\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$.
+a nechť $\boldsymbol{B}=(\boldsymbol\beta^{1},\dots,\boldsymbol\beta^{m})$ je spojitá maticová funkce $\boldsymbol{B}:\mathcal{T}\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$.
 
 Pro $j=1,\dots,m$ rozumíme \textit{soustavou stochastických diferenciálních rovnic} systém
 \begin{equation}\label{SSDR_reseni}
@@ -814,22 +815,22 @@ Teorie o existenci a jednoznačnosti řešení stochastických diferenciálních
 Zejména se předpokládají určité vlastnosti koeficientů rovnic jako je lokální Lipschitzova spojitost.
 Následující věta shrnuje podmínky existence a jednoznačnosti řešení soustavy stochastických diferenciálních rovnic.
 \begin{veta}[O existenci a jednoznačnosti řešení soustav SDR]
-Nechť jsou $\boldsymbol\alpha:T\times\mathbb{R}^n\to\mathbb{R}^n$ a $\boldsymbol{B}:T\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$ měřitelné funkce splňující podmínku
+Nechť jsou $\boldsymbol\alpha:\mathcal{T}\times\mathbb{R}^n\to\mathbb{R}^n$ a $\boldsymbol{B}:\mathcal{T}\times\mathbb{R}^n\to\mathbb{R}^{n\times m}$ měřitelné funkce splňující podmínku
 \begin{equation}\label{glob_Lipschitzova_podminka}
 ||\boldsymbol\alpha( t,\boldsymbol x)||+||\boldsymbol{B}( t,\boldsymbol x)||\leq C(1+{||\boldsymbol x||}),
 \end{equation}
-pro každé $\boldsymbol x\in\mathbb{R}^n$ a $t\in T$ a pro nějakou kladnou konstantu $C$.
+pro každé $\boldsymbol x\in\mathbb{R}^n$ a $t\in \mathcal{T}$ a pro nějakou kladnou konstantu $C$.
 Dále nechť funkce $\boldsymbol\alpha$ a $\boldsymbol B$ splňují podmínku
 \begin{equation}\label{loc_Lipschitzova_podminka}
 ||\boldsymbol\alpha( t,\boldsymbol x)-\boldsymbol\alpha( t,\boldsymbol y)||+||\boldsymbol{B}( t,\boldsymbol x)-\boldsymbol{B}( t,\boldsymbol y)||\leq D||\boldsymbol x-\boldsymbol y||,
 \end{equation}
-pro každé $\boldsymbol x , \boldsymbol y\in\mathbb{R}^n$ a $t\in T$ a pro nějakou kladnou konstantu $D$.
+pro každé $\boldsymbol x , \boldsymbol y\in\mathbb{R}^n$ a $t\in \mathcal{T}$ a pro nějakou kladnou konstantu $D$.
 Dále nechť $\boldsymbol X_0$ je náhodný vektor, který může být závislý na hodnotách Wienerova procesu $\boldsymbol W(t)$ pouze v čase $t_0$,%nezávislý na trajektorii Wienerova procesu $\boldsymbol W(t)$ 
 a platí
 \begin{equation}\label{podminka_tri}
 \mathrm{E}\left[||\boldsymbol X_0||^2\right]<\infty.
 \end{equation} 
-Pak má soustava stochastických diferenciálních rovnic \ref{SSDR_def} jednoznačné řešení na $T$.
+Pak má soustava stochastických diferenciálních rovnic \ref{SSDR_def} jednoznačné řešení na $\mathcal{T}$.
 \end{veta}
 \begin{proof}
 Viz \cite{oksendal2003stochastic}.
@@ -852,7 +853,7 @@ Tato metoda byla v roce 1955 modifikována japonským matematikem Gisiro Maruyam
 Jedná se o nejjednodušší metodu, která slouží ke konstrukci složitějších numerických metod pro řešení SDR.
 
 Uvažujme It\^oův proces $X(t)$, který je řešením SDR definované vztahem \eqref{SDR_def}.
-Nechť $\{t_n\}_{n=0}^N\subseteq T$ je časová posloupnost, kde pro všechna $n$ platí $t_n<t_{n+1}$.
+Nechť $\{t_n\}_{n=0}^N\subseteq \mathcal{T}$ je časová posloupnost, kde pro všechna $n$ platí $t_n<t_{n+1}$.
 Tato  posloupnost se nazývá \textit{diskretizace} časové proměnné.
 V Eulerově metodě diferenciál $\mathrm{d}X(t)$ aproximujeme přírůstkem stochastického procesu $\Delta X_n=X(t_{n+1})-X(t_n)$.
 Hodnota $X(t_{n+1})$ je aproximována pomocí hodnoty $X(t_{n})$ v předcházejícím časovém kroku.
@@ -872,9 +873,9 @@ X_{n+1}^i=X_n^i+\alpha^i(t_n,\boldsymbol{X}_n)\Delta_n+\sum_{j=1}^m\beta^{i,j}(t
 %kde $\boldsymbol{X}$ je $m$-rozměrný Wienerův proces.
 \end{definice}
 
-\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq T$ splňuje vztah \eqref{Euler} a hodnoty mezi těmito časovými body získáme pomocí lineární interpolace.
+\textit{Eulerova aproximace} je spojitý stochastický proces, který v daných časech $\{t_n\}_{n=0}^N\subseteq \mathcal{T}$ splňuje vztah \eqref{Euler} a hodnoty mezi těmito časovými body získáme pomocí lineární interpolace.
 
-Většinou se předpokládá, že časová posloupnost $\{t_n\}_{n=0}^N\subseteq T$ je ekvidistantní. 
+Většinou se předpokládá, že časová posloupnost $\{t_n\}_{n=0}^N\subseteq \mathcal{T}$ je ekvidistantní. 
 Důležitou problematikou při používání numerických metod je způsob výpočtu $\Delta W_n$.
 Z vlastnosti Wienerova procesu plyne, že $\Delta W_n\sim\mathsf{N}(0, \Delta_n)$.
 
@@ -1331,8 +1332,8 @@ Ohlson a Rosenberg jako první poukázali na nekonzistenci Mertonova spojitého 
 
 \subsection{Značení a předpoklady}
 Na začátek zavedeme značení a  uvedeme základní definice a předpoklady. 
-Uvažujme množinu $n$ různých aktiv na daném trhu a označme $T$ množinu všech uvažovaných časů (diskrétní nebo spojitou).
-Nechť $I_t$ značí množinu všech investorů na trhu v čase $t\in T$.
+Uvažujme množinu $n$ různých aktiv na daném trhu a označme $\mathcal{T}$ množinu všech uvažovaných časů (diskrétní nebo spojitou).
+Nechť $I_t$ značí množinu všech investorů na trhu v čase $t\in \mathcal{T}$.
 Cenu aktiva $j$ v čase $t$ označíme $P_j(t)$ a $\boldsymbol{P}(t)=(P_1(t),\dots,P_n(t))^\mathrm{T}$ je vektor cen aktiv v čase $t$.
 Analogicky označíme $\boldsymbol{N}(t)=(N_1(t),\dots,N_n(t))^\mathrm{T}$ vektor podílů aktiv v čase $t$.
 Potom tržní hodnota aktiva $j$ je rovna $V_j(t)=P_j(t)N_j(t)$.
@@ -1354,7 +1355,7 @@ Nyní můžeme definovat dynamickou tržní rovnováhu jako stav, kdy  nabídka 
 Tento stav se také nazývá \textit{vyčištění trhu}.
          
 \begin{definice}[Dynamická tržní rovnováha]
-Řekneme, že kapitálový trh je v \textit{dynamické rovnováze} právě tehdy, když pro každý čas $t\in T$, každé podkladové aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
+Řekneme, že kapitálový trh je v \textit{dynamické rovnováze} právě tehdy, když pro každý čas $t\in \mathcal{T}$, každé podkladové aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
 $$\sum_{i\in I} w_{j}(i,t)=N_j(t)P_j(t)=V_j(t).$$
 Tyto ceny budeme nazývat \textit{rovnovážné ceny}.
 \end{definice}
@@ -1363,7 +1364,7 @@ Důsledek Tobinova separačního teorému shrňme jako vlastnost pro prostředky
 \begin{definice}[Vlastnost separace]\label{vlastnost_separace}
 Vektorová funkce pro optimální alokaci investorových prostředků do všech aktiv na trhu $\boldsymbol{w}(i,t)$ respektuje \textit{vlastnost separace} právě tehdy, když existuje vektor $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ takový, že $\sum_{j=1}^nX_j=1$, a existují skalární parametry $\lambda(i,t)$ takové, že
 $$\boldsymbol{w}(i,t)=\lambda(i,t)\boldsymbol{X},$$
-pro všechny $i\in I$ a všechny $t\in T$.
+pro všechny $i\in I$ a všechny $t\in \mathcal{T}$.
 \end{definice}
 Vlastnost separace \ref{vlastnost_separace} říká, že vektor $\boldsymbol{X}$ představuje váhy tržního portfolia (které se v čase nemění) a parametr $\lambda(i,t)$ zohledňuje rizikové preference investora.
 
@@ -1371,13 +1372,13 @@ Vlastnost separace \ref{vlastnost_separace} říká, že vektor $\boldsymbol{X}$
 Budeme-li předpokládat rovnováhu na trhu a stacionaritu distribuční funkce výnosností, dospějeme ke sporu, jak ukazuje následující věta a důsledek.
 
 \begin{veta} \label{T1}
-Nechť $\boldsymbol{P}(t)$ pro všechny $t\in T$  jsou rovnovážné ceny.
+Nechť $\boldsymbol{P}(t)$ pro všechny $t\in \mathcal{T}$  jsou rovnovážné ceny.
 Dále předpokládejme, že na trhu platí vlastnost separace (Definice \ref{vlastnost_separace}).
 Pak
 \begin{equation}\label{T1_eq}
 \mathsf{Pr}\left(\frac{N_j(s)P_j(s)}{N_j(t)P_j(t)}=\frac{N_k(s)P_k(s)}{N_k(t)P_k(t)}\right)=1
 \end{equation}
-pro všechny časy $s,t\in T$  a pro každé aktivum $j$ a $k$.
+pro všechny časy $s,t\in \mathcal{T}$  a pro každé aktivum $j$ a $k$.
 \end{veta}
 
 \begin{proof}
@@ -1385,13 +1386,13 @@ Podle Definice \ref{vlastnost_separace} platí
 \begin{equation}\label{CSW}
 w_j(i,t)=\lambda(i,t)X_j
 \end{equation}
-pro všechny časy $t\in T$, všechny investory $i\in I$ a pro každé aktivum $j$.
+pro všechny časy $t\in \mathcal{T}$, všechny investory $i\in I$ a pro každé aktivum $j$.
 
 Předpoklad dynamické rovnováhy na trhu dává
 \begin{equation}\label{E}
 \sum_{i\in I} w_{j}(i,t)=N_j(t)P_j(t)
 \end{equation}
-pro všechny časy $t\in T$ a pro každé aktivum $j$.
+pro všechny časy $t\in \mathcal{T}$ a pro každé aktivum $j$.
 
 Dosazením vztahu \eqref{CSW} do rovnice \eqref{E} a vzhledem k tomu, že váhy $X_j$ jsou stejné pro všechny investory $i\in I$, dostáváme
 $$N_j(t)P_j(t)=\sum_{i\in I}\lambda(i,t)X_j=X_j\sum_{i\in I}\lambda(i,t).$$
@@ -1404,13 +1405,13 @@ Z tohoto tvrzení zřejmě plyne vztah \eqref{T1_eq}.
 \begin{dusledek}\label{OR_dusledek}
 Nechť 
 $$r_j(t,t+\Delta t)=\frac{P_j(t+\Delta t)-P_j(t)}{P_j(t)}=\frac{P_j(t+\Delta t)}{P_j(t)}-1.$$
-Budeme předpokládat $N_j(t)=N_j$ pro každé aktivum $i$ a všechna $t\in T$. 
+Budeme předpokládat $N_j(t)=N_j$ pro každé aktivum $i$ a všechna $t\in \mathcal{T}$. 
 Z~věty \ref{T1} plyne
 \begin{align*}
 \mathsf{Pr}\left(\frac{P_j(s)}{P_j(t)}=\frac{P_k(s)}{P_k(t)}\right)=1&\Longrightarrow\mathsf{Pr}\left(\frac{P_j(t+\Delta t)}{P_j(t)}=\frac{P_k(t+\Delta t)}{P_k(t)}\right)=1 \\
 &\Longrightarrow\mathsf{Pr}\left(r_j(t,t+\Delta t)=r_k(t,t+\Delta t)\right)=1,
 \end{align*}
-pro všechna $t\in T$ a pro všechna aktiva $j$ a $k$.
+pro všechna $t\in \mathcal{T}$ a pro všechna aktiva $j$ a $k$.
 Proto jsou aktiva $j$ a $k$ vzájemně dokonale zastupitelné.
 \end{dusledek}
 Důsledek \ref{OR_dusledek} vede k degeneraci trhu, což poukazuje na významný rozpor mezi předpoklady.

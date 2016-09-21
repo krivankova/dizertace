@@ -918,9 +918,9 @@ Například simulace využívající distribuční funkce, nebo substituování 
 
 \subsubsection{Konvergence}
 Chceme-li posuzovat kvalitu jednotlivých numerických metod řešení SDR a~vzájemně je porovnávat, zkoumáme odchylku aproximace řešení od přesného řešení (tzv. chybu aproximace).
-V literatuře se běžně setkáváme se dvěma kategoriemi kriterií sloužící k posouzení konvergence aproximace k přesnému řešení.
+V literatuře se běžně setkáváme se dvěma kategoriemi kriterií sloužící k posouzení konvergence aproximace k~přesnému řešení.
 Jsou to silná konvergenční kritéria a slabá konvergenční kritéria. 
-Uvědomme si, že jak přesné řešení SDR $X(t_{n})$, tak jeho aproximace $X_n$ jsou v každém čase $t_n$ náhodné veličiny.
+Uvědomme si, že v každém čase $t_n$ jsou jak přesné řešení SDR $X(t_{n})$, tak jeho aproximace $X_n$ náhodné veličiny.
 Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a jeho aproximace, naproti tomu silná konvergence uvažuje střední hodnotu odchylek $X(t_{n})$ a $X_n$.
 %Uvažujme za jakých podmínek aproximace řešení SDR konverguje k přesnému řešení pro zmenšující se časový krok.  
 %Uvědomme si, že jak přesné řešení SDR $X(t_{n})$, tak jeho aproximace $X_n$ jsou v každém čase $t_n$ náhodné veličiny.
@@ -929,7 +929,7 @@ Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a 
 %K porovnání jednotlivých numerických metod řešení SDR slouží mimo jiné řád konvergence.
 
 \begin{definice}\label{konvergence_weak_def}
-Uvažujme diskretizaci času $\{t_n\}_{n=0}^N$.%\subseteq\langle 0,T\rangle$.
+Uvažujme diskretizaci času $\{t_n\}_{n=0}^N\subseteq \mathcal{T}$.%\subseteq\langle 0,T\rangle$.
 Označme $X(t_n)$ přesné řešení SDR v čase $t_n$ a $X_n$ příslušnou aproximaci řešení v čase $t_n$.
 Řekneme, že aproximace \textit{slabě konverguje} k řešení v čase $t_n$, jestliže platí
 \begin{equation}
@@ -947,21 +947,22 @@ Levá strana vztahu \eqref{konvergence_weak_vztah} se nazývá slabá chyba apro
 Pro různou volbou polynomu $f(x)$ dostáváme konvergenci různých momentů řešení SDR.
 
 \begin{definice}\label{konvergence_def}
-Uvažujme diskretizaci času $\{t_n\}_{n=0}^N$.
-Řekneme, že aproximace \textit{silně konverguje} k řešení v čase $t_n$, jestliže platí
+Uvažujme diskretizaci času $D=\{t_n\}_{n=0}^N\subseteq \mathcal{T}$.
+Řekneme, že aproximace \textit{silně konverguje} k řešení v čase $T\in\mathcal{T}$, jestliže platí
 \begin{equation}
-\lim_{\Delta_n\to0}\mathsf{E}\big(|X(t_n)-X_n|\big)=0
+\lim_{\Delta\to0}\left[\sup_{D:||D||=\Delta}\mathsf{E}\big(|X(T)-X_D(T)|\big)\right]=0
 \end{equation}
-kde $X(t_n)$ je přesné řešení SDR v čase $t_n$ a $X_n$ značí příslušnou aproximaci řešení v čase $t_n$.
+kde $||D||=\max_{0\leq n\leq N-1}\Delta_n$, $X(T)$ je přesné řešení SDR v čase $T$ a $X_D(T)$ značí aproximaci řešení v čase $T$ příslušnou diskretizaci $D$.
 
-Řekneme, že numerická metoda má \textit{silný řád konvergence $p$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $n$ platí
+Řekneme, že numerická metoda má \textit{silný řád konvergence $p$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $D$ platí
 \begin{equation}\label{konvergence_vztah}
-\mathsf{E}\big(|X(t_n)-X_n|\big)\leq K\Delta^p,
+\mathsf{E}\big(|X(T)-X_D(T)|\big)\leq K\Delta^p,
 \end{equation}
 kde  $\Delta=\max_{0\leq n\leq N-1}\Delta_n$.
 Levá strana vztahu \eqref{konvergence_vztah} se nazývá silná chyba aproximace.
 \end{definice}
 Poznamenejme, že silná konvergence implikuje slabou konvergenci.
+
 Abychom získali co nejpřesnější aproximaci trajektorií řešení stochastické diferenciální rovnice, používáme metody s co největším silným řádem konvergence.
 Ačkoli je známo, že Eulerova numerická metoda řešení obyčejných diferenciálních rovnic má silný řád konvergence 1, 
 tak stochastická Eulerova numerická metoda má řád konvergence $\frac12$.

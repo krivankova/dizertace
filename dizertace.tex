@@ -1932,6 +1932,20 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 \bibliographystyle{abbrv}
 \bibliography{bibliography}
 
+%\cleardoublepage
+%\phantomsection 
+%\addcontentsline{toc}{chapter}{Příloha}
+
+\renewcommand{\thechapter}{\Alph{chapter}} %nový čítač kapitol, příkaz \Alph nastavuje, že čítačem budou velká písmena
+\setcounter{chapter}{0}
+\chapter{Příloha}
+\section*{Ukázka datového souboru}
+V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{muj_model}.
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13.5cm, clip, trim= 0 270 0 10]{IMG/data.pdf}
+%  \caption{}  %\label{}
+\end{figure}
 \end{document}
 
 

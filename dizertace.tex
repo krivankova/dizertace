@@ -271,7 +271,9 @@ In the first part of the work, some basic mathematical methods employed in this 
    $\mathrm{d}f$				& diferenciál funkce $f$\\
    $f(t,x)$				& reálná funkce dvou proměnných\\
    $\frac{\partial f(t,x)}{\partial t}$				& parciální derivace funkce $f$ podle proměnné $t$\\
-   $||\boldsymbol x||$				& Eukleidovská norma
+   $||\boldsymbol x||$				& Eukleidovská norma\\
+   $\langle a,b\rangle$				& uzavřený interval\\
+   $\left(a,b\right)$				          & otevřený interval
    \end{tabular}\\\\\\
 % \end{table}
 %
@@ -599,7 +601,7 @@ Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\
 
 \begin{definice}\label{M}
 Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
-Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):[0,\infty)\times\Omega\to\mathbb R$ takových, že
+Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):\langle0,\infty)\times\Omega\to\mathbb R$ takových, že
 \begin{enumerate}
 \item[1.] $f(t,\omega)$ je neanticipativní, 
 \item[2.] $\text{E}\left[\int_0^Tf^2(t,\omega)\,\mathrm{d}t\right]<\infty.$ 
@@ -706,7 +708,7 @@ Z Definice \ref{jednoduchafunkce} vyplývá, že trajektorie jednoduchého proce
 Nechť $S$ je jednoduchý proces a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
 Pak
 $$\int_0^TS\,\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
-se nazývá \textit{It\^oův integrál} procesu $S$ na intervalu $[0,T]$.
+se nazývá \textit{It\^oův integrál} procesu $S$ na intervalu $\langle 0,T\rangle$.
 \end{definice}
 
 Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché procesy na integrál pro obecný stochastický proces.
@@ -1923,7 +1925,6 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 
 \nocite{}  %umisti do literatury i necitovanou polozku a \nocite{*} umisti do literatury vsechny polozky z bibtex databaze 
 
-
 \cleardoublepage
 \phantomsection 
 
@@ -1936,9 +1937,70 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 %\phantomsection 
 %\addcontentsline{toc}{chapter}{Příloha}
 
-\renewcommand{\thechapter}{\Alph{chapter}} %nový čítač kapitol, příkaz \Alph nastavuje, že čítačem budou velká písmena
-\setcounter{chapter}{0}
-\chapter{Příloha}
+%\renewcommand{\thechapter}{\Alph{chapter}} %nový čítač kapitol, příkaz \Alph nastavuje, že čítačem budou velká písmena
+%\setcounter{chapter}{0} %nastaví čítač kapitol na 0
+
+\appendix %příkaz, který první číslo v názvu kapitoly nebo sekce mění na písmeno
+
+%\nocite{976825, 979237, 979245, 1077842, 1093598, 1167343, 1167503, 1183811} %moje publikace
+
+\chapter[Příloha -- Publikace autorky]{Příloha}
+\section*{Publikace autorky}
+%\bibliographystyle{abbrv}
+%\bibliography{moje}
+\begin{itemize}
+
+\item[I.]
+L.~Křivánková.
+\newblock Equilibrium models for portfolio selection.
+\newblock In M.~e. Jiří~Zelinka, editor, {\em Mathematical Models and
+  Financial Mathematics. Book of short papers}, pages 35--42, Brno, 2014.
+  Masaryk University.
+
+\item[II.]
+L.~Křivánková.
+\newblock Asset-pricing models in portfolio theory.
+\newblock In M.~e. Jiří~Zelinka, editor, {\em Financial Mathematics in
+  Practice II, Book of short papers}, pages 42--49, Brno, 2013. Masaryk
+  University.
+
+\item[III.]
+L.~Křivánková.
+\newblock Continuous-time models in portfolio theory.
+\newblock In {\em XX International Conference PDMU-2012 Problems of Decision
+  Making under Uncertainties}, pages 95--104, Brno, 2012. University of
+  Defence.
+
+\item[IV.]
+L.~Křivánková.
+\newblock The black-scholes equation for barrier options.
+\newblock In {\em 7. konference o matematice a fyzice na vysokých školách
+  technických s mezinárodní účastí : Sborník příspěvků část 1 -
+  matematika}, 2011.
+
+\item[V.]
+L.~Křivánková.
+\newblock Wiener process and applications.
+\newblock In {\em Workshop of the Jaroslav Hájek Center, Book of short
+  papers}, 2010.
+
+\item[VI.]
+S.~Kafková and L.~Křivánková.
+\newblock Generalized linear models in vehicle insurance.
+\newblock {\em Acta Universitatis Agriculturae et Silviculturae Mendelianae
+  Brunensis}, 62, 2014.
+
+\item[VII.]
+S.~Kafková, L.~Křivánková, and M.~Leváková.
+\newblock Survival analysis of patients with brain tumour.
+\newblock In M.~e. Jiří~Zelinka, editor, {\em Mathematical Models and
+  Financial Mathematics. Book of short papers}, pages 27--33, Brno, 2014.
+  Masaryk University.
+
+\end{itemize}
+
+
+\chapter[Příloha -- Ukázka datového souboru]{Příloha}
 \section*{Ukázka datového souboru}
 V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{muj_model}.
 \begin{figure}[!htbp]

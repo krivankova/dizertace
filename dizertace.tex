@@ -1030,6 +1030,9 @@ Stochastickým modelováním v ekonomii se pak zabývá převážně zahraničn�
 %Citace:  \cite{baxter1996financial} a  \cite{franke2004statistics}
 
 V následující části popíšeme konstrukci matematických modelů používaných ve finanční matematice pro popis vývoje cen aktiv na finančních trzích.
+Na začátek poznamenejme, že ceny aktiv jsou stochastické procesy s diskrétním časem a malým časovým krokem.
+Pro jednoduchost analýzy ale budeme předpokládat, že se jedná o procesy spojité.
+
 V Kapitole \ref{WP_kap} jsme uvažovali nad požadavky kladenými na chování stochastického procesu, který můžeme využít k modelování cen aktiv, aby byl model smysluplný.
 Zrekapitulujme kvalitativní znaky modelu aktiv:
 \begin{itemize}
@@ -1047,30 +1050,40 @@ Budeme tedy předpokládat, že proces popisující vývoj ceny aktiva v čase s
 \mathrm{d}P(t)=P(t)\,\mu(t)\,\mathrm{d}t+P(t)\,\sigma(t)\,\mathrm{d}W(t),
 \end{equation}
 kde $P(t)$ je cena aktiva v čase $t$, $\mu(t)$ a $\sigma(t)$ jsou stochastické procesy a $W(t)$  je jednorozměrný Wienerův proces.
-Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum.
+Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum, což není zcela realistické.
 
-Model pro vývoj ceny aktiv na trhu, který předpokládá existenci $n$ rizikových aktiv je dán jako
+Chceme-li popisovat vývoj ceny více rizikových aktiv na trhu a jejich vzájemné vztahy využijeme následující model, který předpokládá existenci $n$~rizikových aktiv a je dán jako
 \begin{equation}\label{multi_risk_asset_model}
 \mathrm{d}P_j(t)=P_j(t)\,\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),
 \end{equation}
 kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\mu_j(t)$ a $\xi_{jk}(t)$ jsou stochastické procesy a $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces. 
-%Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
+Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
+
+Některé modely zabývající se chováním cen aktiv na trhu předpokládají existenci \textit{bezrizikového aktiva}.
+Jedná se o aktivum, které má jistou očekávanou výnosnost a tudíž nulové riziko.
+Výnosností a rizikem aktiva se budeme podrobněji zabývat v Kapitole \ref{charakteristiky_portfolia}. 
+S modely zahrnujícími bezrizikové aktivum nás seznámí kapitola \ref{KTP}.
+Očekávaná výnosnost bezrizikového aktiva se nazývá \textit{bezriziková úroková míra}.
+V praxi neexistuje skutečně bezriziková investice, ale z krátkodobého a střednědobého hlediska lze návratnost některých investic považovat prakticky za jistou.
+Obvykle se za takovou teoretickou investici považují státní pokladniční poukázky.
 
 Chování ceny bezrizikového aktiva je popsáno modelem
 \begin{equation}\label{risk-free_asset_model}
 \mathrm{d}B(t)=B(t)\,r_f(t)\,\mathrm{d}t,
 \end{equation}
 kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková úroková míra.
+Příklady trajektorií procesů popsaných modely \ref{risk_asset_model} a~\ref{risk-free_asset_model} zobrazuje Obrázek~\ref{asset_model_graf}.
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/GWP_RFA_v4.pdf}
-  \caption{Model ceny bezrizikového aktiva s úrokovou mírou $r_f=1$ a~model ceny rizikového aktiva s parametry $\mu=1$ a  $\sigma=0,1$ a počáteční hodnotou $S(0)=1$.}  \label{asset_model_graf}
+	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/GWP_RFA_v5.pdf}
+  \caption{Model ceny bezrizikového aktiva s úrokovou mírou $r_f=1$ a~model ceny rizikového aktiva s parametry $\mu=1$ a  $\sigma=0,1$ a počáteční hodnotou $P(0)=1$.}  \label{asset_model_graf}
 \end{figure}
 
-\subsection{Black–Scholesův model}
+%\subsection{Black–Scholesův model}
+\subsection{Modely cen finančních derivátů}
 Odvození Black–Scholesova modelu je srozumitelně zpracováno v učebnici Alison Etheridge \cite{etheridge2002course}.
- \cite{baxter1996financial}.
+Baxter a Rennie \cite{baxter1996financial}.
 
 Samofinancující strategie spočívá ve vytvoření takového portfolia, které má stejné základní charakteristiky jako finanční derivát. 
 Toto portfolio nazýváme \textit{replikační portfolio}.
@@ -1101,12 +1114,13 @@ Jednofaktorové modely krátkodobých úrokových měr předpokládají, že oka
 \begin{equation}\label{model_urok_miry}
 \mathrm{d}r(t)=\mu(t,r)\,\mathrm{d}t+\sigma(t,r)\,\mathrm{d}W(t)
 \end{equation}
-Deterministická část procesu je $\mu(t, r)\,\mathrm{d}t$ a určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů, volatilita $\sigma(t, r)\,\mathrm{d}w$ určuje vlastnosti náhodných výchylek.
+Deterministická část procesu $\mu(t, r)$ určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů.
+Volatilita $\sigma(t, r)$ určuje vlastnosti náhodných výchylek.
 
 \subsection{Vašíčkův model}
 Vašíčkův model je jednofaktorový model, který předpokládá, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 \begin{equation}\label{Vasickuv_model}
-\mathrm{d}r(t) = \kappa(\theta - r(t))\,\mathrm{d}t + \sigma\,\mathrm{d}W(t)
+\mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\,\mathrm{d}W(t)
 \end{equation}
 kde $\kappa$, $\theta$ a $\sigma$ jsou konstanty. 
 Jejichž význam je následující:
@@ -1116,22 +1130,25 @@ Jejichž význam je následující:
 \item[-] $\sigma$ je volatilita.
 \end{itemize}
 
-Drift této rovnice je $\mu(t, r) = \kappa ( \theta - r(t))$, volatilita této rovnice je $\sigma(t, r) = \sigma$. 
+Drift této rovnice je $\mu(t, r) = \kappa\big ( \theta - r(t)\big)$ a volatilita je $\sigma(t, r) = \sigma$. 
 Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou $\theta$. 
 Daný proces je Ornstein-Uhlenbeckův proces definovaný v Kapitole \ref{OU_kap}.
 
-Mezi výhody Vašíčkova modelu patří, že existuje explicitní vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
-Mezi nevýhody Vašíčkova modelu patří, že připouští i záporné úrokové míry, k tomu dojde v případě, kdy se úroková míra přiblízí nule a volatilita je stále táž konstanta.
+Mezi výhody Vašíčkova modelu patří existence explicitního vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
+Na druhou stranu nevýhodou je to, že Vašíčkův model připouští i záporné úrokové míry. 
+K tomuto jevu dochází v případě, kdy se úroková míra přiblíží nule, ale volatilita je stále táž konstanta.
+
+\subsection{CIR model}
 Tuto chybu odstraňuje Cox - Ingersoll - Rossův model (CIR model), který je ve tvaru 
 \begin{equation}\label{CIR_model}
-\mathrm{d}r(t) = \mu(t, r)\,\mathrm{d}t + \sigma\sqrt{r(t, r)}\,\mathrm{d}W(t)
+\mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t, r)}\,\mathrm{d}W(t)
 \end{equation}
 Je vidět, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry je dána pouze driftem, který bude v tomto případě kladný.
-Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.
+%Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.
 
 \subsection{Hull-Whitův model}
 \begin{equation}\label{H-W_model}
- \mathrm{d}r(t)=[\theta(t)-\alpha r] \mathrm{d}t+\sigma \mathrm{d}W(t),
+ \mathrm{d}r(t)=(\theta(t)-\alpha r) \mathrm{d}t+\sigma \mathrm{d}W(t),
 \end{equation}
 kde
 %\begin{description}
@@ -1142,7 +1159,7 @@ kde
 %\item [$\theta(t)$] Drift function defined as
 %\end{description}
 \begin{equation}
-\theta(t)=F'_{t}(0,t)+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}(1- \mathrm{e}^{-2\alpha t}),
+\theta(t)=F'_{t}(0,t)+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}\left(1- \mathrm{e}^{-2\alpha t}\right),
 \end{equation}
 \begin{description}
 \item[$F(0,t)$] Instantaneous forward rate at time $t$.
@@ -1155,7 +1172,7 @@ kde
 
 %%%%%%%%%%%%%%%%%%{Základní charakteristiky portfolia}
 
-\section{Základní charakteristiky portfolia}
+\section{Základní charakteristiky portfolia}\label{charakteristiky_portfolia}
 V teorii portfolia se investoři snaží minimalizovat investiční riziko a~zároveň maximalizovat investiční výnos. 
 Avšak se zvyšováním očekávaného výnosu je spojen i~růst rizika, proto základním problémem při optimalizaci portfolia je hledání kompromisu mezi maximalizací výnosu a~minimalizací rizika spojeného s~investováním.  
 V následující části popíšeme a~definujeme tyto základní charakteristiky portfolia.
@@ -1948,56 +1965,57 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 \section*{Publikace autorky}
 %\bibliographystyle{abbrv}
 %\bibliography{moje}
-\begin{itemize}
-
-\item[I.]
+\begin{enumerate}
+%\renewcommand\labelenumi{\bfseries\Roman{enumi}.}
+\renewcommand\labelenumi{\Roman{enumi}.}
+\item
 L.~Křivánková.
 \newblock Equilibrium models for portfolio selection.
 \newblock In M.~e. Jiří~Zelinka, editor, {\em Mathematical Models and
   Financial Mathematics. Book of short papers}, pages 35--42, Brno, 2014.
   Masaryk University.
 
-\item[II.]
+\item
 L.~Křivánková.
 \newblock Asset-pricing models in portfolio theory.
 \newblock In M.~e. Jiří~Zelinka, editor, {\em Financial Mathematics in
   Practice II, Book of short papers}, pages 42--49, Brno, 2013. Masaryk
   University.
 
-\item[III.]
+\item
 L.~Křivánková.
 \newblock Continuous-time models in portfolio theory.
 \newblock In {\em XX International Conference PDMU-2012 Problems of Decision
   Making under Uncertainties}, pages 95--104, Brno, 2012. University of
   Defence.
 
-\item[IV.]
+\item
 L.~Křivánková.
 \newblock The black-scholes equation for barrier options.
-\newblock In {\em 7. konference o matematice a fyzice na vysokých školách
+\newblock In {\em 7.~konference o matematice a fyzice na vysokých školách
   technických s mezinárodní účastí : Sborník příspěvků část 1 -
   matematika}, 2011.
 
-\item[V.]
+\item
 L.~Křivánková.
 \newblock Wiener process and applications.
 \newblock In {\em Workshop of the Jaroslav Hájek Center, Book of short
   papers}, 2010.
 
-\item[VI.]
+\item
 S.~Kafková and L.~Křivánková.
 \newblock Generalized linear models in vehicle insurance.
 \newblock {\em Acta Universitatis Agriculturae et Silviculturae Mendelianae
   Brunensis}, 62, 2014.
 
-\item[VII.]
+\item
 S.~Kafková, L.~Křivánková, and M.~Leváková.
 \newblock Survival analysis of patients with brain tumour.
 \newblock In M.~e. Jiří~Zelinka, editor, {\em Mathematical Models and
   Financial Mathematics. Book of short papers}, pages 27--33, Brno, 2014.
   Masaryk University.
 
-\end{itemize}
+\end{enumerate}
 
 
 \chapter[Příloha -- Ukázka datového souboru]{Příloha}

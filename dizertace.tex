@@ -273,7 +273,8 @@ In the first part of the work, some basic mathematical methods employed in this 
    $\frac{\partial f(t,x)}{\partial t}$				& parciální derivace funkce $f$ podle proměnné $t$\\
    $||\boldsymbol x||$				& Eukleidovská norma\\
    $\langle a,b\rangle$				& uzavřený interval\\
-   $\left(a,b\right)$				          & otevřený interval
+   $\left(a,b\right)$				          & otevřený interval\\
+   $\left\lfloor x\right\rfloor$			&dolní celá část reálného čísla $x$
    \end{tabular}\\\\\\
 % \end{table}
 %
@@ -719,7 +720,7 @@ Pak existuje posloupnost jednoduchých procesů $\{f_n:n\in\mathbb N\}$ tak, že
 $$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarrow0.$$
 \end{lemma}
 
-\begin{definice}\label{Ito_int}
+\begin{definice}[It\^oův integrál]\label{Ito_int}
 Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých procesů z lemmatu \ref{itoint}.
 Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
 $$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\mathrm{d}W.$$
@@ -922,45 +923,54 @@ Například simulace využívající distribuční funkce, nebo substituování 
 Chceme-li posuzovat kvalitu jednotlivých numerických metod řešení SDR a~vzájemně je porovnávat, zkoumáme odchylku aproximace řešení od přesného řešení (tzv. chybu aproximace).
 V literatuře se běžně setkáváme se dvěma kategoriemi kriterií sloužící k posouzení konvergence aproximace k~přesnému řešení.
 Jsou to silná konvergenční kritéria a slabá konvergenční kritéria. 
-Uvědomme si, že v každém čase $t_n$ jsou jak přesné řešení SDR $X(t_{n})$, tak jeho aproximace $X_n$ náhodné veličiny.
-Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a jeho aproximace, naproti tomu silná konvergence uvažuje střední hodnotu odchylek $X(t_{n})$ a $X_n$.
+
+Označme $X(t)$ přesné řešení SDR v čase $t$ a $\hat X(t)$ jeho aproximaci určenou pomocí zvolené numerické metody.
+Uvědomme si, že v každém čase~$t$ jsou jak přesné řešení SDR, tak jeho aproximace náhodné veličiny.
+Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a jeho aproximace, naproti tomu silná konvergence uvažuje střední hodnotu odchylek $X(t)$ a~$\hat X(t)$.
 %Uvažujme za jakých podmínek aproximace řešení SDR konverguje k přesnému řešení pro zmenšující se časový krok.  
 %Uvědomme si, že jak přesné řešení SDR $X(t_{n})$, tak jeho aproximace $X_n$ jsou v každém čase $t_n$ náhodné veličiny.
 %Budeme definovat dva typy konvergence.
 %Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a jeho aproximace, naproti tomu silná konvergence uvažuje střední hodnotu odchylek $X(t_{n})$ a $X_n$.
 %K porovnání jednotlivých numerických metod řešení SDR slouží mimo jiné řád konvergence.
 
+V následujících definicích \ref{konvergence_weak_def} a \ref{konvergence_def} budeme předpokládat, že diskretizace času $\{t_n\}_{n=0}^N\subseteq \langle0,T\rangle$ je ekvidistantní posloupnost, tzn. $\Delta_n=\Delta$ pro všechna~$n$.
+Pro ekvidistantní posloupnost platí $t_n=n\Delta$, kde přirozená čísla $n\in\left\langle0,\left\lfloor\frac{T}{\Delta}\right\rfloor\right\rangle$.
+
 \begin{definice}\label{konvergence_weak_def}
-Uvažujme diskretizaci času $\{t_n\}_{n=0}^N\subseteq \mathcal{T}$.%\subseteq\langle 0,T\rangle$.
-Označme $X(t_n)$ přesné řešení SDR v čase $t_n$ a $X_n$ příslušnou aproximaci řešení v čase $t_n$.
-Řekneme, že aproximace \textit{slabě konverguje} k řešení v čase $t_n$, jestliže platí
+%Uvažujme diskretizaci času $\{t_n\}_{n=0}^N\subseteq \mathcal{T}$.%\subseteq\langle 0,T\rangle$.
+%Označme $X(t_n)$ přesné řešení SDR v čase $t_n$ a $X_n$ příslušnou aproximaci řešení v čase $t_n$.
+Řekneme, že aproximace $\hat X(t)$ \textit{slabě konverguje} k přesnému řešení $X(t)$ v čase $t$, jestliže platí
 \begin{equation}
-\lim_{\Delta_n\to0}\left|\mathsf{E}\big(f(X(t_n))\big)-\mathsf{E}\big(f(X_n)\big)\right|=0
+\lim_{\Delta\to0}\left[\sup_{0\leq t\leq T}\left|\mathsf{E}\big(f(X(t))\big)-\mathsf{E}\big(f(\hat X(t))\big)\right|\right]=0
 \end{equation}
 pro každou polynomiální funkci $f(x)$.
 
-Řekneme, že numerická metoda má \textit{slabý řád konvergence $q$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $n$ platí
+%Řekneme, že numerická metoda má \textit{slabý řád konvergence $q$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $n$ platí
+Řekneme, že numerická metoda má \textit{slabý řád konvergence $q$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $t$ platí
 \begin{equation}\label{konvergence_weak_vztah}
-\left|\mathsf{E}\big(f(X(t_n))\big)-\mathsf{E}\big(f(X_n)\big)\right|\leq K\Delta^q,
+%\left|\mathsf{E}\big(f(X(t_n))\big)-\mathsf{E}\big(f(X_n)\big)\right|\leq K\Delta^q,
+\left|\mathsf{E}\big(f(X(t))\big)-\mathsf{E}\big(f(\hat X(t))\big)\right|\leq K\Delta^q.
 \end{equation}
-kde  $\Delta=\max_{0\leq n\leq N-1}\Delta_n$.
+%kde  $\Delta=\max_{0\leq n\leq N-1}\Delta_n$.
 Levá strana vztahu \eqref{konvergence_weak_vztah} se nazývá slabá chyba aproximace.
 \end{definice}
 Pro různou volbou polynomu $f(x)$ dostáváme konvergenci různých momentů řešení SDR.
 
 \begin{definice}\label{konvergence_def}
-Uvažujme diskretizaci času $D=\{t_n\}_{n=0}^N\subseteq \mathcal{T}$.
-Řekneme, že aproximace \textit{silně konverguje} k řešení v čase $T\in\mathcal{T}$, jestliže platí
+%Uvažujme diskretizaci času $D=\{t_n\}_{n=0}^N\subseteq \mathcal{T}$.
+Řekneme, že aproximace $\hat X(t)$ \textit{silně konverguje} k přesnému řešení $X(t)$ v čase $t$, jestliže platí
 \begin{equation}
-\lim_{\Delta\to0}\left[\sup_{D:||D||=\Delta}\mathsf{E}\big(|X(T)-X_D(T)|\big)\right]=0
+\lim_{\Delta\to0}\left[\sup_{0\leq t\leq T}\mathsf{E}\big(|X(t)-\hat X(t)|\big)\right]=0.
 \end{equation}
-kde $||D||=\max_{0\leq n\leq N-1}\Delta_n$, $X(T)$ je přesné řešení SDR v čase $T$ a $X_D(T)$ značí aproximaci řešení v čase $T$ příslušnou diskretizaci $D$.
+%kde $||D||=\max_{0\leq n\leq N-1}\Delta_n$, $X(T)$ je přesné řešení SDR v čase $T$ a $X_D(T)$ značí aproximaci řešení v čase $T$ příslušnou diskretizaci $D$.
 
-Řekneme, že numerická metoda má \textit{silný řád konvergence $p$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $D$ platí
+%Řekneme, že numerická metoda má \textit{silný řád konvergence $p$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $D$ platí
+Řekneme, že numerická metoda má \textit{silný řád konvergence $p$}, jestliže existuje kladná konstanta $K$ taková, že pro všechna $t$ platí
 \begin{equation}\label{konvergence_vztah}
-\mathsf{E}\big(|X(T)-X_D(T)|\big)\leq K\Delta^p,
+%\mathsf{E}\big(|X(T)-X_D(T)|\big)\leq K\Delta^p,
+\mathsf{E}\big(|X(t)-\hat X(t)|\big)\leq K\Delta^p.
 \end{equation}
-kde  $\Delta=\max_{0\leq n\leq N-1}\Delta_n$.
+%kde  $\Delta=\max_{0\leq n\leq N-1}\Delta_n$.
 Levá strana vztahu \eqref{konvergence_vztah} se nazývá silná chyba aproximace.
 \end{definice}
 Poznamenejme, že silná konvergence implikuje slabou konvergenci.
@@ -1082,16 +1092,15 @@ Příklady trajektorií procesů popsaných modely \ref{risk_asset_model} a~\ref
 
 %\subsection{Black–Scholesův model}
 \subsection{Modely cen finančních derivátů}
-Odvození Black–Scholesova modelu je srozumitelně zpracováno v učebnici Alison Etheridge \cite{etheridge2002course}.
-Baxter a Rennie \cite{baxter1996financial}.
+Přehledný úvod do problematiky oceňování finančních derivátů poskytuje kniha \textit{Financial Calculus} od autorů Martina Baxtera a Andrewa Rennieho~\cite{baxter1996financial}.
+Odvození Black–Scholesova modelu je srozumitelně zpracováno také v učebnici Alison Etheridge \cite{etheridge2002course}.
 
-Samofinancující strategie spočívá ve vytvoření takového portfolia, které má stejné základní charakteristiky jako finanční derivát. 
-Toto portfolio nazýváme \textit{replikační portfolio}.
-Stává se z jednoho rizikového a jednoho bezrizikového aktiva.
+Při konstrukci modelů cen finančních derivátů budeme uvažovat finanční trh s jedním rizikovým aktivem a s jedním bezrizikovým aktivem (obvykle se v tomto případě předpokládá, že se jedná o hotovost).
+Definujme portfolio složené z těchto aktiv.
 
 \begin{definice}
-\textit{Portfolio} $\big(\phi(t),\psi(t)\big)$ je dvojice stochastických procesů $\phi(t)$ a $\psi(t)$, která udává podíl rizikových a bezrizikových aktiv držených v čase $t$.
-Stochastický proces $\phi(t)$ je neanticipativní (podíl rizikových aktiv v portfoliu v čase $t$ může být ovlivněn pouze informacemi známými do času $t$).
+\textit{Portfolio} $\big(\phi(t),\psi(t)\big)$ je dvojice stochastických procesů $\phi(t)$ a $\psi(t)$, která udává podíly rizikového a bezrizikového aktiva držené v čase $t$.
+Stochastický proces $\phi(t)$ je neanticipativní (podíl rizikového aktiva v portfoliu v čase $t$ může být ovlivněn pouze informacemi známými do času $t$).
 \end{definice}
 Procesy $\phi(t)$ a $\psi(t)$ nabývají kladných hodnot, nicméně pokud je na trhu povolen tzv. \textit{prodej na krátko (short sell)} mohou nabývat i hodnot záporných.
 Prodej na krátko je spekulativní metoda obchodování na finančním trhu, kdy investor očekává pokles ceny finančního aktiva.
@@ -1099,6 +1108,27 @@ Investor si finanční aktivum vypůjčí od věřitele na předem stanovenou do
 Nejpozději za stanovenou dobu investor nakoupí finanční aktivum na trhu a vrátí jej věřiteli.
 Rozdíl mezi prodejní a nákupní cennou je výsledný zisk nebo ztráta.
 Kvůli vysoké rizikovosti je prodej na krátko často regulován a v některých zemích dokonce zcela zakázán, neboť investor může dosáhnout pouze omezeného zisku, ale teoreticky neomezené ztráty.
+
+%Samofinancující strategie spočívá ve vytvoření takového portfolia, které má stejné základní charakteristiky jako finanční derivát. 
+%Toto portfolio nazýváme \textit{replikační portfolio}.
+%Stává se z jednoho rizikového a jednoho bezrizikového aktiva.
+
+
+
+\begin{definice}
+Řekneme, že strategie $\big(\phi(t),\psi(t)\big)$ je \textit{samofinancující strategie} právě tehdy, když platí
+\begin{equation}\label{samofinancujici_strategie}
+\mathrm{d}V(t)=\phi(t)\,\mathrm{d}P(t)+\psi(t)\,\mathrm{d}B(t),
+\end{equation}
+kde $B(t)$ je , $P(t)$ a $V(t)$.
+\end{definice}
+
+\begin{definice}
+\textit{Replikační portfolio} $\big(\phi(t),\psi(t)\big)$ je 
+\begin{equation}\label{replikacni_portfolio}
+V(t)=\phi(t)P(t)+\psi(t)B(t)=X(t),
+\end{equation}
+\end{definice}
 
 \section{Stochastické modelování úrokových sazeb}
 Na rozdíl od akcií nebo komodit vykazuje chování úrokových sazeb následující příznačné vlastnosti. %zvláštnosti.
@@ -2026,6 +2056,14 @@ V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{
 	\includegraphics[width=13.5cm, clip, trim= 0 270 0 10]{IMG/data.pdf}
 %  \caption{}  %\label{}
 \end{figure}
+
+%\chapter[Příloha -- Ukázka programů]{Příloha}
+%\section*{Ukázka programu v R}
+%\addcontentsline{toc}{section}{Ukázka programu v R}
+%\section*{Ukázka programu v Matlabu}
+%\addcontentsline{toc}{section}{Ukázka programu v Matlabu}
+%Na závěr uvedeme ukázku programu v prostředí MATLAB pro výpočet...
+
 \end{document}
 
 

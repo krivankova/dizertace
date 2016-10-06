@@ -317,7 +317,7 @@ In the first part of the work, some basic mathematical methods employed in this 
 \pagenumbering{arabic}
 
 
-příliš žluťoučký kůň úpěl ďábelské ódy
+%příliš žluťoučký kůň úpěl ďábelské ódy
 
 %Wienerův proces využívaný za účelem modelování chování cen aktiv a finančních instrumentů.
 
@@ -326,6 +326,18 @@ příliš žluťoučký kůň úpěl ďábelské ódy
 %Investiční rozhodování (capital budgeting) a oceňování podniku patří ke klíčovým úlohám finančního rozhodování.
 %Oceňování je jedním z ústředních nástrojů finančního řízení a rozhodování. 
 %Klíčovými faktory jsou neurčitost finančních toků a dynamická flexibilita. 
+
+\begin{comment}
+Od roku 2015 předepisuje Basel III bankám povinost počítat kapitalový požadavek pro riziko Credit Valuation Adjustment (CVA).
+Současná situace na banovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
+Bežné způsoby tvorby zisku v současnosti selhávají.
+Na trhu můžeme pozorovat nejen nízké až záporné úrokové sazby, ale i konkurenční boj o klienty, který přináší neustálý tlak na snižování bankovních poplatků a poskytování téměř nerentabilní klientských úvěrů.
+Banky proto hledají nové možnosti, jak snižovat náklady jako jsou například opravné položky k úvěrům klientů nebo k finančním derivátům.
+Jednou z možností může být hledání způsobu jak CVA modelovat tak, aby dodržely předepsané standardy a zároveň dosáhly co nejmešího dopadu na jejich zisk. 
+
+Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
+Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
+\end{comment}
 
 \begin{comment}
 Otazník před komentářem označuje, že tato literatura ještě není citována.\\
@@ -721,7 +733,7 @@ $$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarr
 \end{lemma}
 
 \begin{definice}[It\^oův integrál]\label{Ito_int}
-Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých procesů z lemmatu \ref{itoint}.
+Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých procesů z Lemmatu \ref{itoint}.
 Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
 $$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\mathrm{d}W.$$
 \end{definice}
@@ -731,7 +743,7 @@ Definice \ref{Ito_int} není závislá na volbě aproximující posloupnosti $f_
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
 Říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
 Kiyosi It\^o jej publikoval v roce 1944 v článku \cite{ito1944}.
-\begin{veta}[It\^oovo lemma]
+\begin{veta}[It\^oovo lemma]\label{ito_lemma}
 Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
 $$\mathrm{d}X=U\,\mathrm{d}t+V\,\mathrm{d}W.$$
 Nechť $g(t,x):(0,\infty)\times\mathbb R\to\mathbb R$ je dvakrát spojitě diferencovatelná funkce.
@@ -833,7 +845,7 @@ a platí
 \begin{equation}\label{podminka_tri}
 \mathrm{E}\left[||\boldsymbol X_0||^2\right]<\infty.
 \end{equation} 
-Pak má soustava stochastických diferenciálních rovnic \ref{SSDR_def} jednoznačné řešení na $\mathcal{T}$.
+Pak má soustava stochastických diferenciálních rovnic \eqref{SSDR_def} jednoznačné řešení na $\mathcal{T}$.
 \end{veta}
 \begin{proof}
 Viz \cite{oksendal2003stochastic}.
@@ -888,7 +900,7 @@ Tuto metodu poprvé představil Grigori N. Milstein ve svém článku \cite{mils
 Metoda se snaží zdokonalit aproximaci difuzního členu tím, že aditivně připojuje třetí člen k Eulerovově diskretizaci.
 %Přitom se využívá stochastický Taylorův rozvoj. 
 Pro odvození podoby tohoto členu je využíváno  It\^oovo lemma, které je aplikováno na koeficienty stochastického procesu.
-Následnými úpravami a zanedbáním členů vyšších řádů získáme vztah uvedený v definici \ref{Milstein_def}.
+Následnými úpravami a zanedbáním členů vyšších řádů získáme vztah uvedený v Definici \ref{Milstein_def}.
 Poznamenejme, že pro správné fungování Milsteinovy metody je narozdíl od Eulerovy metody potřebný předpoklad diferencovatelnosti funkce $\beta(t,\boldsymbol{x})$ podle složek $\boldsymbol{x}$.
 \begin{definice}\label{Milstein_def}
 Nechť $X_n$ značí aproximaci řešení $X(t_{n})$ stochastické diferenciální rovnice \eqref{SDR_def} v čase $t_n$.
@@ -933,7 +945,7 @@ Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a 
 %Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a jeho aproximace, naproti tomu silná konvergence uvažuje střední hodnotu odchylek $X(t_{n})$ a $X_n$.
 %K porovnání jednotlivých numerických metod řešení SDR slouží mimo jiné řád konvergence.
 
-V následujících definicích \ref{konvergence_weak_def} a \ref{konvergence_def} budeme předpokládat, že diskretizace času $\{t_n\}_{n=0}^N\subseteq \langle0,T\rangle$ je ekvidistantní posloupnost, tzn. $\Delta_n=\Delta$ pro všechna~$n$.
+V následujících Definicích \ref{konvergence_weak_def} a \ref{konvergence_def} budeme předpokládat, že diskretizace času $\{t_n\}_{n=0}^N\subseteq \langle0,T\rangle$ je ekvidistantní posloupnost, tzn. $\Delta_n=\Delta$ pro všechna~$n$.
 Pro ekvidistantní posloupnost platí $t_n=n\Delta$, kde přirozená čísla $n\in\left\langle0,\left\lfloor\frac{T}{\Delta}\right\rfloor\right\rangle$.
 
 \begin{definice}\label{konvergence_weak_def}
@@ -1040,8 +1052,13 @@ Stochastickým modelováním v ekonomii se pak zabývá převážně zahraničn�
 %Citace:  \cite{baxter1996financial} a  \cite{franke2004statistics}
 
 V následující části popíšeme konstrukci matematických modelů používaných ve finanční matematice pro popis vývoje cen aktiv na finančních trzích.
-Na začátek poznamenejme, že ceny aktiv jsou stochastické procesy s diskrétním časem a malým časovým krokem.
-Pro jednoduchost analýzy ale budeme předpokládat, že se jedná o procesy spojité.
+Na začátek poznamenejme, že ceny aktiv jsou pozorovány a~zaznamenávány v~diskrétních časech s~malým časovým krokem.
+Avšak je běžné předpokládat, že proces ceny aktiva je spojitý.
+Důvodem je zjednodušení následných analýz a~modelování.
+%Na začátek poznamenejme, že ceny aktiv jsou stochastické procesy s diskrétním časem a malým časovým krokem. 
+%Avšak je běžné předpokládat, že se jedná o procesy spojité.
+%Důvodem je zjednodušení následných analýz a modelování.
+%Pro jednoduchost analýzy ale budeme předpokládat, že se jedná o procesy spojité.
 
 V Kapitole \ref{WP_kap} jsme uvažovali nad požadavky kladenými na chování stochastického procesu, který můžeme využít k modelování cen aktiv, aby byl model smysluplný.
 Zrekapitulujme kvalitativní znaky modelu aktiv:
@@ -1072,7 +1089,7 @@ Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}
 Některé modely zabývající se chováním cen aktiv na trhu předpokládají existenci \textit{bezrizikového aktiva}.
 Jedná se o aktivum, které má jistou očekávanou výnosnost a tudíž nulové riziko.
 Výnosností a rizikem aktiva se budeme podrobněji zabývat v Kapitole \ref{charakteristiky_portfolia}. 
-S modely zahrnujícími bezrizikové aktivum nás seznámí kapitola \ref{KTP}.
+S modely zahrnujícími bezrizikové aktivum nás seznámí Kapitola \ref{KTP}.
 Očekávaná výnosnost bezrizikového aktiva se nazývá \textit{bezriziková úroková míra}.
 V praxi neexistuje skutečně bezriziková investice, ale z krátkodobého a střednědobého hlediska lze návratnost některých investic považovat prakticky za jistou.
 Obvykle se za takovou teoretickou investici považují státní pokladniční poukázky.
@@ -1082,7 +1099,7 @@ Chování ceny bezrizikového aktiva je popsáno modelem
 \mathrm{d}B(t)=B(t)\,r_f(t)\,\mathrm{d}t,
 \end{equation}
 kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková úroková míra.
-Příklady trajektorií procesů popsaných modely \ref{risk_asset_model} a~\ref{risk-free_asset_model} zobrazuje Obrázek~\ref{asset_model_graf}.
+Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\eqref{risk-free_asset_model} zobrazuje Obrázek~\ref{asset_model_graf}.
 
 \begin{figure}[!htbp]
   \centering 
@@ -1092,16 +1109,24 @@ Příklady trajektorií procesů popsaných modely \ref{risk_asset_model} a~\ref
 
 %\subsection{Black–Scholesův model}
 \subsection{Modely cen finančních derivátů}
+%Definovat a popsat finanční derivát.
+
 Přehledný úvod do problematiky oceňování finančních derivátů poskytuje kniha \textit{Financial Calculus} od autorů Martina Baxtera a Andrewa Rennieho~\cite{baxter1996financial}.
 Odvození Black–Scholesova modelu je srozumitelně zpracováno také v učebnici Alison Etheridge \cite{etheridge2002course}.
 
 Při konstrukci modelů cen finančních derivátů budeme uvažovat finanční trh s jedním rizikovým aktivem a s jedním bezrizikovým aktivem (obvykle se v tomto případě předpokládá, že se jedná o hotovost).
 Definujme portfolio složené z těchto aktiv.
-
 \begin{definice}
 \textit{Portfolio} $\big(\phi(t),\psi(t)\big)$ je dvojice stochastických procesů $\phi(t)$ a $\psi(t)$, která udává podíly rizikového a bezrizikového aktiva držené v čase $t$.
 Stochastický proces $\phi(t)$ je neanticipativní (podíl rizikového aktiva v portfoliu v čase $t$ může být ovlivněn pouze informacemi známými do času $t$).
+
+Předpokládejme, že cena rizikového aktiva se řídí stochastickým procesem $P(t)$ a cenu bezrizikového aktiva v čase $t$ označme $B(t)$.
+Pak \textit{hodnota portfolia} v čase $t$ je dána jako
+\begin{equation}\label{hodnota_portfolia}
+V(t)=\phi(t)P(t)+\psi(t)B(t).
+\end{equation}
 \end{definice}
+
 Procesy $\phi(t)$ a $\psi(t)$ nabývají kladných hodnot, nicméně pokud je na trhu povolen tzv. \textit{prodej na krátko (short sell)} mohou nabývat i hodnot záporných.
 Prodej na krátko je spekulativní metoda obchodování na finančním trhu, kdy investor očekává pokles ceny finančního aktiva.
 Investor si finanční aktivum vypůjčí od věřitele na předem stanovenou dobu a ihned ho prodá třetí straně.
@@ -1113,17 +1138,70 @@ Kvůli vysoké rizikovosti je prodej na krátko často regulován a v některýc
 %Toto portfolio nazýváme \textit{replikační portfolio}.
 %Stává se z jednoho rizikového a jednoho bezrizikového aktiva.
 
+%Další pojem, se kterým se při konstrukci modelu setkáme, je \textit{finanční strategie}.
+%%Dynamická finanční strategie je popsána pomocí dvojice stochastických procesů $(\phi,\psi)$, která udává množství jednotlivých aktiv držených v portfoliu v každém okamžiku. 
+%Definice finanční strategie je stejná jako definice portfolia, jedná se tedy o dvojici stochastických procesů $(\phi,\psi)$, která udává množství jednotlivých aktiv držených v portfoliu v každém okamžiku. 
+%Speciální typ finanční strategie, který využijeme při tvorbě modelu, je samofinancující strategie. 
+%Portfolio je samofinancující, pokud 
 
+V literatuře, popisující konstrukci modelu cen finančních derivátů, se často setkáme s pojmem \textit{finanční strategie}.
+Pojmy \textit{strategie} a \textit{portfolio} mají stejnou definici, proto je můžeme chápat jako synonyma a v dalším textu této kapitoly mohou být volně zaměňována.
 
-\begin{definice}
+Speciálním typem finanční strategie, který využijeme při tvorbě modelu, je samofinancující strategie.
+Jedná se o takovou strategii, kdy investor v průběhu času nedodává do portfolia další prostředky (ani prostředky nestahuje).
+Proto změna hodnoty portfolia závisí pouze na změnách cen aktiv držených v portfoliu. 
+Samofinancující strategie je definována pomocí stochastické diferenciální rovnice.
+\begin{definice}[Samofinancující strategie]\label{samofinancujici_strategie}
 Řekneme, že strategie $\big(\phi(t),\psi(t)\big)$ je \textit{samofinancující strategie} právě tehdy, když platí
-\begin{equation}\label{samofinancujici_strategie}
+\begin{equation}\label{samofinancujici_strategie_vztah}
 \mathrm{d}V(t)=\phi(t)\,\mathrm{d}P(t)+\psi(t)\,\mathrm{d}B(t),
 \end{equation}
-kde $B(t)$ je , $P(t)$ a $V(t)$.
+kde $B(t)$ je cena bezrizikového aktiva v čase $t$, $P(t)$ je cena rizikového aktiva v čase $t$ a $V(t)$ je hodnota portfolia v čase $t$.
 \end{definice}
 
-\begin{definice}
+\begin{priklad}\label{samofinancujici_portfolio_priklad}
+Nechť se cena rizikového aktiva řídí Wienerovým procesem (tedy $P(t)=W(t)$ pro všechna $t$) a cena bezrizikového aktiva je konstantní (předpokládejme, že $B(t)=1$ pro všechna $t$).
+
+Uvažujme portfolio $\big(\phi(t),\psi(t)\big)$, ve kterém po celou dobu držíme jedno rizikové aktivum a jedno bezrizikové aktivum, tedy $\phi(t)=\psi(t)=1$ pro všechna $t$. 
+Dokažme, že toto portfolio je samofinancující.
+
+Hodnota portfolia je $V(t)=W(t)+1$.
+Přírůstky jednotlivých aktiv jsou
+\begin{align*}
+\mathrm{d}B(t)&= 0, \\
+\mathrm{d}P(t)&=\mathrm{d}W(t). 
+\end{align*}
+Ověřme podmínku \eqref{samofinancujici_strategie_vztah} z Definice \ref{samofinancujici_strategie}.
+\begin{align*}
+\mathrm{d}V(t)&=\mathrm{d}\big(W(t)+1\big)=\mathrm{d}W(t),\\
+\phi(t)\,\mathrm{d}P(t)+\psi(t)\,\mathrm{d}B(t)&=1\cdot\mathrm{d}W(t)+1\cdot1=\mathrm{d}W(t).
+\end{align*}
+Podmínka \eqref{samofinancujici_strategie_vztah} tedy platí a portfolio $\big(\phi(t),\psi(t)\big)$ je samofinancující.
+\end{priklad}
+
+\begin{priklad}
+Předpokládejme, že ceny rizikového a bezrizikového aktiva se řídí stejnými procesy jako v Příkladu \ref{samofinancujici_portfolio_priklad}.
+Uvažujme portfolio $\big(\phi(t),\psi(t)\big)$, kde $\phi(t)=2W(t)$ a $\psi(t)=-t-W^2(t)$. 
+
+Ověřme zda se jedná o samofinancující portfolio dle Definice \ref{samofinancujici_strategie}.
+Hodnota portfolia je 
+\begin{align*}
+V(t)=\phi(t)P(t)+\psi(t)B(t)=2W(t)\cdot W(t)-t-W^2(t)=W^2(t)-t. 
+\end{align*}
+Dosadíme-li do It\^oova lemmatu \ref{ito_lemma} dostaneme
+\begin{alignat*}{2}
+\mathrm{d}V(t)&=\left[-1+2W(t)\cdot0+\frac12\cdot2\cdot1^2\right]\mathrm{d}t+2W(t)\cdot1\cdot\mathrm{d}W\\
+&=2W(t)\,\mathrm{d}W(t).\\
+%\end{alignat*}
+\text{Zároveň platí}\hspace{2.1cm}\\
+%\begin{alignat*}{2}
+\phi(t)\,\mathrm{d}P(t)+\psi(t)\,\mathrm{d}B(t)&=2W(t)\,\mathrm{d}W(t)+(-t-W^2(t))\cdot0\\
+&=2W(t)\,\mathrm{d}W(t).
+\end{alignat*}
+Podmínka \eqref{samofinancujici_strategie_vztah} tedy platí a portfolio $\big(\phi(t),\psi(t)\big)$ je samofinancující.
+\end{priklad}
+
+\begin{definice}[Replikační portfolio]
 \textit{Replikační portfolio} $\big(\phi(t),\psi(t)\big)$ je 
 \begin{equation}\label{replikacni_portfolio}
 V(t)=\phi(t)P(t)+\psi(t)B(t)=X(t),
@@ -1372,7 +1450,7 @@ Merton odvodil explicitní řešení této stochastické diferenciální rovnice
 Avšak Mertonův spojitý rovnovážný model vykazuje inkonzistenci, což dokázali Ohlson a Rosenberg \cite{ohlson} hned v roce 1976.
 Ještě před zveřejněním jejich článku byla uveřejněna ve stejném periodiku Mertonova reakce \cite{merton1975}, ve které hájí své poznatky a poukazuje na jejich nepochopení ze strany oponentů.  
 Ohlson a Rosenberg \cite {ohlson} poukazují na rozpor mezi předpokladem, že střední hodnota a rozptyl výnosnosti aktiva jsou konstantní, a předpokladem tržní rovnováhy.
-Podrobněji bude tento paradox rozebrán v části \ref{paradox}.
+Podrobněji bude tento paradox rozebrán v Části \ref{paradox}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%{Ohlson-Rosenbergův paradox}
@@ -1416,7 +1494,7 @@ Vektorová funkce pro optimální alokaci investorových prostředků do všech 
 $$\boldsymbol{w}(i,t)=\lambda(i,t)\boldsymbol{X},$$
 pro všechny $i\in I$ a všechny $t\in \mathcal{T}$.
 \end{definice}
-Vlastnost separace \ref{vlastnost_separace} říká, že vektor $\boldsymbol{X}$ představuje váhy tržního portfolia (které se v čase nemění) a parametr $\lambda(i,t)$ zohledňuje rizikové preference investora.
+Vlastnost separace definovaná Definicí \ref{vlastnost_separace} říká, že vektor $\boldsymbol{X}$ představuje váhy tržního portfolia (které se v čase nemění) a parametr $\lambda(i,t)$ zohledňuje rizikové preference investora.
 
 \subsection{Rozpor mezi předpoklady}
 Budeme-li předpokládat rovnováhu na trhu a stacionaritu distribuční funkce výnosností, dospějeme ke sporu, jak ukazuje následující věta a důsledek.
@@ -1456,7 +1534,7 @@ Z tohoto tvrzení zřejmě plyne vztah \eqref{T1_eq}.
 Nechť 
 $$r_j(t,t+\Delta t)=\frac{P_j(t+\Delta t)-P_j(t)}{P_j(t)}=\frac{P_j(t+\Delta t)}{P_j(t)}-1.$$
 Budeme předpokládat $N_j(t)=N_j$ pro každé aktivum $i$ a všechna $t\in \mathcal{T}$. 
-Z~věty \ref{T1} plyne
+Z~Věty \ref{T1} plyne
 \begin{align*}
 \mathsf{Pr}\left(\frac{P_j(s)}{P_j(t)}=\frac{P_k(s)}{P_k(t)}\right)=1&\Longrightarrow\mathsf{Pr}\left(\frac{P_j(t+\Delta t)}{P_j(t)}=\frac{P_k(t+\Delta t)}{P_k(t)}\right)=1 \\
 &\Longrightarrow\mathsf{Pr}\left(r_j(t,t+\Delta t)=r_k(t,t+\Delta t)\right)=1,
@@ -1737,7 +1815,7 @@ Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \
 Často nás více než trajektorie cen podkladových aktiv zajímají očekávané hodnoty cen těchto aktiv.
 %\eqref{SDE_cen_diag}
 Vztahy pro očekávané hodnoty cen aktiv odvoďme ze soustavy SDR \eqref{SDE_cen}.
-Připomeňme, že z vlastností Wienerova procesu, uvedených v definici \ref{WP_def}, plyne, že $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
+Připomeňme, že z vlastností Wienerova procesu, uvedených v Definici \ref{WP_def}, plyne, že $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
 \\
 \textcolor{red}{???Nekorelovanost $P_j(t)$ a $\mathrm{d}W_j(t)$???}
 \\
@@ -1905,6 +1983,16 @@ V rámci překladu termínu \textit{Credit Valuation Adjustment (CVA)}  se můž
 Například Česká národní banka používá výraz \textit{úprava úvěrového ocenění}.
 V jiných textech nalezneme pojem  \textit{kreditní přirážka k tržnímu ocenění} nebo \textit{úvěrová úprava v ocenění finančních derivátů}.
 Z důvodu přehlednosti budeme v textu této práce používat především zkratku CVA nebo anglický termín.
+
+%Od roku 2015 předepisuje Basel III bankám povinost počítat kapitalový požadavek pro riziko Credit Valuation Adjustment (CVA).
+%Současná situace na banovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
+%Bežné způsoby tvorby zisku v současnosti selhávají.
+%Na trhu můžeme pozorovat nejen nízké až záporné úrokové sazby, ale i konkurenční boj o klienty, který přináší neustálý tlak na snižování bankovních poplatků a poskytování téměř nerentabilní klientských úvěrů.
+%Banky proto hledají nové možnosti, jak snižovat náklady jako jsou například opravné položky k úvěrům klientů nebo k finančním derivátům.
+%Jednou z možností může být hledání způsobu jak CVA modelovat tak, aby dodržely předepsané standardy a zároveň dosáhly co nejmešího dopadu na jejich zisk. 
+%
+%Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
+%Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
 
 \subsection{Expozice protistrany}
 \textit{Expozici protistrany} v čase $t$ značíme $E(t)$ a definujeme jako celkovou výši nesplacených pohledávek danou protistranou.

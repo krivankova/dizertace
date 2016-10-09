@@ -1219,17 +1219,28 @@ Předpokládáme-li, že na trhu neexistuje arbitráž a zároveň k finančním
 \begin{equation}\label{replikacni_portfolio_vztah}
 X(t)=\phi(t)P(t)+\psi(t)B(t).
 \end{equation}
-Pokud by vztah \ref{replikacni_portfolio_vztah} neplatil, bylo by možné najít arbitrážní příležitost.
+Pokud by vztah \eqref{replikacni_portfolio_vztah} neplatil, bylo by možné najít arbitrážní příležitost.
 Například, pokud by cena derivátu v čase $t<T$ byla nižší než hodnota replikačního portfolia v čase $t$, pak by obchodník mohl koupit v čase $t$ jeden derivát a prodat na krátko $\phi(t)$ jednotek rizikového aktiva a $\psi(t)$ jednotek bezrizikového aktiva. 
 Jelikož je replikační portfolio $\big(\phi(t),\psi(t)\big)$ samofinancující, je zaručeno, že v čase $T$ bude mít hodnotu $X(T)$, aniž by bylo nutné dodávat další prostředky mezi časem $t$ a $T$.
 V čase $T$ tedy hodnota derivátu pokryje náklady na nákup portfolia prodaného na krátko.
 Obchodník inkasuje zisk ve výši rozdílu $X(t)-V(t)$ a to bez rizika.
 Opačný příklad by byl analogický.
  
-To znamená, že díky vztahu \ref{replikacni_portfolio_vztah} jsme schopni pomocí replikačního portfolia modelovat cenu finančního derivátu.
+%To znamená, že díky vztahu \ref{replikacni_portfolio_vztah} jsme schopni pomocí replikačního portfolia modelovat cenu finančního derivátu.
+
+Pomocí konceptu představeného v této kapitole je možno modelovat cenu finančního derivátu.
+K derivátu nalezneme jeho replikační portfolio, využijeme vztah \eqref{replikacni_portfolio_vztah} a cenu rizikového a bezrizikového aktiva modelujeme dle modelů představených v Kapitole \ref{stoch_model}. 
+
+Tento přístup poprvé představili v roce 1973 Fischer Black a Myron Scholes \cite{black1973pricing} v kontextu oceňování opcí. 
+Oceňovací formule později vešla ve známost jako Black-Scholesův model.
+Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 1997 oceněno Nobelovou cenou za ekonomii.
+ 
+
+
 
 %Předpokládejme existenci konstantní bezrizikové úrokové míry $r$, volatility akcie $\sigma$ a driftu akcie $\mu$. 
 %Dále předpokládáme nulové transakční náklady a možnost obchodovat v libovolném čase libovolné množství v dlouhé i v krátké pozici za stanovenou cenu.
+
 
 \section{Stochastické modelování úrokových sazeb}
 Na rozdíl od akcií nebo komodit vykazuje chování úrokových sazeb následující příznačné vlastnosti. %zvláštnosti.

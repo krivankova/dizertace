@@ -1015,6 +1015,8 @@ Modelovat budeme vývoj ceny jak podkladových aktiv, tak finančních derivát�
 Podkladové aktivum je nástroj, jehož v čase se měnící cena slouží jako základ pro pohyb ceny finančních derivátů.
 Podkladovými aktivy mohou být akcie, úrokové míry, komodity, měny, akciové indexy a mnoho dalších finančních instrumentů.
 %Obecně jakékoliv aktivum, jehož cena se vyvíjí v čase.
+Finanční derivát je finanční produkt, jehož podstatou je forma termínového obchodu a jehož hodnota je odvozena od ceny jiného finančního aktiva.
+
 Chování cen aktiv vykazuje stochastický charakter a cenové změny jsou náhodné a nepředvídatelné.
 %, k jehož modelování využíváme stochastické diferenciální rovnice.
 %K modelování stochastického charakteru chování cen podkladových aktiv využíváme stochastické diferenciální rovnice.
@@ -1109,8 +1111,6 @@ Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\e
 
 %\subsection{Black–Scholesův model}
 \subsection{Modely cen finančních derivátů}
-%Definovat a popsat finanční derivát.
-
 Přehledný úvod do problematiky oceňování finančních derivátů poskytuje kniha \textit{Financial Calculus} od autorů Martina Baxtera a Andrewa Rennieho~\cite{baxter1996financial}.
 Odvození Black–Scholesova modelu je srozumitelně zpracováno také v učebnici Alison Etheridge \cite{etheridge2002course}.
 
@@ -1201,12 +1201,35 @@ Dosadíme-li do It\^oova lemmatu \ref{ito_lemma} dostaneme
 Podmínka \eqref{samofinancujici_strategie_vztah} tedy platí a portfolio $\big(\phi(t),\psi(t)\big)$ je samofinancující.
 \end{priklad}
 
+Dále budeme definovat replikující strategii pro danou pohledávku (např. finanční derivát), jejíž hodnotu označíme $X(t)$.
+Při konstrukci oceňovacího modelu předpokládáme, že na trhu neexistuje arbitráž.
+Tržní arbitráž je způsob obchodování, který využívá odlišných cen identického zboží na různých trzích.
+Současným nákupem téhož zboží na jednom trhu a prodejem na jiném trhu za rozdílné ceny můžeme dosáhnout bezrizikového zisku.
+Pokud na trhu není arbitrážní příležitost, pak hodnota pohledávky musí být stejná jako hodnota replikačního portfolia.
 \begin{definice}[Replikační portfolio]
-\textit{Replikační portfolio} $\big(\phi(t),\psi(t)\big)$ je 
+Předpokládejme, že na trhu je k dispozici bezrizikové aktivum s cenou $B(t)$ a rizikové aktivum, jehož cena se řídí procesem $P(t)$ s volatilitou $\sigma(t)$.
+Uvažujme existenci finančního derivátu, jehož cenu popisuje stochastický proces $X(t)$, který závisí na údálostech do času $T$.
+\textit{Replikační portfolio} $\big(\phi(t),\psi(t)\big)$ pro tento finanční derivát je taková samofinancující strategie, že platí
 \begin{equation}\label{replikacni_portfolio}
-V(t)=\phi(t)P(t)+\psi(t)B(t)=X(t),
+V(T)=\phi(T)P(T)+\psi(T)B(T)=X(T)
 \end{equation}
+a $\int_0^T\sigma^2(t)\phi^2(t)\,\mathrm{d}t<\infty$.
 \end{definice}
+Předpokládáme-li, že na trhu neexistuje arbitráž a zároveň k finančnímu derivátu najdeme replikační portfolio $\big(\phi(t),\psi(t)\big)$, pak pro proces ceny derivátu $X(t)$ musí platit
+\begin{equation}\label{replikacni_portfolio_vztah}
+X(t)=\phi(t)P(t)+\psi(t)B(t).
+\end{equation}
+Pokud by vztah \ref{replikacni_portfolio_vztah} neplatil, bylo by možné najít arbitrážní příležitost.
+Například, pokud by cena derivátu v čase $t<T$ byla nižší než hodnota replikačního portfolia v čase $t$, pak by obchodník mohl koupit v čase $t$ jeden derivát a prodat na krátko $\phi(t)$ jednotek rizikového aktiva a $\psi(t)$ jednotek bezrizikového aktiva. 
+Jelikož je replikační portfolio $\big(\phi(t),\psi(t)\big)$ samofinancující, je zaručeno, že v čase $T$ bude mít hodnotu $X(T)$, aniž by bylo nutné dodávat další prostředky mezi časem $t$ a $T$.
+V čase $T$ tedy hodnota derivátu pokryje náklady na nákup portfolia prodaného na krátko.
+Obchodník inkasuje zisk ve výši rozdílu $X(t)-V(t)$ a to bez rizika.
+Opačný příklad by byl analogický.
+ 
+To znamená, že díky vztahu \ref{replikacni_portfolio_vztah} jsme schopni pomocí replikačního portfolia modelovat cenu finančního derivátu.
+
+%Předpokládejme existenci konstantní bezrizikové úrokové míry $r$, volatility akcie $\sigma$ a driftu akcie $\mu$. 
+%Dále předpokládáme nulové transakční náklady a možnost obchodovat v libovolném čase libovolné množství v dlouhé i v krátké pozici za stanovenou cenu.
 
 \section{Stochastické modelování úrokových sazeb}
 Na rozdíl od akcií nebo komodit vykazuje chování úrokových sazeb následující příznačné vlastnosti. %zvláštnosti.
@@ -1255,6 +1278,7 @@ Je vidět, že při malých úrokových mírách je malá také volatilita a př
 %Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.
 
 \subsection{Hull-Whitův model}
+Další model odvozený z Vašíčkova modelu je Hull-Whitův model.
 \begin{equation}\label{H-W_model}
  \mathrm{d}r(t)=(\theta(t)-\alpha r) \mathrm{d}t+\sigma \mathrm{d}W(t),
 \end{equation}

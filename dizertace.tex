@@ -456,15 +456,15 @@ Systém distribučních funkcí nese úplnou informaci o pravděpodobnostním ch
 
 \begin{definice}[Charakteristiky stochastického procesu]
 Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in \mathcal{T}$ existuje střední hodnota $\mathsf{E}{X(t)}$.
-Pak funkce $\mu_t$ definovaná na množině $\mathcal{T}$ předpisem
-$$\mu_t=\mathsf{E}{X(t)}$$
+Pak funkce $\mu(t)$ definovaná na množině $\mathcal{T}$ předpisem
+$$\mu(t)=\mathsf{E}{X(t)}$$
 se nazývá \textit{střední hodnota stochastického procesu} $X(t)$.
 
 Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in\mathcal{T}$ platí $\mathsf{E}{|X(t)|^2<\infty}$ (říkáme, že má \textit{konečné druhé momenty}).
 Pak funkce dvou proměnných $\gamma(s,t)$ definovaná na množině $\mathcal{T}\times \mathcal{T}$ předpisem
-$$\gamma(s,t)=\mathsf{C}(X(s),X(t))=\mathsf{E}{\left[(X(s)-\mu_s)(X(t)-\mu_t)\right]}$$
+$$\gamma(s,t)=\mathsf{C}(X(s),X(t))=\mathsf{E}{\left[(X(s)-\mu(s))(X(t)-\mu(t))\right]}$$
 se nazývá \textit{autokovarianční funkce stochastického procesu} $X(t)$.  
-Speciálně hodnota $\gamma(t,t)=\mathsf{D}(X(t))$ této funkce se nazývá \textit{rozptyl stochastického procesu} v čase $t$ a budeme ji značit ${\sigma_t}^2$.
+Speciálně hodnota $\gamma(t,t)=\mathsf{D}(X(t))$ této funkce se nazývá \textit{rozptyl stochastického procesu} v čase $t$ a budeme ji značit ${\sigma^2(t)}$.
 
 Nechť $X(t)$ je stochastický proces s konečnými druhými momenty,
 pak funkce $\rho(s,t)$ definovaná na množině $\mathcal{T}\times\mathcal{T}$ předpisem
@@ -480,7 +480,7 @@ Stochastický proces $X(t)$ nazveme \textit{slabě stacionární} pokud existuje
 $$\mathsf{E}{X(t)}=\mu\quad\text{ a }\quad\mathsf{C}(X(t),X(s))=c(|t-s|)$$
 pro všechna $t,s\in\mathcal{T}$.
 \end{definice}
-Pro slabě stacionární proces zřejmě platí ${\sigma_t}^2=c(0)$.
+Pro slabě stacionární proces zřejmě platí $\sigma^2(t)=c(0)$.
 Procesy, které nejsou striktně stacionární, se nazývají evoluční. 
 
 \begin{definice}[Nezávislost přírůstků stochastického procesu]
@@ -491,7 +491,8 @@ kde $t>s$.
 
 \begin{definice}[Spojitost stochastického procesu]
 Řekneme, že stochastický proces $X(t)$ je \textit{stochasticky spojitý v bodě} $t_0\in\mathcal{T}$, jestliže pro každé $\epsilon>0$ platí
-$$\lim_{t\to t_0}\Pr(|X_t-X_{t_0}|>\epsilon)=0.$$
+%$$\lim_{t\to t_0}\Pr(|X_t-X_{t_0}|>\epsilon)=0.$$
+$$\lim_{t\to t_0}\Pr(|X(t)-X(t_0)|>\epsilon)=0.$$
 Stochastický proces je  \textit{stochasticky spojitý} (spojitý podle pravděpodobnosti), je-li spojitý v každém bodě množiny $\mathcal{T}$.
 \end{definice}
 Proces, který je spojitý podle předcházející definice, nemusí mít spojité trajektorie.
@@ -525,7 +526,7 @@ Z definice Wienerova procesu je zřejmé, že jeho střední hodnota $\mu_t=0$ p
 Snadno odvodíme vztah pro autokovarianční funkci Wienerova procesu $\rho(s,t)=\min(s,t)$.
 Jestliže $0\leq s<t$, pak
 \begin{align*}
-\rho(s,t)=\mathsf{C}(W(s),W(t))&=\mathsf{E}{\left[(W(s)-\mu_s)(W(t)-\mu_t)\right]} \\
+\rho(s,t)=\mathsf{C}(W(s),W(t))&=\mathsf{E}{\left[(W(s)-\mu(s))(W(t)-\mu(t))\right]} \\
 &=\mathsf{E}{\left[W(s)W(t)\right]}  \\
 &=\mathsf{E}{\left[W(s)(W(t)-W(s)+W(s))\right]} \\
 &=\mathsf{E}{\left[W(s)\right]}\mathsf{E}{\left[W(t)-W(s)\right]}+\mathsf{E}{\left[W(s)\right]}^2 \\
@@ -648,12 +649,12 @@ Holandští fyzikové Leonard Salomon Ornstein a George Eugene Uhlenbeck zformul
 \begin{definice}[Ornstein–Uhlenbeckův proces]
 \textit{Ornstein–Uhlenbeckův proces} je definován jako
 \begin{equation}\label{OUP}
-X_t = X_0\,\mathrm{e}^{-\theta t} + \mu\,(1-\mathrm{e}^{-\theta t}) + \mathrm{e}^{-\theta t}\int_0^t \sigma\,\mathrm{e}^{\theta s}\,\mathrm{d}W_s,
+X(t) = X(0)\,\mathrm{e}^{-\theta t} + \mu\,(1-\mathrm{e}^{-\theta t}) + \mathrm{e}^{-\theta t}\int_0^t \sigma\,\mathrm{e}^{\theta s}\,\mathrm{d}W(s),
 \end{equation}
 kde parametr $\theta>0$ je koeficient rychlosti reverze, parametr $\mu\in\mathbb{R}$ je rovnovážná hodnota, parametr $\sigma>0$ je volatilita a $W_t$ je Wienerův proces.
 Ornstein–Uhlenbeckův proces může být také definován jako řešení stochastické diferenciální rovnice
 \begin{equation}\label{SDE_OUP}
-\mathrm{d}X_t = \theta(\mu-X_t)\,\mathrm{d}t + \sigma\,\mathrm{d}W_t.
+\mathrm{d}X(t) = \theta(\mu-X(t))\,\mathrm{d}t + \sigma\,\mathrm{d}W(t).
 \end{equation}
 \end{definice}
 
@@ -1243,10 +1244,12 @@ Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 
 
 
 \section{Stochastické modelování úrokových sazeb}
+Časovou strukturu úrokové sazby můžeme popsat pomocí ceny bezrizikového aktiva, kterou jsme modelovali v kapitole \ref{stoch_model}.  
+
 Na rozdíl od akcií nebo komodit vykazuje chování úrokových sazeb následující příznačné vlastnosti. %zvláštnosti.
 Úrokové sazby se pohybují v určitém rozmezí a %obvykle nerostou do nekonečna ani neklesají pod nulu.
 mají tendenci se vracet k určité rovnovážné hodnotě.
-Tento jev se nazývá \textit{mean reversion} -- reverze k průměrné hodnotě.
+Tento jev se nazývá \textit{mean reversion}, jak už bylo zmíněno v Kapitole \ref{OU_kap}. %-- reverze k průměrné hodnotě.
 Stochastické modely, které popisují chování úrokových sazeb musí tedy brát v úvahu výše uvedené vlastnosti.
 
 %Modelování úrokových sazeb je velice důležité zejména pro aplikace ve finanční matematice a aktuárských vědách. 
@@ -1254,6 +1257,8 @@ Stochastické modely, které popisují chování úrokových sazeb musí tedy br
 %Jednofaktorové modely pracují pouze s jedním zdrojem nejistoty a jejich základní tvar modeluje výše definovanou okamžitou úrokovou sazbu.
 
 %Vašíček 1977 model úrokové sazby
+Jednofaktorové x dvoufaktorové modely.
+Jednofaktorové modely popisují vývoj krátkodobých úrokových sazeb na základě pouze jednoho zdroje tržního rizika.
 
 Jednofaktorové modely krátkodobých úrokových měr předpokládají, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 %dvoufaktorove r odvozuji od dvou informaci x, y
@@ -1264,12 +1269,12 @@ Deterministická část procesu $\mu(t, r)$ určuje drift ve vývoji úrokové m
 Volatilita $\sigma(t, r)$ určuje vlastnosti náhodných výchylek.
 
 \subsection{Vašíčkův model}
-Vašíčkův model je jednofaktorový model, který předpokládá, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
+Vašíček ho v roce 1977 představil v článku [8] k odvození modelu cen bezkuponových dluhopisů.
+Vašíčkův model předpokládá, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 \begin{equation}\label{Vasickuv_model}
 \mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\,\mathrm{d}W(t)
 \end{equation}
-kde $\kappa$, $\theta$ a $\sigma$ jsou konstanty. 
-Jejichž význam je následující:
+kde $W(t)$ je Wienerův proces a $\kappa$, $\theta$ a $\sigma$ jsou konstanty, jejichž význam je následující:
 \begin{itemize}
 \item[-] $\theta$ je limitní úroková míra, 
 \item[-] $\kappa$ je rychlost reverze k limitní úrokové míře, 
@@ -1278,7 +1283,7 @@ Jejichž význam je následující:
 
 Drift této rovnice je $\mu(t, r) = \kappa\big ( \theta - r(t)\big)$ a volatilita je $\sigma(t, r) = \sigma$. 
 Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou $\theta$. 
-Daný proces je Ornstein-Uhlenbeckův proces definovaný v Kapitole \ref{OU_kap}.
+Daný proces je Ornstein-Uhlenbeckův proces s konstantními koeficienty definovaný v Kapitole \ref{OU_kap}.
 
 Mezi výhody Vašíčkova modelu patří existence explicitního vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
 Na druhou stranu nevýhodou je to, že Vašíčkův model připouští i záporné úrokové míry. 

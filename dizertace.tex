@@ -1094,8 +1094,10 @@ Jedná se o aktivum, které má jistou očekávanou výnosnost a tudíž nulové
 Výnosností a rizikem aktiva se budeme podrobněji zabývat v Kapitole \ref{charakteristiky_portfolia}. 
 S modely zahrnujícími bezrizikové aktivum nás seznámí Kapitola \ref{KTP}.
 Očekávaná výnosnost bezrizikového aktiva se nazývá \textit{bezriziková úroková míra}.
+Modelování úrokových měr se věnuje Kapitola \ref{model_urok_miry_kap}.
 V praxi neexistuje skutečně bezriziková investice, ale z krátkodobého a střednědobého hlediska lze návratnost některých investic považovat prakticky za jistou.
 Obvykle se za takovou teoretickou investici považují státní pokladniční poukázky.
+Jedná se o krátkodobé dluhopisy, které vydává centrální banka a slouží ke krytí státního deficitu.
 
 Chování ceny bezrizikového aktiva je popsáno modelem
 \begin{equation}\label{risk-free_asset_model}
@@ -1236,17 +1238,21 @@ Tento přístup poprvé představili v roce 1973 Fischer Black a Myron Scholes \
 Oceňovací formule později vešla ve známost jako Black-Scholesův model.
 Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 1997 oceněno Nobelovou cenou za ekonomii.
  
-
-
-
 %Předpokládejme existenci konstantní bezrizikové úrokové míry $r$, volatility akcie $\sigma$ a driftu akcie $\mu$. 
 %Dále předpokládáme nulové transakční náklady a možnost obchodovat v libovolném čase libovolné množství v dlouhé i v krátké pozici za stanovenou cenu.
 
+\section{Stochastické modelování úrokových měr}\label{model_urok_miry_kap}
+Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Damiana Briga a Fabia Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů působících na Univerzitě Komenského v Bratislavě \cite{melichercik}.
+Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a seznámíme se s pojmem časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
 
-\section{Stochastické modelování úrokových sazeb}
-Časovou strukturu úrokové sazby můžeme popsat pomocí ceny bezrizikového aktiva, kterou jsme modelovali v kapitole \ref{stoch_model}.  
+Časovou strukturu úrokové míry můžeme popsat pomocí ceny bezrizikového aktiva, kterou jsme modelovali v kapitole \ref{stoch_model}.  
+%Dluhopis je finanční derivát úrokové míry.
+Finanční derivát úrokové míry se nazývá \textit{dluhopis}.
 
-Na rozdíl od akcií nebo komodit vykazuje chování úrokových sazeb následující příznačné vlastnosti. %zvláštnosti.
+Úrokové míry se používají k diskontování.
+
+U úrokových měr budeme předpokládat stochastické chování stejně jako u jiných finančních aktiv,
+ale na rozdíl od akcií nebo komodit vykazuje chování úrokových měr následující příznačné vlastnosti. %zvláštnosti.
 Úrokové sazby se pohybují v určitém rozmezí a %obvykle nerostou do nekonečna ani neklesají pod nulu.
 mají tendenci se vracet k určité rovnovážné hodnotě.
 Tento jev se nazývá \textit{mean reversion}, jak už bylo zmíněno v Kapitole \ref{OU_kap}. %-- reverze k průměrné hodnotě.
@@ -1263,13 +1269,21 @@ Jednofaktorové modely popisují vývoj krátkodobých úrokových sazeb na zák
 Jednofaktorové modely krátkodobých úrokových měr předpokládají, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 %dvoufaktorove r odvozuji od dvou informaci x, y
 \begin{equation}\label{model_urok_miry}
-\mathrm{d}r(t)=\mu(t,r)\,\mathrm{d}t+\sigma(t,r)\,\mathrm{d}W(t)
+\mathrm{d}r(t)=\mu(t,r)\,\mathrm{d}t+\sigma(t,r)\,\mathrm{d}W(t),
 \end{equation}
+kde procesy $\mu(t,r)$ a $\sigma(t,r)$ jsou neanticipativní a $W(t)$ je Wienerův proces.
 Deterministická část procesu $\mu(t, r)$ určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů.
 Volatilita $\sigma(t, r)$ určuje vlastnosti náhodných výchylek.
 
+Jeden z prvních modelů úrokové míry použil v roce 1973 Robert C. Merton v článku \cite{merton1973theory} k odvození modelu cen bezkupónových dluhopisů.
+Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův proces s driftem (definovaný v Definici \ref{Wieneruv_proces_s_driftem}) 
+\begin{equation}\label{model_urok_miry_Merton}
+\mathrm{d}r(t)=\mu\,\mathrm{d}t+\sigma\,\mathrm{d}W(t).
+\end{equation}
+Mertonův mode tedy předpokládá, že změny úrokové míry jsou z normálního rozdělení.
+
 \subsection{Vašíčkův model}
-Vašíček ho v roce 1977 představil v článku [8] k odvození modelu cen bezkuponových dluhopisů.
+Vašíček ho v roce 1977 představil v článku \cite{vasicek1977equilibrium} k odvození modelu cen bezkupónových dluhopisů.
 Vašíčkův model předpokládá, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 \begin{equation}\label{Vasickuv_model}
 \mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\,\mathrm{d}W(t)

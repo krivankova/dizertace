@@ -1043,7 +1043,7 @@ Teorie finančních trhů je podrobně zpracována v české literatuře.
 Z velkého množství textů odkažme na \cite{rejnus2011}, \cite{fuchsfinancni} a \cite{veselainvestovani} se kterými jsme při psaní práce pracovali.
 Stochastickým modelováním v ekonomii se pak zabývá převážně zahraniční literatura, ze které jsme nejvíce využívali \cite{hull}, \cite{wilmott1995mathematics} a \cite{karatzas1998methods}.
 
-\section{Stochastické modelování cen finančních aktiv}
+\section{Stochastické modelování cen finančních aktiv}\label{stoch_model_aktiv}
 %na základě střetu nabídky a poptávky možné určit rovnovážnou cenu 
 
 %Tržní hodnota akcie, kterou určuje burza je tedy především oceněním hospodaření podniku.
@@ -1104,6 +1104,11 @@ Chování ceny bezrizikového aktiva je popsáno modelem
 \mathrm{d}B(t)=B(t)\,r_f(t)\,\mathrm{d}t,
 \end{equation}
 kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková úroková míra.
+%Řešení diferenciální rovnice \eqref{risk-free_asset_model} dává cenu bezrizikového aktiva jako
+%\begin{equation}\label{risk-free_asset_reseni}
+%B(t)=\mathrm{e}^{\int_0^t r_f(s)\,\mathrm{d}s}.
+%\end{equation}
+
 Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\eqref{risk-free_asset_model} zobrazuje Obrázek~\ref{asset_model_graf}.
 
 \begin{figure}[!htbp]
@@ -1243,28 +1248,56 @@ Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 
 
 \section{Stochastické modelování úrokových měr}\label{model_urok_miry_kap}
 Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Damiana Briga a Fabia Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů působících na Univerzitě Komenského v Bratislavě \cite{melichercik}.
-Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a seznámíme se s pojmem časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
+Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a seznámíme se s pojmy diskontování a časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
 
-Časovou strukturu úrokové míry můžeme popsat pomocí ceny bezrizikového aktiva, kterou jsme modelovali v kapitole \ref{stoch_model}.  
+Okamžitá úroková míra
+
+Časovou strukturu úrokové míry budeme popisovat pomocí cen dluhopisů.
+Dluhopis je cenný papír, který vyjadřuje závazek emitenta vůči věřiteli, a je s ním spojeno právo požadovat splacení dlužné částky a vyplacení výnosů v předem určenou dobu.
+V této práci budeme předpokládat, že dluhopisy jsou bezriziková aktiva a tudíž pro popis jejich cen budeme používat stejný model jako pro bezrizikové aktivum v Kapitole \ref{stoch_model_aktiv}.
+Řešení diferenciální rovnice \eqref{risk-free_asset_model} dává cenu dluhopisu jako
+\begin{equation}\label{risk-free_asset_reseni}
+B(t)=B(0)\,\mathrm{e}^{\int_0^t r(s)\,\mathrm{d}s},
+\end{equation}
+kde $r(t)$ je okamžitá úroková míra a $B(t)$ je cena dluhopisu v~čase~$t$.
+Dluhopis můžeme tedy chápat jako finanční derivát úrokové míry.
+
+Časová struktura úrokové míry vyjadřuje vztah mezi úrokovou mírou a termínem splatnosti příslušného dluhopisu.
+Její grafickou reprezentací je \textit{výnosová křivka}, která ukazuje závislost výnosu do doby splatnosti (svislá osa) na době do splatnosti dluhopisu (vodorovná osa). 
+Výnosová křivka je konstruována pro dané dluhopisy, které se liší pouze dobou do splatnosti, ale ostatní vlastnosti (jako třeba emitenta) mají stejné.
+
+%Časovou strukturu úrokové míry můžeme popsat pomocí ceny bezrizikového aktiva, kterou jsme modelovali v kapitole \ref{stoch_model}.  
 %Dluhopis je finanční derivát úrokové míry.
-Finanční derivát úrokové míry se nazývá \textit{dluhopis}.
+%Finanční derivát úrokové míry se nazývá \textit{dluhopis}.
 
-Úrokové míry se používají k diskontování.
+Okamžitá úroková míra se používá při spojitém diskontování, které budeme využívat v další části práce při výpočtu kapitálového požadavku ke kreditnímu riziku protistrany. 
+Diskontování je proces, při kterém je přepočítána (diskontována) budoucí cena aktiva na současnou hodnotu s použitím diskontní míry nazývané také diskontní faktor.
+Jak už jsme zmínili v Kapitole \ref{stoch_model_aktiv}, kvůli zjednodušení výpočtů je běžné aproximovat vývoj cen aktiv spojitým procesem a v takovém případě má smysl i spojité diskontování, i když reálné chování finančních instrumentů je diskrétní.
+\begin{definice}
+Spojitý \textit{diskontní faktor} je dán jako
+\begin{equation}\label{diskontni_faktor}
+\frac{B(0)}{B(t)}=\mathrm{e}^{-\int_0^t r(s)\,\mathrm{d}s},
+\end{equation}
+kde $r(t)$ je okamžitá úroková míra.
+\end{definice}
+Diskontní faktor můžeme také chápat jako cenu bezkupónového dluhopisu s nominální hodnotou jedna.
 
-U úrokových měr budeme předpokládat stochastické chování stejně jako u jiných finančních aktiv,
+Nyní už můžeme přistoupit k modelování úrokových měr.
+Zaměříme se na modely krátkodobých úrokových měr, jelikož je budeme využívat v další části práce k ocenění derivátů úrokových měr.
+U úrokových měr budeme předpokládat stochastické chování stejně jako u~jiných finančních aktiv,
 ale na rozdíl od akcií nebo komodit vykazuje chování úrokových měr následující příznačné vlastnosti. %zvláštnosti.
 Úrokové sazby se pohybují v určitém rozmezí a %obvykle nerostou do nekonečna ani neklesají pod nulu.
 mají tendenci se vracet k určité rovnovážné hodnotě.
 Tento jev se nazývá \textit{mean reversion}, jak už bylo zmíněno v Kapitole \ref{OU_kap}. %-- reverze k průměrné hodnotě.
-Stochastické modely, které popisují chování úrokových sazeb musí tedy brát v úvahu výše uvedené vlastnosti.
+Stochastické modely, které popisují chování úrokových měr musí tedy brát v~úvahu výše uvedené vlastnosti.
 
 %Modelování úrokových sazeb je velice důležité zejména pro aplikace ve finanční matematice a aktuárských vědách. 
 %V posledních desetiletích bylo vyvinuto několik modelů, které se snaží co nejvěrohodněji popsat chování výnosové křivky, přičemž tyto modely ve většině případů používají aparát z teorie pravděpodobnosti a náhodných procesů.
 %Jednofaktorové modely pracují pouze s jedním zdrojem nejistoty a jejich základní tvar modeluje výše definovanou okamžitou úrokovou sazbu.
 
 %Vašíček 1977 model úrokové sazby
-Jednofaktorové x dvoufaktorové modely.
-Jednofaktorové modely popisují vývoj krátkodobých úrokových sazeb na základě pouze jednoho zdroje tržního rizika.
+Modely krátkodobých úrokových měr modelují okamžitou úrokovou míru a dále se dělí na jednofaktorové a mnohofaktorové (obvykle dvoufaktorové).
+Jednofaktorové modely popisují vývoj krátkodobých úrokových měr na základě pouze jednoho zdroje tržního rizika.
 
 Jednofaktorové modely krátkodobých úrokových měr předpokládají, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 %dvoufaktorove r odvozuji od dvou informaci x, y
@@ -1276,7 +1309,7 @@ Deterministická část procesu $\mu(t, r)$ určuje drift ve vývoji úrokové m
 Volatilita $\sigma(t, r)$ určuje vlastnosti náhodných výchylek.
 
 Jeden z prvních modelů úrokové míry použil v roce 1973 Robert C. Merton v článku \cite{merton1973theory} k odvození modelu cen bezkupónových dluhopisů.
-Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův proces s driftem (definovaný v Definici \ref{Wieneruv_proces_s_driftem}) 
+Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův proces s~driftem (definovaný v Definici \ref{Wieneruv_proces_s_driftem}) 
 \begin{equation}\label{model_urok_miry_Merton}
 \mathrm{d}r(t)=\mu\,\mathrm{d}t+\sigma\,\mathrm{d}W(t).
 \end{equation}

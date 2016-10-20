@@ -1250,16 +1250,16 @@ Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 
 Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Damiana Briga a Fabia Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů působících na Univerzitě Komenského v Bratislavě \cite{melichercik}.
 Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a seznámíme se s pojmy diskontování a časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
 
-Okamžitá úroková míra
-
 Časovou strukturu úrokové míry budeme popisovat pomocí cen dluhopisů.
 Dluhopis je cenný papír, který vyjadřuje závazek emitenta vůči věřiteli, a je s ním spojeno právo požadovat splacení dlužné částky a vyplacení výnosů v předem určenou dobu.
 V této práci budeme předpokládat, že dluhopisy jsou bezriziková aktiva a tudíž pro popis jejich cen budeme používat stejný model jako pro bezrizikové aktivum v Kapitole \ref{stoch_model_aktiv}.
+Uvažujme dluhopis emitovaný v čase $t_0$ a splatný v čase $T$.
 Řešení diferenciální rovnice \eqref{risk-free_asset_model} dává cenu dluhopisu jako
 \begin{equation}\label{risk-free_asset_reseni}
-B(t)=B(0)\,\mathrm{e}^{\int_0^t r(s)\,\mathrm{d}s},
+B(T)=B(t_0)\,\mathrm{e}^{\int_{t_0}^T r(t)\,\mathrm{d}t},
 \end{equation}
-kde $r(t)$ je okamžitá úroková míra a $B(t)$ je cena dluhopisu v~čase~$t$.
+kde $t_0\leq t\leq T$,
+$r(t)$ je \textit{okamžitá úroková míra} v čase $t$ a $B(T)$ je cena dluhopisu v~době splatnosti~$T$.
 Dluhopis můžeme tedy chápat jako finanční derivát úrokové míry.
 
 Časová struktura úrokové míry vyjadřuje vztah mezi úrokovou mírou a termínem splatnosti příslušného dluhopisu.
@@ -1276,15 +1276,16 @@ Jak už jsme zmínili v Kapitole \ref{stoch_model_aktiv}, kvůli zjednodušení 
 \begin{definice}
 Spojitý \textit{diskontní faktor} je dán jako
 \begin{equation}\label{diskontni_faktor}
-\frac{B(0)}{B(t)}=\mathrm{e}^{-\int_0^t r(s)\,\mathrm{d}s},
+\frac{B(t_0)}{B(T)}=\mathrm{e}^{-\int_{t_0}^T r(t)\,\mathrm{d}t},
 \end{equation}
 kde $r(t)$ je okamžitá úroková míra.
 \end{definice}
 Diskontní faktor můžeme také chápat jako cenu bezkupónového dluhopisu s nominální hodnotou jedna.
 
 Nyní už můžeme přistoupit k modelování úrokových měr.
-Zaměříme se na modely krátkodobých úrokových měr, jelikož je budeme využívat v další části práce k ocenění derivátů úrokových měr.
-U úrokových měr budeme předpokládat stochastické chování stejně jako u~jiných finančních aktiv,
+Zaměříme se na modely okamžité úrokové míry, jelikož je budeme využívat v další části práce k ocenění derivátů úrokových měr.
+Tyto modely jsou v literatuře často nazývané \textit{modely krátkodobých úrokových měr}.
+U okamžité úrokové míry budeme předpokládat stochastické chování stejně jako u~jiných finančních aktiv,
 ale na rozdíl od akcií nebo komodit vykazuje chování úrokových měr následující příznačné vlastnosti. %zvláštnosti.
 Úrokové sazby se pohybují v určitém rozmezí a %obvykle nerostou do nekonečna ani neklesají pod nulu.
 mají tendenci se vracet k určité rovnovážné hodnotě.
@@ -1296,10 +1297,14 @@ Stochastické modely, které popisují chování úrokových měr musí tedy br�
 %Jednofaktorové modely pracují pouze s jedním zdrojem nejistoty a jejich základní tvar modeluje výše definovanou okamžitou úrokovou sazbu.
 
 %Vašíček 1977 model úrokové sazby
-Modely krátkodobých úrokových měr modelují okamžitou úrokovou míru a dále se dělí na jednofaktorové a mnohofaktorové (obvykle dvoufaktorové).
-Jednofaktorové modely popisují vývoj krátkodobých úrokových měr na základě pouze jednoho zdroje tržního rizika.
+%Modely krátkodobých úrokových měr modelují okamžitou úrokovou míru a dále se dělí na jednofaktorové a mnohofaktorové (obvykle dvoufaktorové).
+Modely krátkodobých úrokových se dělí na jednofaktorové a vícefaktorové.
+%Jednofaktorové modely popisují vývoj krátkodobých úrokových měr na základě pouze jednoho zdroje tržního rizika.
+Jednofaktorové modely popisují vývoj krátkodobých úrokových měr na základě pouze jednoho zdroje nejistoty, který je modelován pomocí Wienerova procesu.
+Vícefaktorové modely poskytují na jednu stranu více volnosti a možností v modelování vývoje úrokové míry, na druhou stranu jejich kalibrace, ale i interpretace, je mnohem složitější. 
+Pro potřeby této práce se omezíme jenom na modely jednofaktorové. 
 
-Jednofaktorové modely krátkodobých úrokových měr předpokládají, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
+Jednofaktorové modely krátkodobých úrokových měr předpokládají, že okamžitá úroková míra $r(t)$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 %dvoufaktorove r odvozuji od dvou informaci x, y
 \begin{equation}\label{model_urok_miry}
 \mathrm{d}r(t)=\mu(t,r)\,\mathrm{d}t+\sigma(t,r)\,\mathrm{d}W(t),
@@ -1313,11 +1318,14 @@ Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův pr
 \begin{equation}\label{model_urok_miry_Merton}
 \mathrm{d}r(t)=\mu\,\mathrm{d}t+\sigma\,\mathrm{d}W(t).
 \end{equation}
-Mertonův mode tedy předpokládá, že změny úrokové míry jsou z normálního rozdělení.
+Mertonův model předpokládá, že změny úrokové míry mají normální rozdělení, což plyne z vlastností Wienerova procesu.
+Nevýhodou Mertonova modelu je absence mean reversion vlastnosti.
 
 \subsection{Vašíčkův model}
-Vašíček ho v roce 1977 představil v článku \cite{vasicek1977equilibrium} k odvození modelu cen bezkupónových dluhopisů.
-Vašíčkův model předpokládá, že okamžitá úroková míra $r$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
+Model, který představíme v této kapitole, uveřejnil český matematik Oldřich Vašíček v roce 1977 v článku \cite{vasicek1977equilibrium}, kde ho využil k odvození modelu cen bezkupónových dluhopisů.
+Tento model se stal velice oblíbeným a často citovaným.
+Mnoho autorů dalších modelů krátkodobých úrokových měr vycházelo z Vašíčkova modelu.
+Vašíčkův model předpokládá, že okamžitá úroková míra $r(t)$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
 \begin{equation}\label{Vasickuv_model}
 \mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\,\mathrm{d}W(t)
 \end{equation}
@@ -1329,26 +1337,39 @@ kde $W(t)$ je Wienerův proces a $\kappa$, $\theta$ a $\sigma$ jsou konstanty, j
 \end{itemize}
 
 Drift této rovnice je $\mu(t, r) = \kappa\big ( \theta - r(t)\big)$ a volatilita je $\sigma(t, r) = \sigma$. 
-Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou $\theta$. 
+Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou~$\theta$. 
 Daný proces je Ornstein-Uhlenbeckův proces s konstantními koeficienty definovaný v Kapitole \ref{OU_kap}.
 
 Mezi výhody Vašíčkova modelu patří existence explicitního vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
-Na druhou stranu nevýhodou je to, že Vašíčkův model připouští i záporné úrokové míry. 
+Na druhou stranu za nevýhodu bývá považováno, že Vašíčkův model připouští i záporné úrokové míry. 
 K tomuto jevu dochází v případě, kdy se úroková míra přiblíží nule, ale volatilita je stále táž konstanta.
 
 \subsection{CIR model}
-Tuto chybu odstraňuje Cox - Ingersoll - Rossův model (CIR model), který je ve tvaru 
+Možnost záporných úrokových měr odstraňuje Cox - Ingersoll - Rossův model (CIR model), který je ve tvaru 
 \begin{equation}\label{CIR_model}
 \mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t, r)}\,\mathrm{d}W(t)
 \end{equation}
-Je vidět, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry je dána pouze driftem, který bude v tomto případě kladný.
+Povšimněme si, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry bude dána pouze driftem, který bude v tomto případě kladný.
 %Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.
 
 \subsection{Hull-Whitův model}
 Další model odvozený z Vašíčkova modelu je Hull-Whitův model.
-The first Hull–White model was described by John C. Hull and Alan White in 1990. The model is still popular in the market today.
-The Hull-White model is a one-factor model of the short rate $r(t)$, first published in \cite{hull1990pricing} and generalized later \cite{hull2001general}.
-A general overview of the model can be found in \cite{brigo2007interest}.
+%The first Hull–White model was described by John C. Hull and Alan White in 1990. The model is still popular in the market today.
+Poprvé tento model popsali John C. Hull a Alan White v roce 1990 v článku \cite{hull1990pricing} a později zveřejnili i zobecnění modelu v textu \cite{hull2001general}.
+%The Hull-White model is a one-factor model of the short rate $r(t)$, first published in \cite{hull1990pricing} and generalized later \cite{hull2001general}.
+%A general overview of the model can be found in \cite{brigo2007interest}.
+Podrobnosti o tomto modelu lze nalézt v již zmiňované publikaci \cite{brigo2007interest}.
+
+%The well known interest rate evolution model, Hull-White one-factor model, will be used for modeling of the interest rate term structure. 
+%%The Hull-White model is a one-factor model of the short rate $r(t)$, first published in \cite{hull1990pricing} and generalized later \cite{hull2001general}.
+%The model was first published by John Hull and Alan White in \cite{hull1990pricing} and generalized later in \cite{hull2001general}.
+%%The need for an exact fit to the currently-observed yield curve, led Hull and White to the introduction of a time-varying parameter in the Vasicek model. 
+%The requirement for more accurate fit to the currently-observed yield curve, led Hull and White to the introduction of a time variable parameter in the Vasicek model. 
+%%The model assumes that short rates have a normal distribution, and that the short rates are subject to mean reversion.
+%The model assumes that short rates have a normal distribution, and also that the short rates exhibit the mean reversion character. 
+%%Volatility is likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. 
+%The Hull-White model extends the Vasicek and Cox-Ingersoll-Ross (CIR) models.
+
 \begin{equation}\label{H-W_model}
  \mathrm{d}r(t)=(\theta(t)-\alpha r) \mathrm{d}t+\sigma \mathrm{d}W(t),
 \end{equation}
@@ -1361,11 +1382,12 @@ kde
 %\item [$\theta(t)$] Drift function defined as
 %\end{description}
 \begin{equation}
-\theta(t)=F'_{t}(0,t)+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}\left(1- \mathrm{e}^{-2\alpha t}\right),
+%\theta(t)=F'_{t}(0,t)+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}\left(1- \mathrm{e}^{-2\alpha t}\right),
+\theta(t)=\frac{\partial  F(0,t)}{\partial t}+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}(1-\mathrm{e}^{-2\alpha t}),
 \end{equation}
 \begin{description}
-\item[$F(0,t)$] Instantaneous forward rate at time $t$.
-\item[$F'_{t}(0,t)$] Partial derivative of $F$ with respect to time $t$.
+\item[$F(0,t)$] okamžitá forwardová úroková míra v čase $t$.%Instantaneous forward rate at time $t$.
+%\item[$F'_{t}(0,t)$] Partial derivative of $F$ with respect to time $t$.
 \end{description}
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 

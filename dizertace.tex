@@ -1321,7 +1321,7 @@ Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův pr
 Mertonův model předpokládá, že změny úrokové míry mají normální rozdělení, což plyne z vlastností Wienerova procesu.
 Nevýhodou Mertonova modelu je absence mean reversion vlastnosti.
 
-\subsection{Vašíčkův model}
+\subsection{Vašíčkův model}\label{Vasickuv_model_kap}
 Model, který představíme v této kapitole, uveřejnil český matematik Oldřich Vašíček v roce 1977 v článku \cite{vasicek1977equilibrium}, kde ho využil k odvození modelu cen bezkupónových dluhopisů.
 Tento model se stal velice oblíbeným a často citovaným.
 Mnoho autorů dalších modelů krátkodobých úrokových měr vycházelo z Vašíčkova modelu.
@@ -1333,7 +1333,7 @@ kde $W(t)$ je Wienerův proces a $\kappa$, $\theta$ a $\sigma$ jsou konstanty, j
 \begin{itemize}
 \item[-] $\theta$ je limitní úroková míra, 
 \item[-] $\kappa$ je rychlost reverze k limitní úrokové míře, 
-\item[-] $\sigma$ je volatilita.
+\item[-] $\sigma$ je volatilita úrokové míry.
 \end{itemize}
 
 Drift této rovnice je $\mu(t, r) = \kappa\big ( \theta - r(t)\big)$ a volatilita je $\sigma(t, r) = \sigma$. 
@@ -1344,21 +1344,28 @@ Mezi výhody Vašíčkova modelu patří existence explicitního vyjádření od
 Na druhou stranu za nevýhodu bývá považováno, že Vašíčkův model připouští i záporné úrokové míry. 
 K tomuto jevu dochází v případě, kdy se úroková míra přiblíží nule, ale volatilita je stále táž konstanta.
 
-\subsection{CIR model}
-Možnost záporných úrokových měr odstraňuje Cox - Ingersoll - Rossův model (CIR model), který je ve tvaru 
+\subsection{CIR model}\label{CIR_model_kap}
+Možnost záporných úrokových měr odstraňuje model, který na bázi Vašíčkova modelu vyvinuly John C. Cox, Jonathan E. Ingersoll a~Stephen A. Ross a~publikovali v roce 1985 v článku \cite{cox1985theory}.
+Autoři modifikovali difuzní proces ve Vašíčkově modelu tak, že je úměrný úrokové míře.
+Cox-Ingersoll-Rossův model (CIR model) je ve tvaru 
 \begin{equation}\label{CIR_model}
-\mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t, r)}\,\mathrm{d}W(t)
+\mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t, r)}\,\mathrm{d}W(t).
 \end{equation}
 Povšimněme si, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry bude dána pouze driftem, který bude v tomto případě kladný.
 %Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.
 
+%Model vyvinuly John C. Cox, Jonathan E. Ingersoll a Stephen A. Ross a publikovali v roce 1985 v článku \cite{cox1985theory}.
+
 \subsection{Hull-Whitův model}
-Další model odvozený z Vašíčkova modelu je Hull-Whitův model.
+Modely uvedené v Kapitolách \ref{Vasickuv_model_kap} a \ref{CIR_model_kap} nereflektují aktuální časovou strukturu úrokové míry.
+Na tuto nevýhodu reagovali John C. Hull a Alan White, kteří v roce 1990 publikovali článek \cite{hull1990pricing} s vlastním modelem. %, kde představují svůj model reflektující aktuálně pozorované hodnoty výnosové křivky. 
+%Další model odvozený z Vašíčkova modelu je Hull-Whitův model.
 %The first Hull–White model was described by John C. Hull and Alan White in 1990. The model is still popular in the market today.
-Poprvé tento model popsali John C. Hull a Alan White v roce 1990 v článku \cite{hull1990pricing} a později zveřejnili i zobecnění modelu v textu \cite{hull2001general}.
+%Poprvé tento model popsali John C. Hull a Alan White v roce 1990 v článku \cite{hull1990pricing} a později zveřejnili i zobecnění modelu v textu \cite{hull2001general}.
 %The Hull-White model is a one-factor model of the short rate $r(t)$, first published in \cite{hull1990pricing} and generalized later \cite{hull2001general}.
 %A general overview of the model can be found in \cite{brigo2007interest}.
-Podrobnosti o tomto modelu lze nalézt v již zmiňované publikaci \cite{brigo2007interest}.
+Podrobnosti o Hull-Whitově modelu lze nalézt v již zmiňované publikaci \cite{brigo2007interest}.
+Hull a White později zveřejnili i zobecnění svého modelu v textu \cite{hull2001general}.
 
 %The well known interest rate evolution model, Hull-White one-factor model, will be used for modeling of the interest rate term structure. 
 %%The Hull-White model is a one-factor model of the short rate $r(t)$, first published in \cite{hull1990pricing} and generalized later \cite{hull2001general}.
@@ -1370,10 +1377,13 @@ Podrobnosti o tomto modelu lze nalézt v již zmiňované publikaci \cite{brigo2
 %%Volatility is likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. 
 %The Hull-White model extends the Vasicek and Cox-Ingersoll-Ross (CIR) models.
 
+Autoři modelu rozšiřují Vašíčkův model zavedením parametru, který se mění v čase a reflektuje aktuálně pozorované hodnoty výnosové křivky.
+Poznamenejme, že existuje i verze Hull-Whitova modelu odvozená z CIR modelu, ale tou se v této práci nebudeme zabývat.
+Hull-Whiteův model okamžité úrokové míry je dán stochastickou diferenciální rovnicí
 \begin{equation}\label{H-W_model}
- \mathrm{d}r(t)=(\theta(t)-\alpha r) \mathrm{d}t+\sigma \mathrm{d}W(t),
+ \mathrm{d}r(t)=\big(\theta(t)-\alpha r(t)\big)\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
 \end{equation}
-kde
+kde $\alpha$ a $\sigma$ jsou konstanty a $\theta(t)$ je deterministická funkce času definovaná jako
 %\begin{description}
 %\item [$ \mathrm{d}r$] The change in the interest rate after a small change in time, $ \mathrm{d}t$.
 %\item [$\alpha$   ] Mean reversion rate.
@@ -1383,12 +1393,28 @@ kde
 %\end{description}
 \begin{equation}
 %\theta(t)=F'_{t}(0,t)+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}\left(1- \mathrm{e}^{-2\alpha t}\right),
-\theta(t)=\frac{\partial  F(0,t)}{\partial t}+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}(1-\mathrm{e}^{-2\alpha t}),
+\theta(t)=\frac{\partial  f(0,t)}{\partial t}+\alpha f(0,t)+\frac{\sigma^2}{2 \alpha}\big(1-\mathrm{e}^{-2\alpha t}\big),
 \end{equation}
-\begin{description}
-\item[$F(0,t)$] okamžitá forwardová úroková míra v čase $t$.%Instantaneous forward rate at time $t$.
+kde $f(t,T)$ je okamžitá forwardová úroková míra sjednaná v čase $t$ pro čas~$T$.
+
+Okamžitou forwardovou úrokovou míru budeme určovat z ceny bezkupónového dluhopisu, kterou můžeme pozorovat na trhu.
+Využijeme vztah
+\begin{equation}
+B(t,T)=\mathrm{e}^{-\int_{t}^T f(t,s)\,\mathrm{d}s},
+\end{equation}
+kde $B(t,T)$ je cena bezkupónového dluhopisu v čase $t$ s nominální hodnotou jedna vyplácenou v čase $T$.
+
+%\begin{description}
+%\item[$F(0,t)$] okamžitá forwardová úroková míra v čase $t$.%Instantaneous forward rate at time $t$.
 %\item[$F'_{t}(0,t)$] Partial derivative of $F$ with respect to time $t$.
-\end{description}
+%\end{description}
+Stejně jako Vašíčkův model má i tento model vlastnost mean reversion, ale limitní úrokovou míru tentokrát reprezentuje funkce $\theta(t)$ určená počáteční výnosovou křivkou.
+
+Hull a White předpokládali, že úroková míra má normální rozdělení, čímž připustili možnost záporných hodnot.
+Jedná se o stejný nedostatek jako jsme zmínili u Vašíčkova modelu.
+Na druhou stranu mezi výhody Hull-Whitova modelu patří možnost kalibrace s využitím počáteční výnosové křivky, což zohledňuje ceny dluhopisů pozorované na trhu.
+Díky této vlastnosti si model získal širokou oblibu.
+
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
 \chapter{Teorie portfolia}

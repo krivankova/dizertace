@@ -333,7 +333,7 @@ Současná situace na bankovním trhu vyvíjí na banky velký tlak hledat nové
 Běžné způsoby tvorby zisku v současnosti selhávají.
 Na trhu můžeme pozorovat nejen nízké až záporné úrokové sazby, ale i konkurenční boj o klienty, který přináší neustálý tlak na snižování bankovních poplatků a poskytování téměř nerentabilní klientských úvěrů.
 Banky proto hledají nové možnosti, jak snižovat náklady jako jsou například opravné položky k úvěrům klientů nebo k finančním derivátům.
-Jednou z možností může být hledání způsobu jak CVA modelovat tak, aby dodržely předepsané standardy a zároveň dosáhly co nejmenšího dopadu na jejich zisk. 
+Jednou z možností může být nalezení způsobu jak CVA modelovat tak, aby dodržely předepsané standardy a zároveň zajistily co nejmenší dopad na jejich zisk. 
 
 Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
 Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
@@ -1073,7 +1073,7 @@ Zrekapitulujme kvalitativní znaky modelu aktiv:
 \end{itemize}
 %Modeling with Itô Stochastic Differential Equations Od autorů: Edward Allen (googlebooks) - multidimenzní Ito formule 
 %Dynamic Asset Pricing Theory Od autorů: Darrell Duffie (googlebooks) - Black-Scholes
-Jak už bylo naznačeno v Kapitole \ref{WP_kap}, základní model splňující uvedené požadavky je založen na Geometrickém Wienerově procesu. 
+Jak už bylo naznačeno v Kapitole \ref{WP_kap}, základní model splňující uvedené požadavky je založen na geometrickém Wienerově procesu. 
 Model byl zaveden a prosazen Paulem Samuelsonem \cite{samuelson1965proof}.
 Budeme tedy předpokládat, že proces popisující vývoj ceny aktiva v čase se řídí následující stochastickou diferenciální rovnicí %následujícím modelem
 \begin{equation}\label{risk_asset_model}
@@ -1182,7 +1182,7 @@ Přírůstky jednotlivých aktiv jsou
 Ověřme podmínku \eqref{samofinancujici_strategie_vztah} z Definice \ref{samofinancujici_strategie}.
 \begin{align*}
 \mathrm{d}V(t)&=\mathrm{d}\big(W(t)+1\big)=\mathrm{d}W(t),\\
-\phi(t)\,\mathrm{d}P(t)+\psi(t)\,\mathrm{d}B(t)&=1\cdot\mathrm{d}W(t)+1\cdot1=\mathrm{d}W(t).
+\phi(t)\,\mathrm{d}P(t)+\psi(t)\,\mathrm{d}B(t)&=1\cdot\mathrm{d}W(t)+1\cdot0=\mathrm{d}W(t).
 \end{align*}
 Podmínka \eqref{samofinancujici_strategie_vztah} tedy platí a portfolio $\big(\phi(t),\psi(t)\big)$ je samofinancující.
 \end{priklad}
@@ -1237,7 +1237,7 @@ Opačný příklad by byl analogický.
 %To znamená, že díky vztahu \ref{replikacni_portfolio_vztah} jsme schopni pomocí replikačního portfolia modelovat cenu finančního derivátu.
 
 Pomocí konceptu představeného v této kapitole je možno modelovat cenu finančního derivátu.
-K derivátu nalezneme jeho replikační portfolio, využijeme vztah \eqref{replikacni_portfolio_vztah} a cenu rizikového a bezrizikového aktiva modelujeme dle modelů představených v Kapitole \ref{stoch_model}. 
+K derivátu nalezneme jeho replikační portfolio, využijeme vztah \eqref{replikacni_portfolio_vztah}, cenu aktiv v portfoliu modelujeme dle modelů představených v Kapitole \ref{stoch_model} a k ocenění derivátu používáme It\^oovo lemma. 
 
 Tento přístup poprvé představili v roce 1973 Fischer Black a Myron Scholes \cite{black1973pricing} v kontextu oceňování opcí. 
 Oceňovací formule později vešla ve známost jako Black-Scholesův model.
@@ -1248,10 +1248,10 @@ Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 
 
 \section{Stochastické modelování úrokových měr}\label{model_urok_miry_kap}
 Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Damiana Briga a Fabia Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů působících na Univerzitě Komenského v Bratislavě \cite{melichercik}.
-Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a seznámíme se s pojmy diskontování a časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
+Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a~seznámíme se s~pojmy diskontování a~časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
 
 Časovou strukturu úrokové míry budeme popisovat pomocí cen dluhopisů.
-Dluhopis je cenný papír, který vyjadřuje závazek emitenta vůči věřiteli, a je s ním spojeno právo požadovat splacení dlužné částky a vyplacení výnosů v předem určenou dobu.
+Dluhopis je cenný papír, který vyjadřuje závazek emitenta vůči věřiteli, a je s ním spojeno právo požadovat splacení dlužné částky a~vyplacení výnosů v~předem určenou dobu.
 V této práci budeme předpokládat, že dluhopisy jsou bezriziková aktiva a tudíž pro popis jejich cen budeme používat stejný model jako pro bezrizikové aktivum v Kapitole \ref{stoch_model_aktiv}.
 Uvažujme dluhopis emitovaný v čase $t_0$ a splatný v čase $T$.
 Řešení diferenciální rovnice \eqref{risk-free_asset_model} dává cenu dluhopisu jako
@@ -1262,7 +1262,7 @@ kde $t_0\leq t\leq T$,
 $r(t)$ je \textit{okamžitá úroková míra} v čase $t$ a $B(T)$ je cena dluhopisu v~době splatnosti~$T$.
 Dluhopis můžeme tedy chápat jako finanční derivát úrokové míry.
 
-Časová struktura úrokové míry vyjadřuje vztah mezi úrokovou mírou a termínem splatnosti příslušného dluhopisu.
+Časová struktura úrokové míry vyjadřuje vztah mezi úrokovou mírou a~termínem splatnosti příslušného dluhopisu.
 Její grafickou reprezentací je \textit{výnosová křivka}, která ukazuje závislost výnosu do doby splatnosti (svislá osa) na době do splatnosti dluhopisu (vodorovná osa). 
 Výnosová křivka je konstruována pro dané dluhopisy, které se liší pouze dobou do splatnosti, ale ostatní vlastnosti (jako třeba emitenta) mají stejné.
 
@@ -1272,7 +1272,7 @@ Výnosová křivka je konstruována pro dané dluhopisy, které se liší pouze 
 
 Okamžitá úroková míra se používá při spojitém diskontování, které budeme využívat v další části práce při výpočtu kapitálového požadavku ke kreditnímu riziku protistrany. 
 Diskontování je proces, při kterém je přepočítána (diskontována) budoucí cena aktiva na současnou hodnotu s použitím diskontní míry nazývané také diskontní faktor.
-Jak už jsme zmínili v Kapitole \ref{stoch_model_aktiv}, kvůli zjednodušení výpočtů je běžné aproximovat vývoj cen aktiv spojitým procesem a v takovém případě má smysl i spojité diskontování, i když reálné chování finančních instrumentů je diskrétní.
+Jak už jsme zmínili v Kapitole \ref{stoch_model_aktiv}, kvůli zjednodušení výpočtů je běžné aproximovat vývoj cen aktiv spojitým procesem a v takovém případě má smysl i spojité diskontování, i~když reálné chování finančních instrumentů je diskrétní.
 \begin{definice}
 Spojitý \textit{diskontní faktor} je dán jako
 \begin{equation}\label{diskontni_faktor}
@@ -1298,7 +1298,7 @@ Stochastické modely, které popisují chování úrokových měr musí tedy br�
 
 %Vašíček 1977 model úrokové sazby
 %Modely krátkodobých úrokových měr modelují okamžitou úrokovou míru a dále se dělí na jednofaktorové a mnohofaktorové (obvykle dvoufaktorové).
-Modely krátkodobých úrokových se dělí na jednofaktorové a vícefaktorové.
+Modely krátkodobých úrokových měr se dělí na jednofaktorové a vícefaktorové.
 %Jednofaktorové modely popisují vývoj krátkodobých úrokových měr na základě pouze jednoho zdroje tržního rizika.
 Jednofaktorové modely popisují vývoj krátkodobých úrokových měr na základě pouze jednoho zdroje nejistoty, který je modelován pomocí Wienerova procesu.
 Vícefaktorové modely poskytují na jednu stranu více volnosti a možností v modelování vývoje úrokové míry, na druhou stranu jejich kalibrace, ale i interpretace, je mnohem složitější. 
@@ -1312,6 +1312,7 @@ Jednofaktorové modely krátkodobých úrokových měr předpokládají, že oka
 kde procesy $\mu(t,r)$ a $\sigma(t,r)$ jsou neanticipativní a $W(t)$ je Wienerův proces.
 Deterministická část procesu $\mu(t, r)$ určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů.
 Volatilita $\sigma(t, r)$ určuje vlastnosti náhodných výchylek.
+Proces $\sigma(t, r)$ se v literatuře nazývá také difuzní proces.
 
 Jeden z prvních modelů úrokové míry použil v roce 1973 Robert C. Merton v článku \cite{merton1973theory} k odvození modelu cen bezkupónových dluhopisů.
 Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův proces s~driftem (definovaný v Definici \ref{Wieneruv_proces_s_driftem}) 
@@ -1397,6 +1398,9 @@ kde $\alpha$ a $\sigma$ jsou konstanty a $\theta(t)$ je deterministická funkce 
 \end{equation}
 kde $f(t,T)$ je okamžitá forwardová úroková míra sjednaná v čase $t$ pro čas~$T$.
 
+%Forwardový kontrakt a jeho princip. Spotová sazba je pozorovatelná na trhu a forward se z ní odvozuje?
+Principem forwardového kontraktu je uzavření dohody mezi dvěma stranami o nákupu (nebo prodeji) finančního aktiva za cenu stanovenou v současnosti, přičemž obchod se uskuteční v určený čas v budoucnosti. 
+%Znalost cen bezrizikového bezkuponového dluhopisu P(t;T) je tudíž ekvivalentní znalosti okamžité forwardové úrokové míry f (t;T).
 Okamžitou forwardovou úrokovou míru budeme určovat z ceny bezkupónového dluhopisu, kterou můžeme pozorovat na trhu.
 Využijeme vztah
 \begin{equation}

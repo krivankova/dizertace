@@ -512,11 +512,11 @@ Wienerův proces je základním stavebním kamenem pro konstrukci stochastickéh
 \begin{definice}[Wienerův proces]\label{WP_def}
 Reálný stochastický proces $\{W(t):t\ge0\}$ na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$ se nazývá \textit{Wienerův proces}, jestliže platí
 \begin{enumerate}
-\item[1.]$W(0)=0$, 
-\item[2.](spojitost trajektorií Wienerova procesu) s pravděpodobností jedna je funkce $t\to W(t)$ spojitá v $t$,
-%\item[3.](nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, t.j.  pro každé $t\ge s\ge0$ má $W(t+s)-W(s)$ stejné rozdělení jako $W(t)-W(0)$,
-\item[3.](nezávislost přírůstků) přírůstky procesu jsou nezávislé,
-\item[4.](normalita přírůstků) pro každé $t\ge s\ge0$ má přírůstek $W(t)-W(s)$ normální rozdělení $\mathsf{N}(0, t-s)$.
+\item$W(0)=0$, 
+\item(spojitost trajektorií Wienerova procesu) s pravděpodobností jedna je funkce $t\to W(t)$ spojitá v $t$,
+%\item(nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, t.j.  pro každé $t\ge s\ge0$ má $W(t+s)-W(s)$ stejné rozdělení jako $W(t)-W(0)$,
+\item(nezávislost přírůstků) přírůstky procesu jsou nezávislé,
+\item(normalita přírůstků) pro každé $t\ge s\ge0$ má přírůstek $W(t)-W(s)$ normální rozdělení $\mathsf{N}(0, t-s)$.
 \end{enumerate}
 \end{definice}
 
@@ -617,8 +617,8 @@ Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\
 Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
 Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):\langle0,\infty)\times\Omega\to\mathbb R$ takových, že
 \begin{enumerate}
-\item[1.] $f(t,\omega)$ je neanticipativní, 
-\item[2.] $\text{E}\left[\int_0^Tf^2(t,\omega)\,\mathrm{d}t\right]<\infty.$ 
+\item $f(t,\omega)$ je neanticipativní, 
+\item $\text{E}\left[\int_0^Tf^2(t,\omega)\,\mathrm{d}t\right]<\infty.$ 
 \end{enumerate}
 \end{definice}
 
@@ -1432,6 +1432,14 @@ Díky této vlastnosti si model získal širokou oblibu.
 \chapter{Teorie portfolia}
 \textit{Portfolio} je soubor finančních aktiv držených fyzickou nebo právnickou osobou zvanou \textit{investor}.
 
+Teorie portfolia\\
+- definice investování na finančních trzích\\
+- definice investora\\
+- popis tvorby portfolia\\
+
+Teorie portfolia se zabývá volbou optimálního portfolia.
+
+
 %%%%%%%%%%%%%%%%%%{Základní charakteristiky portfolia}
 
 \section{Základní charakteristiky portfolia}\label{charakteristiky_portfolia}
@@ -1543,6 +1551,9 @@ Abychom blíže pochopili pojmy používané v Kapitole \ref{KTP} přiblížíme
   \includegraphics[width=11cm]{IMG/pripustna_portfolia.pdf}
   \caption{Odvození množiny přípustných portfolií  dle Markowitzovy teorie portfolia.}
 \end{figure}
+
+\subsection{Váhy tržního portfolia}\label{vahy_kap}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%{Dynamická teorie portfolia}
 
@@ -1827,7 +1838,7 @@ Avšak to je v rozporu z předpokladem \ref{predpoklad_hodnost}, pokud uvažujem
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Spojitý rovnovážný model s očekávanou výnosností závislou na ceně aktiva }\label{muj_model}
+\section{Spojitý rovnovážný model s očekávanou výnosností závislou na ceně aktiva}\label{muj_model}
 V Kapitolách \ref{paradox} a \ref{john} jsme ukázali, že v teorii portfolia běžně používaný dynamický model není konzistentní.
 Proto se chceme pokusit navrhnout takový model, který by nebyl touto inkonzistencí předpokladů zatížen.
 Uvažujme spojitý model, který bude mít méně omezující předpoklady než model Mertonův.
@@ -1987,6 +1998,45 @@ Pak
 \end{align*}
 Avšak tato soustava je nelineární a neexistuje její analytické řešení, proto se neobejdeme bez použití numerických metod.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Aplikace navrhovaného spojitého modelu}\label{aplikace}
+
+Data, vybraná pro stochastickou analýzu v této kapitole, byla získána ze systému Bloomberg.
+Jedná se o údaje o vývoji cen akcií obchodovaných na Burze cenných papírů Praha a.s.
+Pro aplikaci modelu jsme zvolili sedm akcií významných společností, které působí na českém trhu a jejichž akcie jsou obchodovatelné na Pražské burze.
+Informace o vybraných společnostech a jejich označení v následujících grafech najdeme v Tabulce \ref{akcie_spolecnosti}.
+\begin{comment}
+    \begin{itemize}
+    \item[-] ČEZ -  {(největší výrobce elektřiny v Česku)}
+    \item[-] O2 -  {(český telefonní operátor ve vlastnictví PPF)}
+    \item[-] KB -  {(český bankovní ústav)}
+    \item[-] PM - Philip Morris ČR a.s. {(přední výrobce a prodejce cigaret v Česku)}
+    \item[-] Pegas - Pegas Nonwovens s.r.o. {(přední světový výrobce netkaných textilií se sídlem v ČR)}
+    \item[-] ČT -  Česká televize {(veřejnoprávní televize)}
+    \item[-] NWR -  New World Resources {(přední producent černého uhlí ve střední Evropě)}
+    \end{itemize}
+\end{comment}
+\begin{table}[!htbp]
+\centering
+\caption{Označení akcií, které byly vybrány do datového souboru}  \label{akcie_spolecnosti}
+\vspace{3mm}
+\scalebox{1}{
+\begin{tabular}{l l p{6cm}} 
+\hline
+Označení & Název & Obor podnikání  \\
+ \hline \hline
+    CEZ & ČEZ, a. s.  &největší výrobce elektřiny v~České republice\\
+    O2 & O2 Czech Republic, a.s.  &český telefonní operátor ve vlastnictví společnosti PPF\\
+    KB & Komerční banka, a.s. &bankovní instituce působící na českém kapitálovém trhu z většiny vlastněná finanční skupinou Société Générale\\
+    PM & Philip Morris ČR, a.s. &přední výrobce a prodejce cigaret v~České republice\\
+    Pegas & Pegas Nonwovens, s.r.o. &přední světový výrobce netkaných textilií se sídlem  v~České republice\\
+    CT &  Česká televize &veřejnoprávní televize v~České republice\\
+    NWR &  New World Resources &přední producent černého uhlí ve střední Evropě\\
+\hline
+\end{tabular}}
+\end{table}
+
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/data_price_of_asset_ostatni.pdf}\\[5mm]
@@ -2048,7 +2098,7 @@ Avšak tato soustava je nelineární a neexistuje její analytické řešení, p
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
-\begin{comment}
+%\begin{comment}
 \chapter{Credit Valuation Adjustment}
 
 Nedílnou součástí řízení banky je řízení bankovních rizik.
@@ -2208,7 +2258,7 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 %Čím horší je bonita klienta .... viz GoogleDisk
 
 
-\end{comment}
+%\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
@@ -2292,7 +2342,7 @@ S.~Kafková, L.~Křivánková, and M.~Leváková.
 
 \chapter[Příloha -- Ukázka datového souboru]{Příloha}
 \section*{Ukázka datového souboru}
-V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{muj_model}.
+V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{aplikace}.
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 270 0 10]{IMG/data.pdf}

@@ -2099,7 +2099,12 @@ Označení & Název & Obor podnikání  \\
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
 %\begin{comment}
-\chapter{Credit Valuation Adjustment}
+%\chapter{Credit Valuation Adjustment}
+\chapter{Teorie řízení finančních rizik}
+%riziko kolísání CVA
+
+%Je to aktuální téma, banky jsou nuceny zohledňovat
+%Pořád mi není jasné od kdy jsou banky povinné CVA počítat, nikde jsme to nenašla... ale regulace souvisí s CRR \cite{EU2013}
 
 Nedílnou součástí řízení banky je řízení bankovních rizik.
 Obzvláště v poslední době se práce risk managementu dostává do popředí zájmu
@@ -2110,21 +2115,46 @@ Výbor vydává regulační standardy, doporučuje konkrétní postupy v oblasti
 Standardy vydávané výborem se označují Basel a byly dosud vydávány ve třech generacích označovaných jako Basel I, Basel II a Basel III. 
 Vyjadřují kapitálové požadavky, zabývají se pravidly obezřetného podnikání bank a aktivitami bankovního dohledu.
 
-Během celosvětové finanční krize, která odstartovala v roce 2008, se ukázala důležitost správného měření a řízení kreditního rizika protistrany (CCR) pro stabilitu finančního systému.
+Během celosvětové finanční krize, která vypukla v roce 2008, se ukázala důležitost správného měření a řízení kreditního rizika protistrany (CCR) pro stabilitu finančního systému.
 Kapitál pro kreditní riziko protistrany byl vyžadován již v Basel I.  
 V reakci na finanční krizi Basel III představil nejen další požadavky pro výpočet kapitálu pro CCR, ale nově
-předepisuje kapitálový požadavek pro riziko Credit Valuation Adjustment (CVA). 
+předepisuje kapitálový požadavek pro riziko změny Credit Valuation Adjustment (CVA). 
 
 CVA lze interpretovat jako úpravu tržní hodnoty derivátu o kreditní riziko protistrany.
-Riziko CVA vyplývá jak z rizika změny pravděpodobnosti selhání protistrany tak změny tržních faktorů, které ovlivňují hodnotu derivátů.
+Riziko změny CVA vyplývá jak z rizika změny pravděpodobnosti selhání protistrany tak změny tržních faktorů, které ovlivňují hodnotu derivátů.
 
-Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
-články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
-Pěkný přehledový článek na toto téma vyšel v roce 2012 v Journal of Financial Economics \cite{arora2012}.
-Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo simulace při výpočtu CVA publikovali John Hull a Alan White \cite{hull2012cva}.
-
+%Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
+%články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
+%Pěkný přehledový článek na toto téma vyšel v roce 2012 v Journal of Financial Economics \cite{arora2012}.
+%Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo simulace při výpočtu CVA publikovali John Hull a Alan White \cite{hull2012cva}.
 
 %Analýza vzájemné vazby mezi rizikem a výnosy.
+
+\cite{eba_cva} 
+%první přezkum kalibrace CVA
+%32 bank se podílelo na sběru dat, popisuje přístup bank k oceňování rizika plynoucího ze změny CVA; přezkoumává konzervativní zachycení CVA rizik; vyjadřuje se k umožňení pokročilím bankám použít vlastní modely; obsahuje matematické odvození pokročilých metod výpočtu CVA 
+%EBA provede do 1. ledna 2015 a poté každé dva roky přezkum s ohledem na vývoj v oblasti mezinárodní regulace, mimo jiné o potenciálních metodikách nastavení a prahů pro uplatnění požadavků CVA vůči nefinačním protistranám usazeným ve třetí zemi.
+%EBA provádí sledování kapitálových požadavků k riziku úvěrové úpravy v ocenění a do 1. ledna 2015 předloží Komisi zprávu. Ve zprávě zejména posoudí:
+%a) přístup k riziku CVA jakožto samostatnému požadavku ve srovnání se situací, kdy je nedílnou složkou rámce pro tržní rizika;
+%b) oblast působnosti požadavku týkajícího se rizika CVA, včetně výjimky stanovené v článku 482;
+%c) způsobilá zajištění;
+%d) výpočet kapitálových požadavků pro riziko CVA.
+%Na základě této zprávy a v případě, že z příslušných závěrů vyplývá, že je takové opatření nezbytné, je Komise rovněž zmocněna k přijetí aktu v přenesené pravomoci v souladu s článkem 462 s cílem pozměnit tyto položky
+
+%Účetní ocenění finančních derivátů dle IFRS. IFRS 13 Přechod na tržní způsob určení CVA <- nová definice "Fair value" derivátů
+%IFRS 13 přínáší novou definici fair value derivátů
+%Souvicí s tím, jak banky musí účtovat hodnotu finančního derivátu. Jakou vykazují hodnotu v účetniství
+
+%CCR je nařízení a CRD je směrnice
+%Směrnice CRD IV (Capital Requirements Directive), neboli směrnice Evropského parlamentu a Rady 2013/36/EU ze dne 26. června 2013 o přístupu k činnosti úvěrových institucí a o obezřetnostním dohledu nad úvěrovými institucemi a investičními podniky, je jedním z klíčových předpisů EU, který se týká sektoru úvěrových institucí, tzn. v České republice sektoru bank a spořitelních a úvěrních družstev. Částečně také upravuje výkon činnosti nebankovních obchodníků s cennými papíry.
+%Směrnice CRD IV byla uveřejněna v Úředním věstníku 27. června 2013 a je platná od 17. července 2013. Členské státy mají povinnost do 31. prosince 2013 přijmout a zveřejnit předpisy nezbytné pro dosažení souladu s touto směrnicí. Tyto předpisy mají být účinné od 1. ledna 2014.
+%Nařízení CRR (Capital Requirements Regulation), neboli nařízení Evropského parlamentu a Rady (EU) č. 575/2013 ze dne 26. června 2013 o obezřetnostních požadavcích na úvěrové instituce a investiční podniky, bylo uveřejněno v Úředním věstníku 27. června 2013 a je platné od 28. června 2013. Nařízení CRR je přímo účinným předpisem, použije se od 1. ledna 2014 s výjimkou několika málo ustanovení, která se použijí od 1. ledna 2015, resp. 1. ledna 2016.
+%Směrnice CRD IV i nařízení CRR jsou výsledkem opatření, která byla přijata k posílení finančního systému na úrovni skupiny G-20 v dubnu 2009 a následně rozpracována do řady opatření pro posílení regulace bankovního sektoru schválených vedoucími představiteli skupiny G-20 na pittsburském summitu v září 2009 a promítnuta do výstupů Basilejského výboru pro bankovní dohled (tzv. koncept Basel III).
+%Nařízení CRR je přímo účinný právní předpis, národní právní předpisy je nutné upravit (adaptovat), aby nebyly v rozporu s tímto nařízením. Ustanovení směrnice CRD IV je nezbytné promítnout do národních předpisů (transponovat).
+
+\cite{EU2013} %CRR regulace pro CVA
+%popisuje pokročilou metodu i standardizovanou metodu
+
 
 \section{Finanční rizika}
 V následujícím textu seznámíme čtenáře s problematikou řízení finančních rizik, především úvěrového rizika.
@@ -2160,6 +2190,7 @@ Princip řízení rizika likvidity zahrnuje alokaci aktiv a pasiv do časových 
 Těmito dvěma finančními riziky se v této práci nebudeme dále podrobněji zabývat.
 
 \subsection{Kreditní riziko protistrany}
+%popsat rozdíl mezi CCR a úvěrovým rizikem (viz prezentace ARM)
 Counterparty Credit Risk (CCR), v překladu \textit{kreditní riziko protistrany},  představuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způsobena selháním protistrany transakce. 
 Riziko selhání (defaultu) představuje základní rizikovou složkou kreditního rizika a jeho parametrem je pravděpodobnost neplnění. 
 Definice tohoto jevu není zcela jednoznačná, většinou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
@@ -2181,12 +2212,55 @@ Důležitým faktem při výpočtu kapitálového požadavku pro CCR je  bilater
 
 Velmi dobrý úvod do problematiky řízení rizika protistrany poskytuje článek \cite{canabarro2003measuring} autorů Eduarda Canabarra, vedoucího oddělení řízení rizika v bankovní společnosti Goldman Sachs, a profesora Stanfordské univerzity Darrella Duffieho.
 
+\begin{comment}
+Rozdíl mezi kreditním rizikem protistrany
+(v derivátovém obchodu) a klasickým kreditním
+rizikem (v úvěru či jiném bankovním aktivu)
+je fakt, že v prvním případě není známá
+výše expozice v případě selhání.
+Jelikož hodnota derivátů v čase fluktuuje
+(může nabývat kladných í záporných hodnot),
+může nastat situace, kdy jste v jednom
+časovém okamžiku vystaveni ztrátě v případě
+selhání protistrany, zatímco v odlišném
+časovém okamžiku nemáte v případě selhání
+protistrany co ztratit. Naopak vaše protistrana
+může utrpět ztrátu v případě vašeho
+selhání.
+Oproti klasickému úvěrovému vztahu,
+kde je jasně definovaný dlužník a věřitel, se
+role v případě derivátových obchodů mohou
+v čase měnit. Výše expozice v momentě selhání
+protistrany není tedy jasná a je nutné
+ji nějakým způsobem stanovit či modelovat.
+
+Při oceňování derivátů obvykle není bráno do úvahy riziko selhání protistrany
+Cena by měla být upravena o hodnotu rizika selhání protistrany
+
+Účetní ocenění finančních derivátů dle IFRS.
+\end{comment}
+
 %\section{Úvěrová úprava v ocenění finančních derivátů}
-\section{Koncept CVA}
+%\section{Koncept CVA}
+\section{Credit Valuation Adjustment}
 V rámci překladu termínu \textit{Credit Valuation Adjustment (CVA)}  se můžeme setkat s více možnostmi.
-Například Česká národní banka používá výraz \textit{úprava úvěrového ocenění}.
+Například Česká národní banka používá výraz \textit{úprava úvěrovým oceněním}.
 V jiných textech nalezneme pojem  \textit{kreditní přirážka k tržnímu ocenění} nebo \textit{úvěrová úprava v ocenění finančních derivátů}.
 Z důvodu přehlednosti budeme v textu této práce používat především zkratku CVA nebo anglický termín.
+%!!!!úprava reálné hodnoty derivátů o kreditní riziko protistrany
+%úvěrové úpravy v ocenění - Úřední věstník Evropské unie
+
+%se „úvěrovou úpravou v ocenění“ (credit valuation adjustment, dále jen „CVA“) rozumí úprava v ocenění portfolia transakcí s protistranou, které bylo stanoveno tržní cenou střed. Tato úprava odráží aktuální tržní hodnotu úvěrového rizika protistrany vůči instituci, ovšem neodráží aktuální tržní hodnotu úvěrového rizika instituce vůči protistraně.
+%NAŘÍZENÍ EVROPSKÉHO PARLAMENTU A RADY (EU) č. 575/2013
+
+\begin{comment}
+Od 1. ledna 2013 vstoupí v platnost nový standard mezinárodního
+finančního výkaznictví „IFRS 13 Fair Value Measurement" \cite{ifrs13}, který
+zavádí novou definici „Fair Value", tzv. reálné hodnoty. Ačkoli se
+tento pojem promítá do mnoha standardů IFRS, v tomto článku
+zůstaneme ve světě finančních nástrojů (tj. ve světě IAS 39
+a IFRS 7) a zaměříme se pouze na změny v oceňování derivátů.
+\end{comment}
 
 %Od roku 2015 předepisuje Basel III bankám povinost počítat kapitalový požadavek pro riziko Credit Valuation Adjustment (CVA).
 %Současná situace na banovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
@@ -2197,6 +2271,12 @@ Z důvodu přehlednosti budeme v textu této práce používat především zkra
 %
 %Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
 %Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
+
+\begin{comment}
+Celkový kapitálový požadavek =
+požadavek na riziko selhání protistrany
++ požadavek na volatilitu CVA
+\end{comment}
 
 \subsection{Expozice protistrany}
 \textit{Expozici protistrany} v čase $t$ značíme $E(t)$ a definujeme jako celkovou výši nesplacených pohledávek danou protistranou.
@@ -2235,6 +2315,30 @@ E(t)=\max\{V(t)-C(t),0\},
 \end{equation}
 kde $C(t)$ je hodnota zajištění (které banka přijala) v čase $t$.  
 
+\begin{comment}
+Metody výpočtu derivátové expozice:
+První dvě metody stanovení výše expozice
+může banka zvolit podle svého uvážení.
+Jde o metodu tržního ocenění (v originále
+Current Exposure Method) a standardizovanou
+metodu (neboli Standardized Method).
+Pro použití nejsofistikovanější metody
+založené na vlastním modelu, takzvanou
+I MM (Internal Model Method), je nutné
+získat povolení regulátora a splnit několik
+požadavků. Mezi ně patří zpětná validace
+modelu a také zahrnutí rizika pozitivní
+korelace (Wrong-way risk). Riziko pozitivní
+korelace nastává v případě, že dochází
+zároveň k růstu výše expozice vůči protistraně
+a poklesu kreditní kvality protistrany
+či snížení hodnoty zajištění. Odměnou
+za použití metody I MM by mělo být snížení
+expozice - a tudíž nižší kapitálový
+požadavek.
+\end{comment}
+
+
 \subsection{diskontovani}
 Výpočet dnešní hodnoty při tržní úrokové míře
 Diskontování je matematický postup, kdy jsou přepočítány (diskontovány) budoucí výnosy na současnou hodnotu investice s použitím diskontní míry.
@@ -2247,6 +2351,30 @@ Diskontování je postup, kdy jsou přepočteny (diskontovány) budoucí výnosy
 
 Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s jakou pravděpodobností dojde k selhání klienta během jednoho roku.
 
+\begin{comment}
+Pokud tedy například pro danou
+protistranu neexistuje přímo kótované
+CDS (Credit Default Swap), měli bychom se
+pokusit o odvození kreditního spreadu protistrany
+z jiných tržních informací (kótovaný
+dluhopis protistrany, CDS index, CDS spread
+podobné protistrany či protistran ze stejného
+sektoru, se stejným úvěrovým ratingem
+a podobně).
+\end{commenr}
+
+
+\begin{comment}
+Je důležité upozornit, že CVA i DVA představují
+odhady možných budoucích ztrát
+na dvou stranách derivátu v průběhu jeho života
+až do splatnosti, nejsou to odhady ztrát
+pouze z aktuální hodnoty derivátu. Proto
+i při kladné hodnotě derivátu může obecně
+existovat kromě CVA i DVA, stejně jako při
+záporné hodnotě může kromě DVA banka
+vykazovat i CVA.
+\end{comment}
 %\subsection{Modely zajištění}
 
 %\section{Poznámky CVA}

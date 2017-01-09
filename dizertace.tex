@@ -84,7 +84,7 @@
 %
 \begin{center}
 \begin{tabular}{l  r}
- \Large{Brno 2016} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
+ \Large{Brno 2017} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
 \end{tabular}
 \end{center}
 
@@ -106,7 +106,7 @@
 \begin{center}
 \large{
 \begin{tabular}{l  r}
-\Large{Brno 2016} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
+\Large{Brno 2017} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
 \end{tabular}
 }
 \end{center} \quad
@@ -135,7 +135,7 @@
 \textbf{Školitel:} & doc. RNDr. Martin Kolář, Ph.D.  \\
 \textbf{Studijní program:} & Matematika \\
 \textbf{Obor:} & Pravděpodobnost, statistika a matematické modelování \\
-\textbf{Rok obhajoby:} & 2016 \\
+\textbf{Rok obhajoby:} & 2017 \\
 \textbf{Klíčová slova:} & Stochastické procesy, \\
 \end{tabular}
 \\\\\\\\\\
@@ -150,7 +150,7 @@
 \textbf{Supervisor:} & doc. RNDr. Martin Kolář, Ph.D.  \\
 \textbf{Study programme:} & Mathematics \\
 \textbf{Study field:} & Probability, statistics and mathematical modeling \\
-\textbf{Year of defence:} & 2016 \\
+\textbf{Year of defence:} & 2017 \\
 \textbf{Keywords:} & Stochastic processes, \\
 \end{tabular}
 \newpage
@@ -158,7 +158,7 @@
 \null
 \vfill
 \begin{center}
-\copyright \quad Lenka Křivánková, Masarykova Univerzita, 2016
+\copyright \quad Lenka Křivánková, Masarykova Univerzita, 2017
 \end{center}
 
 \chapter*{Poděkování}\addcontentsline{toc}{chapter}{Poděkování}
@@ -167,7 +167,7 @@
 Na tomto místě
 \\
 
-Brno, Červenec 2016
+Brno, Duben 2017
 \\
 
 Lenka Křivánková
@@ -308,7 +308,25 @@ In the first part of the work, some basic mathematical methods employed in this 
 %
 %
 %
-
+\newpage \noindent
+\textbf{Teorie řízení finančních rizik}\\\\
+%  \begin{table}[h]
+   \begin{tabular}{p{4cm} p{9.3cm}}
+   $CCR$ 								& kreditní riziko protistrany\\
+   $CVA$								& Credit Valuation Adjustment\\
+   $D(t)$								& diskontní faktor pro odbobí od času $t$ do času 0\\
+   $EAD$								& výše expozice v okamžiku selhání protistrany\\
+   $LGD$								& ztráta způsobená selháním protistrany\\
+   $R$									& očekávaná míra splacení pohledávky\\
+   $PD$								& pravděpodobnost selhání protistrany\\
+   $PD_{1Y}$								& pravděpodobnost selhání protistrany během jednoho roku\\
+   $PD(i)$								& pravděpodobnost selhání protistrany v $i$-tém roce\\
+   $IRS$								& úrokový swap\\
+   $M$									& počet let do maturity finančního derivátu zaokrouhlený nahoru\\
+\end{tabular}\\\\\\
+%
+%
+%
 
 \chapter*{Úvod}\addcontentsline{toc}{chapter}{Úvod} 
 %\chapter{Úvod}
@@ -2115,6 +2133,16 @@ Výbor vydává regulační standardy, doporučuje konkrétní postupy v oblasti
 Standardy vydávané výborem se označují Basel a byly dosud vydávány ve třech generacích označovaných jako Basel I, Basel II a Basel III. 
 Vyjadřují kapitálové požadavky, zabývají se pravidly obezřetného podnikání bank a aktivitami bankovního dohledu.
 
+
+Nařízení CRR (Capital Requirements Regulation) \cite{EU2013} a
+směrnice CRD~IV (Capital Requirements Directive) \cite{EU2013a}
+jsou výsledkem opatření pro posílení regulace bankovního sektoru promítnutých do Basel III.
+%Nařízení CRR (Capital Requirements Regulation) \cite{EU2013} je přímo účinným předpisem používaným od 1. ledna 2014 (s výjimkou několika ustanovení používaným od 1. ledna 2015, resp. 2016).
+%Směrnice CRD IV (Capital Requirements Directive) \cite{EU2013a}. 
+%Členské státy EU měli povinnost do konce roku 2013 přijmout a zveřejnit předpisy nezbytné pro dosažení souladu s touto směrnicí. 
+Nařízení CRR je přímo účinný právní předpis používaný od roku 2014, přičemž národní právní předpisy jsou upraveny tak, aby nebyly v rozporu s tímto nařízením. 
+Ustanovení směrnice CRD~IV museli členské státy EU promítnout do národních předpisů do konce roku 2013.
+
 Během celosvětové finanční krize, která vypukla v roce 2008, se ukázala důležitost správného měření a řízení kreditního rizika protistrany (CCR) pro stabilitu finančního systému.
 Kapitál pro kreditní riziko protistrany byl vyžadován již v Basel I.  
 V reakci na finanční krizi Basel III představil nejen další požadavky pro výpočet kapitálu pro CCR, ale nově
@@ -2122,6 +2150,7 @@ předepisuje kapitálový požadavek pro riziko změny Credit Valuation Adjustme
 
 CVA lze interpretovat jako úpravu tržní hodnoty derivátu o kreditní riziko protistrany.
 Riziko změny CVA vyplývá jak z rizika změny pravděpodobnosti selhání protistrany tak změny tržních faktorů, které ovlivňují hodnotu derivátů.
+Oceňování tohoto rizika se budeme věnovat v Kapitole \ref{CVA_kap}.
 
 %Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
 %články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
@@ -2130,7 +2159,7 @@ Riziko změny CVA vyplývá jak z rizika změny pravděpodobnosti selhání prot
 
 %Analýza vzájemné vazby mezi rizikem a výnosy.
 
-\cite{eba_cva} 
+%\cite{eba_cva} 
 %první přezkum kalibrace CVA
 %32 bank se podílelo na sběru dat, popisuje přístup bank k oceňování rizika plynoucího ze změny CVA; přezkoumává konzervativní zachycení CVA rizik; vyjadřuje se k umožňení pokročilím bankám použít vlastní modely; obsahuje matematické odvození pokročilých metod výpočtu CVA 
 %EBA provede do 1. ledna 2015 a poté každé dva roky přezkum s ohledem na vývoj v oblasti mezinárodní regulace, mimo jiné o potenciálních metodikách nastavení a prahů pro uplatnění požadavků CVA vůči nefinačním protistranám usazeným ve třetí zemi.
@@ -2152,9 +2181,9 @@ Riziko změny CVA vyplývá jak z rizika změny pravděpodobnosti selhání prot
 %Směrnice CRD IV i nařízení CRR jsou výsledkem opatření, která byla přijata k posílení finančního systému na úrovni skupiny G-20 v dubnu 2009 a následně rozpracována do řady opatření pro posílení regulace bankovního sektoru schválených vedoucími představiteli skupiny G-20 na pittsburském summitu v září 2009 a promítnuta do výstupů Basilejského výboru pro bankovní dohled (tzv. koncept Basel III).
 %Nařízení CRR je přímo účinný právní předpis, národní právní předpisy je nutné upravit (adaptovat), aby nebyly v rozporu s tímto nařízením. Ustanovení směrnice CRD IV je nezbytné promítnout do národních předpisů (transponovat).
 
-\cite{EU2013} %CRR regulace pro CVA
+%\cite{EU2013} %CRR regulace pro CVA -> nařízení
 %popisuje pokročilou metodu i standardizovanou metodu
-
+%\cite{EU2013a}%CRD direktiva -> smernice
 
 \section{Finanční rizika}
 V následujícím textu seznámíme čtenáře s problematikou řízení finančních rizik, především úvěrového rizika.
@@ -2242,7 +2271,7 @@ Cena by měla být upravena o hodnotu rizika selhání protistrany
 
 %\section{Úvěrová úprava v ocenění finančních derivátů}
 %\section{Koncept CVA}
-\section{Credit Valuation Adjustment}
+\section{Credit Valuation Adjustment}\label{CVA_kap}
 V rámci překladu termínu \textit{Credit Valuation Adjustment (CVA)}  se můžeme setkat s více možnostmi.
 Například Česká národní banka používá výraz \textit{úprava úvěrovým oceněním}.
 V jiných textech nalezneme pojem  \textit{kreditní přirážka k tržnímu ocenění} nebo \textit{úvěrová úprava v ocenění finančních derivátů}.
@@ -2252,6 +2281,24 @@ Z důvodu přehlednosti budeme v textu této práce používat především zkra
 
 %se „úvěrovou úpravou v ocenění“ (credit valuation adjustment, dále jen „CVA“) rozumí úprava v ocenění portfolia transakcí s protistranou, které bylo stanoveno tržní cenou střed. Tato úprava odráží aktuální tržní hodnotu úvěrového rizika protistrany vůči instituci, ovšem neodráží aktuální tržní hodnotu úvěrového rizika instituce vůči protistraně.
 %NAŘÍZENÍ EVROPSKÉHO PARLAMENTU A RADY (EU) č. 575/2013
+
+%Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
+%články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
+%Pěkný přehledový článek na toto téma vyšel v roce 2012 v Journal of Financial Economics \cite{arora2012}.
+%Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo simulace při výpočtu CVA publikovali John Hull a Alan White \cite{hull2012cva}.
+
+%Analýza vzájemné vazby mezi rizikem a výnosy.
+
+%\cite{eba_cva} 
+%první přezkum kalibrace CVA
+%32 bank se podílelo na sběru dat, popisuje přístup bank k oceňování rizika plynoucího ze změny CVA; přezkoumává konzervativní zachycení CVA rizik; vyjadřuje se k umožňení pokročilím bankám použít vlastní modely; obsahuje matematické odvození pokročilých metod výpočtu CVA 
+%EBA provede do 1. ledna 2015 a poté každé dva roky přezkum s ohledem na vývoj v oblasti mezinárodní regulace, mimo jiné o potenciálních metodikách nastavení a prahů pro uplatnění požadavků CVA vůči nefinačním protistranám usazeným ve třetí zemi.
+%EBA provádí sledování kapitálových požadavků k riziku úvěrové úpravy v ocenění a do 1. ledna 2015 předloží Komisi zprávu. Ve zprávě zejména posoudí:
+%a) přístup k riziku CVA jakožto samostatnému požadavku ve srovnání se situací, kdy je nedílnou složkou rámce pro tržní rizika;
+%b) oblast působnosti požadavku týkajícího se rizika CVA, včetně výjimky stanovené v článku 482;
+%c) způsobilá zajištění;
+%d) výpočet kapitálových požadavků pro riziko CVA.
+%Na základě této zprávy a v případě, že z příslušných závěrů vyplývá, že je takové opatření nezbytné, je Komise rovněž zmocněna k přijetí aktu v přenesené pravomoci v souladu s článkem 462 s cílem pozměnit tyto položky
 
 \begin{comment}
 Od 1. ledna 2013 vstoupí v platnost nový standard mezinárodního
@@ -2387,6 +2434,327 @@ vykazovat i CVA.
 
 
 %\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Methods of credit valuation adjustment computation} 
+In this section, we developed the basic methodology to compute CVA and describe the basic terms.
+
+\subsection{Components of credit valuation adjustment and terminology}
+%přidat definici defaultu a zdůraznit, že veškeré úvahy počítají default v čase $t$. - asi není nutné
+The basic concepts and notation for counterparty credit risk and CVA will be shown in this section.
+Counterparty credit risk (CCR) is the risk that the counterparty defaults before the final settlement of a transaction's cash flows.
+CVA can be explained as the difference between the portfolio's risk-free value and the portfolio's true value taking into account the possibility of default of the counterparty.
+In the next definition CVA is calculated as expectation of credit loss.
+\begin{definice}
+ \textit{The credit valuation adjustment} is defined as
+ \begin{equation}
+ CVA=(1-R)\int_{0}^T \hat{e_d}(t)\,\mathrm{d} PD(t),
+ \label{CVA}
+\end{equation}
+  where $R$ is recovery rate, $\hat{e_d}(t)$ is the discounted expected exposure at time $t$ and $PD(t)$ is probability of default.
+\end{definice}
+%We can observe that CVA depends on the following components:
+In what follows, we specify the components of CVA. 
+Recovery rate is the value of unity less \textit{Loss given default (LGD)}, i.e. $R=1-~LGD$.
+The LGD is the percentage amount of the exposure expected to be lost if the counterparty defaults.
+
+The counterparty credit exposure $E(t)$ of the bank to a counterparty at time $t$ (hereafter simply exposure) is defined as the economic loss, incurred on all outstanding transactions with the counterparty if the counterparty defaults at $t$.
+Denote the value of the $i$-th instrument in the portfolio at time $t$ by  $V_i(t)$. 
+The value of the counterparty portfolio is given by 
+\begin{equation}
+V(t)=\sum_{i=1}^N V_i(t).
+\end{equation}
+When netting is not allowed, the exposure E(t) is given by
+\begin{equation}
+E(t)=\sum_{i=1}^N\max\{V_i(t),0\}.
+\end{equation}
+For a counterparty portfolio with a netting agreement, the exposure is
+\begin{equation}
+E(t)=\max\{V(t),0\}.
+\label{totalExposure}
+\end{equation}
+
+Discounting is a financial mechanism in which a future value is being recalculated to the present value.
+The discount factor, $D(t)$, is the factor by which a future cash flow must be multiplied in order to obtain the present value.
+Consider the discount factor at time $t$% (for maturity $T$)
+, defined as 
+%nemělo by T být spíš doba defaultu?
+\begin{equation}
+D(t)=\frac{B_0}{B_t}=e^{-rt},
+\end{equation}
+where $r$ is risk-free rate of return and $B_t$ is the value of risk free asset at time $t$. 
+%spojité diskontování se v praxi napoužívá, ale usnaňuje výpočty
+Hence, the discounted expected exposure at time $t$ conditional on the counterparty default at time $t$ is given by 
+\begin{equation}
+\hat{e}_d(t)=\mathsf{E}[D(t) E(t)].
+\end{equation}
+
+Next component of the equation \eqref{CVA} is \textit{Probability of Default}, $PD(t)$ which describes the creditworthiness of a counterparty. 
+It provides an estimate of the likelihood that a borrower will be unable to meet its debt obligations.
+%\textcolor{red}{The PD udává v procentech s jakou pravděpodobností dojde k selhání klienta během jednoho roku.}
+There are many alternatives for estimating the probability of default.
+The frequently used approach, taken by many banks, is to use external ratings agencies (such as S\&P, Fitch or Moody's) for estimating PD from historical default experience.
+
+
+\section{Results}
+The numerical illustration of the calculation of CVA will be introduced in this section. 
+We work with data set of interest rate swaps from the year 2015.
+An \textit{interest rate swap (IRS)} is an agreement between two parties to exchange a interest rate cash flows on specified intervals and over a certain period of time. 
+These data come from a bank operating in the Czech Republic. 
+The data contains information about five vanilla interest rate swaps and each of them is associated with different counterparty. \textcolor{red}{Asi by to chtělo více informací o datech.}
+
+\begin{table}[!htbp]
+\centering
+\caption{Variables in a data set}  \label{variable}
+\scalebox{1}{
+\begin{tabular}{l l} 
+\hline
+Notation & Name of Variable  \\
+ \hline \hline
+ID &Counterparty ID\\
+principal &Principal of swap \\
+maturity & Maturity date of swap  \\
+LegRateReceiving & Interest rate received by bank\\
+LegRatePaying & Interest rate paid by bank\\
+period & Period of paying\\
+\hline
+\end{tabular}}
+\end{table}
+
+
+\subsection{Initial yield curve}
+In order to evaluate the swaps, is necessary to describe a discount curve. The initial discount curve can be obtain by a linear interpolation of the risk free interest rates of different maturities. The initial rates were found at the web page of PATRIA (\href{URL}{http://www.patria.cz/kurzy/CZK/5Y/irs/graf.html}) and we can see them in the Table \ref{rates}.% \textcolor{red}{dát sem odkaz na stránku, Leni?} 
+The interest rate shorter than one year were extracted from PRIBOR rates on October 30th, 2015. 
+The Picture \ref{YieldCurve} shows the initial yield curve at settlement date which was built from the initial rates in the Table \ref{rates}.
+\begin{table}
+  \centering 
+\caption{Počáteční úrokové míry}%\caption{Initial rates} 
+\vspace{0.5cm}
+\scalebox{1}{\begin{tabular}{|c |c|}
+\hline
+\textbf{Maturita (v letech)} &\textbf{úroková míra (\%)}\\ 
+\hline
+0,25 & 0,29 \\% 0,14  \\ 
+0,5 & 0,37 \\% 0,16  \\
+1 & 0,21 \\
+2& 0,25\\
+3&0,28\\
+4&0,33\\
+5&0,40\\
+6&0,47\\
+7&0,56\\
+8&0,65\\
+9&0,75\\
+10&0,83\\
+12&0,99\\
+15&1,16\\
+20&1,27\\
+\hline
+\end{tabular}}
+\label{rates}
+\end{table}
+
+
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=10cm, clip, trim= 125 280 110 270]{IMG/YieldCurveN.pdf}
+  \caption{Výnosová křivka}  \label{YieldCurve}
+\end{figure}
+
+\subsection{Interest rate simulation}
+The interest rate simulation is based on historical data of the three month PRIBOR rate, from 2. 1. 2014 to 24. 11. 2015.  
+The development of three month PRIBOR rate can be observed in the figure \ref{PRIBOR}.
+
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13cm, clip, trim= 110 280 110 270]{IMG/PRIBOR.pdf}
+  \caption{Vývoj tříměsíční PRIBOR úrokové míry}  \label{PRIBOR}
+\end{figure}
+
+The well known interest rate evolution model, Hull-White one-factor model, will be used for modeling of the interest rate term structure. 
+%The Hull-White model is a one-factor model of the short rate $r(t)$, first published in \cite{hull1990pricing} and generalized later \cite{hull2001general}.
+The model was first published by John Hull and Alan White in \cite{hull1990pricing} and generalized later in \cite{hull2001general}.
+%The need for an exact fit to the currently-observed yield curve, led Hull and White to the introduction of a time-varying parameter in the Vasicek model. 
+The requirement for more accurate fit to the currently-observed yield curve, led Hull and White to the introduction of a time variable parameter in the Vasicek model. 
+%The model assumes that short rates have a normal distribution, and that the short rates are subject to mean reversion.
+The model assumes that short rates have a normal distribution, and also that the short rates exhibit the mean reversion character. 
+%Volatility is likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. 
+The Hull-White model extends the Vasicek and Cox-Ingersoll-Ross (CIR) models.
+
+We can define this model by equation
+\begin{equation}
+\mathrm{d}r(t)=[\theta(t)-\alpha r]\,\mathrm{d}t+\sigma\,\mathrm{d}W,
+\label{H-Wmodel}
+\end{equation}
+where
+\begin{description}
+\item [$\mathrm{d}r$] The change in the interest rate after a small change in time, $\mathrm{d}t$.
+\item [$\alpha$   ] Constant reversion speed.%Mean reversion rate.
+\item [$\sigma$   ] Volatility of the interest rate.
+\item [$\mathrm{d}W$] A Wiener process.
+\item [$\theta(t)$] Drift function defined as
+\begin{equation}
+\theta(t)=\frac{\partial  F(0,t)}{\partial t}+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}(1-\mathrm{e}^{-2\alpha t}), %F'_{t}(0,t)+...
+\end{equation}
+where
+\item[$F(0,t)$] Instantaneous forward rate at time $t$.
+%\item[$F'_{t}(0,t)$] Partial derivative of $F$ with respect to time $t$.
+\end{description}
+Instantaneous forward rate $F(0,t)$ is defined as
+\begin{equation}
+F(0,t)= \frac{\partial\ln  P(0,t)}{\partial t}
+\end{equation}
+where $ P(t,T)$ is price of a zero coupon bond at time $t$ with maturity at time $T$.
+
+The constants $\alpha$ and $\sigma$ are extracted from the historical three month PRIBOR rates.
+We use equation \eqref{H-Wmodel} to simulated the short interest rates.  
+We can expand the entire interest rate curve from the short rate using
+\begin{eqnarray}
+%R(t,T)&=&-\frac{1}{T-t}\ln A(t,T)+\frac{1}{T-t}B(t,T)r(t)\\
+P(t,T)&=&A(t,T)\mathrm{e}^{-B(t,T)r(t)}\\
+\ln A(t,T)&=&\ln \frac{P(0,T)}{P(0,t)}+B(t,T)F(0,t)-\frac{1}{4\alpha^3}\sigma^2(\mathrm{e}^{-\alpha T}-\mathrm{e}^{-\alpha t})^2(\mathrm{e}^{2\alpha t}-1)  \nonumber\\
+B(t,T)&=&\frac{1-\mathrm{e}^{-\alpha(T-t)}}{\alpha}.\nonumber
+\end{eqnarray}
+The large number of simulations was made. 
+The example of yield surfaces obtained in one interest rate simulation is possible to observe in the Figure \ref{YieldCurveEvolution}.
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/YieldCurveEvolution1N.pdf}
+%  \caption{ One Possible Scenario of Yield Curve Evolution}  \label{YieldCurveEvolution}
+     \caption{Jeden z možných scénářů pro vývoj výnosové křivky}  \label{YieldCurveEvolution}
+\end{figure}
+For each scenarios the swaps are priced at each future simulation date. 
+
+The main advantage of the Hull-White model is that it can be fitted exactly to the initial term structure of interest rates.
+
+\subsection{Probability of default}
+We assume that the wait time for default of a counterparty is a random variable $X$ with exponential distribution. Then the cumulative distribution function of this variable can be define as
+\begin{equation}
+F(x)= P(X\leq x)= \left\{ \begin{array}{r@{\quad}c}
+    1-\mathrm{e}^{-\lambda x}, & x \geq 0 \\
+    0, & x \leq 0 \\ \end{array} \right.
+    \label{exponentialdistr}
+\end{equation}
+where $\lambda>0$ is the parameter of the distribution. Probability of default of the counterparty during one year we denote $PD$. Then 
+\begin{equation}
+PD=P(X\leq 1)=1-\mathrm{e}^{-\lambda}.
+\label{PD}
+\end{equation}
+If we use value of PD from \textcolor{red}{odkud bereme PD, Leni?}  $\lambda$ could be estimate from \eqref{PD} 
+\begin{eqnarray}
+PD&=&1-\mathrm{e}^{-\lambda} \nonumber \\
+\lambda&=&-\ln(1-PD).
+\end{eqnarray}
+Then we can construct probability curve for each counterparty. It is possible to observed them in the Figure \ref{DefaultProbability}.
+
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/DefaultProbability.pdf}
+  \caption{Funkce pravděpodobností selhání protistran}  \label{DefaultProbability}
+\end{figure}
+
+
+\subsection{Computation of CVA} 
+Let consider the exposure is independent of default. Then total exposure of all contracts can be computed on the bases of equation \eqref{totalExposure}. The bank has estimated recovery rate $R=40\%$. \textcolor{red}{Leni, jaká je vaše recovery rate?}. Now we have everything for the CVA calculation according to the equation \eqref{CVA}. The resulting values of CVA for each counterparty can be observed in the Table \ref{resultingCVA}.
+
+\begin{table}
+  \centering 
+\scalebox{1}{\begin{tabular}{|c |r|}
+\hline
+\textbf{Protistrana} &\textbf{CVA (v Kč)}\\ 
+\hline
+$\boldsymbol{1}$&800\,505,82   \\ 
+$\boldsymbol{2}$&199\,337,60 \\
+$\boldsymbol{3}$&276,59 \\
+$\boldsymbol{4}$&783,73 \\
+$\boldsymbol{5}$&78\,501,06  \\
+\hline
+\end{tabular}}
+\vspace{0,5cm}
+\caption{Přehled výsledků CVA pro jednotlivé protistrany}
+\label{resultingCVA}
+\end{table}
+
+
+
+\begin{comment}
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=6cm, clip, trim= 110 270 110 270]{IMG/TotalPortfoioValue.pdf}
+  \caption{Total Portfoio Value}  \label{TotalPortfoioValue}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=6cm, clip, trim= 110 270 110 270]{IMG/PorfolioExposure.pdf}
+  \caption{Porfolio Exposure}  \label{PorfolioExposure}
+\end{figure}
+
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=6cm, clip, trim= 110 270 110 270]{IMG/CVAforEachCounterparty.pdf}
+  \caption{CVA for each counterparty}  \label{CVAforEachCounterparty}
+\end{figure}
+\end{comment}
+
+
+\section{Srovnání metod výpočtu CVA}
+Jedním z cílů práce je nalezení efektivní metody výpočtu kapitálového požadavku k riziku nárůstu CVA, proto v této části budeme srovnávat metodu výpočtu CVA popsanou v této práci s metodou, kterou používá banka, která poskytla data.
+Nejdříve popíšeme metodu určení CVA používanou v bance a následně srovnáme její výsledky s výsledky z předchozí části uvedenými v~Tabulce \ref{resultingCVA}. 
+
+Základní princip výpočtu CVA spočívá v odhadu tzv. \textit{očekávané ztráty (EL)} v průběhu života derivátu. 
+Očekávaná ztráta je pojem používaný v~teorii řízení úvěrového rizika.
+Jedná se o hodnotu, která odhaduje výší ztráty, jenž banka průměrně utrpí z úvěrů ve svém portfoliu v důsledku selhání některých klientů. 
+Pro odhad očekávané ztráty platí následující vztah 
+\begin{equation}\label{el}
+EL=PD\cdot LGD\cdot EAD.
+\end{equation}
+
+Při výpočtu EL z finančního derivátu nejdříve rozdělíme zbývající čas do maturity derivátu na časová okna o délce jednoho roku. 
+Přičemž čas do maturity se zaokrouhluje na celé roky nahoru.
+Pro každé z těchto časových oken určíme EL, následně ji diskontujeme a nakonec sečteme tyto hodnoty přes všechna časová okna.
+Výsledkem je CVA daného finančního derivátu.
+Popsaný výpočet je dán následujícím vztahem
+\begin{equation}\label{CVA_banka}
+CVA=LGD\cdot\sum_{i=1}^M D(t_i)\cdot EAD(t_i)\cdot PD(i),
+\end{equation}
+kde $M$ je počet let do maturity derivátu, $PD(i)$ je pravděpodobnost selhání protistrany během $i$-tého roku.
+Hodnota LGD je nastavena pro všechny protistrany na hodnotu 45\,\%.
+
+Banka ve své metodě výpočtu CVA předpokládá, že EAD je konstantní po celou dobu trvání obchodu.
+To je hlavní rozdíl oproti přístupu prezentovanému v předchozí části práce.
+EAD pro daný časový derivát je odhadována jako současná tržní hodnota finančního derivátu. 	
+
+Pravděpodobnost selhání protistrany v $i$-tém roce je dána vztahem 
+%Parametr PD počítáme jako průměrné PD pro daný rating klienta. 
+%Přitom PD pro jednotlivá roční okna výpočtu se počítají následovně. 
+%Pro rok j spočítáme PD podle vzorce
+\begin{equation}\label{PD_banka}
+PD(i)=PD_{1Y}(1-PD_{1Y})^{i-1},
+\end{equation}
+kde $PD_{1Y}$ je průměrná pravděpodobnost selhání protistrany během jednoho roku daná interním ratingem protistrany. 
+Tato metoda určení $PD$ je diskrétní narozdíl od spojitého přístupu používaném v předchozí části. 
+%Rozdělením období do maturity, zdiskontováním a sečtením EL v každém z těchto období získáme CVA.
+
+\begin{table}
+  \centering 
+\scalebox{1}{\begin{tabular}{|c |r|r|}
+\hline
+\textbf{Protistrana} &\textbf{CVA (v Kč)}&\textbf{CVA vypočítané}\\ 
+&&\textbf{v bance (v Kč)}\\
+\hline
+$\boldsymbol{1}$&800\,505,82 &1\,646\,700,37  \\ 
+$\boldsymbol{2}$&199\,337,60 &309\,836,82  \\
+$\boldsymbol{3}$&276,59 &384,89 \\
+$\boldsymbol{4}$&783,73 & 1\,095,12\\
+$\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
+\hline
+\end{tabular}}
+\vspace{0,5cm}
+\caption{Srovnání výsledků výpočtů CVA dle metody popsané v této práci a dle metody používané v bance}
+\label{srovnaniCVA}
+\end{table}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

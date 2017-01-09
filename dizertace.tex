@@ -15,6 +15,7 @@
   %\usepackage{palatino} % Font Palatino alternativa k \usepackage{lmodern} 
   \usepackage{comment}
   \usepackage{xcolor}
+  \usepackage{verbatim}
 
 \usepackage{url}  %kvuli vkladani URL adres do bibtexu ale asi jen ve stylu CZECHISO
 \DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>} \urlstyle{tt}}
@@ -683,7 +684,7 @@ Na rozdíl od Wienerova procesu nemá Ornstein–Uhlenbeckův proces konstantní
 Pokud je aktuální hodnota procesu $X_t$ menší než rovnovážná hodnota $\mu$, pak je koeficient driftu kladný.
 Naopak když $X_t>\mu$, tak je koeficient driftu záporný.
 
-Ukázku trajektorií Ornstein–Uhlenbeckova procesu s různými parametry najdeme na Obrázku \ref{OU_graf}.
+Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry najdeme na Obrázku \ref{OU_graf}.
 
 \begin{figure}[!htbp]
   \centering 
@@ -2845,12 +2846,124 @@ V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{
 %  \caption{}  %\label{}
 \end{figure}
 
-%\chapter[Příloha -- Ukázka programů]{Příloha}
-%\section*{Ukázka programu v R}
-%\addcontentsline{toc}{section}{Ukázka programu v R}
-%\section*{Ukázka programu v Matlabu}
-%\addcontentsline{toc}{section}{Ukázka programu v Matlabu}
-%Na závěr uvedeme ukázku programu v prostředí MATLAB pro výpočet...
+\chapter[Příloha -- Ukázka programů]{Příloha}
+\section*{Ukázka programu v R}
+\addcontentsline{toc}{section}{Ukázka programu v R}
+
+V příloze uvádíme ukázku programu v prostředí R. 
+Tato část zdrojového kódu slouží k simulaci trajektorií Ornstein-Uhlenbeckova procesu.
+
+\begin{verbatim}
+# =============================================================
+# Ornstein-Uhlenbeckův proces 
+# =============================================================
+#
+# jedna trajektorie
+#
+r0<- 2
+dt <- 0.001
+theta <- 2
+sigma <- 0.1
+kappa <- 1
+t <- seq (0, 1, by = dt)
+
+ri<-r0
+X<-r0
+dw_r<-rnorm((length (t) - 1),0,sqrt(dt))    
+for (i in 1:(length (t) - 1)){  
+  dr<-kappa*(theta-ri)*dt+sigma*dw_r[i] 
+  ri<-ri+dr
+  X<-cbind(X,ri)
+}
+
+plot (t, X, type="l", col = "red", xlab = "t", ylab = "X(t)")
+abline (h = theta , lty = 2)  
+# =============================================================
+\end{verbatim}
+
+%pro každou stránku je potřeba nové prostředí, jinak háže chybu
+\newpage
+
+\begin{verbatim}
+# =============================================================
+# Ornstein-Uhlenbeckův proces 
+# =============================================================
+#
+# více trajektorií
+#
+r0<- 2
+dt <- 0.001
+theta <- 2
+sigma <- 0.1
+kappa <- 1
+t <- seq (0, 1, by = dt)
+M<-t(X)
+for (k in 1:4){
+  ri<-r0
+  X<-r0
+  dw_r<-rnorm((length (t) - 1),0,sqrt(dt))    
+  for (i in 1:(length (t) - 1)){  
+    dr<-kappa*(theta-ri)*dt+sigma*dw_r[i] 
+    ri<-ri+dr
+    X<-cbind(X,ri)}
+M<-cbind(M,t(X))
+}
+
+matplot (t, M, type = "l", lty = 1, xlab = "t", ylab = "X(t)")
+abline (h = theta , lty = 2)  
+# =============================================================
+\end{verbatim}
+
+Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry zobrazuje Graf \ref{OU_graf}.
+
+\newpage
+Další část zdrojového kódu používáme ke zobrazení grafů dat a grafů simulací z kapitoly \ref{aplikace}.
+
+\begin{verbatim}
+# =============================================================
+# Data - grafy
+# =============================================================
+#
+date <- rev(scan(file="U:/R/data/date.csv", sep=";", 
+                 what=date(), dec=","))
+date <- as.Date(date, "%d.%m.%Y") 
+
+matplot (date, data, type = "l", lty = 1, xaxt="n", 
+         xlab = "t", ylab = "P(t)", main = "price of asset")
+axis.Date(side = 1, date)
+legend(date[650],10200, 
+       c("CEZ", "O2","KB", "PM", "Pegas", "CT", "NWR"), 
+       col=1:7, lty=1,  box.lty=0) 
+# =============================================================
+#
+# =============================================================
+# Simulace - grafy
+# =============================================================
+#
+dates <- bizseq("2014-02-22", "2016-02-23",
+   Calendar(holidaysANBIMA, weekdays=c("saturday", "sunday")))
+
+plot (dates, r, type = "l", lty = 1, xlab = "t", ylab = "r(t)", 
+      yaxt="n", main = "return of market")
+
+axis(2, at=seq(-0.0002,0.0003,by=.0002), 
+labels=paste(100*seq(-0.0002,0.0003,by=.0002), "%") )
+
+matplot (dates, t(x), type = "l", lty = 1, xaxt="n", 
+         xlab = "t", ylab = "P(t)", main = "price of asset")
+axis.Date(side = 1, dates)
+# =============================================================
+\end{verbatim}
+
+\newpage
+\section*{Ukázka programu v Matlabu}
+\addcontentsline{toc}{section}{Ukázka programu v Matlabu}
+Na závěr uvedeme ukázku programu v prostředí MATLAB pro výpočet Credit Valuation Adjustment.
+
+\begin{verbatim}
+  This is a verbatim block.
+\end{verbatim}
+
 
 \end{document}
 

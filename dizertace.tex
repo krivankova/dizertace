@@ -1384,7 +1384,7 @@ Povšimněme si, že při malých úrokových mírách je malá také volatilita
 
 %Model vyvinuly John C. Cox, Jonathan E. Ingersoll a Stephen A. Ross a publikovali v roce 1985 v článku \cite{cox1985theory}.
 
-\subsection{Hull-Whitův model}
+\subsection{Hull-Whitův model}\label{H-W_model_kap}
 Modely uvedené v Kapitolách \ref{Vasickuv_model_kap} a \ref{CIR_model_kap} nereflektují aktuální časovou strukturu úrokové míry.
 Na tuto nevýhodu reagovali John C. Hull a Alan White, kteří v roce 1990 publikovali článek \cite{hull1990pricing} s vlastním modelem. %, kde představují svůj model reflektující aktuálně pozorované hodnoty výnosové křivky. 
 %Další model odvozený z Vašíčkova modelu je Hull-Whitův model.
@@ -2437,7 +2437,7 @@ vykazovat i CVA.
 %\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Methods of credit valuation adjustment computation} 
+\section{Methods of credit valuation adjustment computation} \label{metodyCVA}
 In this section, we developed the basic methodology to compute CVA and describe the basic terms.
 
 \subsection{Components of credit valuation adjustment and terminology}
@@ -2842,7 +2842,8 @@ S.~Kafková, L.~Křivánková, and M.~Leváková.
 V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{aplikace}.
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 270 0 10]{IMG/data.pdf}
+%	\includegraphics[width=13.5cm, clip, trim= 0 270 0 10]{IMG/data.pdf}
+\includegraphics[width=12.5cm, clip, trim= 0 510 277 10]{IMG/data_v2.pdf}
 %  \caption{}  %\label{}
 \end{figure}
 
@@ -2850,7 +2851,7 @@ V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{
 \section*{Ukázka programu v R}
 \addcontentsline{toc}{section}{Ukázka programu v R}
 
-V příloze uvádíme ukázku programu v prostředí R. 
+V příloze uvádíme ukázku programu vytvořeného v prostředí R. 
 Tato část zdrojového kódu slouží k simulaci trajektorií Ornstein-Uhlenbeckova procesu.
 
 \begin{verbatim}
@@ -2914,10 +2915,10 @@ abline (h = theta , lty = 2)
 # =============================================================
 \end{verbatim}
 
-Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry zobrazuje Graf \ref{OU_graf}.
+Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry zobrazuje Graf \ref{OU_graf}, který byl vytvořen v prostředí R pomocí předcházejícího zdrojového kódu.
 
 \newpage
-Další část zdrojového kódu používáme ke zobrazení grafů dat a grafů simulací z kapitoly \ref{aplikace}.
+Další část zdrojového kódu používáme ke zobrazení grafů dat a grafů simulací z Kapitoly \ref{aplikace}.
 
 \begin{verbatim}
 # =============================================================
@@ -2947,7 +2948,7 @@ plot (dates, r, type = "l", lty = 1, xlab = "t", ylab = "r(t)",
       yaxt="n", main = "return of market")
 
 axis(2, at=seq(-0.0002,0.0003,by=.0002), 
-labels=paste(100*seq(-0.0002,0.0003,by=.0002), "%") )
+     labels=paste(100*seq(-0.0002,0.0003,by=.0002), "%") )
 
 matplot (dates, t(x), type = "l", lty = 1, xaxt="n", 
          xlab = "t", ylab = "P(t)", main = "price of asset")
@@ -2958,10 +2959,71 @@ axis.Date(side = 1, dates)
 \newpage
 \section*{Ukázka programu v Matlabu}
 \addcontentsline{toc}{section}{Ukázka programu v Matlabu}
-Na závěr uvedeme ukázku programu v prostředí MATLAB pro výpočet Credit Valuation Adjustment.
+Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment  vytvořeného v prostředí MATLAB a využívaného v Kapitole \ref{metodyCVA}.
+
+První část programu načte data o úrokových swapech z datového souboru vytvořeného v aplikaci Microsoft Excel. 
+
+V další části se generuje počáteční výnosová křivka, která se dále využívá při modelování úrokové míry pomocí Hull-Whiteova modelu (viz Kapitola \ref{H-W_model_kap}).
 
 \begin{verbatim}
-  This is a verbatim block.
+clear all
+% =============================================================
+% Načte data o IRS
+% =============================================================
+%
+swapFile = 'data.xls';
+swapData = dataset('XLSFile',swapFile,'Sheet','SwapPortfolio');
+swaps = struct(...
+    'Counterparty',[],...
+    'NettingID',[],...
+    'Principal',[],...
+    'Maturity',[],...
+    'LegRate',[],...
+    'LegType',[],...
+    'LatestFloatingRate',[],...
+    'FloatingResetDates',[]);
+
+swaps.Counterparty = swapData.CounterpartyID;
+swaps.NettingID    = swapData.NettingID;
+swaps.Principal    = swapData.Principal;
+swaps.Maturity     = swapData.Maturity;
+swaps.LegType      = [swapData.LegType ~swapData.LegType];
+swaps.LegRate      = [swapData.LegRateReceiving ... 
+                      swapData.LegRatePaying];
+swaps.LatestFloatingRate = swapData.LatestFloatingRate;
+swaps.Period       = swapData.Period;
+swaps.LegReset     = ones(size(swaps.LegType));
+
+numSwaps = numel(swaps.Counterparty);
+% =============================================================
+%
+% =============================================================
+% Vytvoří počáteční výnosovou křivku a vykreslí její graf
+% =============================================================
+%
+Settle   = datenum('30-Oct-2015');
+
+Tenor  = [3 6 12 24 36 48 5*12 72 7*12 96 108 10*12 144 180... 
+          20*12]';
+ZeroRates = [0.0029	0.0037	0.0021	0.0025	0.0028	0.0033...	
+             0.004	0.0047		0.0056	0.0065	0.0075	0.0083...
+             0.0099	0.0116	0.0127]';
+
+ZeroDates = datemnth(Settle,Tenor);
+Compounding =-1;
+Basis = 0;
+RateSpec = intenvset('StartDates', Settle,'EndDates',... 
+                      ZeroDates, 'Rates', ZeroRates,...
+                     'Compounding', Compounding,'Basis',Basis);
+
+figure;
+plot(ZeroDates, ZeroRates, 'o-');
+xlabel('Date');
+datetick('keeplimits');
+ylabel('Zero rate');
+grid on;
+title('Výnosová křivka');
+% =============================================================
 \end{verbatim}
 
 

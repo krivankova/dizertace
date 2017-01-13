@@ -357,10 +357,13 @@ Jednou z možností může být nalezení způsobu jak CVA modelovat tak, aby do
 
 Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
 Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
-Jedním z cílů této práce bude představit a aplikovat model pro CVA úrokových swapů, který bude snižovat CVA při dodržení regulačních norem.
+Jedním z cílů této práce bude představit a aplikovat model pro CVA úrokových swapů, který respektuje regulační normy a~zároveň přináší nižší ocenění CVA.
 Při výpočtu CVA budeme využívat různé stochastické metody analýzy dat.
 Monte Carlo simulace použijeme k vytvoření  možných scénářů vývoje úrokových měr na trhu. 
-
+Tyto simulace jsou prováděny s využitím Hull-Whitova jednofaktorového modelu úrokových měr.
+Následně pro každý scénář úrokové míry oceňujeme daný úrokový swap metodami pro oceňování derivátů a~určujeme očekávanou expozici protistrany.
+Pro odhad pravděpodobnosti selhání protistrany využíváme přístup založený na exponenciálním rozdělení.
+Výpočty a simulace prezentované v Kapitole \ref{rizika_kap} jsou provedeny v prostředí MATLAB.
 %\end{comment}
 
 \begin{comment}
@@ -1412,7 +1415,7 @@ Hull a White později zveřejnili i zobecnění svého modelu v textu \cite{hull
 
 Autoři modelu rozšiřují Vašíčkův model zavedením parametru, který se mění v čase a reflektuje aktuálně pozorované hodnoty výnosové křivky.
 Poznamenejme, že existuje i verze Hull-Whitova modelu odvozená z CIR modelu, ale tou se v této práci nebudeme zabývat.
-Hull-Whiteův model okamžité úrokové míry je dán stochastickou diferenciální rovnicí
+Hull-Whitův model okamžité úrokové míry je dán stochastickou diferenciální rovnicí
 \begin{equation}\label{H-W_model}
  \mathrm{d}r(t)=\big(\theta(t)-\alpha r(t)\big)\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
 \end{equation}
@@ -2124,7 +2127,7 @@ Označení & Název & Obor podnikání  \\
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
 %\begin{comment}
 %\chapter{Credit Valuation Adjustment}
-\chapter{Teorie řízení finančních rizik}
+\chapter{Teorie řízení finančních rizik} \label{rizika_kap}
 %riziko kolísání CVA
 
 %Je to aktuální téma, banky jsou nuceny zohledňovat
@@ -2968,7 +2971,7 @@ Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment 
 
 První část programu načte data o úrokových swapech z datového souboru vytvořeného v aplikaci Microsoft Excel. 
 
-V další části se generuje počáteční výnosová křivka, která se dále využívá při modelování úrokové míry pomocí Hull-Whiteova modelu (viz Kapitola \ref{H-W_model_kap}).
+V další části se generuje počáteční výnosová křivka, která se dále využívá při modelování úrokové míry pomocí Hull-Whitova modelu (viz Kapitola \ref{H-W_model_kap}).
 
 \begin{verbatim}
 clear all

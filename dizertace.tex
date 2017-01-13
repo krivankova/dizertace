@@ -346,8 +346,9 @@ In the first part of the work, some basic mathematical methods employed in this 
 %Oceňování je jedním z ústředních nástrojů finančního řízení a rozhodování. 
 %Klíčovými faktory jsou neurčitost finančních toků a dynamická flexibilita. 
 
-\begin{comment}
-Od roku 2015 předepisuje Basel III bankám povinnost počítat kapitalový požadavek pro riziko Credit Valuation Adjustment (CVA).
+%\begin{comment}
+Podle odhadu Basilejského výboru pochází tři čtvrtiny ztrát způsobených kreditním rizikem protistrany během finanční krize ze ztrát daných změnou Credit Valuation Adjustment (CVA), nikoli kvůli samotným selháním protistran. 
+Od roku 2015 předepisuje Basel III bankám povinnost počítat kapitalový požadavek pro riziko změny CVA.
 Současná situace na bankovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
 Běžné způsoby tvorby zisku v současnosti selhávají.
 Na trhu můžeme pozorovat nejen nízké až záporné úrokové sazby, ale i konkurenční boj o klienty, který přináší neustálý tlak na snižování bankovních poplatků a poskytování téměř nerentabilní klientských úvěrů.
@@ -356,7 +357,11 @@ Jednou z možností může být nalezení způsobu jak CVA modelovat tak, aby do
 
 Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
 Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
-\end{comment}
+Jedním z cílů této práce bude představit a aplikovat model pro CVA úrokových swapů, který bude snižovat CVA při dodržení regulačních norem.
+Při výpočtu CVA budeme využívat různé stochastické metody analýzy dat.
+Monte Carlo simulace použijeme k vytvoření  možných scénářů vývoje úrokových měr na trhu. 
+
+%\end{comment}
 
 \begin{comment}
 Otazník před komentářem označuje, že tato literatura ještě není citována.\\
@@ -2207,10 +2212,10 @@ Je zaměřeno na faktory, které mají vliv na finanční trh jako celek (nikoli
 Jeho význam vzrůstá s rostoucí angažovaností bank na finančních trzích. 
 
 Úvěrové riziko a tržní riziko není možno od sebe zcela oddělovat.
-Obě tato rizika v sobě spojuje kreditní riziko protistrany, jehož modelování je nedílnou součástí výpočtu Credit Valuation Adjustment. 
+Obě tato rizika v sobě spojuje kreditní riziko protistrany (více viz Kapitola \ref{CCR_kap}), jehož modelování je nedílnou součástí výpočtu Credit Valuation Adjustment. 
 
 Dalšími finančními riziky jsou operační riziko a riziko likvidity.
-Basel II %(International Convergence of Capital Measurement and Capital Standards) 
+Basel~II %(International Convergence of Capital Measurement and Capital Standards) 
 definoval operační riziko jako riziko ztráty vyplývající z nedostatků či selhání vnitřních procesů, osob a systémů nebo vlivem vnějších událostí.
 Řízení operačního rizika slouží k zajištění provozní efektivity, snížení nákladů a zvýšení konkurenceschopnost.
 Regulatorní orgány vymezují obezřetnostní požadavky na operační riziko.
@@ -2219,10 +2224,10 @@ riziko ztráty schopnosti dostát finančním závazkům v době, kdy se stanou 
 Princip řízení rizika likvidity zahrnuje alokaci aktiv a pasiv do časových košů a následné určování likvidního gapu v jednotlivých časových koších. 
 Těmito dvěma finančními riziky se v této práci nebudeme dále podrobněji zabývat.
 
-\subsection{Kreditní riziko protistrany}
+\subsection{Kreditní riziko protistrany}\label{CCR_kap}
 %popsat rozdíl mezi CCR a úvěrovým rizikem (viz prezentace ARM)
 Counterparty Credit Risk (CCR), v překladu \textit{kreditní riziko protistrany},  představuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způsobena selháním protistrany transakce. 
-Riziko selhání (defaultu) představuje základní rizikovou složkou kreditního rizika a jeho parametrem je pravděpodobnost neplnění. 
+Riziko selhání (též defaultu) představuje základní rizikovou složkou kreditního rizika a jeho parametrem je pravděpodobnost neplnění. 
 Definice tohoto jevu není zcela jednoznačná, většinou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
 
 Riziko protistrany závisí na spolehlivosti obchodního partnera, ať už se jedná o emitenta, který vydává, nabízí a prodává investiční produkt a zavazuje se k jeho splacení (resp. vyrovnání s ním spojených závazků), nebo finančního zprostředkovatele, kterému jsou svěřeny prostředky buď do správy, nebo k provedení investiční transakce.
@@ -2333,7 +2338,7 @@ Hodnota expozice protistrany kvantifikuje do jaké míry je věřitel vystaven r
 
 Uvažujme portfolio $N$ derivátových obchodů banky s danou protistranou.
 Splatnost kontraktu s nejdelší splatností v tomto portfoliu označíme $T$. 
-Nechť $\tau$ je náhodná veličina, která označuje čas selhání dané protistrany a má známou distribuční funkci $P(t)=\Pr(\tau\leq t)$.
+Nechť $\tau$ je náhodná veličina, která označuje čas selhání dané protistrany a má známou distribuční funkci $PD(t)=\Pr(\tau\leq t)$.
 
 Budeme zkoumat hodnotu portfolia z pohledu banky.
 Expozice protistrany $E(t)$ v čase $t$ je dána hodnotami derivátových odchodů s danou protistranou v čase $t$.

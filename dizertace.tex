@@ -430,7 +430,7 @@ Ve zmiňované literatuře je možno nalézt další podrobnosti.
 
 \section{Stochastické procesy a jejich vlastnosti}
 Stochastické procesy slouží k popisu dynamiky náhodných jevů a příklady takových jevů nacházíme v mnoha vědeckých oborech.
-Mezi nejznámější patří Brownův pohyb pevných částic, difúze a bílý šum.
+Mezi nejznámější patří Brownův pohyb pevných částic, difuze a bílý šum.
 
 Základy teorie stochastických procesů byly položeny na konci devatenáctého století.
 První zmínky popisu Brownova pohybu najdeme v článku dánského matematika Thorvalda Nicolae Thielea z roku 1880 zabývajícím se metodou nejmenších čtverců (podrobněji viz \cite{lauritzen2002thiele}). %(viz \cite{gulisashvili2012analytically}).
@@ -439,7 +439,7 @@ Díky ní je Bachelier uznávaný jako zakladatel kvantitativních metod ve fina
 
 Nezávisle na této práci popisují matematicky Brownův pohyb také fyzici Albert Einstein a Marian Smoluchowski. 
 V roce 1905 Einstein aplikuje Brownův pohyb ve svém článku zabývajícím se molekulárně kinetickou teorií tepla \cite{einstein}.
-O rok později Smoluchowski prezentuje článek \cite{Smoluchowski}, který se stane důležitým základem teorie náhodných procesů zvláště rovnice difúze.
+O rok později Smoluchowski prezentuje článek \cite{Smoluchowski}, který se stane důležitým základem teorie náhodných procesů zvláště rovnice difuze.
 Einsteinovu teorii v roce 1908 experimentálně ověřil Jean Baptiste Perrin \cite{perrin2013brownian} a za tento úspěch byl v roce 1926 oceněn Nobelovou cenou za fyziku. 
 
 V neposlední řadě chceme zmínit význam amerického matematika Norberta Wienera, který dokázal existenci stochastického procesu používaného k popisu Brownova pohybu \cite{wiener1923differential}. 
@@ -1044,14 +1044,17 @@ Na základě analýzy chování modelu a simulací můžeme získat informace pr
 
 V této práci se zaměříme na ekonomické modely popisující, jak se na finančním trhu díky nabídce a poptávce formují ceny finančních aktiv.
 %ekonomické modely nabídky a poptávky
-Finanční aktiva poskytují investorovi nárok na budoucí příjem.
+Finanční aktiva poskytují investorovi potenciální nárok na budoucí příjem.
 Mezi finanční aktiva patří především podkladová aktiva, finanční deriváty a peníze.
 
 Modelovat budeme vývoj ceny jak podkladových aktiv, tak finančních derivátů.
-Podkladové aktivum je nástroj, jehož v čase se měnící cena slouží jako základ pro pohyb ceny finančních derivátů.
-Podkladovými aktivy mohou být akcie, úrokové míry, komodity, měny, akciové indexy a mnoho dalších finančních instrumentů.
+Finanční derivát je finanční produkt, jehož hodnota je odvozena od ceny jiného finančního aktiva, tzv. podkladového aktiva.
+%Derivát má termínový charakter, to znamená, že doba od sjednání obchodu do jeho vypořádání v budoucnosti má ekonomický význam.
+%Podkladové aktivum je nástroj, jehož v čase se měnící cena slouží jako základ pro pohyb ceny finančních derivátů.
+Podkladovými aktivy mohou být akcie, úrokové míry, komodity, měny, akciové indexy a~mnoho dalších finančních instrumentů.
+Podstatou derivátu je termínový obchod, tedy takový, kde doba od sjednání obchodu do jeho vypořádání v budoucnosti má ekonomický význam.
 %Obecně jakékoliv aktivum, jehož cena se vyvíjí v čase.
-Finanční derivát je finanční produkt, jehož podstatou je forma termínového obchodu a jehož hodnota je odvozena od ceny jiného finančního aktiva.
+%Finanční derivát je finanční produkt, jehož podstatou je forma termínového obchodu a jehož hodnota je odvozena od ceny jiného finančního aktiva, tzv. podkladového aktiva.
 
 Chování cen aktiv vykazuje stochastický charakter a cenové změny jsou náhodné a nepředvídatelné.
 %, k jehož modelování využíváme stochastické diferenciální rovnice.
@@ -1115,9 +1118,9 @@ Budeme tedy předpokládat, že proces popisující vývoj ceny aktiva v čase s
 \mathrm{d}P(t)=P(t)\,\mu(t)\,\mathrm{d}t+P(t)\,\sigma(t)\,\mathrm{d}W(t),
 \end{equation}
 kde $P(t)$ je cena aktiva v čase $t$, $\mu(t)$ a $\sigma(t)$ jsou stochastické procesy a $W(t)$  je jednorozměrný Wienerův proces.
-Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum, což není zcela realistické.
+Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum.%, což není zcela realistické.
 
-Chceme-li popisovat vývoj ceny více rizikových aktiv na trhu a jejich vzájemné vztahy využijeme následující model, který předpokládá existenci $n$~rizikových aktiv a je dán jako
+Chceme-li popisovat vývoj ceny více rizikových aktiv na trhu a jejich vzájemné vztahy využijeme následující model, který předpokládá existenci $n$~rizikových aktiv a je popsán rovnicí
 \begin{equation}\label{multi_risk_asset_model}
 \mathrm{d}P_j(t)=P_j(t)\,\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),
 \end{equation}
@@ -1125,16 +1128,16 @@ kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\mu_j(t)$ a $\xi_{jk}(t)$ jsou sto
 Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
 
 Některé modely zabývající se chováním cen aktiv na trhu předpokládají existenci \textit{bezrizikového aktiva}.
-Jedná se o aktivum, které má jistou očekávanou výnosnost a tudíž nulové riziko.
+Jedná se o aktivum, které má jistou (nenáhodnou) výnosnost a tudíž nulové riziko.
 Výnosností a rizikem aktiva se budeme podrobněji zabývat v Kapitole \ref{charakteristiky_portfolia}. 
 S modely zahrnujícími bezrizikové aktivum nás seznámí Kapitola \ref{KTP}.
-Očekávaná výnosnost bezrizikového aktiva se nazývá \textit{bezriziková úroková míra}.
+Výnosnost bezrizikového aktiva se nazývá \textit{bezriziková úroková míra}.
 Modelování úrokových měr se věnuje Kapitola \ref{model_urok_miry_kap}.
 V praxi neexistuje skutečně bezriziková investice, ale z krátkodobého a střednědobého hlediska lze návratnost některých investic považovat prakticky za jistou.
 Obvykle se za takovou teoretickou investici považují státní pokladniční poukázky.
 Jedná se o krátkodobé dluhopisy, které vydává centrální banka a slouží ke krytí státního deficitu.
 
-Chování ceny bezrizikového aktiva je popsáno modelem
+Chování ceny bezrizikového aktiva je popsáno rovnicí
 \begin{equation}\label{risk-free_asset_model}
 \mathrm{d}B(t)=B(t)\,r_f(t)\,\mathrm{d}t,
 \end{equation}
@@ -1149,7 +1152,7 @@ Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\e
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/GWP_RFA_v5.pdf}
-  \caption{Model ceny bezrizikového aktiva s úrokovou mírou $r_f=1$ a~model ceny rizikového aktiva s parametry $\mu=1$ a  $\sigma=0,1$ a počáteční hodnotou $P(0)=1$.}  \label{asset_model_graf}
+  \caption{Hodnota ceny bezrizikového aktiva s úrokovou mírou $r_f=1$ a~trajektorie ceny rizikového aktiva s parametry $\mu=1$ a  $\sigma=0,1$ a počáteční hodnotou $P(0)=1$.}  \label{asset_model_graf}
 \end{figure}
 
 %\subsection{Black–Scholesův model}
@@ -1157,11 +1160,12 @@ Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\e
 Přehledný úvod do problematiky oceňování finančních derivátů poskytuje kniha \textit{Financial Calculus} od autorů Martina Baxtera a Andrewa Rennieho~\cite{baxter1996financial}.
 Odvození Black–Scholesova modelu je srozumitelně zpracováno také v učebnici Alison Etheridge \cite{etheridge2002course}.
 
-Při konstrukci modelů cen finančních derivátů budeme uvažovat finanční trh s jedním rizikovým aktivem a s jedním bezrizikovým aktivem (obvykle se v tomto případě předpokládá, že se jedná o hotovost).
+Při konstrukci modelů cen finančních derivátů v této kapitole budeme uvažovat finanční trh s jedním rizikovým aktivem a s jedním bezrizikovým aktivem (obvykle se v tomto případě předpokládá, že se jedná o hotovost).
 Definujme portfolio složené z těchto aktiv.
 \begin{definice}
 \textit{Portfolio} $\big(\phi(t),\psi(t)\big)$ je dvojice stochastických procesů $\phi(t)$ a $\psi(t)$, která udává podíly rizikového a bezrizikového aktiva držené v čase $t$.
-Stochastický proces $\phi(t)$ je neanticipativní (podíl rizikového aktiva v portfoliu v čase $t$ může být ovlivněn pouze informacemi známými do času $t$).
+%Stochastický proces $\phi(t)$ je neanticipativní (podíl rizikového aktiva v portfoliu v čase $t$ může být ovlivněn pouze informacemi známými do času $t$).
+Stochastické procesy  $\phi(t)$ a $\psi(t)$ jsou neanticipativní (podíly aktiv v portfoliu v čase $t$ mohou být ovlivněny pouze informacemi známými do času $t$).
 
 Předpokládejme, že cena rizikového aktiva se řídí stochastickým procesem $P(t)$ a cenu bezrizikového aktiva v čase $t$ označme $B(t)$.
 Pak \textit{hodnota portfolia} v čase $t$ je dána jako
@@ -1175,7 +1179,8 @@ Prodej na krátko je spekulativní metoda obchodování na finančním trhu, kdy
 Investor si finanční aktivum vypůjčí od věřitele na předem stanovenou dobu a ihned ho prodá třetí straně.
 Nejpozději za stanovenou dobu investor nakoupí finanční aktivum na trhu a vrátí jej věřiteli.
 Rozdíl mezi prodejní a nákupní cennou je výsledný zisk nebo ztráta.
-Kvůli vysoké rizikovosti je prodej na krátko často regulován a v některých zemích dokonce zcela zakázán, neboť investor může dosáhnout pouze omezeného zisku, ale teoreticky neomezené ztráty.
+Kvůli vysoké rizikovosti je prodej na krátko často regulován a v některých zemích dokonce zcela zakázán.
+Při prodeji na krátko může investor dosáhnout pouze omezeného zisku, ale teoreticky neomezené ztráty.
 
 %Samofinancující strategie spočívá ve vytvoření takového portfolia, které má stejné základní charakteristiky jako finanční derivát. 
 %Toto portfolio nazýváme \textit{replikační portfolio}.
@@ -1251,7 +1256,8 @@ Současným nákupem téhož zboží na jednom trhu a prodejem na jiném trhu za
 Pokud na trhu není arbitrážní příležitost, pak hodnota pohledávky musí být stejná jako hodnota replikačního portfolia.
 \begin{definice}[Replikační portfolio]
 Předpokládejme, že na trhu je k dispozici bezrizikové aktivum s cenou $B(t)$ a rizikové aktivum, jehož cena se řídí procesem $P(t)$ s volatilitou $\sigma(t)$.
-Uvažujme existenci finančního derivátu, jehož cenu popisuje stochastický proces $X(t)$, který závisí na údálostech do času $T$.
+%Uvažujme existenci finančního derivátu, jehož cenu popisuje stochastický proces $X(t)$, který závisí na údálostech do času $T$.
+Uvažujme existenci finančního derivátu, jehož hodnotu v čase vypořádání $T$ označíme $X(T)$.
 \textit{Replikační portfolio} $\big(\phi(t),\psi(t)\big)$ pro tento finanční derivát je taková samofinancující strategie, že platí
 \begin{equation}\label{replikacni_portfolio}
 V(T)=\phi(T)P(T)+\psi(T)B(T)=X(T)
@@ -1275,8 +1281,8 @@ Pomocí konceptu představeného v této kapitole je možno modelovat cenu finan
 K derivátu nalezneme jeho replikační portfolio, využijeme vztah \eqref{replikacni_portfolio_vztah}, cenu aktiv v portfoliu modelujeme dle modelů představených v Kapitole \ref{stoch_model} a k ocenění derivátu používáme It\^oovo lemma. 
 
 Tento přístup poprvé představili v roce 1973 Fischer Black a Myron Scholes \cite{black1973pricing} v kontextu oceňování opcí. 
-Oceňovací formule později vešla ve známost jako Black-Scholesův model.
-Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 1997 oceněno Nobelovou cenou za ekonomii.
+Jejich oceňovací metoda vešla později ve známost jako Black-Scholesův model.
+Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 1997 oceněna Nobelovou cenou za ekonomii.
  
 %Předpokládejme existenci konstantní bezrizikové úrokové míry $r$, volatility akcie $\sigma$ a driftu akcie $\mu$. 
 %Dále předpokládáme nulové transakční náklady a možnost obchodovat v libovolném čase libovolné množství v dlouhé i v krátké pozici za stanovenou cenu.
@@ -1345,9 +1351,9 @@ Jednofaktorové modely krátkodobých úrokových měr předpokládají, že oka
 \mathrm{d}r(t)=\mu(t,r)\,\mathrm{d}t+\sigma(t,r)\,\mathrm{d}W(t),
 \end{equation}
 kde procesy $\mu(t,r)$ a $\sigma(t,r)$ jsou neanticipativní a $W(t)$ je Wienerův proces.
-Deterministická část procesu $\mu(t, r)$ určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů.
+Koeficient $\mu(t, r)$ určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů.
 Volatilita $\sigma(t, r)$ určuje vlastnosti náhodných výchylek.
-Proces $\sigma(t, r)$ se v literatuře nazývá také difuzní proces.
+Proces $\sigma(t, r)$ se v literatuře nazývá také difuzní koeficient.
 
 Jeden z prvních modelů úrokové míry použil v roce 1973 Robert C. Merton v článku \cite{merton1973theory} k odvození modelu cen bezkupónových dluhopisů.
 Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův proces s~driftem (definovaný v Definici \ref{Wieneruv_proces_s_driftem}) 
@@ -1358,7 +1364,7 @@ Mertonův model předpokládá, že změny úrokové míry mají normální rozd
 Nevýhodou Mertonova modelu je absence mean reversion vlastnosti.
 
 \subsection{Vašíčkův model}\label{Vasickuv_model_kap}
-Model, který představíme v této kapitole, uveřejnil český matematik Oldřich Vašíček v roce 1977 v článku \cite{vasicek1977equilibrium}, kde ho využil k odvození modelu cen bezkupónových dluhopisů.
+Model, který představíme v této kapitole, uveřejnil původem český matematik Oldřich Vašíček v roce 1977 v článku \cite{vasicek1977equilibrium}, kde ho využil k odvození modelu cen bezkupónových dluhopisů.
 Tento model se stal velice oblíbeným a často citovaným.
 Mnoho autorů dalších modelů krátkodobých úrokových měr vycházelo z Vašíčkova modelu.
 Vašíčkův model předpokládá, že okamžitá úroková míra $r(t)$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
@@ -1378,14 +1384,14 @@ Daný proces je Ornstein-Uhlenbeckův proces s konstantními koeficienty definov
 
 Mezi výhody Vašíčkova modelu patří existence explicitního vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
 Na druhou stranu za nevýhodu bývá považováno, že Vašíčkův model připouští i záporné úrokové míry. 
-K tomuto jevu dochází v případě, kdy se úroková míra přiblíží nule, ale volatilita je stále táž konstanta.
+K tomuto jevu dochází v případě, kdy se úroková míra přiblíží nule, přičemž volatilita je stále táž konstanta a stochastický člen může způsobit pokles do záporných hodnot.
 
 \subsection{CIR model}\label{CIR_model_kap}
 Možnost záporných úrokových měr odstraňuje model, který na bázi Vašíčkova modelu vyvinuly John C. Cox, Jonathan E. Ingersoll a~Stephen A. Ross a~publikovali v roce 1985 v článku \cite{cox1985theory}.
 Autoři modifikovali difuzní proces ve Vašíčkově modelu tak, že je úměrný úrokové míře.
 Cox-Ingersoll-Rossův model (CIR model) je ve tvaru 
 \begin{equation}\label{CIR_model}
-\mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t, r)}\,\mathrm{d}W(t).
+\mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t)}\,\mathrm{d}W(t).
 \end{equation}
 Povšimněme si, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry bude dána pouze driftem, který bude v tomto případě kladný.
 %Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.

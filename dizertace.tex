@@ -541,7 +541,7 @@ Reálný stochastický proces $\{W(t):t\ge0\}$ na pravděpodobnostním prostoru 
 \begin{enumerate}
 \item$W(0)=0$, 
 \item(spojitost trajektorií Wienerova procesu) s pravděpodobností jedna je funkce $t\to W(t)$ spojitá v $t$,
-%\item(nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, t.j.  pro každé $t\ge s\ge0$ má $W(t+s)-W(s)$ stejné rozdělení jako $W(t)-W(0)$,
+%\item(nezávislost a stacionarita přírůstků) přírůstky procesu jsou nezávislé a stacionární, tj.  pro každé $t\ge s\ge0$ má $W(t+s)-W(s)$ stejné rozdělení jako $W(t)-W(0)$,
 \item(nezávislost přírůstků) přírůstky procesu jsou nezávislé,
 \item(normalita přírůstků) pro každé $t\ge s\ge0$ má přírůstek $W(t)-W(s)$ normální rozdělení $\mathsf{N}(0, t-s)$.
 \end{enumerate}
@@ -1292,39 +1292,137 @@ Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Damian
 Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a~seznámíme se s~pojmy diskontování a~časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
 
 Časovou strukturu úrokové míry budeme popisovat pomocí cen dluhopisů.
-Dluhopis je cenný papír, který vyjadřuje závazek emitenta vůči věřiteli, a je s ním spojeno právo požadovat splacení dlužné částky a~vyplacení výnosů v~předem určenou dobu.
-V této práci budeme předpokládat, že dluhopisy jsou bezriziková aktiva a tudíž pro popis jejich cen budeme používat stejný model jako pro bezrizikové aktivum v Kapitole \ref{stoch_model_aktiv}.
-Uvažujme dluhopis emitovaný v čase $t_0$ a splatný v čase $T$.
-Řešení diferenciální rovnice \eqref{risk-free_asset_model} dává cenu dluhopisu jako
-\begin{equation}\label{risk-free_asset_reseni}
-B(T)=B(t_0)\,\mathrm{e}^{\int_{t_0}^T r(t)\,\mathrm{d}t},
-\end{equation}
-kde $t_0\leq t\leq T$,
-$r(t)$ je \textit{okamžitá úroková míra} v čase $t$ a $B(T)$ je cena dluhopisu v~době splatnosti~$T$.
-Dluhopis můžeme tedy chápat jako finanční derivát úrokové míry.
+Dluhopis je cenný papír, který vyjadřuje závazek emitenta vůči věřiteli, a~je s ním spojeno právo požadovat splacení dlužné částky (tzv. nominální hodnoty) a~vyplacení výnosů v~předem určenou dobu.
+%V této práci budeme předpokládat, že dluhopisy jsou bezriziková aktiva a tudíž pro popis jejich cen budeme používat stejný model jako pro bezrizikové aktivum v Kapitole \ref{stoch_model_aktiv}.
+%Uvažujme dluhopis emitovaný v čase $t_0$ a splatný v čase $T$.
+%Řešení diferenciální rovnice \eqref{risk-free_asset_model} dává cenu dluhopisu jako
+%\begin{equation}\label{risk-free_asset_reseni}
+%B(T)=B(t_0)\,\mathrm{e}^{\int_{t_0}^T r(t)\,\mathrm{d}t},
+%\end{equation}
+%kde $t_0\leq t\leq T$,
+%$r(t)$ je \textit{okamžitá úroková míra} v čase $t$ a $B(T)$ je cena dluhopisu v~době splatnosti~$T$.
+%Dluhopis můžeme tedy chápat jako finanční derivát úrokové míry.
+%Cena dluhopisu popisuje časovou strukturu peněz.
+
+\begin{definice}[Úroková míra]
+Uvažujme dluhopis emitovaný v čase $t_0$ a~splat\-ný v čase $T$.
+Jeho cenu v čase $t$, kde $t_0\leq t\leq T$, označíme $B(t,T)$.
+Předpokládejme, že dluhopis má nominální hodnotou jedna, tzn. $B(T,T)=1$.
+Míru výnosnosti tohoto dluhopisu do času $T$ označíme $R(t,T)$.
+Platí tedy
+\begin{equation}
+B(t,T)=\mathrm{e}^{-R(t,T)\cdot(T-t)}.
+\end{equation} 
+Funkce $R(t,T)$ se nazývá \textit{úroková míra}.
+\end{definice}
+Je tedy zřejmé, že z cen bezrizikových dluhopisů $B(t,T)$ je možné odvodit ceny úrokových měr $R(t,T)$ a naopak.
+Platí
+\begin{equation}
+R(t,T)=-\frac{1}{T-t}\log B(t,T),
+\end{equation} 
+pro $t_0\leq t\leq T$.
+
+Vzhledem k uvedené terminologii můžeme na dluhopis nahlížet jako na finanční derivát, jehož podkladovým aktivem je úroková míra.
+%Jak ukážeme později, dluhopis také můžeme chápat jako finanční derivát úrokové míry.
 
 Časová struktura úrokové míry vyjadřuje vztah mezi úrokovou mírou a~termínem splatnosti příslušného dluhopisu.
 Její grafickou reprezentací je \textit{výnosová křivka}, která ukazuje závislost výnosu do doby splatnosti (svislá osa) na době do splatnosti dluhopisu (vodorovná osa). 
+\begin{definice}[Výnosová křivka]
+Funkce $R(t,\cdot)$ je nazývána \textit{výnosová křivka}.
+\end{definice}
 Výnosová křivka je konstruována pro dané dluhopisy, které se liší pouze dobou do splatnosti, ale ostatní vlastnosti (jako třeba emitenta) mají stejné.
 
 %Časovou strukturu úrokové míry můžeme popsat pomocí ceny bezrizikového aktiva, kterou jsme modelovali v kapitole \ref{stoch_model}.  
 %Dluhopis je finanční derivát úrokové míry.
 %Finanční derivát úrokové míry se nazývá \textit{dluhopis}.
 
-Okamžitá úroková míra se používá při spojitém diskontování, které budeme využívat v další části práce při výpočtu kapitálového požadavku ke kreditnímu riziku protistrany. 
+%Pracujeme s tzv. okamžitou úrokovou mírou 
+%Příliš krátké sazby však vykazují určité anomálie (poměrně dlouhá období relativně stabilních sazeb střídají silné skokové pohyby jako důsledek externích šoků v podobě zásahů centrální banky)
+
+
+Úroková míra se používá při spojitém diskontování, které budeme využívat v další části práce při výpočtu kapitálového požadavku ke kreditnímu riziku protistrany. 
 Diskontování je proces, při kterém je přepočítána (diskontována) budoucí cena aktiva na současnou hodnotu s použitím diskontní míry nazývané také diskontní faktor.
 Jak už jsme zmínili v Kapitole \ref{stoch_model_aktiv}, kvůli zjednodušení výpočtů je běžné aproximovat vývoj cen aktiv spojitým procesem a v takovém případě má smysl i spojité diskontování, i~když reálné chování finančních instrumentů je diskrétní.
 \begin{definice}
 Spojitý \textit{diskontní faktor} je dán jako
 \begin{equation}\label{diskontni_faktor}
-\frac{B(t_0)}{B(T)}=\mathrm{e}^{-\int_{t_0}^T r(t)\,\mathrm{d}t},
+%D(T)=\frac{B(t_0)}{B(T)}=\mathrm{e}^{-\int_{t_0}^T r(t)\,\mathrm{d}t},
+D(T)=\frac{B(t_0,T)}{B(T,T)}=\mathrm{e}^{-R(t_0,T)\cdot(T-t_0)},
 \end{equation}
-kde $r(t)$ je okamžitá úroková míra.
+kde $R(t,T)$ je úroková míra.
 \end{definice}
-Diskontní faktor můžeme také chápat jako cenu bezkupónového dluhopisu s nominální hodnotou jedna.
+Diskontní faktor můžeme také chápat jako cenu dluhopisu s nominální hodnotou jedna.
 
-Nyní už můžeme přistoupit k modelování úrokových měr.
-Zaměříme se na modely okamžité úrokové míry, jelikož je budeme využívat v další části práce k ocenění derivátů úrokových měr.
+Uvažujme nyní úrokovou míru na velmi krátký (infinitezimální) časový okamžik.
+Jedná se o takovou úrokovou míru, kde doba splatnosti se limitně blíží k času emitování dluhopisu.
+\begin{definice}[Okamžitá úroková míra]
+\textit{Okamžitou úrokovou míru} $r(t)$ definujeme jako
+\begin{equation}\label{okamzik_urok_mira_vztah}
+r(t)=\lim_{T\to t}R(t,T)=\lim_{T\to t}-\frac{\log B(t,T)-\log B(t,t)}{T-t}=-\frac{\partial\log B(t,t)}{\partial T}.
+\end{equation} 
+\end{definice}
+Poslední rovnost ve vztahu \eqref{okamzik_urok_mira_vztah} plyne z definice parciální derivace funkce dvou proměnných.
+Okamžitá úroková míra představuje bod výnosové křivky, který je umístěn nejvíce vlevo.
+Při oceňování finančních derivátů úrokových měr v Kapitole~\ref{metodyCVA} budeme využívat modely okamžité úrokové míry.
+%K určení okamžité úrokové míry je vhodné používat okamžitou forwardovou úrokovou míru
+
+V další části se budeme zabývat forwardovými úrokovými mírami.
+Ukážeme, že výnosovou křivku můžeme přepočítat na křivku forwardových úrokových měr a naopak. 
+Z matematického hlediska je snadnější modelovat křivku forwardových úrokových měr, což využijeme při konstrukci Hull-Whitova modelu v Kapitole \ref{H-W_model_kap}.
+Zároveň z okamžité forwardové úrokové míry můžeme odvodit okamžitou úrokovou míru $r(t)$.
+
+Principem forwardového kontraktu je uzavření dohody mezi dvěma stranami o nákupu (nebo prodeji) finančního aktiva za cenu stanovenou v současnosti, přičemž obchod se uskuteční v určený čas v budoucnosti. 
+Forwardová úroková míra je míra mezi dvěma časovými okamžiky v budoucnosti za podmínek dohodnutých v současnosti (v čase $t_0$).
+Při odvození její hodnoty využíváme pravidla o neexistenci arbitráže na finančním trhu. 
+\begin{definice}[Forwardová úroková míra]\label{forward_def}
+\textit{Forwardovou úrokovou míru} \linebreak 
+$F(t,t_1,T)$ v čase $t$ na dobu od $t_1$ do $T$, kde platí $t_0\leq t\leq t_1<T$ definujeme jako řešení rovnice
+\begin{equation}\label{forward_rov}
+\mathrm{e}^{R(t,T)\cdot(T-t)}=\mathrm{e}^{R(t,t_1)\cdot(t_1-t)}\cdot\mathrm{e}^{F(t,t_1,T)\cdot(T-t_1)}.
+\end{equation} 
+\end{definice}
+%Vyřešme rovnici z Definice \ref{forward_def} 
+Řešení rovnice \eqref{forward_rov} nám dá vztah pro forwardovou úrokovou míru jako
+\begin{alignat*}{2}
+\frac{1}{ B(t,T)}&=&\frac{1}{B(t,t_1)}\cdot\mathrm{e}^{F(t,t_1,T)\cdot(T-t_1)}\\
+&\Downarrow&\\
+F(t,t_1,T)&=&\frac{\log B(t,t_1)-\log B(t,T)}{T-t_1}.
+\end{alignat*}
+
+Obdobně jako při odvození okamžité úrokové míry nyní definujme okamžitou forwardovou úrokovou míru. 
+\begin{definice}[Okamžitá forwardová úroková míra]
+\textit{Okamžitou forwardovou úrokovou míru} $f(t,t_1)$ pro $0\leq t\leq t_1$ definujeme jako
+\begin{equation}\label{okamzik_forward_rov}
+f(t,t_1)=\lim_{T\to t_1}F(t,t_1,T)=-\frac{\partial\log B(t,t_1)}{\partial T}.
+\end{equation} 
+\end{definice}
+Dokažme, že znalost ceny dluhopisu $B(t,T)$ je ekvivalentní znalosti okamžité úrokové míry $f(t,T)$.
+Platí
+\begin{align*}
+%\begin{equation*}
+\log B(t,T)=\log B(t,T)-\log B(t,t)
+&=\int_{t}^T \frac{\partial\log B(t,s)}{\partial s}\,\mathrm{d}s=-\int_{t}^Tf(t,s)\,\mathrm{d}s\\
+&\Downarrow\\
+B(t,T)&=\mathrm{e}^{-\int_{t}^T f(t,s)\,\mathrm{d}s}.
+%\end{equation*} 
+\end{align*}
+Navíc platí $r(t)=f(t,t)$, což využijeme při modelování okamžité úrokové míry pomocí Hull-Whitova modelu v Kapitole \ref{H-W_model_kap}.
+Znamená to také, že výnosová křivka $R(t,\cdot)$ a křivka forwardových úrokových měr $f(t,\cdot)$ mají stejný počáteční bod $r(t)$.
+Nicméně dál se křivky mohou lišit a snadno se dá odvodit, že mezi nimi existuje vztah
+\begin{equation}
+f(t,T)=R(t,T)+(T-t)\frac{\partial R(t,T)}{\partial T}.
+\end{equation} 
+
+\subsection{Modely okamžité úrokové míry}
+Dosud jsme předpokládali, že úroková míra je buď konstantní nebo je známou deterministickou funkcí času.
+Nicméně v realitě na finančním trhu nemáme jistotu jak se bude úroková míra vyvíjet.
+Je tedy přirozené uvažovat o úrokové míře jako o stochastickém procesu a konstruovat její stochastické modely.
+Přiblížíme se tak více k realitě.
+V další části této kapitoly budeme tedy předpokládat stochastické chování úrokové míry.
+%Dluhopis pak můžeme chápat jako finanční derivát úrokové míry.
+
+%Nyní už můžeme přistoupit k modelování úrokových měr.
+Zaměříme se na modely okamžité úrokové míry, jelikož je budeme využívat v další části práce při ocenění derivátů úrokových měr.
 Tyto modely jsou v literatuře často nazývané \textit{modely krátkodobých úrokových měr}.
 U okamžité úrokové míry budeme předpokládat stochastické chování stejně jako u~jiných finančních aktiv,
 ale na rozdíl od akcií nebo komodit vykazuje chování úrokových měr následující příznačné vlastnosti. %zvláštnosti.
@@ -1387,8 +1485,8 @@ Na druhou stranu za nevýhodu bývá považováno, že Vašíčkův model připo
 K tomuto jevu dochází v případě, kdy se úroková míra přiblíží nule, přičemž volatilita je stále táž konstanta a stochastický člen může způsobit pokles do záporných hodnot.
 
 \subsection{CIR model}\label{CIR_model_kap}
-Možnost záporných úrokových měr odstraňuje model, který na bázi Vašíčkova modelu vyvinuly John C. Cox, Jonathan E. Ingersoll a~Stephen A. Ross a~publikovali v roce 1985 v článku \cite{cox1985theory}.
-Autoři modifikovali difuzní proces ve Vašíčkově modelu tak, že je úměrný úrokové míře.
+Možnost záporných úrokových měr odstraňuje model, který na bázi Vašíčkova modelu vyvinuli John C. Cox, Jonathan E. Ingersoll a~Stephen A. Ross a~publikovali v roce 1985 v článku \cite{cox1985theory}.
+Autoři modifikovali difuzní koeficient ve Vašíčkově modelu tak, že je úměrný úrokové míře.
 Cox-Ingersoll-Rossův model (CIR model) je ve tvaru 
 \begin{equation}\label{CIR_model}
 \mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t)}\,\mathrm{d}W(t).
@@ -1419,7 +1517,7 @@ Hull a White později zveřejnili i zobecnění svého modelu v textu \cite{hull
 %%Volatility is likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. 
 %The Hull-White model extends the Vasicek and Cox-Ingersoll-Ross (CIR) models.
 
-Autoři modelu rozšiřují Vašíčkův model zavedením parametru, který se mění v čase a reflektuje aktuálně pozorované hodnoty výnosové křivky.
+Autoři modelu rozšiřují Vašíčkův model úpravou parametru limitní úrokové míry $\theta$ tak, že se parametr mění v čase a reflektuje pozorované aktuální hodnoty výnosové křivky.
 Poznamenejme, že existuje i verze Hull-Whitova modelu odvozená z CIR modelu, ale tou se v této práci nebudeme zabývat.
 Hull-Whitův model okamžité úrokové míry je dán stochastickou diferenciální rovnicí
 \begin{equation}\label{H-W_model}
@@ -1440,20 +1538,22 @@ kde $\alpha$ a $\sigma$ jsou konstanty a $\theta(t)$ je deterministická funkce 
 kde $f(t,T)$ je okamžitá forwardová úroková míra sjednaná v čase $t$ pro čas~$T$.
 
 %Forwardový kontrakt a jeho princip. Spotová sazba je pozorovatelná na trhu a forward se z ní odvozuje?
-Principem forwardového kontraktu je uzavření dohody mezi dvěma stranami o nákupu (nebo prodeji) finančního aktiva za cenu stanovenou v současnosti, přičemž obchod se uskuteční v určený čas v budoucnosti. 
+%Principem forwardového kontraktu je uzavření dohody mezi dvěma stranami o nákupu (nebo prodeji) finančního aktiva za cenu stanovenou v současnosti, přičemž obchod se uskuteční v určený čas v budoucnosti. 
 %Znalost cen bezrizikového bezkuponového dluhopisu P(t;T) je tudíž ekvivalentní znalosti okamžité forwardové úrokové míry f (t;T).
-Okamžitou forwardovou úrokovou míru budeme určovat z ceny bezkupónového dluhopisu, kterou můžeme pozorovat na trhu.
+Okamžitou forwardovou úrokovou míru budeme určovat z cen bezkupónových dluhopisů s nominální hodnotou jedna a různými maturitami. 
+Tyto ceny můžeme pozorovat na trhu.
 Využijeme vztah
-\begin{equation}
-B(t,T)=\mathrm{e}^{-\int_{t}^T f(t,s)\,\mathrm{d}s},
-\end{equation}
-kde $B(t,T)$ je cena bezkupónového dluhopisu v čase $t$ s nominální hodnotou jedna vyplácenou v čase $T$.
+%\begin{equation}
+%B(t,T)=\mathrm{e}^{-\int_{t}^T f(t,s)\,\mathrm{d}s},
+%\end{equation}
+%kde $B(t,T)$ je cena bezkupónového dluhopisu v čase $t$ s nominální hodnotou jedna vyplácenou v čase $T$.
+\eqref{okamzik_forward_rov}.
 
 %\begin{description}
 %\item[$F(0,t)$] okamžitá forwardová úroková míra v čase $t$.%Instantaneous forward rate at time $t$.
 %\item[$F'_{t}(0,t)$] Partial derivative of $F$ with respect to time $t$.
 %\end{description}
-Stejně jako Vašíčkův model má i tento model vlastnost mean reversion, ale limitní úrokovou míru tentokrát reprezentuje funkce $\theta(t)$ určená počáteční výnosovou křivkou.
+Stejně jako Vašíčkův model má i tento model vlastnost mean reversion, ale limitní úrokovou míru tentokrát reprezentuje funkce $\theta(t)$ určená počáteční křivkou forwardových úrokových měr.%výnosovou křivkou.
 
 Hull a White předpokládali, že úroková míra má normální rozdělení, čímž připustili možnost záporných hodnot.
 Jedná se o stejný nedostatek jako jsme zmínili u Vašíčkova modelu.
@@ -2494,10 +2594,11 @@ The discount factor, $D(t)$, is the factor by which a future cash flow must be m
 Consider the discount factor at time $t$% (for maturity $T$)
 , defined as 
 %nemělo by T být spíš doba defaultu?
-\begin{equation}
-D(t)=\frac{B_0}{B_t}=e^{-rt},
+\begin{equation}\label{diskont_vztah}
+D(t)=\frac{B_0}{B_t}=e^{-r_ft},
 \end{equation}
-where $r$ is risk-free rate of return and $B_t$ is the value of risk free asset at time $t$. 
+where $r_f$ is risk-free rate of return and $B_t$ is the value of risk free asset at time $t$. 
+Diskontní faktor \eqref{diskont_vztah} je odvozen ze vztahu \eqref{risk-free_asset_model} pro cenu bezrizikového aktiva. 
 %spojité diskontování se v praxi napoužívá, ale usnaňuje výpočty
 Hence, the discounted expected exposure at time $t$ conditional on the counterparty default at time $t$ is given by 
 \begin{equation}
@@ -2538,6 +2639,7 @@ period & Period of paying\\
 
 
 \subsection{Initial yield curve}
+%%Příliš krátké sazby však vykazují určité anomálie (poměrně dlouhá období relativně stabilních sazeb střídají silné skokové pohyby jako důsledek externích šoků v podobě zásahů centrální banky)
 In order to evaluate the swaps, is necessary to describe a discount curve. The initial discount curve can be obtain by a linear interpolation of the risk free interest rates of different maturities. The initial rates were found at the web page of PATRIA (\href{URL}{http://www.patria.cz/kurzy/CZK/5Y/irs/graf.html}) and we can see them in the Table \ref{rates}.% \textcolor{red}{dát sem odkaz na stránku, Leni?} 
 The interest rate shorter than one year were extracted from PRIBOR rates on October 30th, 2015. 
 The Picture \ref{YieldCurve} shows the initial yield curve at settlement date which was built from the initial rates in the Table \ref{rates}.

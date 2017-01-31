@@ -2356,41 +2356,44 @@ Důležitým faktem při výpočtu kapitálového požadavku pro CCR je  bilater
 
 Velmi dobrý úvod do problematiky řízení rizika protistrany poskytuje článek \cite{canabarro2003measuring} autorů Eduarda Canabarra, vedoucího oddělení řízení rizika v bankovní společnosti Goldman Sachs, a profesora Stanfordské univerzity Darrella Duffieho.
 
-\begin{comment}
-Rozdíl mezi kreditním rizikem protistrany
-(v derivátovém obchodu) a klasickým kreditním
-rizikem (v úvěru či jiném bankovním aktivu)
-je fakt, že v prvním případě není známá
-výše expozice v případě selhání.
-Jelikož hodnota derivátů v čase fluktuuje
-(může nabývat kladných í záporných hodnot),
-může nastat situace, kdy jste v jednom
-časovém okamžiku vystaveni ztrátě v případě
-selhání protistrany, zatímco v odlišném
-časovém okamžiku nemáte v případě selhání
-protistrany co ztratit. Naopak vaše protistrana
-může utrpět ztrátu v případě vašeho
-selhání.
-Oproti klasickému úvěrovému vztahu,
-kde je jasně definovaný dlužník a věřitel, se
-role v případě derivátových obchodů mohou
-v čase měnit. Výše expozice v momentě selhání
-protistrany není tedy jasná a je nutné
-ji nějakým způsobem stanovit či modelovat.
+%\begin{comment}
+%Rozdíl mezi kreditním rizikem protistrany
+%(v derivátovém obchodu) a klasickým kreditním
+%rizikem (v úvěru či jiném bankovním aktivu)
+%je fakt, že v prvním případě není známá
+%výše expozice v případě selhání.
+%Jelikož hodnota derivátů v čase fluktuuje
+%(může nabývat kladných í záporných hodnot),
+%může nastat situace, kdy jste v jednom
+%časovém okamžiku vystaveni ztrátě v případě
+%selhání protistrany, zatímco v odlišném
+%časovém okamžiku nemáte v případě selhání
+%protistrany co ztratit. Naopak vaše protistrana
+%může utrpět ztrátu v případě vašeho
+%selhání.
+%Oproti klasickému úvěrovému vztahu,
+%kde je jasně definovaný dlužník a věřitel, se
+%role v případě derivátových obchodů mohou
+%v čase měnit. Výše expozice v momentě selhání
+%protistrany není tedy jasná a je nutné
+%ji nějakým způsobem stanovit či modelovat.
 
-Při oceňování derivátů obvykle není bráno do úvahy riziko selhání protistrany
-Cena by měla být upravena o hodnotu rizika selhání protistrany
+%Při oceňování derivátů obvykle není bráno do úvahy riziko selhání protistrany
+%Cena by měla být upravena o hodnotu rizika selhání protistrany
 
-Účetní ocenění finančních derivátů dle IFRS.
-\end{comment}
+%Účetní ocenění finančních derivátů dle IFRS.
+%\end{comment}
 
 %\section{Úvěrová úprava v ocenění finančních derivátů}
 %\section{Koncept CVA}
 \section{Credit Valuation Adjustment}\label{CVA_kap}
-V rámci překladu termínu \textit{Credit Valuation Adjustment (CVA)}  se můžeme setkat s více možnostmi.
-Například Česká národní banka používá výraz \textit{úprava úvěrovým oceněním}.
+Český překlad termínu \textit{Credit Valuation Adjustment (CVA)} zatím není ustálený a můžeme se setkat s více možnostmi.
+Například Evropský orgán pro bankovnictví (EBA) ve své výroční zprávě za rok 2015 \cite{eba_2015} používá výraz \textit{úprava úvěrového ocenění}.
+Česká národní banka (ČNB) ve Zprávách o výkonu dohledu nad finančním trhem \cite{cnb_2015} překládá CVA jako \textit{kapitálový požadavek k riziku úvěrové úpravy ocenění}.
 V jiných textech nalezneme pojem  \textit{kreditní přirážka k tržnímu ocenění} nebo \textit{úvěrová úprava v ocenění finančních derivátů}.
 Z důvodu přehlednosti budeme v textu této práce používat především zkratku CVA nebo anglický termín.
+%ČNB - kapitálový požadavek k riziku ztráty z titulu úvěrových úprav v ocenění
+%ČNB Zprávy o výkonu dohledu nad finančním trhem - kapitálového požadavku k riziku úvěrové úpravy ocenění
 %!!!!úprava reálné hodnoty derivátů o kreditní riziko protistrany
 %úvěrové úpravy v ocenění - Úřední věstník Evropské unie
 
@@ -2440,10 +2443,23 @@ požadavek na riziko selhání protistrany
 + požadavek na volatilitu CVA
 \end{comment}
 
+Popsat, že CVA se týká oceňování derivátů!
+
+Při oceňování derivátů obvykle není bráno do úvahy riziko selhání protistrany
+
+Cena by měla být upravena o hodnotu rizika selhání protistrany
+
+Účetní ocenění finančních derivátů dle IFRS  \cite{ifrs13}.
+
 \subsection{Expozice protistrany}
 \textit{Expozici protistrany} v čase $t$ značíme $E(t)$ a definujeme jako celkovou výši nesplacených pohledávek danou protistranou.
 %Expozice kvantifikuje potenciální ekonomickou ztrátu v případě selhání protistrany.
 Hodnota expozice protistrany kvantifikuje do jaké míry je věřitel vystaven riziku ztráty v případě neplnění dlužníka.
+Na rozdíl od standardního úvěrovému vztahu, ve kterém je jasně dané, kdo je dlužník a kdo je věřitel, se v případě derivátových obchodů mohou jejich role měnit v čase.
+Hodnota derivátů v čase kolísá a může nabývat kladných i záporných hodnot.
+Proto může nastat situace, kdy v jednom časovém okamžiku je banka vystavena ztrátě v případě selhání protistrany, zatímco v jiném časovém okamžiku nemá banka co ztratit, pokud její protistrana selže.
+Navíc protistrana banky může utrpět ztrátu v případě selhání banky.
+Tento jev zcela zásadně ovlivňuje výši expozice v okamžiku selhání protistrany.
 
 Uvažujme portfolio $N$ derivátových obchodů banky s danou protistranou.
 Splatnost kontraktu s nejdelší splatností v tomto portfoliu označíme $T$. 

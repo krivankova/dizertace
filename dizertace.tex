@@ -251,6 +251,25 @@ In the first part of the work, some basic mathematical methods employed in this 
 %
 %
 %\\\\
+\textbf{Matematická analýza}\\\\
+%  \begin{table}[h]
+   \begin{tabular}{p{4cm} p{9.3cm}}
+   $f(t)$				& reálná funkce jedné proměnné\\
+   $f'(t)$				& první derivace reálné funkce $f$\\
+   $\mathrm{d}f$				& diferenciál funkce $f$\\
+   $f(t,x)$					&reálná funkce dvou proměnných\\ 
+   $f(t,\cdot)$				& reálná funkce jedné proměnné, tato proměnná je zastoupena tečkou\\
+   $\frac{\partial f(t,x)}{\partial t}$				& parciální derivace funkce $f$ podle proměnné $t$\\
+   $\left.\frac{\partial f(t,x)}{\partial t}\right|_{t=t_0}$				& parciální derivace funkce $f$ podle proměnné $t$, do~které za proměnnou $t$ dosadíme hodnotu $t_0$\\
+   $||\boldsymbol x||$				& Eukleidovská norma\\
+   $\langle a,b\rangle$				& uzavřený interval\\
+   $\left(a,b\right)$				          & otevřený interval\\
+   $\left\lfloor x\right\rfloor$			& dolní celá část reálného čísla $x$\\
+   $\log(x)$		  		& přirozený logaritmus reálného čísla $x$\\
+   $\mathrm{e}$			& Eulerovo číslo (základ přirozeného logaritmu)
+   \end{tabular}\\\\\\
+%
+%
 \textbf{Stochastická analýza}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
@@ -267,15 +286,6 @@ In the first part of the work, some basic mathematical methods employed in this 
    $\int_0^Tf(t,\omega)\,\mathrm{d}W$                              &   It\^oův integrál pro stochastický proces $f(t,\omega)$ \\
    $\boldsymbol{X}(\boldsymbol{t},\boldsymbol{\omega})$; $\boldsymbol{X}(\boldsymbol{t})$; $\boldsymbol{X}_{\boldsymbol{t}}$  		& vektorový stochastický proces\\
    $\boldsymbol{W}(\boldsymbol{t})$ 		& standardní $n$-rozměrný Wienerův proces\\
-   $f(t)$				& reálná funkce jedné proměnné\\
-   $f'(t)$				& první derivace reálné funkce $f$\\
-   $\mathrm{d}f$				& diferenciál funkce $f$\\
-   $f(t,x)$				& reálná funkce dvou proměnných\\
-   $\frac{\partial f(t,x)}{\partial t}$				& parciální derivace funkce $f$ podle proměnné $t$\\
-   $||\boldsymbol x||$				& Eukleidovská norma\\
-   $\langle a,b\rangle$				& uzavřený interval\\
-   $\left(a,b\right)$				          & otevřený interval\\
-   $\left\lfloor x\right\rfloor$			&dolní celá část reálného čísla $x$
    \end{tabular}\\\\\\
 % \end{table}
 %
@@ -1045,21 +1055,21 @@ Na základě analýzy chování modelu a simulací můžeme získat informace pr
 V této práci se zaměříme na ekonomické modely popisující, jak se na finančním trhu díky nabídce a poptávce formují ceny finančních aktiv.
 %ekonomické modely nabídky a poptávky
 Finanční aktiva poskytují investorovi potenciální nárok na budoucí příjem.
-Mezi finanční aktiva patří především podkladová aktiva, finanční deriváty a peníze.
+Mezi finanční aktiva zahrnujeme také finanční deriváty.
 
 Modelovat budeme vývoj ceny jak podkladových aktiv, tak finančních derivátů.
 Finanční derivát je finanční produkt, jehož hodnota je odvozena od ceny jiného finančního aktiva, tzv. podkladového aktiva.
 %Derivát má termínový charakter, to znamená, že doba od sjednání obchodu do jeho vypořádání v budoucnosti má ekonomický význam.
 %Podkladové aktivum je nástroj, jehož v čase se měnící cena slouží jako základ pro pohyb ceny finančních derivátů.
 Podkladovými aktivy mohou být akcie, úrokové míry, komodity, měny, akciové indexy a~mnoho dalších finančních instrumentů.
-Podstatou derivátu je termínový obchod, tedy takový, kde doba od sjednání obchodu do jeho vypořádání v budoucnosti má ekonomický význam.
+Podstatou derivátu je termínový obchod, tedy takový, kde doba od sjednání obchodu do jeho vypořádání v budoucnosti  je delší než vyžaduje technické vypořádání obchodu.%má ekonomický význam, je tedy delší než vyžaduje technické vypořádání obchodu.
 %Obecně jakékoliv aktivum, jehož cena se vyvíjí v čase.
 %Finanční derivát je finanční produkt, jehož podstatou je forma termínového obchodu a jehož hodnota je odvozena od ceny jiného finančního aktiva, tzv. podkladového aktiva.
 
 Chování cen aktiv vykazuje stochastický charakter a cenové změny jsou náhodné a nepředvídatelné.
 %, k jehož modelování využíváme stochastické diferenciální rovnice.
 %K modelování stochastického charakteru chování cen podkladových aktiv využíváme stochastické diferenciální rovnice.
-Kolísání cen aktiv v čase je způsobené vzájemným působením nabídky a poptávky na trhu.
+Kolísání cen aktiv v čase je způsobené především vzájemným působením nabídky a poptávky na trhu.
 %Teorie efektivního trhu tvrdí, že ceny aktiv velmi rychle plně odrážejí veškeré tržní informace.
 Mezi základní teoretická východiska v teorii finančních trhů patří hypotéza efektivního trhu,
 která tvrdí, že ceny aktiv velmi rychle plně odrážejí veškeré tržní informace
@@ -1078,8 +1088,8 @@ a zcela reflektují všechna očekávání investorů ohledně budoucího vývoj
 %\end{itemize}
 
 Teorie finančních trhů je podrobně zpracována v české literatuře.
-Z velkého množství textů odkažme na \cite{rejnus2011}, \cite{fuchsfinancni} a \cite{veselainvestovani} se kterými jsme při psaní práce pracovali.
-Stochastickým modelováním v ekonomii se pak zabývá převážně zahraniční literatura, ze které jsme nejvíce využívali \cite{hull}, \cite{wilmott1995mathematics} a \cite{karatzas1998methods}.
+Z velkého množství textů odkažme na \cite{rejnus2011}, \cite{fuchsfinancni} a \cite{veselainvestovani}, které jsme při psaní práce využívali.
+Stochastickým modelováním v ekonomii se pak zabývá převážně zahraniční literatura, ze které jsme nejvíce pracovali s \cite{hull}, \cite{wilmott1995mathematics} a \cite{karatzas1998methods}.
 
 \section{Stochastické modelování cen finančních aktiv}\label{stoch_model_aktiv}
 %na základě střetu nabídky a poptávky možné určit rovnovážnou cenu 
@@ -1112,8 +1122,8 @@ Zrekapitulujme kvalitativní znaky modelu aktiv:
 %Modeling with Itô Stochastic Differential Equations Od autorů: Edward Allen (googlebooks) - multidimenzní Ito formule 
 %Dynamic Asset Pricing Theory Od autorů: Darrell Duffie (googlebooks) - Black-Scholes
 Jak už bylo naznačeno v Kapitole \ref{WP_kap}, základní model splňující uvedené požadavky je založen na geometrickém Wienerově procesu. 
-Model byl zaveden a prosazen Paulem Samuelsonem \cite{samuelson1965proof}.
-Budeme tedy předpokládat, že proces popisující vývoj ceny aktiva v čase se řídí následující stochastickou diferenciální rovnicí %následujícím modelem
+%Model byl zaveden a prosazen Paulem Samuelsonem \cite{samuelson1965proof}.
+Budeme předpokládat, že proces popisující vývoj ceny aktiva v čase se řídí následující stochastickou diferenciální rovnicí %následujícím modelem
 \begin{equation}\label{risk_asset_model}
 \mathrm{d}P(t)=P(t)\,\mu(t)\,\mathrm{d}t+P(t)\,\sigma(t)\,\mathrm{d}W(t),
 \end{equation}
@@ -1175,7 +1185,7 @@ V(t)=\phi(t)P(t)+\psi(t)B(t).
 \end{definice}
 
 Procesy $\phi(t)$ a $\psi(t)$ nabývají kladných hodnot, nicméně pokud je na trhu povolen tzv. \textit{prodej na krátko (short sell)} mohou nabývat i hodnot záporných.
-Prodej na krátko je spekulativní metoda obchodování na finančním trhu, kdy investor očekává pokles ceny finančního aktiva.
+Prodává-li na krátko investor rizikové finanční aktivum, jedná se o~spekulativní metodu obchodování na finančním trhu, kdy investor očekává pokles ceny tohoto aktiva.
 Investor si finanční aktivum vypůjčí od věřitele na předem stanovenou dobu a ihned ho prodá třetí straně.
 Nejpozději za stanovenou dobu investor nakoupí finanční aktivum na trhu a vrátí jej věřiteli.
 Rozdíl mezi prodejní a nákupní cennou je výsledný zisk nebo ztráta.
@@ -1193,7 +1203,9 @@ Při prodeji na krátko může investor dosáhnout pouze omezeného zisku, ale t
 %Portfolio je samofinancující, pokud 
 
 V literatuře, popisující konstrukci modelu cen finančních derivátů, se často setkáme s pojmem \textit{finanční strategie}.
-Pojmy \textit{strategie} a \textit{portfolio} mají stejnou definici, proto je můžeme chápat jako synonyma a v dalším textu této kapitoly mohou být volně zaměňována.
+%Pojmy \textit{strategie} a \textit{portfolio} mají stejnou definici, proto je můžeme chápat jako synonyma a v dalším textu této kapitoly mohou být volně zaměňována.
+Pojmy \textit{strategie} a \textit{portfolio} bývají v těchto textech používány pro označení toho samého a prolínají se.
+Proto tyto pojmy budeme v dalším textu této kapitoly chápat jako synonyma a~mohou být volně zaměňovány.
 
 Speciálním typem finanční strategie, který využijeme při tvorbě modelu, je samofinancující strategie.
 Jedná se o takovou strategii, kdy investor v průběhu času nedodává do portfolia další prostředky (ani prostředky nestahuje).
@@ -1251,26 +1263,28 @@ Podmínka \eqref{samofinancujici_strategie_vztah} tedy platí a portfolio $\big(
 
 Dále budeme definovat replikující strategii pro danou pohledávku (např. finanční derivát), jejíž hodnotu označíme $X(t)$.
 Při konstrukci oceňovacího modelu předpokládáme, že na trhu neexistuje arbitráž.
-Tržní arbitráž je způsob obchodování, který využívá odlišných cen identického zboží na různých trzích.
-Současným nákupem téhož zboží na jednom trhu a prodejem na jiném trhu za rozdílné ceny můžeme dosáhnout bezrizikového zisku.
-Pokud na trhu není arbitrážní příležitost, pak hodnota pohledávky musí být stejná jako hodnota replikačního portfolia.
-\begin{definice}[Replikační portfolio]
+%Tržní arbitráž je způsob obchodování, který využívá odlišných cen identického zboží na různých trzích.
+%Současným nákupem téhož zboží na jednom trhu a prodejem na jiném trhu za rozdílné ceny můžeme dosáhnout bezrizikového zisku.
+Tržní arbitráž je způsob obchodování, při kterém investor s nulovou investicí dosahuje bezrizikového zisku. 
+Pokud na trhu není arbitrážní příležitost, pak hodnota pohledávky $X(t)$ musí být stejná jako hodnota replikujícího portfolia.
+\begin{definice}[Replikující portfolio]
 Předpokládejme, že na trhu je k dispozici bezrizikové aktivum s cenou $B(t)$ a rizikové aktivum, jehož cena se řídí procesem $P(t)$ s volatilitou $\sigma(t)$.
 %Uvažujme existenci finančního derivátu, jehož cenu popisuje stochastický proces $X(t)$, který závisí na údálostech do času $T$.
 Uvažujme existenci finančního derivátu, jehož hodnotu v čase vypořádání $T$ označíme $X(T)$.
-\textit{Replikační portfolio} $\big(\phi(t),\psi(t)\big)$ pro tento finanční derivát je taková samofinancující strategie, že platí
+\textit{Replikující portfolio} $\big(\phi(t),\psi(t)\big)$ pro tento finanční derivát je taková samofinancující strategie, že platí
 \begin{equation}\label{replikacni_portfolio}
 V(T)=\phi(T)P(T)+\psi(T)B(T)=X(T)
 \end{equation}
 a $\int_0^T\sigma^2(t)\phi^2(t)\,\mathrm{d}t<\infty$.
+Poznamenejme, že se v literatuře můžeme setkat také s pojmem \textit{replikační portfolio}.
 \end{definice}
-Předpokládáme-li, že na trhu neexistuje arbitráž a zároveň k finančnímu derivátu najdeme replikační portfolio $\big(\phi(t),\psi(t)\big)$, pak pro proces ceny derivátu $X(t)$ musí platit
+Předpokládáme-li, že na trhu neexistuje arbitráž a zároveň k finančnímu derivátu najdeme replikující portfolio $\big(\phi(t),\psi(t)\big)$, pak pro proces ceny derivátu $X(t)$ musí platit
 \begin{equation}\label{replikacni_portfolio_vztah}
 X(t)=\phi(t)P(t)+\psi(t)B(t).
 \end{equation}
 Pokud by vztah \eqref{replikacni_portfolio_vztah} neplatil, bylo by možné najít arbitrážní příležitost.
-Například, pokud by cena derivátu v čase $t<T$ byla nižší než hodnota replikačního portfolia v čase $t$, pak by obchodník mohl koupit v čase $t$ jeden derivát a prodat na krátko $\phi(t)$ jednotek rizikového aktiva a $\psi(t)$ jednotek bezrizikového aktiva. 
-Jelikož je replikační portfolio $\big(\phi(t),\psi(t)\big)$ samofinancující, je zaručeno, že v čase $T$ bude mít hodnotu $X(T)$, aniž by bylo nutné dodávat další prostředky mezi časem $t$ a $T$.
+Například, pokud by cena derivátu v čase $t<T$ byla nižší než hodnota replikujícího portfolia v čase $t$, pak by obchodník mohl koupit v čase $t$ jeden derivát a prodat na krátko $\phi(t)$ jednotek rizikového aktiva a $\psi(t)$ jednotek bezrizikového aktiva. 
+Jelikož je replikující portfolio $\big(\phi(t),\psi(t)\big)$ samofinancující, je zaručeno, že v čase $T$ bude mít hodnotu $X(T)$, aniž by bylo nutné dodávat další prostředky mezi časem $t$ a $T$.
 V čase $T$ tedy hodnota derivátu pokryje náklady na nákup portfolia prodaného na krátko.
 Obchodník inkasuje zisk ve výši rozdílu $X(t)-V(t)$ a to bez rizika.
 Opačný příklad by byl analogický.
@@ -1278,21 +1292,24 @@ Opačný příklad by byl analogický.
 %To znamená, že díky vztahu \ref{replikacni_portfolio_vztah} jsme schopni pomocí replikačního portfolia modelovat cenu finančního derivátu.
 
 Pomocí konceptu představeného v této kapitole je možno modelovat cenu finančního derivátu.
-K derivátu nalezneme jeho replikační portfolio, využijeme vztah \eqref{replikacni_portfolio_vztah}, cenu aktiv v portfoliu modelujeme dle modelů představených v Kapitole \ref{stoch_model} a k ocenění derivátu používáme It\^oovo lemma. 
+K derivátu nalezneme jeho replikující portfolio, využijeme vztah \eqref{replikacni_portfolio_vztah}, cenu aktiv v portfoliu modelujeme dle modelů představených v Kapitole \ref{stoch_model} a k ocenění derivátu používáme It\^oovo lemma. 
 
-Tento přístup poprvé představili v roce 1973 Fischer Black a Myron Scholes \cite{black1973pricing} v kontextu oceňování opcí. 
+%Tento přístup poprvé představili
+Oceňováním finančních derivátů se poprvé zabývali v roce 1973 Fischer Black a Myron Scholes \cite{black1973pricing} v kontextu oceňování opcí. 
 Jejich oceňovací metoda vešla později ve známost jako Black-Scholesův model.
-Na dalším rozvoji se podílel také Robert Merton a~jejich práce byla v roce 1997 oceněna Nobelovou cenou za ekonomii.
+Na dalším rozvoji se podílel také Robert Merton, který představil přístup využívající samofinancující portfolio.
+Jejich práce byla v roce 1997 oceněna Nobelovou cenou za ekonomii.
  
 %Předpokládejme existenci konstantní bezrizikové úrokové míry $r$, volatility akcie $\sigma$ a driftu akcie $\mu$. 
 %Dále předpokládáme nulové transakční náklady a možnost obchodovat v libovolném čase libovolné množství v dlouhé i v krátké pozici za stanovenou cenu.
 
 \section{Stochastické modelování úrokových měr}\label{model_urok_miry_kap}
-Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Damiana Briga a Fabia Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů působících na Univerzitě Komenského v Bratislavě \cite{melichercik}.
+%Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Damiana Briga a Fabia Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů působících na Univerzitě Komenského v Bratislavě \cite{melichercik}.
+Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Briga a Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů Melicherčíka, Olšarové a Úradníčka působících na Univerzitě Komenského v~Bratislavě \cite{melichercik}.
 Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a~seznámíme se s~pojmy diskontování a~časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
 
-Časovou strukturu úrokové míry budeme popisovat pomocí cen dluhopisů.
-Dluhopis je cenný papír, který vyjadřuje závazek emitenta vůči věřiteli, a~je s ním spojeno právo požadovat splacení dlužné částky (tzv. nominální hodnoty) a~vyplacení výnosů v~předem určenou dobu.
+Časovou strukturu úrokové míry budeme popisovat pomocí cen bezkupónových dluhopisů.
+Dluhopis je cenný papír, který vyjadřuje závazek emitenta vůči věřiteli, a~je s ním spojeno právo požadovat splacení dlužné částky (tzv. nominální hodnoty) v~předem určenou dobu.
 %V této práci budeme předpokládat, že dluhopisy jsou bezriziková aktiva a tudíž pro popis jejich cen budeme používat stejný model jako pro bezrizikové aktivum v Kapitole \ref{stoch_model_aktiv}.
 %Uvažujme dluhopis emitovaný v čase $t_0$ a splatný v čase $T$.
 %Řešení diferenciální rovnice \eqref{risk-free_asset_model} dává cenu dluhopisu jako
@@ -1313,9 +1330,9 @@ Platí tedy
 \begin{equation}
 B(t,T)=\mathrm{e}^{-R(t,T)\cdot(T-t)}.
 \end{equation} 
-Funkce $R(t,T)$ se nazývá \textit{úroková míra}.
+Funkce $R(t,T)$ se nazývá \textit{(T-t)-roční úroková míra} (dále jen \textit{úroková míra}).
 \end{definice}
-Je tedy zřejmé, že z cen bezrizikových dluhopisů $B(t,T)$ je možné odvodit ceny úrokových měr $R(t,T)$ a naopak.
+Je tedy zřejmé, že z cen bezrizikových dluhopisů $B(t,T)$ je možné odvodit hodnoty úrokových měr $R(t,T)$ a naopak.
 Platí
 \begin{equation}
 R(t,T)=-\frac{1}{T-t}\log B(t,T),
@@ -1357,9 +1374,10 @@ Uvažujme nyní úrokovou míru na velmi krátký (infinitezimální) časový o
 Jedná se o takovou úrokovou míru, kde doba splatnosti se limitně blíží k času emitování dluhopisu.
 \begin{definice}[Okamžitá úroková míra]
 \textit{Okamžitou úrokovou míru} $r(t)$ definujeme jako
-\begin{equation}\label{okamzik_urok_mira_vztah}
-r(t)=\lim_{T\to t}R(t,T)=\lim_{T\to t}-\frac{\log B(t,T)-\log B(t,t)}{T-t}=-\frac{\partial\log B(t,t)}{\partial T}.
-\end{equation} 
+\begin{align}\label{okamzik_urok_mira_vztah}
+r(t)=\lim_{T\to t}R(t,T)&=\lim_{T\to t}-\frac{\log B(t,T)-\log B(t,t)}{T-t}\notag\\
+&=\left.-\frac{\partial\log B(t,T)}{\partial T}\right|_{T=t}.%-\frac{\partial\log B(t,t)}{\partial T}.
+\end{align} 
 \end{definice}
 Poslední rovnost ve vztahu \eqref{okamzik_urok_mira_vztah} plyne z definice parciální derivace funkce dvou proměnných.
 Okamžitá úroková míra představuje bod výnosové křivky, který je umístěn nejvíce vlevo.
@@ -1369,11 +1387,11 @@ Při oceňování finančních derivátů úrokových měr v Kapitole~\ref{metod
 V další části se budeme zabývat forwardovými úrokovými mírami.
 Ukážeme, že výnosovou křivku můžeme přepočítat na křivku forwardových úrokových měr a naopak. 
 Z matematického hlediska je snadnější modelovat křivku forwardových úrokových měr, což využijeme při konstrukci Hull-Whitova modelu v Kapitole \ref{H-W_model_kap}.
-Zároveň z okamžité forwardové úrokové míry můžeme odvodit okamžitou úrokovou míru $r(t)$.
+%Zároveň z okamžité forwardové úrokové míry můžeme odvodit okamžitou úrokovou míru $r(t)$.
 
 Principem forwardového kontraktu je uzavření dohody mezi dvěma stranami o nákupu (nebo prodeji) finančního aktiva za cenu stanovenou v současnosti, přičemž obchod se uskuteční v určený čas v budoucnosti. 
 Forwardová úroková míra je míra mezi dvěma časovými okamžiky v budoucnosti za podmínek dohodnutých v současnosti (v čase $t_0$).
-Při odvození její hodnoty využíváme pravidla o neexistenci arbitráže na finančním trhu. 
+Při odvození její hodnoty využíváme předpoklad o neexistenci arbitráže na finančním trhu. 
 \begin{definice}[Forwardová úroková míra]\label{forward_def}
 \textit{Forwardovou úrokovou míru} \linebreak 
 $F(t,t_1,T)$ v čase $t$ na dobu od $t_1$ do $T$, kde platí $t_0\leq t\leq t_1<T$ definujeme jako řešení rovnice
@@ -1393,7 +1411,7 @@ Obdobně jako při odvození okamžité úrokové míry nyní definujme okamžit
 \begin{definice}[Okamžitá forwardová úroková míra]
 \textit{Okamžitou forwardovou úrokovou míru} $f(t,t_1)$ pro $0\leq t\leq t_1$ definujeme jako
 \begin{equation}\label{okamzik_forward_rov}
-f(t,t_1)=\lim_{T\to t_1}F(t,t_1,T)=-\frac{\partial\log B(t,t_1)}{\partial T}.
+f(t,t_1)=\lim_{T\to t_1}F(t,t_1,T)=\left.-\frac{\partial\log B(t,T)}{\partial T}\right|_{T=t_1}.%-\frac{\partial\log B(t,t_1)}{\partial T}.
 \end{equation} 
 \end{definice}
 Dokažme, že znalost ceny dluhopisu $B(t,T)$ je ekvivalentní znalosti okamžité úrokové míry $f(t,T)$.
@@ -1414,11 +1432,14 @@ f(t,T)=R(t,T)+(T-t)\frac{\partial R(t,T)}{\partial T}.
 \end{equation} 
 
 \subsection{Modely okamžité úrokové míry}
-Dosud jsme předpokládali, že úroková míra je buď konstantní nebo je známou deterministickou funkcí času.
+Při zpracovávání problematiky modelů okamžité úrokové míry jsme čerpali z~publikace o metodách oceňování finančních derivátů autorů Daniela Ševčoviče, Beáty Stehlíkové a Karola Mikuly \cite{sevcovic2009}. 
+
+%Dosud jsme předpokládali, že úroková míra je buď konstantní nebo je známou deterministickou funkcí času.
+V Black-Scholesově modelu se používá předpoklad konstantní úrokové míry.
 Nicméně v realitě na finančním trhu nemáme jistotu jak se bude úroková míra vyvíjet.
 Je tedy přirozené uvažovat o úrokové míře jako o stochastickém procesu a konstruovat její stochastické modely.
 Přiblížíme se tak více k realitě.
-V další části této kapitoly budeme tedy předpokládat stochastické chování úrokové míry.
+V dalších částech Kapitoly \ref{model_urok_miry_kap} budeme tedy předpokládat stochastické chování úrokové míry.
 %Dluhopis pak můžeme chápat jako finanční derivát úrokové míry.
 
 %Nyní už můžeme přistoupit k modelování úrokových měr.
@@ -1448,7 +1469,7 @@ Jednofaktorové modely krátkodobých úrokových měr předpokládají, že oka
 \begin{equation}\label{model_urok_miry}
 \mathrm{d}r(t)=\mu(t,r)\,\mathrm{d}t+\sigma(t,r)\,\mathrm{d}W(t),
 \end{equation}
-kde procesy $\mu(t,r)$ a $\sigma(t,r)$ jsou neanticipativní a $W(t)$ je Wienerův proces.
+kde $W(t)$ je Wienerův proces.
 Koeficient $\mu(t, r)$ určuje drift ve vývoji úrokové míry, tj. trend, kterým by se úroková míra řídila za předpokladu neexistence náhodných vlivů.
 Volatilita $\sigma(t, r)$ určuje vlastnosti náhodných výchylek.
 Proces $\sigma(t, r)$ se v literatuře nazývá také difuzní koeficient.
@@ -1478,7 +1499,7 @@ kde $W(t)$ je Wienerův proces a $\kappa$, $\theta$ a $\sigma$ jsou konstanty, j
 
 Drift této rovnice je $\mu(t, r) = \kappa\big ( \theta - r(t)\big)$ a volatilita je $\sigma(t, r) = \sigma$. 
 Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou~$\theta$. 
-Daný proces je Ornstein-Uhlenbeckův proces s konstantními koeficienty definovaný v Kapitole \ref{OU_kap}.
+Daný proces je Ornstein-Uhlenbeckův proces definovaný v Kapitole \ref{OU_kap}.
 
 Mezi výhody Vašíčkova modelu patří existence explicitního vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
 Na druhou stranu za nevýhodu bývá považováno, že Vašíčkův model připouští i záporné úrokové míry. 
@@ -2398,7 +2419,7 @@ Z důvodu přehlednosti budeme v textu této práce používat především zkra
 %úvěrové úpravy v ocenění - Úřední věstník Evropské unie
 
 %se „úvěrovou úpravou v ocenění“ (credit valuation adjustment, dále jen „CVA“) rozumí úprava v ocenění portfolia transakcí s protistranou, které bylo stanoveno tržní cenou střed. Tato úprava odráží aktuální tržní hodnotu úvěrového rizika protistrany vůči instituci, ovšem neodráží aktuální tržní hodnotu úvěrového rizika instituce vůči protistraně.
-%NAŘÍZENÍ EVROPSKÉHO PARLAMENTU A RADY (EU) č. 575/2013
+%NAŘÍZENÍ EVROPSKÉHO PARLAMENTU A RADY (EU) č. 575/2013 = CRR \cite{EU2013}
 
 %Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
 %články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
@@ -2965,6 +2986,10 @@ S.~Kafková, L.~Křivánková, and M.~Leváková.
 \newblock In M.~e. Jiří~Zelinka, editor, {\em Mathematical Models and
   Financial Mathematics. Book of short papers}, pages 27--33, Brno, 2014.
   Masaryk University.
+
+%@article{kolavrocevnovani,
+%  title={Oce{\v{n}}ov{\'a}n{\'\i} finan{\v{c}}n{\'\i}ch deriv{\'a}t{\uu}},
+%  author={Kol{\'a}{\v{r}}, Doc RNDr Martin and K{\v{r}}iv{\'a}nkov{\'a}, Mgr Lenka}
 
 \end{enumerate}
 

@@ -357,7 +357,8 @@ In the first part of the work, some basic mathematical methods employed in this 
 %Klíčovými faktory jsou neurčitost finančních toků a dynamická flexibilita. 
 
 %\begin{comment}
-Podle odhadu Basilejského výboru pochází tři čtvrtiny ztrát způsobených kreditním rizikem protistrany během finanční krize ze ztrát daných změnou Credit Valuation Adjustment (CVA), nikoli kvůli samotným selháním protistran. 
+V druhé části práce se zaměříme na modelování Credit Valuation Adjustment (CVA), což je bankou sledovaná a účtovaná hodnota, která slouží jako úprava reálné hodnoty derivátů o kreditní riziko protistrany.
+Podle odhadu Basilejského výboru pochází tři čtvrtiny ztrát způsobených kreditním rizikem protistrany během finanční krize ze ztrát daných změnou CVA, nikoli kvůli samotným selháním protistran. 
 Od roku 2015 předepisuje Basel III bankám povinnost počítat kapitalový požadavek pro riziko změny CVA.
 Současná situace na bankovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
 Běžné způsoby tvorby zisku v současnosti selhávají.
@@ -2376,6 +2377,7 @@ Rating je využíván také k posouzení  důvěryhodnosti finančního partnera
 Důležitým faktem při výpočtu kapitálového požadavku pro CCR je  bilaterální charakter tohoto rizika. Což znamená, že kreditním rizikem protistrany jsou zatíženy obě strany obchodu.
 
 Velmi dobrý úvod do problematiky řízení rizika protistrany poskytuje článek \cite{canabarro2003measuring} autorů Eduarda Canabarra, vedoucího oddělení řízení rizika v bankovní společnosti Goldman Sachs, a profesora Stanfordské univerzity Darrella Duffieho.
+Definují zde základní pojmy a představují modely expozice protistrany.
 
 %\begin{comment}
 %Rozdíl mezi kreditním rizikem protistrany
@@ -2421,11 +2423,6 @@ Z důvodu přehlednosti budeme v textu této práce používat především zkra
 %se „úvěrovou úpravou v ocenění“ (credit valuation adjustment, dále jen „CVA“) rozumí úprava v ocenění portfolia transakcí s protistranou, které bylo stanoveno tržní cenou střed. Tato úprava odráží aktuální tržní hodnotu úvěrového rizika protistrany vůči instituci, ovšem neodráží aktuální tržní hodnotu úvěrového rizika instituce vůči protistraně.
 %NAŘÍZENÍ EVROPSKÉHO PARLAMENTU A RADY (EU) č. 575/2013 = CRR \cite{EU2013}
 
-%Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
-%články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
-%Pěkný přehledový článek na toto téma vyšel v roce 2012 v Journal of Financial Economics \cite{arora2012}.
-%Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo simulace při výpočtu CVA publikovali John Hull a Alan White \cite{hull2012cva}.
-
 %Analýza vzájemné vazby mezi rizikem a výnosy.
 
 %\cite{eba_cva} 
@@ -2439,14 +2436,14 @@ Z důvodu přehlednosti budeme v textu této práce používat především zkra
 %d) výpočet kapitálových požadavků pro riziko CVA.
 %Na základě této zprávy a v případě, že z příslušných závěrů vyplývá, že je takové opatření nezbytné, je Komise rovněž zmocněna k přijetí aktu v přenesené pravomoci v souladu s článkem 462 s cílem pozměnit tyto položky
 
-\begin{comment}
-Od 1. ledna 2013 vstoupí v platnost nový standard mezinárodního
-finančního výkaznictví „IFRS 13 Fair Value Measurement" \cite{ifrs13}, který
-zavádí novou definici „Fair Value", tzv. reálné hodnoty. Ačkoli se
-tento pojem promítá do mnoha standardů IFRS, v tomto článku
-zůstaneme ve světě finančních nástrojů (tj. ve světě IAS 39
-a IFRS 7) a zaměříme se pouze na změny v oceňování derivátů.
-\end{comment}
+%\begin{comment}
+%Od 1. ledna 2013 vstoupí v platnost nový standard mezinárodního
+%finančního výkaznictví „IFRS 13 Fair Value Measurement" \cite{ifrs13}, který
+%zavádí novou definici „Fair Value", tzv. reálné hodnoty. Ačkoli se
+%tento pojem promítá do mnoha standardů IFRS, v tomto článku
+%zůstaneme ve světě finančních nástrojů (tj. ve světě IAS 39
+%a IFRS 7) a zaměříme se pouze na změny v oceňování derivátů.
+%\end{comment}
 
 %Od roku 2015 předepisuje Basel III bankám povinost počítat kapitalový požadavek pro riziko Credit Valuation Adjustment (CVA).
 %Současná situace na banovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
@@ -2458,19 +2455,53 @@ a IFRS 7) a zaměříme se pouze na změny v oceňování derivátů.
 %Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
 %Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
 
-\begin{comment}
-Celkový kapitálový požadavek =
-požadavek na riziko selhání protistrany
-+ požadavek na volatilitu CVA
-\end{comment}
+%\begin{comment}
+%Celkový kapitálový požadavek =
+%požadavek na riziko selhání protistrany
+%+ požadavek na volatilitu CVA
+%\end{comment}
 
-Popsat, že CVA se týká oceňování derivátů!
+Při oceňování finančních derivátů obvykle není bráno do úvahy riziko selhání protistrany.
+Avšak mezinárodní standard finančního výkaznictví IFRS~13 Fair Value Measurement \cite{ifrs13} ve své nejnovější verzi z roku 2013 předepisuje, že  finanční deriváty mají být oceňovány \textit{reálnou hodnotou}, která musí maximálně využívat vstupy pozorovatelné na trhu.
+V důsledku toho vzniká požadavek na výpočet CVA, který má zohledňovat kreditní riziko protistrany v~účetním ocenění derivátů. % podle IFRS~13.
+CVA udává očekávanou ztrátu z daného obchodu.
 
-Při oceňování derivátů obvykle není bráno do úvahy riziko selhání protistrany
+S oceňováním kreditního rizika protistrany se můžeme seznámit v článku  Michaela Pykhtina a Stevena Zhu \cite{zhu2007}, kde jsou představeny přístupy k výpočtu CVA.
+Podrobný přehled modelování CCR nalezneme v rozsáhlé monografii \cite{gregory2010}, kterou napsal Jon Gregory.
+Tato kniha zajímavě popisuje růst vlivu rizika protistrany v průběhu finanční krize. 
+Nalezneme v ní kvantifikaci úvěrové expozice stejně jako způsoby snižování rizika.
 
-Cena by měla být upravena o hodnotu rizika selhání protistrany
+Obvykle CVA počítáme na úrovni jednotlivých protistran. 
+Nicméně někdy může být užitečné stanovit, jak do CVA přispívají jednotlivé derivátové obchody. 
+Michael Pykhtin a Dan Rosen v článku \cite{pykhtin2010} důkladně analyzují problematiku alokace CVA na jednotlivé derivátové obchody. 
+Vysvětlují, jak lze tento problém zjednodušit na výpočet očekávané expozice protistrany plynoucí z daného obchodu v okamžiku selhání protistrany.
+Určení očekávané expozice v okamžiku selhání protistrany bude stěžejní část výpočtu CVA i~v~naší práci.
 
-Účetní ocenění finančních derivátů dle IFRS  \cite{ifrs13}.
+Mírou úvěrové kvality protistrany je pravděpodobnost selhání protistrany. 
+Při výpočtu CVA bývá tato pravděpodobnost odvozena od swapů úvěrového selhání. 
+Arora, Gandhi a Longstaff v textu \cite{arora2012} zkoumají trh swapů úvěrového selhání a jeho význam při oceňování CCR.
+
+Úvěrová expozice protistrany může korelovat s její úvěrovou kvalitou. 
+Pokud je tato korelace záporná, pak se nazývá \textit{wrong-way riziko}. 
+Toto riziko ve skutečnosti existuje vždy, ale obvykle se zanedbává kvůli zjednodušení modelování expozice. 
+Avšak existují případy, kdy je wrong-way riziko natolik významné, že nemůže být zanedbáno. 
+Takovým případem mohou být komoditní obchody s výrobcem této komodity. 
+Hull a White v článku \cite{hull2012cva} představili jeden z prvních modelů zahrnujících wrong-way riziko do výpočtu CVA.
+
+%A good introduction to pricing counter party credit risk can be found in a paper by Michael Pykhtin and Steven Zhu (2007). This paper discusses approaches to CVA calculation. Canabarro and Duffie (2003) deal with measuring counterparty risk. In their article are defined basic terms and models of counterparty exposures. A detailed review of counterparty credit risk modeling is given in (Jon Gregory, 2010). This book interestingly explains the rise of counterparty risk during the financial crisis. The quantification of credit exposure is presented as well as risk mitigation methods. 
+%Under usual approaches CVA is measured at the counterparty level. Nevertheless, it can be sometimes required to determine contributions of individual trades to the CVA at the counterparty level. Pykhtin and Rosen (2010) \cite{pykhtin2010} thoroughly analyze the problem of allocating CVA to the individual trades. They explain how this problem can be simplified to calculating contributions of the trades to the expected exposure of the each counterparty where the expected exposure is conditioned by the default of counterparty.
+%A measure of credit quality of a counterparty is default probability. The counterparty's probability of default is typically derived from credit default swaps (CDS). Arora, Gandhi and Longstaff (2012) \cite{arora2012} examine the credit default swaps market and his relevance in counterparty credit risk pricing.
+%The counterparty credit exposures may be correlated with the credit quality of a counterparty.  If this correlation is negative then it is called wrong way risk. In actual fact, risk from correlation occurs always, however it is usually ignored to simplify modeling of exposure. Nevertheless, there exist cases when wrong way risk is too significant to be ignored. This case may be commodity trades with a producer of that commodity. Hull and White (2012) \cite{hull2012cva} introduced one of the first models of wrong way risk in CVA calculations.
+
+%Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
+%články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
+%Pěkný přehledový článek na toto téma vyšel v roce 2012 v Journal of Financial Economics \cite{arora2012}.
+%Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo simulace při výpočtu CVA publikovali John Hull a Alan White \cite{hull2012cva}.
+
+\section{Metody výpočtu CVA} \label{metodyCVA}
+CVA musí být počítáno na měsíční bázi.
+
+CVA představuje odhad možných budoucích ztrát z derivátového obchodu v průběhu života derivátu až do jeho splatnosti.
 
 \subsection{Expozice protistrany}
 \textit{Expozici protistrany} v čase $t$ značíme $E(t)$ a definujeme jako celkovou výši nesplacených pohledávek danou protistranou.
@@ -2514,28 +2545,28 @@ E(t)=\max\{V(t)-C(t),0\},
 \end{equation}
 kde $C(t)$ je hodnota zajištění (které banka přijala) v čase $t$.  
 
-\begin{comment}
-Metody výpočtu derivátové expozice:
-První dvě metody stanovení výše expozice
-může banka zvolit podle svého uvážení.
-Jde o metodu tržního ocenění (v originále
-Current Exposure Method) a standardizovanou
-metodu (neboli Standardized Method).
-Pro použití nejsofistikovanější metody
-založené na vlastním modelu, takzvanou
-I MM (Internal Model Method), je nutné
-získat povolení regulátora a splnit několik
-požadavků. Mezi ně patří zpětná validace
-modelu a také zahrnutí rizika pozitivní
-korelace (Wrong-way risk). Riziko pozitivní
-korelace nastává v případě, že dochází
-zároveň k růstu výše expozice vůči protistraně
-a poklesu kreditní kvality protistrany
-či snížení hodnoty zajištění. Odměnou
-za použití metody I MM by mělo být snížení
-expozice - a tudíž nižší kapitálový
-požadavek.
-\end{comment}
+%\begin{comment}
+%Metody výpočtu derivátové expozice:
+%První dvě metody stanovení výše expozice
+%může banka zvolit podle svého uvážení.
+%Jde o metodu tržního ocenění (v originále
+%Current Exposure Method) a standardizovanou
+%metodu (neboli Standardized Method).
+%Pro použití nejsofistikovanější metody
+%založené na vlastním modelu, takzvanou
+%I MM (Internal Model Method), je nutné
+%získat povolení regulátora a splnit několik
+%požadavků. Mezi ně patří zpětná validace
+%modelu a také zahrnutí rizika pozitivní
+%korelace (Wrong-way risk). Riziko pozitivní
+%korelace nastává v případě, že dochází
+%zároveň k růstu výše expozice vůči protistraně
+%a poklesu kreditní kvality protistrany
+%či snížení hodnoty zajištění. Odměnou
+%za použití metody I MM by mělo být snížení
+%expozice - a tudíž nižší kapitálový
+%požadavek.
+%\end{comment}
 
 
 \subsection{diskontovani}
@@ -2550,30 +2581,31 @@ Diskontování je postup, kdy jsou přepočteny (diskontovány) budoucí výnosy
 
 Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s jakou pravděpodobností dojde k selhání klienta během jednoho roku.
 
-\begin{comment}
-Pokud tedy například pro danou
-protistranu neexistuje přímo kótované
-CDS (Credit Default Swap), měli bychom se
-pokusit o odvození kreditního spreadu protistrany
-z jiných tržních informací (kótovaný
-dluhopis protistrany, CDS index, CDS spread
-podobné protistrany či protistran ze stejného
-sektoru, se stejným úvěrovým ratingem
-a podobně).
-\end{commenr}
+%\begin{comment}
+%Pokud tedy například pro danou
+%protistranu neexistuje přímo kótované
+%CDS (Credit Default Swap), měli bychom se
+%pokusit o odvození kreditního spreadu protistrany
+%z jiných tržních informací (kótovaný
+%dluhopis protistrany, CDS index, CDS spread
+%podobné protistrany či protistran ze stejného
+%sektoru, se stejným úvěrovým ratingem
+%a podobně).
+%\end{commenr}
 
 
-\begin{comment}
-Je důležité upozornit, že CVA i DVA představují
-odhady možných budoucích ztrát
-na dvou stranách derivátu v průběhu jeho života
-až do splatnosti, nejsou to odhady ztrát
-pouze z aktuální hodnoty derivátu. Proto
-i při kladné hodnotě derivátu může obecně
-existovat kromě CVA i DVA, stejně jako při
-záporné hodnotě může kromě DVA banka
-vykazovat i CVA.
-\end{comment}
+%\begin{comment}
+%Je důležité upozornit, že CVA i DVA představují
+%odhady možných budoucích ztrát
+%na dvou stranách derivátu v průběhu jeho života
+%až do splatnosti, nejsou to odhady ztrát
+%pouze z aktuální hodnoty derivátu. Proto
+%i při kladné hodnotě derivátu může obecně
+%existovat kromě CVA i DVA, stejně jako při
+%záporné hodnotě může kromě DVA banka
+%vykazovat i CVA.
+%\end{comment}
+
 %\subsection{Modely zajištění}
 
 %\section{Poznámky CVA}
@@ -2581,14 +2613,12 @@ vykazovat i CVA.
 %odhad parametrů – proces hledání hodnot parametrů, které vedou k co nejlepší shodě výsledků modelu s měřenými daty pomocí některé ze statistických metod 
 %kalibrace – totéž jako odhad parametrů, ale ne nezbytně pomocí statistických metod
 
-
 %Čím horší je bonita klienta .... viz GoogleDisk
-
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Methods of credit valuation adjustment computation} \label{metodyCVA}
+%\section{Metody výpočtu CVA} \label{metodyCVA}
 In this section, we developed the basic methodology to compute CVA and describe the basic terms.
 
 \subsection{Components of credit valuation adjustment and terminology}
@@ -2919,7 +2949,8 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 
 \addcontentsline{toc}{chapter}{Literatura}
 %\bibliographystyle{plain}
-\bibliographystyle{abbrv}
+%\bibliographystyle{abbrv}
+\bibliographystyle{abbrv_czech}
 \bibliography{bibliography}
 
 %\cleardoublepage

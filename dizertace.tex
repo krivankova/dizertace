@@ -2287,7 +2287,7 @@ předepisuje kapitálový požadavek pro riziko změny Credit Valuation Adjustme
 
 CVA lze interpretovat jako úpravu tržní hodnoty derivátu o kreditní riziko protistrany.
 Riziko změny CVA vyplývá jak z rizika změny pravděpodobnosti selhání protistrany tak změny tržních faktorů, které ovlivňují hodnotu derivátů.
-Oceňování tohoto rizika se budeme věnovat v Kapitole \ref{CVA_kap}.
+Oceňování tohoto rizika se budeme věnovat v Kapitole \ref{metodyCVA}.
 
 %Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
 %články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
@@ -2358,8 +2358,8 @@ Těmito dvěma finančními riziky se v této práci nebudeme dále podrobněji 
 \subsection{Kreditní riziko protistrany}\label{CCR_kap}
 %popsat rozdíl mezi CCR a úvěrovým rizikem (viz prezentace ARM)
 Counterparty Credit Risk (CCR), v překladu \textit{kreditní riziko protistrany},  představuje možnost, že banka utrpí ztrátu z derivátového obchodu nebo při financování aktiva, která bude způsobena selháním protistrany transakce. 
-Riziko selhání (též defaultu) představuje základní rizikovou složkou kreditního rizika a jeho parametrem je pravděpodobnost neplnění. 
-Definice tohoto jevu není zcela jednoznačná, většinou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
+Kreditní riziko selhání (též defaultu) představuje základní rizikovou složkou kreditního rizika a jeho parametrem je pravděpodobnost neplnění. 
+Definice selhání protistrany není zcela jednoznačná, většinou se však chápe jako stav finanční tísně, bránící ve splnění závazku.
 
 Riziko protistrany závisí na spolehlivosti obchodního partnera, ať už se jedná o emitenta, který vydává, nabízí a prodává investiční produkt a zavazuje se k jeho splacení (resp. vyrovnání s ním spojených závazků), nebo finančního zprostředkovatele, kterému jsou svěřeny prostředky buď do správy, nebo k provedení investiční transakce.
 
@@ -2462,13 +2462,13 @@ Z důvodu přehlednosti budeme v textu této práce používat především zkra
 %\end{comment}
 
 Při oceňování finančních derivátů obvykle není bráno do úvahy riziko selhání protistrany.
-Avšak mezinárodní standard finančního výkaznictví IFRS~13 Fair Value Measurement \cite{ifrs13} ve své nejnovější verzi z roku 2013 předepisuje, že  finanční deriváty mají být oceňovány \textit{reálnou hodnotou}, která musí maximálně využívat vstupy pozorovatelné na trhu.
+Avšak mezinárodní standard finančního výkaznictví\linebreak IFRS~13 Fair Value Measurement \cite{ifrs13} ve své nejnovější verzi z roku 2013 předepisuje, že  finanční deriváty mají být oceňovány \textit{reálnou hodnotou}, která musí maximálně využívat vstupy pozorovatelné na trhu.
 V důsledku toho vzniká požadavek na výpočet CVA, který má zohledňovat kreditní riziko protistrany v~účetním ocenění derivátů. % podle IFRS~13.
-CVA udává očekávanou ztrátu z daného obchodu.
+%CVA udává očekávanou ztrátu z daného obchodu.
 
 S oceňováním kreditního rizika protistrany se můžeme seznámit v článku  Michaela Pykhtina a Stevena Zhu \cite{zhu2007}, kde jsou představeny přístupy k výpočtu CVA.
 Podrobný přehled modelování CCR nalezneme v rozsáhlé monografii \cite{gregory2010}, kterou napsal Jon Gregory.
-Tato kniha zajímavě popisuje růst vlivu rizika protistrany v průběhu finanční krize. 
+Tato kniha zajímavě popisuje růst vlivu kreditního rizika protistrany v průběhu finanční krize. 
 Nalezneme v ní kvantifikaci úvěrové expozice stejně jako způsoby snižování rizika.
 
 Obvykle CVA počítáme na úrovni jednotlivých protistran. 
@@ -2498,10 +2498,18 @@ Hull a White v článku \cite{hull2012cva} představili jeden z prvních modelů
 %Pěkný přehledový článek na toto téma vyšel v roce 2012 v Journal of Financial Economics \cite{arora2012}.
 %Zajímavý článek zabývající se zahrnutím Wrong-Way rizika do Monte Carlo simulace při výpočtu CVA publikovali John Hull a Alan White \cite{hull2012cva}.
 
-\section{Metody výpočtu CVA} \label{metodyCVA}
-CVA musí být počítáno na měsíční bázi.
-
+\section{Metodika výpočtu CVA} \label{metodyCVA}
 CVA představuje odhad možných budoucích ztrát z derivátového obchodu v průběhu života derivátu až do jeho splatnosti.
+Vztah pro výpočet CVA vychází ze známé formule pro výpočet očekávané úvěrové ztráty (podrobněji se s ní budeme zabývat v Kapitole \ref{srovnani_metod_cva}).
+\begin{definice}\label{cva_def}
+ \textit{Credit valuation adjustment} je definován jako
+ \begin{equation}
+ CVA=(1-R)\int_{0}^T \hat{e}_d(t)\,\mathrm{d} PD(t),
+ \label{CVA}
+\end{equation}
+ kde $R$ je míra návratnosti, $\hat{e}_d(t)$ je diskontovaná očekávaná expozice v čase $t$ a $PD(t)$ je pravděpodobnost selhání protistrany před časem $t$.
+\end{definice}
+Jednotlivé komponenty CVA ze vztahu \eqref{CVA} budeme podrobněji specifikovat v následujícím textu.
 
 \subsection{Expozice protistrany}
 \textit{Expozici protistrany} v čase $t$ značíme $E(t)$ a definujeme jako celkovou výši nesplacených pohledávek danou protistranou.
@@ -2524,7 +2532,7 @@ Pak hodnota portfolia v čase $t$ je definována jako
 \begin{equation}
 V(t)=\sum_{i=1}^N V_i(t).
 \end{equation}
-V případě, že banka nemá s protistranou uzavřenou dohodu o vzájemném započítávání pohledávek a závazků (tzn. netting), expozice protistrany $E(t)$ je 
+V případě, že banka nemá s protistranou uzavřenou dohodu o vzájemném započítávání pohledávek a závazků (tzv. netting), expozice protistrany $E(t)$ je 
 \begin{equation}
 E(t)=\sum_{i=1}^N\max\{V_i(t),0\}.
 \end{equation}
@@ -2536,7 +2544,7 @@ Využívání nettingu slouží ke snížení úvěrového a tržního rizika.
 Při použití nettingu je expozice protistrany menší nebo rovna expozici v případě, kdy netting neuvažujeme. 
 
 Další možnost jak snížit expozici je zajištění.
-Banka uzavírá s protistranou dohodu o výzvě k doplnění zajištění (margin call).
+Banka uzavírá s protistranou dohodu o výzvě k doplnění zajištění (tzv. margin call).
 Protistrana pak musí poskytnout bance zajištění vždy, když hodnota portfolia překročí určenou mez.
 Naopak pokud hodnota portfolia klesne pod tuto mez, banka zajištění opět vrátí.
 Expozice protistrany, která zohledňuje zajištění se určí jako
@@ -2544,6 +2552,19 @@ Expozice protistrany, která zohledňuje zajištění se určí jako
 E(t)=\max\{V(t)-C(t),0\},
 \end{equation}
 kde $C(t)$ je hodnota zajištění (které banka přijala) v čase $t$.  
+
+Expozice protistrany v okamžiku jejího selhání (EAD) se běžně značí $EAD$.
+Kvůli snadnějšímu a přehlednějšímu zápisu budeme v rovnicích a formulích používat také označení $e(t)$, kde $t$ je okamžik selhání protistrany.
+EAD můžeme chápat jako náhodnou veličinu.
+Tudíž očekávanou expozici v okamžiku selhání protistrany definujeme jako střední hodnotu EAD. Použijeme pro ni označení $\hat{e}(t)$.
+Platí
+\begin{equation}
+\hat{e}(t)=\mathsf{E}[e(t)].
+\end{equation}
+
+%Exposure at default (EAD) is the total value that a bank is exposed to a counterparty at the time of default. 
+%For simplification, in the follow equations, we define EAD as e(t), where t is the time of the default. 
+%The EAD may be seen as a random variable. Therefore, an expected exposure at default is defined as the mean value of the EAD and it is denoted as e ̂(t).
 
 %\begin{comment}
 %Metody výpočtu derivátové expozice:
@@ -2568,18 +2589,36 @@ kde $C(t)$ je hodnota zajištění (které banka přijala) v čase $t$.
 %požadavek.
 %\end{comment}
 
+%Výpočet dnešní hodnoty při tržní úrokové míře
+%Diskontování je matematický postup, kdy jsou přepočítány (diskontovány) budoucí výnosy na současnou hodnotu investice s použitím diskontní míry.
+%Diskontní míra je procentní sazba, kterou se diskontuje budoucí hodnota na současnou hodnotu.
+%Diskontovaná hodnota je současná hodnota. Je to jedna z metod hodnocení investic, kdy se budoucí výnosy převádějí na hodnotu, kterou by měly dnes.
+%Diskontování je postup, kdy jsou přepočteny (diskontovány) budoucí výnosy v jednotlivých obdobích na současnou hodnotu a sečteny s použitím diskontní míry (obvyklá výnosová míra).
 
-\subsection{diskontovani}
-Výpočet dnešní hodnoty při tržní úrokové míře
-Diskontování je matematický postup, kdy jsou přepočítány (diskontovány) budoucí výnosy na současnou hodnotu investice s použitím diskontní míry.
-Diskontní míra je procentní sazba, kterou se diskontuje budoucí hodnota na současnou hodnotu.
+%Discounting is a financial mechanism in which a future value is being recalculated to the present value.
+%The discount factor, $D(t)$, is the factor by which a future cash flow must be multiplied in order to obtain the present value.
+%Consider the discount factor at time $t$% (for maturity $T$)
+%, defined as 
+%nemělo by T být spíš doba defaultu?
 
-Diskontovaná hodnota je současná hodnota. Je to jedna z metod hodnocení investic, kdy se budoucí výnosy převádějí na hodnotu, kterou by měly dnes.
-Diskontování je postup, kdy jsou přepočteny (diskontovány) budoucí výnosy v jednotlivých obdobích na současnou hodnotu a sečteny s použitím diskontní míry (obvyklá výnosová míra).
+Při výpočtu očekávané ztráty z pohledávky je nutné očekávanou EAD diskontovat, abychom určili současnou hodnotu očekávané EAD. 
+Uvažujme diskontní faktor, který vychází ze vztahu \eqref{diskontni_faktor}, ale budeme předpokládat stochastické chování úrokové míry.
+Proto pro diskontování použijeme okamžitou úrokovou míru.
+Diskontní faktor $D(t)$ definujeme jako
+\begin{equation}\label{diskont_vztah}
+D(t)=\mathrm{e}^{-r(t)\cdot t},
+\end{equation}
+kde $r(t)$ je okamžitá úroková míra. 
+%Diskontní faktor \eqref{diskont_vztah} je odvozen ze vztahu \eqref{risk-free_asset_model} pro cenu bezrizikového aktiva. 
+%spojité diskontování se v praxi napoužívá, ale usnaňuje výpočty
+%Hence, the discounted expected exposure at time $t$ conditional on the counterparty default at time $t$ is given by 
+Dostáváme vztah pro diskontovanou očekávanou expozici v okamžiku selhání protistrany
+\begin{equation}
+\hat{e}_d(t)=\mathsf{E}[D(t) e(t)].
+\end{equation}
 
-\subsection{Pravděpodobnost selhání}
-
-Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s jakou pravděpodobností dojde k selhání klienta během jednoho roku.
+\subsection{Pravděpodobnost selhání a LGD}
+\textit{Pravděpodobnost selhání (PD)}, anglicky probability of default, udává v procentech s jakou pravděpodobností dojde k selhání klienta během jednoho roku.
 
 %\begin{comment}
 %Pokud tedy například pro danou
@@ -2606,6 +2645,13 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 %vykazovat i CVA.
 %\end{comment}
 
+\textit{Míra návratnosti (recovery rate)} je očekávaná míra splacení pohledávky v případě selhání protistrany.
+Budeme ji značit $R$ a je dána jako
+\begin{equation}\label{recovery_rate}
+R=1-LGD,
+\end{equation}
+kde $LGD$  je míra očekávané ztráty daná selhání protistrany.
+
 %\subsection{Modely zajištění}
 
 %\section{Poznámky CVA}
@@ -2617,60 +2663,6 @@ Pravděpodobnost selhání (PD), Probability of Default, udává v procentech s 
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%\section{Metody výpočtu CVA} \label{metodyCVA}
-In this section, we developed the basic methodology to compute CVA and describe the basic terms.
-
-\subsection{Components of credit valuation adjustment and terminology}
-%přidat definici defaultu a zdůraznit, že veškeré úvahy počítají default v čase $t$. - asi není nutné
-The basic concepts and notation for counterparty credit risk and CVA will be shown in this section.
-Counterparty credit risk (CCR) is the risk that the counterparty defaults before the final settlement of a transaction's cash flows.
-CVA can be explained as the difference between the portfolio's risk-free value and the portfolio's true value taking into account the possibility of default of the counterparty.
-In the next definition CVA is calculated as expectation of credit loss.
-\begin{definice}
- \textit{The credit valuation adjustment} is defined as
- \begin{equation}
- CVA=(1-R)\int_{0}^T \hat{e_d}(t)\,\mathrm{d} PD(t),
- \label{CVA}
-\end{equation}
-  where $R$ is recovery rate, $\hat{e_d}(t)$ is the discounted expected exposure at time $t$ and $PD(t)$ is probability of default.
-\end{definice}
-%We can observe that CVA depends on the following components:
-In what follows, we specify the components of CVA. 
-Recovery rate is the value of unity less \textit{Loss given default (LGD)}, i.e. $R=1-~LGD$.
-The LGD is the percentage amount of the exposure expected to be lost if the counterparty defaults.
-
-The counterparty credit exposure $E(t)$ of the bank to a counterparty at time $t$ (hereafter simply exposure) is defined as the economic loss, incurred on all outstanding transactions with the counterparty if the counterparty defaults at $t$.
-Denote the value of the $i$-th instrument in the portfolio at time $t$ by  $V_i(t)$. 
-The value of the counterparty portfolio is given by 
-\begin{equation}
-V(t)=\sum_{i=1}^N V_i(t).
-\end{equation}
-When netting is not allowed, the exposure E(t) is given by
-\begin{equation}
-E(t)=\sum_{i=1}^N\max\{V_i(t),0\}.
-\end{equation}
-For a counterparty portfolio with a netting agreement, the exposure is
-\begin{equation}
-E(t)=\max\{V(t),0\}.
-\label{totalExposure}
-\end{equation}
-
-Discounting is a financial mechanism in which a future value is being recalculated to the present value.
-The discount factor, $D(t)$, is the factor by which a future cash flow must be multiplied in order to obtain the present value.
-Consider the discount factor at time $t$% (for maturity $T$)
-, defined as 
-%nemělo by T být spíš doba defaultu?
-\begin{equation}\label{diskont_vztah}
-D(t)=\frac{B_0}{B_t}=e^{-r_ft},
-\end{equation}
-where $r_f$ is risk-free rate of return and $B_t$ is the value of risk free asset at time $t$. 
-Diskontní faktor \eqref{diskont_vztah} je odvozen ze vztahu \eqref{risk-free_asset_model} pro cenu bezrizikového aktiva. 
-%spojité diskontování se v praxi napoužívá, ale usnaňuje výpočty
-Hence, the discounted expected exposure at time $t$ conditional on the counterparty default at time $t$ is given by 
-\begin{equation}
-\hat{e}_d(t)=\mathsf{E}[D(t) E(t)].
-\end{equation}
 
 Next component of the equation \eqref{CVA} is \textit{Probability of Default}, $PD(t)$ which describes the creditworthiness of a counterparty. 
 It provides an estimate of the likelihood that a borrower will be unable to meet its debt obligations.
@@ -2861,7 +2853,7 @@ $\boldsymbol{5}$&78\,501,06  \\
 
 
 
-\begin{comment}
+%\begin{comment}
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=6cm, clip, trim= 110 270 110 270]{IMG/TotalPortfoioValue.pdf}
@@ -2879,13 +2871,14 @@ $\boldsymbol{5}$&78\,501,06  \\
 	\includegraphics[width=6cm, clip, trim= 110 270 110 270]{IMG/CVAforEachCounterparty.pdf}
   \caption{CVA for each counterparty}  \label{CVAforEachCounterparty}
 \end{figure}
-\end{comment}
+%\end{comment}
 
 
-\section{Srovnání metod výpočtu CVA}
+\section{Srovnání metod výpočtu CVA}\label{srovnani_metod_cva}
 Jedním z cílů práce je nalezení efektivní metody výpočtu kapitálového požadavku k riziku nárůstu CVA, proto v této části budeme srovnávat metodu výpočtu CVA popsanou v této práci s metodou, kterou používá banka, která poskytla data.
 Nejdříve popíšeme metodu určení CVA používanou v bance a následně srovnáme její výsledky s výsledky z předchozí části uvedenými v~Tabulce \ref{resultingCVA}. 
 
+Banka CVA počítá denně, ale účtování CVA provádí na měsíční bázi.
 Základní princip výpočtu CVA spočívá v odhadu tzv. \textit{očekávané ztráty (EL)} v průběhu života derivátu. 
 Očekávaná ztráta je pojem používaný v~teorii řízení úvěrového rizika.
 Jedná se o hodnotu, která odhaduje výší ztráty, jenž banka průměrně utrpí z úvěrů ve svém portfoliu v důsledku selhání některých klientů. 

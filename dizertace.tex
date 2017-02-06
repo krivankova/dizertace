@@ -327,8 +327,8 @@ In the first part of the work, some basic mathematical methods employed in this 
    $CVA$								& Credit Valuation Adjustment\\
    $D(t)$								& diskontní faktor pro odbobí od času $t$ do času 0\\
    $EAD$								& výše expozice v okamžiku selhání protistrany\\
-   $LGD$								& ztráta způsobená selháním protistrany\\
-   $R$									& očekávaná míra splacení pohledávky\\
+   $LGD$								& ztrátovost ze selhání\\
+   $R$									& míra návratnosti\\
    $PD$								& pravděpodobnost selhání protistrany\\
    $PD_{1Y}$								& pravděpodobnost selhání protistrany během jednoho roku\\
    $PD(i)$								& pravděpodobnost selhání protistrany v $i$-tém roce\\
@@ -2155,7 +2155,7 @@ Avšak tato soustava je nelineární a neexistuje její analytické řešení, p
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Aplikace navrhovaného spojitého modelu}\label{aplikace}
+\section{Aplikace navrhovaného spojitého modelu na reálná data}\label{aplikace}
 
 Data, vybraná pro stochastickou analýzu v této kapitole, byla získána ze systému Bloomberg.
 Jedná se o údaje o vývoji cen akcií obchodovaných na Burze cenných papírů Praha a.s.
@@ -2503,11 +2503,11 @@ CVA představuje odhad možných budoucích ztrát z derivátového obchodu v pr
 Vztah pro výpočet CVA vychází ze známé formule pro výpočet očekávané úvěrové ztráty (podrobněji se s ní budeme zabývat v Kapitole \ref{srovnani_metod_cva}).
 \begin{definice}\label{cva_def}
  \textit{Credit valuation adjustment} je definován jako
- \begin{equation}
+ \begin{equation} \label{CVA}
  CVA=(1-R)\int_{0}^T \hat{e}_d(t)\,\mathrm{d} PD(t),
- \label{CVA}
 \end{equation}
- kde $R$ je míra návratnosti, $\hat{e}_d(t)$ je diskontovaná očekávaná expozice v čase $t$ a $PD(t)$ je pravděpodobnost selhání protistrany před časem $t$.
+ kde $R$ je míra návratnosti, $\hat{e}_d(t)$ je diskontovaná očekávaná expozice v~čase~$t$, $PD(t)$ je pravděpodobnost selhání protistrany před časem~$t$
+a $T$ označuje splatnost kontraktu s nejdelší splatností v uvažovaném portfoliu. 
 \end{definice}
 Jednotlivé komponenty CVA ze vztahu \eqref{CVA} budeme podrobněji specifikovat v následujícím textu.
 
@@ -2522,9 +2522,8 @@ Navíc protistrana banky může utrpět ztrátu v případě selhání banky.
 Tento jev zcela zásadně ovlivňuje výši expozice v okamžiku selhání protistrany.
 
 Uvažujme portfolio $N$ derivátových obchodů banky s danou protistranou.
-Splatnost kontraktu s nejdelší splatností v tomto portfoliu označíme $T$. 
-Nechť $\tau$ je náhodná veličina, která označuje čas selhání dané protistrany a má známou distribuční funkci $PD(t)=\Pr(\tau\leq t)$.
-
+%Splatnost kontraktu s nejdelší splatností v tomto portfoliu označíme $T$. 
+%Nechť $\tau$ je náhodná veličina, která označuje čas selhání dané protistrany a má známou distribuční funkci $PD(t)=\Pr(\tau\leq t)$.
 Budeme zkoumat hodnotu portfolia z pohledu banky.
 Expozice protistrany $E(t)$ v čase $t$ je dána hodnotami derivátových odchodů s danou protistranou v čase $t$.
 Hodnotu $i$-tého derivátu z portfolia v čase $t$  označíme $V_i(t)$.
@@ -2617,8 +2616,34 @@ Dostáváme vztah pro diskontovanou očekávanou expozici v okamžiku selhání 
 \hat{e}_d(t)=\mathsf{E}[D(t) e(t)].
 \end{equation}
 
-\subsection{Pravděpodobnost selhání a LGD}
-\textit{Pravděpodobnost selhání (PD)}, anglicky probability of default, udává v procentech s jakou pravděpodobností dojde k selhání klienta během jednoho roku.
+\subsection{Pravděpodobnost selhání}
+%\textit{Pravděpodobnost selhání (PD)}, anglicky Probability of Default, udává s jakou pravděpodobností dojde k selhání klienta během jednoho roku.
+\textit{Pravděpodobnost selhání}, anglicky Probability of Default (PD), poskytuje odhad pravděpodobnosti, že dlužník nebude schopen plnit své závazky.
+PD je klíčový parametr používaný při výpočtu očekávané úvěrové ztráty.
+Je důležité uvědomovat si v jakém časovém horizontu PD uvažujeme.
+Například, když vstupuje PD jako parametr pro výpočet regulatorního kapitálu podle Basel~II, bere se v úvahu pravděpodobnost selhání během jednoho roku.
+Do vztahu \eqref{CVA} pravděpodobnost selhání vstupuje jako funkce času daná následující definicí. %$PD(t)=\Pr(\tau\leq t)$, kde $\tau$ je čas selhání uvažované protistrany.
+%Nechť $\tau$ je náhodná veličina, která označuje čas selhání dané protistrany a má známou distribuční funkci PD(t)=\Pr(\tau\leq t).
+\begin{definice}\label{pd_def}
+Nechť $\tau$ je náhodná veličina, která označuje čas selhání dané protistrany.
+Její distribuční funkci označíme $PD(t)$ a platí
+\begin{equation}
+PD(t)=\Pr(\tau\leq t).
+\end{equation}
+$PD(t)$ udává \textit{pravděpodobnost selhání protistrany} před časem~$t$.
+\end{definice}
+
+Při výpočtu CVA se pro odhad PD protistrany často používá metoda, která pracuje s tržní hodnotu swapů úvěrového selhání (CDS).
+CDS jsou finanční deriváty, které slouží k přenosu úvěrového rizika (plynoucího z podkladového aktiva) z kupujícího na prodávajícího.
+Za úplatu se prodávající CDS zavazuje uhradit kupujícímu ztrátu, která vznikne v případě selhání podkladového aktiva.
+CDS většinou slouží jako kreditní zajištění.
+
+Další možností jak určit PD protistrany je využití externího ratingu, který přidělují ratingové agentury (což už jsme zmínili v Kapitole \ref{CCR_kap}).
+Avšak externí rating získají pouze velké a renomované společnosti, a proto tuto metodu často nemůžeme použít.
+
+Většina bank používá k odhadu PD interní ratingové modely, které jsou založeny na historických datech o splácení klientů.
+Výstupem těchto modelů je pravděpodobnost selhání klienta během jednoho roku.
+ 
 
 %\begin{comment}
 %Pokud tedy například pro danou
@@ -2645,12 +2670,21 @@ Dostáváme vztah pro diskontovanou očekávanou expozici v okamžiku selhání 
 %vykazovat i CVA.
 %\end{comment}
 
+\subsection{Loss Given Default}
+Další člen ve výpočtu CVA \eqref{CVA} je Loss Given Default (LGD), neboli \textit{ztrátovost ze selhání}.
+Jedná se o poměr ztráty z úvěrové expozice, kterou věřitel utrpí v případě selhání dlužníka, vzhledem k expozici protistrany v okamžiku selhání. 
+Lze se také setkat s pojmem míra ztráty při (ze) selhání.
+
+V případě selhání protistrany se věřiteli obvykle podaří získat zpět určitou část z dlužné částky v rámci procesu vymáhání či prodeje zajištění. 
+Vyjádříme-li tuto část jako poměr k EAD nazývá se míra návratnosti.
+\begin{definice}\label{rr_def}
 \textit{Míra návratnosti (recovery rate)} je očekávaná míra splacení pohledávky v případě selhání protistrany.
-Budeme ji značit $R$ a je dána jako
+Budeme ji značit $R$ a platí
 \begin{equation}\label{recovery_rate}
 R=1-LGD,
 \end{equation}
-kde $LGD$  je míra očekávané ztráty daná selhání protistrany.
+kde $LGD$  je míra ztráty při selhání protistrany.
+\end{definice}
 
 %\subsection{Modely zajištění}
 
@@ -2664,14 +2698,7 @@ kde $LGD$  je míra očekávané ztráty daná selhání protistrany.
 %\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Next component of the equation \eqref{CVA} is \textit{Probability of Default}, $PD(t)$ which describes the creditworthiness of a counterparty. 
-It provides an estimate of the likelihood that a borrower will be unable to meet its debt obligations.
-%\textcolor{red}{The PD udává v procentech s jakou pravděpodobností dojde k selhání klienta během jednoho roku.}
-There are many alternatives for estimating the probability of default.
-The frequently used approach, taken by many banks, is to use external ratings agencies (such as S\&P, Fitch or Moody's) for estimating PD from historical default experience.
-
-
-\section{Results}
+\section{Aplikace výpočtu CVA na reálná data}
 The numerical illustration of the calculation of CVA will be introduced in this section. 
 We work with data set of interest rate swaps from the year 2015.
 An \textit{interest rate swap (IRS)} is an agreement between two parties to exchange a interest rate cash flows on specified intervals and over a certain period of time. 
@@ -2696,6 +2723,10 @@ period & Period of paying\\
 \end{tabular}}
 \end{table}
 
+\subsection{Interest Rate Swaps}
+IRS is an agreement between two traders as defined in Ševčovič et al. (2011). Consider plain vanilla IRS. Under this contract, party A commits to paying party B the fixed interest rate from the defined amount, the so-called principal amount or notional value. Party B is committed to paying to party A a floating interest rate. Party A is called the payer and party B the receiver.
+The fixed rate of the IRS is determined at the beginning of the swap contract and remains unchanged during the life of the contract. On the other side, the floating rate may vary over time and is often dependent on a reference rate that gives the floating rate at every certain period of time. In our analysis, we use the Prague Inter Bank Offered Rate (PRIBOR) as the reference rate. 
+The valuation of the IRS is tied to the evolution of the interest rate.
 
 \subsection{Initial yield curve}
 %%Příliš krátké sazby však vykazují určité anomálie (poměrně dlouhá období relativně stabilních sazeb střídají silné skokové pohyby jako důsledek externích šoků v podobě zásahů centrální banky)
@@ -2747,43 +2778,10 @@ The development of three month PRIBOR rate can be observed in the figure \ref{PR
   \caption{Vývoj tříměsíční PRIBOR úrokové míry}  \label{PRIBOR}
 \end{figure}
 
-The well known interest rate evolution model, Hull-White one-factor model, will be used for modeling of the interest rate term structure. 
-%The Hull-White model is a one-factor model of the short rate $r(t)$, first published in \cite{hull1990pricing} and generalized later \cite{hull2001general}.
-The model was first published by John Hull and Alan White in \cite{hull1990pricing} and generalized later in \cite{hull2001general}.
-%The need for an exact fit to the currently-observed yield curve, led Hull and White to the introduction of a time-varying parameter in the Vasicek model. 
-The requirement for more accurate fit to the currently-observed yield curve, led Hull and White to the introduction of a time variable parameter in the Vasicek model. 
-%The model assumes that short rates have a normal distribution, and that the short rates are subject to mean reversion.
-The model assumes that short rates have a normal distribution, and also that the short rates exhibit the mean reversion character. 
-%Volatility is likely to be low when short rates are near zero, which is reflected in a larger mean reversion in the model. 
-The Hull-White model extends the Vasicek and Cox-Ingersoll-Ross (CIR) models.
+Pro modelování úrokové míry budeme používat Hull-Whitův jednofaktorový model uvedený v Kapitole \ref{H-W_model_kap}.
 
-We can define this model by equation
-\begin{equation}
-\mathrm{d}r(t)=[\theta(t)-\alpha r]\,\mathrm{d}t+\sigma\,\mathrm{d}W,
-\label{H-Wmodel}
-\end{equation}
-where
-\begin{description}
-\item [$\mathrm{d}r$] The change in the interest rate after a small change in time, $\mathrm{d}t$.
-\item [$\alpha$   ] Constant reversion speed.%Mean reversion rate.
-\item [$\sigma$   ] Volatility of the interest rate.
-\item [$\mathrm{d}W$] A Wiener process.
-\item [$\theta(t)$] Drift function defined as
-\begin{equation}
-\theta(t)=\frac{\partial  F(0,t)}{\partial t}+\alpha F(0,t)+\frac{\sigma^2}{2 \alpha}(1-\mathrm{e}^{-2\alpha t}), %F'_{t}(0,t)+...
-\end{equation}
-where
-\item[$F(0,t)$] Instantaneous forward rate at time $t$.
-%\item[$F'_{t}(0,t)$] Partial derivative of $F$ with respect to time $t$.
-\end{description}
-Instantaneous forward rate $F(0,t)$ is defined as
-\begin{equation}
-F(0,t)= \frac{\partial\ln  P(0,t)}{\partial t}
-\end{equation}
-where $ P(t,T)$ is price of a zero coupon bond at time $t$ with maturity at time $T$.
-
-The constants $\alpha$ and $\sigma$ are extracted from the historical three month PRIBOR rates.
-We use equation \eqref{H-Wmodel} to simulated the short interest rates.  
+The constant reversion speed $\alpha$ and constant $\sigma$ are extracted from the historical three month PRIBOR rates.
+We use equation \eqref{H-W_model} to simulated the short interest rates.  
 We can expand the entire interest rate curve from the short rate using
 \begin{eqnarray}
 %R(t,T)&=&-\frac{1}{T-t}\ln A(t,T)+\frac{1}{T-t}B(t,T)r(t)\\
@@ -2803,7 +2801,7 @@ For each scenarios the swaps are priced at each future simulation date.
 
 The main advantage of the Hull-White model is that it can be fitted exactly to the initial term structure of interest rates.
 
-\subsection{Probability of default}
+\subsection{Funkce pravděpodobnosti selhání protistrany}
 We assume that the wait time for default of a counterparty is a random variable $X$ with exponential distribution. Then the cumulative distribution function of this variable can be define as
 \begin{equation}
 F(x)= P(X\leq x)= \left\{ \begin{array}{r@{\quad}c}
@@ -2932,6 +2930,7 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 \label{srovnaniCVA}
 \end{table}
 
+%\end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

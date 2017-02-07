@@ -2705,28 +2705,66 @@ An \textit{interest rate swap (IRS)} is an agreement between two parties to exch
 These data come from a bank operating in the Czech Republic. 
 The data contains information about five vanilla interest rate swaps and each of them is associated with different counterparty. \textcolor{red}{Asi by to chtělo více informací o datech.}
 
+%\begin{table}[!htbp]
+%\centering
+%\caption{Variables in a data set}  \label{variable}
+%\scalebox{1}{
+%\begin{tabular}{l l} 
+%\hline
+%Notation & Name of Variable  \\
+% \hline \hline
+%ID &Counterparty ID\\
+%principal &Principal of swap \\
+%maturity & Maturity date of swap  \\
+%LegRateReceiving & Interest rate received by bank\\
+%LegRatePaying & Interest rate paid by bank\\
+%period & Period of paying\\
+%\hline
+%\end{tabular}}
+%\end{table}
+
 \begin{table}[!htbp]
 \centering
-\caption{Variables in a data set}  \label{variable}
+\caption{Proměnné v datovém souboru}  \label{variable}
 \scalebox{1}{
 \begin{tabular}{l l} 
 \hline
-Notation & Name of Variable  \\
+Označení & Název proměnné  \\
  \hline \hline
-ID &Counterparty ID\\
-principal &Principal of swap \\
-maturity & Maturity date of swap  \\
-LegRateReceiving & Interest rate received by bank\\
-LegRatePaying & Interest rate paid by bank\\
-period & Period of paying\\
+ID & identifikační číslo protistrany\\
+principal & nominální hodnota IRS \\
+maturity & datum splatnosti IRS  \\
+LegRateReceiving & úroková sazba přijímaná bankou\\
+LegRatePaying & úroková sazba placená bankou\\
+period & úrokové období\\
 \hline
 \end{tabular}}
 \end{table}
 
-\subsection{Interest Rate Swaps}
-IRS is an agreement between two traders as defined in Ševčovič et al. (2011). Consider plain vanilla IRS. Under this contract, party A commits to paying party B the fixed interest rate from the defined amount, the so-called principal amount or notional value. Party B is committed to paying to party A a floating interest rate. Party A is called the payer and party B the receiver.
-The fixed rate of the IRS is determined at the beginning of the swap contract and remains unchanged during the life of the contract. On the other side, the floating rate may vary over time and is often dependent on a reference rate that gives the floating rate at every certain period of time. In our analysis, we use the Prague Inter Bank Offered Rate (PRIBOR) as the reference rate. 
-The valuation of the IRS is tied to the evolution of the interest rate.
+\subsection{Úrokový swap}
+\textit{Úrokový swap (IRS)} je finanční derivát sloužící k zajištění rizika plynoucího ze změny úrokových sazeb. 
+Jedná se o smluvní dohodu dvou stran vyměnit si úrokové závazky v různých sazbách vztahující se ke stejné nominální hodnotě. 
+Zpravidla se přitom jedná o výměnu fixní platby úroků za variabilní. 
+Při vyrovnání obchodu dochází pouze k výměně úroků, avšak nikoli k výměně nominální hodnoty.
+Podle tržních konvencí se strana, která v rámci IRS kontraktu platí pevné úroky (a přijímá variabilní úroky) nazývá \textit{kupující (payer)} a strana, která přijímá pevné úroky (a platí variabilní úroky) se nazývá \textit{prodávající (receiver)}. 
+Tento vztah demonstruje Obrázek \ref{IRS_obr}.
+% By market convention, the counterparty paying the fixed rate is the "payer" (while receiving the floating rate), and the counterparty receiving the fixed rate is the "receiver" (while paying the floating rate).
+
+Pevná úroková sazba (fixed rate) je stanovena při uzavření IRS smlouvy a zůstává nezměněna v průběhu celého trvání smlouvy. 
+Na druhé straně variabilní úroková sazba (floating rate) se odvozuje od referenční úrokové sazby na trhu mezibankovních depozit a může se v průběhu života IRS měnit.
+V naší analýze používáme  jako referenční sazbu Prague InterBank Offered Rate (PRIBOR).
+PRIBOR je průměrná úroková sazba, za kterou jsou banky ochotny si navzájem půjčovat na českém mezibankovním trhu likviditu.
+%IRS splňuje vlastnosti finančního derivátu jehož podkladovým aktivem je úroková sazba.
+
+%IRS is an agreement between two traders as defined in Ševčovič et al. (2011). Consider plain vanilla IRS. Under this contract, party A commits to paying party B the fixed interest rate from the defined amount, the so-called principal amount or notional value. Party B is committed to paying to party A a floating interest rate. Party A is called the payer and party B the receiver.
+%The fixed rate of the IRS is determined at the beginning of the swap contract and remains unchanged during the life of the contract. On the other side, the floating rate may vary over time and is often dependent on a reference rate that gives the floating rate at every certain period of time. In our analysis, we use the Prague Inter Bank Offered Rate (PRIBOR) as the reference rate. 
+%The valuation of the IRS is tied to the evolution of the interest rate. Therefore, in the next section, we briefly refer to the Hull-White interest rate evolution model. 
+
+\begin{figure}[!htbp]
+  \centering 
+%	\includegraphics[width=10cm, clip, trim= 125 280 110 270]{IMG/IRS.pdf}
+  \caption{Grafické znázornění vztahu mezi prodávajícím a kupujícím úrokového swapu.}  \label{IRS_obr}
+\end{figure}
 
 \subsection{Initial yield curve}
 %%Příliš krátké sazby však vykazují určité anomálie (poměrně dlouhá období relativně stabilních sazeb střídají silné skokové pohyby jako důsledek externích šoků v podobě zásahů centrální banky)

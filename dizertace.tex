@@ -1335,7 +1335,7 @@ Funkce $R(t,T)$ se nazývá \textit{$(T-t)$-roční úroková míra} (dále jen 
 \end{definice}
 Je tedy zřejmé, že z cen bezkupónových dluhopisů $B(t,T)$ je možné odvodit hodnoty úrokových měr $R(t,T)$ a naopak.
 Platí
-\begin{equation}
+\begin{equation}\label{urokova_mira_z_dluhopisu_vztah}
 R(t,T)=-\frac{1}{T-t}\log B(t,T),
 \end{equation} 
 pro $t_0\leq t\leq T$.
@@ -1582,15 +1582,33 @@ Jedná se o stejný nedostatek jako jsme zmínili u Vašíčkova modelu.
 Na druhou stranu mezi výhody Hull-Whitova modelu patří možnost kalibrace s využitím počáteční výnosové křivky, což zohledňuje ceny dluhopisů pozorované na trhu.
 Díky této vlastnosti si model získal širokou oblibu.
 
-V Kapitole \ref{aplikaceCVA_kap} budeme využívat rozšíření okamžité úrokové míry $r(t)$ na celou výnosovou křivku $R(t,\cdot)$ podle vztahu
+%V Kapitole \ref{aplikaceCVA_kap} budeme využívat rozšíření okamžité úrokové míry $r(t)$ na celou výnosovou křivku $R(t,\cdot)$ podle vztahu
+Při aplikaci Hull-Whitova modelu v Kapitole \ref{aplikaceCVA_kap} budeme chtít simulovat celou výnosovou křivku $R(t,\cdot)$.
+Brigo a Mercurio v \cite{brigo2007interest} a Hull v \cite{hull} vysvětlují, jak je možné popsat dynamiku výnosové křivky, pokud předpokládáme, že okamžitá úroková míra se řídí Hull-Whitovým modelem.
+Naznačíme hlavní myšlenku jejich přístupu a uvedeme výsledný vztah pro výnosovou křivku.
+Pro podrobnější odvození odkazujeme na literaturu. 
+
+Z vlastnosti normality okamžité úrokové míry můžeme odvodit cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$ pomocí následujícího vztahu.
+%a následujícího vztahu pro cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$.
+Platí, že cena tohoto dluhopisu v čase $t$ je dána očekáváním
+\begin{equation}\label{ocekavana_cena_dluhopisu}
+B(t,T)=\mathsf{E}_t\left(\mathrm{e}^{-\int_{t}^T r(s)\,\mathrm{d}s}\right),
+\end{equation}
+kde $\mathsf{E}_t$ značí střední hodnotu podmíněnou informacemi známými do času $t$.
+% podle vztahu
+
+Vztah pro výnosovou křivku pak odvodíme z očekávané ceny dluhopisu dosazením do rovnice \eqref{urokova_mira_z_dluhopisu_vztah} a dostáváme
 \begin{eqnarray}\label{H-W_vynosova_krivka}
 R(t,T)&=&-\frac{1}{T-t}\left(\log \frac{B(0,T)}{B(0,t)}+\frac{1-\mathrm{e}^{-\alpha(T-t)}}{\alpha}f(0,t)\right)+ \nonumber\\
 &&+\frac{\sigma^2}{4\alpha^3(T-t)}\left(\mathrm{e}^{-\alpha T}-\mathrm{e}^{-\alpha t}\right)^2\left(\mathrm{e}^{2\alpha t}-1\right)+  \nonumber\\
 &&+\frac{1-\mathrm{e}^{-\alpha(T-t)}}{\alpha(T-t)}r(t),
 \end{eqnarray}
-kde $B(t,T)$ je cena bezkupónového dluhopisu v čase $t$, který vyplácí nominální hodnotu jedna v čase $T$,
-$f(t,T)$ je okamžitá forwardová úroková míra sjednaná v čase $t$ pro čas~$T$ 
+kde $B(t,T)$ je cena bezkupónového dluhopisu v čase $t$ %, který vyplácí nominální hodnotu jedna v čase $T$,
+s nominální hodnotu jedna vyplácenou v čase $T$,
+$f(t,T)$ označuje okamžitou forwardovou úrokovou míru sjednanou v čase $t$ pro čas~$T$ 
 a~$r(t)$ je okamžitá úroková míra daná Hull-Whitovým modelem.
+Ze vztahů \eqref{ocekavana_cena_dluhopisu} a \eqref{H-W_vynosova_krivka} vidíme, že celá výnosová křivka (a tedy časová struktura úrokové míry) je charakterizována pouze dynamikou okamžité úrokové míry.
+%Zadaná dynamika pro r(t) už určuje celou časovou strukturu pomoci očekávání ve světe risk neutralním vůči peněžnímu trhu.
 
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
@@ -2648,8 +2666,10 @@ CDS jsou finanční deriváty, které slouží k přenosu úvěrového rizika (p
 Za úplatu se prodávající CDS zavazuje uhradit kupujícímu ztrátu, která vznikne v případě selhání podkladového aktiva.
 CDS většinou slouží jako kreditní zajištění.
 
+Na českém trhu se oproti zahraničí s CDS obchoduje méně, můžeme proto často narazit na problém, že pro konkrétní protistranu nebude CDS existovat.
 Další možností jak určit PD protistrany je využití externího ratingu, který přidělují ratingové agentury (což už jsme zmínili v Kapitole \ref{CCR_kap}).
-Avšak externí rating získají pouze velké a renomované společnosti, a proto tuto metodu často nemůžeme použít.
+Avšak externí rating získají pouze velké a renomované společnosti, a proto tuto metodu často také nemůžeme použít.
+%Navíc ratingové agentury pro výpočet PD používají až příliš dlouhou historii, což může značně zkreslovat prospektivní informace.
 
 Většina bank používá k odhadu PD interní ratingové modely, které jsou založeny na historických datech o splácení klientů.
 Výstupem těchto modelů je pravděpodobnost selhání klienta během jednoho roku.
@@ -2773,11 +2793,17 @@ PRIBOR je průměrná úroková sazba, za kterou jsou banky ochotny si navzájem
 %The fixed rate of the IRS is determined at the beginning of the swap contract and remains unchanged during the life of the contract. On the other side, the floating rate may vary over time and is often dependent on a reference rate that gives the floating rate at every certain period of time. In our analysis, we use the Prague Inter Bank Offered Rate (PRIBOR) as the reference rate. 
 %The valuation of the IRS is tied to the evolution of the interest rate. Therefore, in the next section, we briefly refer to the Hull-White interest rate evolution model. 
 
+%\begin{figure}[!htbp]
+%  \centering 
+%	\includegraphics[width=10cm, clip, trim= 0 250 0 170]{IMG/IRS.pdf}
+%  \caption{Grafické znázornění vztahu mezi prodávajícím a kupujícím úrokového swapu. V tomto případě je Banka prodávající (receiver) a její protistrana je kupující (payer).}  \label{IRS_obr}
+%\end{figure}
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=10cm, clip, trim= 0 250 0 170]{IMG/IRS.pdf}
-  \caption{Grafické znázornění vztahu mezi prodávajícím a kupujícím úrokového swapu. V tomto případě je Banka prodávající (receiver) a její protistrana je kupující (payer).}  \label{IRS_obr}
+	\includegraphics[width=10cm, clip, trim= 0 250 0 170]{IMG/IRS2.pdf}
+  \caption{Grafické znázornění vztahu mezi prodávajícím a kupujícím úrokového swapu.}  \label{IRS_obr}
 \end{figure}
+
 
 \subsection{Initial yield curve}
 %%Příliš krátké sazby však vykazují určité anomálie (poměrně dlouhá období relativně stabilních sazeb střídají silné skokové pohyby jako důsledek externích šoků v podobě zásahů centrální banky)
@@ -2854,29 +2880,42 @@ For each scenarios the swaps are priced at each future simulation date.
 The main advantage of the Hull-White model is that it can be fitted exactly to the initial term structure of interest rates.
 
 \subsection{Funkce pravděpodobnosti selhání protistrany}
-We assume that the wait time for default of a counterparty is a random variable $X$ with exponential distribution. Then the cumulative distribution function of this variable can be define as
-\begin{equation}
-F(x)= P(X\leq x)= \left\{ \begin{array}{r@{\quad}c}
+%We assume that the wait time for default of a counterparty is a random variable $X$ with exponential distribution. Then the cumulative distribution function of this variable can be define as
+Předpokládejme, že doba čekání na selhání protistrany je náhodná veličina $X$ s exponenciálním rozdělením.
+Potom distribuční funkce této náhodné veličiny je definována jako
+\begin{equation}\label{exponentialdistr}
+F(x)= \mathsf{Pr}(X\leq x)= \left\{ \begin{array}{r@{\quad}c}
     1-\mathrm{e}^{-\lambda x}, & x \geq 0 \\
     0, & x \leq 0 \\ \end{array} \right.
-    \label{exponentialdistr}
 \end{equation}
-where $\lambda>0$ is the parameter of the distribution. Probability of default of the counterparty during one year we denote $PD$. Then 
-\begin{equation}
-PD=P(X\leq 1)=1-\mathrm{e}^{-\lambda}.
-\label{PD}
+%where $\lambda>0$ is the parameter of the distribution. Probability of default of the counterparty during one year we denote $PD$. Then 
+kde $\lambda>0$ je parametr exponenciálního rozdělení.
+Tedy distribuční funkce $F(x)$ je pravděpodobnost že protistrana selže před časem $x$.
+
+Pravděpodobnost selhání protistrany během jednoho roku označíme $PD_{1Y}$.
+Pak platí
+\begin{equation}\label{PD}
+PD_{1Y}=\mathsf{Pr}(X\leq 1)=1-\mathrm{e}^{-\lambda}.
 \end{equation}
-If we use value of PD from \textcolor{red}{odkud bereme PD, Leni?}  $\lambda$ could be estimate from \eqref{PD} 
-\begin{eqnarray}
-PD&=&1-\mathrm{e}^{-\lambda} \nonumber \\
-\lambda&=&-\log(1-PD).
+%If we use value of PD from \textcolor{red}{odkud bereme PD, Leni?}  $\lambda$ could be estimate from \eqref{PD} 
+Proto, známe-li $PD_{1Y}$, můžeme ze vztahu \eqref{PD} odvodit parametr $\lambda$
+\begin{eqnarray}\label{lambda}
+%PD_{1Y}&=&1-\mathrm{e}^{-\lambda} \nonumber \\
+\lambda&=&-\log(1-PD_{1Y}).
 \end{eqnarray}
-Then we can construct probability curve for each counterparty. It is possible to observed them in the Figure \ref{DefaultProbability}.
+
+Pro naše výpočty použijeme pravděpodobnost selhání protistrany během jednoho roku, která je výstupem z interních ratingových modelů banky.
+Pomocí vztahu \eqref{lambda} odhadneme parametr exponenciálního rozdělení. 
+%Then we can construct probability curve for each counterparty. It is possible to observed them in the Figure \ref{DefaultProbability}.
+Pro každou protistranu zkonstruujeme křivku pravděpodobnosti selhání v závislosti na čase danou distribuční funkcí \eqref{exponentialdistr}.
+Funkce popisující pravděpodobnost selhání protistrany před daným datem můžeme pozorovat na Obrázku \ref{DefaultProbability}.
+Vzhledem k tomu, že protistrany číslo 3 a číslo 4 mají stejný rating a tedy i stejnou $PD_{1Y}$, tak se jejich PD křivky kryjí.
+Ze stejného důvodu jsou totožné funkce pravděpodobnosti selhání u protistran číslo 2 a číslo 5.
 
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/DefaultProbability.pdf}
-  \caption{Funkce pravděpodobností selhání protistran}  \label{DefaultProbability}
+  \caption{Funkce pravděpodobností selhání protistran.}  \label{DefaultProbability}
 \end{figure}
 
 

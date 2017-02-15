@@ -16,6 +16,7 @@
   \usepackage{comment}
   \usepackage{xcolor}
   \usepackage{verbatim}
+  \usepackage{xspace} %pro tvorbu prostředí, které využíváme pro vytvoření loga pro R a Matlab
 
 \usepackage{url}  %kvuli vkladani URL adres do bibtexu ale asi jen ve stylu CZECHISO
 \DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>} \urlstyle{tt}}
@@ -66,6 +67,36 @@
 \begin{tabular}[#1]{@{}l@{}}#2\end{tabular}}
 
 %\usepackage{encxvlna} %při překladu automaticky uvažuje nezlomitelné mezery dle pravidel češtiny (nahrazuje program vlna.exe)
+
+%vytvoří logo matematického prostředí MATLAB -- \MATLAB
+\newcommand{\MATLAB}{\textsc{Matlab}\xspace}
+
+%vytvoří logo matematického prostředí R -- \tiny{\R}  \normalsize{ \R}  \Huge{\R}
+% \newcommand{\R}{\textsf{R}\xspace}   %1. možnost
+%\newcommand{\R}{ \textbf{\textsf{R}}\xspace} %2. možnost
+\definecolor{Rcolor}{RGB}{150,160,190} %3. možnost
+
+\newcommand{\Rx}{\fontsize{10pt}{12pt}\selectfont
+\raisebox{.3em}{\hspace{1.2em}%
+\llap{\resizebox{1.09em}{.5em}{\color{black}$\bigcirc$}}%
+\llap{\resizebox{1.199em}{.55em}{\color{darkgray}$\bigcirc$}}%
+\llap{\resizebox{1.19em}{.52em}{\color{gray!50}$\bigcirc$}}%
+\llap{\resizebox{1.1em}{.5em}{\color{gray}$\bigcirc$}}%
+\llap{\resizebox{1.25em}{.55em}{\color{gray}$\bigcirc$}}%
+}%
+\hspace{-.85em}%
+\textbf{%
+%\resizebox{.55em}{1.5ex}{\textcolor{black!80}{\textsf{R}}}%
+\textcolor{black}{\textsf{R}}%
+\hspace{-.025em}\raisebox{.01em}{\llap{\textcolor{Rcolor}{\textsf{R}}}}%
+}}%
+
+\newbox\rbox
+\savebox\rbox{\scalebox{0.1}{\Rx}}
+
+\makeatletter
+\def\R{\scalebox{\f@size}{\usebox\rbox}\xspace}
+\makeatletter
 
 \begin{document}
 \titlepage
@@ -374,7 +405,7 @@ Monte Carlo simulace použijeme k vytvoření  možných scénářů vývoje úr
 Tyto simulace jsou prováděny s využitím Hull-Whitova jednofaktorového modelu úrokových měr.
 Následně pro každý scénář úrokové míry oceňujeme daný úrokový swap metodami pro oceňování derivátů a~určujeme očekávanou expozici protistrany.
 Pro odhad pravděpodobnosti selhání protistrany využíváme přístup založený na exponenciálním rozdělení.
-Výpočty a simulace prezentované v Kapitole \ref{rizika_kap} jsou provedeny v prostředí MATLAB.
+Výpočty a simulace prezentované v Kapitole \ref{rizika_kap} jsou provedeny v prostředí \MATLAB.
 %\end{comment}
 
 \begin{comment}
@@ -1588,7 +1619,7 @@ Brigo a Mercurio v \cite{brigo2007interest} a Hull v \cite{hull} vysvětlují, j
 Naznačíme hlavní myšlenku jejich přístupu a uvedeme výsledný vztah pro výnosovou křivku.
 Pro podrobnější odvození odkazujeme na literaturu. 
 
-Z vlastnosti normality okamžité úrokové míry můžeme odvodit cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$ pomocí následujícího vztahu.
+Je-li hodnota okamžité úrokové míry známý stochastický proces, můžeme odvodit cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$ pomocí následujícího vztahu.
 %a následujícího vztahu pro cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$.
 Platí, že cena tohoto dluhopisu v čase $t$ je dána očekáváním
 \begin{equation}\label{ocekavana_cena_dluhopisu}
@@ -1597,6 +1628,7 @@ B(t,T)=\mathsf{E}_t\left(\mathrm{e}^{-\int_{t}^T r(s)\,\mathrm{d}s}\right),
 kde $\mathsf{E}_t$ značí střední hodnotu podmíněnou informacemi známými do času $t$.
 % podle vztahu
 
+Za předpokladu normality okamžité úrokové míry $r(s)$, pro všechna $t\leq s\leq T$, můžeme určit očekávání v rovnici \eqref{ocekavana_cena_dluhopisu}.
 Vztah pro výnosovou křivku pak odvodíme z očekávané ceny dluhopisu dosazením do rovnice \eqref{urokova_mira_z_dluhopisu_vztah} a dostáváme
 \begin{eqnarray}\label{H-W_vynosova_krivka}
 R(t,T)&=&-\frac{1}{T-t}\left(\log \frac{B(0,T)}{B(0,t)}+\frac{1-\mathrm{e}^{-\alpha(T-t)}}{\alpha}f(0,t)\right)+ \nonumber\\
@@ -2729,11 +2761,21 @@ kde $LGD$  je míra ztráty při selhání protistrany.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Aplikace výpočtu CVA na reálná data}\label{aplikaceCVA_kap}
-The numerical illustration of the calculation of CVA will be introduced in this section. 
-We work with data set of interest rate swaps from the year 2015.
-An \textit{interest rate swap (IRS)} is an agreement between two parties to exchange a interest rate cash flows on specified intervals and over a certain period of time. 
-These data come from a bank operating in the Czech Republic. 
-The data contains information about five vanilla interest rate swaps and each of them is associated with different counterparty. \textcolor{red}{Asi by to chtělo více informací o datech.}
+%The numerical illustration of the calculation of CVA will be introduced in this section. 
+%We work with data set of interest rate swaps from the year 2015.
+%An \textit{interest rate swap (IRS)} is an agreement between two parties to exchange a interest rate cash flows on specified intervals and over a certain period of time. 
+%These data come from a bank operating in the Czech Republic. 
+%The data contains information about five vanilla interest rate swaps and each of them is associated with different counterparty. \textcolor{red}{Asi by to chtělo více informací o datech.}
+
+Metodiku výpočtu CVA uvedenou v Kapitole \ref{metodyCVA} budeme aplikovat v této kapitole. 
+Naším cílem je spočítat CVA pro zvolené finanční deriváty a graficky znázornit komponenty vstupující do výpočtu.
+K výpočtům a tvorbě grafů použijeme prostředí \MATLAB.
+
+Data pro analýzu pochází od banky působící v České republice a obsahují informace o části jejího portfolia finančních derivátů.
+Tato část portfolia obsahuje pět úrokových swapů, z nichž každý je uzavřen s jinou protistranou.
+Banka je ve všech pěti případech v pozici prodávajícího (pro bližší vysvětlení této pozice viz Kapitola \ref{swap_kap}).
+V Tabulce \ref{variable} uvádíme přehled proměnných získaných z~datového souboru, které budeme využívat při výpočtu CVA.
+Datový soubor ani informace o protistranách nebudeme zveřejňovat.
 
 %\begin{table}[!htbp]
 %\centering
@@ -2762,6 +2804,7 @@ The data contains information about five vanilla interest rate swaps and each of
 Označení & Název proměnné  \\
  \hline \hline
 ID & identifikační číslo protistrany\\
+rating & rating protistrany \\
 principal & nominální hodnota IRS \\
 maturity & datum splatnosti IRS  \\
 LegRateReceiving & úroková sazba přijímaná bankou\\
@@ -2771,7 +2814,7 @@ period & úrokové období\\ %na konci každého úrokového období dochází k
 \end{tabular}}
 \end{table}
 
-\subsection{Úrokový swap}
+\subsection{Úrokový swap}\label{swap_kap}
 V praktické ukázce výpočtu CVA na reálných datech používáme data o úrokových swapech.
 Proto v následující části práce stručně vysvětlíme principy tohoto finančního derivátu.
 
@@ -2782,16 +2825,6 @@ Při vyrovnání obchodu dochází pouze k výměně úroků, avšak nikoli k v�
 Podle tržních konvencí se strana, která v rámci IRS kontraktu platí pevné úroky (a přijímá variabilní úroky) nazývá \textit{kupující (payer)} a strana, která přijímá pevné úroky (a platí variabilní úroky) se nazývá \textit{prodávající (receiver)}. 
 Tento vztah demonstruje Obrázek \ref{IRS_obr}.
 % By market convention, the counterparty paying the fixed rate is the "payer" (while receiving the floating rate), and the counterparty receiving the fixed rate is the "receiver" (while paying the floating rate).
-
-Pevná úroková sazba (fixed rate) je stanovena při uzavření IRS smlouvy a zůstává nezměněna v průběhu celého trvání smlouvy. 
-Na druhé straně variabilní úroková sazba (floating rate) se odvozuje od referenční úrokové sazby na trhu mezibankovních depozit a může se v průběhu života IRS měnit.
-V naší analýze používáme  jako referenční sazbu Prague InterBank Offered Rate (PRIBOR).
-PRIBOR je průměrná úroková sazba, za kterou jsou banky ochotny si navzájem půjčovat na českém mezibankovním trhu likviditu.
-%IRS splňuje vlastnosti finančního derivátu jehož podkladovým aktivem je úroková sazba.
-
-%IRS is an agreement between two traders as defined in Ševčovič et al. (2011). Consider plain vanilla IRS. Under this contract, party A commits to paying party B the fixed interest rate from the defined amount, the so-called principal amount or notional value. Party B is committed to paying to party A a floating interest rate. Party A is called the payer and party B the receiver.
-%The fixed rate of the IRS is determined at the beginning of the swap contract and remains unchanged during the life of the contract. On the other side, the floating rate may vary over time and is often dependent on a reference rate that gives the floating rate at every certain period of time. In our analysis, we use the Prague Inter Bank Offered Rate (PRIBOR) as the reference rate. 
-%The valuation of the IRS is tied to the evolution of the interest rate. Therefore, in the next section, we briefly refer to the Hull-White interest rate evolution model. 
 
 %\begin{figure}[!htbp]
 %  \centering 
@@ -2804,8 +2837,20 @@ PRIBOR je průměrná úroková sazba, za kterou jsou banky ochotny si navzájem
   \caption{Grafické znázornění vztahu mezi prodávajícím a kupujícím úrokového swapu.}  \label{IRS_obr}
 \end{figure}
 
+Pevná úroková sazba (fixed rate) je stanovena při uzavření IRS smlouvy a zůstává nezměněna v průběhu celého trvání smlouvy. 
+Na druhé straně variabilní úroková sazba (floating rate) se odvozuje od referenční úrokové sazby na trhu mezibankovních depozit a může se v průběhu života IRS měnit.
+V naší analýze používáme  jako referenční sazbu Prague InterBank Offered Rate (PRIBOR).
+PRIBOR je průměrná úroková sazba, za kterou jsou banky ochotny si navzájem půjčovat na českém mezibankovním trhu likviditu.
+%IRS splňuje vlastnosti finančního derivátu jehož podkladovým aktivem je úroková sazba.
+
+%IRS is an agreement between two traders as defined in Ševčovič et al. (2011). Consider plain vanilla IRS. Under this contract, party A commits to paying party B the fixed interest rate from the defined amount, the so-called principal amount or notional value. Party B is committed to paying to party A a floating interest rate. Party A is called the payer and party B the receiver.
+%The fixed rate of the IRS is determined at the beginning of the swap contract and remains unchanged during the life of the contract. On the other side, the floating rate may vary over time and is often dependent on a reference rate that gives the floating rate at every certain period of time. In our analysis, we use the Prague Inter Bank Offered Rate (PRIBOR) as the reference rate. 
+%The valuation of the IRS is tied to the evolution of the interest rate. Therefore, in the next section, we briefly refer to the Hull-White interest rate evolution model. 
 
 \subsection{Initial yield curve}
+%We start our analysis by creating a discount curve that is important for evaluating the swaps.
+??Na začátku naší analýzy vytvoříme diskontní křivku, kterou budeme používat při oceňování úrokových swapů.
+
 %%Příliš krátké sazby však vykazují určité anomálie (poměrně dlouhá období relativně stabilních sazeb střídají silné skokové pohyby jako důsledek externích šoků v podobě zásahů centrální banky)
 In order to evaluate the swaps, is necessary to describe a discount curve. The initial discount curve can be obtain by a linear interpolation of the risk free interest rates of different maturities. The initial rates were found at the web page of PATRIA (\href{URL}{http://www.patria.cz/kurzy/CZK/5Y/irs/graf.html}) and we can see them in the Table \ref{rates}.% \textcolor{red}{dát sem odkaz na stránku, Leni?} 
 The interest rate shorter than one year were extracted from PRIBOR rates on October 30th, 2015. 
@@ -2898,7 +2943,7 @@ Pak platí
 PD_{1Y}=\mathsf{Pr}(X\leq 1)=1-\mathrm{e}^{-\lambda}.
 \end{equation}
 %If we use value of PD from \textcolor{red}{odkud bereme PD, Leni?}  $\lambda$ could be estimate from \eqref{PD} 
-Proto, známe-li $PD_{1Y}$, můžeme ze vztahu \eqref{PD} odvodit parametr $\lambda$
+Proto, známe-li $PD_{1Y}$, můžeme ze vztahu \eqref{PD} odvodit parametr $\lambda$,
 \begin{eqnarray}\label{lambda}
 %PD_{1Y}&=&1-\mathrm{e}^{-\lambda} \nonumber \\
 \lambda&=&-\log(1-PD_{1Y}).
@@ -2909,7 +2954,7 @@ Pomocí vztahu \eqref{lambda} odhadneme parametr exponenciálního rozdělení.
 %Then we can construct probability curve for each counterparty. It is possible to observed them in the Figure \ref{DefaultProbability}.
 Pro každou protistranu zkonstruujeme křivku pravděpodobnosti selhání v závislosti na čase danou distribuční funkcí \eqref{exponentialdistr}.
 Funkce popisující pravděpodobnost selhání protistrany před daným datem můžeme pozorovat na Obrázku \ref{DefaultProbability}.
-Vzhledem k tomu, že protistrany číslo 3 a číslo 4 mají stejný rating a tedy i stejnou $PD_{1Y}$, tak se jejich PD křivky kryjí.
+Vzhledem k tomu, že protistrany číslo 3 a číslo 4 mají stejný rating a tedy i stejnou $PD_{1Y}$, tak se jejich grafy funkcí pravděpodobnosti selhání kryjí.
 Ze stejného důvodu jsou totožné funkce pravděpodobnosti selhání u protistran číslo 2 a číslo 5.
 
 \begin{figure}[!htbp]
@@ -3119,9 +3164,9 @@ V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{
 
 \chapter[Příloha -- Ukázka programů]{Příloha}
 \section*{Ukázka programu v R}
-\addcontentsline{toc}{section}{Ukázka programu v R}
+\addcontentsline{toc}{section}{Ukázka programu v {\textsf{R}}}
 
-V příloze uvádíme ukázku programu vytvořeného v prostředí R. 
+V příloze uvádíme ukázku programu vytvořeného v prostředí \R. 
 Tato část zdrojového kódu slouží k simulaci trajektorií Ornstein-Uhlenbeckova procesu.
 
 \begin{verbatim}
@@ -3185,7 +3230,7 @@ abline (h = theta , lty = 2)
 # =============================================================
 \end{verbatim}
 
-Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry zobrazuje Graf \ref{OU_graf}, který byl vytvořen v prostředí R pomocí předcházejícího zdrojového kódu.
+Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry zobrazuje Graf \ref{OU_graf}, který byl vytvořen v prostředí \R pomocí předcházejícího zdrojového kódu.
 
 \newpage
 Další část zdrojového kódu používáme ke zobrazení grafů dat a grafů simulací z Kapitoly \ref{aplikace}.
@@ -3227,9 +3272,9 @@ axis.Date(side = 1, dates)
 \end{verbatim}
 
 \newpage
-\section*{Ukázka programu v Matlabu}
-\addcontentsline{toc}{section}{Ukázka programu v Matlabu}
-Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment  vytvořeného v prostředí MATLAB a využívaného v Kapitole \ref{metodyCVA}.
+\section*{Ukázka programu v MATLAB}
+\addcontentsline{toc}{section}{Ukázka programu v \MATLAB}
+Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment  vytvořeného v prostředí \MATLAB a využívaného v Kapitole \ref{metodyCVA}.
 
 První část programu načte data o úrokových swapech z datového souboru vytvořeného v aplikaci Microsoft Excel. 
 

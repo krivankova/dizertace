@@ -2771,7 +2771,7 @@ Metodiku výpočtu CVA uvedenou v Kapitole \ref{metodyCVA} budeme aplikovat v t�
 Naším cílem je spočítat CVA pro zvolené finanční deriváty a graficky znázornit komponenty vstupující do výpočtu.
 K výpočtům a tvorbě grafů použijeme prostředí \MATLAB.
 
-Data pro analýzu pochází od banky působící v České republice a obsahují informace o části jejího portfolia finančních derivátů.
+Data pro analýzu pochází od banky působící v České republice (dále jen banka) a obsahují informace o části jejího portfolia finančních derivátů.
 Tato část portfolia obsahuje pět úrokových swapů, z nichž každý je uzavřen s jinou protistranou.
 Banka je ve všech pěti případech v pozici prodávajícího (pro bližší vysvětlení této pozice viz Kapitola \ref{swap_kap}).
 V Tabulce \ref{variable} uvádíme přehled proměnných získaných z~datového souboru, které budeme využívat při výpočtu CVA.
@@ -2847,21 +2847,32 @@ PRIBOR je průměrná úroková sazba, za kterou jsou banky ochotny si navzájem
 %The fixed rate of the IRS is determined at the beginning of the swap contract and remains unchanged during the life of the contract. On the other side, the floating rate may vary over time and is often dependent on a reference rate that gives the floating rate at every certain period of time. In our analysis, we use the Prague Inter Bank Offered Rate (PRIBOR) as the reference rate. 
 %The valuation of the IRS is tied to the evolution of the interest rate. Therefore, in the next section, we briefly refer to the Hull-White interest rate evolution model. 
 
-\subsection{Initial yield curve}
+\subsection{Počáteční výnosová křivka}
 %We start our analysis by creating a discount curve that is important for evaluating the swaps.
-??Na začátku naší analýzy vytvoříme diskontní křivku, kterou budeme používat při oceňování úrokových swapů.
+Na začátku naší analýzy vytvoříme výnosovou křivku, kterou budeme používat při modelování úrokové míry pomocí Hull-Whitova modelu. %při oceňování úrokových swapů.
+Tato křivka bude vstupovat do modelu prostřednictvím parametru $\theta(t)$. 
+Simulaci úrokové míry následně využijeme při oceňování úrokových swapů. %při výpočtu expozice protistran.
 
 %%Příliš krátké sazby však vykazují určité anomálie (poměrně dlouhá období relativně stabilních sazeb střídají silné skokové pohyby jako důsledek externích šoků v podobě zásahů centrální banky)
-In order to evaluate the swaps, is necessary to describe a discount curve. The initial discount curve can be obtain by a linear interpolation of the risk free interest rates of different maturities. The initial rates were found at the web page of PATRIA (\href{URL}{http://www.patria.cz/kurzy/CZK/5Y/irs/graf.html}) and we can see them in the Table \ref{rates}.% \textcolor{red}{dát sem odkaz na stránku, Leni?} 
-The interest rate shorter than one year were extracted from PRIBOR rates on October 30th, 2015. 
-The Picture \ref{YieldCurve} shows the initial yield curve at settlement date which was built from the initial rates in the Table \ref{rates}.
-\begin{table}
+%In order to evaluate the swaps, is necessary to describe a discount curve. The initial discount curve can be obtain by a linear interpolation of the risk free interest rates of different maturities. The initial rates were found at the web page of PATRIA (\href{URL}{http://www.patria.cz/kurzy/CZK/5Y/irs/graf.html}) and we can see them in the Table \ref{rates}.% \textcolor{red}{dát sem odkaz na stránku, Leni?} 
+%The interest rate shorter than one year were extracted from PRIBOR rates on October 30th, 2015. 
+%The Picture \ref{YieldCurve} shows the initial yield curve at settlement date which was built from the initial rates in the Table \ref{rates}.
+Pro konstrukci výnosových křivek existuje několik metod.
+Některé využívají data o výnosech bezkupónových dluhopisů, jiné sazby PRIBOR nebo tržní hodnoty IRS.
+V naší analýze jsme zvolili rozšířenou metodu, kterou využívá i banka. 
+Pro krátkodobé úrokové míry odvodíme výnosovou křivku ze sazeb PRIBOR a pro dlouhodobé úrokové míry využijeme hodnot IRS na trhu.
+Data jsme čerpali z webových stránek Patria online a terminálu Bloomberg a jsou uvedeny v Tabulce \ref{rates}.
+První dvě hodnoty jsou tzv. 3M~PRIBOR a 6M~PRIBOR, následují hodnoty ročních IRS až dvacetiletých IRS. 
+%Pro analýzu vývoje trendu krátkodobých sazeb konstruuje výnosovou křivku sazeb PRIBOR. Dále ČNB sleduje i vývoj dlouhodobých úrokových sazeb s pomocí IRS (interest rate swap) a výnosů dluhopisů.
+%hojně využívaným způsobem je konstrukce ze swapů
+\begin{table}%[!htbp]
   \centering 
 \caption{Počáteční úrokové míry}%\caption{Initial rates} 
+\label{rates}
 \vspace{0.5cm}
 \scalebox{1}{\begin{tabular}{|c |c|}
 \hline
-\textbf{Maturita (v letech)} &\textbf{úroková míra (\%)}\\ 
+\textbf{splatnost (v letech)} &\textbf{úroková míra (\%)}\\ 
 \hline
 0,25 & 0,29 \\% 0,14  \\ 
 0,5 & 0,37 \\% 0,16  \\
@@ -2880,9 +2891,8 @@ The Picture \ref{YieldCurve} shows the initial yield curve at settlement date wh
 20&1,27\\
 \hline
 \end{tabular}}
-\label{rates}
 \end{table}
-
+Obrázek \ref{YieldCurve} zobrazuje počáteční výnosovou křivku, kterou budeme dále používat v simulacích.
 
 \begin{figure}[!htbp]
   \centering 
@@ -2890,7 +2900,7 @@ The Picture \ref{YieldCurve} shows the initial yield curve at settlement date wh
   \caption{Výnosová křivka}  \label{YieldCurve}
 \end{figure}
 
-\subsection{Interest rate simulation}
+\subsection{Simulace úrokových měr}
 The interest rate simulation is based on historical data of the three month PRIBOR rate, from 2. 1. 2014 to 24. 11. 2015.  
 The development of three month PRIBOR rate can be observed in the figure \ref{PRIBOR}.
 

@@ -2899,12 +2899,17 @@ Obrázek \ref{YieldCurve} zobrazuje počáteční výnosovou křivku, kterou bud
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13cm, clip, trim= 125 280 110 270]{IMG/YieldCurveN.pdf}
-  \caption{Výnosová křivka}  \label{YieldCurve}
+  \caption{Počáteční výnosová křivka.}  \label{YieldCurve}
 \end{figure}
 
-\subsection{Simulace úrokových měr}
+\subsection{Simulace úrokových měr a oceňování IRS}
+Při oceňování IRS budeme používat Monte Carlo simulace.
+Pro další informace o této metodě odkazujeme na klasickou monografii Johna Hammersleyho \cite{hammersley2013monte} nebo rozsáhlou publikaci Reuvena Rubinsteina a Dirka Kroese \cite{rubinstein2016simulation}, která byla v loňském roce aktualizována.
+IRS jsou deriváty úrokové míry a tudíž pro určení jejich tržní hodnoty budeme muset nejdřív modelovat hodnotu úrokové míry.
+
 %The interest rate simulation is based on historical data of the three month PRIBOR rate, from 2. 1. 2014 to 24. 11. 2015.  
 %The development of three month PRIBOR rate can be observed in the figure \ref{PRIBOR}.
+
 Variabilní úroková sazba IRS v našem datovém souboru je odvozena z tříměsíční sazby PRIBOR.
 Proto jsme se rozhodli využít historická data o této sazbě pro kalibraci modelu úrokových měr.
 Vývoj tříměsíční sazby PRIBOR můžeme vidět na Obrázku \ref{PRIBOR}.
@@ -2912,15 +2917,16 @@ Vývoj tříměsíční sazby PRIBOR můžeme vidět na Obrázku \ref{PRIBOR}.
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13cm, clip, trim= 110 280 110 270]{IMG/PRIBOR.pdf}
-  \caption{Vývoj tříměsíční PRIBOR úrokové míry}  \label{PRIBOR}
+  \caption{Vývoj tříměsíční PRIBOR úrokové sazby.}  \label{PRIBOR}
 \end{figure}
 
-Při oceňování IRS používáme Monte Carlo simulace.
-Pro další informace o této metodě odkazujeme na klasickou monografii Johna Hammersleyho \cite{hammersley2013monte} nebo rozsáhlou publikaci Reuvena Rubinsteina a Dirka Kroese \cite{rubinstein2016simulation}, která byla v loňském roce aktualizována.
-
-Provedeme tisíc simulací a každou simulaci modelujeme Hull-Whitovým modelem.
+%Provedeme tisíc simulací a každou simulaci modelujeme Hull-Whitovým modelem.
 Pro modelování úrokové míry budeme používat Hull-Whitův jednofaktorový model představený v Kapitole \ref{H-W_model_kap}.
-Parametry modelu $\alpha$ a $\sigma$ odhadneme z historických dat tříměsíční sazby PRIBOR ($\alpha=0,0208$ a $\sigma=0,015$).
+Nejdříve odhadneme parametry $\alpha$ a $\sigma$ z historických dat tříměsíční sazby PRIBOR za použití \MATLAB funkce \verb+regress+.
+Parametr $\theta(t)$ bude odvozen z počáteční výnosové křivky v \MATLAB.
+Následně použijeme vztah \eqref{H-W_model} a získáme simulace okamžité úrokové míry.
+V \MATLAB k tomu budeme využívat funkci \verb+HullWhite1F+, jejímiž parametry jsou parametry $\alpha$ a $\sigma$ z Hull-Whitova modelu a hodnoty počáteční výnosové křivky z Tabulky \ref{rates}.  
+%Parametry modelu $\alpha$ a $\sigma$ odhadneme z historických dat tříměsíční sazby PRIBOR za použití \MATLAB funkce \verb+regress+. %($\alpha=0,0208$ a $\sigma=0,015$).
 Okamžité úrokové míry simulované modelem rozšíříme na celé výnosové křivky s využitím rovnice \eqref{H-W_vynosova_krivka}.
 %The constant reversion speed $\alpha$ and constant $\sigma$ are extracted from the historical three month PRIBOR rates.
 %We use equation \eqref{H-W_model} to simulated the short interest rates.  
@@ -2943,7 +2949,11 @@ Příklad jedné takové simulace vývoje časové struktury úrokové míry uka
 
 %For each scenarios the swaps are priced at each future simulation date. 
 %The main advantage of the Hull-White model is that it can be fitted exactly to the initial term structure of interest rates.
-Pro každý scénář provedeme ocenění IRS v každém datu simulace v budoucnosti.
+Provedeme tisíc takových simulací.
+Pro každý scénář vypočítáme tržní hodnoty IRS v každém datu simulace v budoucnosti.
+K tomu budeme využívat v \MATLAB funkci \verb+hcomputeMTMValues+, která je založena na funkci \verb+hswapapprox+.
+Při výpočtu CVA je běžné oceňovat IRS pomocí aproximace místo ocenění přesně.  
+
 
 \subsection{Funkce pravděpodobnosti selhání protistrany}
 Pro výpočet CVA dle vztahu \eqref{CVA} potřebujeme určit pravděpodobnost selhání protistrany jako funkci času.

@@ -2571,7 +2571,7 @@ a $T$ označuje splatnost kontraktu s nejdelší splatností v uvažovaném port
 \end{definice}
 Jednotlivé komponenty CVA ze vztahu \eqref{CVA} budeme podrobněji specifikovat v následujícím textu.
 
-\subsection{Expozice protistrany}
+\subsection{Expozice protistrany}\label{exposure_kap}
 \textit{Expozici protistrany} v čase $t$ značíme $E(t)$ a definujeme jako celkovou výši nesplacených pohledávek danou protistranou.
 %Expozice kvantifikuje potenciální ekonomickou ztrátu v případě selhání protistrany.
 Hodnota expozice protistrany kvantifikuje do jaké míry je věřitel vystaven riziku ztráty v případě neplnění dlužníka.
@@ -2592,11 +2592,11 @@ Pak hodnota portfolia v čase $t$ je definována jako
 V(t)=\sum_{i=1}^N V_i(t).
 \end{equation}
 V případě, že banka nemá s protistranou uzavřenou dohodu o vzájemném započítávání pohledávek a závazků (tzv. netting), expozice protistrany $E(t)$ je 
-\begin{equation}
+\begin{equation}\label{exp_vztah}
 E(t)=\sum_{i=1}^N\max\{V_i(t),0\}.
 \end{equation}
 Pokud banka s protistranou uzavře smlouvu o nettingu, pak je expozice dána jako
-\begin{equation}
+\begin{equation}\label{exp_vztah_net}
 E(t)=\max\{V(t),0\}.
 \end{equation}
 Využívání nettingu slouží ke snížení úvěrového a tržního rizika. 
@@ -2672,7 +2672,7 @@ kde $r(t)$ je okamžitá úroková míra.
 %spojité diskontování se v praxi napoužívá, ale usnaňuje výpočty
 %Hence, the discounted expected exposure at time $t$ conditional on the counterparty default at time $t$ is given by 
 Dostáváme vztah pro diskontovanou očekávanou expozici v okamžiku selhání protistrany
-\begin{equation}
+\begin{equation}\label{dis_exposure_vztah}
 \hat{e}_d(t)=\mathsf{E}[D(t) e(t)].
 \end{equation}
 
@@ -2772,7 +2772,7 @@ Naším cílem je spočítat CVA pro zvolené finanční deriváty a graficky zn
 K výpočtům a tvorbě grafů použijeme prostředí \MATLAB.
 
 Data pro analýzu pochází od banky působící v České republice (dále jen banka) a obsahují informace o části jejího portfolia finančních derivátů.
-Tato část portfolia obsahuje pět úrokových swapů, z nichž každý je uzavřen s jinou protistranou.
+Tato část portfolia obsahuje pět úrokových swapů, z nichž každý je uzavřen s~jinou protistranou.
 Banka je ve všech pěti případech v pozici prodávajícího (pro bližší vysvětlení této pozice viz Kapitola \ref{swap_kap}).
 V Tabulce \ref{variable} uvádíme přehled proměnných získaných z~datového souboru, které budeme využívat při výpočtu CVA.
 Datový soubor ani informace o protistranách nebudeme zveřejňovat.
@@ -2804,8 +2804,9 @@ Datový soubor ani informace o protistranách nebudeme zveřejňovat.
 \hline
 Označení & Název proměnné  \\
  \hline \hline
-ID & identifikační číslo protistrany\\
+counterpartyID & identifikační číslo protistrany\\
 rating & rating protistrany \\
+nettingID & identifikace protistrany smlouvy o nettingu \\
 principal & nominální hodnota IRS \\
 maturity & datum splatnosti IRS  \\
 LegRateReceiving & úroková sazba přijímaná bankou\\
@@ -2823,7 +2824,7 @@ Proto v následující části práce stručně vysvětlíme principy tohoto fin
 Jedná se o smluvní dohodu dvou stran vyměnit si úrokové závazky v různých sazbách vztahující se ke stejné nominální hodnotě. 
 Zpravidla se přitom jedná o výměnu fixní platby úroků za variabilní. 
 Při vyrovnání obchodu dochází pouze k výměně úroků, avšak nikoli k výměně nominální hodnoty.
-Podle tržních konvencí se strana, která v rámci IRS kontraktu platí pevné úroky (a přijímá variabilní úroky) nazývá \textit{kupující (payer)} a strana, která přijímá pevné úroky (a platí variabilní úroky) se nazývá \textit{prodávající (receiver)}. 
+Podle tržních konvencí se strana, která v~rámci IRS kontraktu platí pevné úroky (a přijímá variabilní úroky) nazývá \textit{kupující (payer)} a strana, která přijímá pevné úroky (a platí variabilní úroky) se nazývá \textit{prodávající (receiver)}. 
 Tento vztah demonstruje Obrázek \ref{IRS_obr}.
 % By market convention, the counterparty paying the fixed rate is the "payer" (while receiving the floating rate), and the counterparty receiving the fixed rate is the "receiver" (while paying the floating rate).
 
@@ -2848,7 +2849,7 @@ PRIBOR je průměrná úroková sazba, za kterou jsou banky ochotny si navzájem
 %The fixed rate of the IRS is determined at the beginning of the swap contract and remains unchanged during the life of the contract. On the other side, the floating rate may vary over time and is often dependent on a reference rate that gives the floating rate at every certain period of time. In our analysis, we use the Prague Inter Bank Offered Rate (PRIBOR) as the reference rate. 
 %The valuation of the IRS is tied to the evolution of the interest rate. Therefore, in the next section, we briefly refer to the Hull-White interest rate evolution model. 
 
-\subsection{Počáteční výnosová křivka}
+\subsection{Počáteční výnosová křivka}\label{vynosova_krivka_kap}
 %We start our analysis by creating a discount curve that is important for evaluating the swaps.
 Na začátku naší analýzy vytvoříme výnosovou křivku, kterou budeme používat při modelování úrokové míry pomocí Hull-Whitova modelu. %při oceňování úrokových swapů.
 Tato křivka bude vstupovat do modelu prostřednictvím parametru $\theta(t)$. 
@@ -2902,7 +2903,7 @@ Obrázek \ref{YieldCurve} zobrazuje počáteční výnosovou křivku, kterou bud
   \caption{Počáteční výnosová křivka.}  \label{YieldCurve}
 \end{figure}
 
-\subsection{Simulace úrokových měr a oceňování IRS}
+\subsection{Simulace úrokových měr a oceňování IRS}\label{simulace_kap}
 Při oceňování IRS budeme používat Monte Carlo simulace.
 Pro další informace o této metodě odkazujeme na klasickou monografii Johna Hammersleyho \cite{hammersley2013monte} nebo rozsáhlou publikaci Reuvena Rubinsteina a Dirka Kroese \cite{rubinstein2016simulation}, která byla v loňském roce aktualizována.
 IRS jsou deriváty úrokové míry a tudíž pro určení jejich tržní hodnoty budeme muset nejdřív modelovat hodnotu úrokové míry.
@@ -2922,12 +2923,13 @@ Vývoj tříměsíční sazby PRIBOR můžeme vidět na Obrázku \ref{PRIBOR}.
 
 %Provedeme tisíc simulací a každou simulaci modelujeme Hull-Whitovým modelem.
 Pro modelování úrokové míry budeme používat Hull-Whitův jednofaktorový model představený v Kapitole \ref{H-W_model_kap}.
-Nejdříve odhadneme parametry $\alpha$ a $\sigma$ z historických dat tříměsíční sazby PRIBOR za použití \MATLAB funkce \verb+regress+.
-Parametr $\theta(t)$ bude odvozen z počáteční výnosové křivky v \MATLAB.
-Následně použijeme vztah \eqref{H-W_model} a získáme simulace okamžité úrokové míry.
-V \MATLAB k tomu budeme využívat funkci \verb+HullWhite1F+, jejímiž parametry jsou parametry $\alpha$ a $\sigma$ z Hull-Whitova modelu a hodnoty počáteční výnosové křivky z Tabulky \ref{rates}.  
+Nejdříve odhadneme parametry $\alpha$ a $\sigma$ z historických dat tříměsíční sazby PRIBOR za použití \MATLAB funkce \verb+regress+ (viz Příloha \ref{priloha_programy}).
+Parametr $\theta(t)$ konkrétně určovat nemusíme, jelikož jeho roli v modelu při výpočtu v \MATLAB zastoupí počáteční výnosová křivka.
+
+Chování hodnoty okamžité úrokové míry je popsáno rovnicí~\eqref{H-W_model}.
+K~simulování vývoje její hodnoty v \MATLAB využíváme funkci \verb+HullWhite1F+, jejímiž parametry jsou koeficienty $\alpha$ a $\sigma$ z Hull-Whitova modelu a hodnoty počáteční výnosové křivky z Tabulky \ref{rates}.  
 %Parametry modelu $\alpha$ a $\sigma$ odhadneme z historických dat tříměsíční sazby PRIBOR za použití \MATLAB funkce \verb+regress+. %($\alpha=0,0208$ a $\sigma=0,015$).
-Okamžité úrokové míry simulované modelem rozšíříme na celé výnosové křivky s využitím rovnice \eqref{H-W_vynosova_krivka}.
+Okamžité úrokové míry dané modelem rozšíříme na celé výnosové křivky s využitím rovnice \eqref{H-W_vynosova_krivka}.
 %The constant reversion speed $\alpha$ and constant $\sigma$ are extracted from the historical three month PRIBOR rates.
 %We use equation \eqref{H-W_model} to simulated the short interest rates.  
 %We can expand the entire interest rate curve from the short rate using formula \eqref{H-W_vynosova_krivka}.
@@ -2939,23 +2941,64 @@ Okamžité úrokové míry simulované modelem rozšíříme na celé výnosové
 %\end{eqnarray}
 %The large number of simulations was made. 
 %The example of yield surfaces obtained in one interest rate simulation is possible to observe in the Figure \ref{YieldCurveEvolution}.
-Příklad jedné takové simulace vývoje časové struktury úrokové míry ukazuje trojrozměrný plošný graf na Obrázku \ref{YieldCurveEvolution}.
+Příklad jednoho z možných scénářů vývoje celé časové struktury úrokové míry ukazuje trojrozměrný plošný graf na Obrázku~\ref{YieldCurveEvolution}.
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/YieldCurveEvolution1N.pdf}
 %  \caption{ One Possible Scenario of Yield Curve Evolution}  \label{YieldCurveEvolution}
-     \caption{Jeden z možných scénářů pro vývoj výnosové křivky}  \label{YieldCurveEvolution}
+     \caption{Jeden z možných scénářů pro vývoj výnosové křivky.}  \label{YieldCurveEvolution}
 \end{figure}
 
 %For each scenarios the swaps are priced at each future simulation date. 
 %The main advantage of the Hull-White model is that it can be fitted exactly to the initial term structure of interest rates.
-Provedeme tisíc takových simulací.
-Pro každý scénář vypočítáme tržní hodnoty IRS v každém datu simulace v budoucnosti.
-K tomu budeme využívat v \MATLAB funkci \verb+hcomputeMTMValues+, která je založena na funkci \verb+hswapapprox+.
-Při výpočtu CVA je běžné oceňovat IRS pomocí aproximace místo ocenění přesně.  
+Provedeme tisíc takových simulací 
+a pro každý scénář vypočítáme tržní hodnoty IRS v každém datu simulace v budoucnosti.
+Pro oceňování IRS\linebreak v jednotlivých datech simulace je v \MATLAB naprogramovaná funkce\linebreak \verb+hcomputeMTMValues+, která při spuštění volá funkci \verb+hswapapprox+. 
+Tato funkce pro určení tržní hodnoty IRS využívá aproximace, proto není vhodné její použití v případě, kdy potřebujeme přesnou hodnotu.  
+%Nicméně při výpočtu CVA je tento postup běžně využíván, jelikož zkreslení výsledků není významné a~použití aproximace zásadně zvyšuje výkonost výpočtu. 
+Nicméně při výpočtu CVA je tento postup běžně využíván, jelikož použití aproximace zásadně zvyšuje výkonost výpočtu, kterou  Monte Carlo simulace vyžadují.  
+%K tomu budeme využívat v \MATLAB funkci \verb+hcomputeMTMValues+, která je založena na funkci \verb+hswapapprox+.
+%Při výpočtu CVA je běžné oceňovat IRS pomocí aproximace místo ocenění přesně.  
+Výstupem oceňovací funkce je trojrozměrná matice, která obsahuje tržní hodnoty pro každý uvažovaný IRS v každém datu simulace a pro každý scénář. 
+Na Obrázku~\ref{SwapPrice} vidíme jeden z možných scénářů vývoje tržní hodnoty pěti úrokových swapů z datového souboru.
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/SwapPrice1.pdf}
+     \caption{Jeden z možných scénářů pro vývoj tržní hodnoty pěti úrokových swapů z datového souboru.}  \label{SwapPrice}
+\end{figure}
 
+Vzhledem k předpokladu neexistence arbitráže je hodnota IRS v době uzavření kontraktu nulová. 
+Během každého simulovaného scénáře hodnota IRS roste nebo klesá v závislosti na změně časové struktury úrokové míry.
+Jak se blíží doba maturity IRS, přibližuje se jeho hodnota k nule, protože součet hodnot všech zbývajících očekávaných budoucích peněžních toků (plynoucích ze smluvní dohody) klesá.   
 
-\subsection{Funkce pravděpodobnosti selhání protistrany}
+Sečteme-li pro daný scénář hodnoty všech uvažovaných IRS v každém datu simulace, dostaneme vývoj hodnoty celého portfolia.
+Celkové hodnoty portfolia pro všechny scénáře naší simulace zobrazuje Obrázek \ref{TotalPortfoioValue}.
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/TotalPortfoioValue.pdf}
+  \caption{Ukázka simulací tržní hodnoty uvažovaného portfolia pěti úrokových swapů.}  \label{TotalPortfoioValue}
+\end{figure}
+
+Dalším krokem je výpočet expozice protistrany definované v Kapitole~\ref{exposure_kap}.
+V \MATLAB pro tento výpočet využijeme funkci \verb+creditexposures+.
+Přímo v~datovém souboru je proměnná, která umožňuje zohlednit při výpočtu expozice netting.
+Funkce \verb+creditexposures+ umožňuje výpočet expozice jak v~případě, že je uzavřena smlouva o nettingu dle vztahu \eqref{exp_vztah_net}, tak v případě neexistence nettingové smlouvy, viz vztah \eqref{exp_vztah}.
+Stejně jako při určení hodnoty celého portfolia získáme expozici celého portfolia součtem expozic všech protistran v jednotlivých datech simulace.
+Celkovou expozici portfolia pro každý scénář v naší simulaci můžeme pozorovat na Obrázku \ref{PorfolioExposure}.
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13cm, clip, trim= 110 270 110 270]{IMG/PorfolioExposure.pdf}
+  \caption{Ukázka simulací expozice uvažovaného portfolia pěti úrokových swapů.}  \label{PorfolioExposure}
+\end{figure}
+
+Očekávanou expozici protistrany jsme definovali v Kapitole~\ref{exposure_kap} jako střední hodnotu expozice protistrany.
+Pro výpočet očekávané expozice použijeme \MATLAB funkci \verb+exposureprofiles+, která ji určí jako průměrnou hodnotu všech expozic protistrany ze všech simulovaných scénářů.
+
+Na závěr spočítáme diskontovanou očekávanou expozici protistrany danou vztahem \eqref{dis_exposure_vztah}.
+Nejdříve diskontujeme expozici protistrany v každém simulovaném scénáři a následně opět použijeme funkci \verb+exposureprofiles+ pro určení očekávané hodnoty.
+Diskontní faktory pro každý scénář určíme ze simulovaných okamžitých úrokových sazeb. 
+
+\subsection{Funkce pravděpodobnosti selhání protistrany}\label{funkce_PD_kap}
 Pro výpočet CVA dle vztahu \eqref{CVA} potřebujeme určit pravděpodobnost selhání protistrany jako funkci času.
 Bude se jednat o distribuční funkci exponenciálního rozdělení.
 
@@ -2987,6 +3030,7 @@ Pro naše výpočty použijeme pravděpodobnost selhání protistrany během jed
 Pomocí vztahu \eqref{lambda} odhadneme parametr exponenciálního rozdělení. 
 %Then we can construct probability curve for each counterparty. It is possible to observed them in the Figure \ref{DefaultProbability}.
 Pro každou protistranu zkonstruujeme křivku pravděpodobnosti selhání v závislosti na čase danou distribuční funkcí \eqref{exponentialdistr}.
+
 Funkce popisující pravděpodobnost selhání protistrany před daným datem můžeme pozorovat na Obrázku \ref{DefaultProbability}.
 \begin{figure}[!htbp]
   \centering 
@@ -3000,13 +3044,15 @@ Ze stejného důvodu jsou totožné funkce pravděpodobnosti selhání u protist
 %Let consider the exposure is independent of default. Then total exposure of all contracts can be computed on the bases of equation \eqref{totalExposure}. The bank has estimated recovery rate $R=40\%$. \textcolor{red}{Leni, jaká je vaše recovery rate?}. Now we have everything for the CVA calculation according to the equation \eqref{CVA}. The resulting values of CVA for each counterparty can be observed in the Table \ref{resultingCVA}.
 Při výpočtu CVA budeme předpokládat, že expozice protistrany a pravděpodobnost jejího selhání jsou nezávislé veličiny.
 Jinak řečeno, nebudeme zohledňovat wrong-way riziko.
-Celkovou expozici každé protistrany určíme podle vztahu \eqref{expozice_vztah}.
+
+Výpočet CVA pro jednotlivé protistrany provedeme dosazením do rovnice~\eqref{CVA}. 
+%Celkovou expozici každé protistrany určíme podle vztahu \eqref{expozice_vztah}.
+Diskontovanou očekávanou expozici protistrany jsme spočítali v Kapitole \ref{simulace_kap} a pravděpodobnost selhání protistrany před časem $t$ jsme určili v Kapitole \ref{funkce_PD_kap}.
 Ztrátovost ze selhání budeme uvažovat konstantní a stejnou pro všechny protistrany $LGD=45\%$, což je standardní regulatorní hodnota pro podniková portfolia. 
 Míra návratnosti daná vztahem \eqref{recovery_rate} je $R=0,55$.
 
-Výpočet CVA pro jednotlivé protistrany provedeme dosazením do rovnice~\eqref{CVA}. 
 Výsledné hodnoty CVA pro každou protistranu jsou shrnuty v~Tabulce~\ref{resultingCVA}.
-\begin{table}
+\begin{table}[!htbp]
   \centering 
 \caption{Přehled výsledků CVA pro jednotlivé protistrany}
 \label{resultingCVA}
@@ -3024,26 +3070,11 @@ $\boldsymbol{5}$&78\,501,06  \\
 \end{tabular}}
 \end{table}
 
-%celkovou hodnotu portfolia pro každý scénář naší simulace
-\begin{figure}[!htbp]
-  \centering 
-	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/TotalPortfoioValue.pdf}
-  \caption{Ukázka simulací tržní hodnoty uvažovaného portfolia pěti úrokových swapů.}  \label{TotalPortfoioValue}
-\end{figure}
-
-%celkovou expozici portfolia pro každý scénář v naší simulaci
-\begin{figure}[!htbp]
-  \centering 
-	\includegraphics[width=13cm, clip, trim= 110 270 110 270]{IMG/PorfolioExposure.pdf}
-  \caption{Ukázka simulací expozice uvažovaného portfolia pěti úrokových swapů.}  \label{PorfolioExposure}
-\end{figure}
-
 %\begin{figure}[!htbp]
 %  \centering 
 %	\includegraphics[width=6cm, clip, trim= 110 270 110 270]{IMG/CVAforEachCounterparty.pdf}
 %  \caption{CVA for each counterparty}  \label{CVAforEachCounterparty}
 %\end{figure}
-
 
 
 \section{Srovnání metod výpočtu CVA}\label{srovnani_metod_cva}
@@ -3088,7 +3119,7 @@ Tato metoda určení $PD$ je diskrétní narozdíl od spojitého přístupu pou�
 %We can observe a comparison of our results of CVA with the CVA used by the bank in Tab. IV. We can see that our results of CVA achieve significantly lower values than the CVA used by the bank.
 V Tabulce \ref{srovnaniCVA} vidíme srovnání výsledků z Kapitoly \ref{vypocetCVA_kap} s CVA vypočítanými bankou. 
 Všimněme si, že CVA spočítané v této práci dosahují významně nižší hodnot než CVA spočítané v bance.
-\begin{table}
+\begin{table}[!htbp]
   \centering 
 \caption{Srovnání výsledků výpočtů CVA dle metody popsané v této práci a dle metody používané v bance}
 \label{srovnaniCVA}
@@ -3194,7 +3225,7 @@ S.~Kafková, L.~Křivánková, and M.~Leváková.
 \end{enumerate}
 
 
-\chapter[Příloha -- Ukázka datového souboru]{Příloha}
+\chapter[Příloha -- Ukázka datového souboru]{Příloha}\label{priloha_programy}
 \section*{Ukázka datového souboru}
 V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{aplikace}.
 \begin{figure}[!htbp]
@@ -3316,11 +3347,11 @@ axis.Date(side = 1, dates)
 \newpage
 \section*{Ukázka programu v MATLAB}
 \addcontentsline{toc}{section}{Ukázka programu v \MATLAB}
-Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment  vytvořeného v prostředí \MATLAB a využívaného v Kapitole \ref{metodyCVA}.
+Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment  vytvořeného v prostředí \MATLAB a využívaného v Kapitole \ref{aplikaceCVA_kap}.
 
 První část programu načte data o úrokových swapech z datového souboru vytvořeného v aplikaci Microsoft Excel. 
 
-V další části se generuje počáteční výnosová křivka, která se dále využívá při modelování úrokové míry pomocí Hull-Whitova modelu (viz Kapitola \ref{H-W_model_kap}).
+V další části se generuje počáteční výnosová křivka, která se dále využívá při modelování úrokové míry pomocí Hull-Whitova modelu (viz Kapitola~\ref{vynosova_krivka_kap}).
 
 \begin{verbatim}
 clear all
@@ -3383,6 +3414,53 @@ title('Výnosová křivka');
 % =============================================================
 \end{verbatim}
 
+Následující část programu načte historická data o sazbě PRIBOR z datového souboru vytvořeného v aplikaci Microsoft Excel.
+Potom vykreslí graf vývoje tříměsíční sazby PRIBOR a odhadne z ní parametry Hull-Whitova modelu (viz Kapitola \ref{simulace_kap}).
+\begin{verbatim}
+% =============================================================
+% Načte data o PRIBOR
+% =============================================================
+%
+priborFile = 'data.xls';
+priborData = dataset('XLSFile',priborFile,'Sheet','PRIBOR');
+yields=priborData.PRIBOR_3m;
+Dates=priborData.Datum;
+formatIn='dd.mm.yyyy';
+Data=datenum(Dates,formatIn);
+simDates=datemnth('30-Oct-2015',0:1:(12*7))';
+% =============================================================
+%
+% =============================================================
+% Vykreslí graf vývoje 3m PRIBOR
+% =============================================================
+%
+figure;
+plot(Data, yields, '-');
+xlabel('Date');
+datetick('x', 'mmmyy');
+ylabel('PRIBOR 3M');
+grid on;
+% =============================================================
+%
+% =============================================================
+% Odhadne parametry Hull-Whitova modelu 
+% za použití funkce regress
+% =============================================================
+%
+regressors = [ones(length(yields)-1, 1) yields(1: end -1)];
+[coefficients,~,residuals] = regress(diff(yields),regressors);
+
+% Časový krok je nastaven v závislosti na frekvenci dat 
+% v simulaci
+dt = mean(diff(simDates));
+
+% Alpha -- rychlost reverze
+Alpha = - coefficients(2)/dt
+
+% Sigma -- volatilita
+Sigma = nanstd(residuals)/sqrt(dt)
+% =============================================================
+\end{verbatim}
 
 \end{document}
 

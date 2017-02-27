@@ -2338,7 +2338,7 @@ jsou výsledkem opatření pro posílení regulace bankovního sektoru promítnu
 %Směrnice CRD IV (Capital Requirements Directive) \cite{EU2013a}. 
 %Členské státy EU měli povinnost do konce roku 2013 přijmout a zveřejnit předpisy nezbytné pro dosažení souladu s touto směrnicí. 
 Nařízení CRR je přímo účinný právní předpis používaný od roku 2014, přičemž národní právní předpisy jsou upraveny tak, aby nebyly v rozporu s tímto nařízením. 
-Ustanovení směrnice CRD~IV museli členské státy EU promítnout do národních předpisů do konce roku 2013.
+Ustanovení směrnice CRD~IV musely členské státy EU promítnout do národních předpisů do konce roku 2013.
 
 Během celosvětové finanční krize, která vypukla v roce 2008, se ukázala důležitost správného měření a řízení kreditního rizika protistrany (CCR) pro stabilitu finančního systému.
 Kapitál pro kreditní riziko protistrany byl vyžadován již v Basel I.  
@@ -2408,7 +2408,7 @@ Obě tato rizika v sobě spojuje kreditní riziko protistrany (více viz Kapitol
 Dalšími finančními riziky jsou operační riziko a riziko likvidity.
 Basel~II %(International Convergence of Capital Measurement and Capital Standards) 
 definoval operační riziko jako riziko ztráty vyplývající z nedostatků či selhání vnitřních procesů, osob a systémů nebo vlivem vnějších událostí.
-Řízení operačního rizika slouží k zajištění provozní efektivity, snížení nákladů a zvýšení konkurenceschopnost.
+Řízení operačního rizika slouží k zajištění provozní efektivity, snížení nákladů a zvýšení konkurenceschopnosti.
 Regulatorní orgány vymezují obezřetnostní požadavky na operační riziko.
 Riziko likvidity je %riziko, že banka ztratí schopnost dostát svým finančním závazkům v době, kdy se stanou splatnými (bez toho aby došlo k narušení běžných činností nebo finanční kondice banky) nebo nebude moci snadno (v požadovaném čase a za obvyklou cenu) uzavřít pozici na trhu z důvodu nedostatečné hloubky nebo narušení trhu.
 riziko ztráty schopnosti dostát finančním závazkům v době, kdy se stanou splatnými, nebo riziko ztráty schopnosti financovat aktiva.
@@ -2429,7 +2429,7 @@ Pro investory je rating spolehlivou informací o kreditním riziku emitenta př�
 Nejznámějšími ratingovými agenturami jsou Moody's, Standard \& Poor's a Fitch. Každá z těchto agentur má vlastní hodnotící stupnici a zvyklosti.
 
 Obecně se ratingové stupnice dělí na dvě části -- investiční pásmo a spekulativní pásmo.
-Ratingy z investičního pásma přiznávají ratingové agentury finanční instrumentům, do kterých doporučují investovat. Pod touto úrovní leží pásmo spekulativních investic, u kterých je očekáváno značné riziko ztráty.
+Ratingy z investičního pásma přiznávají ratingové agentury finančním instrumentům, do kterých doporučují investovat. Pod touto úrovní leží pásmo spekulativních investic, u kterých je očekáváno značné riziko ztráty.
 
 Typickým představitelem emitenta s velmi nízkým rizikem je vláda vyspělého státu, která vydává dluhopisy, jež jsou chápány jako bezrizikové  investiční instrumenty. Nízké kreditní riziko mohou mít i velké tuzemské či mezinárodními společnosti s dobrými hospodářskými výsledky, zejména pokud mají (dle všeobecného názoru) schopný management, což vede k předpokladu dobrých výsledků a udržení pozice na trhu i v budoucnosti.
 Rating je využíván také k posouzení  důvěryhodnosti finančního partnera, který danou finanční investici zprostředkovává.
@@ -2769,7 +2769,7 @@ kde $LGD$  je míra ztráty při selhání protistrany.
 
 Metodiku výpočtu CVA uvedenou v Kapitole \ref{metodyCVA} budeme aplikovat v této kapitole. 
 Naším cílem je spočítat CVA pro zvolené finanční deriváty a graficky znázornit komponenty vstupující do výpočtu.
-K výpočtům a tvorbě grafů použijeme prostředí \MATLAB.
+K výpočtům a tvorbě grafů použijeme prostředí \MATLAB R2014b.
 
 Data pro analýzu pochází od banky působící v České republice (dále jen banka) a obsahují informace o části jejího portfolia finančních derivátů.
 Tato část portfolia obsahuje pět úrokových swapů, z nichž každý je uzavřen s~jinou protistranou.
@@ -2899,7 +2899,8 @@ Obrázek \ref{YieldCurve} zobrazuje počáteční výnosovou křivku, kterou bud
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13cm, clip, trim= 125 280 110 270]{IMG/YieldCurveN.pdf}
+%	\includegraphics[width=13cm, clip, trim= 125 280 110 270]{IMG/YieldCurveN.pdf}
+	\includegraphics[width=13cm, clip, trim= 110 260 110 270]{IMG/Vynosova_krivka.pdf}
   \caption{Počáteční výnosová křivka.}  \label{YieldCurve}
 \end{figure}
 
@@ -2917,7 +2918,8 @@ Vývoj tříměsíční sazby PRIBOR můžeme vidět na Obrázku \ref{PRIBOR}.
 
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13cm, clip, trim= 110 280 110 270]{IMG/PRIBOR.pdf}
+%	\includegraphics[width=13cm, clip, trim= 110 280 110 270]{IMG/PRIBOR.pdf}
+	\includegraphics[width=13cm, clip, trim= 110 260 110 270]{IMG/PRIBOR_cz.pdf}
   \caption{Vývoj tříměsíční PRIBOR úrokové sazby.}  \label{PRIBOR}
 \end{figure}
 
@@ -2944,7 +2946,8 @@ Okamžité úrokové míry dané modelem rozšíříme na celé výnosové křiv
 Příklad jednoho z možných scénářů vývoje celé časové struktury úrokové míry ukazuje trojrozměrný plošný graf na Obrázku~\ref{YieldCurveEvolution}.
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/YieldCurveEvolution1N.pdf}
+%	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/YieldCurveEvolution1N.pdf}
+	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/3D_mira.pdf}
 %  \caption{ One Possible Scenario of Yield Curve Evolution}  \label{YieldCurveEvolution}
      \caption{Jeden z možných scénářů pro vývoj výnosové křivky.}  \label{YieldCurveEvolution}
 \end{figure}
@@ -2963,19 +2966,23 @@ Výstupem oceňovací funkce je trojrozměrná matice, která obsahuje tržní h
 Na Obrázku~\ref{SwapPrice} vidíme jeden z možných scénářů vývoje tržní hodnoty pěti úrokových swapů z datového souboru.
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/SwapPrice1.pdf}
+%	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/SwapPrice1.pdf}
+	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/Trzni_hodnota.pdf}
      \caption{Jeden z možných scénářů pro vývoj tržní hodnoty pěti úrokových swapů z datového souboru.}  \label{SwapPrice}
 \end{figure}
 
 Vzhledem k předpokladu neexistence arbitráže je hodnota IRS v době uzavření kontraktu nulová. 
 Během každého simulovaného scénáře hodnota IRS roste nebo klesá v závislosti na změně časové struktury úrokové míry.
 Jak se blíží doba maturity IRS, přibližuje se jeho hodnota k nule, protože součet hodnot všech zbývajících očekávaných budoucích peněžních toků (plynoucích ze smluvní dohody) klesá.   
+Graf hodnot úrokových swapů na Obrázku~\ref{SwapPrice} začíná v datu 30. října 2015, ke kterému máme k dispozici data, budoucí hodnoty swapů simulujeme.
+Protože smlouvy byly uzavřeny již dříve, tak na začátku simulovaného období není hodnota swapů nulová.
 
 Sečteme-li pro daný scénář hodnoty všech uvažovaných IRS v každém datu simulace, dostaneme vývoj hodnoty celého portfolia.
 Celkové hodnoty portfolia pro všechny scénáře naší simulace zobrazuje Obrázek \ref{TotalPortfoioValue}.
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/TotalPortfoioValue.pdf}
+%	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/TotalPortfoioValue.pdf}
+	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/Hodnota_portfolia.pdf}
   \caption{Ukázka simulací tržní hodnoty uvažovaného portfolia pěti úrokových swapů.}  \label{TotalPortfoioValue}
 \end{figure}
 
@@ -2987,7 +2994,8 @@ Stejně jako při určení hodnoty celého portfolia získáme expozici celého 
 Celkovou expozici portfolia pro každý scénář v naší simulaci můžeme pozorovat na Obrázku \ref{PorfolioExposure}.
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13cm, clip, trim= 110 270 110 270]{IMG/PorfolioExposure.pdf}
+%	\includegraphics[width=13cm, clip, trim= 110 270 110 270]{IMG/PorfolioExposure.pdf}
+	\includegraphics[width=13cm, clip, trim= 110 270 110 270]{IMG/Expozice_portfolia.pdf}
   \caption{Ukázka simulací expozice uvažovaného portfolia pěti úrokových swapů.}  \label{PorfolioExposure}
 \end{figure}
 
@@ -2997,6 +3005,12 @@ Pro výpočet očekávané expozice použijeme \MATLAB funkci \verb+exposureprof
 Na závěr spočítáme diskontovanou očekávanou expozici protistrany danou vztahem \eqref{dis_exposure_vztah}.
 Nejdříve diskontujeme expozici protistrany v každém simulovaném scénáři a následně opět použijeme funkci \verb+exposureprofiles+ pro určení očekávané hodnoty.
 Diskontní faktory pro každý scénář určíme ze simulovaných okamžitých úrokových sazeb. 
+Graf diskontované expozice uvažovaného portfolia vidíme na Obrázku \ref{DiscountExposure}.
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13cm, clip, trim= 110 270 110 270]{IMG/Diskontovana_expozice.pdf}
+  \caption{Ukázka simulace diskontované expozice uvažovaného portfolia pěti úrokových swapů.}  \label{DiscountExposure}
+\end{figure}
 
 \subsection{Funkce pravděpodobnosti selhání protistrany}\label{funkce_PD_kap}
 Pro výpočet CVA dle vztahu \eqref{CVA} potřebujeme určit pravděpodobnost selhání protistrany jako funkci času.
@@ -3034,7 +3048,8 @@ Pro každou protistranu zkonstruujeme křivku pravděpodobnosti selhání v záv
 Funkce popisující pravděpodobnost selhání protistrany před daným datem můžeme pozorovat na Obrázku \ref{DefaultProbability}.
 \begin{figure}[!htbp]
   \centering 
-	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/DefaultProbability.pdf}
+%	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/DefaultProbability.pdf}
+	\includegraphics[width=13cm, clip, trim= 100 270 110 270]{IMG/Pravdepodobnost_selhani.pdf}
   \caption{Funkce pravděpodobností selhání protistran.}  \label{DefaultProbability}
 \end{figure}
 Vzhledem k tomu, že protistrany číslo 3 a číslo 4 mají stejný rating a tedy i stejnou $PD_{1Y}$, tak se jejich grafy funkcí pravděpodobnosti selhání kryjí.
@@ -3350,8 +3365,7 @@ axis.Date(side = 1, dates)
 Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment  vytvořeného v prostředí \MATLAB a využívaného v Kapitole \ref{aplikaceCVA_kap}.
 
 První část programu načte data o úrokových swapech z datového souboru vytvořeného v aplikaci Microsoft Excel. 
-
-V další části se generuje počáteční výnosová křivka, která se dále využívá při modelování úrokové míry pomocí Hull-Whitova modelu (viz Kapitola~\ref{vynosova_krivka_kap}).
+Další část slouží k vykreslení Grafu~\ref{YieldCurve} počáteční výnosové křivky, která se dále využívá při modelování úrokové míry pomocí Hull-Whitova modelu (viz Kapitola~\ref{vynosova_krivka_kap}).
 
 \begin{verbatim}
 clear all
@@ -3385,6 +3399,7 @@ swaps.LegReset     = ones(size(swaps.LegType));
 numSwaps = numel(swaps.Counterparty);
 % =============================================================
 %
+%
 % =============================================================
 % Vytvoří počáteční výnosovou křivku a vykreslí její graf
 % =============================================================
@@ -3406,16 +3421,16 @@ RateSpec = intenvset('StartDates', Settle,'EndDates',...
 
 figure;
 plot(ZeroDates, ZeroRates, 'o-');
-xlabel('Date');
+xlabel('Datum');
 datetick('keeplimits');
-ylabel('Zero rate');
+ylabel('Úroková míra');
 grid on;
 title('Výnosová křivka');
 % =============================================================
 \end{verbatim}
 
 Následující část programu načte historická data o sazbě PRIBOR z datového souboru vytvořeného v aplikaci Microsoft Excel.
-Potom vykreslí graf vývoje tříměsíční sazby PRIBOR a odhadne z ní parametry Hull-Whitova modelu (viz Kapitola \ref{simulace_kap}).
+Potom vykreslí graf vývoje tříměsíční sazby PRIBOR (viz Obrázek \ref{PRIBOR}) a odhadne z ní parametry Hull-Whitova modelu (viz Kapitola \ref{simulace_kap}).
 \begin{verbatim}
 % =============================================================
 % Načte data o PRIBOR
@@ -3436,8 +3451,8 @@ simDates=datemnth('30-Oct-2015',0:1:(12*7))';
 %
 figure;
 plot(Data, yields, '-');
-xlabel('Date');
-datetick('x', 'mmmyy');
+xlabel('Datum');
+datetick('x', 'mm/yy');
 ylabel('PRIBOR 3M');
 grid on;
 % =============================================================

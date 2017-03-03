@@ -3116,9 +3116,14 @@ CVA=LGD\cdot\sum_{i=1}^M D(t_i)\cdot EAD(t_i)\cdot PD(i),
 kde $M$ je počet let do maturity derivátu, $PD(i)$ je pravděpodobnost selhání protistrany během $i$-tého roku.
 Hodnota LGD je nastavena pro všechny protistrany na hodnotu 45\,\%.
 
-Banka ve své metodě výpočtu CVA předpokládá, že EAD je konstantní po celou dobu trvání obchodu.
-To je hlavní rozdíl oproti přístupu prezentovanému v předchozí části práce.
-EAD pro daný časový derivát je odhadována jako současná tržní hodnota finančního derivátu. 	
+%Banka ve své metodě výpočtu CVA předpokládá, že EAD je konstantní po celou dobu trvání obchodu.
+%To je hlavní rozdíl oproti přístupu prezentovanému v předchozí části práce.
+%EAD pro daný časový derivát je odhadována jako současná tržní hodnota finančního derivátu. 	
+
+Expozici v okamžiku selhání banka odhaduje na základě aktuální tržní hodnoty finančního derivátu, ke které přičítá konstantní add-on.
+Tržní hodnotu finančního derivátu banka určuje s ohledem na účetní standard IFRS~13 (viz \cite{ifrs13}). 
+Výše add-onu je dána jako součin nominální hodnoty uvažovaného derivátu a koeficientu, který nabývá hodnot od $0,0\%$ do $7,5\%$ v závislosti na druhu derivátu a zbývajícím času do maturity derivátu. 
+Tento způsob zohlednění add-onu odpovídá regulatorním požadavkům a zvyklostem.
 
 Pravděpodobnost selhání protistrany v $i$-tém roce je dána vztahem 
 %Parametr PD počítáme jako průměrné PD pro daný rating klienta. 

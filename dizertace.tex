@@ -1159,8 +1159,10 @@ Budeme předpokládat, že proces popisující vývoj ceny aktiva v čase se ř�
 \begin{equation}\label{risk_asset_model}
 \mathrm{d}P(t)=P(t)\,\mu(t)\,\mathrm{d}t+P(t)\,\sigma(t)\,\mathrm{d}W(t),
 \end{equation}
-kde $P(t)$ je cena aktiva v čase $t$, $\mu(t)$ a $\sigma(t)$ jsou stochastické procesy a $W(t)$  je jednorozměrný Wienerův proces.
-Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum.%, což není zcela realistické.
+kde $P(t)$ je cena aktiva v čase $t$, $\mu(t)$ a $\sigma(t)$ jsou stochastické procesy a~$W(t)$  je jednorozměrný Wienerův proces.
+Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum. %, což není zcela realistické.
+Jedná se o zjednodušující předpoklad, který bývá běžně používán v modelech finančních aktiv. 
+Stejný předpoklad nalezneme i v Black-Scholesově modelu, který představíme v Kapitole \ref{derivaty_kap}.
 
 Chceme-li popisovat vývoj ceny více rizikových aktiv na trhu a jejich vzájemné vztahy využijeme následující model, který předpokládá existenci $n$~rizikových aktiv a je popsán rovnicí
 \begin{equation}\label{multi_risk_asset_model}
@@ -1198,7 +1200,7 @@ Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\e
 \end{figure}
 
 %\subsection{Black–Scholesův model}
-\subsection{Modely cen finančních derivátů}
+\subsection{Modely cen finančních derivátů}\label{derivaty_kap}
 Přehledný úvod do problematiky oceňování finančních derivátů poskytuje kniha \textit{Financial Calculus} od autorů Martina Baxtera a Andrewa Rennieho~\cite{baxter1996financial}.
 Odvození Black–Scholesova modelu je srozumitelně zpracováno také v učebnici Alison Etheridge \cite{etheridge2002course}.
 
@@ -1732,12 +1734,12 @@ Investor prvně určí tangenciální portfolio a následně ho zkombinuje s bez
 \begin{figure}[!htbp]
   \centering 
   \includegraphics[width=11cm]{IMG/graf_1.pdf}
-  \caption{Tobinův model - zobrazení tangenciálního portfolia (rizikového portfolia, do kterého dle Separačního theorému investují všichni investoři při tvorbě optimálního portfolia).}
+  \caption{Tobinův model - zobrazení tangenciálního portfolia (rizikového portfolia, do kterého dle Separačního teorému investují všichni investoři při tvorbě optimálního portfolia).}
   \label{obr_Tobin_2}
 \end{figure}
 
 %\subsection{Kapitálový model aktiv -- CAPM}\label{kapitola_CAPM}
-\textit{Capital Asset Pricing Model} (CAPM) vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe1964}, Lintner \cite{lintner1965} a Mossin \cite{mossin1966} v letech 1964--1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
+\textit{Capital Asset Pricing Model (CAPM)} vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe1964}, Lintner \cite{lintner1965} a Mossin \cite{mossin1966} v letech 1964--1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
 Zároveň vychází z Tobinova modelu, protože zahrnuje bezrizikové aktivum.
 CAPM stojí na několika výchozích předpokladech, které se dají shrnout do následujících tří:
 \begin{itemize}
@@ -1759,7 +1761,8 @@ Tento poznatek budeme později využívat při konstrukci spojitého rovnovážn
 
 \subsection{Markowitzova teorie portfolia}\label{Markowitz_kap}
 
-Abychom blíže pochopili pojmy používané v Kapitole \ref{KTP} přiblížíme na tomto místě jejich odvození.
+Abychom blíže pochopili obrázky a pojmy používané v Kapitole \ref{KTP} přiblížíme na tomto místě jejich odvození.
+
 
 \begin{figure}[!htbp]
   \centering 
@@ -2437,7 +2440,7 @@ Rating je využíván také k posouzení  důvěryhodnosti finančního partnera
 Důležitým faktem při výpočtu kapitálového požadavku pro CCR je  bilaterální charakter tohoto rizika. Což znamená, že kreditním rizikem protistrany jsou zatíženy obě strany obchodu.
 
 Velmi dobrý úvod do problematiky řízení rizika protistrany poskytuje článek \cite{canabarro2003measuring} autorů Eduarda Canabarra, vedoucího oddělení řízení rizika v bankovní společnosti Goldman Sachs, a profesora Stanfordské univerzity Darrella Duffieho.
-Definují zde základní pojmy a představují modely expozice protistrany.
+Definují zde základní pojmy a představují modely expozice. % protistrany.
 
 %\begin{comment}
 %Rozdíl mezi kreditním rizikem protistrany
@@ -2611,6 +2614,7 @@ Expozice protistrany, která zohledňuje zajištění se určí jako
 E(t)=\max\{V(t)-C(t),0\},
 \end{equation}
 kde $C(t)$ je hodnota zajištění (které banka přijala) v čase $t$.  
+Ve vztahu \eqref{expozice_vztah} opět zohledňujeme netting.
 
 Expozice protistrany v okamžiku jejího selhání (EAD) se běžně značí $EAD$.
 Kvůli snadnějšímu a přehlednějšímu zápisu budeme v rovnicích a formulích používat také označení $e(t)$, kde $t$ je okamžik selhání protistrany.
@@ -2665,9 +2669,10 @@ Uvažujme diskontní faktor, který vychází ze vztahu \eqref{diskontni_faktor}
 Proto pro diskontování použijeme okamžitou úrokovou míru.
 Diskontní faktor $D(t)$ definujeme jako
 \begin{equation}\label{diskont_vztah}
-D(t)=\mathrm{e}^{-r(t)\cdot t},
+%D(t)=\mathrm{e}^{-r(t)\cdot t},
+D(t)=\mathrm{e}^{-\int_0^t r(s)\,\mathrm{d} s},
 \end{equation}
-kde $r(t)$ je okamžitá úroková míra. 
+kde $r(t)$ je realizace okamžitá úroková míra. 
 %Diskontní faktor \eqref{diskont_vztah} je odvozen ze vztahu \eqref{risk-free_asset_model} pro cenu bezrizikového aktiva. 
 %spojité diskontování se v praxi napoužívá, ale usnaňuje výpočty
 %Hence, the discounted expected exposure at time $t$ conditional on the counterparty default at time $t$ is given by 
@@ -2693,7 +2698,7 @@ PD(t)=\Pr(\tau\leq t).
 $PD(t)$ udává \textit{pravděpodobnost selhání protistrany} před časem~$t$.
 \end{definice}
 
-Při výpočtu CVA se pro odhad PD protistrany často používá metoda, která pracuje s tržní hodnotu swapů úvěrového selhání (CDS).
+Při výpočtu CVA se pro odhad PD protistrany často používá metoda, která pracuje s tržní hodnotou swapů úvěrového selhání (CDS).
 CDS jsou finanční deriváty, které slouží k přenosu úvěrového rizika (plynoucího z podkladového aktiva) z kupujícího na prodávajícího.
 Za úplatu se prodávající CDS zavazuje uhradit kupujícímu ztrátu, která vznikne v případě selhání podkladového aktiva.
 CDS většinou slouží jako kreditní zajištění.
@@ -2771,7 +2776,7 @@ Metodiku výpočtu CVA uvedenou v Kapitole \ref{metodyCVA} budeme aplikovat v t�
 Naším cílem je spočítat CVA pro zvolené finanční deriváty a graficky znázornit komponenty vstupující do výpočtu.
 K výpočtům a tvorbě grafů použijeme prostředí \MATLAB R2014b.
 
-Data pro analýzu pochází od banky působící v České republice (dále jen banka) a obsahují informace o části jejího portfolia finančních derivátů.
+Data pro analýzu pochází od banky působící v České republice (dále jen Banka) a obsahují informace o části jejího portfolia finančních derivátů.
 Tato část portfolia obsahuje pět úrokových swapů, z nichž každý je uzavřen s~jinou protistranou.
 Banka je ve všech pěti případech v pozici prodávajícího (pro bližší vysvětlení této pozice viz Kapitola \ref{swap_kap}).
 V Tabulce \ref{variable} uvádíme přehled proměnných získaných z~datového souboru, které budeme využívat při výpočtu CVA.
@@ -2861,8 +2866,10 @@ Simulaci úrokové míry následně využijeme při oceňování úrokových swa
 %The Picture \ref{YieldCurve} shows the initial yield curve at settlement date which was built from the initial rates in the Table \ref{rates}.
 Pro konstrukci výnosových křivek existuje několik metod.
 Některé využívají data o výnosech bezkupónových dluhopisů, jiné sazby PRIBOR nebo tržní hodnoty IRS.
-V naší analýze jsme zvolili rozšířenou metodu, kterou využívá i banka. 
+V naší analýze jsme zvolili rozšířenou metodu, kterou využívá i Banka. 
 Pro krátkodobé úrokové míry odvodíme výnosovou křivku ze sazeb PRIBOR a pro dlouhodobé úrokové míry využijeme hodnot IRS na trhu.
+Tento přístup, kdy kombinujeme sazby PRIBOR a tržní hodnoty IRS, je vynucen skutečností, že PRIBOR sazby jsou dostupné jen pro splatnosti 1 den, 1, 2 týdny, 1, 2, 3, 6, 9 měsíců a 1 rok, 
+naproti tomu jsou na trhu obchodovány IRS pouze se splatnostmi 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15 a 20 let.
 Data jsme čerpali z webových stránek Patria online a terminálu Bloomberg a jsou uvedeny v Tabulce \ref{rates}.
 První dvě číselné hodnoty jsou tříměsíční sazba PRIBOR a šestiměsíční sazba PRIBOR. 
 Následující čísla jsou postupně hodnoty ročních IRS, dvouletých IRS, atd. až dvacetiletých IRS. 
@@ -2957,7 +2964,7 @@ Příklad jednoho z možných scénářů vývoje celé časové struktury úrok
 Provedeme tisíc takových simulací 
 a pro každý scénář vypočítáme tržní hodnoty IRS v každém datu simulace v budoucnosti.
 Pro oceňování IRS\linebreak v jednotlivých datech simulace je v \MATLAB naprogramovaná funkce\linebreak \verb+hcomputeMTMValues+, která při spuštění volá funkci \verb+hswapapprox+. 
-Tato funkce pro určení tržní hodnoty IRS využívá aproximace, proto není vhodné její použití v případě, kdy potřebujeme přesnou hodnotu.  
+Tato funkce pro určení tržní hodnoty IRS využívá aproximace. %, proto není vhodné její použití v případě, kdy potřebujeme přesnou hodnotu.  
 %Nicméně při výpočtu CVA je tento postup běžně využíván, jelikož zkreslení výsledků není významné a~použití aproximace zásadně zvyšuje výkonost výpočtu. 
 Nicméně při výpočtu CVA je tento postup běžně využíván, jelikož použití aproximace zásadně zvyšuje výkonost výpočtu, kterou  Monte Carlo simulace vyžadují.  
 %K tomu budeme využívat v \MATLAB funkci \verb+hcomputeMTMValues+, která je založena na funkci \verb+hswapapprox+.
@@ -2976,6 +2983,7 @@ Během každého simulovaného scénáře hodnota IRS roste nebo klesá v závis
 Jak se blíží doba maturity IRS, přibližuje se jeho hodnota k nule, protože součet hodnot všech zbývajících očekávaných budoucích peněžních toků (plynoucích ze smluvní dohody) klesá.   
 Graf hodnot úrokových swapů na Obrázku~\ref{SwapPrice} začíná v datu 30. října 2015, ke kterému máme k dispozici data, budoucí hodnoty swapů simulujeme.
 Protože smlouvy byly uzavřeny již dříve, tak na začátku simulovaného období není hodnota swapů nulová.
+IRS protistrany 3 (žlutá křivka) a protistrany 4 (fialová křivka) mají splatnost už v roce 2016, proto je jejich odhadovaná tržní hodnota velmi nízká a na grafu se pohybuje v blízkosti osy x.
 
 Sečteme-li pro daný scénář hodnoty všech uvažovaných IRS v každém datu simulace, dostaneme vývoj hodnoty celého portfolia.
 Celkové hodnoty portfolia pro všechny scénáře naší simulace zobrazuje Obrázek \ref{TotalPortfoioValue}.
@@ -3067,7 +3075,7 @@ Ztrátovost ze selhání budeme uvažovat konstantní a stejnou pro všechny pro
 Míra návratnosti daná vztahem \eqref{recovery_rate} je $R=0,55$.
 
 Výsledné hodnoty CVA pro každou protistranu jsou shrnuty v~Tabulce~\ref{resultingCVA}.
-\begin{table}[!htbp]
+\begin{table}%[!htbp]
   \centering 
 \caption{Přehled výsledků CVA pro jednotlivé protistrany}
 \label{resultingCVA}
@@ -3099,7 +3107,7 @@ Nejdříve popíšeme metodu určení CVA používanou v bance a následně srov
 Banka CVA počítá denně, ale účtování CVA provádí na měsíční bázi.
 Základní princip výpočtu CVA spočívá v odhadu tzv. \textit{očekávané ztráty (EL)} v průběhu života derivátu. 
 Očekávaná ztráta je pojem používaný v~teorii řízení úvěrového rizika.
-Jedná se o hodnotu, která odhaduje výší ztráty, jenž banka průměrně utrpí z úvěrů ve svém portfoliu v důsledku selhání některých klientů. 
+Jedná se o hodnotu, která odhaduje výší ztráty, jenž Banka průměrně utrpí z úvěrů ve svém portfoliu v důsledku selhání některých klientů. 
 Pro odhad očekávané ztráty platí následující vztah 
 \begin{equation}\label{el}
 EL=PD\cdot LGD\cdot EAD.
@@ -3120,7 +3128,7 @@ Hodnota LGD je nastavena pro všechny protistrany na hodnotu 45\,\%.
 %To je hlavní rozdíl oproti přístupu prezentovanému v předchozí části práce.
 %EAD pro daný časový derivát je odhadována jako současná tržní hodnota finančního derivátu. 	
 
-Expozici v okamžiku selhání banka odhaduje na základě aktuální tržní hodnoty finančního derivátu, ke které přičítá konstantní add-on.
+Expozici v okamžiku selhání Banka odhaduje na základě aktuální tržní hodnoty finančního derivátu, ke které přičítá konstantní add-on.
 Tržní hodnotu finančního derivátu banka určuje s ohledem na účetní standard IFRS~13 (viz \cite{ifrs13}). 
 Výše add-onu je dána jako součin nominální hodnoty uvažovaného derivátu a koeficientu, který nabývá hodnot od $0,0\%$ do $7,5\%$ v závislosti na druhu derivátu a zbývajícím času do maturity derivátu. 
 Tento způsob zohlednění add-onu odpovídá regulatorním požadavkům a zvyklostem.
@@ -3139,7 +3147,7 @@ Tato metoda určení $PD$ je diskrétní narozdíl od spojitého přístupu pou�
 %We can observe a comparison of our results of CVA with the CVA used by the bank in Tab. IV. We can see that our results of CVA achieve significantly lower values than the CVA used by the bank.
 V Tabulce \ref{srovnaniCVA} vidíme srovnání výsledků z Kapitoly \ref{vypocetCVA_kap} s CVA vypočítanými bankou. 
 Všimněme si, že CVA spočítané v této práci dosahují významně nižší hodnot než CVA spočítané v bance.
-\begin{table}[!htbp]
+\begin{table}%[!htbp]
   \centering 
 \caption{Srovnání výsledků výpočtů CVA dle metody popsané v této práci a dle metody používané v bance}
 \label{srovnaniCVA}
@@ -3192,50 +3200,56 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 %\renewcommand\labelenumi{\bfseries\Roman{enumi}.}
 \renewcommand\labelenumi{\Roman{enumi}.}
 \item
+L.~Křivánková a S.~Zlatošová.
+\newblock Modelling Counterparty Credit Risk in Czech Interest Rate Swaps.
+\newblock {\em Acta Universitatis Agriculturae et Silviculturae Mendelianae
+  Brunensis}, 2017.
+
+\item
 L.~Křivánková.
 \newblock Equilibrium models for portfolio selection.
-\newblock In M.~e. Jiří~Zelinka, editor, {\em Mathematical Models and
+\newblock {\em Mathematical Models and
   Financial Mathematics. Book of short papers}, pages 35--42, Brno, 2014.
   Masaryk University.
 
 \item
 L.~Křivánková.
 \newblock Asset-pricing models in portfolio theory.
-\newblock In M.~e. Jiří~Zelinka, editor, {\em Financial Mathematics in
+\newblock {\em Financial Mathematics in
   Practice II, Book of short papers}, pages 42--49, Brno, 2013. Masaryk
   University.
 
 \item
 L.~Křivánková.
 \newblock Continuous-time models in portfolio theory.
-\newblock In {\em XX International Conference PDMU-2012 Problems of Decision
+\newblock {\em XX International Conference PDMU-2012 Problems of Decision
   Making under Uncertainties}, pages 95--104, Brno, 2012. University of
   Defence.
 
 \item
 L.~Křivánková.
-\newblock The black-scholes equation for barrier options.
-\newblock In {\em 7.~konference o matematice a fyzice na vysokých školách
+\newblock The Black-Scholes equation for barrier options.
+\newblock {\em 7.~konference o matematice a fyzice na vysokých školách
   technických s mezinárodní účastí : Sborník příspěvků část 1 -
   matematika}, 2011.
 
 \item
 L.~Křivánková.
 \newblock Wiener process and applications.
-\newblock In {\em Workshop of the Jaroslav Hájek Center, Book of short
+\newblock {\em Workshop of the Jaroslav Hájek Center, Book of short
   papers}, 2010.
 
 \item
-S.~Kafková and L.~Křivánková.
+S.~Kafková a L.~Křivánková.
 \newblock Generalized linear models in vehicle insurance.
 \newblock {\em Acta Universitatis Agriculturae et Silviculturae Mendelianae
   Brunensis}, 62, 2014.
 
 \item
-S.~Kafková, L.~Křivánková, and M.~Leváková.
+S.~Kafková, L.~Křivánková a M.~Leváková.
 \newblock Survival analysis of patients with brain tumour.
-\newblock In M.~e. Jiří~Zelinka, editor, {\em Mathematical Models and
-  Financial Mathematics. Book of short papers}, pages 27--33, Brno, 2014.
+\newblock {\em Mathematical Models and
+  Financial Mathematics. Book of short papers}, strany 27--33, Brno, 2014.
   Masaryk University.
 
 %@article{kolavrocevnovani,

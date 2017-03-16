@@ -387,6 +387,30 @@ In the first part of the work, some basic mathematical methods employed in this 
 %Oceňování je jedním z ústředních nástrojů finančního řízení a rozhodování. 
 %Klíčovými faktory jsou neurčitost finančních toků a dynamická flexibilita. 
 
+Stochastické metody analýzy dat budeme aplikovat ve dvou ekonomických oborech -- v teorii portfolia a v teorii řízení finančních rizik. 
+
+Teorie portfolia se zabývá zkoumáním kapitálových trhů a popisem chování cen finančních aktiv.
+Na základě těchto poznatků je hledán způsob, jak zvolit optimální množinu finančních aktiv.
+Přitom je využívána nejen teorie pravděpodobnosti, ale v novějších přístupech i stochastická analýza.
+
+Za zakladatele moderní teorie portfolia je považován Harry Markowitz. 
+Jeho práci z roku 1952 dále rozvíjeli například James Tobin a William Sharpe a staví na ní i některé současné přístupy.
+Zjednodušující předpoklady v teorii portfolia bývají předmětem kritiky.
+V této práci představíme některé metody z teorie portfolia a budeme diskutovat o jejich výhodách a nevýhodách.
+
+Budeme vycházet z klasické Markowitzovy teorie portfolia, která používá statický přístup (tzv. jednokrokový model).
+Představíme rozšíření navržené Jamesem Tobinem, které přináší Separační teorém a navazuje na něj Capital Asset Pricing Model (CAPM).
+
+Vývojem optimálního portfolia ve spojitém čase se zabýval Robert Merton, který přinesl první řešení tohoto problému v roce 1971.
+Ve svém přístupu předpokládal, že ceny finančních aktiv se řídí It\^oovými procesy s konstantními parametry. 
+Dalším jeho předpokladem byla tržní rovnováha.
+
+V další části představíme Ohlson-Rosenbergův paradox publikovaný v roce 1976, který dokazuje rozpor mezi Mertonovými předpoklady.  
+Uvedeme metody, které tímto rozporem nejsou zatíženy.
+Jednou z nich je stochastická teorie portfolia, kterou rozvíjí Robert Fernholz.
+Na závěr zkusíme navrhnout vlastní metodu, která bude mít volnější předpoklady než Mertonův přístup.
+Navržený model budeme aplikovat na reálná data. 
+
 %\begin{comment}
 V druhé části práce se zaměříme na modelování Credit Valuation Adjustment (CVA), což je bankou sledovaná a účtovaná hodnota, která slouží jako úprava reálné hodnoty derivátů o kreditní riziko protistrany.
 Podle odhadu Basilejského výboru pochází tři čtvrtiny ztrát způsobených kreditním rizikem protistrany během finanční krize ze ztrát daných změnou CVA, nikoli kvůli samotným selháním protistran. 
@@ -1623,7 +1647,7 @@ Pro podrobnější odvození odkazujeme na literaturu.
 
 Je-li hodnota okamžité úrokové míry známý stochastický proces, můžeme odvodit cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$ pomocí následujícího vztahu.
 %a následujícího vztahu pro cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$.
-Platí, že cena tohoto dluhopisu v čase $t$ je dána očekáváním
+Platí, že cena tohoto dluhopisu v čase $t$ je dána očekáváním ve světe rizikově neutrálním vůči peněžnímu trhu
 \begin{equation}\label{ocekavana_cena_dluhopisu}
 B(t,T)=\mathsf{E}_t\left(\mathrm{e}^{-\int_{t}^T r(s)\,\mathrm{d}s}\right),
 \end{equation}
@@ -1647,15 +1671,51 @@ Ze vztahů \eqref{ocekavana_cena_dluhopisu} a \eqref{H-W_vynosova_krivka} vidím
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
 \chapter{Teorie portfolia}
-\textit{Portfolio} je soubor finančních aktiv držených fyzickou nebo právnickou osobou zvanou \textit{investor}.
+%%z mého článku
+%Teorie portfolia se zabývá zkoumáním kapitálových trhů a popisem chování cen finančních aktiv.
+%Na základě těchto poznatků je hledán způsob, jak zvolit optimální množinu finančních aktiv.
+%Přitom je využívána nejen teorie pravděpodobnosti, ale v novějších přístupech i stochastická analýza.
+%
+%%Za zakladatele moderní teorie portfolia je považován Harry Markowitz. 
+%Jeho práci z roku 1952 dále rozvíjeli například James Tobin a William Sharpe a staví na ní i některé současné přístupy.
+%Zjednodušující předpoklady v teorii portfolia bývají předmětem kritiky.
+%V této práci představíme některé metody z teorie portfolia a budeme diskutovat o jejich výhodách a nevýhodách.
+%
+%Budeme vycházet z klasické Markowitzovy teorie portfolia, která používá statický přístup (tzv. jednokrokový model).
+%Představíme rozšíření navržené Jamesem Tobinem, které přináší Separační teorém a navazuje na něj Capital Asset Pricing Model (CAPM).
+%
+%Vývojem optimálního portfolia ve spojitém čase se zabýval Robert Merton, který přinesl první řešení tohoto problému v roce 1971.
+%Ve svém přístupu předpokládal, že ceny finančních aktiv se řídí It\^oovými procesy s konstantními parametry. 
+%Dalším jeho předpokladem byla tržní rovnováha.
+%
+%V další části představíme Ohlson-Rosenbergův paradox publikovaný v roce 1976, který dokazuje rozpor mezi Mertonovými předpoklady.  
+%Uvedeme metody, které tímto rozporem nejsou zatíženy.
+%Jednou z nich je stochastická teorie portfolia, kterou rozvíjí Robert Fernholz.
+%Na závěr zkusíme navrhnout vlastní metodu, která bude mít volnější předpoklady než Mertonův přístup.
+%Navržený model budeme aplikovat na reálná data. 
 
-Teorie portfolia\\
-- definice investování na finančních trzích\\
-- definice investora\\
-- popis tvorby portfolia\\
+Stochastické metody analýzy dat pronikají do mnoha vědních oborů, získávají zde své místo a stávají se stále populárnějšími.
+Jedním z nich je i teorie portfolia.
+V této části práce čtenáře seznámíme se základy teorie portfolia, představíme některé modely a uvedeme jejich výhody a nevýhody.
+Následně zavedeme vlastní model popisující chování cen finančních aktiv v portfoliu a~budeme jej aplikovat na reálná data.
 
-Teorie portfolia se zabývá volbou optimálního portfolia.
+\textit{Portfolio} je množina finančních aktiv držených fyzickou nebo právnickou osobou zvanou \textit{investor} za účelem dosažení zisku v budoucnosti.
+Dalším důvodem sestavování portfolia je diverzifikace rizika.
+Investoři se snaží maximalizovat výnos z portfólia vzhledem ke svým rizikovým preferencím.
+Teorie portfolia se zabývá způsoby určení optimálního portfolia.
+Využívá k tomu charakteristiky hodnot finančních aktiv.
 
+%Podle teorie portfolia se investoři snaží minimalizovat riziko své investice spolu s maximalizací svých výnosů.
+
+%Teorie portfolia\\
+%- definice investování na finančních trzích\\
+%- definice investora\\
+%- popis tvorby portfolia\\
+
+%Teorie portfolia se zabývá volbou optimálního portfolia.
+
+Úvod do teorie portfolia poskytují učebnice autorů Jaroslava Brady \cite{bradateorie} a~Františka Čámského \cite{vcamskyteorie}.
+Dalším zdrojem informací nám byla monografie Franka Fabozziho \cite{fabozziportfolio}.
 
 %%%%%%%%%%%%%%%%%%{Základní charakteristiky portfolia}
 
@@ -1710,7 +1770,7 @@ Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos 
 Konstrukcí množiny dostupných (nebo přípustných) portfolií se bude věnovat Kapitola \ref{Markowitz_kap}. 
 Na Obrázku \ref{obr_Markowitz} je znázorněna množina přípustných portfolií  a množina efektivních portfolií v prostoru výnosnost -- riziko. 
 
-\begin{figure}[!htbp] 
+\begin{figure}[!htbp]
   \centering 
   \includegraphics[width=11cm]{IMG/graf_2a.pdf}
   \caption{Množina přípustných portfolií  a množina efektivních portfolií v prostoru výnosnost -- riziko dle Markowitzovy teorie portfolia.} 
@@ -1739,7 +1799,7 @@ Investor prvně určí tangenciální portfolio a následně ho zkombinuje s bez
 \end{figure}
 
 %\subsection{Kapitálový model aktiv -- CAPM}\label{kapitola_CAPM}
-\textit{Capital Asset Pricing Model (CAPM)} vyvinuli nezávisle na sobě autoři Sharpe \cite{sharpe1964}, Lintner \cite{lintner1965} a Mossin \cite{mossin1966} v letech 1964--1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
+\textit{Capital Asset Pricing Model (CAPM)} vyvinuli nezávisle na sobě autoři William Sharpe \cite{sharpe1964}, John Lintner \cite{lintner1965} a Jan Mossin \cite{mossin1966} v letech 1964--1966. CAPM zkoumá chování trhu v případě, že se všichni investoři chovají podle Markowitzovy teorie.
 Zároveň vychází z Tobinova modelu, protože zahrnuje bezrizikové aktivum.
 CAPM stojí na několika výchozích předpokladech, které se dají shrnout do následujících tří:
 \begin{itemize}
@@ -1760,9 +1820,7 @@ Důležitým důsledkem pak je, že váha každého cenného papíru v tržním 
 Tento poznatek budeme později využívat při konstrukci spojitého rovnovážného modelu.
 
 \subsection{Markowitzova teorie portfolia}\label{Markowitz_kap}
-
 Abychom blíže pochopili obrázky a pojmy používané v Kapitole \ref{KTP} přiblížíme na tomto místě jejich odvození.
-
 
 \begin{figure}[!htbp]
   \centering 
@@ -1771,13 +1829,50 @@ Abychom blíže pochopili obrázky a pojmy používané v Kapitole \ref{KTP} př
 \end{figure}
 
 \subsection{Váhy tržního portfolia}\label{vahy_kap}
+Významnost tržního portfolia pro investory jsme popsali v předchozí části.
+Nyní odvodíme vztah pro váhy tržního portfolia, který dále využijeme při konstrukci modelu v Kapitole \ref{muj_model}.
+Uvedeme pouze základní kroky pro určení těchto vah, podrobnosti lze nalézt v již citované literatuře.
+
+%Pro zjednodušení předpokládejme, že výnosnost bezrizikového aktiva $r_f=0$.
+Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah portfolia z množiny efektivních portfolií dle Markowitzovy teorie (viz Obrázek \ref{obr_Markowitz}).
+Pak očekávaná výnosnost tohoto portfolia je dána vztahem
+\begin{equation}\label{vynosnost_portfolia_vztah}
+ \mu_p=\boldsymbol{X}^\mathrm{T}\boldsymbol{\mu}
+\end{equation}
+a jeho riziko je dáno vztahem 
+\begin{equation}\label{riziko_portfolia_vztah}
+\sigma_p=\sqrt{\boldsymbol{X}^\mathrm{T}\boldsymbol{\Sigma}\boldsymbol{X}},
+\end{equation}
+kde $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností rizikových aktiv  a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností rizikových aktiv.
+Výnosnost bezrizikového aktiva označíme $r_f$.
+
+Váhy tržního portfolia musí splňovat vztahy \eqref{vynosnost_portfolia_vztah} a \eqref{riziko_portfolia_vztah} a zároveň musí maximalizovat hodnotu směrnice polopřímky, jejímž počátečním bodem je bezrizikové aktivum a která je tečnou ke křivce efektivních portfolií dle Markowitzovy teorie (viz Obrázek \ref{obr_Tobin_2}).
+Tedy hledáme takový vektor $\boldsymbol{X}$, který maximalizuje výraz
+\begin{equation} \label{maximalizacni_problem_vztah}
+\frac{\mu_p-r_f}{\sigma_p}=\frac{\boldsymbol{X}^\mathrm{T}\left(\boldsymbol{\mu}-r_f\boldsymbol{1}\right)}{\left({\boldsymbol{X}^\mathrm{T}\boldsymbol{\Sigma}\boldsymbol{X}}\right)^\frac12}= f(\boldsymbol{X})
+\end{equation}
+za podmínky $\boldsymbol{1}^\mathrm{T}\boldsymbol{X}=1$, kde $\boldsymbol{1}$ je vektor jedniček.
+
+Maximum funkce $f(\boldsymbol{X})$ dané výrazem \eqref{maximalizacni_problem_vztah} hledáme tak, že funkci derivujeme podle všech složek vektoru $\boldsymbol{X}$ a tyto derivace položíme rovny nule.
+Získáme tak systém $n$ lineárních rovnic o $n$ neznámých
+\begin{equation}\label{maximalizace_rovnice}
+ \frac{\partial f(\boldsymbol{X})}{\partial{X_i}}=0,
+\end{equation}
+kde $i=1,\dots,n$
+
+Postup řešení systému rovnic \eqref{maximalizace_rovnice} vyžaduje dvě substituce a je relativně zdlouhavý, proto jej zde nebudeme prezentovat a uvedeme jen výsledné řešení.
+Vektor vah v tržním portfoliu  je dán vztahem
+\begin{equation} \label{vahy_trzni}
+\boldsymbol{X}=\frac{\boldsymbol{\Sigma}^{-1}\left(\boldsymbol{\mu}-r_f\boldsymbol{1}\right)}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{\Sigma}^{-1}\left(\boldsymbol{\mu}-r_f\boldsymbol{1}\right)},
+\end{equation}
+kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností rizikových aktiv, $\boldsymbol{\Sigma}$ je kovarianční matice výnosností rizikových aktiv a $r_f$ je výnosnost bezrizikového aktiva.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%{Dynamická teorie portfolia}
 
 \section{Dynamická teorie portfolia}
 Hlavní výhodou dynamického modelu pro výběr aktiv v portfoliu je přizpůsobování se měnícím se podmínkám trhu a proto je více realistický než model statický.
-Naproti tomu je dynamický model komplikovanější, hůře interpretovatelný a při jeho využití se nevyhneme složitější matematické teorii, kterou je stochastický kalkul.
+Naproti tomu je dynamický model komplikovanější, hůře interpretovatelný a při jeho využití se nevyhneme složitější matematické teorii, kterou je stochastická analýza.
 
 \begin{comment}
 \subsection{Matematický úvod}
@@ -2070,11 +2165,11 @@ Předpokládejme, že tyto ceny se řídí následující soustavou stochastick�
 \end{equation}
 kde $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces, $\mu_j(t)$ je očekávaná míra výnosnosti podkladového aktiva $j$ a $\xi_{jk}(t)$ je proces volatility podkladových aktiv $j$ a $k$. 
 Pro zjednodušení předpokládejme, že výnosnost bezrizikového aktiva $r_f=0$.
-Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním portfoliu, který je dán jako
+Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním portfoliu, pak ze vztahu \eqref{vahy_trzni} plyne
 \begin{equation} \label{vahy}
 \boldsymbol{X}=\frac{\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}},
 \end{equation}
-kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv (viz \cite{fabozzi}).
+kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv.
 
 Uvažujme o řešitelnosti a počtu řešení soustavy rovnic \eqref{vahy} vzhledem k~$\boldsymbol{\mu}$.
 Soustavu upravíme do tvaru
@@ -2324,7 +2419,7 @@ Označení & Název & Obor podnikání  \\
 %Je to aktuální téma, banky jsou nuceny zohledňovat
 %Pořád mi není jasné od kdy jsou banky povinné CVA počítat, nikde jsme to nenašla... ale regulace souvisí s CRR \cite{EU2013}
 
-Nedílnou součástí řízení banky je řízení bankovních rizik.
+Nedílnou součástí řízení banky je řízení finančních rizik.
 Obzvláště v poslední době se práce risk managementu dostává do popředí zájmu
 a jsou patrné tendence ke sjednocování bankovní regulace na mezinárodní úrovni.
 Důkazem spolupráce mezi institucemi bankovního dohledu je i vznik Basilejského výboru pro bankovní dohled.
@@ -2672,7 +2767,7 @@ Diskontní faktor $D(t)$ definujeme jako
 %D(t)=\mathrm{e}^{-r(t)\cdot t},
 D(t)=\mathrm{e}^{-\int_0^t r(s)\,\mathrm{d} s},
 \end{equation}
-kde $r(t)$ je realizace okamžitá úroková míra. 
+kde $r(t)$ je okamžitá úroková míra. 
 %Diskontní faktor \eqref{diskont_vztah} je odvozen ze vztahu \eqref{risk-free_asset_model} pro cenu bezrizikového aktiva. 
 %spojité diskontování se v praxi napoužívá, ale usnaňuje výpočty
 %Hence, the discounted expected exposure at time $t$ conditional on the counterparty default at time $t$ is given by 
@@ -3064,14 +3159,14 @@ Vzhledem k tomu, že protistrany číslo 3 a číslo 4 mají stejný rating a te
 Ze stejného důvodu jsou totožné funkce pravděpodobnosti selhání u protistran číslo 2 a číslo 5.
 
 \subsection{Výpočet CVA} \label{vypocetCVA_kap}
-%Let consider the exposure is independent of default. Then total exposure of all contracts can be computed on the bases of equation \eqref{totalExposure}. The bank has estimated recovery rate $R=40\%$. \textcolor{red}{Leni, jaká je vaše recovery rate?}. Now we have everything for the CVA calculation according to the equation \eqref{CVA}. The resulting values of CVA for each counterparty can be observed in the Table \ref{resultingCVA}.
+%Let consider the exposure is independent of default. Then total exposure of all contracts can be computed on the bases of equation \eqref{totalExposure}. The bank has estimated recovery rate $R=40\,\%$. \textcolor{red}{Leni, jaká je vaše recovery rate?}. Now we have everything for the CVA calculation according to the equation \eqref{CVA}. The resulting values of CVA for each counterparty can be observed in the Table \ref{resultingCVA}.
 Při výpočtu CVA budeme předpokládat, že expozice protistrany a pravděpodobnost jejího selhání jsou nezávislé veličiny.
 Jinak řečeno, nebudeme zohledňovat wrong-way riziko.
 
 Výpočet CVA pro jednotlivé protistrany provedeme dosazením do rovnice~\eqref{CVA}. 
 %Celkovou expozici každé protistrany určíme podle vztahu \eqref{expozice_vztah}.
 Diskontovanou očekávanou expozici protistrany jsme spočítali v Kapitole \ref{simulace_kap} a pravděpodobnost selhání protistrany před časem $t$ jsme určili v Kapitole \ref{funkce_PD_kap}.
-Ztrátovost ze selhání budeme uvažovat konstantní a stejnou pro všechny protistrany $LGD=45\%$, což je standardní regulatorní hodnota pro podniková portfolia. 
+Ztrátovost ze selhání budeme uvažovat konstantní a stejnou pro všechny protistrany $LGD=45\,\%$, což je standardní regulatorní hodnota pro podniková portfolia. 
 Míra návratnosti daná vztahem \eqref{recovery_rate} je $R=0,55$.
 
 Výsledné hodnoty CVA pro každou protistranu jsou shrnuty v~Tabulce~\ref{resultingCVA}.
@@ -3130,7 +3225,7 @@ Hodnota LGD je nastavena pro všechny protistrany na hodnotu 45\,\%.
 
 Expozici v okamžiku selhání Banka odhaduje na základě aktuální tržní hodnoty finančního derivátu, ke které přičítá konstantní add-on.
 Tržní hodnotu finančního derivátu banka určuje s ohledem na účetní standard IFRS~13 (viz \cite{ifrs13}). 
-Výše add-onu je dána jako součin nominální hodnoty uvažovaného derivátu a koeficientu, který nabývá hodnot od $0,0\%$ do $7,5\%$ v závislosti na druhu derivátu a zbývajícím času do maturity derivátu. 
+Výše add-onu je dána jako součin nominální hodnoty uvažovaného derivátu a koeficientu, který nabývá hodnot od $0,0\,\%$ do $7,5\,\%$ v závislosti na druhu derivátu a zbývajícím času do maturity derivátu. 
 Tento způsob zohlednění add-onu odpovídá regulatorním požadavkům a zvyklostem.
 
 Pravděpodobnost selhání protistrany v $i$-tém roce je dána vztahem 
@@ -3209,21 +3304,21 @@ L.~Křivánková a S.~Zlatošová.
 L.~Křivánková.
 \newblock Equilibrium models for portfolio selection.
 \newblock {\em Mathematical Models and
-  Financial Mathematics. Book of short papers}, pages 35--42, Brno, 2014.
+  Financial Mathematics. Book of short papers}, strany 35--42, Brno, 2014.
   Masaryk University.
 
 \item
 L.~Křivánková.
 \newblock Asset-pricing models in portfolio theory.
 \newblock {\em Financial Mathematics in
-  Practice II, Book of short papers}, pages 42--49, Brno, 2013. Masaryk
+  Practice II, Book of short papers}, strany 42--49, Brno, 2013. Masaryk
   University.
 
 \item
 L.~Křivánková.
 \newblock Continuous-time models in portfolio theory.
 \newblock {\em XX International Conference PDMU-2012 Problems of Decision
-  Making under Uncertainties}, pages 95--104, Brno, 2012. University of
+  Making under Uncertainties}, strany 95--104, Brno, 2012. University of
   Defence.
 
 \item

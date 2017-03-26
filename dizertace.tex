@@ -156,7 +156,7 @@
 
 
 
-\chapter*{Bibliografický záznam}\addcontentsline{toc}{chapter}{Bibliografický záznam}
+\chapter*{Bibliografický záznam}%\addcontentsline{toc}{chapter}{Bibliografický záznam}
 \setcounter{page}{1}
 \pagenumbering{roman}
 %\thispagestyle{empty}
@@ -193,7 +193,7 @@
 \copyright \quad Lenka Křivánková, Masarykova Univerzita, 2017
 \end{center}
 
-\chapter*{Poděkování}\addcontentsline{toc}{chapter}{Poděkování}
+\chapter*{Poděkování}%\addcontentsline{toc}{chapter}{Poděkování}
 %\thispagestyle{empty}
 \pagestyle{plain}
 Na tomto místě
@@ -479,6 +479,9 @@ CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahr
 \end{comment}
 
 %V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Cíle práce}\addcontentsline{toc}{chapter}{Cíle práce} 
 
 %%%%%%%%%%%%%%%%%%{Stochastická analýza}
 
@@ -1701,7 +1704,7 @@ Následně zavedeme vlastní model popisující chování cen finančních aktiv
 
 \textit{Portfolio} je množina finančních aktiv držených fyzickou nebo právnickou osobou zvanou \textit{investor} za účelem dosažení zisku v budoucnosti.
 Dalším důvodem sestavování portfolia je diverzifikace rizika.
-Investoři se snaží maximalizovat výnos z portfólia vzhledem ke svým rizikovým preferencím.
+Investoři se snaží maximalizovat výnos z portfolia vzhledem ke svým rizikovým preferencím.
 Teorie portfolia se zabývá způsoby určení optimálního portfolia.
 Využívá k tomu charakteristiky hodnot finančních aktiv.
 
@@ -1728,7 +1731,7 @@ V následující části popíšeme a~definujeme tyto základní charakteristiky
 \textit{Míra výnosnosti} (nebo \textit{relativní výnosnost}) aktiva je charakteristika, která udává zisk nebo ztrátu z~investice za pevně stanovené období vyjádřená v~poměru k~množství investovaných prostředků.
 
 \begin{definice}
-Investujeme-li $Y$ korun do nějakého aktiva $j$ v čase $t$, pak korunová hodnota investice v čase $t+\Delta t$ bude $[1+r_j(t,t+\Delta t)]Y$, kde  $r_j(t,t+\Delta t)$ definujeme jako \textit{míru výnosnosti}.  
+Investujeme-li $Y$ korun do nějakého aktiva $j$ v čase $t$, pak korunová hodnota investice v čase $t+\Delta t$ bude $\big(1+r_j(t,t+\Delta t)\big)Y$, kde  $r_j(t,t+\Delta t)$ definujeme jako \textit{míru výnosnosti}.  
 \end{definice}
  
 Relativní výnosnost bývá často označována pouze jako \textit{výnosnost}.
@@ -1820,13 +1823,34 @@ Důležitým důsledkem pak je, že váha každého cenného papíru v tržním 
 Tento poznatek budeme později využívat při konstrukci spojitého rovnovážného modelu.
 
 \subsection{Markowitzova teorie portfolia}\label{Markowitz_kap}
-Abychom blíže pochopili obrázky a pojmy používané v Kapitole \ref{KTP} přiblížíme na tomto místě jejich odvození.
+Abychom blíže pochopili obrázky a pojmy používané v Kapitole \ref{KTP} stručně na tomto místě přiblížíme odvození množiny přípustných portfolií  dle Markowitzovy teorie portfolia.
 
-\begin{figure}[!htbp]
+Pro zjednodušení budeme uvažovat portfolio složené pouze ze dvou rizikových aktiv, které označíme $A$ a $B$.
+Váhy tohoto portfolia budeme značit $(X_A,X_B)$ a zřejmě platí $X_A+X_B=1$.
+Očekávaná výnosnost portfolia je pak dána jako 
+\begin{equation}
+ \mu_p=X_A\mu_A+X_B\mu_B,
+\end{equation}
+kde $\mu_A$ je očekávaná výnosnost aktiva~$A$ a $\mu_B$ je očekávaná výnosnost aktiva~$B$.
+Korelační koeficient výnosností aktiva $A$ a $B$ označíme $\rho$ a platí
+\begin{equation}
+ \rho=\frac{\sigma_{AB}}{\sigma_A\sigma_B},
+\end{equation} 
+kde $\sigma_A$ a $\sigma_B$ jsou rizika aktiv $A$ a $B$, $\sigma_{AB}$ označuje kovarianci výnosnosti aktiva $A$ a výnosnosti aktiva $B$.
+Riziko portfolia je pak dáno vztahem
+\begin{equation}
+ \sigma_p=\sqrt{X_A^2\sigma_A^2+X_B^2\sigma_B^2+2X_AX_B\rho\,\sigma_A\sigma_B}.
+\end{equation}
+
+Podoby různých množin přípustných portfolií v závislosti na hodnotě korelačního koeficientu výnosností rizikových aktiv vidíme na Obrázku \ref{odvozeni_Markowitz}.
+\begin{figure}[!htbp]\label{odvozeni_Markowitz}
   \centering 
   \includegraphics[width=11cm]{IMG/pripustna_portfolia.pdf}
-  \caption{Odvození množiny přípustných portfolií  dle Markowitzovy teorie portfolia.}
+  \caption{Ukázky tvarů množin přípustných portfolií  dle Markowitzovy teorie portfolia složených ze dvou rizikových aktiv.}
+\label{odvozeni_Markowitz}
 \end{figure}
+
+Uvažujeme-li portfolio složené z více rizikových aktiv dostáváme množinu přípustných portfolií v podobě zobrazené na Obrázku \ref{obr_Markowitz}.
 
 \subsection{Váhy tržního portfolia}\label{vahy_kap}
 Významnost tržního portfolia pro investory jsme popsali v předchozí části.
@@ -3262,6 +3286,10 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 \end{table}
 
 %\end{comment}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter*{Závěr}\addcontentsline{toc}{chapter}{Závěr} 
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 

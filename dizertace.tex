@@ -1699,14 +1699,17 @@ Ze vztahů \eqref{ocekavana_cena_dluhopisu} a \eqref{H-W_vynosova_krivka} vidím
 
 Stochastické metody analýzy dat pronikají do mnoha vědních oborů, získávají zde své místo a stávají se stále populárnějšími.
 Jedním z nich je i teorie portfolia.
-V této části práce čtenáře seznámíme se základy teorie portfolia, představíme některé modely a uvedeme jejich výhody a nevýhody.
+V této části práce čtenáře seznámíme se základy teorie portfolia, představíme některé modely používané v tomto oboru a uvedeme jejich výhody a nevýhody.
 Následně zavedeme vlastní model popisující chování cen finančních aktiv v portfoliu a~budeme jej aplikovat na reálná data.
+
+Úvod do teorie portfolia poskytuje učebnice Jaroslava Brady \cite{bradateorie} nebo Františka Čámského \cite{vcamskyteorie}, ze kterých jsme čerpali.
+Dalším zdrojem informací nám byla monografie Franka Fabozziho \cite{fabozziportfolio}.
 
 \textit{Portfolio} je množina finančních aktiv držených fyzickou nebo právnickou osobou zvanou \textit{investor} za účelem dosažení zisku v budoucnosti.
 Dalším důvodem sestavování portfolia je diverzifikace rizika.
 Investoři se snaží maximalizovat výnos z portfolia vzhledem ke svým rizikovým preferencím.
-Teorie portfolia se zabývá způsoby určení optimálního portfolia.
-Využívá k tomu charakteristiky hodnot finančních aktiv.
+Teorie portfolia se zabývá způsoby určení tzv. \textit{optimálního portfolia}, které vyhovuje investorovým požadavkům na maximalizaci výnosu při daném riziku (resp. minimalizaci rizika při pevně zvolené výnosnosti).
+Využívá k tomu charakteristiky hodnot finančních aktiv a charakteristiky portfolia.
 
 %Podle teorie portfolia se investoři snaží minimalizovat riziko své investice spolu s maximalizací svých výnosů.
 
@@ -1717,8 +1720,6 @@ Využívá k tomu charakteristiky hodnot finančních aktiv.
 
 %Teorie portfolia se zabývá volbou optimálního portfolia.
 
-Úvod do teorie portfolia poskytují učebnice autorů Jaroslava Brady \cite{bradateorie} a~Františka Čámského \cite{vcamskyteorie}.
-Dalším zdrojem informací nám byla monografie Franka Fabozziho \cite{fabozziportfolio}.
 
 %%%%%%%%%%%%%%%%%%{Základní charakteristiky portfolia}
 
@@ -1766,11 +1767,12 @@ Riziko portfolia je dalším faktorem pro výběr portfolia v~Markowitzově teor
 
 \section{Klasická teorie portfolia}\label{KTP}
 
-Základy klasické teorie portfolia položil Harry Markowitz svým článkem v roce 1952 \cite{markowitz}, ve kterém upozornil na nutnost zohledňovat při výběru portfolia nejenom očekávanou výnosnost, ale i riziko změny výnosnosti.
+Základy klasické teorie portfolia položil Harry Markowitz svým článkem v~roce 1952 \cite{markowitz}, ve kterém upozornil na nutnost zohledňovat při výběru portfolia nejenom očekávanou výnosnost, ale i riziko změny výnosnosti.
 Jeho největším přínosem bylo kvantifikování očekávaného výnosu a rizika portfolia. 
-Dalším přínosem byl matematický důkaz výhod diverzifikace, které byly do té doby chápány pouze intuitivně.
+Dalším přínosem byl důkaz výhod diverzifikace portfolia.
+Obě tyto skutečnosti byly do té doby chápány pouze intuitivně.
 Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos -- riziko, zavedl pojem \textit{efektivní množina portfolií}, ze které investor vybírá optimální portfolio pomocí indiferenčních křivek popisujících investorův vztah k riziku.
-Konstrukcí množiny dostupných (nebo přípustných) portfolií se bude věnovat Kapitola \ref{Markowitz_kap}. 
+Konstrukcí množiny dostupných (nebo též přípustných) portfolií se bude věnovat Kapitola \ref{Markowitz_kap}. 
 Na Obrázku \ref{obr_Markowitz} je znázorněna množina přípustných portfolií  a množina efektivních portfolií v prostoru výnosnost -- riziko. 
 
 \begin{figure}[!htbp]
@@ -1781,11 +1783,11 @@ Na Obrázku \ref{obr_Markowitz} je znázorněna množina přípustných portfoli
 \end{figure}
 
 V roce 1958 rozšířil James Tobin \cite{tobin} Markowitzův model o možnost investování do bezrizikového aktiva.
-\textit{Bezrizikové aktivum} má jistý výnos a tedy nulové riziko.
+Bezrizikové aktivum má jistý výnos a tedy nulové riziko.
 To má velký vliv především na efektivní množinu portfolií, která je tvořena tečnou k původní Markowitzově efektivní množině procházející bezrizikovým aktivem, což je zobrazeno na Obrázku \ref{obr_Tobin_1}.
 V bodě dotyku pak leží tzv. tangenciální portfolio (viz Obrázek \ref{obr_Tobin_2}).
-Postup investora při hledání optimálního portfolia shrnuje Tobinův separační teorém, který se později vžil v souvislosti s CAPM, který bude popsán v další části. % \ref{kapitola_CAPM}.
-Investor prvně určí tangenciální portfolio a následně ho zkombinuje s bezrizikový aktivem podle svých rizikových preferencí.
+Postup investora při hledání optimálního portfolia shrnuje Tobinův separační teorém, který se později vžil v souvislosti s CAPM, což je model, který bude popsán v další části textu. % \ref{kapitola_CAPM}.
+Investor prvně určí tangenciální portfolio a~následně ho zkombinuje s~bezrizikový aktivem podle svých rizikových preferencí.
 
 \begin{figure}[!htbp]
   \centering 
@@ -1849,13 +1851,14 @@ Podoby různých množin přípustných portfolií v závislosti na hodnotě kor
   \caption{Ukázky tvarů množin přípustných portfolií  dle Markowitzovy teorie portfolia složených ze dvou rizikových aktiv.}
 \label{odvozeni_Markowitz}
 \end{figure}
-
 Uvažujeme-li portfolio složené z více rizikových aktiv dostáváme množinu přípustných portfolií v podobě zobrazené na Obrázku \ref{obr_Markowitz}.
+Podrobný popis odvození tvarů množin přípustných portfolií včetně mnoha přehledných obrázků nalezneme ve skriptech \cite{bradateorie}. 
+
 
 \subsection{Váhy tržního portfolia}\label{vahy_kap}
 Významnost tržního portfolia pro investory jsme popsali v předchozí části.
 Nyní odvodíme vztah pro váhy tržního portfolia, který dále využijeme při konstrukci modelu v Kapitole \ref{muj_model}.
-Uvedeme pouze základní kroky pro určení těchto vah, podrobnosti lze nalézt v již citované literatuře.
+Uvedeme pouze základní kroky pro určení těchto vah, podrobnosti lze nalézt v již citované literatuře \cite{vcamskyteorie} a \cite{fabozziportfolio}.
 
 %Pro zjednodušení předpokládejme, že výnosnost bezrizikového aktiva $r_f=0$.
 Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah portfolia z množiny efektivních portfolií dle Markowitzovy teorie (viz Obrázek \ref{obr_Markowitz}).
@@ -1951,8 +1954,8 @@ Merton odvodil explicitní řešení této stochastické diferenciální rovnice
 
 Avšak Mertonův spojitý rovnovážný model vykazuje inkonzistenci, což dokázali Ohlson a Rosenberg \cite{ohlson} hned v roce 1976.
 Ještě před zveřejněním jejich článku byla uveřejněna ve stejném periodiku Mertonova reakce \cite{merton1975}, ve které hájí své poznatky a poukazuje na jejich nepochopení ze strany oponentů.  
-Ohlson a Rosenberg \cite {ohlson} poukazují na rozpor mezi předpokladem, že střední hodnota a rozptyl výnosnosti aktiva jsou konstantní, a předpokladem tržní rovnováhy.
-Podrobněji bude tento paradox rozebrán v Části \ref{paradox}.
+Ohlson a Rosenberg poukazují na rozpor mezi předpokladem, že střední hodnota a rozptyl výnosnosti aktiva jsou konstantní, a předpokladem tržní rovnováhy.
+Podrobněji bude tento paradox rozebrán v Kapitole \ref{paradox}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%{Ohlson-Rosenbergův paradox}
@@ -1964,7 +1967,7 @@ Ohlson a Rosenberg jako první poukázali na nekonzistenci Mertonova spojitého 
 Na začátek zavedeme značení a  uvedeme základní definice a předpoklady. 
 Uvažujme množinu $n$ různých aktiv na daném trhu a označme $\mathcal{T}$ množinu všech uvažovaných časů (diskrétní nebo spojitou).
 Nechť $I_t$ značí množinu všech investorů na trhu v čase $t\in \mathcal{T}$.
-Cenu aktiva $j$ v čase $t$ označíme $P_j(t)$ a $\boldsymbol{P}(t)=(P_1(t),\dots,P_n(t))^\mathrm{T}$ je vektor cen aktiv v čase $t$.
+Cenu aktiva $j$ v čase $t$ označíme $P_j(t)$ a~$\boldsymbol{P}(t)=(P_1(t),\dots,P_n(t))^\mathrm{T}$ je vektor cen aktiv v čase $t$.
 Analogicky označíme $\boldsymbol{N}(t)=(N_1(t),\dots,N_n(t))^\mathrm{T}$ vektor podílů aktiv v čase $t$.
 Potom tržní hodnota aktiva $j$ je rovna $V_j(t)=P_j(t)N_j(t)$.
 
@@ -1977,7 +1980,7 @@ Jak bylo zmíněno výše výnosnost chápeme jako náhodnou veličinu a o její
 \end{enumerate} 
 Tyto předpoklady jsou konzistentní s předpoklady CAPM.
 
-Označme $w_{j}(i,t)$ optimální objem prostředků investovaných do aktiva $j$ investorem $i$ v čase $t$.
+Označme $w_{j}(i,t)$ optimální objem prostředků investovaných do aktiva~$j$ investorem~$i$ v čase~$t$.
 Nechť $\boldsymbol{w}(i,t)=(w_{1}(i,t),\dots,w_{n}(i,t))$ představuje optimální alokaci prostředků investora $i$ držených v portfoliu všech aktiv.
 Funkce $w_{j}(i,t)$ tedy zohledňuje (rizikové) preference investora $i$ v čase $t$.
   
@@ -1985,7 +1988,7 @@ Nyní můžeme definovat dynamickou tržní rovnováhu jako stav, kdy  nabídka 
 Tento stav se také nazývá \textit{vyčištění trhu}.
          
 \begin{definice}[Dynamická tržní rovnováha]
-Řekneme, že kapitálový trh je v \textit{dynamické rovnováze} právě tehdy, když pro každý čas $t\in \mathcal{T}$, každé podkladové aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
+Řekneme, že kapitálový trh je v~\textit{dynamické rovnováze} právě tehdy, když pro každý čas $t\in \mathcal{T}$, každé podkladové aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
 $$\sum_{i\in I} w_{j}(i,t)=N_j(t)P_j(t)=V_j(t).$$
 Tyto ceny budeme nazývat \textit{rovnovážné ceny}.
 \end{definice}
@@ -2059,10 +2062,10 @@ Budeme diskutovat o výhodách a nevýhodách tohoto přístupu.
 
 Pojem \textit{Stochastická teorie portfolia} (SPT) zavedl Robert Fernholz ve své monografii \cite{fern}.
 Jedná se o matematickou teorii, která zkoumá chování portfolia jakožto i strukturu kapitálového trhu.
-Hlavní výhodou oproti klasické teorii portfolia jsou méně  striktní předpoklady, které dovolují konzistentní přístup bez výskytu Ohlson-Rosenbergova paradoxu \cite{ohlson}.
+Hlavní výhodou oproti klasické teorii portfolia jsou méně  striktní předpoklady, které dovolují konzistentní přístup bez výskytu Ohlson-Rosenbergova paradoxu.
 
 Na rozdíl od Mertonova modelu se v SPT nepředpokládá tržní rovnováha.
-Parametry stochastického procesu, kterým se řídí cena aktiva, jsou v SPT také stochastické procesy nikoli konstanty jako v Mertonově přístupu.
+Navíc parametry stochastického procesu, kterými se řídí cena aktiva, jsou v SPT stochastické procesy nikoli konstanty jako v Mertonově přístupu.
 Dokonce, na rozdíl od klasického přístupu, se v SPT neklade důraz na předpoklad neexistence tržní arbitráže, přičemž se v práci diskutuje o vlastnosti trhu vedoucí k existenci arbitráže. 
 
 Pro vývoj ceny aktiva Fernholz používá následující spojitý logaritmický model
@@ -2087,7 +2090,7 @@ Tento model budeme konstruovat v Kapitole \ref{muj_model}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Paradox v teorii portfolia a Věta o~separaci do~dvou fondů} \label{john}
-Nekonzistencí obvyklých předpokladů teorie portfolia se v roce 2009 zabýval také John Stalker profesor na univerzitě v Princetonu. 
+Nekonzistencí obvyklých předpokladů dynamické teorie portfolia se v roce 2009 zabýval také John Stalker profesor na univerzitě v Princetonu. 
 V preprintu \cite{john} uvádí algebraický důkaz inkonzistence předpokladů, kde využívá Tobinovu \textit{Větu o~separaci do~dvou fondů}. 
 V následujícím textu budou tyto myšlenky rozpracovány.
 
@@ -2132,7 +2135,7 @@ Pro změnu ceny aktiva $j$ mezi časem $t$ a časem $t+\Delta t$ platí
 \begin{displaymath}
 \Delta P_j = \frac{a_j}{N_j}\Delta A + \frac{b_j}{N_j}\Delta B,
 \end{displaymath}
-kde $\Delta A = A(t+\Delta t) - A(t)$ and $\Delta B = B(t+\Delta t)- B(t)$.
+kde $\Delta A = A(t+\Delta t) - A(t)$ a $\Delta B = B(t+\Delta t)- B(t)$.
 
 Uvažujme míru výnosnosti podkladového aktiva $j$ za čas $\Delta t$
 \begin{displaymath}
@@ -2196,7 +2199,7 @@ Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním port
 kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv.
 
 Uvažujme o řešitelnosti a počtu řešení soustavy rovnic \eqref{vahy} vzhledem k~$\boldsymbol{\mu}$.
-Soustavu upravíme do tvaru
+Soustavu upravíme do tvaru %vzhledem k tom, že součin matic je distributivní vzhledem ke sčítání
 \begin{equation} \label{hodnost}
 \left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}=0.
 \end{equation}
@@ -2373,6 +2376,14 @@ Označení & Název & Obor podnikání  \\
 \hline
 \end{tabular}}
 \end{table}
+
+Ceny akcií zohledněné v analýze jsou tříletá časová řada z let 2011--2014. %31.1.2011-21.2.21014
+Ukázka datového souboru je uvedena v Příloze \ref{priloha_data}.
+Grafy zobrazující vývoj cen akcií z datového souboru nalezneme na Obrázku \ref{model_price_of_asset}.
+
+Model zkonstruovaný v Kapitole \ref{muj_model} využijeme pro simulace vývoje cen akcií uvažovaných společností.
+Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R.
+Jejich ukázky jsou uvedeny v Příloze \ref{priloha_programy}.
 
 \begin{figure}[!htbp]
   \centering 
@@ -3315,7 +3326,7 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 
 %\nocite{976825, 979237, 979245, 1077842, 1093598, 1167343, 1167503, 1183811} %moje publikace
 
-\chapter[Příloha -- Publikace autorky]{Příloha}
+\chapter[Příloha -- Publikace autorky]{Příloha}\label{priloha_publikace}
 \section*{Publikace autorky}
 %\bibliographystyle{abbrv}
 %\bibliography{moje}
@@ -3326,7 +3337,7 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 L.~Křivánková a S.~Zlatošová.
 \newblock Modelling Counterparty Credit Risk in Czech Interest Rate Swaps.
 \newblock {\em Acta Universitatis Agriculturae et Silviculturae Mendelianae
-  Brunensis}, 2017.
+  Brunensis}, 65(3), 2017.
 
 \item
 L.~Křivánková.
@@ -3366,7 +3377,7 @@ L.~Křivánková.
 S.~Kafková a L.~Křivánková.
 \newblock Generalized linear models in vehicle insurance.
 \newblock {\em Acta Universitatis Agriculturae et Silviculturae Mendelianae
-  Brunensis}, 62, 2014.
+  Brunensis}, 62(2):383--388, 2014.
 
 \item
 S.~Kafková, L.~Křivánková a M.~Leváková.
@@ -3382,7 +3393,7 @@ S.~Kafková, L.~Křivánková a M.~Leváková.
 \end{enumerate}
 
 
-\chapter[Příloha -- Ukázka datového souboru]{Příloha}\label{priloha_programy}
+\chapter[Příloha -- Ukázka datového souboru]{Příloha}\label{priloha_data}
 \section*{Ukázka datového souboru}
 V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{aplikace}.
 \begin{figure}[!htbp]
@@ -3392,7 +3403,7 @@ V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{
 %  \caption{}  %\label{}
 \end{figure}
 
-\chapter[Příloha -- Ukázka programů]{Příloha}
+\chapter[Příloha -- Ukázka programů]{Příloha}\label{priloha_programy}
 \section*{Ukázka programu v R}
 \addcontentsline{toc}{section}{Ukázka programu v {\textsf{R}}}
 

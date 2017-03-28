@@ -163,12 +163,12 @@
 
 \begin{tabular}{p{3.9cm}  p{9.1cm}}
 \textbf{Autor:} & Mgr. Lenka Křivánková \\
-\textbf{Název:} & Stochastické metody analýzy ekonomických dat \\
+\textbf{Název práce:} & Stochastické metody analýzy ekonomických dat \\
 \textbf{Školitel:} & doc. RNDr. Martin Kolář, Ph.D.  \\
 \textbf{Studijní program:} & Matematika \\
-\textbf{Obor:} & Pravděpodobnost, statistika a matematické modelování \\
+\textbf{Studijní obor:} & Pravděpodobnost, statistika a matematické modelování \\
 \textbf{Rok obhajoby:} & 2017 \\
-\textbf{Klíčová slova:} & Stochastické procesy, \\
+\textbf{Klíčová slova:} & stochastické procesy, stochastické diferenciální rovnice, stochastické modely, teorie portfolia, Credit Valuation Adjusment\\
 \end{tabular}
 \\\\\\\\\\
 
@@ -180,10 +180,10 @@
 \textbf{Author:} & Mgr. Lenka Křivánková \\
 \textbf{Title:} & Stochastic methods in analysis of economic data \\
 \textbf{Supervisor:} & doc. RNDr. Martin Kolář, Ph.D.  \\
-\textbf{Study programme:} & Mathematics \\
-\textbf{Study field:} & Probability, statistics and mathematical modeling \\
-\textbf{Year of defence:} & 2017 \\
-\textbf{Keywords:} & Stochastic processes, \\
+\textbf{Study Programme:} & Mathematics \\
+\textbf{Study Field:} & Probability, statistics and mathematical modeling \\
+\textbf{Year of Defence:} & 2017 \\
+\textbf{Keywords:} & Stochastic Processes, Stochastic Differential Equations, Stochastic Models, Portfolio Theory, Credit Valuation Adjusment\\
 \end{tabular}
 \newpage
 \pagestyle{empty}
@@ -196,7 +196,9 @@
 \chapter*{Poděkování}%\addcontentsline{toc}{chapter}{Poděkování}
 %\thispagestyle{empty}
 \pagestyle{plain}
-Na tomto místě
+Na tomto místě bych chtěla poděkovat svému školiteli doc. RNDr. Martinovi Kolářovi, Ph.D. za cenné rady, připomínky a čas, který mi věnoval.
+Dále chci poděkovat své kolegyni Mgr. Silvii Zlatošové, Ph.D. za spolupráci během doktorského studia, její podpora a motivace mi byla velmi cenná.
+Velké poděkování patří také mé rodině a mým přátelům za jejich podporu, trpělivost a útěchu, kterými mě zahrnovali při psaní této práce.
 \\
 
 Brno, Duben 2017
@@ -387,6 +389,8 @@ In the first part of the work, some basic mathematical methods employed in this 
 %Oceňování je jedním z ústředních nástrojů finančního řízení a rozhodování. 
 %Klíčovými faktory jsou neurčitost finančních toků a dynamická flexibilita. 
 
+Stochastická analýza v sobě spojuje poznatky z teorie pravděpodobnosti, statistiky a matematické analýzy.
+
 Stochastické metody analýzy dat budeme aplikovat ve dvou ekonomických oborech -- v teorii portfolia a v teorii řízení finančních rizik. 
 
 Teorie portfolia se zabývá zkoumáním kapitálových trhů a popisem chování cen finančních aktiv.
@@ -408,28 +412,21 @@ Dalším jeho předpokladem byla tržní rovnováha.
 V další části představíme Ohlson-Rosenbergův paradox publikovaný v roce 1976, který dokazuje rozpor mezi Mertonovými předpoklady.  
 Uvedeme metody, které tímto rozporem nejsou zatíženy.
 Jednou z nich je stochastická teorie portfolia, kterou rozvíjí Robert Fernholz.
-Na závěr zkusíme navrhnout vlastní metodu, která bude mít volnější předpoklady než Mertonův přístup.
+Navrhneme vlastní metodu, která bude mít volnější předpoklady než Mertonův přístup.
 Navržený model budeme aplikovat na reálná data. 
 
 %\begin{comment}
-V druhé části práce se zaměříme na modelování Credit Valuation Adjustment (CVA), což je bankou sledovaná a účtovaná hodnota, která slouží jako úprava reálné hodnoty derivátů o kreditní riziko protistrany.
+V další části práce se zaměříme na modelování Credit Valuation Adjustment (CVA), což je bankou sledovaná a účtovaná hodnota, která slouží jako úprava reálné hodnoty derivátů o kreditní riziko protistrany.
 Podle odhadu Basilejského výboru pochází tři čtvrtiny ztrát způsobených kreditním rizikem protistrany během finanční krize ze ztrát daných změnou CVA, nikoli kvůli samotným selháním protistran. 
 Od roku 2015 předepisuje Basel III bankám povinnost počítat kapitalový požadavek pro riziko změny CVA.
 Současná situace na bankovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
 Běžné způsoby tvorby zisku v současnosti selhávají.
 Na trhu můžeme pozorovat nejen nízké až záporné úrokové sazby, ale i konkurenční boj o klienty, který přináší neustálý tlak na snižování bankovních poplatků a poskytování téměř nerentabilní klientských úvěrů.
-Banky proto hledají nové možnosti, jak snižovat náklady jako jsou například opravné položky k úvěrům klientů nebo k finančním derivátům.
-Jednou z možností může být nalezení způsobu jak CVA modelovat tak, aby dodržely předepsané standardy a zároveň zajistily co nejmenší dopad na jejich zisk. 
+Banky proto hledají nové možnosti, jak snižovat náklady, jakými jsou například opravné položky k úvěrům klientů nebo k finančním derivátům.
+Jednou z možností může být nalezení způsobu jak CVA modelovat tak, aby dodržely předepsané standardy a zároveň zajistily co nejmenší dopad na svůj zisk. 
 
 Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
 Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
-Jedním z cílů této práce bude představit a aplikovat model pro CVA úrokových swapů, který respektuje regulační normy a~zároveň přináší nižší ocenění CVA.
-Při výpočtu CVA budeme využívat různé stochastické metody analýzy dat.
-Monte Carlo simulace použijeme k vytvoření  možných scénářů vývoje úrokových měr na trhu. 
-Tyto simulace jsou prováděny s využitím Hull-Whitova jednofaktorového modelu úrokových měr.
-Následně pro každý scénář úrokové míry oceňujeme daný úrokový swap metodami pro oceňování derivátů a~určujeme očekávanou expozici protistrany.
-Pro odhad pravděpodobnosti selhání protistrany využíváme přístup založený na exponenciálním rozdělení.
-Výpočty a simulace prezentované v Kapitole \ref{rizika_kap} jsou provedeny v prostředí \MATLAB.
 %\end{comment}
 
 \begin{comment}
@@ -481,11 +478,34 @@ CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahr
 %V modelech pro CCR a CVA je nutné zohlednit jak riziko kreditní kvality protistrany, tak i náhodnost v hodnotě budoucí expozice vůči protistraně. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter*{Cíle práce}\addcontentsline{toc}{chapter}{Cíle práce} 
+\chapter*{Cíle práce a metodika}\addcontentsline{toc}{chapter}{Cíle práce a metodika} 
+Cílem této disertační práce je přehledně představit základy teorie stochastických procesů a stochastických diferenciálních rovnic a 
+zasvětit čtenáře do problematiky stochastických modelů využívaných při analýze ekonomických dat.
+Tento cíl budeme naplňovat v Kapitolách~\ref{stochasticka_analyza_kap}~a~\ref{stoch_model}.
+Dalším cílem této práce je využít teoretické poznatky a aplikovat je při analýze reálných dat v~konkrétních ekonomických oborech.
+Prvním z těchto oborů bude teorie portfolia prezentovaná v~Kapitole~\ref{teorie_portfolia_kap} a druhým teorie řízení finančních rizik představená v~Kapitole~\ref{rizika_kap}.
+Navíc si klademe za cíl, aby námi použité metody přinášeli některé nové výhody oproti modelům uvedeným v teoretické části.
+
+V teorii portfolia....
+Stěžejní část kapitoly bude obsahovat navržení nového modelu pro popis chování cen finančních aktiv založeného na vztahu mezi váhami portfolia a výnosností finančních aktiv v portfoliu.
+Navržený model si klade za cíl popsat dynamiku cen aktiv bez nekonzistence předpokladů prezentované v Ohlson-Rosenbergově paradoxu.
+Model následně aplikujeme na reálná data z pražské burzy cenných papírů.
+%Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R (verze 3.3.0).
+Simulace a grafy prezentované v Kapitole~\ref{teorie_portfolia_kap} vytvoříme pomocí programů vyvinutých v prostředí~\R (verze 3.3.0).
+Jejich ukázky budou uvedeny v Příloze~\ref{priloha_programy}.
+
+V dalším části práce bude naším cílem představit a aplikovat model pro CVA úrokových swapů, který respektuje regulační normy a~zároveň přináší nižší ocenění CVA než metody využívané v bankovní praxi.
+Při výpočtu CVA budeme využívat různé stochastické metody analýzy dat.
+Monte Carlo simulace použijeme k vytvoření  možných scénářů vývoje úrokových měr na trhu. 
+Tyto simulace jsou prováděny s využitím Hull-Whitova jednofaktorového modelu úrokových měr.
+Následně pro každý scénář úrokové míry oceňujeme daný úrokový swap metodami pro oceňování derivátů a~určujeme očekávanou expozici protistrany.
+Pro odhad pravděpodobnosti selhání protistrany využíváme přístup založený na exponenciálním rozdělení.
+Výpočty a simulace prezentované v Kapitole \ref{rizika_kap} realizujeme v prostředí \MATLAB (verze  R2014b).
+Ukázky z programu uvedeme v Příloze \ref{priloha_programy}.
 
 %%%%%%%%%%%%%%%%%%{Stochastická analýza}
 
-\chapter{Stochastická analýza}
+\chapter{Stochastická analýza}\label{stochasticka_analyza_kap}
 %\chapter{Teoretická východiska}
 %\begin{comment}
 Nejprve uvedeme základní matematický aparát, který využíváme v této práci.
@@ -536,7 +556,7 @@ V takovém případě hovoříme o tom, že jeden proces je \textit{verzí} druh
 \end{definice}
 
 \begin{definice}[Systém distribučních funkcí stochastického procesu]
-Nechť $\mathcal{T}_n$ je množina všech vektorů $\mathcal{T}_n=\{\boldsymbol{t}=(t_1,\dots,t_n):t_1\leq t_2\leq\cdots\leq t_n; t_i\in\mathcal{T}; i=1,\dots,n\}$,
+Nechť $\mathcal{T}_n$ je množina všech $n$-tic $\mathcal{T}_n=\{\boldsymbol{t}=(t_1,\dots,t_n):t_1\leq t_2\leq\cdots\leq t_n; t_i\in\mathcal{T}; i=1,\dots,n\}$,
 pak \textit{distribuční funkcí} stochastického procesu rozumíme funkci
 $$F_{\boldsymbol{t}}(\boldsymbol{x})=F_{t_1,\dots,t_n}(x_1,\dots,x_n)= \mathsf{Pr}(X_{t_1}\leq x_1,\dots,X_{t_n}\leq x_n),$$
 pro všechna $\boldsymbol{t}=(t_1,\dots,t_n)\in \mathcal{T}_n$ a všechna $\boldsymbol{x}=(x_1,\dots,x_n)\in \mathbb{R}^n$.
@@ -582,8 +602,8 @@ Procesy, které nejsou striktně stacionární, se nazývají evoluční.
 \begin{definice}[Nezávislost přírůstků stochastického procesu]
 Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě tehdy, když pro všechny časové posloupnosti $\{t_i\}_{i=1}^N\subseteq\mathcal{T}$, kde $t_i<t_{i+1}$ a $N\in\mathbb{N}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
 \end{definice}
-K popisu pravděpodobnostního chování stochastického procesu s nezávislými přírůstky je tedy dostačující znát distribuční funkci náhodné veličiny $X(t)$ a přírůstku stochastického procesu $X(t)-X(s)$, %pro pevně zvolené $t$ a $s$
-kde $t>s$.
+%K popisu pravděpodobnostního chování stochastického procesu s nezávislými přírůstky je tedy dostačující znát distribuční funkci náhodné veličiny $X(t)$ a přírůstku stochastického procesu $X(t)-X(s)$, %pro pevně zvolené $t$ a $s$
+%kde $t>s$.
 
 \begin{definice}[Spojitost stochastického procesu]
 Řekneme, že stochastický proces $X(t)$ je \textit{stochasticky spojitý v bodě} $t_0\in\mathcal{T}$, jestliže pro každé $\epsilon>0$ platí
@@ -591,18 +611,18 @@ kde $t>s$.
 $$\lim_{t\to t_0}\Pr(|X(t)-X(t_0)|>\epsilon)=0.$$
 Stochastický proces je  \textit{stochasticky spojitý} (spojitý podle pravděpodobnosti), je-li spojitý v každém bodě množiny $\mathcal{T}$.
 \end{definice}
-Proces, který je spojitý podle předcházející definice, nemusí mít spojité trajektorie.
+Proces, který je spojitý podle předcházející definice, nemusí mít spojité trajektorie (například Poissonův proces).
 
 %\begin{definice}[]
 %\end{definice}
 
 \subsection{Wienerův proces}\label{WP_kap}
 Wienerův proces byl zaveden Norbertem Wienerem jako matematický popis Brownova pohybu.
-Může být také interpretován jako limita náhodné procházky pro infinitezimální časoprostorový krok.
+Může být také interpretován jako limita náhodné procházky pro infinitezimální časový a prostorový krok.
 %Zajímavostí Wienerova procesu je kombinace dvou vlastností,
 %s pravděpodobností jedna má spojitou trajektorii a zároveň je nediferencovatelný v každém bodě. 
 %Výjimečnou vlastností 
-Pro trajektorie Wienerova procesu je typická kombinace dvou vlastností spojitost a zároveň nediferencovatelnost v každém bodě.
+Pro trajektorie Wienerova procesu je typická kombinace dvou vlastností, spojitost a zároveň nediferencovatelnost v každém bodě.
 Wienerův proces je základním stavebním kamenem pro konstrukci stochastického integrálu.
 
 \begin{definice}[Wienerův proces]\label{WP_def}
@@ -618,7 +638,7 @@ Reálný stochastický proces $\{W(t):t\ge0\}$ na pravděpodobnostním prostoru 
 
 Ukázku trajektorií Wienerova procesu můžeme vidět na Obrázku \ref{WP_graf}.
 
-Z definice Wienerova procesu je zřejmé, že jeho střední hodnota $\mu_t=0$ pro všechna $t\ge0$.
+Z definice Wienerova procesu je zřejmé, že jeho střední hodnota $\mu(t)~=~0$ pro všechna $t\ge0$.
 Snadno odvodíme vztah pro autokovarianční funkci Wienerova procesu $\rho(s,t)=\min(s,t)$.
 Jestliže $0\leq s<t$, pak
 \begin{align*}
@@ -655,8 +675,7 @@ Nejběžnější modifikací Wienerova procesu splňující tyto požadavky je G
 K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
 
 %V definici Geometrického Wienerova procesu využijeme stochastické diferenciální rovnice, které budou definovány v Kapitole \ref{SDR_kap}.
-Geometrický Wienerův proces bývá často definován pomocí  stochastické diferenciální rovnice.
-Proto uvádíme tento způsob definice, přestože budou definovány v Kapitole \ref{SDR_kap}.
+Geometrický Wienerův proces bývá často definován pomocí  stochastické diferenciální rovnice (které budou zavedeny v Kapitole \ref{SDR_kap}).
 \begin{definice}[Geometrický Wienerův proces]\label{Geometricky_Wieneruv_proces}
 Stochastický proces $S(t)$, který je řešením stochastické diferenciální rovnice 
 \begin{equation}\label{SDE_GWP}
@@ -1163,7 +1182,7 @@ Stochastickým modelováním v ekonomii se pak zabývá převážně zahraničn�
 
 V následující části popíšeme konstrukci matematických modelů používaných ve finanční matematice pro popis vývoje cen aktiv na finančních trzích.
 Na začátek poznamenejme, že ceny aktiv jsou pozorovány a~zaznamenávány v~diskrétních časech s~malým časovým krokem.
-Avšak je běžné předpokládat, že proces ceny aktiva je spojitý.
+Avšak je běžné předpokládat, že proces ceny aktiva je proces ve spojitém čase.
 Důvodem je zjednodušení následných analýz a~modelování.
 %Na začátek poznamenejme, že ceny aktiv jsou stochastické procesy s diskrétním časem a malým časovým krokem. 
 %Avšak je běžné předpokládat, že se jedná o procesy spojité.
@@ -1245,7 +1264,7 @@ V(t)=\phi(t)P(t)+\psi(t)B(t).
 \end{equation}
 \end{definice}
 
-Procesy $\phi(t)$ a $\psi(t)$ nabývají kladných hodnot, nicméně pokud je na trhu povolen tzv. \textit{prodej na krátko (short sell)} mohou nabývat i hodnot záporných.
+Proces $\phi(t)$  nabývá kladných hodnot, nicméně pokud je na trhu povolen tzv. \textit{prodej na krátko (short sell)} může nabývat i hodnot záporných.
 Prodává-li na krátko investor rizikové finanční aktivum, jedná se o~spekulativní metodu obchodování na finančním trhu, kdy investor očekává pokles ceny tohoto aktiva.
 Investor si finanční aktivum vypůjčí od věřitele na předem stanovenou dobu a ihned ho prodá třetí straně.
 Nejpozději za stanovenou dobu investor nakoupí finanční aktivum na trhu a vrátí jej věřiteli.
@@ -1673,7 +1692,7 @@ Ze vztahů \eqref{ocekavana_cena_dluhopisu} a \eqref{H-W_vynosova_krivka} vidím
 
 %%%%%%%%%%%%%%%%%%{Teorie portfolia}
 
-\chapter{Teorie portfolia}
+\chapter{Teorie portfolia}\label{teorie_portfolia_kap}
 %%z mého článku
 %Teorie portfolia se zabývá zkoumáním kapitálových trhů a popisem chování cen finančních aktiv.
 %Na základě těchto poznatků je hledán způsob, jak zvolit optimální množinu finančních aktiv.
@@ -1709,7 +1728,7 @@ Dalším zdrojem informací nám byla monografie Franka Fabozziho \cite{fabozzip
 Dalším důvodem sestavování portfolia je diverzifikace rizika.
 Investoři se snaží maximalizovat výnos z portfolia vzhledem ke svým rizikovým preferencím.
 Teorie portfolia se zabývá způsoby určení tzv. \textit{optimálního portfolia}, které vyhovuje investorovým požadavkům na maximalizaci výnosu při daném riziku (resp. minimalizaci rizika při pevně zvolené výnosnosti).
-Využívá k tomu charakteristiky hodnot finančních aktiv a charakteristiky portfolia.
+Využívá k tomu poznatky o~chování cen finančních aktiv, konkrétně charakteristiky finančních aktiv a~charakteristiky portfolia.
 
 %Podle teorie portfolia se investoři snaží minimalizovat riziko své investice spolu s maximalizací svých výnosů.
 
@@ -1938,7 +1957,7 @@ kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková 
 \subsection{Mertonův model}
 První článek zabývající se dynamickou teorií portfolia napsal Robert Carhart Merton v roce 1971 \cite{merton1971}.
 Merton předpokládal platnost rovnovážného modelu CAPM a dál tuto teorii rozšířil o spojitý model pro cenu aktiva využívající stochastické procesy.
-Přitom ukázal, že zůstává zachována platnost všech závěrů z teorie CAPM, zejména pak separačního teorému.
+Přitom ukázal, že zůstává zachována platnost všech závěrů z teorie CAPM, zejména pak Separačního teorému.
 Což znamená, že bez újmy na obecnosti můžeme uvažovat jen dvě aktiva -- bezrizikové aktivum s mírou výnosnosti $r_f$ a tržní portfolio (které můžeme považovat za jedno rizikové aktivum). 
 
 Merton předpokládá, že hodnota tržního portfolia $P(t)$ se řídí stochastickým procesem
@@ -1988,7 +2007,7 @@ Nyní můžeme definovat dynamickou tržní rovnováhu jako stav, kdy  nabídka 
 Tento stav se také nazývá \textit{vyčištění trhu}.
          
 \begin{definice}[Dynamická tržní rovnováha]
-Řekneme, že kapitálový trh je v~\textit{dynamické rovnováze} právě tehdy, když pro každý čas $t\in \mathcal{T}$, každé podkladové aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
+Řekneme, že kapitálový trh je v~\textit{dynamické rovnováze}, jestliže pro každý čas $t\in \mathcal{T}$, každé podkladové aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
 $$\sum_{i\in I} w_{j}(i,t)=N_j(t)P_j(t)=V_j(t).$$
 Tyto ceny budeme nazývat \textit{rovnovážné ceny}.
 \end{definice}
@@ -2057,7 +2076,7 @@ Za povšimnutí stojí, že Mertonova reakce vychází ještě před samotným �
 %%%%%%%%%%%%%%%%%%%%%%%%%%{Stochastická teorie portfolia}
 
 \section{Stochastická teorie portfolia}
-V této kapitole jsou shrnuty některé základní poznatky Stochastické teorie portfolia, která byla inspirací pro studium spojitých modelů v teorii portfolia uvedených v této práci.
+V této kapitole jsou shrnuty některé základní poznatky Stochastické teorie portfolia, která byla pro nás inspirací pro studium spojitých modelů v teorii portfolia uvedených v této práci.
 Budeme diskutovat o výhodách a nevýhodách tohoto přístupu.
 
 Pojem \textit{Stochastická teorie portfolia} (SPT) zavedl Robert Fernholz ve své monografii \cite{fern}.
@@ -2090,7 +2109,7 @@ Tento model budeme konstruovat v Kapitole \ref{muj_model}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Paradox v teorii portfolia a Věta o~separaci do~dvou fondů} \label{john}
-Nekonzistencí obvyklých předpokladů dynamické teorie portfolia se v roce 2009 zabýval také John Stalker profesor na univerzitě v Princetonu. 
+Nekonzistencí obvyklých předpokladů dynamické teorie portfolia se v roce 2009 zabýval také John Stalker profesor na Trinity College, Dublin. 
 V preprintu \cite{john} uvádí algebraický důkaz inkonzistence předpokladů, kde využívá Tobinovu \textit{Větu o~separaci do~dvou fondů}. 
 V následujícím textu budou tyto myšlenky rozpracovány.
 
@@ -2190,13 +2209,14 @@ Předpokládejme, že tyto ceny se řídí následující soustavou stochastick�
 \begin{equation} \label{SDE}
 \mathrm{d}P_j(t)=P_j(t)\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),
 \end{equation}
-kde $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces, $\mu_j(t)$ je očekávaná míra výnosnosti podkladového aktiva $j$ a $\xi_{jk}(t)$ je proces volatility podkladových aktiv $j$ a $k$. 
+kde $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces, $\mu_j(t)$ je očekávaná míra výnosnosti podkladového aktiva $j$ a $\xi_{jk}(t)$ je proces volatility. 
+
 Pro zjednodušení předpokládejme, že výnosnost bezrizikového aktiva $r_f=0$.
 Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním portfoliu, pak ze vztahu \eqref{vahy_trzni} plyne
 \begin{equation} \label{vahy}
 \boldsymbol{X}=\frac{\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}},
 \end{equation}
-kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv.
+kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv a platí $\boldsymbol{\Sigma}=\boldsymbol{\xi}\boldsymbol{\xi}^\mathrm{T}$.
 
 Uvažujme o řešitelnosti a počtu řešení soustavy rovnic \eqref{vahy} vzhledem k~$\boldsymbol{\mu}$.
 Soustavu upravíme do tvaru %vzhledem k tom, že součin matic je distributivní vzhledem ke sčítání
@@ -2216,15 +2236,15 @@ Jak jsme ukázali v Kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia 
 \end{equation}
 kde $\boldsymbol{V}$ je vektor tržních hodnot podkladových aktiv na trhu.
 Připomeňme, že tržní hodnota aktiva $j$ je dána jako $V_j(t)=P_j(t)N_j(t)$.
-Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem ke vztahům \eqref{vahy} a \eqref{market_value} můžeme předpokládat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ jsou funkcemi cen aktiv $\boldsymbol{P}(t)$. 
-
+Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem ke vztahům \eqref{vahy} a \eqref{market_value} můžeme konstatovat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ a ceny aktiv $\boldsymbol{P}(t)$ jsou stejné až na násobek skalárem. 
+Proto je přirozené rozdělit modelování dynamiky $\boldsymbol{\mu}(t)$ na dvě části, relativní dynamiku aktiv a dynamiku trhu.
 %Ze vztahů \eqref{vahy} a \eqref{market_value} dostáváme $\boldsymbol{V}=\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ a proto očekávané výnosnosti můžeme vyjádřit jako
 %\begin{equation} \label{mu}
 %\boldsymbol{\mu}=\boldsymbol{\Sigma}\boldsymbol{V}.
 %\end{equation}
-
 %Při zohlednění vztahu \eqref{market_value} dostaneme obecné řešení soustavy rovnic \eqref{hodnost} jako $\boldsymbol{\mu}=k(t)\boldsymbol{\Sigma}\boldsymbol{V}$, kde $k(t)$ je parametrická funkce. %$k\in\mathbb{R}$ je parametr. 
 %Což znamená, že nemůžeme najít jednoznačné vyjádření pro vektor $\boldsymbol{\mu}$, ale našli jsme vztah mezi složkami tohoto vektoru. %a k jeho vyjádření nám postačí jeden parametr.
+
 
 Hledejme vhodné stochastické procesy, které by popisovaly chování vektoru $\boldsymbol{\mu}(t)$.
 Pro tento účel rozdělme proces očekávané výnosnosti aktiv na dvě složky.
@@ -2239,21 +2259,22 @@ $\mu_M(t)$ je skalární stochastický proces, který charakterizuje dynamiku tr
 Dále nechť pro všechny uvažované časy $t$ platí $\sum_{i=1}^n\tilde{\mu}_i(t)=1$.
 Pak podle teorie CAPM platí 
 \begin{equation} \label{vahy_mu}
-\tilde{\boldsymbol{\mu}}(t)=\boldsymbol{X}(t),
+\tilde{\boldsymbol{\mu}}(t)=\frac{\boldsymbol{\Sigma}\boldsymbol{X}(t)}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{\Sigma}\boldsymbol{X}(t)},
 \end{equation}
 kde $\boldsymbol{X}(t)$ je vektor vah v tržním portfoliu v čase $t$.
 
-Výnosnost celého trhu nevykazuje exponenciální růst, ale pohybuje se přibližně v nějakém intervalu. 
+Analogicky s úrokovou mírou výnosnost celého trhu nevykazuje exponenciální růst, ale pohybuje se přibližně v nějakém intervalu. 
 V delším časovém horizontu se projevuje tendence navracet se k průměrné hodnotě.
 Proto budeme předpokládat, že míra výnosnosti trhu $\mu_M(t)$ se řídí Vašíčkovým modelem z Kapitoly \ref{Vasickuv_model}
 \begin{equation} 
 \mathrm{d}\mu_M(t)=\kappa(\theta-\mu_M(t))\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
 \end{equation}
 kde $\kappa$, $\theta$ a $\sigma$ jsou konstanty.
+Poznamenejme, že speciální případ dynamiky pro $\mu_M(t)$ je konstantní hodnota, odpovídající případu $\kappa=\sigma=0$.
 
 Předpokládejme nyní, že uvažovaná podkladová aktiva jsou nekorelovaná, tedy matice $\boldsymbol{\Sigma}$ je diagonální.
 Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odvětví.
-Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j=\xi_{jj}$ v průběhu času a také hodnoty aktiv $N_j$ nechť jsou v čase konstantní.
+Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j=\xi_{jj}$ v průběhu času a také počty aktiv $N_j$ nechť jsou v čase konstantní.
 
 Dosadíme-li vztahy \eqref{vynos} a \eqref{vahy_mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
 \begin{equation}  \label{SDE_cen_diag}
@@ -2316,27 +2337,29 @@ Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \
 \begin{equation} \label{SDE_cen}
  \mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\right)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t).
 \end{equation}
+%
+%Často nás více než trajektorie cen podkladových aktiv zajímají očekávané hodnoty cen těchto aktiv.
+%%\eqref{SDE_cen_diag}
+%Vztahy pro očekávané hodnoty cen aktiv odvoďme ze soustavy SDR \eqref{SDE_cen}.
+%Připomeňme, že z vlastností Wienerova procesu, uvedených v Definici \ref{WP_def}, plyne, že $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
+%\\
+%\textcolor{red}{???Nekorelovanost $P_j(t)$ a $\mathrm{d}W_j(t)$???}
+%\\
+%Pak
+%\begin{align*}%\label{ODE_cen_ocek}
+%\mathsf{E}\big( \mathrm{d}P_j(t)\big)&	=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t)\right)\\
+%&=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\,\mathrm{d}t\right)
+%\end{align*}
+%Čímž se soustava stochastických diferenciálních rovnic zjednodušuje na soustavu obyčejných diferenciálních rovnic
+%\\
+%\textcolor{red}{???jde následující rovnice upravit na ODR???}
+%\\
+%\begin{align*}
+%\mathrm{d}\mathsf{E}\big(P_j(t)\big)&=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\right)\,\mathrm{d}t.
+%\end{align*}
+%Avšak tato soustava je nelineární a neexistuje její analytické řešení, proto se neobejdeme bez použití numerických metod.
 
-Často nás více než trajektorie cen podkladových aktiv zajímají očekávané hodnoty cen těchto aktiv.
-%\eqref{SDE_cen_diag}
-Vztahy pro očekávané hodnoty cen aktiv odvoďme ze soustavy SDR \eqref{SDE_cen}.
-Připomeňme, že z vlastností Wienerova procesu, uvedených v Definici \ref{WP_def}, plyne, že $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
-\\
-\textcolor{red}{???Nekorelovanost $P_j(t)$ a $\mathrm{d}W_j(t)$???}
-\\
-Pak
-\begin{align*}%\label{ODE_cen_ocek}
-\mathsf{E}\big( \mathrm{d}P_j(t)\big)&	=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t)\right)\\
-&=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\,\mathrm{d}t\right)
-\end{align*}
-Čímž se soustava stochastických diferenciálních rovnic zjednodušuje na soustavu obyčejných diferenciálních rovnic
-\\
-\textcolor{red}{???jde následující rovnice upravit na ODR???}
-\\
-\begin{align*}
-\mathrm{d}\mathsf{E}\big(P_j(t)\big)&=\mathsf{E}\left(\frac{P_j^2(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\right)\,\mathrm{d}t.
-\end{align*}
-Avšak tato soustava je nelineární a neexistuje její analytické řešení, proto se neobejdeme bez použití numerických metod.
+Model uvedený v této kapitole budeme aplikovat na reálná data.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2382,7 +2405,7 @@ Ukázka datového souboru je uvedena v Příloze \ref{priloha_data}.
 Grafy zobrazující vývoj cen akcií z datového souboru nalezneme na Obrázku \ref{model_price_of_asset}.
 
 Model zkonstruovaný v Kapitole \ref{muj_model} využijeme pro simulace vývoje cen akcií uvažovaných společností.
-Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R.
+Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R (verze 3.3.0).
 Jejich ukázky jsou uvedeny v Příloze \ref{priloha_programy}.
 
 \begin{figure}[!htbp]
@@ -3300,6 +3323,9 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter*{Závěr}\addcontentsline{toc}{chapter}{Závěr} 
 
+%jiný stochastický proces, který by popisoval chování trhu v kapitole teorie portfolia
+%srovnání různých modelů k modelování úrokové míry v kapitole CVA
+%další metody kalibrace Hull-Whitova modelu
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

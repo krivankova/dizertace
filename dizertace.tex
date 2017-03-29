@@ -196,7 +196,7 @@
 \chapter*{Poděkování}%\addcontentsline{toc}{chapter}{Poděkování}
 %\thispagestyle{empty}
 \pagestyle{plain}
-Na tomto místě bych chtěla poděkovat svému školiteli doc. RNDr. Martinovi Kolářovi, Ph.D. za cenné rady, připomínky a čas, který mi věnoval.
+Na tomto místě bych chtěla poděkovat svému školiteli doc. RNDr. Martinu Kolářovi, Ph.D. za cenné rady, připomínky a čas, který mi věnoval.
 Dále chci poděkovat své kolegyni Mgr. Silvii Zlatošové, Ph.D. za spolupráci během doktorského studia, její podpora a motivace mi byla velmi cenná.
 Velké poděkování patří také mé rodině a mým přátelům za jejich podporu, trpělivost a útěchu, kterými mě zahrnovali při psaní této práce.
 \\
@@ -394,13 +394,13 @@ In the first part of the work, some basic mathematical methods employed in this 
 %Zavedeme základní definice a vztahy využívané ve stochastickém modelování.
 
 Stochastické metody analýzy dat se těší stále větší oblibě.
-Vznikají nové stochastické modely, sloužící k popisu náhodných dějů, a nachází uplatnění v~širokém množství oblastí.
+Vznikají nové stochastické modely sloužící k popisu náhodných dějů a nachází uplatnění v~širokém spektru oblastí.
 Stochastická analýza se také čím dál více rozšiřuje do výuky na vysokých školách a absolventi přenáší své vědomosti do praxe.
-Rovněž v ekonomické praxi se stále častěji setkáme s potřebou popsat dynamiku sofistikovanějšími metodami a modely.
+Rovněž v ekonomické praxi se stále častěji setkáváme s potřebou popsat dynamiku sofistikovanějšími metodami a modely.
 Přestože v této oblasti existuje velké množství zahraniční literatury, nepodařilo se nám nalézt téměř žádné texty psané v~českém jazyce.
 Všechny tyto skutečnosti nás vedly k rozhodnutí sepsat práci, která poskytne základní přehled o tomto tématu, ukáže možnosti jak stochastické metody aplikovat na aktuální problémy v praxi a~motivuje čtenáře k podrobnějšímu zájmu o tuto oblast finanční matematiky.
-
 Stochastické metody analýzy dat budeme aplikovat ve dvou ekonomických oborech -- v teorii portfolia a v teorii řízení finančních rizik. 
+
 Teorie portfolia se zabývá zkoumáním kapitálových trhů a popisem chování cen finančních aktiv.
 Na základě těchto poznatků je hledán způsob, jak zvolit optimální množinu finančních aktiv.
 Přitom je využívána nejen teorie pravděpodobnosti, ale v novějších přístupech i stochastická analýza.
@@ -417,13 +417,14 @@ Vývojem optimálního portfolia ve spojitém čase se zabýval Robert Merton, k
 Ve svém přístupu předpokládal, že ceny finančních aktiv se řídí It\^oovými procesy s konstantními parametry. 
 Dalším jeho předpokladem byla tržní rovnováha.
 %
-Nicméně jeho zjednodušující předpoklady se staly v roce 1976 předmětem kritiky Ohlsona a Rosenberga.
+Nicméně jeho zjednodušující předpoklady se staly v roce 1976 předmětem kritiky Ohlsona a Rosenberga, formulované v tzv. Ohlson-Rosenbergově paradoxu.
 Hledání vhodného modelu chování cen finančních aktiv v portfoliu ve spojitém čase je tedy stále aktuálním tématem. 
-V~posledních letech se jím zabývá Robert Fernholz ve své stochastické teorii portfolia. 
+V~posledních letech se jím zabývá také Robert Fernholz ve své stochastické teorii portfolia. 
+Tato teorie ale nepředpokládá tržní rovnováhu.
 %v této části práce 
-Také my navrhneme stochastický model, který bude mít volnější předpoklady než Mertonův přístup a nebude tudíž zatížen jejich rozporem.
-
-
+%Také my navrhneme stochastický model, který bude mít volnější předpoklady než Mertonův přístup a nebude tudíž zatížen jejich rozporem.
+Třetí kapitola této práce je věnována právě konstrukci modelu který odstraňuje logickou nekonzistenci vedoucí k zmíněnému paradoxu. 
+Model vychází přirozeným způsobem z Markowitzovy a Sharpeho teorie se zachováním předpokladu tržní rovnováhy.
 
 %V další části představíme Ohlson-Rosenbergův paradox publikovaný v roce 1976, který dokazuje rozpor mezi Mertonovými předpoklady.  
 %Uvedeme metody, které tímto rozporem nejsou zatíženy.
@@ -435,15 +436,15 @@ Také my navrhneme stochastický model, který bude mít volnější předpoklad
 Z teorie řízení finančních rizik jsme si pro aplikaci stochastických metod vybrali aktuální téma, jehož řešení vyžadují regulatorní požadavky z posledních let.
 Jedná se o modelování Credit Valuation Adjustment (CVA), což je bankou sledovaná a účtovaná hodnota, která slouží jako úprava reálné hodnoty derivátů o kreditní riziko protistrany.
 Podle odhadu Basilejského výboru pochází tři čtvrtiny ztrát způsobených kreditním rizikem protistrany během finanční krize ze ztrát daných změnou CVA, nikoli kvůli samotným selháním protistran. 
-Od roku 2015 předepisuje Basel III bankám povinnost počítat kapitalový požadavek pro riziko změny CVA.
+Od roku 2015 předepisuje regulatorní standard Basel III bankám povinnost počítat kapitalový požadavek pro riziko změny CVA.
 
 Současná situace na bankovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
 Běžné způsoby tvorby zisku v současnosti selhávají.
 Na trhu můžeme pozorovat nejen nízké až záporné úrokové sazby, ale i konkurenční boj o klienty, který přináší neustálý tlak na snižování bankovních poplatků a poskytování téměř nerentabilní klientských úvěrů.
 Banky proto hledají nové možnosti, jak snižovat náklady, kterými jsou například opravné položky k úvěrům klientů nebo k finančním derivátům.
 Jednou z možností může být nalezení způsobu jak CVA modelovat tak, aby dodržely předepsané standardy a zároveň zajistily co nejmenší dopad na svůj zisk. 
-Banky často používají triviální parametrické modely, které jsou nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
-Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
+Banky často používají triviální parametrické modely, které jsou kvůli rizikové obezřetnosti nastaveny velmi konzervativně.
+Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší rizikové náklady pro banku. 
 %\end{comment}
 
 \begin{comment}
@@ -727,6 +728,89 @@ Ukázku trajektorií Geometrického Wienerova procesu s různými parametry drif
 \end{figure}
 
 
+\subsection{Mnohorozměrný Wienerův proces}
+Chceme-li uvažovat finanční trh s více rizikovými aktivy a zabývat se jejich vzájemnými vztahy, musíme zavést vícerozměrný Wienerův proces.
+Aplikaci tohoto vektorového stochastického procesu využijeme v dynamické teorii portfolia.
+
+\begin{definice}
+Standardní \textit{$n$-rozměrný Wienerův proces} je vektorový stochastický proces
+$$\boldsymbol{W}(t) = (W_1(t), \dots, W_n(t))^\mathrm{T}$$
+jehož složky $W_k(t)$ jsou nezávislé, standardní jednorozměrné Wienerovy procesy.
+\end{definice}
+%Wienerův proces je stavebním kamenem matematického modelování ve finanční matematice. 
+%Tento stochastický proces se používá pro popis chování ceny aktiva v čase. 
+
+Na Obrázku \ref{WP_2D_graf} vidíme ukázku trajektorie dvourozměrného Wienerova procesu.
+\begin{figure}[!htbp]
+  \centering 
+	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/WP_2D_v6.pdf}
+  \caption{Ukázka trajektorie dvourozměrného Wienerova procesu}  \label{WP_2D_graf}
+\end{figure}
+
+
+%\section{It\^oův integrál a It\^oovo lemma}
+\subsection{It\^oův integrální počet}\label{Ito_kalkul}
+Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
+Dále se proto budeme věnovat konstrukci stochastického integrálu, uvedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
+Věty a lemmata budeme uvádět pouze bez důkazů, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
+
+%Čerpat budeme z knih \cite{}...
+Konstrukci stochastického integrálu podle Wienerova procesu představil v letech 1942--1944 Kiyosi It\^o v \cite{ito1942differential} a \cite{ito1944}. 
+Obecnější stochastický integrál, který je založený na širší třídě stochastických procesů, zkonstruovali v roce 1967 Hiroshi Kunita a Shinzo Watanabe v \cite{kunita1967square}.
+
+\subsubsection{It\^oův integrál}\label{Ito_integral}
+Důležitým nástrojem pro řešení stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též jen stochastický integrál).
+Jeho zavedení je vyžadováno nediferencovatelností trajektorií Wienerova procesu.
+Stochastický integrál budeme konstruovat obdobným způsobem jako Riemannův integrál.
+Nejprve It\^oův integrál definujeme pro jednoduché procesy, následně definici rozšíříme na větší třídu procesů pomocí aproximace.
+
+\begin{definice}\label{jednoduchafunkce}
+Stochastický proces $S$ se nazývá \textit{jednoduchý}, %(nebo \textit{jednoduchá funkce}), 
+jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
+\end{definice}
+Z Definice \ref{jednoduchafunkce} vyplývá, že trajektorie jednoduchého procesu je po částech konstantní. 
+
+\begin{definice}
+Nechť $S$ je jednoduchý proces a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
+Pak
+$$\int_0^TS\,\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
+se nazývá \textit{It\^oův integrál} procesu $S$ na intervalu $\langle 0,T\rangle$.
+\end{definice}
+
+Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché procesy na integrál pro obecný stochastický proces.
+
+\begin{lemma} \label{itoint}
+Nechť $f$ je stochastický proces patřící do třídy $M$ dle Definice \ref{M}.
+Pak existuje posloupnost jednoduchých procesů $\{f_n:n\in\mathbb N\}$ tak, že pro $n\to\infty$ platí
+$$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarrow0.$$
+\end{lemma}
+
+\begin{definice}[It\^oův integrál]\label{Ito_int}
+Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých procesů z Lemmatu \ref{itoint}.
+Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
+$$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\mathrm{d}W.$$
+\end{definice}
+Definice \ref{Ito_int} není závislá na volbě aproximující posloupnosti $f_n$ viz \cite{oksendal2003stochastic}.
+
+\subsubsection{It\^oovo lemma}
+It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
+Říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
+Kiyosi It\^o jej publikoval v roce 1944 v článku \cite{ito1944}.
+\begin{veta}[It\^oovo lemma]\label{ito_lemma}
+Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
+$$\mathrm{d}X=U\,\mathrm{d}t+V\,\mathrm{d}W.$$
+Nechť $g(t,x):(0,\infty)\times\mathbb R\to\mathbb R$ je dvakrát spojitě diferencovatelná funkce.
+Potom $Y(t)=g(t,X(t))$ je také It\^oův proces.
+Jeho stochastický diferenciál má tvar
+\begin{alignat*}{2}
+\mathrm{d}Y=\frac{\partial g}{\partial t}\mathrm{d}t+\frac{\partial g}{\partial x}\,\mathrm{d}X+\frac12\frac{\partial^2 g}{\partial x^2}(\mathrm{d}X)^2=\left[\frac{\partial g}{\partial t}+\frac{\partial g}{\partial x}U+\frac12\frac{\partial^2 g}{\partial x^2}V^2\right]\mathrm{d}t+\frac{\partial g}{\partial x}V\mathrm{d}W.
+\end{alignat*}
+\end{veta}
+
+It\^oovo lemma můžeme považovat za analogii Taylorova rozvoje v integrálním počtu.
+Tento důležitý vztah stochastické analýzy budeme využívat pro oceňování finančních derivátů, jejichž hodnota je závislá na hodnotě podkladového aktiva.
+
+
 \subsection{It\^oův proces}
 Abychom mohli v následujícím textu zavést stochastický integrál definujme nejdříve širokou třídu procesů, tzv. It\^oových procesů.
 
@@ -813,87 +897,6 @@ Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry najdeme
 %\cite{Benth2016}
 Vlastnostem Ornstein–Uhlenbeckova procesu (především stacionaritě) se zevrubně věnují Fred Espen Benth a Asma Khedher v knize \cite{podolskij2015fascination} z roku 2015, která je aktuální sbírkou prací vědců v oboru pravděpodobnosti, statistiky a jejich aplikací ve financích, ekonomii, fyzice, řízení rizika a systémů hromadné obsluhy.
 
-\subsection{Mnohorozměrný Wienerův proces}
-Chceme-li uvažovat finanční trh s více rizikovými aktivy a zabývat se jejich vzájemnými vztahy, musíme zavést vícerozměrný Wienerův proces.
-Aplikaci tohoto vektorového stochastického procesu využijeme v dynamické teorii portfolia.
-
-\begin{definice}
-Standardní \textit{$n$-rozměrný Wienerův proces} je vektorový stochastický proces
-$$\boldsymbol{W}(t) = (W_1(t), \dots, W_n(t))^\mathrm{T}$$
-jehož složky $W_k(t)$ jsou nezávislé, standardní jednorozměrné Wienerovy procesy.
-\end{definice}
-%Wienerův proces je stavebním kamenem matematického modelování ve finanční matematice. 
-%Tento stochastický proces se používá pro popis chování ceny aktiva v čase. 
-
-Na Obrázku \ref{WP_2D_graf} vidíme ukázku trajektorie dvourozměrného Wienerova procesu.
-\begin{figure}[!htbp]
-  \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/WP_2D_v6.pdf}
-  \caption{Ukázka trajektorie dvourozměrného Wienerova procesu}  \label{WP_2D_graf}
-\end{figure}
-
-
-%\section{It\^oův integrál a It\^oovo lemma}
-\section{It\^oův integrální počet}\label{Ito_kalkul}
-Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
-Dále se proto budeme věnovat konstrukci stochastického integrálu, uvedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
-Věty a lemmata budeme uvádět pouze bez důkazů, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
-
-%Čerpat budeme z knih \cite{}...
-Konstrukci stochastického integrálu podle Wienerova procesu představil v letech 1942--1944 Kiyosi It\^o v \cite{ito1942differential} a \cite{ito1944}. 
-Obecnější stochastický integrál, který je založený na širší třídě stochastických procesů, zkonstruovali v roce 1967 Hiroshi Kunita a Shinzo Watanabe v \cite{kunita1967square}.
-
-\subsection{It\^oův integrál}\label{Ito_integral}
-Důležitým nástrojem pro řešení stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též jen stochastický integrál).
-Jeho zavedení je vyžadováno nediferencovatelností trajektorií Wienerova procesu.
-Stochastický integrál budeme konstruovat obdobným způsobem jako Riemannův integrál.
-Nejprve It\^oův integrál definujeme pro jednoduché procesy, následně definici rozšíříme na větší třídu procesů pomocí aproximace.
-
-\begin{definice}\label{jednoduchafunkce}
-Stochastický proces $S$ se nazývá \textit{jednoduchý}, %(nebo \textit{jednoduchá funkce}), 
-jestliže existuje dělení $D=\{0=t_0<t_1<\cdots<t_{n-1}<t_n=T\}$ tak, že pro každé $t$, $t_k\le t<t_{k+1}$, $k=0,1,\dots,n-1$, je $S(t,\omega)=S_k(\omega)$, pro nějaké náhodné veličiny $S_k$. 
-\end{definice}
-Z Definice \ref{jednoduchafunkce} vyplývá, že trajektorie jednoduchého procesu je po částech konstantní. 
-
-\begin{definice}
-Nechť $S$ je jednoduchý proces a zaveďme označení \linebreak$\Delta W_k=W(t_{k+1},\omega)-W(t_k,\omega)$.
-Pak
-$$\int_0^TS\,\mathrm{d}W=\sum_{k=0}^{n-1}S_k\Delta W_k$$
-se nazývá \textit{It\^oův integrál} procesu $S$ na intervalu $\langle 0,T\rangle$.
-\end{definice}
-
-Pomocí limitního přechodu rozšíříme definici It\^oova integrálu pro jednoduché procesy na integrál pro obecný stochastický proces.
-
-\begin{lemma} \label{itoint}
-Nechť $f$ je stochastický proces patřící do třídy $M$ dle Definice \ref{M}.
-Pak existuje posloupnost jednoduchých procesů $\{f_n:n\in\mathbb N\}$ tak, že pro $n\to\infty$ platí
-$$\mathrm{E}\left[\int_0^T\big[f(t)-f_n(t)\big]^2\mathrm{d}t\right]\longrightarrow0.$$
-\end{lemma}
-
-\begin{definice}[It\^oův integrál]\label{Ito_int}
-Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých procesů z Lemmatu \ref{itoint}.
-Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
-$$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\mathrm{d}W.$$
-\end{definice}
-Definice \ref{Ito_int} není závislá na volbě aproximující posloupnosti $f_n$ viz \cite{oksendal2003stochastic}.
-
-\subsection{It\^oovo lemma}
-It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
-Říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
-Kiyosi It\^o jej publikoval v roce 1944 v článku \cite{ito1944}.
-\begin{veta}[It\^oovo lemma]\label{ito_lemma}
-Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
-$$\mathrm{d}X=U\,\mathrm{d}t+V\,\mathrm{d}W.$$
-Nechť $g(t,x):(0,\infty)\times\mathbb R\to\mathbb R$ je dvakrát spojitě diferencovatelná funkce.
-Potom $Y(t)=g(t,X(t))$ je také It\^oův proces.
-Jeho stochastický diferenciál má tvar
-\begin{alignat*}{2}
-\mathrm{d}Y=\frac{\partial g}{\partial t}\mathrm{d}t+\frac{\partial g}{\partial x}\,\mathrm{d}X+\frac12\frac{\partial^2 g}{\partial x^2}(\mathrm{d}X)^2=\left[\frac{\partial g}{\partial t}+\frac{\partial g}{\partial x}U+\frac12\frac{\partial^2 g}{\partial x^2}V^2\right]\mathrm{d}t+\frac{\partial g}{\partial x}V\mathrm{d}W.
-\end{alignat*}
-\end{veta}
-
-It\^oovo lemma můžeme považovat za analogii Taylorova rozvoje v integrálním počtu.
-Tento důležitý vztah stochastické analýzy budeme využívat pro oceňování finančních derivátů, jejichž hodnota je závislá na hodnotě podkladového aktiva.
 
 
 %%%%%%%%%%%%%%%%%%{Stochastické diferenciální rovnice}

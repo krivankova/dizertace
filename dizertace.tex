@@ -423,7 +423,7 @@ V~posledních letech se jím zabývá také Robert Fernholz ve své stochastick�
 Tato teorie ale nepředpokládá tržní rovnováhu.
 %v této části práce 
 %Také my navrhneme stochastický model, který bude mít volnější předpoklady než Mertonův přístup a nebude tudíž zatížen jejich rozporem.
-Třetí kapitola této práce je věnována právě konstrukci modelu který odstraňuje logickou nekonzistenci vedoucí k zmíněnému paradoxu. 
+Závěr třetí kapitoly je věnován konstrukci modelu, který odstraňuje logickou nekonzistenci vedoucí k zmíněnému paradoxu. 
 Model vychází přirozeným způsobem z Markowitzovy a Sharpeho teorie se zachováním předpokladu tržní rovnováhy.
 
 %V další části představíme Ohlson-Rosenbergův paradox publikovaný v roce 1976, který dokazuje rozpor mezi Mertonovými předpoklady.  
@@ -749,18 +749,47 @@ Na Obrázku \ref{WP_2D_graf} vidíme ukázku trajektorie dvourozměrného Wiener
 
 
 %\section{It\^oův integrál a It\^oovo lemma}
-\subsection{It\^oův integrální počet}\label{Ito_kalkul}
+\subsection{It\^oův integrální počet a It\^oův proces}\label{Ito_kalkul}
 Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
-Dále se proto budeme věnovat konstrukci stochastického integrálu, uvedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
+Proto se nyní budeme věnovat konstrukci stochastického integrálu, uvedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
 Věty a lemmata budeme uvádět pouze bez důkazů, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
 
-%Čerpat budeme z knih \cite{}...
-Konstrukci stochastického integrálu podle Wienerova procesu představil v letech 1942--1944 Kiyosi It\^o v \cite{ito1942differential} a \cite{ito1944}. 
-Obecnější stochastický integrál, který je založený na širší třídě stochastických procesů, zkonstruovali v roce 1967 Hiroshi Kunita a Shinzo Watanabe v \cite{kunita1967square}.
+Kiyosi It\^o byl japonský matematik, jenž modernizoval stochastické modely a jeho metody jsou dodnes používány v mnoha odvětvích vědy především ve financích a biologii.
+Svou práci začal stavět v roce 1940 na základě dřívějších objevů Alberta Einsteina a Norberta Wienera.
+V teorii stochastických procesů aplikoval metody diferenciálního a integrálního počtu.
+%Matematický rámec pro popis chování stochastických procesů, který zkonstruoval se je po něm pojmenován It\^oův kalkul.
+Matematický rámec zahrnující stochastické integrály a stochastické diferenciální rovnice vešel ve známost jako It\^oův kalkul.
+Z významných It\^ových textů zmiňme 
+článek \cite{ito1944} z roku 1944 obsahující konstrukci stochastického integrálu
+a publikace \cite{ito1946} a
+\cite{ito1951stochastic}, kde zavádí koncept stochastických diferenciálních rovnic.
+
+Robert C. Merton, nositel Nobelovy za ekonomii, využívá teoretické poznatky Kiyosi It\^oa jako nástroj pro výzkum vývoje cen akcií v portfoliu a k oceňování finančních derivátů.
+Tyto postupy více přiblížíme v Kapitole \ref{stoch_model} o stochastickém modelování.
+
+Abychom mohli v následujícím textu zavést stochastický integrál definujme nejdříve následující třídy procesů.
+\begin{definice}
+Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+Řekneme, že stochastický proces $\{f(t,\omega):t\ge~0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
+\end{definice}
+
+\begin{definice}\label{M}
+Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):\langle0,\infty)\times\Omega\to\mathbb R$ takových, že
+\begin{enumerate}
+\item $f(t,\omega)$ je neanticipativní, 
+\item $\text{E}\left[\int_0^Tf^2(t,\omega)\,\mathrm{d}t\right]<\infty.$ 
+\end{enumerate}
+\end{definice}
 
 \subsubsection{It\^oův integrál}\label{Ito_integral}
 Důležitým nástrojem pro řešení stochastických diferenciálních rovnic je It\^oův integrál (nazývaný též jen stochastický integrál).
 Jeho zavedení je vyžadováno nediferencovatelností trajektorií Wienerova procesu.
+
+Konstrukci stochastického integrálu podle Wienerova procesu představil v letech 1942--1944 Kiyosi It\^o v \cite{ito1942differential} a \cite{ito1944}. 
+Obecnější stochastický integrál, který je založený na širší třídě stochastických procesů, zkonstruovali v roce 1967 Hiroshi Kunita a Shinzo Watanabe v \cite{kunita1967square}.
+
+
 Stochastický integrál budeme konstruovat obdobným způsobem jako Riemannův integrál.
 Nejprve It\^oův integrál definujeme pro jednoduché procesy, následně definici rozšíříme na větší třídu procesů pomocí aproximace.
 
@@ -792,6 +821,27 @@ $$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\math
 \end{definice}
 Definice \ref{Ito_int} není závislá na volbě aproximující posloupnosti $f_n$ viz \cite{oksendal2003stochastic}.
 
+\subsubsection{It\^oův proces}
+%Abychom mohli v následujícím textu zavést stochastický integrál definujme nejdříve širokou třídu procesů, tzv. It\^oových procesů.
+%Zavedeme obecný stochasticky proces, který využijeme při konstrukci It\^oova lemmatu v další části. 
+%Stochastický proces dostatečně obecný abychom mohli zavést stochastický integrál, pojmenovaný po známém matematikovi
+
+It\^oův integrál využijeme při definování obecného stochastického procesu, který využijeme při konstrukci It\^oova lemmatu v další části.
+Bude se jednat o nejobecnější typ stochastického procesu, který v této práci budeme uvažovat.
+
+\begin{definice}[It\^oův proces]
+Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
+\textit{It\^oův proces} je stochastický proces
+$$X(t,\omega)=X(0,\omega)+\int_0^tU(s,\omega)\,\mathrm{d}s+\int_0^tV(s,\omega)\,\mathrm{d}W(s,\omega),$$
+kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do třídy $M$,
+první integrál je Lebesgueův a druhý It\^oův. %(který je definován v Kapitole \ref{Ito_integral}).
+
+Často se používá diferenciální tvar nazývaný \textit{stochastický diferenciál}
+$$\mathrm{d}X(t,\omega)=U(t,\omega)\,\mathrm{d}t+V(t,\omega)\,\mathrm{d}W(t,\omega).$$
+\end{definice}
+
+%Geometrický Wienerův proces je speciálním případem It\^oova procesu, kde $U(t,\omega)=\mu\,X(t,\omega)$ a $V(t,\omega))=\sigma X(t,\omega)$.
+
 \subsubsection{It\^oovo lemma}
 It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastickými diferenciálními rovnicemi.
 Říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
@@ -810,51 +860,6 @@ Jeho stochastický diferenciál má tvar
 It\^oovo lemma můžeme považovat za analogii Taylorova rozvoje v integrálním počtu.
 Tento důležitý vztah stochastické analýzy budeme využívat pro oceňování finančních derivátů, jejichž hodnota je závislá na hodnotě podkladového aktiva.
 
-
-\subsection{It\^oův proces}
-Abychom mohli v následujícím textu zavést stochastický integrál definujme nejdříve širokou třídu procesů, tzv. It\^oových procesů.
-
-%Zavedeme obecný stochasticky proces, který využijeme při konstrukci It\^oova lemmatu v další části. 
-%Stochastický proces dostatečně obecný abychom mohli zavést stochastický integrál, pojmenovaný po známém matematikovi
-Kiyosi It\^o byl japonský matematik, jenž modernizoval stochastické modely a jeho metody jsou dodnes používány v mnoha odvětvích vědy především ve financích a biologii.
-Svou práci začal stavět v roce 1940 na základě dřívějších objevů Alberta Einsteina a Norberta Wienera.
-V teorii stochastických procesů aplikoval metody diferenciálního a integrálního počtu.
-%Matematický rámec pro popis chování stochastických procesů, který zkonstruoval se je po něm pojmenován It\^oův kalkul.
-Matematický rámec zahrnující stochastické integrály a stochastické diferenciální rovnice vešel ve známost jako It\^oův kalkul.
-Z významných It\^ových textů zmiňme 
-článek \cite{ito1944} z roku 1944 obsahující konstrukci stochastického integrálu
-a publikace \cite{ito1946} a
-\cite{ito1951stochastic}, kde zavádí koncept stochastických diferenciálních rovnic.
-
-Robert C. Merton, nositel Nobelovy za ekonomii, využívá teoretické poznatky Kiyosi It\^oa jako nástroj pro výzkum vývoje cen akcií v portfoliu a k oceňování finančních derivátů.
-Tyto postupy více přiblížíme v Kapitole \ref{stoch_model} o stochastickém modelování.
-
-\begin{definice}
-Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
-Řekneme, že stochastický proces $\{f(t,\omega):t\ge~0\}$ je \textit{neanticipativní}, jestliže pro všechna $t\ge0$ hodnota $f(t,\omega)$ závisí jen na hodnotách Wienerova procesu do času $t$.
-\end{definice}
-
-\begin{definice}\label{M}
-Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
-Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):\langle0,\infty)\times\Omega\to\mathbb R$ takových, že
-\begin{enumerate}
-\item $f(t,\omega)$ je neanticipativní, 
-\item $\text{E}\left[\int_0^Tf^2(t,\omega)\,\mathrm{d}t\right]<\infty.$ 
-\end{enumerate}
-\end{definice}
-
-\begin{definice}[It\^oův proces]
-Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
-\textit{It\^oův proces} je stochastický proces
-$$X(t,\omega)=X(0,\omega)+\int_0^tU(s,\omega)\,\mathrm{d}s+\int_0^tV(s,\omega)\,\mathrm{d}W(s,\omega),$$
-kde $U(t,\omega)$ a $V(t,\omega)$ jsou stochastické procesy patřící do třídy $M$,
-první integrál je Lebesgueův a druhý It\^oův (který je definován v Kapitole \ref{Ito_integral}).
-
-Často se používá diferenciální tvar, nazývaný \textit{stochastický diferenciál},
-$$\mathrm{d}X(t,\omega)=U(t,\omega)\,\mathrm{d}t+V(t,\omega)\,\mathrm{d}W(t,\omega).$$
-\end{definice}
-
-%Geometrický Wienerův proces je speciálním případem It\^oova procesu, kde $U(t,\omega)=\mu\,X(t,\omega)$ a $V(t,\omega))=\sigma X(t,\omega)$.
 
 \subsection{Ornstein–Uhlenbeckův proces}\label{OU_kap}
 Další často využívanou modifikací Wienerova procesu jsou stochastické procesy s tendencí vracet se k dlouhodobé rovnovážné hodnotě.

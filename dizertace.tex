@@ -389,43 +389,60 @@ In the first part of the work, some basic mathematical methods employed in this 
 %Oceňování je jedním z ústředních nástrojů finančního řízení a rozhodování. 
 %Klíčovými faktory jsou neurčitost finančních toků a dynamická flexibilita. 
 
-Stochastická analýza v sobě spojuje poznatky z teorie pravděpodobnosti, statistiky a matematické analýzy.
+%Nejprve uvedeme základní matematický aparát, který využíváme v této práci.
+%Budeme používat obvyklé značení, jehož přehled je uveden na začátku práce. 
+%Zavedeme základní definice a vztahy využívané ve stochastickém modelování.
+
+Stochastické metody analýzy dat se těší stále větší oblibě.
+Vznikají nové stochastické modely, sloužící k popisu náhodných dějů, a nachází uplatnění v~širokém množství oblastí.
+Stochastická analýza se také čím dál více rozšiřuje do výuky na vysokých školách a absolventi přenáší své vědomosti do praxe.
+Rovněž v ekonomické praxi se stále častěji setkáme s potřebou popsat dynamiku sofistikovanějšími metodami a modely.
+Přestože v této oblasti existuje velké množství zahraniční literatury, nepodařilo se nám nalézt téměř žádné texty psané v~českém jazyce.
+Všechny tyto skutečnosti nás vedly k rozhodnutí sepsat práci, která poskytne základní přehled o tomto tématu, ukáže možnosti jak stochastické metody aplikovat na aktuální problémy v praxi a~motivuje čtenáře k podrobnějšímu zájmu o tuto oblast finanční matematiky.
 
 Stochastické metody analýzy dat budeme aplikovat ve dvou ekonomických oborech -- v teorii portfolia a v teorii řízení finančních rizik. 
-
 Teorie portfolia se zabývá zkoumáním kapitálových trhů a popisem chování cen finančních aktiv.
 Na základě těchto poznatků je hledán způsob, jak zvolit optimální množinu finančních aktiv.
 Přitom je využívána nejen teorie pravděpodobnosti, ale v novějších přístupech i stochastická analýza.
 
 Za zakladatele moderní teorie portfolia je považován Harry Markowitz. 
 Jeho práci z roku 1952 dále rozvíjeli například James Tobin a William Sharpe a staví na ní i některé současné přístupy.
-Zjednodušující předpoklady v teorii portfolia bývají předmětem kritiky.
-V této práci představíme některé metody z teorie portfolia a budeme diskutovat o jejich výhodách a nevýhodách.
-
-Budeme vycházet z klasické Markowitzovy teorie portfolia, která používá statický přístup (tzv. jednokrokový model).
-Představíme rozšíření navržené Jamesem Tobinem, které přináší Separační teorém a navazuje na něj Capital Asset Pricing Model (CAPM).
-
+%Zjednodušující předpoklady používané v teorii portfolia bývají předmětem kritiky.
+%V této práci představíme některé metody z teorie portfolia a budeme diskutovat o jejich výhodách a nevýhodách.
+%
+%Budeme vycházet z klasické Markowitzovy teorie portfolia, která používá statický přístup (tzv. jednokrokový model).
+%Představíme rozšíření navržené Jamesem Tobinem, které přináší Separační teorém a navazuje na něj Capital Asset Pricing Model (CAPM).
+%
 Vývojem optimálního portfolia ve spojitém čase se zabýval Robert Merton, který přinesl první řešení tohoto problému v roce 1971.
 Ve svém přístupu předpokládal, že ceny finančních aktiv se řídí It\^oovými procesy s konstantními parametry. 
 Dalším jeho předpokladem byla tržní rovnováha.
+%
+Nicméně jeho zjednodušující předpoklady se staly v roce 1976 předmětem kritiky Ohlsona a Rosenberga.
+Hledání vhodného modelu chování cen finančních aktiv v portfoliu ve spojitém čase je tedy stále aktuálním tématem. 
+V~posledních letech se jím zabývá Robert Fernholz ve své stochastické teorii portfolia. 
+%v této části práce 
+Také my navrhneme stochastický model, který bude mít volnější předpoklady než Mertonův přístup a nebude tudíž zatížen jejich rozporem.
 
-V další části představíme Ohlson-Rosenbergův paradox publikovaný v roce 1976, který dokazuje rozpor mezi Mertonovými předpoklady.  
-Uvedeme metody, které tímto rozporem nejsou zatíženy.
-Jednou z nich je stochastická teorie portfolia, kterou rozvíjí Robert Fernholz.
-Navrhneme vlastní metodu, která bude mít volnější předpoklady než Mertonův přístup.
-Navržený model budeme aplikovat na reálná data. 
+
+
+%V další části představíme Ohlson-Rosenbergův paradox publikovaný v roce 1976, který dokazuje rozpor mezi Mertonovými předpoklady.  
+%Uvedeme metody, které tímto rozporem nejsou zatíženy.
+%Jednou z nich je stochastická teorie portfolia, kterou rozvíjí Robert Fernholz.
+%Navrhneme vlastní metodu, která bude mít volnější předpoklady než Mertonův přístup.
+%Navržený model budeme aplikovat na reálná data. 
 
 %\begin{comment}
-V další části práce se zaměříme na modelování Credit Valuation Adjustment (CVA), což je bankou sledovaná a účtovaná hodnota, která slouží jako úprava reálné hodnoty derivátů o kreditní riziko protistrany.
+Z teorie řízení finančních rizik jsme si pro aplikaci stochastických metod vybrali aktuální téma, jehož řešení vyžadují regulatorní požadavky z posledních let.
+Jedná se o modelování Credit Valuation Adjustment (CVA), což je bankou sledovaná a účtovaná hodnota, která slouží jako úprava reálné hodnoty derivátů o kreditní riziko protistrany.
 Podle odhadu Basilejského výboru pochází tři čtvrtiny ztrát způsobených kreditním rizikem protistrany během finanční krize ze ztrát daných změnou CVA, nikoli kvůli samotným selháním protistran. 
 Od roku 2015 předepisuje Basel III bankám povinnost počítat kapitalový požadavek pro riziko změny CVA.
+
 Současná situace na bankovním trhu vyvíjí na banky velký tlak hledat nové možnosti jak dosáhnout zisku.
 Běžné způsoby tvorby zisku v současnosti selhávají.
 Na trhu můžeme pozorovat nejen nízké až záporné úrokové sazby, ale i konkurenční boj o klienty, který přináší neustálý tlak na snižování bankovních poplatků a poskytování téměř nerentabilní klientských úvěrů.
-Banky proto hledají nové možnosti, jak snižovat náklady, jakými jsou například opravné položky k úvěrům klientů nebo k finančním derivátům.
+Banky proto hledají nové možnosti, jak snižovat náklady, kterými jsou například opravné položky k úvěrům klientů nebo k finančním derivátům.
 Jednou z možností může být nalezení způsobu jak CVA modelovat tak, aby dodržely předepsané standardy a zároveň zajistily co nejmenší dopad na svůj zisk. 
-
-Banky často používají triviální parametrické modely, které jsou ale nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
+Banky často používají triviální parametrické modely, které jsou nastaveny velmi konzervativně kvůli rizikové obezřetnosti.
 Předpokládáme, že sofistikovanější model by mohl přinést nižší CVA a tudíž i nižší kapitálový požadavek pro banku. 
 %\end{comment}
 
@@ -484,17 +501,18 @@ zasvětit čtenáře do problematiky stochastických modelů využívaných při
 Tento cíl budeme naplňovat v Kapitolách~\ref{stochasticka_analyza_kap}~a~\ref{stoch_model}.
 Dalším cílem této práce je využít teoretické poznatky a aplikovat je při analýze reálných dat v~konkrétních ekonomických oborech.
 Prvním z těchto oborů bude teorie portfolia prezentovaná v~Kapitole~\ref{teorie_portfolia_kap} a druhým teorie řízení finančních rizik představená v~Kapitole~\ref{rizika_kap}.
-Navíc si klademe za cíl, aby námi použité metody přinášeli některé nové výhody oproti modelům uvedeným v teoretické části.
+Navíc si klademe za cíl, aby námi použité metody přinášely některé nové výhody oproti modelům uvedeným v teoretické části.
 
-V teorii portfolia....
+Představíme historii vývoje modelování v teorii portfolia a srovnáme výhody a nevýhody klasického přístupu a dynamického přístupu, který využívá stochastické modelování.
+Naším cílem je seznámit čtenáře s nekonzistencí předpokladů v Mertonově dynamickém přístupu známé z Ohlson-Rosenbergova paradoxu.
 Stěžejní část kapitoly bude obsahovat navržení nového modelu pro popis chování cen finančních aktiv založeného na vztahu mezi váhami portfolia a výnosností finančních aktiv v portfoliu.
-Navržený model si klade za cíl popsat dynamiku cen aktiv bez nekonzistence předpokladů prezentované v Ohlson-Rosenbergově paradoxu.
+Navržený model si klade za cíl popsat dynamiku cen aktiv bez nekonzistence předpokladů.
 Model následně aplikujeme na reálná data z pražské burzy cenných papírů.
 %Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R (verze 3.3.0).
 Simulace a grafy prezentované v Kapitole~\ref{teorie_portfolia_kap} vytvoříme pomocí programů vyvinutých v prostředí~\R (verze 3.3.0).
 Jejich ukázky budou uvedeny v Příloze~\ref{priloha_programy}.
 
-V dalším části práce bude naším cílem představit a aplikovat model pro CVA úrokových swapů, který respektuje regulační normy a~zároveň přináší nižší ocenění CVA než metody využívané v bankovní praxi.
+V dalším části práce, zaměřené na  řízení finančních rizik, bude naším cílem představit a aplikovat model pro CVA úrokových swapů, který respektuje regulační normy a~zároveň přináší nižší ocenění CVA než metody využívané v bankovní praxi.
 Při výpočtu CVA budeme využívat různé stochastické metody analýzy dat.
 Monte Carlo simulace použijeme k vytvoření  možných scénářů vývoje úrokových měr na trhu. 
 Tyto simulace jsou prováděny s využitím Hull-Whitova jednofaktorového modelu úrokových měr.
@@ -508,10 +526,14 @@ Ukázky z programu uvedeme v Příloze \ref{priloha_programy}.
 \chapter{Stochastická analýza}\label{stochasticka_analyza_kap}
 %\chapter{Teoretická východiska}
 %\begin{comment}
-Nejprve uvedeme základní matematický aparát, který využíváme v této práci.
-Budeme používat obvyklé značení, jehož přehled je uveden na začátku práce. 
-Zavedeme základní definice a vztahy využívané ve stochastickém modelování.
-Tato kapitola čerpá především z klasické monografie Bernta {\O}ksendala o stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}, 
+Stochastická analýza v sobě spojuje poznatky z teorie pravděpodobnosti, statistiky a matematické analýzy.
+Její aplikace najdeme v mnoha různých oblastech mezi které patří například finanční matematika, pojistná matematika a biologie.
+Stochastická analýza poskytuje matematický aparát využívaný pro popis vývoje náhodných dějů.
+
+Mezi základní pojmy stochastické analýzy patří stochastický proces, stochastický integrál a stochastická diferenciální rovnice.
+Definice a vztahy zavedené v této kapitole budeme dále využívat při stochastickém modelování.
+
+Tato teoretická část práce čerpá především z klasické monografie Bernta {\O}ksendala o stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}, 
 podobně jako knihy Thomase Garda  \cite{gard} 
 a rozsáhlé publikace Andrei Pascucci zabývající se matematickými metodami oceňování opcí \cite{pascucci}.
 Jako další reference byly využity \cite{karatzas2012brownian}, \cite{allen2010introduction},  \cite{shreve2012stochastic} a \cite{shreve2004stochastic}.
@@ -2276,9 +2298,9 @@ Předpokládejme nyní, že uvažovaná podkladová aktiva jsou nekorelovaná, t
 Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odvětví.
 Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j=\xi_{jj}$ v průběhu času a také počty aktiv $N_j$ nechť jsou v čase konstantní.
 
-Dosadíme-li vztahy \eqref{vynos} a \eqref{vahy_mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
+Dosadíme-li vztahy \eqref{vynos}, \eqref{vahy_mu} a \eqref{market_value} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
 \begin{equation}  \label{SDE_cen_diag}
-\mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\right)\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
+\mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
 \end{equation}
 
 \begin{comment}
@@ -2333,10 +2355,12 @@ Neobejdeme se tedy bez použití numerických metod.
 V další části představíme model s méně přísnými předpoklady.
 Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
 Zachováme předpoklad konstantnosti volatilit aktiv $\xi_{jk}$ v čase.
-Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu} do SDR \eqref{SDE}, čímž obdržíme
+Za těchto předpokladů dosaďme vztah \eqref{vynos}, \eqref{vahy_mu} a \eqref{market_value} do SDR \eqref{SDE}, čímž obdržíme
 \begin{equation} \label{SDE_cen}
- \mathrm{d}P_j(t)=P_j(t)\left(\frac{P_j(t)N_j}{\sum_{i=1}^n P_i(t)N_i}\, \mu_M(t)\right)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t).
+ \mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t).
 \end{equation}
+
+
 %
 %Často nás více než trajektorie cen podkladových aktiv zajímají očekávané hodnoty cen těchto aktiv.
 %%\eqref{SDE_cen_diag}

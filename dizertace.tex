@@ -17,6 +17,7 @@
   \usepackage{xcolor}
   \usepackage{verbatim}
   \usepackage{xspace} %pro tvorbu prostředí, které využíváme pro vytvoření loga pro R a Matlab
+  \usepackage{lastpage}%počet stránek
 
 \usepackage{url}  %kvuli vkladani URL adres do bibtexu ale asi jen ve stylu CZECHISO
 \DeclareUrlCommand\url{\def\UrlLeft{<}\def\UrlRight{>} \urlstyle{tt}}
@@ -121,31 +122,49 @@
 \end{center}
 
 \titlepage
-\begin{center}
-\textsc{\Large{Masarykova Univerzita}} \\
-\textsc{\Large{Přírodovědecká fakulta}} \\
+\setcounter{page}{1}
+\pagenumbering{roman}
+%\begin{adjustwidth}{-12mm}{}
+\hspace{-14mm}
+\vspace*{-5mm}
+\begin{minipage}{28mm}
+  \includegraphics[width=28mm]{IMG/MU_(black)}
+\end{minipage}\hspace{2mm}
+\begin{minipage}{90mm}%{113mm}
+\begin{center}%\vspace*{5mm}
+\textsc{\LARGE{Masarykova Univerzita}} \\ \vspace{2mm}
+\textsc{\Large{Přírodovědecká fakulta}} \\ \vspace{2mm}
 \textsc{\large{Ústav matematiky a statistiky}}
-\end{center}\quad \\
-%
-\begin{center}
-\includegraphics[width=5cm]{IMG/sci-logo.pdf}
-\end{center}\quad \\
-%
-\begin{center}
-\textbf{\Large{Stochastické metody analýzy ekonomických dat}} \\ \quad \\
-\textsc{\large{Disertační práce}}
-\end{center} \quad \\\\\\\\\\\\\\\\\\\\\\\\\\ \\
-\begin{center}
-\large{
-\begin{tabular}{l  r}
-\Large{Brno 2017} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
-\end{tabular}
-}
-\end{center} \quad
+\end{center}%\quad \\
+\end{minipage}\hspace{2mm}
+\begin{minipage}{28mm}
+  \includegraphics[width=28mm]{IMG/sci-logo.pdf}
+\end{minipage}
+%\end{adjustwidth}
 %
 %\begin{center}
-%\large{Brno 2009}
-%\end{center}
+%\includegraphics[width=5cm]{IMG/sci-logo.pdf}
+%\end{center}\quad \\
+%
+\vfill
+\begin{center}
+\textbf{\huge{Stochastické metody analýzy ekonomických dat}} \\ \quad \\  \vspace{2mm}
+\textsc{\Large{Disertační práce}}
+\end{center} \quad \\\\\\\\\\\\\\\\\\\\\\\\\\ \\
+%\begin{center}
+%\large{
+%\begin{tabular}{l  r}
+%\Large{Brno 2017} \qquad\qquad\qquad\qquad \qquad\qquad & \Large{Lenka Křivánková}
+%\end{tabular}
+%}
+%\end{center} \quad
+\begin{center}
+\Large{Brno 2017} \hfill \Large{Lenka Křivánková}
+\end{center}
+\vspace{2mm}
+\begin{center}
+\large{Školitel: doc. RNDr. Martin Kolář, Ph.D.}
+\end{center}
 %\begin{center}
 %\verb=   (\(\=\\
 %\verb=  (._. )=\\
@@ -157,32 +176,42 @@
 
 
 \chapter*{Bibliografický záznam}%\addcontentsline{toc}{chapter}{Bibliografický záznam}
-\setcounter{page}{1}
-\pagenumbering{roman}
-%\thispagestyle{empty}
+%\setcounter{page}{1}
+%\pagenumbering{roman}
+\thispagestyle{empty}
 
-\begin{tabular}{p{3.9cm}  p{9.1cm}}
-\textbf{Autor:} & Mgr. Lenka Křivánková \\
+\begin{tabular}{p{4.5cm}  p{8.5cm}} %{p{3.9cm}  p{9.1cm}}
+\textbf{Autorka:} & Mgr. Lenka Křivánková \\
+& Přírodovědecká fakulta, Masarykova univerzita\\
+& Ústav matematiky a statistiky\\
 \textbf{Název práce:} & Stochastické metody analýzy ekonomických dat \\
-\textbf{Školitel:} & doc. RNDr. Martin Kolář, Ph.D.  \\
 \textbf{Studijní program:} & Matematika \\
 \textbf{Studijní obor:} & Pravděpodobnost, statistika a matematické modelování \\
-\textbf{Rok obhajoby:} & 2017 \\
+\textbf{Školitel:} & doc. RNDr. Martin Kolář, Ph.D.  \\
+& Přírodovědecká fakulta, Masarykova univerzita\\
+& Ústav matematiky a statistiky\\
+\textbf{Akademický rok:} & 2016/2017 \\
+\textbf{Počet stran:} & xi + \pageref*{LastPage} \\%\Rfoot{\thepage / \pageref{LastPage}} \\
 \textbf{Klíčová slova:} & stochastické procesy, stochastické diferenciální rovnice, stochastické modely, teorie portfolia, Credit Valuation Adjusment\\
 \end{tabular}
 \\\\\\\\\\
 
-\begin{flushright} {{\Huge Bibliographic entry}} \vspace{38pt} \end{flushright}
+\begin{flushright} {{\Huge Bibliographic Entry}} \vspace{38pt} \end{flushright}
 %\addcontentsline{toc}{chapter}{Bibliographic entry}
 
 \hspace{-0.7cm}
-\begin{tabular}{p{3.9cm}  p{9.1cm}}
+\begin{tabular}{p{4.5cm}  p{8.5cm}}
 \textbf{Author:} & Mgr. Lenka Křivánková \\
-\textbf{Title:} & Stochastic methods in analysis of economic data \\
+& Faculty of Science, Masaryk University \\
+& Department of Mathematics and Statistics \\
+\textbf{Title of Dissertation:} & Stochastic methods in analysis of economic data \\
+\textbf{Degree Programme:} & Mathematics \\
+\textbf{Field of Study:} & Probability, statistics and mathematical modeling \\
 \textbf{Supervisor:} & doc. RNDr. Martin Kolář, Ph.D.  \\
-\textbf{Study Programme:} & Mathematics \\
-\textbf{Study Field:} & Probability, statistics and mathematical modeling \\
-\textbf{Year of Defence:} & 2017 \\
+& Faculty of Science, Masaryk University \\
+& Department of Mathematics and Statistics \\
+\textbf{Academic Year:} &2016/2017 \\
+\textbf{Number of Pages:} & xi + \pageref*{LastPage} \\
 \textbf{Keywords:} & Stochastic Processes, Stochastic Differential Equations, Stochastic Models, Portfolio Theory, Credit Valuation Adjusment\\
 \end{tabular}
 \newpage

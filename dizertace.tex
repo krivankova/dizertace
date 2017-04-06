@@ -214,6 +214,17 @@
 \textbf{Number of Pages:} & xi + \pageref*{LastPage} \\
 \textbf{Keywords:} & Stochastic Processes, Stochastic Differential Equations, Stochastic Models, Portfolio Theory, Credit Valuation Adjusment\\
 \end{tabular}
+
+\chapter*{Abstrakt}\addcontentsline{toc}{chapter}{Abstrakt}
+\thispagestyle{empty}
+V první části práce jsou uvedeny základní matematické pojmy použité v dalších částech textu. 
+\\\\\\\\\\
+
+\begin{flushright} {{\Huge Abstract}} \vspace{38pt} \end{flushright}
+%\addcontentsline{toc}{chapter}{Abstract}
+In the first part of the work, some basic mathematical methods employed in this thesis are recalled. 
+
+
 \newpage
 \pagestyle{empty}
 \null
@@ -235,14 +246,7 @@ Brno, Duben 2017
 
 Lenka Křivánková
 
-\chapter*{Abstrakt}\addcontentsline{toc}{chapter}{Abstrakt}
-%\thispagestyle{empty}
-V první části práce jsou uvedeny základní matematické pojmy použité v dalších částech textu. 
-\\\\\\\\\\
 
-\begin{flushright} {{\Huge Abstract}} \vspace{38pt} \end{flushright}
-%\addcontentsline{toc}{chapter}{Abstract}
-In the first part of the work, some basic mathematical methods employed in this thesis are recalled. 
 
 \tableofcontents \addcontentsline{toc}{chapter}{Obsah}
 
@@ -562,6 +566,7 @@ Stochastická analýza poskytuje matematický aparát využívaný pro popis vý
 
 Mezi základní pojmy stochastické analýzy patří stochastický proces, stochastický integrál a stochastická diferenciální rovnice.
 Definice a vztahy zavedené v této kapitole budeme dále využívat při stochastickém modelování.
+Budeme používat obvyklé značení, jehož přehled je uveden na začátku práce. 
 
 Tato teoretická část práce čerpá především z klasické monografie Bernta {\O}ksendala o stochastických diferenciálních rovnicích \cite{oksendal2003stochastic}, 
 podobně jako knihy Thomase Garda  \cite{gard} 
@@ -708,6 +713,7 @@ To znamená, že Wienerův proces není slabě stacionární.
   \caption{Ukázka pěti trajektorií Wienerova procesu}  \label{WP_graf}
 \end{figure}
 
+\subsubsection{Wienerův proces s driftem}
 Ceny aktiv na finačních trzích se podle teorie dokonalých trhů chovají zcela náhodně a nezávisle na předchozím vývoji.
 Wienerův proces se tedy nabízí jako vhodný nástroj k popisu chování cen aktiv.
 Při modelování ve finanční matematice využíváme procesy, které jsou zobecněním či modifikací Wienerova procesu. 
@@ -723,7 +729,8 @@ Nejenže Wienerův proces s driftem může nabývat záporných hodnot, což je 
 Aktivum s nižší současnou cenou by mělo větší riziko a také vyšší očekávaný výnos než aktivum s vyšší cenou.
 Proto chceme proces upravit tak, aby absolutní očekávaný výnos a výše směrodatné odchylky byly proporcionální k ceně podkladového aktiva. 
 
-Nejběžnější modifikací Wienerova procesu splňující tyto požadavky je Geometrický Wienerův proces, který v kontextu finanční matematiky použil poprvé Paul Samuelson \cite{samuelson1964rational}.
+\subsubsection{Geometrický Wienerův proces}
+Nejběžnější modifikací Wienerova procesu splňující požadavky popsané v~předchozí části je Geometrický Wienerův proces, který v kontextu finanční matematiky použil poprvé Paul Samuelson \cite{samuelson1964rational}.
 K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
 
 %V definici Geometrického Wienerova procesu využijeme stochastické diferenciální rovnice, které budou definovány v Kapitole \ref{SDR_kap}.
@@ -757,7 +764,7 @@ Ukázku trajektorií Geometrického Wienerova procesu s různými parametry drif
 \end{figure}
 
 
-\subsection{Mnohorozměrný Wienerův proces}
+\subsubsection{Mnohorozměrný Wienerův proces}
 Chceme-li uvažovat finanční trh s více rizikovými aktivy a zabývat se jejich vzájemnými vztahy, musíme zavést vícerozměrný Wienerův proces.
 Aplikaci tohoto vektorového stochastického procesu využijeme v dynamické teorii portfolia.
 

@@ -234,7 +234,7 @@ In the first part of the work, some basic mathematical methods employed in this 
 \end{center}
 
 \chapter*{Poděkování}%\addcontentsline{toc}{chapter}{Poděkování}
-%\thispagestyle{empty}
+\thispagestyle{empty}
 \pagestyle{plain}
 Na tomto místě bych chtěla poděkovat svému školiteli doc. RNDr. Martinu Kolářovi, Ph.D. za cenné rady, připomínky a čas, který mi věnoval.
 Dále chci poděkovat své kolegyni Mgr. Silvii Zlatošové, Ph.D. za spolupráci během doktorského studia, její podpora a motivace mi byla velmi cenná.
@@ -366,18 +366,18 @@ Lenka Křivánková
    $N_j(t)$                             &   objem aktiva $j$ v čase $t$ \\
    $\boldsymbol{N}(t)$     &   vektor objemů aktiv v čase $t$\\
    $V_j(t)=P_j(t)N_j(t)$       &  tržní hodnota aktiva $j$\\
-   $r_j$  								& míra výnosnosti podkladového aktiva $j$\\
-   $\boldsymbol{r}=(r_1,\dots,r_n)^\mathrm{T}$  		& vektor výnosností aktiv držených v~portfoliu\\
-   $\mu_j$ 								& očekávaná míra výnosnosti podkladového aktiva $j$\\
-   $\sigma_j$								& riziko podkladového aktiva $j$\\
+   $r_j$  								& míra výnosnosti finančního aktiva $j$\\
+   $\boldsymbol{r}=(r_1,\dots,r_n)^\mathrm{T}$  		& vektor výnosností finančních aktiv držených v~portfoliu\\
+   $\mu_j$ 								& očekávaná míra výnosnosti finančního aktiva $j$\\
+   $\sigma_j$								& riziko finančního aktiva $j$\\
    $B(t)$ 								& cena bezrizikového aktiva v čase $t$\\
    $r_f(t)$ 								& bezriziková úroková míra v čase $t$\\
-   $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$		& vektor vah podkladových aktiv držených v~portfoliu\\
+   $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$		& vektor vah finančních aktiv držených v~portfoliu\\
    $\mathsf{C}(r_j,r_k)=\sigma_{jk}$				& kovariance výnosnosti aktiva~$j$ a~výnosnosti aktiva~$k$\\
-   $\boldsymbol{\Sigma}$						& kovarianční matice výnosností podkladových aktiv držených v~portfoliu\\
-   $\xi_{jk}(t)$ 							& proces volatility podkladových aktiv $j$ a $k$ držených v~portfoliu\\
-   $\boldsymbol{\xi}$						& matice volatilit podkladových aktiv držených v~portfoliu\\
-   $\gamma_j(t)$ 							& míra růstu  podkladového aktiva $j$\\
+   $\boldsymbol{\Sigma}$						& kovarianční matice výnosností finančních aktiv držených v~portfoliu\\
+   $\xi_{jk}(t)$ 							& proces volatility\\
+   $\boldsymbol{\xi}$						& matice volatilit finančních aktiv držených v~portfoliu\\
+   $\gamma_j(t)$ 							& míra růstu  finančního aktiva $j$\\
    $w_{j}(i,t)$ 							& optimální objem prostředků investovaných do aktiva $j$ investorem $i$ v čase $t$\\
    $\boldsymbol{w}(i,t)$					 	& optimální alokace prostředků investora $i$ držených v portfoliu všech aktiv v čase $t$\\
    $\lambda(i,t)$							& rizikové preference investora $i$ v čase $t$ \\  
@@ -428,7 +428,7 @@ Lenka Křivánková
 
 Stochastické metody analýzy dat se těší stále větší oblibě.
 Vznikají nové stochastické modely sloužící k popisu náhodných dějů a nachází uplatnění v~širokém spektru oblastí.
-Stochastická analýza se také čím dál více rozšiřuje do výuky na vysokých školách a absolventi přenáší své vědomosti do praxe.
+Stochastická analýza se také čím dál více rozšiřuje do výuky na vysokých školách a~absolventi přenáší své vědomosti do praxe.
 Rovněž v ekonomické praxi se stále častěji setkáváme s potřebou popsat dynamiku sofistikovanějšími metodami a modely.
 Přestože v této oblasti existuje velké množství zahraniční literatury, nepodařilo se nám nalézt téměř žádné texty psané v~českém jazyce.
 Všechny tyto skutečnosti nás vedly k rozhodnutí sepsat práci, která poskytne základní přehled o tomto tématu, ukáže možnosti jak stochastické metody aplikovat na aktuální problémy v praxi a~motivuje čtenáře k podrobnějšímu zájmu o tuto oblast finanční matematiky.
@@ -450,14 +450,14 @@ Vývojem optimálního portfolia ve spojitém čase se zabýval Robert Merton, k
 Ve svém přístupu předpokládal, že ceny finančních aktiv se řídí It\^oovými procesy s konstantními parametry. 
 Dalším jeho předpokladem byla tržní rovnováha.
 %
-Nicméně jeho zjednodušující předpoklady se staly v roce 1976 předmětem kritiky Ohlsona a Rosenberga, formulované v tzv. Ohlson-Rosenbergově paradoxu.
+Nicméně jeho zjednodušující předpoklady se staly v roce 1976 předmětem kritiky Ohlsona a Rosenberga, formulované v~tzv.~Ohlson-Rosenbergově paradoxu.
 Hledání vhodného modelu chování cen finančních aktiv v portfoliu ve spojitém čase je tedy stále aktuálním tématem. 
 V~posledních letech se jím zabývá také Robert Fernholz ve své stochastické teorii portfolia. 
 Tato teorie ale nepředpokládá tržní rovnováhu.
 %v této části práce 
 %Také my navrhneme stochastický model, který bude mít volnější předpoklady než Mertonův přístup a nebude tudíž zatížen jejich rozporem.
 Závěr třetí kapitoly je věnován konstrukci modelu, který odstraňuje logickou nekonzistenci vedoucí k zmíněnému paradoxu. 
-Model vychází přirozeným způsobem z Markowitzovy a Sharpeho teorie se zachováním předpokladu tržní rovnováhy.
+Model vychází přirozeným způsobem z~Markowitzovy a~Sharpeho teorie se zachováním předpokladu tržní rovnováhy.
 
 %V další části představíme Ohlson-Rosenbergův paradox publikovaný v roce 1976, který dokazuje rozpor mezi Mertonovými předpoklady.  
 %Uvedeme metody, které tímto rozporem nejsou zatíženy.
@@ -560,8 +560,8 @@ Ukázky z programu uvedeme v Příloze \ref{priloha_programy}.
 \chapter{Stochastická analýza}\label{stochasticka_analyza_kap}
 %\chapter{Teoretická východiska}
 %\begin{comment}
-Stochastická analýza v sobě spojuje poznatky z teorie pravděpodobnosti, statistiky a matematické analýzy.
-Její aplikace najdeme v mnoha různých oblastech mezi které patří například finanční matematika, pojistná matematika a biologie.
+Stochastická analýza v sobě spojuje poznatky z teorie pravděpodobnosti, statistiky a~matematické analýzy.
+Její aplikace najdeme v mnoha různých oblastech mezi které patří například finanční matematika, pojistná matematika a~biologie.
 Stochastická analýza poskytuje matematický aparát využívaný pro popis vývoje náhodných dějů.
 
 Mezi základní pojmy stochastické analýzy patří stochastický proces, stochastický integrál a stochastická diferenciální rovnice.
@@ -637,7 +637,7 @@ Nechť $X(t)$ je stochastický proces takový, že pro každé $t\in\mathcal{T}$
 Pak funkce dvou proměnných $\gamma(s,t)$ definovaná na množině $\mathcal{T}\times \mathcal{T}$ předpisem
 $$\gamma(s,t)=\mathsf{C}(X(s),X(t))=\mathsf{E}{\left[(X(s)-\mu(s))(X(t)-\mu(t))\right]}$$
 se nazývá \textit{autokovarianční funkce stochastického procesu} $X(t)$.  
-Speciálně hodnota $\gamma(t,t)=\mathsf{D}(X(t))$ této funkce se nazývá \textit{rozptyl stochastického procesu} v čase $t$ a budeme ji značit ${\sigma^2(t)}$.
+Speciálně hodnota $\gamma(t,t)=\mathsf{D}(X(t))$ této funkce se nazývá \textit{rozptyl stochastického procesu} v~čase $t$ a~budeme ji značit ${\sigma^2(t)}$.
 
 Nechť $X(t)$ je stochastický proces s konečnými druhými momenty,
 pak funkce $\rho(s,t)$ definovaná na množině $\mathcal{T}\times\mathcal{T}$ předpisem
@@ -668,7 +668,7 @@ Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě te
 $$\lim_{t\to t_0}\Pr(|X(t)-X(t_0)|>\epsilon)=0.$$
 Stochastický proces je  \textit{stochasticky spojitý} (spojitý podle pravděpodobnosti), je-li spojitý v každém bodě množiny $\mathcal{T}$.
 \end{definice}
-Proces, který je spojitý podle předcházející definice, nemusí mít spojité trajektorie (například Poissonův proces).
+Poznamenejme, že proces, který je spojitý podle předcházející definice, nemusí mít spojité trajektorie (například Poissonův proces).
 
 %\begin{definice}[]
 %\end{definice}
@@ -724,13 +724,13 @@ $$X(t)  = \mu\, t + \sigma\, W (t),$$
 kde $\mu$ a $\sigma$ jsou konstanty a $W (t)$ je Wienerův proces,
 se nazývá \textit{Wienerův proces  s driftem} $\mu$ a volatilitou $\sigma$.
 \end{definice}
-Pokud bychom chtěli využít tento proces k modelování cen podkladových aktiv, setkáme se s dvěma problémy.
-Nejenže Wienerův proces s driftem může nabývat záporných hodnot, což je v rozporu s realitou chování cen podkladových aktiv, ale navíc by se model nechoval stejně při různých absolutních cenách aktiv. 
+Pokud bychom chtěli využít tento proces k modelování cen finančních aktiv, setkáme se se dvěma problémy.
+Nejenže Wienerův proces s driftem může nabývat záporných hodnot, což je v rozporu s realitou chování cen většiny finančních aktiv (např. akcií nebo komodit), ale navíc by se model nechoval stejně při různých absolutních cenách aktiv. 
 Aktivum s nižší současnou cenou by mělo větší riziko a také vyšší očekávaný výnos než aktivum s vyšší cenou.
-Proto chceme proces upravit tak, aby absolutní očekávaný výnos a výše směrodatné odchylky byly proporcionální k ceně podkladového aktiva. 
+Proto chceme proces upravit tak, aby absolutní očekávaný výnos a~výše směrodatné odchylky byly proporcionální k ceně aktiva. 
 
 \subsubsection{Geometrický Wienerův proces}
-Nejběžnější modifikací Wienerova procesu splňující požadavky popsané v~předchozí části je Geometrický Wienerův proces, který v kontextu finanční matematiky použil poprvé Paul Samuelson \cite{samuelson1964rational}.
+Nejběžnější modifikací Wienerova procesu splňující požadavky popsané v~předchozím odstavci je Geometrický Wienerův proces, který v kontextu finanční matematiky použil poprvé Paul Samuelson \cite{samuelson1964rational}.
 K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
 
 %V definici Geometrického Wienerova procesu využijeme stochastické diferenciální rovnice, které budou definovány v Kapitole \ref{SDR_kap}.
@@ -760,7 +760,7 @@ Ukázku trajektorií Geometrického Wienerova procesu s různými parametry drif
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/GP_v2.pdf}
-  \caption{Ukázka pěti trajektorií Geometrického Wienerova procesu s různými parametry driftu $\mu$ a volatility $\sigma$}  \label{GP_graf}
+  \caption{Ukázka pěti trajektorií Geometrického Wienerova procesu s~různými parametry driftu $\mu$ a volatility $\sigma$}  \label{GP_graf}
 \end{figure}
 
 
@@ -788,7 +788,7 @@ Na Obrázku \ref{WP_2D_graf} vidíme ukázku trajektorie dvourozměrného Wiener
 \subsection{It\^oův integrální počet a It\^oův proces}\label{Ito_kalkul}
 Chceme-li používat modely založené na stochastických procesech se spojitým časem neobejdeme se bez stochastického integrálního počtu.
 Proto se nyní budeme věnovat konstrukci stochastického integrálu, uvedeme It\^oovo lemma a vysvětlíme jeho přínos pro modelování ve finanční matematice.
-Věty a lemmata budeme uvádět pouze bez důkazů, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
+Věty a~lemmata budeme uvádět pouze bez důkazů, které jsou k nalezení v literatuře, viz například \cite{karatzas2012brownian}.
 
 Kiyosi It\^o byl japonský matematik, jenž modernizoval stochastické modely a jeho metody jsou dodnes používány v mnoha odvětvích vědy především ve financích a biologii.
 Svou práci začal stavět v roce 1940 na základě dřívějších objevů Alberta Einsteina a Norberta Wienera.
@@ -800,8 +800,8 @@ Z významných It\^ových textů zmiňme
 a publikace \cite{ito1946} a
 \cite{ito1951stochastic}, kde zavádí koncept stochastických diferenciálních rovnic.
 
-Robert C. Merton, nositel Nobelovy za ekonomii, využívá teoretické poznatky Kiyosi It\^oa jako nástroj pro výzkum vývoje cen akcií v portfoliu a k oceňování finančních derivátů.
-Tyto postupy více přiblížíme v Kapitole \ref{stoch_model} o stochastickém modelování.
+Robert C. Merton, nositel Nobelovy za ekonomii, využívá teoretické poznatky Kiyosi It\^oa jako nástroj pro výzkum vývoje cen akcií v~portfoliu a~k~oceňování finančních derivátů.
+Tyto postupy více přiblížíme v Kapitole \ref{stoch_model} o~stochastickém modelování.
 
 Abychom mohli v následujícím textu zavést stochastický integrál definujme nejdříve následující třídy procesů.
 \begin{definice}
@@ -906,7 +906,7 @@ Ve finanční matematice se používají pro modelování úrokových sazeb, kur
 %Používají se zvláště pro modely úrokových sazeb. 
 %V následujícím textu jsou uvedeny nejčastěji užívané procesy.
 
-Holandští fyzikové Leonard Salomon Ornstein a George Eugene Uhlenbeck zformulovali jako první mean-reversion proces v roce 1930 a publikovali v textu \cite{OrnsteinUhlenbeck1930}. 
+Holandští fyzikové Leonard Salomon Ornstein a George Eugene Uhlenbeck zformulovali jako první mean-reversion proces v~roce 1930 v~publikaci \cite{OrnsteinUhlenbeck1930}. %a~publikovali v~textu \cite{OrnsteinUhlenbeck1930}. 
 
 \begin{definice}[Ornstein–Uhlenbeckův proces]
 \textit{Ornstein–Uhlenbeckův proces} je definován jako
@@ -936,7 +936,7 @@ Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry najdeme
 \end{figure}
 
 %\cite{Benth2016}
-Vlastnostem Ornstein–Uhlenbeckova procesu (především stacionaritě) se zevrubně věnují Fred Espen Benth a Asma Khedher v knize \cite{podolskij2015fascination} z roku 2015, která je aktuální sbírkou prací vědců v oboru pravděpodobnosti, statistiky a jejich aplikací ve financích, ekonomii, fyzice, řízení rizika a systémů hromadné obsluhy.
+Vlastnostem Ornstein–Uhlenbeckova procesu (především stacionaritě) se zevrubně věnují Fred Espen Benth a Asma Khedher v knize \cite{podolskij2015fascination} z roku 2015, která je aktuální sbírkou prací vědců v oboru pravděpodobnosti, statistiky a~jejich aplikací ve financích, ekonomii, fyzice, řízení rizika a systémů hromadné obsluhy.
 
 
 
@@ -959,7 +959,7 @@ K formulování a řešení SDR je využíván It\^oův kalkul popsaný v Kapito
 Aplikací stochastických diferenciálních rovnic ve stochastickém modelování se zabýváme v Kapitole \ref{stoch_model}, kde uvádíme modely popisující vývoj a chování cen finančních aktiv v čase.
 
 Základní studijní literaturou nám byla monografie Bernta {\O}ksendala \cite{oksendal2003stochastic}.
-Pracovali jsme také s texty \cite{cyganowski1998maple} a \cite{cyganowski2002elementary}, které napsal Sasha Cyganowski s kolektivem autorů.
+Pracovali jsme také s texty \cite{cyganowski1998maple} a \cite{cyganowski2002elementary}, které napsal Sasha Cyganowski s~kolektivem autorů.
 
 %Stochastická diferenciální rovnice je rovnice popisující přírůstky stochastického procesu v čase. 
 %Ve finanční matematice se používá například pro popis přírůstku hodnoty nějakého aktiva.
@@ -1095,7 +1095,7 @@ kde $\beta'(t_n,X_n)$ je derivace $\beta(t_n,X_n)$ podle $X_n$,
 $\Delta_n=\int_{t_n}^{t_{n+1}}\mathrm{d}t=t_{n+1}-t_n$ je délka časového intervalu $(t_n,t_{n+1})$
 a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ v čase $(t_n,t_{n+1})$.
 
-Poznamenejme, že v případě, kdy koeficient $\beta(t,X(t))=\beta(t)$ nezávisí na procesu $X(t)$, pak $\beta'(t,X(t))=0$ a Milsteinova metoda je identická s metodou Eulerovou.
+Poznamenejme, že v případě, kdy koeficient $\beta(t,X(t))=\beta(t)$ nezávisí na procesu $X(t)$, pak $\beta'(t,X(t))=0$ a Milsteinova metoda je identická s~metodou Eulerovou.
 
 Zobecníme-li Milsteinovu metodu pro soustavu $m$ stochastických diferenciálních rovnic \eqref{SSDR_def}, pak vztah pro $i$-tou složku aproximace řešení je definován předpisem
 \begin{align}\label{Milstein_soustava}
@@ -1284,14 +1284,14 @@ kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\mu_j(t)$ a $\xi_{jk}(t)$ jsou sto
 Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}.
 
 Některé modely zabývající se chováním cen aktiv na trhu předpokládají existenci \textit{bezrizikového aktiva}.
-Jedná se o aktivum, které má jistou (nenáhodnou) výnosnost a tudíž nulové riziko.
+Jedná se o aktivum, které má jistou (nenáhodnou) výnosnost a~tudíž nulové riziko.
 Výnosností a rizikem aktiva se budeme podrobněji zabývat v Kapitole \ref{charakteristiky_portfolia}. 
 S modely zahrnujícími bezrizikové aktivum nás seznámí Kapitola \ref{KTP}.
 Výnosnost bezrizikového aktiva se nazývá \textit{bezriziková úroková míra}.
 Modelování úrokových měr se věnuje Kapitola \ref{model_urok_miry_kap}.
 V praxi neexistuje skutečně bezriziková investice, ale z krátkodobého a střednědobého hlediska lze návratnost některých investic považovat prakticky za jistou.
 Obvykle se za takovou teoretickou investici považují státní pokladniční poukázky.
-Jedná se o krátkodobé dluhopisy, které vydává centrální banka a slouží ke krytí státního deficitu.
+Jedná se o krátkodobé dluhopisy, které vydává centrální banka a~slouží ke krytí státního deficitu.
 
 Chování ceny bezrizikového aktiva je popsáno rovnicí
 \begin{equation}\label{risk-free_asset_model}
@@ -1319,7 +1319,7 @@ Odvození Black–Scholesova modelu je srozumitelně zpracováno také v učebni
 Při konstrukci modelů cen finančních derivátů v této kapitole budeme uvažovat finanční trh s jedním rizikovým aktivem a s jedním bezrizikovým aktivem (obvykle se v tomto případě předpokládá, že se jedná o hotovost).
 Definujme portfolio složené z těchto aktiv.
 \begin{definice}
-\textit{Portfolio} $\big(\phi(t),\psi(t)\big)$ je dvojice stochastických procesů $\phi(t)$ a $\psi(t)$, která udává podíly rizikového a bezrizikového aktiva držené v čase $t$.
+\textit{Portfolio} $\big(\phi(t),\psi(t)\big)$ je dvojice stochastických procesů $\phi(t)$ a~$\psi(t)$, která udává podíly rizikového a bezrizikového aktiva držené v čase $t$.
 %Stochastický proces $\phi(t)$ je neanticipativní (podíl rizikového aktiva v portfoliu v čase $t$ může být ovlivněn pouze informacemi známými do času $t$).
 Stochastické procesy  $\phi(t)$ a $\psi(t)$ jsou neanticipativní (podíly aktiv v portfoliu v čase $t$ mohou být ovlivněny pouze informacemi známými do času $t$).
 
@@ -1334,7 +1334,7 @@ Proces $\phi(t)$  nabývá kladných hodnot, nicméně pokud je na trhu povolen 
 Prodává-li na krátko investor rizikové finanční aktivum, jedná se o~spekulativní metodu obchodování na finančním trhu, kdy investor očekává pokles ceny tohoto aktiva.
 Investor si finanční aktivum vypůjčí od věřitele na předem stanovenou dobu a ihned ho prodá třetí straně.
 Nejpozději za stanovenou dobu investor nakoupí finanční aktivum na trhu a vrátí jej věřiteli.
-Rozdíl mezi prodejní a nákupní cennou je výsledný zisk nebo ztráta.
+Rozdíl mezi prodejní a~nákupní cennou je výsledný zisk nebo ztráta.
 Kvůli vysoké rizikovosti je prodej na krátko často regulován a v některých zemích dokonce zcela zakázán.
 Při prodeji na krátko může investor dosáhnout pouze omezeného zisku, ale teoreticky neomezené ztráty.
 
@@ -1658,7 +1658,7 @@ Cox-Ingersoll-Rossův model (CIR model) je ve tvaru
 \begin{equation}\label{CIR_model}
 \mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t)}\,\mathrm{d}W(t).
 \end{equation}
-Povšimněme si, že při malých úrokových mírách je malá také volatilita a převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry bude dána pouze driftem, který bude v tomto případě kladný.
+Povšimněme si, že při malých úrokových mírách je malá také volatilita a~převažuje vliv driftu. Kdyby byla úroková míra dokonce nulová, bude volatilita také nulová a změna úrokové míry bude dána pouze driftem, který bude v~tomto případě kladný.
 %Úroková míra v čase $t + \Delta t$ je rovna $r(t) + \kappa ( \theta - r(t))\Delta t + \sigma \Delta W$.
 
 %Model vyvinuly John C. Cox, Jonathan E. Ingersoll a Stephen A. Ross a publikovali v roce 1985 v článku \cite{cox1985theory}.
@@ -1733,9 +1733,9 @@ Brigo a Mercurio v \cite{brigo2007interest} a Hull v \cite{hull} vysvětlují, j
 Naznačíme hlavní myšlenku jejich přístupu a uvedeme výsledný vztah pro výnosovou křivku.
 Pro podrobnější odvození odkazujeme na literaturu. 
 
-Je-li hodnota okamžité úrokové míry známý stochastický proces, můžeme odvodit cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$ pomocí následujícího vztahu.
+Je-li hodnota okamžité úrokové míry známý stochastický proces, můžeme odvodit cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v~čase $T$ pomocí následujícího vztahu.
 %a následujícího vztahu pro cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$.
-Platí, že cena tohoto dluhopisu v čase $t$ je dána očekáváním ve světe rizikově neutrálním vůči peněžnímu trhu
+Platí, že cena tohoto dluhopisu v~čase $t$ je dána očekáváním ve světe rizikově neutrálním vůči peněžnímu trhu
 \begin{equation}\label{ocekavana_cena_dluhopisu}
 B(t,T)=\mathsf{E}_t\left(\mathrm{e}^{-\int_{t}^T r(s)\,\mathrm{d}s}\right),
 \end{equation}
@@ -1858,12 +1858,12 @@ Dalším přínosem byl důkaz výhod diverzifikace portfolia.
 Obě tyto skutečnosti byly do té doby chápány pouze intuitivně.
 Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos -- riziko, zavedl pojem \textit{efektivní množina portfolií}, ze které investor vybírá optimální portfolio pomocí indiferenčních křivek popisujících investorův vztah k riziku.
 Konstrukcí množiny dostupných (nebo též přípustných) portfolií se bude věnovat Kapitola \ref{Markowitz_kap}. 
-Na Obrázku \ref{obr_Markowitz} je znázorněna množina přípustných portfolií  a množina efektivních portfolií v prostoru výnosnost -- riziko. 
+Na Obrázku \ref{obr_Markowitz} je znázorněna množina přípustných portfolií  a~množina efektivních portfolií v~prostoru výnosnost -- riziko. 
 
 \begin{figure}[!htbp]
   \centering 
   \includegraphics[width=11cm]{IMG/graf_2a.pdf}
-  \caption{Množina přípustných portfolií  a množina efektivních portfolií v prostoru výnosnost -- riziko dle Markowitzovy teorie portfolia.} 
+  \caption{Množina přípustných portfolií  a množina efektivních portfolií v~prostoru výnosnost -- riziko dle Markowitzovy teorie portfolia.} 
   \label{obr_Markowitz}
 \end{figure}
 
@@ -2073,7 +2073,7 @@ Nyní můžeme definovat dynamickou tržní rovnováhu jako stav, kdy  nabídka 
 Tento stav se také nazývá \textit{vyčištění trhu}.
          
 \begin{definice}[Dynamická tržní rovnováha]
-Řekneme, že kapitálový trh je v~\textit{dynamické rovnováze}, jestliže pro každý čas $t\in \mathcal{T}$, každé podkladové aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
+Řekneme, že kapitálový trh je v~\textit{dynamické rovnováze}, jestliže pro každý čas $t\in \mathcal{T}$, každé finanční aktivum $j$ a~každého investora $i$ existuje vektor cen aktiv $\boldsymbol{P}(t)$ takový že
 $$\sum_{i\in I} w_{j}(i,t)=N_j(t)P_j(t)=V_j(t).$$
 Tyto ceny budeme nazývat \textit{rovnovážné ceny}.
 \end{definice}
@@ -2157,7 +2157,7 @@ Pro vývoj ceny aktiva Fernholz používá následující spojitý logaritmický
 $$\mathrm{d}\log P_j(t)=\gamma_j(t)\,\mathrm{d}t+\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),$$
 kde $P_j(t)$ je cena aktiva $j$ v čase $t$, $\gamma_j(t)$ a $\xi_{jk}(t)$ jsou stochastické procesy a $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-dimenzionální Wienerův proces. 
 Proces $\gamma_j(t)$ se nazývá \textit{míra růstu} a $\xi_{jk}(t)$ se nazývá proces \textit{volatility}.
-Míru růstu v logaritmickém modelu je možno odvodit z míry výnosnosti ve standardním modelu a naopak podle následujícího vztahu
+Míru růstu v~logaritmickém modelu je možno odvodit z míry výnosnosti ve standardním modelu a naopak podle následujícího vztahu
 $$\mu_j(t)=\gamma_j(t)+\frac12\sum_{k=1}^{n}{\xi_{jk}}^2(t).$$
 Robert Fernholz uvádí, že v dlouhém časovém horizontu je chování hodnoty portfolia lépe popsáno mírou růstu než mírou výnosnosti.
 Uvažujeme-li kovarianční matici $\boldsymbol{\Sigma}$ výnosností aktiv, pak matice volatilit $\boldsymbol{\xi}$ je definována jako
@@ -2181,9 +2181,9 @@ V následujícím textu budou tyto myšlenky rozpracovány.
 
 Uvažujme následující předpoklady obvyklé pro teorii portfolia:
 \begin{enumerate}
-\item \label{predpoklad_konstantnosti_vynosu_a_rizika} Ceny podkladových aktiv se řídí It\^oovými procesy, které mají konstantní očekávané míry výnosnosti a konstantní kovariance výnosností. 
+\item \label{predpoklad_konstantnosti_vynosu_a_rizika} Ceny finančních aktiv se řídí It\^oovými procesy, které mají konstantní očekávané míry výnosnosti a konstantní kovariance výnosností. 
 \item Neexistují žádná omezení na množství aktiv držených investorem. Aktiva jsou navíc nekonečně dělitelná.
-\item Neexistují žádné transakční náklady a cena prodeje a nákupu podkladového aktiva se neliší.
+\item Neexistují žádné transakční náklady a cena prodeje a nákupu finančního aktiva se neliší.
 \item Investoři se chovají podle Markowitzovy teorie, což znamená, že minimalizují riziko svého portfolia pro dané očekávané míry výnosnosti.
 \item \label{predpoklad_hodnost} Na trhu existuje pouze jedno bezrizikové aktivum. Kovarianční matice rizikových aktiv má maximální hodnost.
 \item \label{predpoklad_konstantnosti_N} Na trhu existuje rovnováha a každý investor nabízející aktivum najde kupce a naopak.
@@ -2201,11 +2201,11 @@ Optimální portfolio každého investora lze získat jako kombinaci dvou fondů
 \end{veta}
 %Efektivní nebo spíš optimální?
 
-Na trhu s~$m$ podkladovými aktivy uvažujme dvě portfolia (neboli dva fondy) a jejich váhy označme $\boldsymbol{a}=(a_1,\dots,a_m)^\mathrm{T}$ a $\boldsymbol{b}=(b_1,\dots,b_m)^\mathrm{T}$. Z těchto dvou fondů pak můžeme sestavit optimální portfolia všech investorů na trhu.
+Na trhu s~$m$ finančními aktivy uvažujme dvě portfolia (neboli dva fondy) a jejich váhy označme $\boldsymbol{a}=(a_1,\dots,a_m)^\mathrm{T}$ a $\boldsymbol{b}=(b_1,\dots,b_m)^\mathrm{T}$. Z těchto dvou fondů pak můžeme sestavit optimální portfolia všech investorů na trhu.
 Množinu všech investorů označme $I$ a pro každého investora uvažujme jeho rizikové preference, které určují jeho optimální portfolio, a popišme je pomocí parametrů $\alpha_i(t)$ a $\beta_i(t)$.
 Optimální portfolio $i$-tého investora bude zahrnovat $\alpha_ia_j+\beta_ib_j$ množství $j$-té akcie.
 
-Váhy $\boldsymbol{a}$ a  $\boldsymbol{b}$ dvou uvažovaných fondů závisí pouze na očekávaných výnosnostech a riziku podkladových aktiv na trhu, které jsou v čase konstantní dle předpokladu \ref{predpoklad_konstantnosti_vynosu_a_rizika}.
+Váhy $\boldsymbol{a}$ a  $\boldsymbol{b}$ dvou uvažovaných fondů závisí pouze na očekávaných výnosnostech a riziku finančních aktiv na trhu, které jsou v čase konstantní dle předpokladu \ref{predpoklad_konstantnosti_vynosu_a_rizika}.
 Parametry $\alpha_i(t)$ a $\beta_i(t)$ závisí na individuálních preferencích jednotlivých investorů (např. rizikové preference nebo objem investic) a mohou se lišit.
 Tyto preference se mohou v čase měnit a tak parametry mohou záviset i na čase.
 
@@ -2214,7 +2214,7 @@ Tedy $A(t)=\sum_{i\in I}\alpha_i(t)$ a $B(t)=\sum_{i\in I}\beta_i(t)$.
 Pak celková hodnota držená všemi investory v $j$-tém aktivu je $Aa_j+Bb_j$ a musí být rovna tržní hodnotě aktiva.
 Platí
 $$A(t)\,a_j+B(t)\,b_j=P_j(t)\,N_j,$$
-kde $P_j(t)$ je tržní cena podkladového aktiva $j$ v čase $t$ a $N_j$ je jeho dostupné množství.
+kde $P_j(t)$ je tržní cena finančního aktiva $j$ v čase $t$ a $N_j$ je jeho dostupné množství.
 Přičemž $A(t),B(t)$ a $ P_j(t)$ jsou funkce času a $N_j$ je konstantní v~čase podle předpokladu \ref{predpoklad_konstantnosti_N}.
 Pro změnu ceny aktiva $j$ mezi časem $t$ a časem $t+\Delta t$ platí
 \begin{displaymath}
@@ -2222,11 +2222,11 @@ Pro změnu ceny aktiva $j$ mezi časem $t$ a časem $t+\Delta t$ platí
 \end{displaymath}
 kde $\Delta A = A(t+\Delta t) - A(t)$ a $\Delta B = B(t+\Delta t)- B(t)$.
 
-Uvažujme míru výnosnosti podkladového aktiva $j$ za čas $\Delta t$
+Uvažujme míru výnosnosti finančního aktiva $j$ za čas $\Delta t$
 \begin{displaymath}
 r_j(t,t+\Delta t)=\frac{\Delta P_j}{P_j(t)}=\frac{a_j}{N_jP_j(t)}\Delta A + \frac{b_j}{N_jP_j(t)}\Delta B
 \end{displaymath}
-a kovarianční matici výnosností podkladových aktiv držených v portfoliu
+a kovarianční matici výnosností finančních aktiv držených v portfoliu
 $$\boldsymbol{\Sigma}(\boldsymbol{r})=
 \begin{pmatrix}
 \mathsf{D}(r_1)  & \ldots & \mathsf{C}(r_1,r_m)  \cr \vdots & \ddots & \vdots\cr \mathsf{C}(r_m,r_1)   & \ldots & \mathsf{D}(r_m) 
@@ -2258,8 +2258,8 @@ $$
 $$
 
 Dále platí, že hodnost součinu matic je menší nebo rovna maximální z hodností matic jeho činitelů.
-Vzhledem k tomu nemůže mít kovarianční matice výnosností podkladových aktiv držených v portfoliu hodnost větší než dvě.
-Avšak to je v rozporu z předpokladem \ref{predpoklad_hodnost}, pokud uvažujeme portfolio s více než dvěma podkladovými aktivy.
+Vzhledem k tomu nemůže mít kovarianční matice výnosností finančních aktiv držených v portfoliu hodnost větší než dvě.
+Avšak to je v rozporu z předpokladem \ref{predpoklad_hodnost}, pokud uvažujeme portfolio s~více než dvěma finančními aktivy.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2270,19 +2270,19 @@ Uvažujme spojitý model, který bude mít méně omezující předpoklady než 
 Model, který předkládáme v této kapitole, předpokládá rovnováhu na trhu, nicméně očekávaná míra výnosnosti není konstantní v čase.
 
 Na základě poznatků z teorie portfolia budeme hledat vztah mezi očekávanou výnosností a cenou aktiva, který bychom mohli použít v modelu.
-Nechť $\boldsymbol{P}$ je vektor cen $n$ podkladových aktiv.
+Nechť $\boldsymbol{P}$ je vektor cen $n$ finančních aktiv.
 Předpokládejme, že tyto ceny se řídí následující soustavou stochastických diferenciálních rovnic, pro $j=1,\dots,n$ platí
 \begin{equation} \label{SDE}
 \mathrm{d}P_j(t)=P_j(t)\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),
 \end{equation}
-kde $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces, $\mu_j(t)$ je očekávaná míra výnosnosti podkladového aktiva $j$ a $\xi_{jk}(t)$ je proces volatility. 
+kde $\boldsymbol{W}(t)=(W_1(t),\dots,W_n(t))^\mathrm{T}$ je $n$-rozměrný Wienerův proces, $\mu_j(t)$ je očekávaná míra výnosnosti finančního aktiva $j$ a $\xi_{jk}(t)$ je proces volatility. 
 
 Pro zjednodušení předpokládejme, že výnosnost bezrizikového aktiva $r_f=0$.
 Nechť $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ je vektor vah v tržním portfoliu, pak ze vztahu \eqref{vahy_trzni} plyne
 \begin{equation} \label{vahy}
 \boldsymbol{X}=\frac{\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}},
 \end{equation}
-kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností podkladových aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností podkladových aktiv a platí $\boldsymbol{\Sigma}=\boldsymbol{\xi}\boldsymbol{\xi}^\mathrm{T}$.
+kde $\boldsymbol{1}$ je vektor jedniček, $\boldsymbol{\mu}=(\mu_1,\dots,\mu_n)^\mathrm{T}$ je vektor očekávaných výnosností finančních aktiv a $\boldsymbol{\Sigma}$ je kovarianční matice výnosností finančních aktiv a platí $\boldsymbol{\Sigma}=\boldsymbol{\xi}\boldsymbol{\xi}^\mathrm{T}$.
 
 Uvažujme o řešitelnosti a počtu řešení soustavy rovnic \eqref{vahy} vzhledem k~$\boldsymbol{\mu}$.
 Soustavu upravíme do tvaru %vzhledem k tom, že součin matic je distributivní vzhledem ke sčítání
@@ -2296,13 +2296,13 @@ Dá se tedy dokázat, že tato matice má hodnost $n-1$.
 To znamená, že soustava rovnic \eqref{hodnost} má nekonečně mnoho řešení vzhledem k $\boldsymbol{\mu}(t)$.
 %Dále hledejme nějaké partikulární řešení této soustavy rovnic.
 
-Jak jsme ukázali v Kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám podkladových aktiv v tržním portfoliu, tedy
+Jak jsme ukázali v Kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám finančních aktiv v tržním portfoliu, tedy
 \begin{equation} \label{market_value}
 \boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{V}},
 \end{equation}
-kde $\boldsymbol{V}$ je vektor tržních hodnot podkladových aktiv na trhu.
+kde $\boldsymbol{V}$ je vektor tržních hodnot finančních aktiv na trhu.
 Připomeňme, že tržní hodnota aktiva $j$ je dána jako $V_j(t)=P_j(t)N_j(t)$.
-Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem ke vztahům \eqref{vahy} a \eqref{market_value} můžeme konstatovat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ a ceny aktiv $\boldsymbol{P}(t)$ jsou stejné až na násobek skalárem. 
+Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem ke vztahům \eqref{vahy} a~\eqref{market_value} můžeme konstatovat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ a ceny aktiv $\boldsymbol{P}(t)$ jsou stejné až na násobek skalárem. 
 Proto je přirozené rozdělit modelování dynamiky $\boldsymbol{\mu}(t)$ na dvě části, relativní dynamiku aktiv a dynamiku trhu.
 %Ze vztahů \eqref{vahy} a \eqref{market_value} dostáváme $\boldsymbol{V}=\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}$ a proto očekávané výnosnosti můžeme vyjádřit jako
 %\begin{equation} \label{mu}
@@ -2338,7 +2338,7 @@ Proto budeme předpokládat, že míra výnosnosti trhu $\mu_M(t)$ se řídí Va
 kde $\kappa$, $\theta$ a $\sigma$ jsou konstanty.
 Poznamenejme, že speciální případ dynamiky pro $\mu_M(t)$ je konstantní hodnota, odpovídající případu $\kappa=\sigma=0$.
 
-Předpokládejme nyní, že uvažovaná podkladová aktiva jsou nekorelovaná, tedy matice $\boldsymbol{\Sigma}$ je diagonální.
+Předpokládejme nyní, že uvažovaná finanční aktiva jsou nekorelovaná, tedy matice $\boldsymbol{\Sigma}$ je diagonální.
 Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odvětví.
 Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j=\xi_{jj}$ v průběhu času a také počty aktiv $N_j$ nechť jsou v čase konstantní.
 
@@ -2354,7 +2354,7 @@ $$
 \mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
 $$
 \hrulefill 
-Dále budeme hledat vztah pro očekávané hodnoty cen podkladových aktiv.
+Dále budeme hledat vztah pro očekávané hodnoty cen finančních aktiv.
 Ze SDR \eqref{SDE} plyne
 \begin{equation}
 \mathsf{E}\big(\mathrm{d}P_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t\big),
@@ -2383,7 +2383,7 @@ Za těchto předpokladů dosaďme vztah \eqref{mu} do SDR \eqref{SDE}, čímž o
 \begin{equation*} 
  \mathrm{d}P_j(t)=P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t).
 \end{equation*}
-Budeme-li opět uvažovat očekávanou hodnotu  cen podkladových aktiv dostáváme vztah
+Budeme-li opět uvažovat očekávanou hodnotu  cen finančních aktiv dostáváme vztah
 \begin{equation*} 
 \mathsf{E}\big( \mathrm{d}P_j(t)\big)=\mathsf{E}\left(P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\,\mathrm{d}t\right),
 \end{equation*}
@@ -2436,7 +2436,7 @@ Model uvedený v této kapitole budeme aplikovat na reálná data.
 Data, vybraná pro stochastickou analýzu v této kapitole, byla získána ze systému Bloomberg.
 Jedná se o údaje o vývoji cen akcií obchodovaných na Burze cenných papírů Praha a.s.
 Pro aplikaci modelu jsme zvolili sedm akcií významných společností, které působí na českém trhu a jejichž akcie jsou obchodovatelné na Pražské burze.
-Informace o vybraných společnostech a jejich označení v následujících grafech najdeme v Tabulce \ref{akcie_spolecnosti}.
+Informace o vybraných společnostech a~jejich označení v následujících grafech najdeme v Tabulce \ref{akcie_spolecnosti}.
 \begin{comment}
     \begin{itemize}
     \item[-] ČEZ -  {(největší výrobce elektřiny v Česku)}
@@ -2617,7 +2617,7 @@ Banka je ohrožena nejen podnikatelskými riziky, ale také riziky finančními,
 Na tato rizika je soustředěna mimořádná pozornost odborné veřejnosti, bankovního dohledu, ale i samotného představenstva banky, jelikož řízení rizik má vliv na budoucí strategii podnikání banky.
 
 Základním finančním rizikem je kreditní (též úvěrové) riziko.
-Jedná se o riziko vyplývající z neschopnosti nebo neochoty protistrany splatit své závazky podle podmínek
+Jedná se o~riziko vyplývající z neschopnosti nebo neochoty protistrany splatit své závazky podle podmínek
 kontraktu, což způsobí držiteli pohledávky ztrátu.
 Jeho řízení má rozhodující význam pro úspěch nebo neúspěch nejen finančních institucí. 
 
@@ -3291,8 +3291,8 @@ Jinak řečeno, nebudeme zohledňovat wrong-way riziko.
 
 Výpočet CVA pro jednotlivé protistrany provedeme dosazením do rovnice~\eqref{CVA}. 
 %Celkovou expozici každé protistrany určíme podle vztahu \eqref{expozice_vztah}.
-Diskontovanou očekávanou expozici protistrany jsme spočítali v Kapitole \ref{simulace_kap} a pravděpodobnost selhání protistrany před časem $t$ jsme určili v Kapitole \ref{funkce_PD_kap}.
-Ztrátovost ze selhání budeme uvažovat konstantní a stejnou pro všechny protistrany $LGD=45\,\%$, což je standardní regulatorní hodnota pro podniková portfolia. 
+Diskontovanou očekávanou expozici protistrany jsme spočítali v~Kapitole \ref{simulace_kap} a pravděpodobnost selhání protistrany před časem $t$ jsme určili v Kapitole \ref{funkce_PD_kap}.
+Ztrátovost ze selhání budeme uvažovat konstantní a~stejnou pro všechny protistrany $LGD=45\,\%$, což je standardní regulatorní hodnota pro podniková portfolia. 
 Míra návratnosti daná vztahem \eqref{recovery_rate} je $R=0,55$.
 
 Výsledné hodnoty CVA pro každou protistranu jsou shrnuty v~Tabulce~\ref{resultingCVA}.

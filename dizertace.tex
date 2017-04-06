@@ -2339,6 +2339,19 @@ Pak ze vztahu  \eqref{vahy} odvodíme
 \end{equation}
 kde $\boldsymbol{X}(t)$ je vektor vah v tržním portfoliu v čase $t$.
 
+Jak jsme ukázali v Kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám finančních aktiv v tržním portfoliu, tedy
+\begin{equation} \label{market_value}
+\boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{V}},
+\end{equation}
+kde $\boldsymbol{V}$ je vektor tržních hodnot finančních aktiv na trhu.
+Připomeňme, že tržní hodnota aktiva $j$ je dána jako $V_j(t)=P_j(t)N_j(t)$.
+Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem k rovnicím \eqref{vahy_mu} a~\eqref{market_value} %můžeme konstatovat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ a ceny aktiv $\boldsymbol{P}(t)$ jsou stejné až na násobek skalárem.
+platí
+\begin{equation} \label{vahy_mu_rovnice}
+\tilde{{\mu}_j}(t)=\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i},
+\end{equation}
+pro všechna $j=1, \dots, n$.
+
 Analogicky s úrokovou mírou také výnosnost trhu nevykazuje exponenciální růst, ale pohybuje se přibližně v nějakém intervalu. 
 V delším časovém horizontu se projevuje tendence navracet se k průměrné hodnotě.
 Proto budeme předpokládat, že míra výnosnosti trhu $\mu_M(t)$ se řídí Vašíčkovým modelem z~Kapitoly \ref{Vasickuv_model}
@@ -2348,80 +2361,73 @@ Proto budeme předpokládat, že míra výnosnosti trhu $\mu_M(t)$ se řídí Va
 kde $\kappa$, $\theta$ a $\sigma$ jsou konstanty.
 Poznamenejme, že speciální případ vztahu \eqref{model_trhu_vztah} pro $\mu_M(t)$ je konstantní hodnota, odpovídající případu $\kappa=\sigma=0$.
 
-Jak jsme ukázali v Kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám finančních aktiv v tržním portfoliu, tedy
-\begin{equation} \label{market_value}
-\boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{V}},
-\end{equation}
-kde $\boldsymbol{V}$ je vektor tržních hodnot finančních aktiv na trhu.
-Připomeňme, že tržní hodnota aktiva $j$ je dána jako $V_j(t)=P_j(t)N_j(t)$.
-Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem ke vztahům \eqref{vahy} a~\eqref{market_value} můžeme konstatovat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ a ceny aktiv $\boldsymbol{P}(t)$ jsou stejné až na násobek skalárem. 
-
 Předpokládejme nyní, že uvažovaná finanční aktiva jsou nekorelovaná, tedy matice $\boldsymbol{\Sigma}$ je diagonální.
 Příkladem takových aktiv by mohly být akcie podniků z velmi odlišných odvětví.
 Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude neměnnost rizika aktiv $\sigma_j=\xi_{jj}$ v průběhu času a také počty aktiv $N_j$ nechť jsou v čase konstantní.
 
-Dosadíme-li vztahy \eqref{vynos}, \eqref{vahy_mu} a \eqref{market_value} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
+Dosadíme-li vztahy \eqref{vynos} a \eqref{vahy_mu_rovnice} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
 \begin{equation}  \label{SDE_cen_diag}
-\mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
+\mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t),
 \end{equation}
+kde $\mu_M(t)$ je dáno rovnicí \eqref{model_trhu_vztah}.
 
-\begin{comment}
-Připomeňme, že tržní hodnota  $V_j(t)=P_j(t)N_j(t)$ a $\sigma_{j}=\xi_{jj}$.
-Dosadíme-li vztahy \eqref{mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
-$$ 
-\mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
-$$
-\hrulefill 
-Dále budeme hledat vztah pro očekávané hodnoty cen finančních aktiv.
-Ze SDR \eqref{SDE} plyne
-\begin{equation}
-\mathsf{E}\big(\mathrm{d}P_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t\big),
-\end{equation}
-protože z vlastností Wienerova procesu máme $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
-Čímž se stochastická diferenciální rovnice zjednodušuje na obyčejnou diferenciální rovnici (ODR), která je řešitelná pomocí separace proměnných.
-\begin{align} 
-{\mathrm{d}\mathsf{E}\big(P_j(t)\big)}&={\sigma_{j}}^2N_j\,\mathsf{E}\big(P_j^2(t)\big)\mathrm{d}t \notag\\
-&={\sigma_{j}}^2N_j\big[\mathsf{D}\big(P_j(t)\big)+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \notag\\
-&={\sigma_{j}}^2N_j\big[{\sigma_{j}}^2+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \label{ODE}
-\end{align}  
-Řešení ODR $\eqref{ODE}$ je
-\begin{equation} 
-\mathsf{E}\big(P_j(t)\big)=\sigma_j\mathrm{tan}\big({\sigma_j}^3N_jt\big).
-\end{equation}
-Docházíme tedy k závěru, že řešení má singularitu v konečném čase.
-Jelikož pro ${\big(\sigma_j}^3N_jt\big)\to\frac\pi2$ platí $\mathsf{E}\big(P_j(t)\big)\to\infty$. 
-To by mohlo být interpretováno jako chování cenových bublin na trhu.
-K těm dochází v případě, že investoři ve velkém měřítku investují do aktiv s nadsazenými cenami, což vede k dalšímu umělému zvyšování cen. 
-Takový stav nevyhnutelně vede k nečekanému krachu ceny (tzv. prasknutí bubliny).
-Problematické je takovou bublinu na trhu poznat, jelikož jsme schopni ji identifikovat až zpětně při extrémním poklesu cen, který je důsledkem mohutného odprodeje aktiv.
+%\begin{comment}
+%Připomeňme, že tržní hodnota  $V_j(t)=P_j(t)N_j(t)$ a $\sigma_{j}=\xi_{jj}$.
+%Dosadíme-li vztahy \eqref{mu} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
+%$$ 
+%\mathrm{d}P_j(t)=P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t).
+%$$
+%\hrulefill 
+%Dále budeme hledat vztah pro očekávané hodnoty cen finančních aktiv.
+%Ze SDR \eqref{SDE} plyne
+%\begin{equation}
+%\mathsf{E}\big(\mathrm{d}P_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t)\big)=\mathsf{E}\big(P_j^2(t){\sigma_{j}}^2N_j\,\mathrm{d}t\big),
+%\end{equation}
+%protože z vlastností Wienerova procesu máme $\mathsf{E}\big(\mathrm{d}W_j(t)\big)=0$.
+%Čímž se stochastická diferenciální rovnice zjednodušuje na obyčejnou diferenciální rovnici (ODR), která je řešitelná pomocí separace proměnných.
+%\begin{align} 
+%{\mathrm{d}\mathsf{E}\big(P_j(t)\big)}&={\sigma_{j}}^2N_j\,\mathsf{E}\big(P_j^2(t)\big)\mathrm{d}t \notag\\
+%&={\sigma_{j}}^2N_j\big[\mathsf{D}\big(P_j(t)\big)+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \notag\\
+%&={\sigma_{j}}^2N_j\big[{\sigma_{j}}^2+\mathsf{E}^2\big(P_j(t)\big)\big]\mathrm{d}t \label{ODE}
+%\end{align}  
+%Řešení ODR $\eqref{ODE}$ je
+%\begin{equation} 
+%\mathsf{E}\big(P_j(t)\big)=\sigma_j\mathrm{tan}\big({\sigma_j}^3N_jt\big).
+%\end{equation}
+%Docházíme tedy k závěru, že řešení má singularitu v konečném čase.
+%Jelikož pro ${\big(\sigma_j}^3N_jt\big)\to\frac\pi2$ platí $\mathsf{E}\big(P_j(t)\big)\to\infty$. 
+%To by mohlo být interpretováno jako chování cenových bublin na trhu.
+%K těm dochází v případě, že investoři ve velkém měřítku investují do aktiv s nadsazenými cenami, což vede k dalšímu umělému zvyšování cen. 
+%Takový stav nevyhnutelně vede k nečekanému krachu ceny (tzv. prasknutí bubliny).
+%Problematické je takovou bublinu na trhu poznat, jelikož jsme schopni ji identifikovat až zpětně při extrémním poklesu cen, který je důsledkem mohutného odprodeje aktiv.
+%
+%V další části představíme model s méně přísnými předpoklady.
+%Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
+%Za těchto předpokladů dosaďme vztah \eqref{mu} do SDR \eqref{SDE}, čímž obdržíme
+%\begin{equation*} 
+% \mathrm{d}P_j(t)=P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t).
+%\end{equation*}
+%Budeme-li opět uvažovat očekávanou hodnotu  cen finančních aktiv dostáváme vztah
+%\begin{equation*} 
+%\mathsf{E}\big( \mathrm{d}P_j(t)\big)=\mathsf{E}\left(P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\,\mathrm{d}t\right),
+%\end{equation*}
+%z něhož dostaneme následující soustavu obyčejných diferenciálních rovnic
+%\begin{align*}
+%\mathrm{d}\mathsf{E}\big(P_j(t)\big)&=N_j\left[\sum_{k=1}^{n}{\sigma_{jk}}^2+\mathsf{E}\big(P_j(t)\big)\sum_{k=1}^{n}\sigma_{jk}\mathsf{E}\big(P_k(t)\big)\right]\mathrm{d}t.
+%\end{align*}  
+%Avšak tato soustava je nelineární a bohužel neexistuje její analytické řešení.
+%Neobejdeme se tedy bez použití numerických metod.
+%\hrulefill 
+%\end{comment}
 
-V další části představíme model s méně přísnými předpoklady.
-Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
-Za těchto předpokladů dosaďme vztah \eqref{mu} do SDR \eqref{SDE}, čímž obdržíme
-\begin{equation*} 
- \mathrm{d}P_j(t)=P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t).
-\end{equation*}
-Budeme-li opět uvažovat očekávanou hodnotu  cen finančních aktiv dostáváme vztah
-\begin{equation*} 
-\mathsf{E}\big( \mathrm{d}P_j(t)\big)=\mathsf{E}\left(P_j(t)\sum_{k=1}^{n}P_k(t)N_k(t)\sigma_{jk}\,\mathrm{d}t\right),
-\end{equation*}
-z něhož dostaneme následující soustavu obyčejných diferenciálních rovnic
-\begin{align*}
-\mathrm{d}\mathsf{E}\big(P_j(t)\big)&=N_j\left[\sum_{k=1}^{n}{\sigma_{jk}}^2+\mathsf{E}\big(P_j(t)\big)\sum_{k=1}^{n}\sigma_{jk}\mathsf{E}\big(P_k(t)\big)\right]\mathrm{d}t.
-\end{align*}  
-Avšak tato soustava je nelineární a bohužel neexistuje její analytické řešení.
-Neobejdeme se tedy bez použití numerických metod.
-\hrulefill 
-\end{comment}
-
-V další části představíme model s méně přísnými předpoklady.
-Připusťme nyní možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
+%V další části představíme model s méně přísnými předpoklady.
+Uvolněme nyní předpoklady a připusťme možnost závislosti mezi jednotlivými aktivy, tedy nechť matice $\boldsymbol{\Sigma}$ není diagonální.
 Zachováme předpoklad konstantnosti volatilit aktiv $\xi_{jk}$ v čase.
-Za těchto předpokladů dosaďme vztah \eqref{vynos}, \eqref{vahy_mu} a \eqref{market_value} do SDR \eqref{SDE}, čímž obdržíme
+Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu_rovnice} do SDR \eqref{SDE}, čímž obdržíme
 \begin{equation} \label{SDE_cen}
- \mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t).
+ \mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t),
 \end{equation}
-
+kde $\mu_M(t)$ je dáno rovnicí \eqref{model_trhu_vztah}.
 
 %
 %Často nás více než trajektorie cen podkladových aktiv zajímají očekávané hodnoty cen těchto aktiv.
@@ -2445,7 +2451,8 @@ Za těchto předpokladů dosaďme vztah \eqref{vynos}, \eqref{vahy_mu} a \eqref{
 %\end{align*}
 %Avšak tato soustava je nelineární a neexistuje její analytické řešení, proto se neobejdeme bez použití numerických metod.
 
-Model uvedený v této kapitole budeme aplikovat na reálná data.
+Model zavedený v této kapitole budeme v další části aplikovat na reálná data.
+Naším cílem bude ukázat příklady trajektorií vygenerovaných tímto modelem.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2468,19 +2475,19 @@ Informace o vybraných společnostech a~jejich označení v následujících gra
 \end{comment}
 \begin{table}[!htbp]
 \centering
-\caption{Označení akcií, které byly vybrány do datového souboru}  \label{akcie_spolecnosti}
+\caption{Označení akcií, které byly vybrány do datového souboru.}  \label{akcie_spolecnosti}
 \vspace{5mm}
 \scalebox{1}{
 \begin{tabular}{l l p{6cm}} 
-\hline
-Označení & Název & Obor podnikání  \\
- \hline \hline
-    CEZ & ČEZ, a. s.  &největší výrobce elektřiny v~České republice\\
-    O2 & O2 Czech Republic, a.s.  &český telefonní operátor ve vlastnictví společnosti PPF\\
-    KB & Komerční banka, a.s. &bankovní instituce působící na českém kapitálovém trhu z většiny vlastněná finanční skupinou Société Générale\\
-    PM & Philip Morris ČR, a.s. &přední výrobce a prodejce cigaret v~České republice\\
-    Pegas & Pegas Nonwovens, s.r.o. &přední světový výrobce netkaných textilií se sídlem  v~České republice\\
-    CT &  Česká televize &veřejnoprávní televize v~České republice\\
+\hline \vspace{-4mm} \\ 
+Označení & Název společnosti & Obor podnikání  \\
+ \hline \hline  \vspace{-4mm} \\ \vspace{1mm}
+    CEZ & ČEZ, a. s.  &největší výrobce elektřiny v~České republice\\ \vspace{1mm}
+    O2 & O2 Czech Republic, a.s.  &český telefonní operátor ve vlastnictví společnosti PPF\\ \vspace{1mm}
+    KB & Komerční banka, a.s. &bankovní instituce působící na českém kapitálovém trhu z většiny vlastněná finanční skupinou Société Générale\\ \vspace{1mm}
+    PM & Philip Morris ČR, a.s. &přední výrobce a prodejce cigaret v~České republice\\ \vspace{1mm}
+    Pegas & Pegas Nonwovens, s.r.o. &přední světový výrobce netkaných textilií se sídlem  v~České republice\\ \vspace{1mm}
+    CT &  Česká televize &veřejnoprávní televize v~České republice\\ \vspace{1mm}
     NWR &  New World Resources &přední producent černého uhlí ve střední Evropě\\
 \hline
 \end{tabular}}
@@ -2489,22 +2496,30 @@ Označení & Název & Obor podnikání  \\
 Ceny akcií zohledněné v analýze jsou tříletá časová řada z let 2011--2014. %31.1.2011-21.2.21014
 Ukázka datového souboru je uvedena v Příloze \ref{priloha_data}.
 Grafy zobrazující vývoj cen akcií z datového souboru nalezneme na Obrázku \ref{model_price_of_asset}.
-
-Model zkonstruovaný v Kapitole \ref{muj_model} využijeme pro simulace vývoje cen akcií uvažovaných společností.
-Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R (verze 3.3.0).
-Jejich ukázky jsou uvedeny v Příloze \ref{priloha_programy}.
+Kvůli přehlednosti jsme obrázek rozdělili na dvě části.
 
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/data_price_of_asset_ostatni.pdf}\\[5mm]
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/data_price_of_asset_KBPM_v2.pdf}	
-  \caption{Ceny aktiv v portfoliu}  \label{model_price_of_asset}
+  \caption{Vývoj cen akcií společností uvedených v Tabulce \ref{akcie_spolecnosti}.}  \label{model_price_of_asset}
 \end{figure}
+
+Model zkonstruovaný v Kapitole \ref{muj_model} využijeme pro simulace vývoje cen akcií uvažovaných společností.
+Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R (verze 3.3.0).
+Jejich ukázky jsou uvedeny v Příloze \ref{priloha_programy}.
+
+Aplikace modelu uvedená v této kapitole má sloužit pouze jako ukázka práce s modelem, proto si dovolíme udělat několik zjednodušení a zavést některé zjednodušující předpoklady.
+Budeme předpokládat, že akcie sedmi zvolených společností reprezentují tržní portfolio.
+Dále nebudeme uvažovat počty akcií a tudíž tržní hodnotu akcie ztotožníme s její tržní cenou.
+
+
+
 
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/return_of_market_v4b.pdf}
-  \caption{Model výnosnosti trhu $\mu_M(t)$}  \label{return_of_market}
+  \caption{Ukázka trajektorie výnosnosti trhu $\mu_M(t)$.}  \label{return_of_market}
 \end{figure}
 
 \begin{figure}[!htbp]
@@ -3415,6 +3430,7 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 %srovnání různých modelů k modelování úrokové míry v kapitole CVA
 %další metody kalibrace Hull-Whitova modelu
 %kalibrace Vašíčkova modelu v teorii portfolia
+%přidat dynamiku volatility
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

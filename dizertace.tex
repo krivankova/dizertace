@@ -657,7 +657,7 @@ Pro slabě stacionární proces zřejmě platí $\sigma^2(t)=c(0)$.
 Procesy, které nejsou striktně stacionární, se nazývají evoluční. 
 
 \begin{definice}[Nezávislost přírůstků stochastického procesu]
-Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé} právě tehdy, když pro všechny časové posloupnosti $\{t_i\}_{i=1}^N\subseteq\mathcal{T}$, kde $t_i<t_{i+1}$ a $N\in\mathbb{N}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
+Přírůstky stochastického procesu $X(t)$ jsou \textit{nezávislé}, jestliže pro všechny časové posloupnosti $\{t_i\}_{i=1}^N\subseteq\mathcal{T}$, kde $t_i<t_{i+1}$ a $N\in\mathbb{N}$, jsou přírůstky $X(t_{i+1})-X(t_i)$ nezávislé náhodné veličiny.
 \end{definice}
 %K popisu pravděpodobnostního chování stochastického procesu s nezávislými přírůstky je tedy dostačující znát distribuční funkci náhodné veličiny $X(t)$ a přírůstku stochastického procesu $X(t)-X(s)$, %pro pevně zvolené $t$ a $s$
 %kde $t>s$.
@@ -710,14 +710,14 @@ To znamená, že Wienerův proces není slabě stacionární.
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 40]{IMG/WP_v2.pdf}
-  \caption{Ukázka pěti trajektorií Wienerova procesu}  \label{WP_graf}
+  \caption{Ukázka pěti trajektorií Wienerova procesu.}  \label{WP_graf}
 \end{figure}
 
 \subsubsection{Wienerův proces s driftem}
 Ceny aktiv na finačních trzích se podle teorie dokonalých trhů chovají zcela náhodně a nezávisle na předchozím vývoji.
 Wienerův proces se tedy nabízí jako vhodný nástroj k popisu chování cen aktiv.
 Při modelování ve finanční matematice využíváme procesy, které jsou zobecněním či modifikací Wienerova procesu. 
-Uvažujme proces s nenulovým parametrem růstu, označovaným jako drift, a parametrem variability, jenž odpovídá směrodatné odchylce procesu.
+Uvažujme proces s nenulovým parametrem růstu, označovaným jako drift, a parametrem variability, jenž odpovídá směrodatné odchylce.
 \begin{definice}[Wienerův proces s driftem]\label{Wieneruv_proces_s_driftem}
 Stochastický proces $X(t)$ definovaný jako
 $$X(t)  = \mu\, t + \sigma\, W (t),$$
@@ -751,7 +751,7 @@ kde $X(t) = (\mu - \frac{\sigma^2}{2})\,t + \sigma W (t)$ je Wienerův proces s 
 \end{definice}
 Člen $\mathrm{d}W(t)$ ve stochastické diferenciální rovnici \eqref{SDE_GWP} označuje infinitezimální přírůstek Wienerova procesu a $\mathrm{d}t$ je infinitezimální změna času.
 
-Z Definice \ref{Geometricky_Wieneruv_proces} je zřejmé, že Geometrický Wienerův proces nabývá pouze kladných hodnot a jeho relativní přírůstky jsou nezávislé a mají stejné rozdělení. 
+Z Definice \ref{Geometricky_Wieneruv_proces} je zřejmé, že Geometrický Wienerův proces nabývá pouze kladných hodnot a jeho relativní přírůstky jsou nezávislé a mají normální rozdělení. 
 Kromě toho se s tímto procesem docela snadno pracuje ve výpočtech. 
 Díky těmto vlastnostem se stal nejrozšířenějším modelem chování cen aktiv ve finanční matematice.
 
@@ -760,7 +760,7 @@ Ukázku trajektorií Geometrického Wienerova procesu s různými parametry drif
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/GP_v2.pdf}
-  \caption{Ukázka pěti trajektorií Geometrického Wienerova procesu s~různými parametry driftu $\mu$ a volatility $\sigma$}  \label{GP_graf}
+  \caption{Ukázka pěti trajektorií Geometrického Wienerova procesu s~různými parametry driftu $\mu$ a volatility $\sigma$.}  \label{GP_graf}
 \end{figure}
 
 
@@ -780,7 +780,7 @@ Na Obrázku \ref{WP_2D_graf} vidíme ukázku trajektorie dvourozměrného Wiener
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 20 25 50]{IMG/WP_2D_v6.pdf}
-  \caption{Ukázka trajektorie dvourozměrného Wienerova procesu}  \label{WP_2D_graf}
+  \caption{Ukázka trajektorie dvourozměrného Wienerova procesu.}  \label{WP_2D_graf}
 \end{figure}
 
 
@@ -811,7 +811,7 @@ Nechť $\{W(t):t\ge0\}$ je Wienerův proces na pravděpodobnostním prostoru $(\
 
 \begin{definice}\label{M}
 Nechť $W(t,\omega)$ je Wienerův proces na pravděpodobnostním prostoru $(\Omega,\mathcal{A},\mathsf{Pr})$.
-Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):\langle0,\infty)\times\Omega\to\mathbb R$ takových, že
+Symbolem $M$ označme třídu stochastických procesů \linebreak$f(t,\omega):\langle0,T\rangle\times\Omega\to\mathbb R$ takových, že
 \begin{enumerate}
 \item $f(t,\omega)$ je neanticipativní, 
 \item $\text{E}\left[\int_0^Tf^2(t,\omega)\,\mathrm{d}t\right]<\infty.$ 
@@ -862,7 +862,7 @@ Definice \ref{Ito_int} není závislá na volbě aproximující posloupnosti $f_
 %Zavedeme obecný stochasticky proces, který využijeme při konstrukci It\^oova lemmatu v další části. 
 %Stochastický proces dostatečně obecný abychom mohli zavést stochastický integrál, pojmenovaný po známém matematikovi
 
-It\^oův integrál využijeme při definování obecného stochastického procesu, který využijeme při konstrukci It\^oova lemmatu v další části.
+It\^oův integrál využijeme při definování obecného stochastického procesu, který využijeme při formulaci It\^oova lemmatu v další části.
 Bude se jednat o nejobecnější typ stochastického procesu, který v této práci budeme uvažovat.
 
 \begin{definice}[It\^oův proces]
@@ -1022,7 +1022,7 @@ Dále nechť funkce $\boldsymbol\alpha$ a $\boldsymbol B$ splňují podmínku
 ||\boldsymbol\alpha( t,\boldsymbol x)-\boldsymbol\alpha( t,\boldsymbol y)||+||\boldsymbol{B}( t,\boldsymbol x)-\boldsymbol{B}( t,\boldsymbol y)||\leq D||\boldsymbol x-\boldsymbol y||,
 \end{equation}
 pro každé $\boldsymbol x , \boldsymbol y\in\mathbb{R}^n$ a $t\in \mathcal{T}$ a pro nějakou kladnou konstantu $D$.
-Dále nechť $\boldsymbol X_0$ je náhodný vektor, který může být závislý na hodnotách Wienerova procesu $\boldsymbol W(t)$ pouze v čase $t_0$,%nezávislý na trajektorii Wienerova procesu $\boldsymbol W(t)$ 
+Dále nechť $\boldsymbol X_0$ je náhodný vektor, který může být závislý pouze na hodnotách Wienerova procesu $\boldsymbol W(t_0)$ v čase $t_0$, %nezávislý na trajektorii Wienerova procesu $\boldsymbol W(t)$ 
 a platí
 \begin{equation}\label{podminka_tri}
 \mathrm{E}\left[||\boldsymbol X_0||^2\right]<\infty.
@@ -1182,7 +1182,7 @@ Ačkoli je známo, že Eulerova numerická metoda řešení obyčejných diferen
 tak stochastická Eulerova numerická metoda má řád konvergence $\frac12$.
 Tuto skutečnost dokázali roku 1972 Gikhman a Skorokhod v \cite{gikhman1972stochastic}.
 Naproti tomu Milsteinova numerická metoda má silný řád konvergence jedna.
-Platí tedy, že v obecném případě, kdy se v koeficientu volatility $\beta(t,x)$ vyskytuje proměnná $x$, Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda (spolu se zmenšováním časového kroku $\Delta$).
+Platí tedy, že v obecném případě, kdy se v koeficientu volatility $\beta(t,x)$ vyskytuje proměnná $x$, Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda. %(spolu se zmenšováním časového kroku $\Delta$).
 
 %\end{comment}
 %%%%%%%%%%%%%%%%%%{Stochastické modelování}
@@ -1312,7 +1312,7 @@ Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\e
 \end{figure}
 
 %\subsection{Black–Scholesův model}
-\subsection{Modely cen finančních derivátů}\label{derivaty_kap}
+\subsection{Modely pro oceňování finančních derivátů}\label{derivaty_kap}
 Přehledný úvod do problematiky oceňování finančních derivátů poskytuje kniha \textit{Financial Calculus} od autorů Martina Baxtera a Andrewa Rennieho~\cite{baxter1996financial}.
 Odvození Black–Scholesova modelu je srozumitelně zpracováno také v učebnici Alison Etheridge \cite{etheridge2002course}.
 
@@ -1491,7 +1491,7 @@ Vzhledem k uvedené terminologii můžeme na dluhopis nahlížet jako na finanč
 Časová struktura úrokové míry vyjadřuje vztah mezi úrokovou mírou a~termínem splatnosti příslušného dluhopisu.
 Její grafickou reprezentací je \textit{výnosová křivka}, která ukazuje závislost výnosu do doby splatnosti (svislá osa) na době do splatnosti dluhopisu (vodorovná osa). 
 \begin{definice}[Výnosová křivka]
-Funkce $R(t,\cdot)$ je nazývána \textit{výnosová křivka}.
+Graf funkce $R(t,\cdot)$ je nazýván \textit{výnosová křivka}.
 \end{definice}
 Výnosová křivka je konstruována pro dané dluhopisy, které se liší pouze dobou do splatnosti, ale ostatní vlastnosti (jako třeba emitenta) mají stejné.
 
@@ -1735,7 +1735,7 @@ Pro podrobnější odvození odkazujeme na literaturu.
 
 Je-li hodnota okamžité úrokové míry známý stochastický proces, můžeme odvodit cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v~čase $T$ pomocí následujícího vztahu.
 %a následujícího vztahu pro cenu bezkupónového dluhopisu s nominální hodnotou jedna vyplácenou v čase $T$.
-Platí, že cena tohoto dluhopisu v~čase $t$ je dána očekáváním ve světe rizikově neutrálním vůči peněžnímu trhu
+Platí, že cena tohoto dluhopisu v~čase $t$ je dána očekáváním v rizikově neutrálním světě %ve světe rizikově neutrálním vůči peněžnímu trhu
 \begin{equation}\label{ocekavana_cena_dluhopisu}
 B(t,T)=\mathsf{E}_t\left(\mathrm{e}^{-\int_{t}^T r(s)\,\mathrm{d}s}\right),
 \end{equation}
@@ -2024,18 +2024,18 @@ kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková 
 První článek zabývající se dynamickou teorií portfolia napsal Robert Carhart Merton v roce 1971 \cite{merton1971}.
 Merton předpokládal platnost rovnovážného modelu CAPM a dál tuto teorii rozšířil o spojitý model pro cenu aktiva využívající stochastické procesy.
 Přitom ukázal, že zůstává zachována platnost všech závěrů z teorie CAPM, zejména pak Separačního teorému.
-Což znamená, že bez újmy na obecnosti můžeme uvažovat jen dvě aktiva -- bezrizikové aktivum s mírou výnosnosti $r_f$ a tržní portfolio (které můžeme považovat za jedno rizikové aktivum). 
+%Což znamená, že bez újmy na obecnosti můžeme uvažovat jen dvě aktiva -- bezrizikové aktivum s mírou výnosnosti $r_f$ a tržní portfolio (které můžeme považovat za jedno rizikové aktivum). 
 
-Merton předpokládá, že hodnota tržního portfolia $P(t)$ se řídí stochastickým procesem
-$$\mathrm{d}P(t)=P(t)\,\mu_p\,\mathrm{d}t+P(t)\,\sigma_p\,\mathrm{d}W(t)$$
-kde $W(t)$ je jednorozměrný Wienerův proces a $\mu_p$, $\sigma_p$ jsou konstanty. 
+Merton předpokládá, že cena $i$-tého rizikového aktiva $P_i(t)$ se řídí stochastickým procesem
+$$\mathrm{d}P_i(t)=P_i(t)\,\mu_i\,\mathrm{d}t+P_i(t)\,\sigma_i\,\mathrm{d}W_i(t)$$
+kde $W_i(t)$ je jednorozměrný Wienerův proces a $\mu_i$, $\sigma_i$ jsou konstanty. 
 
-V každém čase $t$ vybírá investor své optimální portfolio volbou vah portfolia.
-Majetek, který investor investuje do optimálního portfolia v čase $t$, označíme $w(t)$.
-Váhu tržního portfolia v optimálním portfoliu označíme $X_p(t)$ a váhu bezrizikového aktiva označíme $X_f(t)=(1-X_p(t))$. 
-Proces popisující vývoj investorova majetku je dán jako
-$$\frac{\mathrm{d}w(t)}{w(t)}=X_p(t)\,\frac{\mathrm{d}P(t)}{P(t)}+\big(1-X_p(t)\big)\,r_f\,\mathrm{d}t.$$
-Merton odvodil explicitní řešení této stochastické diferenciální rovnice za předpokladu, že charakteristiky výnosnosti aktiva jsou konstantní.
+%V každém čase $t$ vybírá investor své optimální portfolio volbou vah portfolia.
+%Majetek, který investor investuje do optimálního portfolia v čase $t$, označíme $w(t)$.
+%Váhu tržního portfolia v optimálním portfoliu označíme $X_p(t)$ a váhu bezrizikového aktiva označíme $X_f(t)=(1-X_p(t))$. 
+%Proces popisující vývoj investorova majetku je dán jako
+%$$\frac{\mathrm{d}w(t)}{w(t)}=X_p(t)\,\frac{\mathrm{d}P(t)}{P(t)}+\big(1-X_p(t)\big)\,r_f\,\mathrm{d}t.$$
+%Merton odvodil explicitní řešení této stochastické diferenciální rovnice za předpokladu, že charakteristiky výnosnosti aktiva jsou konstantní.
 
 Avšak Mertonův spojitý rovnovážný model vykazuje inkonzistenci, což dokázali Ohlson a Rosenberg \cite{ohlson} hned v roce 1976.
 Ještě před zveřejněním jejich článku byla uveřejněna ve stejném periodiku Mertonova reakce \cite{merton1975}, ve které hájí své poznatky a poukazuje na jejich nepochopení ze strany oponentů.  
@@ -2145,7 +2145,7 @@ Za povšimnutí stojí, že Mertonova reakce vychází ještě před samotným �
 \section{Paradox v teorii portfolia a Věta o~separaci do~dvou fondů} \label{john}
 Nekonzistencí obvyklých předpokladů dynamické teorie portfolia se v roce 2009 zabýval také John Stalker profesor na Trinity College, Dublin. 
 V preprintu \cite{john} uvádí algebraický důkaz inkonzistence předpokladů, kde využívá Tobinovu \textit{Větu o~separaci do~dvou fondů}. 
-V následujícím textu budou tyto myšlenky rozpracovány.
+V této podkapitole budou tyto myšlenky rozpracovány.
 
 Uvažujme následující předpoklady obvyklé pro teorii portfolia:
 \begin{enumerate}
@@ -2299,7 +2299,7 @@ součet libovolných $n-1$ řádků matice  je roven zbývajícímu řádku vyn�
 %
 Proto tato matice má hodnost menší než $n$ a~to znamená, že soustava rovnic \eqref{hodnost} má nekonečně mnoho řešení vzhledem k~$\boldsymbol{\mu}$.
 
-Ze soustavy rovnic \eqref{vahy} vidíme, že čitatel určuje vztah mezi $\boldsymbol{X}$ a $\boldsymbol{\mu}$ a jmenovatel slouží k normování, aby platilo, že součet vah je roven jedné.
+Ze soustavy rovnic \eqref{vahy} vidíme, že čitatel určuje vztah mezi $\boldsymbol{X}$ a~$\boldsymbol{\mu}$ a~jmenovatel slouží k normování, aby součet vah byl roven jedné.
 Odtud plyne, že vektor výnosností  $\boldsymbol{\mu}$ může být určen z vektoru vah $\boldsymbol{X}$ až na skalární násobek.
 %Tuto myšlenku využijeme později při tvorbě modelu pro vektor $\boldsymbol{\mu}$.
 Proto je přirozené rozdělit modelování dynamiky $\boldsymbol{\mu}(t)$ na dvě části, relativní dynamiku aktiv (danou váhami v tržním portfoliu) a~dynamiku trhu (reprezentující zmíněný skalární násobek).
@@ -2452,13 +2452,13 @@ kde $\mu_M(t)$ je dáno rovnicí \eqref{model_trhu_vztah}.
 %Avšak tato soustava je nelineární a neexistuje její analytické řešení, proto se neobejdeme bez použití numerických metod.
 
 Model zavedený v této kapitole budeme v další části aplikovat na reálná data.
-Naším cílem bude ukázat příklady trajektorií vygenerovaných tímto modelem.
+Naším cílem bude simulovat trajektorie generované tímto modelem.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Aplikace modelu na reálná data}\label{aplikace}
 
-Data, vybraná pro stochastickou analýzu v této kapitole, byla získána ze systému Bloomberg.
+Data, vybraná pro analýzu v této kapitole, byla získána ze systému Bloomberg.
 Jedná se o údaje o vývoji cen akcií obchodovaných na Burze cenných papírů Praha a.s.
 Pro aplikaci modelu jsme zvolili sedm akcií významných společností, které působí na českém trhu a jejichž akcie jsou obchodovatelné na Pražské burze.
 Informace o vybraných společnostech a~jejich označení v následujících grafech najdeme v Tabulce \ref{akcie_spolecnosti}.
@@ -2511,22 +2511,28 @@ Jejich ukázky jsou uvedeny v Příloze \ref{priloha_programy}.
 
 Aplikace modelu uvedená v této kapitole má sloužit pouze jako ukázka práce s modelem, proto si dovolíme udělat několik zjednodušení a zavést některé zjednodušující předpoklady.
 Budeme předpokládat, že akcie sedmi zvolených společností reprezentují tržní portfolio.
-Dále nebudeme uvažovat počty akcií a tudíž tržní hodnotu akcie ztotožníme s její tržní cenou.
+Dále nebudeme uvažovat počty akcií a tudíž tržní hodnotu akcií ztotožníme s tržní cenou jedné akcie.
+Rovněž zanedbáme vliv výplaty dividend na cenu akcie.
+%I když se jedná o zásadní zjednodušení, ilustrace modelu.
+
+%\begin{figure}[!htbp]
+%  \centering 
+%	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/return_of_market_v4b.pdf}
+%  \caption{Ukázka trajektorie výnosnosti trhu $\mu_M(t)$.}  \label{return_of_market}
+%\end{figure}
+
+Pro simulování vývoje ceny akcie použijeme model daný rovnicí \eqref{SDE_cen}.
+V~modelu předpokládáme, že kovarianční matice $\boldsymbol\Sigma$ je v čase konstantní a tudíž i matice volatilit $\boldsymbol\xi$ bude v čase konstantní a můžeme ji považovat za parametr modelu.
+Odhad tohoto parametru provedeme výpočtem historické volatility z dat. 
 
 
-
-
-\begin{figure}[!htbp]
-  \centering 
-	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/return_of_market_v4b.pdf}
-  \caption{Ukázka trajektorie výnosnosti trhu $\mu_M(t)$.}  \label{return_of_market}
-\end{figure}
+Obrázek \ref{model_cen} a Obrázek \ref{model_cen_jednotlive}
 
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/ds_price_of_asset_ostatni.pdf}\\[5mm]
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/ds_price_of_asset_KBPM_v2.pdf}	
-  \caption{Model cen aktiv v portfoliu}  \label{model_cen}
+  \caption{Ukázka simulace vývoje cen akcií. Nalevo od přerušované vertikální linky je zobrazen reálný vývoj ceny akcií, napravo od této linky jsou grafy trajektorií ze simulace.}  \label{model_cen}
 \end{figure}
 
 \begin{figure}[!htbp]
@@ -2538,27 +2544,36 @@ Dále nebudeme uvažovat počty akcií a tudíž tržní hodnotu akcie ztotožn�
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_Pegas_v4.pdf}\quad
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_ct_v4.pdf}\\
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 0]{IMG/ds_nwr_v4.pdf}	
-  \caption{Model cen aktiv v portfoliu}  \label{model_cen_jednotlive}
+  \caption{Ukázka simulace vývoje cen akcií. Nalevo od přerušované vertikální linky je zobrazen reálný vývoj ceny akcií, napravo od této linky jsou grafy trajektorií ze simulace.}  \label{model_cen_jednotlive}
 \end{figure}
 
 %\begin{figure}[!htbp]
 %  \centering 
 %	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/ds_weight_of_asset_v5.pdf}
-%  \caption{Model vah aktiv v portfoliu}  \label{weight_of_asset}
+%  \caption{Model vah aktiv v portfoliu.}  \label{weight_of_asset}
 %\end{figure}
+
+Ukázku více trajektorií stochastického procesu modelujícího cenu akcie zobrazuje Obrázek \ref{avg_trajektorie}.
+Jedná se o dvacet simulací vývoje ceny akcie společnosti ČEZ z modelu popsaného rovnicí \eqref{SDE_cen}.
+Zároveň obrázek zobrazuje graf vývoje střední hodnoty ceny akcie (červená trajektorie).
 
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/avg_CEZ_v1.pdf}
-  \caption{Dvacet simulací trajektorie stochastického procesu ceny akcií (společnost ČEZ) a jejich střední hodnota}  \label{avg_trajektorie}
+  \caption{Dvacet simulací trajektorie stochastického procesu ceny akcií (společnost ČEZ) a jejich střední hodnota.}  \label{avg_trajektorie}
 \end{figure}
 
 Na Obrázku \ref{euler_milstein} vidíme srovnání Eulerovy numerické metody a Milsteinovy numerické metody, které byly popsány v Kapitole \ref{numericke_metody_kap}.
+%Připomeňme, že Milsteinova metoda vychází z Eulerovy metody a zdokonaluje aproximaci difuzního členu.
+Připomeňme, že Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda spolu se zmenšováním časového kroku $\Delta$.
+Obrázek \ref{euler_milstein_q} zobrazuje srovnání simulací s využitím Eulerovy numerické metody a Milsteinovy numerické metody pro různě velké časové kroky.
+%Povšimněme si, že pro malý časový krok se obě metody příliš neliší.
+Pro zmenšující se časový krok se zmenšuje rozdíl mezi řešeními získanými oběma metodami. 
 
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v2.pdf}
-  \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2)}  \label{euler_milstein}
+  \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2).}  \label{euler_milstein}
 \end{figure}
 
 \begin{figure}[!htbp]
@@ -2568,7 +2583,7 @@ Na Obrázku \ref{euler_milstein} vidíme srovnání Eulerovy numerické metody a
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q5.pdf}\quad
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q10.pdf}\\
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q50.pdf}
-  \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2) s různými časovými kroky $\Delta_n\in\{2; 1; 0,2; 0,1; 0,02\}$}  \label{euler_milstein_q}
+  \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2) s různými časovými kroky $\Delta_n\in\{2; 1; 0,2; 0,1; 0,02\}$.}  \label{euler_milstein_q}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}

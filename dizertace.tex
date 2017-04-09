@@ -1968,9 +1968,9 @@ za podmínky $\boldsymbol{1}^\mathrm{T}\boldsymbol{X}=1$, kde $\boldsymbol{1}$ j
 Maximum funkce $f(\boldsymbol{X})$ dané výrazem \eqref{maximalizacni_problem_vztah} hledáme tak, že funkci derivujeme podle všech složek vektoru $\boldsymbol{X}$ a tyto derivace položíme rovny nule.
 Získáme tak systém $n$ lineárních rovnic o $n$ neznámých
 \begin{equation}\label{maximalizace_rovnice}
- \frac{\partial f(\boldsymbol{X})}{\partial{X_i}}=0,
+ \frac{\partial f(\boldsymbol{X})}{\partial{X_j}}=0,
 \end{equation}
-kde $i=1,\dots,n$
+kde $j=1,\dots,n$
 
 Postup řešení systému rovnic \eqref{maximalizace_rovnice} vyžaduje dvě substituce a je relativně zdlouhavý, proto jej zde nebudeme prezentovat a uvedeme jen výsledné řešení.
 Vektor vah v tržním portfoliu  je dán vztahem
@@ -2026,9 +2026,9 @@ Merton předpokládal platnost rovnovážného modelu CAPM a dál tuto teorii ro
 Přitom ukázal, že zůstává zachována platnost všech závěrů z teorie CAPM, zejména pak Separačního teorému.
 %Což znamená, že bez újmy na obecnosti můžeme uvažovat jen dvě aktiva -- bezrizikové aktivum s mírou výnosnosti $r_f$ a tržní portfolio (které můžeme považovat za jedno rizikové aktivum). 
 
-Merton předpokládá, že cena $i$-tého rizikového aktiva $P_i(t)$ se řídí stochastickým procesem
-$$\mathrm{d}P_i(t)=P_i(t)\,\mu_i\,\mathrm{d}t+P_i(t)\,\sigma_i\,\mathrm{d}W_i(t)$$
-kde $W_i(t)$ je jednorozměrný Wienerův proces a $\mu_i$, $\sigma_i$ jsou konstanty. 
+Merton předpokládá, že cena $j$-tého rizikového aktiva $P_j(t)$ se řídí stochastickým procesem
+$$\mathrm{d}P_j(t)=P_j(t)\,\mu_j\,\mathrm{d}t+P_j(t)\,\sigma_j\,\mathrm{d}W_j(t)$$
+kde $W_j(t)$ je jednorozměrný Wienerův proces a $\mu_j$, $\sigma_j$ jsou konstanty. 
 
 %V každém čase $t$ vybírá investor své optimální portfolio volbou vah portfolia.
 %Majetek, který investor investuje do optimálního portfolia v čase $t$, označíme $w(t)$.
@@ -2331,7 +2331,7 @@ Mezi těmito složkami bude platit multiplikativní vztah
 %vektorový stochastický proces $\tilde{\boldsymbol{\mu}}(t)=(\tilde{\mu}_1(t),\dots,\tilde{\mu}_n(t))^\mathrm{T}$ zachycuje relativní vztahy aktiv v~portfoliu, které se mohou v čase měnit, a
 %$\mu_M(t)$ je skalární stochastický proces, který charakterizuje dynamiku trhu a nezávisí na volbě konkrétního aktiva.
 %Dále nechť pro všechny uvažované časy $t$ platí $\sum_{i=1}^n\tilde{\mu}_i(t)=1$.
-kde pro všechny uvažované časy $t$ platí $\sum_{i=1}^n\tilde{\mu}_i(t)=1$.
+kde pro všechny uvažované časy $t$ platí $\sum_{j=1}^n\tilde{\mu}_j(t)=1$.
 %Pak podle teorie CAPM platí 
 Pak ze vztahu  \eqref{vahy} odvodíme
 \begin{equation} \label{vahy_mu}
@@ -2348,7 +2348,7 @@ Připomeňme, že tržní hodnota aktiva $j$ je dána jako $V_j(t)=P_j(t)N_j(t)$
 Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem k rovnicím \eqref{vahy_mu} a~\eqref{market_value} %můžeme konstatovat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ a ceny aktiv $\boldsymbol{P}(t)$ jsou stejné až na násobek skalárem.
 platí
 \begin{equation} \label{vahy_mu_rovnice}
-\tilde{{\mu}_j}(t)=\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i},
+\tilde{{\mu}_j}(t)=\frac{\sum\limits_{k=1}^n\sigma_{jk}P_k(t)N_k}{\sum\limits_{j=1}^n\sum\limits_{k=1}^n\sigma_{jk}P_k(t)N_k},
 \end{equation}
 pro všechna $j=1, \dots, n$.
 
@@ -2367,7 +2367,7 @@ Další zjednodušující předpoklady, které pro tuto chvíli zavedeme, bude n
 
 Dosadíme-li vztahy \eqref{vynos} a \eqref{vahy_mu_rovnice} do stochastické diferenciální rovnice \eqref{SDE}, pak s ohledem na předpoklady učiněné výše dostáváme
 \begin{equation}  \label{SDE_cen_diag}
-\mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t),
+\mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{k=1}^n\sigma_{jk}P_k(t)N_k}{\sum\limits_{j=1}^n\sum\limits_{k=1}^n\sigma_{jk}P_k(t)N_k}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sigma_{j}\,\mathrm{d}W_j(t),
 \end{equation}
 kde $\mu_M(t)$ je dáno rovnicí \eqref{model_trhu_vztah}.
 
@@ -2425,7 +2425,7 @@ Uvolněme nyní předpoklady a připusťme možnost závislosti mezi jednotlivý
 Zachováme předpoklad konstantnosti volatilit aktiv $\xi_{jk}$ v čase.
 Za těchto předpokladů dosaďme vztah \eqref{vynos} a \eqref{vahy_mu_rovnice} do SDR \eqref{SDE}, čímž obdržíme
 \begin{equation} \label{SDE_cen}
- \mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}{\sum\limits_{j=1}^n\sum\limits_{i=1}^n\sigma_{ji}P_i(t)N_i}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t),
+ \mathrm{d}P_j(t)=P_j(t)\left(\frac{\sum\limits_{k=1}^n\sigma_{jk}P_k(t)N_k}{\sum\limits_{j=1}^n\sum\limits_{k=1}^n\sigma_{jk}P_k(t)N_k}\, \mu_M(t)\right)\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}\,\mathrm{d}W_k(t),
 \end{equation}
 kde $\mu_M(t)$ je dáno rovnicí \eqref{model_trhu_vztah}.
 
@@ -2453,6 +2453,7 @@ kde $\mu_M(t)$ je dáno rovnicí \eqref{model_trhu_vztah}.
 
 Model zavedený v této kapitole budeme v další části aplikovat na reálná data.
 Naším cílem bude simulovat trajektorie generované tímto modelem.
+Jelikož stochastické diferenciální rovnice \eqref{SDE_cen_diag} a \eqref{SDE_cen} není možné řešit analyticky, budeme využívat numerické metody představené v Kapitole \ref{numericke_metody_kap}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -2461,7 +2462,7 @@ Naším cílem bude simulovat trajektorie generované tímto modelem.
 Data, vybraná pro analýzu v této kapitole, byla získána ze systému Bloomberg.
 Jedná se o údaje o vývoji cen akcií obchodovaných na Burze cenných papírů Praha a.s.
 Pro aplikaci modelu jsme zvolili sedm akcií významných společností, které působí na českém trhu a jejichž akcie jsou obchodovatelné na Pražské burze.
-Informace o vybraných společnostech a~jejich označení v následujících grafech najdeme v Tabulce \ref{akcie_spolecnosti}.
+Informace o vybraných společnostech a~jejich označení v následujících grafech jsou shrnuty v Tabulce \ref{akcie_spolecnosti}.
 \begin{comment}
     \begin{itemize}
     \item[-] ČEZ -  {(největší výrobce elektřiny v Česku)}
@@ -2493,7 +2494,7 @@ Označení & Název společnosti & Obor podnikání  \\
 \end{tabular}}
 \end{table}
 
-Ceny akcií zohledněné v analýze jsou tříletá časová řada z let 2011--2014. %31.1.2011-21.2.21014
+Ceny akcií zohledněné v analýze tvoří tříletou časovou řadu z let 2011 až 2014. %31.1.2011-21.2.21014
 Ukázka datového souboru je uvedena v Příloze \ref{priloha_data}.
 Grafy zobrazující vývoj cen akcií z datového souboru nalezneme na Obrázku \ref{model_price_of_asset}.
 Kvůli přehlednosti jsme obrázek rozdělili na dvě části.
@@ -2506,12 +2507,12 @@ Kvůli přehlednosti jsme obrázek rozdělili na dvě části.
 \end{figure}
 
 Model zkonstruovaný v Kapitole \ref{muj_model} využijeme pro simulace vývoje cen akcií uvažovaných společností.
-Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R (verze 3.3.0).
+Pro všechny výpočty, simulace a zobrazení grafů budeme používat programy vytvořené v prostředí \R (verze 3.3.0).
 Jejich ukázky jsou uvedeny v Příloze \ref{priloha_programy}.
 
 Aplikace modelu uvedená v této kapitole má sloužit pouze jako ukázka práce s modelem, proto si dovolíme udělat několik zjednodušení a zavést některé zjednodušující předpoklady.
 Budeme předpokládat, že akcie sedmi zvolených společností reprezentují tržní portfolio.
-Dále nebudeme uvažovat počty akcií a tudíž tržní hodnotu akcií ztotožníme s tržní cenou jedné akcie.
+Jelikož nemáme k dispozici kompletní data o tržní kapitalizaci, nebudeme uvažovat počty akcií v oběhu a tudíž tržní hodnotu akcií ztotožníme s tržní cenou jedné akcie.
 Rovněž zanedbáme vliv výplaty dividend na cenu akcie.
 %I když se jedná o zásadní zjednodušení, ilustrace modelu.
 
@@ -2522,11 +2523,15 @@ Rovněž zanedbáme vliv výplaty dividend na cenu akcie.
 %\end{figure}
 
 Pro simulování vývoje ceny akcie použijeme model daný rovnicí \eqref{SDE_cen}.
-V~modelu předpokládáme, že kovarianční matice $\boldsymbol\Sigma$ je v čase konstantní a tudíž i matice volatilit $\boldsymbol\xi$ bude v čase konstantní a můžeme ji považovat za parametr modelu.
-Odhad tohoto parametru provedeme výpočtem historické volatility z dat. 
+V~modelu předpokládáme, že kovarianční matice $\boldsymbol\Sigma$ je v čase konstantní a~tudíž i matice volatilit $\boldsymbol\xi$ bude v čase konstantní. %a můžeme ji považovat za parametr modelu.
+Odhad parametru $\boldsymbol\xi$ provedeme výpočtem historické volatility z dat. 
+Při simulování trajektorií stochastického procesu popisujícího vývoj cen akcií budeme postupně využívat Eulerovu i~Milsteinovu numerickou metodu, které byly popsány v Kapitole \ref{numericke_metody_kap}. 
+V~závěru kapitoly srovnáme trajektorie generované oběma metodami.
 
-
-Obrázek \ref{model_cen} a Obrázek \ref{model_cen_jednotlive}
+Nejdříve vygenerujeme jednu trajektorii ceny akcie pro každou společnost.
+Budeme uvažovat 500 časových kroků o délce jednoho dne.
+Vygenerované trajektorie zobrazíme v grafu společně s reálnou cenou akcií.
+Obrázek \ref{model_cen} a~Obrázek \ref{model_cen_jednotlive} zachycují vývoj reálné ceny akcie od ledna 2011 do února 2014 a dále trajektorii ceny simulovanou v následujících pěti stech dnech.
 
 \begin{figure}[!htbp]
   \centering 
@@ -2563,9 +2568,9 @@ Zároveň obrázek zobrazuje graf vývoje střední hodnoty ceny akcie (červen�
   \caption{Dvacet simulací trajektorie stochastického procesu ceny akcií (společnost ČEZ) a jejich střední hodnota.}  \label{avg_trajektorie}
 \end{figure}
 
-Na Obrázku \ref{euler_milstein} vidíme srovnání Eulerovy numerické metody a Milsteinovy numerické metody, které byly popsány v Kapitole \ref{numericke_metody_kap}.
+Na Obrázku \ref{euler_milstein} vidíme srovnání Eulerovy numerické metody a Milsteinovy numerické metody.
 %Připomeňme, že Milsteinova metoda vychází z Eulerovy metody a zdokonaluje aproximaci difuzního členu.
-Připomeňme, že Milsteinova metoda konverguje k přesnému řešení SDR rychleji než Eulerova metoda spolu se zmenšováním časového kroku $\Delta$.
+Připomeňme, že Milsteinova metoda konverguje k~přesnému řešení SDR rychleji než Eulerova metoda spolu se zmenšováním časového kroku $\Delta$.
 Obrázek \ref{euler_milstein_q} zobrazuje srovnání simulací s využitím Eulerovy numerické metody a Milsteinovy numerické metody pro různě velké časové kroky.
 %Povšimněme si, že pro malý časový krok se obě metody příliš neliší.
 Pro zmenšující se časový krok se zmenšuje rozdíl mezi řešeními získanými oběma metodami. 
@@ -3446,6 +3451,7 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 %další metody kalibrace Hull-Whitova modelu
 %kalibrace Vašíčkova modelu v teorii portfolia
 %přidat dynamiku volatility
+%přidat kapitalizace do modelu
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

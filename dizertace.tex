@@ -217,13 +217,28 @@
 
 \chapter*{Abstrakt}\addcontentsline{toc}{chapter}{Abstrakt}
 \thispagestyle{empty}
-V první části práce jsou uvedeny základní matematické pojmy použité v dalších částech textu. 
+%V první části práce jsou uvedeny základní matematické pojmy použité v dalších částech textu. 
+Tato disertační práce se věnuje stochastickým metodám používaným při analýze ekonomických dat.
+Metody jsou aplikovány ve dvou oblastech -- v teorii portfolia a v teorii řízení finančních rizik.
+Práce srovnává klasický a dynamický přístup v teorii portfolia.
+Zabývá se nekonzistencí předpokladů v běžně používaném dynamickém modelu a je formulován Ohlson-Rosenbergerův paradox.
+Hlavní pozornost je zaměřena na navržení nového modelu pro popis chování cen finančních aktiv a jeho aplikaci na reálná data.
+Část věnovaná teorii řízení finančních rizik je zaměřuje na výpočet Credit Valuation Adjustment. 
+V práci je popsána metoda výpočtu využívající stochastické modely, jakým je například Hull-Whiteův model sloužící k popisu chování úrokových měr.
+Součástí práce je zpracování reálných dat a porovnání výsledků s výsledky, které dává jednoduchá metoda používaná v bance.
 \\\\\\\\\\
 
 \begin{flushright} {{\Huge Abstract}} \vspace{38pt} \end{flushright}
 %\addcontentsline{toc}{chapter}{Abstract}
-In the first part of the work, some basic mathematical methods employed in this thesis are recalled. 
-
+%In the first part of the work, some basic mathematical methods employed in this thesis are recalled. 
+This dissertation deals with stochastic methods used in the analysis of economic data.
+The methods are applied in two areas -- the portfolio theory and the theory of financial risk management.
+The dissertation compares the classic and dynamic approach to portfolio theory.
+It deals with assumptions inconsistencies in commonly used dynamic model and Ohlson-Rosenberger's paradox is formulated.
+The main attention is focused on designing a new model which describes the behavior of financial asset prices and its application to real data.
+The section devoted to the theory of financial risk management is focused on the calculation of Credit Valuation Adjustment.
+The thesis describes the method of calculation using stochastic models, such as the Hull-White model used to describe the behavior of interest rates.
+It also contains real data processing and compares its results with the results obtained by a~simple method used in the bank.
 
 \newpage
 \pagestyle{empty}
@@ -239,6 +254,7 @@ In the first part of the work, some basic mathematical methods employed in this 
 Na tomto místě bych chtěla poděkovat svému školiteli doc. RNDr. Martinu Kolářovi, Ph.D., za cenné rady, připomínky a čas, který mi věnoval.
 Dále chci poděkovat své kolegyni Mgr. Silvii Zlatošové, Ph.D., za spolupráci během doktorského studia, její podpora a motivace mi byla velmi cenná.
 Velké poděkování patří také mé rodině a mým přátelům za jejich podporu, trpělivost a útěchu, kterými mě zahrnovali při psaní této práce.
+%Také bych ráda poděkovala XXX za pečlivé pročtení textu.
 \\
 
 Brno, Duben 2017
@@ -2459,10 +2475,10 @@ Jelikož stochastické diferenciální rovnice \eqref{SDE_cen_diag} a \eqref{SDE
 
 \subsection{Aplikace modelu na reálná data}\label{aplikace}
 
-Data, vybraná pro analýzu v této kapitole, byla získána ze systému Bloomberg.
+Data vybraná pro analýzu v této kapitole byla získána ze systému Bloomberg.
 Jedná se o údaje o vývoji cen akcií obchodovaných na Burze cenných papírů Praha, a.s.
 Pro aplikaci modelu jsme zvolili sedm akcií významných společností, které působí na českém trhu a jejichž akcie jsou obchodovatelné na pražské burze.
-Informace o vybraných společnostech a~jejich označení v následujících grafech jsou shrnuty v Tabulce \ref{akcie_spolecnosti}.
+Informace o vybraných společnostech a~jejich označení v~následujících grafech jsou shrnuty v Tabulce \ref{akcie_spolecnosti}.
 \begin{comment}
     \begin{itemize}
     \item[-] ČEZ -  {(největší výrobce elektřiny v Česku)}
@@ -3452,6 +3468,43 @@ $\boldsymbol{5}$&78\,501,06 &121\,149,12 \\
 %kalibrace Vašíčkova modelu v teorii portfolia
 %přidat dynamiku volatility
 %přidat kapitalizace do modelu
+
+%
+%Přesvědčili jsme se, že
+%Potvrdila se domněnka
+
+Tato práce se věnovala stochastickým metodám používaným při analýze dat a  jejich aplikacím na ekonomická data.
+Představila základy stochastické analýzy a stochastického modelování.
+Teoretické poznatky byly aplikovány na reálná data při řešení aktuální problematiky v oblasti řízení finančních rizik a teorii portfolia.
+
+Popsali jsme vývoj modelování v teorii portfolia a srovnali jsme klasický a dynamický přístup.
+Seznámili jsme čtenáře s nekonzistencí předpokladů v~Mertonově dynamickém přístupu, známé jako  Ohlson-Rosenbergův paradox.
+Cílem této práce bylo navrhnout model pro popis chování cen finančních aktiv, %založeného na vztahu mezi váhami portfolia a výnosností finančních aktiv v portfoliu.
+který odstraňuje tuto logickou nekonzistenci.
+Navržený model vycházel z~Markowitzovy teorie a předpokládal tržní rovnováhu. 
+Následně byl aplikován na reálná data z pražské burzy cenných papírů a byly prezentovány simulace trajektorií cen akcií sedmi vybraných společností.
+Graficky jsme srovnali simulace obdržené s využitím jak Eulerovy numerické metody, tak Milsteinovy numerické metody řešení stochastických diferenciálních rovnic.
+
+Dalším cílem práce bylo představit a aplikovat model pro výpočet Credit Valuation Adjusment úrokových swapů.
+Při oceňování úrokových swapů jsme využili Hull-Whiteův model pro modelování úrokové míry a uvedli jeho výhody oproti jiným modelům.
+%Uvedený přístup přináší bance nižší rizikové náklady při splnění regulačních norem.
+Přesvědčili jsme se, že uvedený přístup by přinesl bance nižší rizikové náklady než přístup, který běžně používá.
+
+%návrhy na rozšíření práce
+%náměty pro další práci
+Na závěr uveďme některé možnosti, jak navázat na tuto práci.
+Při použití navrhovaného modelu pro vývoj ceny akcie je možné se věnovat kalibraci Vašíčkova modelu popisujícího chování výnosnosti trhu.
+Zajímavé by mohlo být hledání vhodných dat, která reprezentují výnosnost trhu.
+%Bylo by možné zvolit jiný stochastický proces, který by popisoval chování výnosnosti trhu v kapitole s navrhovaným modelem v teorii portfolia.
+Případně by bylo možné zvolit jiný stochastický proces, který by popisoval chování výnosnosti trhu.
+%
+Námět pro další práci by také přineslo uvolnění předpokladu, že volatilita je v čase konstantní. 
+%
+%Při výpočtu Credit Valuation Adjusment pro oceňování úrokových swapů. 
+Při výpočtu Credit Valuation Adjusment bychom se mohli zabývat dalšími metodami kalibrace Hull-Whitova modelu úrokové míry. 
+%vzájemné srovnání různých modelů úrokové míry. 
+Dále bychom mohli použít různé další modely úrokové míry a věnovat se jejich vzájemnému srovnání.
+Také by bylo možné zabývat se dalšími metodami oceňování úrokových swapů, například metodami využívajícími parciální diferenciální rovnice.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

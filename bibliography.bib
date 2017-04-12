@@ -2,7 +2,7 @@
   title={Stochastic differential equations},
   author={{\O}ksendal, Bernt},  
   year = {2007},
-  edition = {6th ed., corr. 4th print.},
+  @edition = {6th ed., corr. 4th print.},
   publisher={Springer}
 }
 
@@ -11,7 +11,7 @@
   title = {Numerical solution of SDE through computer experiments},
   publisher = {Springer},
   year = {1997},
-  edition = {Corr. 2nd print.},
+  @edition = {Corr. 2nd print.},
   isbn={35-405-7074-8}
 }
 
@@ -136,7 +136,7 @@ language={English}
 @book{pascucci,
   title={PDE and martingale methods in option pricing},
   author={Pascucci, Andrea},
-  volume={2},
+  @volume={2},
   year={2011},
   publisher={Springer}
 }
@@ -252,10 +252,11 @@ language={English}
 }
 
 @book{hull,
-  title={Options, futures, and other derivatives (8. ed., global ed.)},
+  title={Options, futures, and other derivatives},
   author={Hull, John},
   year={2012},
-  publisher={Boston [u.a.] : Pearson}
+  @note={(8. ed., global ed.)},
+  publisher={Boston: Pearson}
 }
 
 @book{prigent2007portfolio,
@@ -347,7 +348,7 @@ language={English}
 @book{karatzas1998methods,
   title={Methods of mathematical finance},
   author={Karatzas, Ioannis and Shreve, Steven E},
-  volume={39},
+  @volume={39},
   year={1998},
   publisher={Springer Science \& Business Media}
 }
@@ -379,7 +380,7 @@ language={English}
 @book{karatzas2012brownian,
   title={Brownian motion and stochastic calculus},
   author={Karatzas, Ioannis and Shreve, Steven},
-  volume={113},
+  @volume={113},
   year={2012},
   publisher={Springer Science \& Business Media}
 }
@@ -464,7 +465,7 @@ language={English}
 @book{gregory2010,
   title={Counterparty credit risk: the new challenge for global financial markets},
   author={Gregory, Jon},
-  volume={470},
+  @volume={470},
   year={2010},
   publisher={John Wiley \& Sons}
 }
@@ -502,10 +503,12 @@ language={English}
   publisher={Elsevier}
 }
 
-@techreport{jilek2000,
-  title={Finan{\v{c}}n{\'\i} rizika. 1. vyd. Praha: Grada, 2000. 635 s},
+@book{jilek2000,
+  title={Finan{\v{c}}n{\'\i} rizika},
   author={J{\'i}lek, Josef},
   year={2000},
+  address={Praha},
+  publisher={Grada},
   institution={ISBN 80-7169-579-3}
 }
 
@@ -534,7 +537,18 @@ language={English}
   pages={506--532},
   year={1964},
   publisher={MIT Press},
-   addres={Cambridge, Massachusetts}
+   address={Cambridge, Massachusetts}
+}
+
+@article{samuelson1965rational,
+  title={{Rational Theory of Warrant Pricing}},
+  author={Samuelson, Paul A},
+  journal={Industrial Management Review},
+  volume={6},
+  number={2},
+  pages={13},
+  year={1965},
+  publisher={Massachusetts Institute of Technology, Cambridge, MA}
 }
 
 @article{black1973pricing,
@@ -587,8 +601,8 @@ year = "1946"
 
 @article{OrnsteinUhlenbeck1930,
   title = {{On the Theory of the Brownian Motion}},
-  author = {Uhlenbeck, G. E. and Ornstein, L. S.},
-  journal = {Phys. Rev.},
+  author={Uhlenbeck, George E and Ornstein, Leonard S},
+  journal={Physical review},
   volume = {36},
   issue = {5},
   pages = {823--841},
@@ -653,9 +667,13 @@ url="http://dx.doi.org/10.1007/978-3-319-25826-3_8"
   institution={ISBN 80-7169-453-3}
 }
 
-@techreport{veselainvestovani,
-  title={Investov{\'a}n{\'\i} na kapit{\'a}lov{\'y}ch trz{\'\i}ch. 1. vyd. Praha: ASPI, 2007},
+@book{veselainvestovani,
+  title={Investov{\'a}n{\'\i} na kapit{\'a}lov{\'y}ch trz{\'\i}ch},
   author={Vesel{\'a}, Jitka},
+ @note={1. vyd. Praha: ASPI, 2007},
+  year = {2007},
+  address = {Praha},
+  publisher = {ASPI},
   institution={ISBN 978-80-7357-297-6}
 }
 
@@ -667,18 +685,20 @@ url="http://dx.doi.org/10.1007/978-3-319-25826-3_8"
   addres={Ostrava}
 }
 
-@techreport{fuchsfinancni,
-  title={{Finan{\v{c}}n{\'\i} trhy. 1. vyd. Brno: Masarykova univerzita v Brn{\v{e}}}},
+@book{fuchsfinancni,
+  title={{Finan{\v{c}}n{\'\i} trhy}},
   author={Fuchs, D},
-  institution={ISBN 80-210-3526-9},
+  @institution={ISBN 80-210-3526-9},
   year = {2004},
-   note={105\,s.}
+ @note={105\,s.},
+  address = {Brno},
+  publisher = {Masarykova univerzita}
 }
 		
 @book{rejnus2011,
 author = {Rejnuš, Oldřich},
 address = {Ostrava},
-edition = {Třetí rozšířené},
+@edition = {Třetí rozšířené},
 keywords = {Financial markets; investment instruments; securities; stock exchanges; commodities; derivatives; financial system},
 howpublished = {tištěná verze "print"},
 language = {cze},
@@ -718,9 +738,9 @@ year = {2011}
 @book{euler1768institutionum,
   title={Institutionum calculi integralis},
   author={Euler, Leonhard},
-  volume={1},
+  @volume={1},
   year={1768},
-  publisher={imp. Acad. imp. Sa{\`e}nt.}
+  publisher={Impensis Academiae Imperialis Scientiarum}
 }
 
 @article{maruyama1955continuous,
@@ -747,7 +767,7 @@ year = {2011}
 @book{platen2010numerical,
   title={Numerical solution of stochastic differential equations with jumps in finance},
   author={Platen, Eckhard and Bruti-Liberati, Nicola},
-  volume={64},
+  @volume={64},
   year={2010},
   publisher={Springer Science \& Business Media}
 }
@@ -755,7 +775,7 @@ year = {2011}
 @book{glasserman2003monte,
   title={Monte Carlo methods in financial engineering},
   author={Glasserman, Paul},
-  volume={53},
+  @volume={53},
   year={2003},
   publisher={Springer Science \& Business Media}
 }

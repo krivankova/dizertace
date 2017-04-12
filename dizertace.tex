@@ -26,6 +26,8 @@
   \usepackage{phdthesis}
   \usepackage{psfrag}
 %  \newtheorem{definice}{Definition}
+
+%Klikatelne odkazy v textu - elektronicka verze
   \usepackage{hyperref} % klikatelne odkazy v textu
   \hypersetup{
       colorlinks   = true, %Colours links instead of ugly boxes
@@ -39,6 +41,21 @@
   \usepackage{pdfpages}
 %
 %
+%%Klikatelne odkazy v textu - tistena verze
+%  \usepackage{hyperref} % klikatelne odkazy v textu
+%  \hypersetup{
+%      colorlinks   = black, %Colours links instead of ugly boxes
+%      urlcolor     = black, %Colour for external hyperlinks
+%      linkcolor    = black, %Colour of internal links
+%      citecolor   = black, %Colour of citations
+%      unicode=true % zajistí správné fungování háčků a čárek (češtiny) v PDF obsahu
+%    }
+%  \date{\today}
+%  \usepackage{minibox}
+%  \usepackage{pdfpages}
+%%
+%%
+
 \vfuzz10pt % Don't report over-full v-boxes if over-edge is small
 \hfuzz10pt
 %
@@ -746,7 +763,7 @@ Aktivum s nižší současnou cenou by mělo větší riziko a také vyšší o�
 Proto chceme proces upravit tak, aby absolutní očekávaný výnos a~výše směrodatné odchylky byly proporcionální k ceně aktiva. 
 
 \subsubsection{Geometrický Wienerův proces}
-Nejběžnější modifikací Wienerova procesu splňující požadavky popsané v~předchozím odstavci je Geometrický Wienerův proces, který v kontextu finanční matematiky použil poprvé Paul Samuelson \cite{samuelson1964rational}.
+Nejběžnější modifikací Wienerova procesu splňující požadavky popsané v~předchozím odstavci je Geometrický Wienerův proces, který v kontextu finanční matematiky použil poprvé Paul Samuelson \cite{samuelson1965rational}.
 K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
 
 %V definici Geometrického Wienerova procesu využijeme stochastické diferenciální rovnice, které budou definovány v Kapitole \ref{SDR_kap}.
@@ -3517,7 +3534,7 @@ Také by bylo možné zabývat se dalšími metodami oceňování úrokových sw
 \addcontentsline{toc}{chapter}{Literatura}
 %\bibliographystyle{plain}
 %\bibliographystyle{abbrv}
-\bibliographystyle{abbrv_czech}
+\bibliographystyle{abbrv_czech_v2}
 \bibliography{bibliography}
 
 %\cleardoublepage
@@ -3548,48 +3565,55 @@ L.~Křivánková a S.~Zlatošová.
 L.~Křivánková.
 \newblock Equilibrium models for portfolio selection.
 \newblock {\em Mathematical Models and
-  Financial Mathematics. Book of short papers}, strany 35--42, Brno, 2014.
-  Masaryk University.
+  Financial Mathematics. Book of short papers}, 35--42, Brno: Masarykova univerzita, 2014.
 
 \item
 L.~Křivánková.
 \newblock Asset-pricing models in portfolio theory.
 \newblock {\em Financial Mathematics in
-  Practice II, Book of short papers}, strany 42--49, Brno, 2013. Masaryk
-  University.
+  Practice II, Book of short papers}, 42--49, Brno: Masarykova univerzita, 2013.
 
 \item
 L.~Křivánková.
 \newblock Continuous-time models in portfolio theory.
 \newblock {\em XX International Conference PDMU-2012 Problems of Decision
-  Making under Uncertainties}, strany 95--104, Brno, 2012. University of
-  Defence.
-
+  Making under Uncertainties}, 95--104, Brno: Univerzita obrany, 2012.
 \item
 L.~Křivánková.
 \newblock The Black-Scholes equation for barrier options.
 \newblock {\em 7.~konference o matematice a fyzice na vysokých školách
   technických s mezinárodní účastí : Sborník příspěvků část 1 -
-  matematika}, 2011.
+  matematika}, Brno: Univerzita obrany, 2011.
 
 \item
 L.~Křivánková.
 \newblock Wiener process and applications.
 \newblock {\em Workshop of the Jaroslav Hájek Center, Book of short
-  papers}, 2010.
+  papers}, Brno: Masarykova univerzita, 2010.
 
 \item
 S.~Kafková a L.~Křivánková.
-\newblock Generalized linear models in vehicle insurance.
+\newblock Generalized Linear Models in Vehicle Insurance.
 \newblock {\em Acta Universitatis Agriculturae et Silviculturae Mendelianae
   Brunensis}, 62(2):383--388, 2014.
+
+\item
+S.~Kafková a L.~Křivánková.
+\newblock Generalized Linear Models in Actuarial Science. 
+\newblock {\em ISCAMI}, 
+2013.
+
+\item
+S.~Kafková a L.~Křivánková.
+\newblock The Vasicek Model and Estimation of its Parameters.
+\newblock {\em Workshop of the Jaroslav Hájek Center and Financial Mathematics in
+  Practice I, Book of short papers}, 24--29, Brno: Masarykova univerzita, 2012.
 
 \item
 S.~Kafková, L.~Křivánková a M.~Leváková.
 \newblock Survival analysis of patients with brain tumour.
 \newblock {\em Mathematical Models and
-  Financial Mathematics. Book of short papers}, strany 27--33, Brno, 2014.
-  Masaryk University.
+  Financial Mathematics. Book of short papers}, 27--33, Brno: Masarykova univerzita, 2014.
 
 %@article{kolavrocevnovani,
 %  title={Oce{\v{n}}ov{\'a}n{\'\i} finan{\v{c}}n{\'\i}ch deriv{\'a}t{\uu}},

@@ -69,11 +69,12 @@
 %
 %
 
-\newtheorem{veta}{Věta} 
+\newtheorem{veta}{Věta}[chapter]
 \newtheorem{lemma}[veta]{Lemma}
 \newtheorem{dusledek}[veta]{Důsledek}
-\theoremstyle{definition} \newtheorem{definice}[veta]{Definice}
-\newtheorem{priklad}{Příklad}
+%\theoremstyle{definition} \newtheorem{definice}[veta]{Definice}
+\theoremstyle{definition} \newtheorem{definice}{Definice}[chapter]
+\newtheorem{priklad}{Příklad}[chapter]
 \theoremstyle{remark}
 \newtheorem*{poznamka}{Poznámka}
 \newtheorem*{reseni}{Řešení}  
@@ -238,10 +239,10 @@
 Tato disertační práce se věnuje stochastickým metodám používaným při analýze ekonomických dat.
 Metody jsou aplikovány ve dvou oblastech -- v teorii portfolia a v teorii řízení finančních rizik.
 Práce srovnává klasický a dynamický přístup v teorii portfolia.
-Zabývá se nekonzistencí předpokladů v běžně používaném dynamickém modelu a je formulován Ohlson-Rosenbergerův paradox.
+Zabývá se nekonzistencí předpokladů v běžně používaném dynamickém modelu a je formulován Ohlson--Rosenbergerův paradox.
 Hlavní pozornost je zaměřena na navržení nového modelu pro popis chování cen finančních aktiv a jeho aplikaci na reálná data.
 Část věnovaná teorii řízení finančních rizik je zaměřuje na výpočet Credit Valuation Adjustment. 
-V práci je popsána metoda výpočtu využívající stochastické modely, jakým je například Hull-Whiteův model sloužící k popisu chování úrokových měr.
+V práci je popsána metoda výpočtu využívající stochastické modely, jakým je například Hull--Whiteův model sloužící k popisu chování úrokových měr.
 Součástí práce je zpracování reálných dat a porovnání výsledků s výsledky, které dává jednoduchá metoda používaná v bance.
 \\\\\\\\\\
 
@@ -251,10 +252,10 @@ Součástí práce je zpracování reálných dat a porovnání výsledků s vý
 This dissertation deals with stochastic methods used in the analysis of economic data. 
 The methods are applied in two areas –- portfolio theory and the theory of financial risk management. 
 The dissertation compares the classic and the dynamic approach to portfolio theory. 
-It deals with assumptions inconsistency in the commonly used dynamic model and the Ohlson-Rosenberg paradox is formulated. 
+It deals with assumptions inconsistency in the commonly used dynamic model and the Ohlson--Rosenberg paradox is formulated. 
 The main attention is focused on designing a new model which describes the behaviour of financial asset prices and its application to real data. 
 The section devoted to the theory of financial risk management is focused on the calculation of Credit Valuation Adjustment. 
-The thesis describes the method of calculation using stochastic models, such as the Hull-White model used to describe the behaviour of interest rates. 
+The thesis describes the method of calculation using stochastic models, such as the Hull--White model used to describe the behaviour of interest rates. 
 It also contains real data processing and compares its results with the results obtained by a~simple method used in the bank.
 
 \newpage
@@ -294,9 +295,9 @@ Lenka Křivánková
 \textbf{Prostory a matice}\\\\
 %  \begin{table}[h]
    \begin{tabular}{p{4cm} p{9.3cm}}
-   $\mathbb{R}$                              &   jednorozměrný Eukleidovský prostor \\
-   $\mathbb{R}^n$                              &     $n$-rozměrný Eukleidovský prostor \\
-   $\mathbb{R}^+$                              &     množina všech kladných čísel \\
+   $\mathbb{R}$                              &   jednorozměrný prostor reálných čísel  \\
+   $\mathbb{R}^n$                              &     $n$-rozměrný vektorový prostor reálných čísel  \\
+   $\mathbb{R}^+$                              &     prostor všech kladných reálných čísel \\
    $\boldsymbol{x}=(x_1,\ldots,x_n)^\mathrm{T}$             &    $n$-rozměrný reálný vektor \\
     $\boldsymbol{1}$                           &   vektor jedniček\\
    $\mathbf{I}_n$                              &    jednotková matice řádu $n$ \\
@@ -326,7 +327,7 @@ Lenka Křivánková
 %   $f(x; \theta)$                                    &   probability density function of random variable $X$ with distribution dependent on scalar parameter $\theta$ \\
 %   $f(x,t)$                                          &    probability density of random process $X(t)$ at fixed time $t$ \\
 %   $f(x,t | x_0, t_0)$                               &    probability density of random process $X(t)$ at fixed time $t$ conditioned by its state $x_0$ at time $t_0$ \\
-   $X\sim \mathcal{L}(\boldsymbol{\theta})$                                &   náhodná veličina $X$ mající rozdělením pravděpodobnosti $\mathcal{L}$ s parametry  $\boldsymbol{\theta}=(\theta_1,\ldots,\theta_n)$ \\ %random variable $X$ having general probability distribution $\mathcal{L}$\\
+   $X\sim \mathcal{L}(\boldsymbol{\theta})$                                &   náhodná veličina $X$ mající rozdělením pravděpodobnosti $\mathcal{L}$ s vektorem parametrů  $\boldsymbol{\theta}=(\theta_1,\ldots,\theta_n)$ \\ %random variable $X$ having general probability distribution $\mathcal{L}$\\
    $\mathsf{E}(X)$;  $\mathsf{E}X$                         	      &   střední hodnota náhodné veličiny $X$ \\
    $\mathsf{D}(X)$;  $\mathsf{D}X$                       	      &   rozptyl náhodné veličiny $X$ \\
    $\mathsf{C}(X_i,X_j)$             		      &   kovariance náhodných veličin $X_i$ a $X_j$\\
@@ -357,7 +358,7 @@ Lenka Křivánková
    $f'(t)$				& první derivace reálné funkce $f$\\
    $\mathrm{d}f$				& diferenciál funkce $f$\\
    $f(t,x)$					&reálná funkce dvou proměnných\\ 
-   $f(t,\cdot)$				& reálná funkce jedné proměnné, tato proměnná je zastoupena tečkou\\
+   $f(t,\cdot)$				& reálná funkce jedné proměnné, tato proměnná je zastoupena tečkou a $t$ je pevně zvolené\\
    $\frac{\partial f(t,x)}{\partial t}$				& parciální derivace funkce $f$ podle proměnné $t$\\
    $\left.\frac{\partial f(t,x)}{\partial t}\right|_{t=t_0}$				& parciální derivace funkce $f$ podle proměnné $t$, do~které za proměnnou $t$ dosadíme hodnotu $t_0$\\
    $||\boldsymbol x||$				& Eukleidovská norma\\
@@ -483,7 +484,7 @@ Vývojem optimálního portfolia ve spojitém čase se zabýval Robert Merton, k
 Ve svém přístupu předpokládal, že ceny finančních aktiv se řídí It\^oovými procesy s konstantními parametry. 
 Dalším jeho předpokladem byla tržní rovnováha.
 %
-Nicméně jeho zjednodušující předpoklady se staly v roce 1976 předmětem kritiky Ohlsona a Rosenberga, formulované v~tzv.~Ohlson-Rosenbergově paradoxu.
+Nicméně jeho zjednodušující předpoklady se staly v roce 1976 předmětem kritiky Ohlsona a Rosenberga, formulované v~tzv.~Ohlson--Rosenbergově paradoxu.
 Hledání vhodného modelu chování cen finančních aktiv v portfoliu ve spojitém čase je tedy stále aktuálním tématem. 
 V~posledních letech se jím zabývá také Robert Fernholz ve své stochastické teorii portfolia. 
 Tato teorie ale nepředpokládá tržní rovnováhu.
@@ -565,27 +566,27 @@ CVA \cite{zhu2007} \cite{pykhtin2010} \cite{gregory2010} \cite{brigo2014}   zahr
 \chapter*{Cíle práce a metodika}\addcontentsline{toc}{chapter}{Cíle práce a metodika} 
 Cílem této disertační práce je přehledně představit základy teorie stochastických procesů a stochastických diferenciálních rovnic a 
 zasvětit čtenáře do problematiky stochastických modelů využívaných při analýze ekonomických dat.
-Tento cíl budeme naplňovat v Kapitolách~\ref{stochasticka_analyza_kap}~a~\ref{stoch_model}.
+Tento cíl budeme naplňovat v kapitolách~\ref{stochasticka_analyza_kap}~a~\ref{stoch_model}.
 Dalším cílem této práce je využít teoretické poznatky a aplikovat je při analýze reálných dat v~konkrétních ekonomických oborech.
-Prvním z těchto oborů bude teorie portfolia prezentovaná v~Kapitole~\ref{teorie_portfolia_kap} a druhým teorie řízení finančních rizik představená v~Kapitole~\ref{rizika_kap}.
+Prvním z těchto oborů bude teorie portfolia prezentovaná v~kapitole~\ref{teorie_portfolia_kap} a druhým teorie řízení finančních rizik představená v~kapitole~\ref{rizika_kap}.
 Navíc si klademe za cíl, aby námi použité metody přinášely některé nové výhody oproti modelům uvedeným v teoretické části.
 
-Představíme historii vývoje modelování v teorii portfolia a srovnáme výhody a nevýhody klasického přístupu a dynamického přístupu, který využívá stochastické modelování.
-Naším cílem je seznámit čtenáře s nekonzistencí předpokladů v Mertonově dynamickém přístupu známé z Ohlson-Rosenbergova paradoxu.
+Představíme historii vývoje modelování v teorii portfolia a srovnáme výhody a nevýhody klasického a dynamického přístupu, který využívá stochastické modelování.
+Naším cílem je seznámit čtenáře s nekonzistencí předpokladů v Mertonově dynamickém přístupu známé z Ohlson--Rosenbergova paradoxu.
 Stěžejní část kapitoly bude obsahovat navržení nového modelu pro popis chování cen finančních aktiv založeného na vztahu mezi váhami portfolia a výnosností finančních aktiv v portfoliu.
 Navržený model si klade za cíl popsat dynamiku cen aktiv bez nekonzistence předpokladů.
 Model následně aplikujeme na reálná data z pražské burzy cenných papírů.
 %Pro všechny výpočty, simulace a zobrazení grafů vytvoříme programy v prostředí \R (verze 3.3.0).
-Simulace a grafy prezentované v Kapitole~\ref{teorie_portfolia_kap} vytvoříme pomocí programů vyvinutých v prostředí~\R (verze 3.3.0).
+Simulace a grafy prezentované v kapitole~\ref{teorie_portfolia_kap} vytvoříme pomocí programů vyvinutých v~prostředí~\R (verze 3.3.0).
 Jejich ukázky budou uvedeny v Příloze~\ref{priloha_programy}.
 
 V dalším části práce, zaměřené na  řízení finančních rizik, bude naším cílem představit a aplikovat model pro CVA úrokových swapů, který respektuje regulační normy a~zároveň přináší nižší ocenění CVA než metody využívané v bankovní praxi.
 Při výpočtu CVA budeme využívat různé stochastické metody analýzy dat.
 Monte Carlo simulace použijeme k vytvoření  možných scénářů vývoje úrokových měr na trhu. 
-Tyto simulace jsou prováděny s využitím Hull-Whitova jednofaktorového modelu úrokových měr.
+Tyto simulace jsou prováděny s využitím Hull--Whitova jednofaktorového modelu úrokových měr.
 Následně pro každý scénář úrokové míry oceňujeme daný úrokový swap metodami pro oceňování derivátů a~určujeme očekávanou expozici protistrany.
 Pro odhad pravděpodobnosti selhání protistrany využíváme přístup založený na exponenciálním rozdělení.
-Výpočty a simulace prezentované v Kapitole \ref{rizika_kap} realizujeme v prostředí \MATLAB (verze  R2014b).
+Výpočty a simulace prezentované v kapitole \ref{rizika_kap} realizujeme v prostředí \MATLAB (verze  R2014b).
 Ukázky z programu uvedeme v Příloze \ref{priloha_programy}.
 
 %%%%%%%%%%%%%%%%%%{Stochastická analýza}
@@ -637,7 +638,8 @@ $X(t,\cdot):\Omega\to\mathbb{R}$ je pro každé $t\in\mathcal{T}$ náhodná veli
 
 Reálná funkce $X(\cdot,\omega)$ se nazývá \textit{trajektorie} nebo \textit{cesta} nebo \textit{realizace} stochastického procesu. 
 \end{definice}
-Množina parametrů $\mathcal{T}$ může být diskrétní nebo spojitá a v závislosti na tom pak mluvíme o \textit{diskrétním} nebo \textit{spojitém} stochastickém procesu. 
+Pro označení stochastického procesu budeme využívat také zkrácený zápis $X(t)$ nebo $X_t$.
+Množina parametrů $\mathcal{T}$ může být diskrétní nebo spojitá a~v~závislosti na tom pak mluvíme o \textit{diskrétním} nebo \textit{spojitém} stochastickém procesu. 
 
 \begin{definice}[Ekvivalence stochastických procesů]
 Dva stochastické procesy $X(t,\omega)$ a $Y(t,\omega)$ nazveme \textit{ekvivalentní}, pokud platí
@@ -679,7 +681,7 @@ se nazývá \textit{autokorelační funkce stochastického procesu} $X(t)$.
 \end{definice}
 
 \begin{definice}[Stacionarita stochastického procesu]
-Stochastický proces $X(t)$ nazveme \textit{striktně stacionární}, pokud jsou jeho sdružené distribuční funkce invariantní vůči časovému posunu, tedy pro všechna $h\in\mathbb{R}$ takové, že $t_j\in\mathcal{T}$ a $t_j+h\in\mathcal{T}$ pro všechna $j$ platí
+Stochastický proces $X(t)$ nazveme \textit{striktně stacionární}, pokud jsou jeho sdružené distribuční funkce invariantní vůči časovému posunu, tedy pro všechna $h\in\mathbb{R}$ takové, že $t_j\in\mathcal{T}$ a~$t_j+h\in\mathcal{T}$ pro všechna $j$ platí
 $$F_{t_1+h,\dots,t_n+h}(x_1,\dots,x_n)=F_{t_1,\dots,t_n}(x_1,\dots,x_n).$$   
 
 Stochastický proces $X(t)$ nazveme \textit{slabě stacionární}, pokud existuje konstanta $\mu\in\mathbb{R}$ a funkce $c:\mathbb{R}^+\to\mathbb{R}$ taková, že
@@ -767,7 +769,7 @@ Nejběžnější modifikací Wienerova procesu splňující požadavky popsané 
 K rozšíření modelu používajícího tento proces přispěli především Fischer Black a Myron Scholes \cite{black1973pricing} a to zejména v kontextu oceňování opcí.
 
 %V definici Geometrického Wienerova procesu využijeme stochastické diferenciální rovnice, které budou definovány v Kapitole \ref{SDR_kap}.
-Geometrický Wienerův proces bývá často definován pomocí  stochastické diferenciální rovnice (které budou zavedeny v Kapitole \ref{SDR_kap}).
+Geometrický Wienerův proces bývá často definován pomocí  stochastické diferenciální rovnice (které budou zavedeny v části \ref{SDR_kap}).
 \begin{definice}[Geometrický Wienerův proces]\label{Geometricky_Wieneruv_proces}
 Stochastický proces $S(t)$, který je řešením stochastické diferenciální rovnice 
 \begin{equation}\label{SDE_GWP}
@@ -834,7 +836,7 @@ a publikace \cite{ito1946} a
 \cite{ito1951stochastic}, kde zavádí koncept stochastických diferenciálních rovnic.
 
 Robert C. Merton, nositel Nobelovy za ekonomii, využívá teoretické poznatky Kiyosi It\^oa jako nástroj pro výzkum vývoje cen akcií v~portfoliu a~k~oceňování finančních derivátů.
-Tyto postupy více přiblížíme v Kapitole \ref{stoch_model} o~stochastickém modelování.
+Tyto postupy více přiblížíme v kapitole~\ref{stoch_model} o~stochastickém modelování.
 
 Abychom mohli v následujícím textu zavést stochastický integrál, definujme nejdříve následující třídy procesů.
 \begin{definice}
@@ -888,7 +890,7 @@ Nechť $\{f_n:n\in\mathbb N\}$ je posloupnost jednoduchých procesů z Lemmatu \
 Pro obecný proces $f(t,\omega)\in M$ definujeme \textit{It\^oův integrál} předpisem
 $$\int_0^Tf(t,\omega)\,\mathrm{d}W=\lim_{n\to\infty}\int_0^Tf_n(t,\omega)\,\mathrm{d}W.$$
 \end{definice}
-Definice \ref{Ito_int} není závislá na volbě aproximující posloupnosti $f_n$ viz \cite{oksendal2003stochastic}.
+Definice \ref{Ito_int} není závislá na volbě aproximující posloupnosti $f_n$, viz \cite{oksendal2003stochastic}.
 
 \subsubsection{It\^oův proces}
 %Abychom mohli v následujícím textu zavést stochastický integrál definujme nejdříve širokou třídu procesů, tzv. It\^oových procesů.
@@ -916,7 +918,7 @@ It\^oovo lemma je nástrojem pro práci s It\^oovým integrálem a stochastický
 Říká, že It\^oovy procesy tvoří uzavřenou třídu vzhledem ke skládání s hladkými funkcemi.
 Kiyosi It\^o jej publikoval v roce 1944 v článku \cite{ito1944}.
 \begin{veta}[It\^oovo lemma]\label{ito_lemma}
-Nechť $X(t,\omega)$ je It\^oův proces se stochastickým diferenciálem
+Nechť $X(t)$ je It\^oův proces se stochastickým diferenciálem
 $$\mathrm{d}X=U\,\mathrm{d}t+V\,\mathrm{d}W.$$
 Nechť $g(t,x):(0,\infty)\times\mathbb R\to\mathbb R$ je dvakrát spojitě diferencovatelná funkce.
 Potom $Y(t)=g(t,X(t))$ je také It\^oův proces.
@@ -965,7 +967,7 @@ Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry najdeme
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/OU_v4.pdf}
-  \caption{Ukázka pěti trajektorií Ornstein–Uhlenbeckova procesu s parametry $\theta=1$, $\mu=2$ a  $\sigma=0,1$ a počáteční hodnotou $X_0=2$.}  \label{OU_graf}
+  \caption{Ukázka pěti trajektorií Ornstein–Uhlenbeckova procesu s parametry $\theta=1$, $\mu=2$ a  $\sigma=0{,}1$ a počáteční hodnotou $X_0=2$.}  \label{OU_graf}
 \end{figure}
 
 %\cite{Benth2016}
@@ -988,8 +990,8 @@ Vlastnostem Ornstein–Uhlenbeckova procesu (především stacionaritě) se zevr
 Pomocí diferenciálních rovnic jsme schopni popsat množství zákonitostí platných ve vědeckých oborech přírodních, společenských i ekonomických.
 Řešení diferenciálních rovnic jsou funkce popisující vlastnosti zkoumaných jevů.
 Stochastické diferenciální rovnice (SDR) nám umožňují modelovat dynamiku \textit{náhodných jevů}.
-K formulování a řešení SDR je využíván It\^oův kalkul popsaný v Kapitole \ref{Ito_kalkul}.
-Aplikací stochastických diferenciálních rovnic ve stochastickém modelování se zabýváme v Kapitole \ref{stoch_model}, kde uvádíme modely popisující vývoj a chování cen finančních aktiv v čase.
+K formulování a řešení SDR je využíván It\^oův kalkul popsaný v části \ref{Ito_kalkul}.
+Aplikací stochastických diferenciálních rovnic ve stochastickém modelování se zabýváme v kapitole \ref{stoch_model}, kde uvádíme modely popisující vývoj a chování cen finančních aktiv v čase.
 
 Základní studijní literaturou nám byla monografie Bernta {\O}ksendala \cite{oksendal2003stochastic}.
 Pracovali jsme také s texty \cite{cyganowski1998maple} a \cite{cyganowski2002elementary}, které napsal Sasha Cyganowski s~kolektivem autorů.
@@ -1005,7 +1007,7 @@ Nechť $\alpha(t,x)$ a $\beta(t,x)$ jsou funkce dvou proměnných $\alpha,\beta:
 \begin{equation}\label{SDR_reseni}
 X(t)=X_0+\int_{t_0}^t\alpha(s,X(s))\,\mathrm{d}s+\int_{t_0}^t\beta(s,X(s))\,\mathrm{d}W(s),
 \end{equation}
-kde první integrál je Lebesgueův a druhý integrál je It\^oův definovaný v Kapitole \ref{Ito_integral}.
+kde první integrál je Lebesgueův a druhý integrál je It\^oův definovaný v části \ref{Ito_integral}.
 Častěji se s SDR setkáváme v jejím diferenciálním tvaru
 \begin{align}\label{SDR_def}
 \mathrm{d}X(t)&=\alpha(t,X(t))\,\mathrm{d}t+\beta(t,X(t))\,\mathrm{d}W(t),\\%\qquad 
@@ -1015,7 +1017,7 @@ Náhodnou veličinu $X(t_0)=X_0$ nazýváme \textit{počáteční podmínkou SDR
 \end{definice}
 %Uvažujme o existenci a jednoznačnosti řešení SDR.
 
-Uvažujme $n$ stochastických procesů $X_1(t),\dots,X_n(t)$, které popisují nějakým způsobem související náhodné jevy, například vývoj cen $n$ různých akcií na kapitálovém trhu. 
+Uvažujme $n$ stochastických procesů $X^1(t),\dots,X^n(t)$, které popisují nějakým způsobem související náhodné jevy, například vývoj cen $n$ různých akcií na kapitálovém trhu. 
 K popisu chování takových procesů v čase slouží soustavy stochastických diferenciálních rovnic (někdy označované jako systémy SDR) .
 \begin{definice}[Soustava $n$ stochastických diferenciálních rovnic]
 Nechť
@@ -1055,7 +1057,7 @@ Dále nechť funkce $\boldsymbol\alpha$ a $\boldsymbol B$ splňují podmínku
 ||\boldsymbol\alpha( t,\boldsymbol x)-\boldsymbol\alpha( t,\boldsymbol y)||+||\boldsymbol{B}( t,\boldsymbol x)-\boldsymbol{B}( t,\boldsymbol y)||\leq D||\boldsymbol x-\boldsymbol y||,
 \end{equation}
 pro každé $\boldsymbol x , \boldsymbol y\in\mathbb{R}^n$ a $t\in \mathcal{T}$ a pro nějakou kladnou konstantu $D$.
-Dále nechť $\boldsymbol X_0$ je náhodný vektor, který může být závislý pouze na hodnotách Wienerova procesu $\boldsymbol W(t_0)$ v čase $t_0$, %nezávislý na trajektorii Wienerova procesu $\boldsymbol W(t)$ 
+Dále nechť $\boldsymbol X_0$ je náhodný vektor, který může být závislý pouze na hodnotách Wienerova procesu v čase $t_0$, %nezávislý na trajektorii Wienerova procesu $\boldsymbol W(t)$ 
 a platí
 \begin{equation}\label{podminka_tri}
 \mathrm{E}\left[||\boldsymbol X_0||^2\right]<\infty.
@@ -1094,7 +1096,7 @@ Pak \textit{Eulerova metoda} řešení SDR je definována rekurzívním vztahem
 X_{n+1}=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n,
 \end{equation}
 kde $\Delta_n=\int_{t_n}^{t_{n+1}}\mathrm{d}t=t_{n+1}-t_n$ je délka časového intervalu $(t_n,t_{n+1})$
-a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ v čase $(t_n,t_{n+1})$.
+a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ na intervalu $(t_n,t_{n+1})$.
 
 Zobecníme-li Eulerovu metodu pro soustavu $m$ stochastických diferenciálních rovnic \eqref{SSDR_def}, pak vztah pro $i$-tou složku aproximace řešení je definován předpisem
 \begin{equation}\label{Euler_soustava}
@@ -1126,7 +1128,7 @@ X_{n+1}&=X_n+\alpha(t_n,X_n)\Delta_n+\beta(t_n,X_n)\Delta W_n \\ \notag
 \end{align}
 kde $\beta'(t_n,X_n)$ je derivace $\beta(t_n,X_n)$ podle $X_n$,
 $\Delta_n=\int_{t_n}^{t_{n+1}}\mathrm{d}t=t_{n+1}-t_n$ je délka časového intervalu $(t_n,t_{n+1})$
-a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ v čase $(t_n,t_{n+1})$.
+a $\Delta W_n=\int_{t_n}^{t_{n+1}}\mathrm{d}W(t)=W(t_{n+1})-W(t_n)$ je přírůstek Wienerova procesu $W$ na intervalu $(t_n,t_{n+1})$.
 
 Poznamenejme, že v případě, kdy koeficient $\beta(t,X(t))=\beta(t)$ nezávisí na procesu $X(t)$, pak $\beta'(t,X(t))=0$ a Milsteinova metoda je identická s~metodou Eulerovou.
 
@@ -1161,7 +1163,7 @@ Slabá konvergence sleduje velikost odchylky středních hodnot řešení SDR a 
 %K porovnání jednotlivých numerických metod řešení SDR slouží mimo jiné řád konvergence.
 
 V následujících Definicích \ref{konvergence_weak_def} a \ref{konvergence_def} budeme předpokládat, že diskretizace času $\{t_n\}_{n=0}^N\subseteq \langle0,T\rangle$ je ekvidistantní posloupnost, tzn. $\Delta_n=\Delta$ pro všechna~$n$.
-Pro ekvidistantní posloupnost platí $t_n=n\Delta$, kde přirozená čísla $n\in\left\langle0,\left\lfloor\frac{T}{\Delta}\right\rfloor\right\rangle$.
+Pro ekvidistantní posloupnost platí $t_n=n\Delta$, kde $n=0,\dots,\left\lfloor\frac{T}{\Delta}\right\rfloor$.
 
 \begin{definice}\label{konvergence_weak_def}
 %Uvažujme diskretizaci času $\{t_n\}_{n=0}^N\subseteq \mathcal{T}$.%\subseteq\langle 0,T\rangle$.
@@ -1288,7 +1290,7 @@ Důvodem je zjednodušení následných analýz a~modelování.
 %Důvodem je zjednodušení následných analýz a modelování.
 %Pro jednoduchost analýzy ale budeme předpokládat, že se jedná o procesy spojité.
 
-V Kapitole \ref{WP_kap} jsme uvažovali nad požadavky kladenými na chování stochastického procesu, který můžeme využít k modelování cen aktiv, aby byl model smysluplný.
+V části \ref{WP_kap} jsme uvažovali požadavky kladené na chování stochastického procesu, který můžeme využít k modelování cen aktiv, aby byl model smysluplný.
 Zrekapitulujme kvalitativní znaky modelu aktiv:
 \begin{itemize}
 \item[-] v dlouhodobém časovém horizontu mají ceny aktiv přibližně exponenciální růst,
@@ -1298,7 +1300,7 @@ Zrekapitulujme kvalitativní znaky modelu aktiv:
 \end{itemize}
 %Modeling with Itô Stochastic Differential Equations Od autorů: Edward Allen (googlebooks) - multidimenzní Ito formule 
 %Dynamic Asset Pricing Theory Od autorů: Darrell Duffie (googlebooks) - Black-Scholes
-Jak už bylo naznačeno v Kapitole \ref{WP_kap}, základní model splňující uvedené požadavky je založen na Geometrickém Wienerově procesu. 
+Jak už bylo naznačeno v části \ref{WP_kap}, základní model splňující uvedené požadavky je založen na Geometrickém Wienerově procesu. 
 %Model byl zaveden a prosazen Paulem Samuelsonem \cite{samuelson1965proof}.
 Budeme předpokládat, že proces popisující vývoj ceny aktiva v čase se řídí následující stochastickou diferenciální rovnicí %následujícím modelem
 \begin{equation}\label{risk_asset_model}
@@ -1307,7 +1309,7 @@ Budeme předpokládat, že proces popisující vývoj ceny aktiva v čase se ř�
 kde $P(t)$ je cena aktiva v čase $t$, $\mu(t)$ a $\sigma(t)$ jsou stochastické procesy a~$W(t)$  je jednorozměrný Wienerův proces.
 Tento model předpokládá, že na trhu je pouze jedno rizikové aktivum. %, což není zcela realistické.
 Jedná se o zjednodušující předpoklad, který bývá běžně používán v modelech finančních aktiv. 
-Stejný předpoklad nalezneme i v Black-Scholesově modelu, který představíme v Kapitole \ref{derivaty_kap}.
+Stejný předpoklad nalezneme i v Black--Scholesově modelu, který představíme v části \ref{derivaty_kap}.
 
 Chceme-li popisovat vývoj ceny více rizikových aktiv na trhu a jejich vzájemné vztahy, využijeme následující model, který předpokládá existenci $n$~rizikových aktiv a je popsán rovnicí
 \begin{equation}\label{multi_risk_asset_model}
@@ -1318,10 +1320,10 @@ Pro více informací o mnohorozměrných modelech viz \cite{etheridge2002course}
 
 Některé modely zabývající se chováním cen aktiv na trhu předpokládají existenci \textit{bezrizikového aktiva}.
 Jedná se o aktivum, které má jistou (nenáhodnou) výnosnost a~tudíž nulové riziko.
-Výnosností a rizikem aktiva se budeme podrobněji zabývat v Kapitole \ref{charakteristiky_portfolia}. 
-S modely zahrnujícími bezrizikové aktivum nás seznámí Kapitola \ref{KTP}.
+Výnosností a rizikem aktiva se budeme podrobněji zabývat v podkapitole \ref{charakteristiky_portfolia}. 
+S modely zahrnujícími bezrizikové aktivum nás seznámí podkapitola \ref{KTP}.
 Výnosnost bezrizikového aktiva se nazývá \textit{bezriziková úroková míra}.
-Modelování úrokových měr se věnuje Kapitola \ref{model_urok_miry_kap}.
+Modelování úrokových měr se věnuje podkapitola \ref{model_urok_miry_kap}.
 V praxi neexistuje skutečně bezriziková investice, ale z krátkodobého a střednědobého hlediska lze návratnost některých investic považovat prakticky za jistou.
 Obvykle se za takovou teoretickou investici považují státní pokladniční poukázky.
 Jedná se o krátkodobé dluhopisy, které vydává centrální banka a~slouží ke krytí státního deficitu.
@@ -1330,7 +1332,7 @@ Chování ceny bezrizikového aktiva je popsáno rovnicí
 \begin{equation}\label{risk-free_asset_model}
 \mathrm{d}B(t)=B(t)\,r_f(t)\,\mathrm{d}t,
 \end{equation}
-kde $B(t)$ je cena bezrizikového aktiva v čase $t$ a $r_f(t)$ je bezriziková úroková míra.
+kde $B(t)$ je cena bezrizikového aktiva a $r_f(t)$ je bezriziková úroková míra v~čase $t$.
 %Řešení diferenciální rovnice \eqref{risk-free_asset_model} dává cenu bezrizikového aktiva jako
 %\begin{equation}\label{risk-free_asset_reseni}
 %B(t)=\mathrm{e}^{\int_0^t r_f(s)\,\mathrm{d}s}.
@@ -1341,7 +1343,7 @@ Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\e
 \begin{figure}[!htbp]
   \centering 
 	\includegraphics[width=13.5cm, clip, trim= 0 15 25 50]{IMG/GWP_RFA_v5.pdf}
-  \caption{Hodnota ceny bezrizikového aktiva s úrokovou mírou $r_f=1$ a~trajektorie ceny rizikového aktiva s parametry $\mu=1$ a  $\sigma=0,1$ a počáteční hodnotou $P(0)=1$.}  \label{asset_model_graf}
+  \caption{Hodnota ceny bezrizikového aktiva s úrokovou mírou $r_f=1$ a~trajektorie ceny rizikového aktiva s parametry $\mu=1$ a  $\sigma=0{,}1$ a počáteční hodnotou $P(0)=1$.}  \label{asset_model_graf}
 \end{figure}
 
 %\subsection{Black–Scholesův model}
@@ -1349,7 +1351,7 @@ Příklady trajektorií procesů popsaných modely \eqref{risk_asset_model} a~\e
 Přehledný úvod do problematiky oceňování finančních derivátů poskytuje kniha \textit{Financial Calculus} od autorů Martina Baxtera a Andrewa Rennieho~\cite{baxter1996financial}.
 Odvození Black–Scholesova modelu je srozumitelně zpracováno také v učebnici Alison Etheridge \cite{etheridge2002course}.
 
-Při konstrukci modelů cen finančních derivátů v této kapitole budeme uvažovat finanční trh s jedním rizikovým aktivem a s jedním bezrizikovým aktivem (obvykle se v tomto případě předpokládá, že se jedná o hotovost).
+V této podkapitole budeme uvažovat finanční trh s jedním rizikovým aktivem a s jedním bezrizikovým aktivem (obvykle se v tomto případě předpokládá, že se jedná o hotovost).
 Definujme portfolio složené z těchto aktiv.
 \begin{definice}
 \textit{Portfolio} $\big(\phi(t),\psi(t)\big)$ je dvojice stochastických procesů $\phi(t)$ a~$\psi(t)$, která udává podíly rizikového a bezrizikového aktiva držené v čase $t$.
@@ -1384,7 +1386,7 @@ Při prodeji na krátko může investor dosáhnout pouze omezeného zisku, ale t
 V literatuře popisující konstrukci modelu cen finančních derivátů se často setkáme s pojmem \textit{finanční strategie}.
 %Pojmy \textit{strategie} a \textit{portfolio} mají stejnou definici, proto je můžeme chápat jako synonyma a v dalším textu této kapitoly mohou být volně zaměňována.
 Pojmy \textit{strategie} a \textit{portfolio} bývají\linebreak v~těchto textech používány pro označení toho samého a prolínají se.
-Proto tyto pojmy budeme v dalším textu této kapitoly chápat jako synonyma a~mohou být volně zaměňovány.
+Proto tyto pojmy budeme v dalším textu této podkapitoly chápat jako synonyma a~mohou být volně zaměňovány.
 
 Speciálním typem finanční strategie, který využijeme při tvorbě modelu, je samofinancující strategie.
 Jedná se o takovou strategii, kdy investor v průběhu času nedodává do portfolia další prostředky (ani prostředky nestahuje).
@@ -1470,12 +1472,12 @@ Opačný příklad by byl analogický.
  
 %To znamená, že díky vztahu \ref{replikacni_portfolio_vztah} jsme schopni pomocí replikačního portfolia modelovat cenu finančního derivátu.
 
-Pomocí konceptu představeného v této kapitole je možno modelovat cenu finančního derivátu.
-K derivátu nalezneme jeho replikující portfolio, využijeme vztah \eqref{replikacni_portfolio_vztah}, cenu aktiv v portfoliu modelujeme dle modelů představených v Kapitole \ref{stoch_model} a k ocenění derivátu používáme It\^oovo lemma. 
+Pomocí konceptu představeného v této podkapitole je možno modelovat cenu finančního derivátu.
+K derivátu nalezneme jeho replikující portfolio, využijeme vztah \eqref{replikacni_portfolio_vztah}, cenu aktiv v portfoliu modelujeme dle modelů představených v kapitole \ref{stoch_model} a k ocenění derivátu používáme It\^oovo lemma. 
 
 %Tento přístup poprvé představili
 Oceňováním finančních derivátů se poprvé zabývali v roce 1973 Fischer Black a Myron Scholes \cite{black1973pricing} v kontextu oceňování opcí. 
-Jejich oceňovací metoda vešla později ve známost jako Black-Scholesův model.
+Jejich oceňovací metoda vešla později ve známost jako Black--Scholesův model.
 Na dalším rozvoji se podílel také Robert Merton, který představil přístup využívající samofinancující portfolio.
 Jejich práce byla v roce 1997 oceněna Nobelovou cenou za ekonomii.
  
@@ -1484,7 +1486,7 @@ Jejich práce byla v roce 1997 oceněna Nobelovou cenou za ekonomii.
 
 \section{Stochastické modelování úrokových měr}\label{model_urok_miry_kap}
 %Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Damiana Briga a Fabia Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů působících na Univerzitě Komenského v Bratislavě \cite{melichercik}.
-Tato kapitola čerpá z obsáhlé monografie Interest Rate Models autorů Briga a Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů Melicherčíka, Olšarové a Úradníčka působících na Univerzitě Komenského v~Bratislavě \cite{melichercik}.
+Tato podkapitola čerpá z obsáhlé monografie Interest Rate Models autorů Briga a Mercuria \cite{brigo2007interest} a z učebnice finanční matematiky slovenských autorů Melicherčíka, Olšarové a Úradníčka působících na Univerzitě Komenského v~Bratislavě \cite{melichercik}.
 Než začneme představovat konkrétní modely úrokových měr, definujeme okamžitou úrokovou míru a~seznámíme se s~pojmy diskontování a~časová struktura úrokové míry, na jejímž vývoji závisí hodnoty finančních derivátů úrokových měr.
 
 Časovou strukturu úrokové míry budeme popisovat pomocí cen bezkupónových dluhopisů.
@@ -1538,7 +1540,7 @@ Výnosová křivka je konstruována pro dané dluhopisy, které se liší pouze 
 
 Úroková míra se používá při spojitém diskontování, které budeme využívat v další části práce při výpočtu kapitálového požadavku ke kreditnímu riziku protistrany. 
 Diskontování je proces, při kterém je přepočítána (diskontována) budoucí cena aktiva na současnou hodnotu s použitím diskontní míry nazývané také diskontní faktor.
-Jak už jsme zmínili v Kapitole \ref{stoch_model_aktiv}, kvůli zjednodušení výpočtů je běžné aproximovat vývoj cen aktiv spojitým procesem a v takovém případě má smysl i spojité diskontování, i~když reálné chování finančních instrumentů je diskrétní.
+Jak už jsme zmínili v podkapitole \ref{stoch_model_aktiv}, kvůli zjednodušení výpočtů je běžné aproximovat vývoj cen aktiv spojitým procesem a v takovém případě má smysl i spojité diskontování, i~když reálné chování finančních instrumentů je diskrétní.
 \begin{definice}
 Spojitý \textit{diskontní faktor} je dán jako
 \begin{equation}\label{diskontni_faktor}
@@ -1560,12 +1562,12 @@ r(t)=\lim_{T\to t}R(t,T)&=\lim_{T\to t}-\frac{\log B(t,T)-\log B(t,t)}{T-t}\nota
 \end{definice}
 Poslední rovnost ve vztahu \eqref{okamzik_urok_mira_vztah} plyne z definice parciální derivace funkce dvou proměnných.
 Okamžitá úroková míra představuje bod výnosové křivky, který je umístěn nejvíce vlevo.
-Při oceňování finančních derivátů úrokových měr v Kapitole~\ref{metodyCVA} budeme využívat modely okamžité úrokové míry.
+Při oceňování finančních derivátů úrokových měr v podkapitole~\ref{metodyCVA} budeme využívat modely okamžité úrokové míry.
 %K určení okamžité úrokové míry je vhodné používat okamžitou forwardovou úrokovou míru
 
 V další části se budeme zabývat forwardovými úrokovými mírami.
 Ukážeme, že výnosovou křivku můžeme přepočítat na křivku forwardových úrokových měr a naopak. 
-Z matematického hlediska je snadnější modelovat křivku forwardových úrokových měr, což využijeme při konstrukci Hull-Whitova modelu v Kapitole \ref{H-W_model_kap}.
+Z matematického hlediska je snadnější modelovat křivku forwardových úrokových měr, což využijeme při konstrukci Hull--Whitova modelu v části \ref{H-W_model_kap}.
 %Zároveň z okamžité forwardové úrokové míry můžeme odvodit okamžitou úrokovou míru $r(t)$.
 
 Principem forwardového kontraktu je uzavření dohody mezi dvěma stranami o nákupu (nebo prodeji) finančního aktiva za cenu stanovenou v současnosti, přičemž obchod se uskuteční v určený čas v budoucnosti. 
@@ -1603,7 +1605,7 @@ Platí
 B(t,T)&=\mathrm{e}^{-\int_{t}^T f(t,s)\,\mathrm{d}s}.
 %\end{equation*} 
 \end{align*}
-Navíc platí $r(t)=f(t,t)$, což využijeme při modelování okamžité úrokové míry pomocí Hull-Whitova modelu v Kapitole \ref{H-W_model_kap}.
+Navíc platí $r(t)=f(t,t)$, což využijeme při modelování okamžité úrokové míry pomocí Hull--Whitova modelu v části \ref{H-W_model_kap}.
 Znamená to také, že výnosová křivka $R(t,\cdot)$ a křivka forwardových úrokových měr $f(t,\cdot)$ mají stejný počáteční bod $r(t)$.
 Nicméně dál se křivky mohou lišit a snadno se dá odvodit, že mezi nimi existuje vztah
 \begin{equation}
@@ -1614,11 +1616,11 @@ f(t,T)=R(t,T)+(T-t)\frac{\partial R(t,T)}{\partial T}.
 Při zpracovávání problematiky modelů okamžité úrokové míry jsme čerpali z~publikace o metodách oceňování finančních derivátů autorů Daniela Ševčoviče, Beáty Stehlíkové a Karola Mikuly \cite{sevcovic2009}. 
 
 %Dosud jsme předpokládali, že úroková míra je buď konstantní nebo je známou deterministickou funkcí času.
-V Black-Scholesově modelu se používá předpoklad konstantní úrokové míry.
+V Black--Scholesově modelu se používá předpoklad konstantní úrokové míry.
 Nicméně v realitě na finančním trhu nemáme jistotu, jak se bude úroková míra vyvíjet.
 Je tedy přirozené uvažovat o úrokové míře jako o stochastickém procesu a konstruovat její stochastické modely.
 Přiblížíme se tak více k realitě.
-V dalších částech Kapitoly \ref{model_urok_miry_kap} budeme tedy předpokládat stochastické chování úrokové míry.
+V dalších částech podkapitoly \ref{model_urok_miry_kap} budeme tedy předpokládat stochastické chování úrokové míry.
 %Dluhopis pak můžeme chápat jako finanční derivát úrokové míry.
 
 %Nyní už můžeme přistoupit k modelování úrokových měr.
@@ -1628,7 +1630,7 @@ U okamžité úrokové míry budeme předpokládat stochastické chování stejn
 ale na rozdíl od akcií nebo komodit vykazuje chování úrokových měr následující příznačné vlastnosti. %zvláštnosti.
 Úrokové sazby se pohybují v určitém rozmezí a %obvykle nerostou do nekonečna ani neklesají pod nulu.
 mají tendenci se vracet k určité rovnovážné hodnotě.
-Tento jev se nazývá \textit{mean reversion}, jak už bylo zmíněno v Kapitole \ref{OU_kap}. %-- reverze k průměrné hodnotě.
+Tento jev se nazývá \textit{mean reversion}, jak už bylo zmíněno v části \ref{OU_kap}. %-- reverze k průměrné hodnotě.
 Stochastické modely, které popisují chování úrokových měr, musí tedy brát v~úvahu výše uvedené vlastnosti.
 
 %Modelování úrokových sazeb je velice důležité zejména pro aplikace ve finanční matematice a aktuárských vědách. 
@@ -1654,7 +1656,7 @@ Volatilita $\sigma(t, r)$ určuje vlastnosti náhodných výchylek.
 Proces $\sigma(t, r)$ se v literatuře nazývá také difuzní koeficient.
 
 Jeden z prvních modelů úrokové míry použil v roce 1973 Robert C. Merton v článku \cite{merton1973theory} k odvození modelu cen bezkupónových dluhopisů.
-Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův proces s~driftem (definovaný v Definici \ref{Wieneruv_proces_s_driftem}) 
+Parametry tohoto modelu nejsou závislé na čase, jedná se tedy o Wienerův proces s~driftem (viz Definice \ref{Wieneruv_proces_s_driftem}) 
 \begin{equation}\label{model_urok_miry_Merton}
 \mathrm{d}r(t)=\mu\,\mathrm{d}t+\sigma\,\mathrm{d}W(t).
 \end{equation}
@@ -1662,7 +1664,7 @@ Mertonův model předpokládá, že změny úrokové míry mají normální rozd
 Nevýhodou Mertonova modelu je absence mean reversion vlastnosti.
 
 \subsection{Vašíčkův model}\label{Vasickuv_model_kap}
-Model, který představíme v této kapitole, uveřejnil původem český matematik Oldřich Vašíček v roce 1977 v článku \cite{vasicek1977equilibrium}, kde ho využil k odvození modelu cen bezkupónových dluhopisů.
+Model, který představíme v této části, uveřejnil původem český matematik Oldřich Vašíček v roce 1977 v článku \cite{vasicek1977equilibrium}, kde ho využil k odvození modelu cen bezkupónových dluhopisů.
 Tento model se stal velice oblíbeným a často citovaným.
 Mnoho autorů dalších modelů krátkodobých úrokových měr vycházelo z Vašíčkova modelu.
 Vašíčkův model předpokládá, že okamžitá úroková míra $r(t)$ je charakterizovaná pomocí řešení stochastické diferenciální rovnice, která má tvar
@@ -1678,7 +1680,7 @@ kde $W(t)$ je Wienerův proces a $\kappa$, $\theta$ a $\sigma$ jsou konstanty, j
 
 Drift této rovnice je $\mu(t, r) = \kappa\big ( \theta - r(t)\big)$ a volatilita je $\sigma(t, r) = \sigma$. 
 Uvedený model má vlastnost mean reversion, což znamená, že drift táhne proces krátkodobých úrokových měr k průměrné hodnotě dané konstantou~$\theta$. 
-Daný proces je Ornstein-Uhlenbeckův proces definovaný v Kapitole \ref{OU_kap}.
+Daný proces je Ornstein--Uhlenbeckův proces definovaný v části \ref{OU_kap}.
 
 Mezi výhody Vašíčkova modelu patří existence explicitního vyjádření odhadů parametrů $\theta$, $\kappa$ a  $\sigma$ metodou maximální věrohodnosti.
 Na druhou stranu za nevýhodu bývá považováno, že Vašíčkův model připouští i záporné úrokové míry. 
@@ -1687,7 +1689,7 @@ K tomuto jevu dochází v případě, kdy se úroková míra přiblíží nule, 
 \subsection{CIR model}\label{CIR_model_kap}
 Možnost záporných úrokových měr odstraňuje model, který na bázi Vašíčkova modelu vyvinuli John C. Cox, Jonathan E. Ingersoll a~Stephen A. Ross a~publikovali v roce 1985 v článku \cite{cox1985theory}.
 Autoři modifikovali difuzní koeficient ve Vašíčkově modelu tak, že je úměrný úrokové míře.
-Cox-Ingersoll-Rossův model (CIR model) je ve tvaru 
+Cox--Ingersoll--Rossův model (CIR model) je ve tvaru 
 \begin{equation}\label{CIR_model}
 \mathrm{d}r(t) = \kappa\big(\theta - r(t)\big)\,\mathrm{d}t + \sigma\sqrt{r(t)}\,\mathrm{d}W(t).
 \end{equation}
@@ -1696,15 +1698,15 @@ Povšimněme si, že při malých úrokových mírách je malá také volatilita
 
 %Model vyvinuly John C. Cox, Jonathan E. Ingersoll a Stephen A. Ross a publikovali v roce 1985 v článku \cite{cox1985theory}.
 
-\subsection{Hull-Whitův model}\label{H-W_model_kap}
-Modely uvedené v Kapitolách \ref{Vasickuv_model_kap} a \ref{CIR_model_kap} nereflektují aktuální časovou strukturu úrokové míry.
+\subsection{Hull--Whitův model}\label{H-W_model_kap}
+Modely uvedené v částech \ref{Vasickuv_model_kap} a \ref{CIR_model_kap} nereflektují aktuální časovou strukturu úrokové míry.
 Na tuto nevýhodu reagovali John C. Hull a Alan White, kteří v roce 1990 publikovali článek \cite{hull1990pricing} s vlastním modelem. %, kde představují svůj model reflektující aktuálně pozorované hodnoty výnosové křivky. 
 %Další model odvozený z Vašíčkova modelu je Hull-Whitův model.
 %The first Hull–White model was described by John C. Hull and Alan White in 1990. The model is still popular in the market today.
 %Poprvé tento model popsali John C. Hull a Alan White v roce 1990 v článku \cite{hull1990pricing} a později zveřejnili i zobecnění modelu v textu \cite{hull2001general}.
 %The Hull-White model is a one-factor model of the short rate $r(t)$, first published in \cite{hull1990pricing} and generalized later \cite{hull2001general}.
 %A general overview of the model can be found in \cite{brigo2007interest}.
-Podrobnosti o Hull-Whitově modelu lze nalézt v již zmiňované publikaci \cite{brigo2007interest}.
+Podrobnosti o Hull--Whitově modelu lze nalézt v již zmiňované publikaci \cite{brigo2007interest}.
 Hull a White později zveřejnili i zobecnění svého modelu v textu \cite{hull2001general}.
 
 %The well known interest rate evolution model, Hull-White one-factor model, will be used for modeling of the interest rate term structure. 
@@ -1718,8 +1720,8 @@ Hull a White později zveřejnili i zobecnění svého modelu v textu \cite{hull
 %The Hull-White model extends the Vasicek and Cox-Ingersoll-Ross (CIR) models.
 
 Autoři modelu rozšiřují Vašíčkův model úpravou parametru limitní úrokové míry $\theta$ tak, že se parametr mění v čase a reflektuje pozorované aktuální hodnoty výnosové křivky.
-Poznamenejme, že existuje i verze Hull-Whitova modelu odvozená z CIR modelu, ale tou se v této práci nebudeme zabývat.
-Hull-Whitův model okamžité úrokové míry je dán stochastickou diferenciální rovnicí
+Poznamenejme, že existuje i verze Hull--Whitova modelu odvozená z CIR modelu, ale tou se v této práci nebudeme zabývat.
+Hull--Whitův model okamžité úrokové míry je dán stochastickou diferenciální rovnicí
 \begin{equation}\label{H-W_model}
  \mathrm{d}r(t)=\big(\theta(t)-\alpha r(t)\big)\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
 \end{equation}
@@ -1757,12 +1759,12 @@ Stejně jako Vašíčkův model má i tento model vlastnost mean reversion, ale 
 
 Hull a White předpokládali, že úroková míra má normální rozdělení, čímž připustili možnost záporných hodnot.
 Jedná se o stejný nedostatek, jako jsme zmínili u Vašíčkova modelu.
-Na druhou stranu mezi výhody Hull-Whitova modelu patří možnost kalibrace s využitím počáteční výnosové křivky, což zohledňuje ceny dluhopisů pozorované na trhu.
+Na druhou stranu mezi výhody Hull--Whitova modelu patří možnost kalibrace s využitím počáteční výnosové křivky, což zohledňuje ceny dluhopisů pozorované na trhu.
 Díky této vlastnosti si model získal širokou oblibu.
 
 %V Kapitole \ref{aplikaceCVA_kap} budeme využívat rozšíření okamžité úrokové míry $r(t)$ na celou výnosovou křivku $R(t,\cdot)$ podle vztahu
-Při aplikaci Hull-Whitova modelu v Kapitole \ref{aplikaceCVA_kap} budeme chtít simulovat celou výnosovou křivku $R(t,\cdot)$.
-Brigo a Mercurio v \cite{brigo2007interest} a Hull v \cite{hull} vysvětlují, jak je možné popsat dynamiku výnosové křivky, pokud předpokládáme, že okamžitá úroková míra se řídí Hull-Whitovým modelem.
+Při aplikaci Hull--Whitova modelu v podkapitole \ref{aplikaceCVA_kap} budeme chtít simulovat celou výnosovou křivku $R(t,\cdot)$.
+Brigo a Mercurio v \cite{brigo2007interest} a Hull v \cite{hull} vysvětlují, jak je možné popsat dynamiku výnosové křivky, pokud předpokládáme, že okamžitá úroková míra se řídí Hull--Whitovým modelem.
 Naznačíme hlavní myšlenku jejich přístupu a uvedeme výsledný vztah pro výnosovou křivku.
 Pro podrobnější odvození odkazujeme na literaturu. 
 
@@ -1785,7 +1787,7 @@ R(t,T)&=&-\frac{1}{T-t}\left(\log \frac{B(0,T)}{B(0,t)}+\frac{1-\mathrm{e}^{-\al
 kde $B(t,T)$ je cena bezkupónového dluhopisu v čase $t$ %, který vyplácí nominální hodnotu jedna v čase $T$,
 s nominální hodnotu jedna vyplácenou v čase $T$,
 $f(t,T)$ označuje okamžitou forwardovou úrokovou míru sjednanou v čase $t$ pro čas~$T$ 
-a~$r(t)$ je okamžitá úroková míra daná Hull-Whitovým modelem.
+a~$r(t)$ je okamžitá úroková míra daná Hull--Whitovým modelem.
 Ze vztahů \eqref{ocekavana_cena_dluhopisu} a \eqref{H-W_vynosova_krivka} vidíme, že celá výnosová křivka (a tedy časová struktura úrokové míry) je charakterizována pouze dynamikou okamžité úrokové míry.
 %Zadaná dynamika pro r(t) už určuje celou časovou strukturu pomoci očekávání ve světe risk neutralním vůči peněžnímu trhu.
 
@@ -1850,10 +1852,10 @@ V následující části popíšeme a~definujeme tyto základní charakteristiky
 \textit{Míra výnosnosti} (nebo \textit{relativní výnosnost}) aktiva je charakteristika, která udává zisk nebo ztrátu z~investice za pevně stanovené období vyjádřená v~poměru k~množství investovaných prostředků.
 
 \begin{definice}
-Investujeme-li $Y$ korun do nějakého aktiva $j$ v čase $t$, pak korunová hodnota investice v čase $t+\Delta t$ bude $\big(1+r_j(t,t+\Delta t)\big)Y$, kde  $r_j(t,t+\Delta t)$ definujeme jako \textit{míru výnosnosti}.  
+Investujeme-li $Y$ korun do nějakého aktiva $j$ v čase $t$, pak korunová hodnota investice v čase $t+\Delta t$ bude $\big(1+r_j(t,t+\Delta t)\big)Y$, kde  $r_j=r_j(t,t+\Delta t)$ definujeme jako \textit{míru výnosnosti}.  
 \end{definice}
  
-Relativní výnosnost bývá často označována pouze jako \textit{výnosnost}.
+Relativní výnosnost bývá často označována pouze jako výnosnost.
 Vzhledem k~tomu, že výnosnost aktiva je pro investora nejistá (s výjimkou bezrizikového aktiva), budeme ji v~teorii portfolia chápat jako náhodnou veličinu. % a~budeme ji značit $r_j$.
 Rozdělení pravděpodobnosti této náhodné veličiny nelze určit, nicméně v~teorii portfolia se obejdeme bez znalosti rozdělení a~využijeme pouze dále uvedené základní charakteristiky náhodné veličiny.
 
@@ -1865,7 +1867,7 @@ Následující značení využijeme při definicích charakteristik porfolia.
 Nechť $\boldsymbol{r}=(r_1,\dots,r_n)^\mathrm{T}$ značí náhodný vektor, jehož složky jsou výnosnosti aktiv držených v~portfoliu $p$.
 Relativní podíly aktiv, ze kterých se skládá portfolio, se nazývají \textit{váhy} portfolia.
 Vektor vah portfolia budeme značit $\boldsymbol{X}=(X_1,\dots,X_n)^\mathrm{T}$ a~přirozeně platí, že $\sum_{j=1}^nX_j=1$. 
-Mezi základní charakteristiky portfolia patří jeho \textit{výnosnost}, která je dána jako $r_p=\boldsymbol{X}^\mathrm{T}\boldsymbol{r}=\sum_{j=1}^nX_jr_j$ a~je rovněž náhodnou veličinou.   
+Mezi základní charakteristiky portfolia patří \textit{výnosnost portfolia}, která je dána jako $r_p=\boldsymbol{X}^\mathrm{T}\boldsymbol{r}=\sum_{j=1}^nX_jr_j$ a~je rovněž náhodnou veličinou.   
 Jedním z faktorů pro výběr portfolia v Markowitzově teorii je \textit{očekávaná výnosnost portfolia}, kterou označíme $\mathsf{E}(r_p)=\mu_p$ a je zřejmé, že platí $\mu_p=\sum_{j=1}^nX_j\mu_j$.
 
 \subsection{Riziko}
@@ -1890,7 +1892,7 @@ Jeho největším přínosem bylo kvantifikování očekávaného výnosu a rizi
 Dalším přínosem byl důkaz výhod diverzifikace portfolia.
 Obě tyto skutečnosti byly do té doby chápány pouze intuitivně.
 Markowitz zkonstruoval množinu všech dostupných portfolií v prostoru výnos -- riziko, zavedl pojem \textit{efektivní množina portfolií}, ze které investor vybírá optimální portfolio pomocí indiferenčních křivek popisujících investorův vztah k riziku.
-Konstrukcí množiny dostupných (nebo též přípustných) portfolií se bude věnovat Kapitola \ref{Markowitz_kap}. 
+Konstrukcí množiny dostupných (nebo též přípustných) portfolií se bude věnovat část \ref{Markowitz_kap}. 
 Na Obrázku \ref{obr_Markowitz} je znázorněna množina přípustných portfolií  a~množina efektivních portfolií v~prostoru výnosnost -- riziko. 
 
 \begin{figure}[!htbp]
@@ -1910,14 +1912,14 @@ Investor prvně určí tangenciální portfolio a~následně ho zkombinuje s~bez
 \begin{figure}[!htbp]
   \centering 
   \includegraphics[width=11cm]{IMG/graf_5b.pdf}
-  \caption{Tobinův model - množina efektivních portfolií v případě, že není povolen prodej na krátko.}
+  \caption{Tobinův model -- množina efektivních portfolií v případě, že není povolen prodej na krátko.}
   \label{obr_Tobin_1}
 \end{figure}
 
 \begin{figure}[!htbp]
   \centering 
   \includegraphics[width=11cm]{IMG/graf_1.pdf}
-  \caption{Tobinův model - zobrazení tangenciálního portfolia (rizikového portfolia, do kterého dle Separačního teorému investují všichni investoři při tvorbě optimálního portfolia).}
+  \caption{Tobinův model -- zobrazení tangenciálního portfolia (rizikového portfolia, do kterého dle Separačního teorému investují všichni investoři při tvorbě optimálního portfolia).}
   \label{obr_Tobin_2}
 \end{figure}
 
@@ -1943,7 +1945,7 @@ Důležitým důsledkem pak je, že váha každého cenného papíru v tržním 
 Tento poznatek budeme později využívat při konstrukci spojitého rovnovážného modelu.
 
 \subsection{Markowitzova teorie portfolia}\label{Markowitz_kap}
-Abychom blíže pochopili obrázky a pojmy používané v Kapitole \ref{KTP}, stručně na tomto místě přiblížíme odvození množiny přípustných portfolií  dle Markowitzovy teorie portfolia.
+Abychom blíže pochopili obrázky a pojmy používané v podkapitole \ref{KTP}, stručně na tomto místě přiblížíme odvození množiny přípustných portfolií  dle Markowitzovy teorie portfolia.
 
 Pro zjednodušení budeme uvažovat portfolio složené pouze ze dvou rizikových aktiv, které označíme $A$ a $B$.
 Váhy tohoto portfolia budeme značit $(X_A,X_B)$ a zřejmě platí $X_A+X_B=1$.
@@ -1975,7 +1977,7 @@ Podrobný popis odvození tvarů množin přípustných portfolií včetně mnoh
 
 \subsection{Váhy tržního portfolia}\label{vahy_kap}
 Významnost tržního portfolia pro investory jsme popsali v předchozí části.
-Nyní odvodíme vztah pro váhy tržního portfolia, který dále využijeme při konstrukci modelu v Kapitole \ref{muj_model}.
+Nyní odvodíme vztah pro váhy tržního portfolia, který dále využijeme při konstrukci modelu v podkapitole \ref{muj_model}.
 Uvedeme pouze základní kroky pro určení těchto vah, podrobnosti lze nalézt v již citované literatuře \cite{vcamskyteorie} a \cite{fabozziportfolio}.
 
 %Pro zjednodušení předpokládejme, že výnosnost bezrizikového aktiva $r_f=0$.
@@ -2073,12 +2075,12 @@ kde $W_j(t)$ je jednorozměrný Wienerův proces a $\mu_j$, $\sigma_j$ jsou kons
 Avšak Mertonův spojitý rovnovážný model vykazuje inkonzistenci, což dokázali Ohlson a Rosenberg \cite{ohlson} hned v roce 1976.
 Ještě před zveřejněním jejich článku byla uveřejněna ve stejném periodiku Mertonova reakce \cite{merton1975}, ve které hájí své poznatky a poukazuje na jejich nepochopení ze strany oponentů.  
 Ohlson a Rosenberg poukazují na rozpor mezi předpokladem, že střední hodnota a rozptyl výnosnosti aktiva jsou konstantní, a předpokladem tržní rovnováhy.
-Podrobněji bude tento paradox rozebrán v Kapitole \ref{paradox}.
+Podrobněji bude tento paradox rozebrán v podkapitole \ref{paradox}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%{Ohlson-Rosenbergův paradox}
-\section{Ohlson-Rosenbergův paradox}\label{paradox}
-V této kapitole představíme základní poznatky z článku Ohlsona a Rosenberga \cite{ohlson}, který byl publikován v roce 1976 v \textit{Journal of Financial and Quantitative Analysis}.
+\section{Ohlson--Rosenbergův paradox}\label{paradox}
+V této podkapitole představíme základní poznatky z článku Ohlsona a Rosenberga \cite{ohlson}, který byl publikován v roce 1976 v \textit{Journal of Financial and Quantitative Analysis}.
 Ohlson a Rosenberg jako první poukázali na nekonzistenci Mertonova spojitého modelu \cite{merton1971} spočívající v rozporu předpokladů.
 
 \subsection{Značení a předpoklady}
@@ -2129,7 +2131,7 @@ Pak
 \begin{equation}\label{T1_eq}
 \mathsf{Pr}\left(\frac{N_j(s)P_j(s)}{N_j(t)P_j(t)}=\frac{N_k(s)P_k(s)}{N_k(t)P_k(t)}\right)=1
 \end{equation}
-pro všechny časy $s,t\in \mathcal{T}$  a pro každé aktivum $j$ a $k$.
+pro všechny časy $s,t\in \mathcal{T}$  a pro každá aktiva $j$ a $k$.
 \end{veta}
 
 \begin{proof}
@@ -2204,7 +2206,7 @@ Optimální portfolio každého investora lze získat jako kombinaci dvou fondů
 
 Na trhu s~$m$ finančními aktivy uvažujme dvě portfolia (neboli dva fondy) a jejich váhy označme $\boldsymbol{a}=(a_1,\dots,a_m)^\mathrm{T}$ a $\boldsymbol{b}=(b_1,\dots,b_m)^\mathrm{T}$. Z těchto dvou fondů pak můžeme sestavit optimální portfolia všech investorů na trhu.
 Množinu všech investorů označme $I$ a pro každého investora uvažujme jeho rizikové preference, které určují jeho optimální portfolio, a popišme je pomocí parametrů $\alpha_i(t)$ a $\beta_i(t)$.
-Optimální portfolio $i$-tého investora bude zahrnovat $\alpha_ia_j+\beta_ib_j$ množství $j$-té akcie.
+Optimální portfolio $i$-tého investora bude zahrnovat $\alpha_i(t)a_j+\beta_i(t)b_j$ množství $j$-té akcie.
 
 Váhy $\boldsymbol{a}$ a  $\boldsymbol{b}$ dvou uvažovaných fondů závisí pouze na očekávaných výnosnostech a riziku finančních aktiv na trhu, které jsou v čase konstantní dle předpokladu \ref{predpoklad_konstantnosti_vynosu_a_rizika}.
 Parametry $\alpha_i(t)$ a $\beta_i(t)$ závisí na individuálních preferencích jednotlivých investorů (např. rizikové preference nebo objem investic) a mohou se lišit.
@@ -2212,7 +2214,7 @@ Tyto preference se mohou v čase měnit a tak parametry mohou záviset i na čas
 
 Označme $A(t)$ součet všech parametrů $\alpha_i(t)$ pro všechny investory a analogicky $B(t)$ součet parametrů $\beta_i(t)$.
 Tedy $A(t)=\sum_{i\in I}\alpha_i(t)$ a $B(t)=\sum_{i\in I}\beta_i(t)$.
-Pak celková hodnota držená všemi investory v $j$-tém aktivu je $Aa_j+Bb_j$ a musí být rovna tržní hodnotě aktiva.
+Pak celková hodnota držená všemi investory v $j$-tém aktivu je $A(t)a_j+B(t)b_j$ a musí být rovna tržní hodnotě aktiva.
 Platí
 $$A(t)\,a_j+B(t)\,b_j=P_j(t)\,N_j,$$
 kde $P_j(t)$ je tržní cena finančního aktiva $j$ v čase $t$ a $N_j$ je jeho dostupné množství.
@@ -2266,16 +2268,16 @@ Avšak to je v rozporu z předpokladem \ref{predpoklad_hodnost}, pokud uvažujem
 %%%%%%%%%%%%%%%%%%%%%%%%%%{Stochastická teorie portfolia}
 
 \section{Stochastická teorie portfolia}
-V této kapitole jsou shrnuty některé základní poznatky Stochastické teorie portfolia, která byla pro nás inspirací pro studium spojitých modelů v teorii portfolia uvedených v této práci.
+V této podkapitole jsou shrnuty některé základní poznatky Stochastické teorie portfolia, která byla pro nás inspirací pro studium spojitých modelů v~teorii portfolia uvedených v této práci.
 Budeme diskutovat o výhodách a nevýhodách tohoto přístupu.
 
 Pojem \textit{Stochastická teorie portfolia} (SPT) zavedl Robert Fernholz ve své monografii \cite{fern}.
 Jedná se o matematickou teorii, která zkoumá chování portfolia, jakožto i strukturu kapitálového trhu.
-Hlavní výhodou oproti klasické teorii portfolia jsou méně  striktní předpoklady, které dovolují konzistentní přístup bez výskytu Ohlson-Rosenbergova paradoxu.
+Hlavní výhodou oproti klasické teorii portfolia jsou méně striktní předpoklady, které dovolují konzistentní přístup bez výskytu Ohlson--Rosenbergova paradoxu.
 
-Na rozdíl od Mertonova modelu se v SPT nepředpokládá tržní rovnováha.
-Navíc parametry stochastického procesu, kterými se řídí cena aktiva, jsou v SPT stochastické procesy, nikoli konstanty jako v Mertonově přístupu.
-Dokonce, na rozdíl od klasického přístupu, se v SPT neklade důraz na předpoklad neexistence tržní arbitráže, přičemž se v práci diskutuje o vlastnosti trhu vedoucí k existenci arbitráže. 
+Na rozdíl od Mertonova modelu se v~SPT nepředpokládá tržní rovnováha.
+Navíc parametry stochastického procesu, kterými se řídí cena aktiva, jsou v~SPT stochastické procesy, nikoli konstanty jako v Mertonově přístupu.
+Na rozdíl od klasického přístupu, se v~SPT dokonce neklade důraz ani na předpoklad neexistence tržní arbitráže, přičemž se v práci diskutuje o vlastnosti trhu vedoucí k existenci arbitráže. 
 
 Pro vývoj ceny aktiva Fernholz používá následující spojitý logaritmický model
 $$\mathrm{d}\log P_j(t)=\gamma_j(t)\,\mathrm{d}t+\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),$$
@@ -2291,20 +2293,20 @@ Tedy $\boldsymbol{\xi}$ je maticová odmocnina z $\boldsymbol{\Sigma}$.
 Jedním ze základních pojmů v SPT jsou \textit{portfolio generující funkce}, pomocí nichž jsou tvořena portfolia, která mají dobře definované výnosnosti. 
 Podrobnější informace je možno najít v knize \cite{fern} a článku \cite{kara}.
 
-Studium SPT nás motivovalo k hledání vhodného spojitého modelu pro popis cen aktiv v portfoliu, který rovněž odstraní Ohlson-Rosenbergův paradox a zároveň bude zachovávat platnost poznatků teorie CAPM.
-Tento model budeme konstruovat v Kapitole \ref{muj_model}.
+Studium SPT nás motivovalo k hledání vhodného spojitého modelu pro popis cen aktiv v portfoliu, který rovněž odstraní Ohlson--Rosenbergův paradox a zároveň bude zachovávat platnost poznatků teorie CAPM.
+Tento model budeme konstruovat v podkapitole \ref{muj_model}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Spojitý rovnovážný model s očekávanou výnosností závislou na ceně aktiva}\label{muj_model}
-V Kapitolách \ref{paradox} a \ref{john} jsme ukázali, že v teorii portfolia běžně používaný dynamický model není konzistentní.
+V podkapitolách \ref{paradox} a \ref{john} jsme ukázali, že v teorii portfolia běžně používaný dynamický model není konzistentní.
 Proto se chceme pokusit navrhnout takový model, který by nebyl touto nekonzistencí předpokladů zatížen.
 Uvažujme spojitý model, který bude mít méně omezující předpoklady než model Mertonův.
-Model, který předkládáme v této kapitole, předpokládá rovnováhu na trhu, nicméně očekávaná míra výnosnosti není konstantní v čase.
+Model, který uvažujeme v této podkapitole, předpokládá rovnováhu na trhu, nicméně očekávaná míra výnosnosti není konstantní v~čase.
 
 Na základě poznatků z teorie portfolia budeme hledat vztah mezi očekávanou výnosností a cenou aktiva, který bychom mohli použít v modelu.
-Nechť $\boldsymbol{P}$ je vektor cen $n$ finančních aktiv.
+Nechť $\boldsymbol{P}(t)$ je vektor cen $n$ finančních aktiv.
 Předpokládejme, že tyto ceny se řídí následující soustavou stochastických diferenciálních rovnic, pro $j=1,\dots,n$ platí
 \begin{equation} \label{SDE}
 \mathrm{d}P_j(t)=P_j(t)\mu_j(t)\,\mathrm{d}t+P_j(t)\sum_{k=1}^{n}\xi_{jk}(t)\,\mathrm{d}W_k(t),
@@ -2323,7 +2325,7 @@ Soustavu upravíme do tvaru %vzhledem k tom, že součin matic je distributivní
 \begin{equation} \label{hodnost}
 \left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)\boldsymbol{\Sigma}^{-1}\boldsymbol{\mu}=0.
 \end{equation}
-Podle předpokladů v teorii portfolia zmíněných v Kapitole \ref{john} je kovarianční matice plné hodnosti, tedy i matice $\boldsymbol{\Sigma}^{-1}$ má hodnost $n$.
+Podle předpokladů v teorii portfolia zmíněných v podkapitole \ref{john} je kovarianční matice plné hodnosti, tedy i matice $\boldsymbol{\Sigma}^{-1}$ má hodnost $n$.
 Naproti tomu, díky předpokladu $\sum_{j=1}^nX_j=1$, má matice $\left(\boldsymbol{X}\boldsymbol{1}^\mathrm{T}-\mathbf{I}\right)$ lineárně závislé řádky, jelikož
 součet libovolných $n-1$ řádků matice  je roven zbývajícímu řádku vynásobenému minus jednou.
 %Dá se tedy dokázat, že tato matice má hodnost $n-1$.
@@ -2335,7 +2337,7 @@ Proto tato matice má hodnost menší než $n$ a~to znamená, že soustava rovni
 Ze soustavy rovnic \eqref{vahy} vidíme, že čitatel určuje vztah mezi $\boldsymbol{X}$ a~$\boldsymbol{\mu}$ a~jmenovatel slouží k normování, aby součet vah byl roven jedné.
 Odtud plyne, že vektor výnosností  $\boldsymbol{\mu}$ může být určen z vektoru vah $\boldsymbol{X}$ až na skalární násobek.
 %Tuto myšlenku využijeme později při tvorbě modelu pro vektor $\boldsymbol{\mu}$.
-Proto je přirozené rozdělit modelování dynamiky $\boldsymbol{\mu}(t)$ na dvě části, relativní dynamiku aktiv (danou váhami v tržním portfoliu) a~dynamiku trhu (reprezentující zmíněný skalární násobek).
+Proto je přirozené rozdělit modelování dynamiky $\boldsymbol{\mu}$ na dvě části, relativní dynamiku aktiv (danou váhami v tržním portfoliu) a~dynamiku trhu (reprezentující zmíněný skalární násobek).
 
 %Jak jsme ukázali v Kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám finančních aktiv v tržním portfoliu, tedy
 %\begin{equation} \label{market_value}
@@ -2372,11 +2374,11 @@ Pak ze vztahu  \eqref{vahy} odvodíme
 \end{equation}
 kde $\boldsymbol{X}(t)$ je vektor vah v tržním portfoliu v čase $t$.
 
-Jak jsme ukázali v Kapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám finančních aktiv v tržním portfoliu, tedy
+Jak jsme ukázali v podkapitole \ref{vahy_trznihodnota}, váhy tržního portfolia se rovnají relativním tržním hodnotám finančních aktiv v tržním portfoliu, tedy
 \begin{equation} \label{market_value}
-\boldsymbol{X}=\frac{\boldsymbol{V}}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{V}},
+\boldsymbol{X}(t)=\frac{\boldsymbol{V}(t)}{\boldsymbol{1}^\mathrm{T}\,\boldsymbol{V}(t)},
 \end{equation}
-kde $\boldsymbol{V}$ je vektor tržních hodnot finančních aktiv na trhu.
+kde $\boldsymbol{V}(t)$ je vektor tržních hodnot finančních aktiv na trhu.
 Připomeňme, že tržní hodnota aktiva $j$ je dána jako $V_j(t)=P_j(t)N_j(t)$.
 Vzhledem ke vztahu mezi tržní hodnotou aktiva a cenou aktiva a vzhledem k rovnicím \eqref{vahy_mu} a~\eqref{market_value} %můžeme konstatovat, že očekávané výnosnosti $\boldsymbol{\mu}(t)$ a ceny aktiv $\boldsymbol{P}(t)$ jsou stejné až na násobek skalárem.
 platí
@@ -2387,7 +2389,7 @@ pro všechna $j=1, \dots, n$.
 
 Analogicky s úrokovou mírou také výnosnost trhu nevykazuje exponenciální růst, ale pohybuje se přibližně v nějakém intervalu. 
 V delším časovém horizontu se projevuje tendence navracet se k průměrné hodnotě.
-Proto budeme předpokládat, že míra výnosnosti trhu $\mu_M(t)$ se řídí Vašíčkovým modelem z~Kapitoly \ref{Vasickuv_model}
+Proto budeme předpokládat, že míra výnosnosti trhu $\mu_M(t)$ se řídí Vašíčkovým modelem z~části \ref{Vasickuv_model_kap}
 \begin{equation} \label{model_trhu_vztah}
 \mathrm{d}\mu_M(t)=\kappa(\theta-\mu_M(t))\,\mathrm{d}t+\sigma\,\mathrm{d}W(t),
 \end{equation}
@@ -2484,15 +2486,15 @@ kde $\mu_M(t)$ je dáno rovnicí \eqref{model_trhu_vztah}.
 %\end{align*}
 %Avšak tato soustava je nelineární a neexistuje její analytické řešení, proto se neobejdeme bez použití numerických metod.
 
-Model zavedený v této kapitole budeme v další části aplikovat na reálná data.
+Model zavedený v této podkapitole budeme v další části aplikovat na reálná data.
 Naším cílem bude simulovat trajektorie generované tímto modelem.
-Jelikož stochastické diferenciální rovnice \eqref{SDE_cen_diag} a \eqref{SDE_cen} není možné řešit analyticky, budeme využívat numerické metody představené v Kapitole \ref{numericke_metody_kap}.
+Jelikož stochastické diferenciální rovnice \eqref{SDE_cen_diag} a \eqref{SDE_cen} není možné řešit analyticky, budeme využívat numerické metody představené v části \ref{numericke_metody_kap}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \subsection{Aplikace modelu na reálná data}\label{aplikace}
 
-Data vybraná pro analýzu v této kapitole byla získána ze systému Bloomberg.
+Data vybraná pro analýzu v této části byla získána ze systému Bloomberg.
 Jedná se o údaje o vývoji cen akcií obchodovaných na Burze cenných papírů Praha, a.s.
 Pro aplikaci modelu jsme zvolili sedm akcií významných společností, které působí na českém trhu a jejichž akcie jsou obchodovatelné na pražské burze.
 Informace o vybraných společnostech a~jejich označení v~následujících grafech jsou shrnuty v Tabulce \ref{akcie_spolecnosti}.
@@ -2539,11 +2541,11 @@ Kvůli přehlednosti jsme obrázek rozdělili na dvě části.
   \caption{Vývoj cen akcií společností uvedených v Tabulce \ref{akcie_spolecnosti}.}  \label{model_price_of_asset}
 \end{figure}
 
-Model zkonstruovaný v Kapitole \ref{muj_model} využijeme pro simulace vývoje cen akcií uvažovaných společností.
+Model zkonstruovaný v podkapitole \ref{muj_model} využijeme pro simulace vývoje cen akcií uvažovaných společností.
 Pro všechny výpočty, simulace a zobrazení grafů budeme používat programy vytvořené v prostředí \R (verze 3.3.0).
 Jejich ukázky jsou uvedeny v Příloze \ref{priloha_programy}.
 
-Aplikace modelu uvedená v této kapitole má sloužit pouze jako ukázka práce s modelem, proto si dovolíme udělat několik zjednodušení a zavést některé zjednodušující předpoklady.
+Aplikace modelu uvedená v této části má sloužit pouze jako ukázka práce s modelem, proto si dovolíme udělat několik zjednodušení a zavést některé zjednodušující předpoklady.
 Budeme předpokládat, že akcie sedmi zvolených společností reprezentují tržní portfolio.
 Jelikož nemáme k dispozici kompletní data o tržní kapitalizaci, nebudeme uvažovat počty akcií v oběhu a tudíž tržní hodnotu akcií ztotožníme s tržní cenou jedné akcie.
 Rovněž zanedbáme vliv výplaty dividend na cenu akcie.
@@ -2558,7 +2560,7 @@ Rovněž zanedbáme vliv výplaty dividend na cenu akcie.
 Pro simulování vývoje ceny akcie použijeme model daný rovnicí \eqref{SDE_cen}.
 V~modelu předpokládáme, že kovarianční matice $\boldsymbol\Sigma$ je v čase konstantní a~tudíž i matice volatilit $\boldsymbol\xi$ bude v čase konstantní. %a můžeme ji považovat za parametr modelu.
 Odhad parametru $\boldsymbol\xi$ provedeme výpočtem historické volatility z dat. 
-Při simulování trajektorií stochastického procesu popisujícího vývoj cen akcií budeme postupně využívat Eulerovu i~Milsteinovu numerickou metodu, které byly popsány v Kapitole \ref{numericke_metody_kap}. 
+Při simulování trajektorií stochastického procesu popisujícího vývoj cen akcií budeme postupně využívat Eulerovu i~Milsteinovu numerickou metodu, které byly popsány v části \ref{numericke_metody_kap}. 
 V~závěru kapitoly srovnáme trajektorie generované oběma metodami.
 
 Nejdříve vygenerujeme jednu trajektorii ceny akcie pro každou společnost.
@@ -2621,7 +2623,7 @@ Pro zmenšující se časový krok se zmenšuje rozdíl mezi řešeními získan
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q5.pdf}\quad
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q10.pdf}\\
 	\includegraphics[width=6.6cm, clip, trim= 0 15 25 50]{IMG/e_m_o2_v3_q50.pdf}
-  \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2) s různými časovými kroky $\Delta_n\in\{2; 1; 0,2; 0,1; 0,02\}$.}  \label{euler_milstein_q}
+  \caption{Srovnání Eulerovy numerické metody a Milsteinovy numerické metody pro simulace trajektorií stochastického procesu ceny akcií (společnost O2) s různými časovými kroky $\Delta_n\in\{2; 1; 0{,}2; 0{,}1; 0{,}02\}$.}  \label{euler_milstein_q}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%{Credit Valuation Adjustment}
@@ -2659,7 +2661,7 @@ předepisuje kapitálový požadavek pro riziko změny Credit Valuation Adjustme
 
 CVA lze interpretovat jako úpravu tržní hodnoty derivátu o kreditní riziko protistrany.
 Riziko změny CVA vyplývá jak z rizika změny pravděpodobnosti selhání protistrany, tak změny tržních faktorů, které ovlivňují hodnotu derivátů.
-Oceňování tohoto rizika se budeme věnovat v Kapitole \ref{metodyCVA}.
+Oceňování tohoto rizika se budeme věnovat v podkapitole \ref{metodyCVA}.
 
 %Hlavním zdrojem informací pro vznik této kapitoly byla kniha Jona Gregoryho \cite{gregory2010},
 %články \cite{zhu2007} a \cite{pykhtin2010} a publikace \cite{brigo2014}.
@@ -2715,7 +2717,7 @@ Je zaměřeno na faktory, které mají vliv na finanční trh jako celek (nikoli
 Jeho význam vzrůstá s rostoucí angažovaností bank na finančních trzích. 
 
 Úvěrové riziko a tržní riziko není možno od sebe zcela oddělovat.
-Obě tato rizika v sobě spojuje kreditní riziko protistrany (více viz Kapitola \ref{CCR_kap}), jehož modelování je nedílnou součástí výpočtu Credit Valuation Adjustment. 
+Obě tato rizika v sobě spojuje kreditní riziko protistrany (více viz část \ref{CCR_kap}), jehož modelování je nedílnou součástí výpočtu Credit Valuation Adjustment. 
 
 Dalšími finančními riziky jsou operační riziko a riziko likvidity.
 Basel~II %(International Convergence of Capital Measurement and Capital Standards) 
@@ -2872,7 +2874,7 @@ Hull a White v článku \cite{hull2012cva} představili jeden z prvních modelů
 
 \section{Metodika výpočtu CVA} \label{metodyCVA}
 CVA představuje odhad možných budoucích ztrát z derivátového obchodu v průběhu života derivátu až do jeho splatnosti.
-Vztah pro výpočet CVA vychází ze známé formule pro výpočet očekávané úvěrové ztráty (podrobněji se s ní budeme zabývat v Kapitole \ref{srovnani_metod_cva}).
+Vztah pro výpočet CVA vychází ze známé formule pro výpočet očekávané úvěrové ztráty (podrobněji se s ní budeme zabývat v podkapitole \ref{srovnani_metod_cva}).
 \begin{definice}\label{cva_def}
  \textit{Credit valuation adjustment} je definován jako
  \begin{equation} \label{CVA}
@@ -3013,7 +3015,7 @@ Za úplatu se prodávající CDS zavazuje uhradit kupujícímu ztrátu, která v
 CDS většinou slouží jako kreditní zajištění.
 
 Na českém trhu se oproti zahraničí s CDS obchoduje méně, můžeme proto často narazit na problém, že pro konkrétní protistranu nebude CDS existovat.
-Další možností, jak určit PD protistrany, je využití externího ratingu, který přidělují ratingové agentury (což už jsme zmínili v Kapitole \ref{CCR_kap}).
+Další možností, jak určit PD protistrany, je využití externího ratingu, který přidělují ratingové agentury (což už jsme zmínili v části \ref{CCR_kap}).
 Avšak externí rating získají pouze velké a renomované společnosti, a proto tuto metodu často také nemůžeme použít.
 %Navíc ratingové agentury pro výpočet PD používají až příliš dlouhou historii, což může značně zkreslovat prospektivní informace.
 
@@ -3081,13 +3083,13 @@ kde $LGD$  je míra ztráty při selhání protistrany.
 %These data come from a bank operating in the Czech Republic. 
 %The data contains information about five vanilla interest rate swaps and each of them is associated with different counterparty. \textcolor{red}{Asi by to chtělo více informací o datech.}
 
-Metodiku výpočtu CVA uvedenou v Kapitole \ref{metodyCVA} budeme aplikovat v této kapitole. 
+Metodiku výpočtu CVA uvedenou v podkapitole \ref{metodyCVA} budeme aplikovat v této podkapitole. 
 Naším cílem je spočítat CVA pro zvolené finanční deriváty a graficky znázornit komponenty vstupující do výpočtu.
 K výpočtům a tvorbě grafů použijeme prostředí \MATLAB R2014b.
 
-Data pro analýzu pochází od banky působící v České republice (dále jen Banka) a obsahují informace o části jejího portfolia finančních derivátů.
+Data pro analýzu poskytla banka působící v České republice (dále jen Banka) a obsahují informace o části jejího portfolia finančních derivátů.
 Tato část portfolia obsahuje pět úrokových swapů, z nichž každý je uzavřen s~jinou protistranou.
-Banka je ve všech pěti případech v pozici prodávajícího (pro bližší vysvětlení této pozice viz Kapitola \ref{swap_kap}).
+Banka je ve všech pěti případech v pozici prodávajícího (pro bližší vysvětlení této pozice viz část \ref{swap_kap}).
 V Tabulce \ref{variable} uvádíme přehled proměnných získaných z~datového souboru, které budeme využívat při výpočtu CVA.
 Datový soubor ani informace o protistranách nebudeme zveřejňovat.
 
@@ -3137,7 +3139,7 @@ Proto v následující části práce stručně vysvětlíme principy tohoto fin
 \textit{Úrokový swap (IRS)} je finanční derivát sloužící k zajištění rizika plynoucího ze změny úrokových sazeb. 
 Jedná se o smluvní dohodu dvou stran vyměnit si úrokové závazky v různých sazbách vztahující se ke stejné nominální hodnotě. 
 Zpravidla se přitom jedná o výměnu fixní platby úroků za variabilní. 
-Při vyrovnání obchodu dochází pouze k výměně úroků, avšak nikoli k výměně nominální hodnoty.
+Při vyrovnání obchodu dochází pouze k výměně úroků, avšak nikoli k~výměně nominální hodnoty.
 Podle tržních konvencí se strana, která v~rámci IRS kontraktu platí pevné úroky (a přijímá variabilní úroky), nazývá \textit{kupující (payer)} a strana, která přijímá pevné úroky (a platí variabilní úroky), se nazývá \textit{prodávající (receiver)}. 
 Tento vztah demonstruje Obrázek \ref{IRS_obr}.
 % By market convention, the counterparty paying the fixed rate is the "payer" (while receiving the floating rate), and the counterparty receiving the fixed rate is the "receiver" (while paying the floating rate).
@@ -3165,7 +3167,7 @@ PRIBOR je průměrná úroková sazba, za kterou jsou banky ochotny si navzájem
 
 \subsection{Počáteční výnosová křivka}\label{vynosova_krivka_kap}
 %We start our analysis by creating a discount curve that is important for evaluating the swaps.
-Na začátku naší analýzy vytvoříme výnosovou křivku, kterou budeme používat při modelování úrokové míry pomocí Hull-Whitova modelu. %při oceňování úrokových swapů.
+Na začátku naší analýzy vytvoříme výnosovou křivku, kterou budeme používat při modelování úrokové míry pomocí Hull--Whitova modelu. %při oceňování úrokových swapů.
 Tato křivka bude vstupovat do modelu prostřednictvím parametru $\theta(t)$. 
 Simulaci úrokové míry následně využijeme při oceňování úrokových swapů. %při výpočtu expozice protistran.
 
@@ -3177,7 +3179,7 @@ Pro konstrukci výnosových křivek existuje několik metod.
 Některé využívají data o výnosech bezkupónových dluhopisů, jiné sazby PRIBOR nebo tržní hodnoty IRS.
 V naší analýze jsme zvolili rozšířenou metodu, kterou využívá i Banka. 
 Pro krátkodobé úrokové míry odvodíme výnosovou křivku ze sazeb PRIBOR a pro dlouhodobé úrokové míry využijeme hodnot IRS na trhu.
-Tento přístup, kdy kombinujeme sazby PRIBOR a tržní hodnoty IRS, je vynucen skutečností, že PRIBOR sazby jsou dostupné jen pro splatnosti 1 den, 1, 2 týdny, 1, 2, 3, 6, 9 měsíců a 1 rok, 
+Tento přístup, kdy kombinujeme sazby PRIBOR a tržní hodnoty IRS, je vynucen skutečností, že PRIBOR sazby jsou dostupné jen pro splatnosti 1 den, 1 a 2 týdny, 1, 2, 3, 6 a 9 měsíců a 1 rok, 
 naproti tomu jsou na trhu obchodovány IRS pouze se splatnostmi 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 12, 15 a 20 let.
 Data jsme čerpali z webových stránek Patria online a terminálu Bloomberg a jsou uvedeny v Tabulce \ref{rates}.
 První dvě číselné hodnoty jsou tříměsíční sazba PRIBOR a šestiměsíční sazba PRIBOR. 
@@ -3240,12 +3242,12 @@ Vývoj tříměsíční sazby PRIBOR můžeme vidět na Obrázku \ref{PRIBOR}.
 \end{figure}
 
 %Provedeme tisíc simulací a každou simulaci modelujeme Hull-Whitovým modelem.
-Pro modelování úrokové míry budeme používat Hull-Whitův jednofaktorový model představený v Kapitole \ref{H-W_model_kap}.
+Pro modelování úrokové míry budeme používat Hull--Whitův jednofaktorový model představený v části \ref{H-W_model_kap}.
 Nejdříve odhadneme parametry $\alpha$ a $\sigma$ z historických dat tříměsíční sazby PRIBOR za použití \MATLAB funkce \verb+regress+ (viz Příloha \ref{priloha_programy}).
 Parametr $\theta(t)$ konkrétně určovat nemusíme, jelikož jeho roli v modelu při výpočtu v \MATLAB zastoupí počáteční výnosová křivka.
 
 Chování hodnoty okamžité úrokové míry je popsáno rovnicí~\eqref{H-W_model}.
-K~simulování vývoje její hodnoty v \MATLAB využíváme funkci \verb+HullWhite1F+, jejímiž parametry jsou koeficienty $\alpha$ a $\sigma$ z Hull-Whitova modelu a hodnoty počáteční výnosové křivky z Tabulky \ref{rates}.  
+K~simulování vývoje její hodnoty v \MATLAB využíváme funkci \verb+HullWhite1F+, jejímiž parametry jsou koeficienty $\alpha$ a $\sigma$ z Hull--Whitova modelu a hodnoty počáteční výnosové křivky z Tabulky \ref{rates}.  
 %Parametry modelu $\alpha$ a $\sigma$ odhadneme z historických dat tříměsíční sazby PRIBOR za použití \MATLAB funkce \verb+regress+. %($\alpha=0,0208$ a $\sigma=0,015$).
 Okamžité úrokové míry dané modelem rozšíříme na celé výnosové křivky s využitím rovnice \eqref{H-W_vynosova_krivka}.
 %The constant reversion speed $\alpha$ and constant $\sigma$ are extracted from the historical three month PRIBOR rates.
@@ -3279,7 +3281,7 @@ Nicméně při výpočtu CVA je tento postup běžně využíván, jelikož pou�
 %K tomu budeme využívat v \MATLAB funkci \verb+hcomputeMTMValues+, která je založena na funkci \verb+hswapapprox+.
 %Při výpočtu CVA je běžné oceňovat IRS pomocí aproximace místo ocenění přesně.  
 Výstupem oceňovací funkce je trojrozměrná matice, která obsahuje tržní hodnoty pro každý uvažovaný IRS v každém datu simulace a pro každý scénář. 
-Na Obrázku~\ref{SwapPrice} vidíme jeden z možných scénářů vývoje tržní hodnoty pěti úrokových swapů z datového souboru.
+Jeden z možných scénářů vývoje tržní hodnoty pěti úrokových swapů z datového souboru vidíme na Obrázku~\ref{SwapPrice}.
 \begin{figure}[!htbp]
   \centering 
 %	\includegraphics[width=13cm, clip, trim= 90 270 110 270]{IMG/SwapPrice1.pdf}
@@ -3303,8 +3305,8 @@ Celkové hodnoty portfolia pro všechny scénáře naší simulace zobrazuje Obr
   \caption{Ukázka simulací tržní hodnoty uvažovaného portfolia pěti úrokových swapů.}  \label{TotalPortfoioValue}
 \end{figure}
 
-Dalším krokem je výpočet expozice protistrany definované v Kapitole~\ref{exposure_kap}.
-V \MATLAB pro tento výpočet využijeme funkci \verb+creditexposures+.
+Dalším krokem je výpočet expozice protistrany definované v části~\ref{exposure_kap}.
+V~\MATLAB pro tento výpočet využijeme funkci \verb+creditexposures+.
 Přímo v~datovém souboru je proměnná, která umožňuje zohlednit při výpočtu expozice netting.
 Funkce \verb+creditexposures+ umožňuje výpočet expozice jak v~případě, že je uzavřena smlouva o nettingu dle vztahu \eqref{exp_vztah_net}, tak v případě neexistence nettingové smlouvy, viz vztah \eqref{exp_vztah}.
 Stejně jako při určení hodnoty celého portfolia získáme expozici celého portfolia součtem expozic všech protistran v jednotlivých datech simulace.
@@ -3316,7 +3318,7 @@ Celkovou expozici portfolia pro každý scénář v naší simulaci můžeme poz
   \caption{Ukázka simulací expozice uvažovaného portfolia pěti úrokových swapů.}  \label{PorfolioExposure}
 \end{figure}
 
-Očekávanou expozici protistrany jsme definovali v Kapitole~\ref{exposure_kap} jako střední hodnotu expozice protistrany.
+Očekávanou expozici protistrany jsme definovali v části~\ref{exposure_kap} jako střední hodnotu expozice protistrany.
 Pro výpočet očekávané expozice použijeme \MATLAB funkci \verb+exposureprofiles+, která ji určí jako průměrnou hodnotu všech expozic protistrany ze všech simulovaných scénářů.
 
 Na závěr spočítáme diskontovanou očekávanou expozici protistrany danou vztahem \eqref{dis_exposure_vztah}.
@@ -3379,9 +3381,9 @@ Jinak řečeno, nebudeme zohledňovat wrong-way riziko.
 
 Výpočet CVA pro jednotlivé protistrany provedeme dosazením do rovnice~\eqref{CVA}. 
 %Celkovou expozici každé protistrany určíme podle vztahu \eqref{expozice_vztah}.
-Diskontovanou očekávanou expozici protistrany jsme spočítali v~Kapitole \ref{simulace_kap} a pravděpodobnost selhání protistrany před časem $t$ jsme určili v Kapitole \ref{funkce_PD_kap}.
+Diskontovanou očekávanou expozici protistrany jsme spočítali v~části \ref{simulace_kap} a pravděpodobnost selhání protistrany před časem $t$ jsme určili v části \ref{funkce_PD_kap}.
 Ztrátovost ze selhání budeme uvažovat konstantní a~stejnou pro všechny protistrany $LGD=45\,\%$, což je standardní regulatorní hodnota pro podniková portfolia. 
-Míra návratnosti daná vztahem \eqref{recovery_rate} je $R=0,55$.
+Míra návratnosti daná vztahem \eqref{recovery_rate} je $R=0{,}55$.
 
 Výsledné hodnoty CVA pro každou protistranu jsou shrnuty v~Tabulce~\ref{resultingCVA}.
 \begin{table}%[!htbp]
@@ -3410,8 +3412,8 @@ $\boldsymbol{5}$&78\,501,06  \\
 
 
 \section{Srovnání metod výpočtu CVA}\label{srovnani_metod_cva}
-Jedním z cílů práce je nalezení efektivní metody výpočtu kapitálového požadavku k riziku nárůstu CVA, proto v této části budeme srovnávat metodu výpočtu CVA popsanou v Kapitole \ref{aplikaceCVA_kap} s metodou používanou v bance, která poskytla data.
-Nejdříve popíšeme metodu určení CVA používanou v bance a následně srovnáme její výsledky s výsledky z předchozí části uvedenými v~Tabulce \ref{resultingCVA}. 
+Jedním z cílů práce je nalezení efektivní metody výpočtu kapitálového požadavku k riziku nárůstu CVA, proto v této části budeme srovnávat metodu výpočtu CVA popsanou v podkapitole \ref{aplikaceCVA_kap} s metodou používanou v bance, která poskytla data.
+Nejdříve popíšeme metodu určení CVA používanou v~bance a následně srovnáme její výsledky s výsledky z předchozí části uvedenými v~Tabulce \ref{resultingCVA}. 
 
 Banka CVA počítá denně, ale účtování CVA provádí na měsíční bázi.
 Základní princip výpočtu CVA spočívá v odhadu tzv. \textit{očekávané ztráty (EL)} v průběhu života derivátu. 
@@ -3454,7 +3456,7 @@ Tato metoda určení $PD$ je diskrétní na rozdíl od spojitého přístupu pou
 %Rozdělením období do maturity, zdiskontováním a sečtením EL v každém z těchto období získáme CVA.
 
 %We can observe a comparison of our results of CVA with the CVA used by the bank in Tab. IV. We can see that our results of CVA achieve significantly lower values than the CVA used by the bank.
-V Tabulce \ref{srovnaniCVA} vidíme srovnání výsledků z Kapitoly \ref{vypocetCVA_kap} s CVA vypočítanými bankou. 
+V Tabulce \ref{srovnaniCVA} vidíme srovnání výsledků z části \ref{vypocetCVA_kap} s CVA vypočítanými bankou. 
 Všimněme si, že CVA spočítané v této práci dosahují významně nižších hodnot než CVA spočítané v bance.
 \begin{table}%[!htbp]
   \centering 
@@ -3495,7 +3497,7 @@ Představila základy stochastické analýzy a stochastického modelování.
 Teoretické poznatky byly aplikovány na reálná data při řešení aktuální problematiky v oblasti řízení finančních rizik a teorii portfolia.
 
 Popsali jsme vývoj modelování v teorii portfolia a srovnali jsme klasický a dynamický přístup.
-Seznámili jsme čtenáře s nekonzistencí předpokladů v~Mertonově dynamickém přístupu, známé jako  Ohlson-Rosenbergův paradox.
+Seznámili jsme čtenáře s nekonzistencí předpokladů v~Mertonově dynamickém přístupu, známé jako  Ohlson--Rosenbergův paradox.
 Cílem této práce bylo navrhnout model pro popis chování cen finančních aktiv, %založeného na vztahu mezi váhami portfolia a výnosností finančních aktiv v portfoliu.
 který odstraňuje tuto logickou nekonzistenci.
 Navržený model vycházel z~Markowitzovy teorie a předpokládal tržní rovnováhu. 
@@ -3503,7 +3505,7 @@ Následně byl aplikován na reálná data z pražské burzy cenných papírů a
 Graficky jsme srovnali simulace obdržené s využitím jak Eulerovy numerické metody, tak Milsteinovy numerické metody řešení stochastických diferenciálních rovnic.
 
 Dalším cílem práce bylo představit a aplikovat model pro výpočet Credit Valuation Adjusment úrokových swapů.
-Při oceňování úrokových swapů jsme využili Hull-Whiteův model pro modelování úrokové míry a uvedli jeho výhody oproti jiným modelům.
+Při oceňování úrokových swapů jsme využili Hull--Whiteův model pro modelování úrokové míry a uvedli jeho výhody oproti jiným modelům.
 %Uvedený přístup přináší bance nižší rizikové náklady při splnění regulačních norem.
 Přesvědčili jsme se, že uvedený přístup by přinesl bance nižší rizikové náklady než přístup, který běžně používá.
 
@@ -3518,7 +3520,7 @@ Případně by bylo možné zvolit jiný stochastický proces, který by popisov
 Námět pro další práci by také přineslo uvolnění předpokladu, že volatilita je v čase konstantní. 
 %
 %Při výpočtu Credit Valuation Adjusment pro oceňování úrokových swapů. 
-Při výpočtu Credit Valuation Adjusment bychom se mohli zabývat dalšími metodami kalibrace Hull-Whitova modelu úrokové míry. 
+Při výpočtu Credit Valuation Adjusment bychom se mohli zabývat dalšími metodami kalibrace Hull--Whitova modelu úrokové míry. 
 %vzájemné srovnání různých modelů úrokové míry. 
 Dále bychom mohli použít různé další modely úrokové míry a věnovat se jejich vzájemnému srovnání.
 Také by bylo možné zabývat se dalšími metodami oceňování úrokových swapů, například metodami využívajícími parciální diferenciální rovnice.
@@ -3576,13 +3578,13 @@ L.~Křivánková.
 \item
 L.~Křivánková.
 \newblock Continuous-time models in portfolio theory.
-\newblock {\em XX International Conference PDMU-2012 Problems of Decision
+\newblock {\em XX International Conference PDMU--2012 Problems of Decision
   Making under Uncertainties}, 95--104, Brno: Univerzita obrany, 2012.
 \item
 L.~Křivánková.
 \newblock The Black-Scholes equation for barrier options.
 \newblock {\em 7.~konference o matematice a fyzice na vysokých školách
-  technických s mezinárodní účastí : Sborník příspěvků část 1 -
+  technických s mezinárodní účastí : Sborník příspěvků část 1 --
   matematika}, Brno: Univerzita obrany, 2011.
 
 \item
@@ -3624,7 +3626,7 @@ S.~Kafková, L.~Křivánková a M.~Leváková.
 
 \chapter[Příloha -- Ukázka datového souboru]{Příloha}\label{priloha_data}
 \section*{Ukázka datového souboru}
-V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{aplikace}.
+V příloze je uvedena ukázka datového souboru analyzovaného v části \ref{aplikace}.
 \begin{figure}[!htbp]
   \centering 
 %	\includegraphics[width=13.5cm, clip, trim= 0 270 0 10]{IMG/data.pdf}
@@ -3637,11 +3639,11 @@ V příloze je uvedena ukázka datového souboru analyzovaného v Kapitole \ref{
 \addcontentsline{toc}{section}{Ukázka programu v {\textsf{R}}}
 
 V příloze uvádíme ukázku programu vytvořeného v prostředí \R. 
-Tato část zdrojového kódu slouží k simulaci trajektorií Ornstein-Uhlenbeckova procesu.
+Tato část zdrojového kódu slouží k simulaci trajektorií Ornstein--Uhlenbeckova procesu.
 
 \begin{verbatim}
 # =============================================================
-# Ornstein-Uhlenbeckův proces 
+# Ornstein--Uhlenbeckův proces 
 # =============================================================
 #
 # jedna trajektorie
@@ -3672,7 +3674,7 @@ abline (h = theta , lty = 2)
 
 \begin{verbatim}
 # =============================================================
-# Ornstein-Uhlenbeckův proces 
+# Ornstein--Uhlenbeckův proces 
 # =============================================================
 #
 # více trajektorií
@@ -3703,11 +3705,11 @@ abline (h = theta , lty = 2)
 Ukázku trajektorií Ornstein–Uhlenbeckova procesu s danými parametry zobrazuje Graf \ref{OU_graf}, který byl vytvořen v prostředí \R pomocí předcházejícího zdrojového kódu.
 
 \newpage
-Další část zdrojového kódu používáme ke zobrazení grafů dat a grafů simulací z Kapitoly \ref{aplikace}.
+Další část zdrojového kódu používáme ke zobrazení grafů dat a grafů simulací z části \ref{aplikace}.
 
 \begin{verbatim}
 # =============================================================
-# Data - grafy
+# Data -- grafy
 # =============================================================
 #
 date <- rev(scan(file="U:/R/data/date.csv", sep=";", 
@@ -3723,7 +3725,7 @@ legend(date[650],10200,
 # =============================================================
 #
 # =============================================================
-# Simulace - grafy
+# Simulace -- grafy
 # =============================================================
 #
 dates <- bizseq("2014-02-22", "2016-02-23",
@@ -3744,10 +3746,10 @@ axis.Date(side = 1, dates)
 \newpage
 \section*{Ukázka programu v MATLAB}
 \addcontentsline{toc}{section}{Ukázka programu v \MATLAB}
-Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment  vytvořeného v prostředí \MATLAB a využívaného v Kapitole \ref{aplikaceCVA_kap}.
+Na závěr uvedeme ukázky z programu pro výpočet Credit Valuation Adjustment  vytvořeného v prostředí \MATLAB a využívaného v podkapitole \ref{aplikaceCVA_kap}.
 
 První část programu načte data o úrokových swapech z datového souboru vytvořeného v aplikaci Microsoft Excel. 
-Další část slouží k vykreslení Grafu~\ref{YieldCurve} počáteční výnosové křivky, která se dále využívá při modelování úrokové míry pomocí Hull-Whitova modelu (viz Kapitola~\ref{vynosova_krivka_kap}).
+Další část slouží k vykreslení Grafu~\ref{YieldCurve} počáteční výnosové křivky, která se dále využívá při modelování úrokové míry pomocí Hull--Whitova modelu (viz část~\ref{vynosova_krivka_kap}).
 
 \begin{verbatim}
 clear all
@@ -3812,7 +3814,7 @@ title('Výnosová křivka');
 \end{verbatim}
 
 Následující část programu načte historická data o sazbě PRIBOR z datového souboru vytvořeného v aplikaci Microsoft Excel.
-Potom vykreslí graf vývoje tříměsíční sazby PRIBOR (viz Obrázek \ref{PRIBOR}) a odhadne z ní parametry Hull-Whitova modelu (viz Kapitola \ref{simulace_kap}).
+Potom vykreslí graf vývoje tříměsíční sazby PRIBOR (viz Obrázek \ref{PRIBOR}) a odhadne z ní parametry Hull--Whitova modelu (viz část \ref{simulace_kap}).
 \begin{verbatim}
 % =============================================================
 % Načte data o PRIBOR
